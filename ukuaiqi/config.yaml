@@ -1,0 +1,3 @@
+test_login:
+  - url: /login
+    bar: {user_username: ,user_password: ,}
