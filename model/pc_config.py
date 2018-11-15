@@ -137,5 +137,5 @@ def merge_config_msg():
 
 
 if __name__ == '__main__':
-    print(merge_config_info())
+    print(merge_config_info()[0])
     print(merge_config_msg())
