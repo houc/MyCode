@@ -1,155 +1,109 @@
-from config_path.path_file import get_excel_path,get_error_img_path
-import xlwt,xlsxwriter
+import xlsxwriter
+from config_path.path_file import get_excel_path, get_error_img_path
 
 
 class WriteExcel:
-    def __init__(self,*args,**kwargs):
+    def __init__(self, *args, **kwargs):
         """初始化"""
-        self.style_one = xlwt.XFStyle()
-        self.style = xlwt.XFStyle()
-        self.books = xlwt.Workbook()
-        self.font = xlwt.Font()
-        self.borders = xlwt.Borders()
-        self.pattern = xlwt.Pattern()
-        self.alignment = xlwt.Alignment()
-        self.excel_path = get_excel_path()
-        self.img_path = get_error_img_path()
-        self._sheet = self.books.add_sheet(kwargs['sheet_report'])
-        self._sheet_two = self.books.add_sheet(kwargs['sheet_pc'])
-        self.data = args
+        excel_ptah = get_excel_path()
+        self.img_ptah = get_error_img_path()
+        self.open_excel = xlsxwriter.Workbook(excel_ptah)
+        self.style_title = self.open_excel.add_format()
+        self.pc_style_title = self.open_excel.add_format()
+        self.red = self.open_excel.add_format()
+        self.blue = self.open_excel.add_format()
+        self.test_content_style = self.open_excel.add_format()
+        self.style_pc_content = self.open_excel.add_format()
+        self.style_pc_title = self.open_excel.add_format()
+        self.sheet_test = self.open_excel.add_worksheet(kwargs['sheet_test_info'])
+        self.sheet_pc = self.open_excel.add_worksheet(kwargs['sheet_pc_config'])
+        self.test_data_content = args
 
-    def borders_thin(self):
-        """边框四周细实线"""
-        self.borders.left = xlwt.Borders.THIN
-        self.borders.right = xlwt.Borders.THIN
-        self.borders.bottom = xlwt.Borders.THIN
-        self.borders.top = xlwt.Borders.THIN
-        self.style.borders = self.borders
-        return self.style
+    def _test_title_style(self, style_font = '微软雅黑', font_size = 11, bold = False, bg_color = 'DeepSkyBlue'):
+        """测试表单表头样式"""
+        self.style_title.set_font_name(style_font)
+        self.style_title.set_size(font_size)
+        self.style_title.set_bold(bold)
+        self.style_title.set_bg_color(bg_color)
+        self.style_title.set_center_across()
+        self.sheet_test.set_column(0, 0, 30)
+        self.sheet_test.set_column(1, 1, 45)
+        self.sheet_test.set_column(2, 2, 50)
+        self.sheet_test.set_column(3, 4, 20)
+        self.sheet_test.set_column(6, 6, 60)
+        self.sheet_test.set_column(7, 7, 20)
+        self.sheet_test.set_column(8, 8, 60)
+        return self.style_title
 
-    def pattern_background(self,color=14):
-        """背景颜色"""
-        # 1: 无；2：红色；3：大绿色；4/30/32/39：深蓝；5/34：浅黄；6/14：紫红；7：浅绿；8：深黑；9：白色；10：深红；11：深绿；12/35：大蓝；13：黄色
-        # 23：灰色；25/27/41：浅绿；26/43：浅黄；28：深紫；29：橙色；31/42：浅绿绿；33：浅红；36：浅紫；37：土色；38：军绿；40：浅蓝；44：浅灰；45：浅土色
-        self.pattern.pattern = xlwt.Pattern.SOLID_PATTERN
-        self.pattern.pattern_fore_colour = color
-        self.style.pattern = self.pattern
-        return self.style
+    def _red_style(self, color = 'red'):
+        """测试内容默认为红色样式"""
+        self.red.set_font_color(color)
+        self.red.set_font_name('微软雅黑')
+        self.red.set_size(11)
+        self.red.set_border(7)
+        self.red.set_align('vcenter')
+        return self.red
 
-    def font_underline(self):
-        """字体下划线"""
-        self.font.underline = True
-        self.style.font = self.font
-        return self.style
+    def _blue_style(self, color = 'blue'):
+        """测试内容默认为蓝色样式"""
+        self.blue.set_font_color(color)
+        self.blue.set_size(11)
+        self.blue.set_font_name('微软雅黑')
+        self.blue.set_border(7)
+        self.blue.set_align('vcenter')
+        return self.blue
 
-    def font_type(self,name='微软雅黑',height = 200,bold=False,colors=8):
-        """字体"""
-        self.font.name = name
-        self.font.bold = bold
-        self.font.height = height
-        self.font.colour_index = colors
-        self.style.font = self.font
-        return self.style
+    def _test_content_style(self, border = 7):
+        """内容样式,border:1:实线,2:加粗实线,3:间隙虚线,4:均匀虚线,
+        5:更粗实线,6:双实线,7:点点虚线,8:加粗虚线,9:细虚线,10/12/13:加粗虚线"""
+        self.test_content_style.set_font_name('微软雅黑')
+        self.test_content_style.set_size(11)
+        self.test_content_style.set_border(border)
+        self.test_content_style.set_text_wrap()
+        self.test_content_style.set_align('vcenter')
+        return self.test_content_style
 
-    def alignment_left(self):
-        """字体居中左对齐"""
-        self.alignment.vert = xlwt.Alignment.VERT_CENTER
-        self.alignment.horz = xlwt.Alignment.HORZ_LEFT
-        self.style_one.alignment = self.alignment
-        return self.style_one
+    def write_test_title(self, *args):
+        """写入测试表头/内容数据"""
+        self._test_title_style()
+        self._red_style()
+        self._blue_style()
+        self._test_content_style()
+        for a, b in enumerate(args):
+            self.sheet_test.write(0, a, b, self.style_title)
+        for a, b in enumerate(self.test_data_content, 1):
+            for c, d in enumerate(b):
+                if '失败' == d:
+                    self.sheet_test.write(a, c, d, self.red)
+                    self.sheet_test.insert_image(a, c + 2, self.img_ptah, {'x_scale': 0.0757, 'y_scale': 0.076})
+                elif '成功' == d:
+                    self.sheet_test.write(a, c, d, self.blue)
+                else:
+                    self.sheet_test.set_row(a, 60)
+                    self.sheet_test.write(a, c, d, self.test_content_style)
+        self.open_excel.close()
 
-    def merger_title_style(self,name='微软雅黑',height=200,color=40,bold=False,colors=8):
-        """合并自定义样式"""
-        self.style = self.font_type(name,height,bold,colors)
-        self.style = self.pattern_background(color)
-        self.style = self.alignment_center()
-        return self.style
+    def _pc_title_style(self):
+        """电脑配置表单表头样式"""
+        self.sheet_pc.merge_range(0,0,)
 
-    def alignment_center(self):
-        """字体居中对齐"""
-        self.alignment.vert = xlwt.Alignment.VERT_CENTER
-        self.alignment.horz = xlwt.Alignment.HORZ_CENTER
-        self.style.alignment = self.alignment
-        return self.style
-
-    def excel_title(self,**kwargs):
-        """用例定义Excel表头"""
-        self._sheet.write(0,0,kwargs['case_name'],self.style)
-        self._sheet.write(0,1,kwargs['test_url'],self.style)
-        self._sheet.write(0,2,kwargs['response_fast'],self.style)
-        self._sheet.write(0,3,kwargs['response_slow'],self.style)
-        self._sheet.write(0,4,kwargs['status'],self.style)
-        self._sheet.write(0,5,kwargs['error'],self.style)
-        self._sheet.write(0,6,kwargs['screen_shot'],self.style)
-        self._sheet.write(0,7,kwargs['remark'],self.style)
-        self._sheet.col(0).width = 100*80
-        self._sheet.col(1).width = 40*300
-        self._sheet.col(2).width = 40*160
-        self._sheet.col(3).width = 40*160
-        self._sheet.col(4).width = 40*160
-        self._sheet.col(5).width = 200*120
-        self._sheet.col(6).width = 80*300
-        self._sheet.col(7).width = 90*300
-
-    def pc_config_info(self,**kwargs):
-        """计算机定义Excel表头"""
-        self.alignment_left()
-        self.merger_title_style(bold = True)
-        self._sheet_two.write_merge(1, 3, 0, 0, kwargs['cpu'],self.style_one)
-        self._sheet_two.write_merge(4, 7, 0, 0, kwargs['disk'],self.style_one)
-        self._sheet_two.write_merge(8, 11, 0, 0, kwargs['network'],self.style_one)
-        self._sheet_two.write_merge(12, 15, 0, 0, kwargs['memory'],self.style_one)
-        self._sheet_two.write_merge(16, 19, 0, 0, kwargs['system'],self.style_one)
-        self._sheet_two.write_merge(0,0,0,6,kwargs['title'],self.style)
-        self._sheet_two.col(0).width= 40 * 80
-        self._sheet_two.col(1).width = 100 * 80
-        self._sheet_two.col(2).width = 100 * 80
-        self._sheet_two.col(3).width = 100 * 80
-        self._sheet_two.col(4).width = 100 * 80
-        self._sheet_two.col(5).width = 100 * 80
-        self._sheet_two.col(6).width = 100 * 80
-
-    def merge_excelStyle(self,**kwargs):
-        """合并所有的Excel样式"""
-        self.pc_config_info(**kwargs)
-        self.excel_title(**kwargs)
-        for a,b in enumerate(self.data,1):
-            for c,d in enumerate(b):
-                self._sheet.write(a,c,d)
-        # self.books.save(self.excel_path)
-
-    def pc_content(self,**kwargs):
-        """写入计算机配置明细"""
-        self._sheet_two.write(1,1,kwargs['sheet'])
-        self.books.save(self.excel_path)
 
 if __name__ == '__main__':
-    init = WriteExcel(['首页','test/test/api/kl','254ms','11145ms','失败','账号不存在','',''],
-                      [8,7,6,5,4,3,2,1],
-                      sheet_report = '测试报告详情',
-                      sheet_pc = '计算机配置',
-
-    )
-    init.merge_excelStyle(test_title = '测试的测试报告',
-                     case_name = '用例名称',
-                     test_url = '测试地址',
-                     scene = '场景',
-                     scene_one = '场景一',
-                     scene_two = '场景二',
-                     scene_three = '场景三',
-                     response_fast = '最快响应时间(ms)',
-                     response_slow = '最慢响应时间(ms)',
-                     status = '状态',
-                     error = '错误原因',
-                     screen_shot = '截图',
-                     remark = '备注',
-                     title = '电脑配置明细单',
-                     cpu = 'cpu',
-                     memory = '内存',
-                     disk = '磁盘',
-                     network = '网卡',
-                     system = '操作系统'
-    )
-    init.pc_content(sheet = '计算机配置',
-
-    )
+    init = WriteExcel(
+        ['登录首页', 'test/test/122', '场景', '336.225555577', '8888.555555555', '失败', 'SSSDDFDFD/**//*~!@#$%^&*()_+', '',
+         '45646546SFDGD 鬼地方个回复的' * 90],
+        ['用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '失败', '错误原因', '', '备注'],
+        ['用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '成功', '错误原因', '', '备注'],
+        sheet_test_info = '测试报告详情',
+        sheet_pc_config = '计算机配置',
+        )
+    init.write_test_title('用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '状态', '错误原因', '截图', '备注', )
+    #                 title = '电脑配置明细单',
+    #                 cpu = 'cpu',
+    #                 memory = '内存',
+    #                 disk = '磁盘',
+    #                 network = '网卡',
+    #                 system = '操作系统',
+    #                 real = '硬件消耗情况',
+    #                 fix = '硬件配置情况',
+    # )

@@ -12,13 +12,13 @@ def get_chrome_driver_path(dir='package',dir_low='ChromeDriver.exe'):
     b = a + '/{}/{}'.format(dir, dir_low)
     return b
 
-def get_excel_path(dir='package',dir_low='ExcelReport.xls'):
+def get_excel_path(dir='package',dir_low='ExcelReport.xlsx'):
     """获取Excel路径"""
     a = os.path.dirname(os.path.dirname(__file__))
     b = a + '/{}/{}'.format(dir, dir_low)
     return b
 
-def get_error_img_path(dir='img',dir_low='1542247335622.png'):
+def get_error_img_path(dir='img',dir_low='15422765199665.png'):
     """获取错误图片路径"""
     a = os.path.dirname(os.path.dirname(__file__))
     b = a + '/{}/{}'.format(dir, dir_low)
