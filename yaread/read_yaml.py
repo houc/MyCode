@@ -1,7 +1,7 @@
 import yaml
-from config_path.path_file import get_config_yaml_path
+from cofpath.path_file import get_config_yaml_path
 
-class MyYaml():
+class MyYaml:
     def __init__(self,interface='interface',encoding='utf-8',url='project_url'):
         """初始化参数"""
         self.interface = interface
@@ -20,7 +20,7 @@ class MyYaml():
     @property
     def read_test_config(self):
         """读取test_login.yaml中的全部参数"""
-        path = get_config_yaml_path(dir = 'ukuaiqi',dir_low = 'config.yaml')
+        path = get_config_yaml_path()
         f = open(path, encoding = self.encoding)
         data = yaml.load(f)
         f.close()

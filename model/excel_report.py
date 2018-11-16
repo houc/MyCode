@@ -1,5 +1,5 @@
 import xlsxwriter
-from config_path.path_file import get_excel_path, get_error_img_path
+from cofpath.path_file import get_excel_path, get_error_img_path
 from model.pc_config import merge_config_info,merge_config_msg
 
 class WriteExcel:
@@ -12,11 +12,14 @@ class WriteExcel:
         self.open_excel = xlsxwriter.Workbook(excel_ptah)
         self.style_title = self.open_excel.add_format()
         self.pc_style_title = self.open_excel.add_format()
+        self.title_title = self.open_excel.add_format()
+        self.title_title_content = self.open_excel.add_format()
         self.red = self.open_excel.add_format()
         self.blue = self.open_excel.add_format()
         self.test_content_style = self.open_excel.add_format()
         self.style_pc_content = self.open_excel.add_format()
         self.style_pc_title = self.open_excel.add_format()
+        self.sheet_title = self.open_excel.add_worksheet(kwargs['sheet_title'])
         self.sheet_test = self.open_excel.add_worksheet(kwargs['sheet_test_info'])
         self.sheet_pc = self.open_excel.add_worksheet(kwargs['sheet_pc_config'])
         self.test_data_content = args
@@ -35,7 +38,7 @@ class WriteExcel:
         self.sheet_test.set_column(6, 6, 60)
         self.sheet_test.set_column(7, 7, 20)
         self.sheet_test.set_column(8, 8, 60)
-        self.sheet_test.set_column(9, 9, 60)
+        self.sheet_test.set_column(9, 9, 100)
         self.sheet_test.set_column(10, 10, 60)
         return self.style_title
 
@@ -67,7 +70,7 @@ class WriteExcel:
         self.test_content_style.set_align('vcenter')
         return self.test_content_style
 
-    def write_test_title(self, *args):
+    def _write_test_title(self, *args):
         """写入测试表头/内容数据"""
         self._test_title_style()
         self._red_style()
@@ -79,11 +82,11 @@ class WriteExcel:
             for c, d in enumerate(b):
                 if '失败' == d:
                     self.sheet_test.write(a, c, d, self.red)
-                    self.sheet_test.insert_image(a, c + 2, self.img_ptah, {'x_scale': 0.0757, 'y_scale': 0.076})
+                    self.sheet_test.insert_image(a, c + 2, self.img_ptah, {'x_scale': 0.0757, 'y_scale': 0.099})
                 elif '成功' == d:
                     self.sheet_test.write(a, c, d, self.blue)
                 else:
-                    self.sheet_test.set_row(a, 60)
+                    self.sheet_test.set_row(a, 78)
                     self.sheet_test.write(a, c, d, self.test_content_style)
         self.sheet_test.freeze_panes(1,2)
 
@@ -107,28 +110,28 @@ class WriteExcel:
         self.style_pc_content.set_text_wrap()
         return self.style_pc_content
 
-    def write_pc_content(self,**kwargs):
+    def _write_pc_content(self,**kwargs):
         """写入电脑配置表头/内容数据"""
         self._pc_title_style()
         self._pc_content_style()
         for i in range(20):
             self.sheet_pc.set_row(i + 1,20)
         self.sheet_pc.merge_range(0,0,0,4,kwargs['title'],self.pc_style_title)
-        self.sheet_pc.merge_range(1,0,4,0,kwargs['cpu'],self.style_pc_content)
+        self.sheet_pc.merge_range(1,0,4,0,kwargs['CPU'],self.style_pc_content)
         self.sheet_pc.merge_range(5,0,8,0,kwargs['memory'],self.style_pc_content)
         self.sheet_pc.merge_range(9,0,12,0,kwargs['disk'],self.style_pc_content)
         self.sheet_pc.merge_range(13,0,16,0,kwargs['network'],self.style_pc_content)
         self.sheet_pc.merge_range(17,0,20,0,kwargs['system'],self.style_pc_content)
-        self.sheet_pc.merge_range(1,1,2,1,kwargs['headw'],self.style_pc_content)
-        self.sheet_pc.merge_range(3,1,4,1,kwargs['headc'],self.style_pc_content)
-        self.sheet_pc.merge_range(5,1,6,1,kwargs['headw'],self.style_pc_content)
-        self.sheet_pc.merge_range(7,1,8,1,kwargs['headc'],self.style_pc_content)
-        self.sheet_pc.merge_range(9,1,10,1,kwargs['headw'],self.style_pc_content)
-        self.sheet_pc.merge_range(11,1,12,1,kwargs['headc'],self.style_pc_content)
-        self.sheet_pc.merge_range(13,1,14,1,kwargs['headw'],self.style_pc_content)
-        self.sheet_pc.merge_range(15,1,16,1,kwargs['headc'],self.style_pc_content)
-        self.sheet_pc.merge_range(17,1,18,1,kwargs['headw'],self.style_pc_content)
-        self.sheet_pc.merge_range(19,1,20,1,kwargs['headc'],self.style_pc_content)
+        self.sheet_pc.merge_range(1,1,2,1,kwargs['consume'],self.style_pc_content)
+        self.sheet_pc.merge_range(3,1,4,1,kwargs['config'],self.style_pc_content)
+        self.sheet_pc.merge_range(5,1,6,1,kwargs['consume'],self.style_pc_content)
+        self.sheet_pc.merge_range(7,1,8,1,kwargs['config'],self.style_pc_content)
+        self.sheet_pc.merge_range(9,1,10,1,kwargs['consume'],self.style_pc_content)
+        self.sheet_pc.merge_range(11,1,12,1,kwargs['config'],self.style_pc_content)
+        self.sheet_pc.merge_range(13,1,14,1,kwargs['consume'],self.style_pc_content)
+        self.sheet_pc.merge_range(15,1,16,1,kwargs['config'],self.style_pc_content)
+        self.sheet_pc.merge_range(17,1,18,1,kwargs['consume'],self.style_pc_content)
+        self.sheet_pc.merge_range(19,1,20,1,kwargs['config'],self.style_pc_content)
         self.sheet_pc.merge_range(1,2,2,4,str(self.real_pc[0]),self.style_pc_content)
         self.sheet_pc.merge_range(3,2,4,4,str(self.fix_pc[0]),self.style_pc_content)
         self.sheet_pc.merge_range(5,2,6,4,str(self.real_pc[3]),self.style_pc_content)
@@ -139,26 +142,104 @@ class WriteExcel:
         self.sheet_pc.merge_range(15,2,16,4,str(self.fix_pc[2]),self.style_pc_content)
         self.sheet_pc.merge_range(17,2,18,4,str(self.real_pc[1]),self.style_pc_content)
         self.sheet_pc.merge_range(19,2,20,4,str(self.fix_pc[1]),self.style_pc_content)
+
+    def _title_title_style(self):
+        """测试报告总览表单样式"""
+        self.sheet_title.set_column('A1:F1',20)
+        self.title_title.set_font_name('微软雅黑')
+        self.title_title.set_size(14)
+        self.title_title.set_bold()
+        self.title_title.set_center_across()
+        self.title_title.set_bg_color('DeepSkyBlue')
+        return self.title_title
+
+    def _title_content_style(self):
+        """测试报告表单内容"""
+        self.title_title_content.set_text_wrap()
+        self.title_title_content.set_valign('vcenter')
+        self.title_title_content.set_border(7)
+        self.title_title_content.set_font_name('微软雅黑')
+        self.title_title_content.set_size(11)
+        return self.title_title_content
+
+    def _title_insert_report_img(self):
+        """插入总体测试报告分析图表"""
+        img = self.open_excel.add_chart({'type':'column'})
+        img.add_series(
+            {
+                'name': '分析',  # 目标值的名
+                'categories': '={}!$A$1:$D$1'.format(self.sheet_title),  # item的名
+                'values': '={}!$A$2:$D$2'.format(self.sheet_title),  # item的值
+                'fill': {'color': '#FF9900'},
+            }
+        )
+        img.set_x_axis(
+            {
+                'name': '错误',  # 标题
+                'name_font': {'size': 10},
+                'min':2,
+                'max':5,
+            }
+        )
+        img.set_y_axis(
+            {
+                'name': '的',  # 标题
+                'name_font': {'size': 14, 'bold': True},  # 字体样式
+                'num_font': {'italic': True},
+                'min': 20,
+                'max': 50,
+            }
+        )
+        self.sheet_title.insert_chart('A10',img)
+        return self.sheet_title
+
+    def _title_write(self,report_project,report_type,**kwargs):
+        """写入测试报告表头/内容数据"""
+        self._title_title_style()
+        self._title_content_style()
+        self.sheet_title.merge_range(0,0,0,5,str(kwargs['title_title']).format(report_project,report_type),self.title_title)
+        for i in range(10):
+            self.sheet_title.set_row(i,25)
+        self.sheet_title.write(1,0,kwargs['title_start_time'],self.title_title_content)
+        self.sheet_title.write(2,0,kwargs['title_stop_time'],self.title_title_content)
+        self.sheet_title.write(1,2,kwargs['title_total_time'],self.title_title_content)
+        self.sheet_title.write(2,2,kwargs['title_member'],self.title_title_content)
+        self.sheet_title.write(1,4,kwargs['title_action'],self.title_title_content)
+        self.sheet_title.write(2,4,kwargs['title_tool'],self.title_title_content)
+        self.sheet_title.write(4,0,kwargs['title_case'],self.title_title_content)
+        self.sheet_title.write(4,2,kwargs['title_success'],self.title_title_content)
+        self.sheet_title.write(4,4,kwargs['title_fail'],self.title_title_content)
+        self.sheet_title.set_row(3,5)
+        self.sheet_title.merge_range(3,0,3,5,' ',self.title_title_content)
+        self.sheet_title.freeze_panes(1,0)
+
+    def _merge_def_title_data(self,report_project,report_type,*args,**kwargs):
+        """函数进行封装"""
+        self._write_pc_content(**kwargs)
+        self._title_write(report_project,report_type,**kwargs)
+        self._write_test_title(*args)
         self.open_excel.close()
+
+class ExcelTitle(WriteExcel):
+    def __init__(self,*args):
+        """初始化，args：用例，kwargs：整个表单的sheet"""
+        kwargs = {'sheet_test_info':'测试报告详情','sheet_pc_config':'计算机配置详情','sheet_title':'测试报告总览'}
+        super(ExcelTitle, self).__init__(*args, **kwargs)
+
+    def class_merge(self,report_project,report_type):
+        """合并并传参；args：报告详情的表头，kwargs：PC配置中的表头/title_开头是报告里面的数据"""
+        args = '用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '状态', '错误原因', '截图', '备注',
+        kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
+                  'title_title':'{}项目{}自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'总用时','title_member':'参与人员',
+                  'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_fail_rate':'失败率','title_success_rate':'成功率',
+                  'title_action':'环境','title_tool':'测试工具','title_test_type':'类型'
+                  }
+        return self._merge_def_title_data(report_project,report_type,*args,**kwargs)
 
 
 if __name__ == '__main__':
-    init = WriteExcel(
-        ['登录首页', 'test/test/122', '场景', '336.225555577', '8888.555555555', '失败', 'SSSDDFDFD/**//*~!@#$%^&*()_+', '',
-         '45646546SFDGD 鬼地方个回复的'],
-        ['用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '失败', '错误原因', '', '备注'],
-        ['用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '成功', '错误原因', '', '备注'],
-        sheet_test_info = '测试报告详情',
-        sheet_pc_config = '计算机配置详情',
-        )
-    init.write_test_title('用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '状态', '错误原因', '截图', '备注',)
-    init.write_pc_content(
-        cpu='cpu',
-        memory='内存',
-        disk='磁盘',
-        network='网卡',
-        system='操作系统',
-        headw='硬件消耗情况',
-        headc='硬件配置情况',
-        title='测试机配置明细单'
-    )
+    ExcelTitle(['登录', 'test/122', '符合规范的', '336.225555577', '8888.555555555', '失败', '辅导费333', ' ','苟富贵'],
+               ['登录首页', 'test/test/122', '场景', '336.225555577', '8888.555555555', '失败', '辅导费', ' ','hhj古典风格'],
+               ['登录首页', 'test/test/122', '场景', '336.225555577', '8888.555555555', '成功', ' ', ' ','hhj古典风格'],
+
+    ).class_merge('SCRM','')
