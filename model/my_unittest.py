@@ -1,40 +1,33 @@
-import unittest,time,warnings
+import unittest,warnings
 from cofpath.path_file import get_chrome_driver_path
 from selenium import webdriver
 from yaread.read_yaml import MyYaml
+from .login import success_login
 
 
 class MyUnittest(unittest.TestCase):
-    driver,start_mk,start_time = None,None,None
+    driver = None
     @classmethod
-    def setUpClass(self):
+    def setUpClass(cls):
         """初始化"""
-        self.start_mk = time.time()
-        self.start_time = time.strftime('%Y-%m-%d %H:%M:%S')
         path = get_chrome_driver_path()
-        self.driver = webdriver.Chrome(path)
-        self.driver.implicitly_wait(30)
-        self.url = MyYaml().base_url
+        cls.driver = webdriver.Chrome(path)
+        cls.driver.implicitly_wait(35)
+        cls.url = MyYaml().base_name
+        success_login(cls.driver,cls.url)
 
     @classmethod
-    def tearDownClass(self):
+    def tearDownClass(cls):
         """所有用例测试完成后的结束工作"""
-        self.end_mk = time.time()
-        self.end_time = time.strftime('%Y-%m-%d %H:%M:%S')
-        self.total_finish_time = self.end_mk - self.start_mk
-        self.driver.quit()
+        cls.driver.quit()
 
     def setUp(self):
         """单个用例开始执行的工作"""
         warnings.simplefilter("ignore")
-        self.root_time = time.time()
-
 
     def tearDown(self):
         """单个用例完成后的结束工作"""
-        self.finish_time = time.time()
-        self.unit_time = self.finish_time - self.root_time
-
+        self.driver.get(self.url + '/dashboard#dashboard')
 
 if __name__ == '__main__':
     unittest.main()

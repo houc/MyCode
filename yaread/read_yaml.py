@@ -2,11 +2,11 @@ import yaml
 from cofpath.path_file import get_config_yaml_path
 
 class MyYaml:
-    def __init__(self,interface='interface',encoding='utf-8',url='project_url'):
+    def __init__(self,interface='interface',encoding='utf-8',name='project_url'):
         """初始化参数"""
         self.interface = interface
         self.encoding = encoding
-        self.url = url
+        self.url = name
 
     @property
     def read_all_yaml(self):
@@ -33,7 +33,7 @@ class MyYaml:
         return a[self.interface]
 
     @property
-    def base_url(self):
+    def base_name(self):
         """获取yaml中url链接"""
         a = MyYaml().read_interface
         return a[self.url]

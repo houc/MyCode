@@ -135,7 +135,11 @@ def merge_config_msg():
     MSG.append(get_memory())
     return MSG
 
+def output_python_version():
+    """输出python版本号"""
+    y = platform.python_version()
+    return y
 
 if __name__ == '__main__':
-    print(merge_config_info())
-    print(merge_config_msg())
+    # print(merge_config_info())
+    print(output_python_version())

@@ -1,3 +1,4 @@
 interface:
   project_url: https://ukuaiqi.com
   project_name: ukuaiqi
+  test_type: UI

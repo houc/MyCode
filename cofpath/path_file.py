@@ -24,5 +24,11 @@ def get_error_img_path(dir='img',dir_low='15422765199665.png'):
     b = a + '/{}/{}'.format(dir, dir_low)
     return b
 
+def get_login_img_path(dir='img',dir_low='log.png'):
+    """获取测试项目的log图片"""
+    a = os.path.dirname(os.path.dirname(__file__))
+    b = a + '/{}/{}'.format(dir, dir_low)
+    return b
+
 if __name__ == '__main__':
     print(get_error_img_path)
