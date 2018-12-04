@@ -1,33 +1,43 @@
-import unittest,warnings
-from cofpath.path_file import get_chrome_driver_path
+import unittest,warnings,time
+from config_path.path_file import read_file
 from selenium import webdriver
-from yaread.read_yaml import MyYaml
+from model.my_log import Logger
+from yaml_read.read_yaml import MyYaml
 from .login import success_login
 
+def setUpModule():
+    """单独模块开始开始工作"""
+    global driver,url
+    path = read_file('package','ChromeDriver.exe')
+    driver = webdriver.Chrome(path)
+    url = MyYaml().base_url
+    driver.implicitly_wait(30)
+    success_login(driver,url)
+
+def tearDownModule():
+    """单独模块结束工作"""
+    driver.quit()
 
 class MyUnittest(unittest.TestCase):
-    driver = None
+    logger = Logger()
+    log = None
     @classmethod
     def setUpClass(cls):
         """初始化"""
-        path = get_chrome_driver_path()
-        cls.driver = webdriver.Chrome(path)
-        cls.driver.implicitly_wait(35)
-        cls.url = MyYaml().base_name
-        success_login(cls.driver,cls.url)
-
-    @classmethod
-    def tearDownClass(cls):
-        """所有用例测试完成后的结束工作"""
-        cls.driver.quit()
+        cls.driver = driver
+        cls.url = url
 
     def setUp(self):
         """单个用例开始执行的工作"""
-        warnings.simplefilter("ignore")
+        self.class_name = self.__class__.__name__
+        self.case_info = self._testMethodName
+        warnings.filterwarnings('ignore')
 
     def tearDown(self):
         """单个用例完成后的结束工作"""
-        self.driver.get(self.url + '/dashboard#dashboard')
+        time.sleep(1)
+        driver.get(url + '/dashboard#dashboard')
+        self.logger.logging_info('CLASS_NAME：%s->CASE_NAME：%s->BACK_MSG：%s' % (self.class_name,self.case_info,self.log))
 
 if __name__ == '__main__':
     unittest.main()

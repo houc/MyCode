@@ -1,4 +1,8 @@
-interface:
-  project_url: https://ukuaiqi.com
-  project_name: ukuaiqi
-  test_type: UI
+base_url:
+  ukuaiqi: https://ukuaiqi.com
+  EDP: https://devadmin.edpglobal.cn:8443
+excel_parameter:
+  project_name: 快启
+  science: 正式环境
+config:
+  level: 10

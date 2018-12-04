@@ -1,17 +1,17 @@
 import xlsxwriter
-from cofpath.path_file import get_excel_path, get_error_img_path,get_login_img_path
+from config_path.path_file import read_file
 from model.pc_config import merge_config_info,merge_config_msg
-from yaread.read_yaml import MyYaml
+from yaml_read.read_yaml import MyYaml
 
 
 class WriteExcel:
     def __init__(self,*args, **kwargs):
         """初始化"""
-        excel_ptah = get_excel_path()
-        self.report_project = MyYaml(name = 'project_name').base_name
-        self.report_type = MyYaml(name = 'test_type').base_name
-        self.img_ptah = get_error_img_path()
-        self.login_ptah = get_login_img_path()
+        excel_ptah = read_file('package','ExcelReport.xlsx')
+        self.report_project = MyYaml('project_name').excel_parameter
+        self.report_type = MyYaml('science').excel_parameter
+        self.img_ptah = read_file('img','15422765199665.png')
+        self.login_ptah = read_file('img','logo.png')
         self.real_pc = merge_config_info()
         self.fix_pc = merge_config_msg()
         self.open_excel = xlsxwriter.Workbook(excel_ptah)

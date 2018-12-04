@@ -15,7 +15,8 @@ class RunAll:
                     self.report_excel.append(j)
         runners = unittest.TextTestRunner()
         result = runners.run(discover)
-        print(result.skipped)
+        # print(result.classNames)
+        # print(result.skipped)
         # print(result.testsRun,len(result.skipped),len(result.errors),len(result.failures,))
 
 

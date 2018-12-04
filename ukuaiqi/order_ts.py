@@ -1,7 +1,15 @@
-from model.my_unittest import MyUnittest
-import unittest,time
+from model.my_unittest import *
 
-class T888(MyUnittest):
-    def test_mmm(self):
-        self.driver.get(self.url + '/dashboard#started/list')
-        self.assertEqual(1,1)
+class H(MyUnittest):
+    def test(self):
+        self.log = 'test'
+        self.driver.get(self.url + '/dashboard#perform/list')
+        self.assertEqual(1,6)
+
+    def test_test1(self):
+        self.log = 'test_test1'
+        self.driver.get(self.url + '/dashboard#organization/list')
+        self.assertEqual(4,4)
+
+if __name__ == '__main__':
+    unittest.main()
