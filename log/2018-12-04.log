@@ -173,3 +173,23 @@ TIME: 2018-12-04 14:15:12,252     DEF: logging_info    MESSAGE：CLASS_NAME：T8
 TIME: 2018-12-04 14:15:14,487     DEF: logging_info    MESSAGE：CLASS_NAME：T888->CASE_NAME：test_mmm->BACK_MSG：test_mmm     
 TIME: 2018-12-04 14:15:59,717     DEF: logging_info    MESSAGE：CLASS_NAME：H->CASE_NAME：test->BACK_MSG：test     
 TIME: 2018-12-04 14:16:00,849     DEF: logging_info    MESSAGE：CLASS_NAME：H->CASE_NAME：test_test1->BACK_MSG：test_test1     
+TIME: 2018-12-04 14:41:06,809     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F1->BACK_MSG：test_F1     
+TIME: 2018-12-04 14:41:07,980     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F2->BACK_MSG：test_F2     
+TIME: 2018-12-04 14:41:09,113     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F3->BACK_MSG：test_F3     
+TIME: 2018-12-04 14:41:10,256     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_S->BACK_MSG：test_S     
+TIME: 2018-12-04 14:41:12,072     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_assert->BACK_MSG：test_assert     
+TIME: 2018-12-04 14:41:13,204     DEF: logging_info    MESSAGE：CLASS_NAME：T888->CASE_NAME：test_556->BACK_MSG：test_556     
+TIME: 2018-12-04 14:41:15,247     DEF: logging_info    MESSAGE：CLASS_NAME：T888->CASE_NAME：test_mmm->BACK_MSG：test_mmm     
+TIME: 2018-12-04 14:42:00,436     DEF: logging_info    MESSAGE：CLASS_NAME：H->CASE_NAME：test->BACK_MSG：test     
+TIME: 2018-12-04 14:42:01,552     DEF: logging_info    MESSAGE：CLASS_NAME：H->CASE_NAME：test_test1->BACK_MSG：test_test1     
+TIME: 2018-12-04 14:42:31,411     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F331->BACK_MSG：test_F331     
+TIME: 2018-12-04 14:42:40,811     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F1->BACK_MSG：test_F1     
+TIME: 2018-12-04 14:42:42,322     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F2->BACK_MSG：test_F2     
+TIME: 2018-12-04 14:42:43,825     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F3->BACK_MSG：test_F3     
+TIME: 2018-12-04 14:42:45,303     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_S->BACK_MSG：test_S     
+TIME: 2018-12-04 15:06:37,676     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F331->BACK_MSG：test_F331     
+TIME: 2018-12-04 15:08:40,300     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F331->BACK_MSG：test_F331     
+TIME: 2018-12-04 15:10:26,263     DEF: logging_info    MESSAGE：CLASS_NAME：T->CASE_NAME：test_F331->BACK_MSG：test_F331     
+TIME: 2018-12-04 16:43:35,144     DEF: logging_info    MESSAGE：CLASS_NAME：TestLoginCase->CASE_NAME：test_user_error->BACK_MSG：None->TOTALTIME: 2.5859997272491455     
+TIME: 2018-12-04 16:54:53,040     DEF: logging_info    MESSAGE：CLASS_NAME：TestLoginCase->CASE_NAME：test_password_error->BACK_MSG：None->TOTALTIME: 4.093999862670898     
+TIME: 2018-12-04 16:54:54,755     DEF: logging_info    MESSAGE：CLASS_NAME：TestLoginCase->CASE_NAME：test_user_error->BACK_MSG：None->TOTALTIME: 0.7140002250671387     
