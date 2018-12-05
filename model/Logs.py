@@ -1,12 +1,12 @@
 import logging,time,sys
 from config_path.path_file import read_file
-from yaml_read.read_yaml import MyYaml
+from model.read_yaml import MyYaml
 
 
 class Logger:
     def __init__(self,encoding='utf-8'):
         """初始化"""
-        formatter = logging.Formatter('TIME: %(asctime)s     ''DEF: %(funcName)s    ''MESSAGE：%(message)s     ' )
+        formatter = logging.Formatter()
         now_time = time.strftime('%Y-%m-%d')
         dir_log = '{}.log'.format(now_time)
         log_dir = read_file('log', dir_log)
@@ -35,4 +35,4 @@ if __name__ == '__main__':
     logging_test = Logger()
     # logging_test.logging_error('错了')
     # logging_test.logging_debug('debug')
-    logging_test.logging_info('08080808')
+    logging_test.logging_info(time.time())

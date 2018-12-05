@@ -1,0 +1,101 @@
+TIME: 2018-12-05 10:59:12,761     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 5.0829997062683105     
+TIME: 2018-12-05 10:59:13,480     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.7170000076293945     
+TIME: 2018-12-05 10:59:13,480     DEF: logging_info    MESSAGE：ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0     
+TIME: 2018-12-05 11:00:17,591     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 4.062999963760376     
+TIME: 2018-12-05 11:00:18,292     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.7019999027252197     
+TIME: 2018-12-05 11:00:18,292     DEF: logging_info    MESSAGE：ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0     
+TIME: 2018-12-05 11:01:09,388     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0     
+TIME: 2018-12-05 11:01:19,377     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 4.919999837875366     
+TIME: 2018-12-05 11:01:20,350     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.9720003604888916     
+TIME: 2018-12-05 11:01:20,351     DEF: logging_info    MESSAGE：ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0     
+TIME: 2018-12-05 11:59:03,207     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0     
+TIME: 2018-12-05 14:11:09,441     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0     
+TIME: 2018-12-05 14:11:24,227     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0     
+TIME: 2018-12-05 14:11:32,569     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 3.7270002365112305     
+TIME: 2018-12-05 14:11:33,284     DEF: logging_info    MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.7159998416900635     
+TIME: 2018-12-05 14:11:33,284     DEF: logging_info    MESSAGE：ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0     
+TIME: 33.99991989135742     DEF: logging_info    MESSAGE：08080808     
+TIME: 1543990480.292     DEF: logging_info    MESSAGE：08080808     
+TIME: 2018-12-05 14:14:57,492     DEF: logging_info    MESSAGE：08080808     
+TIME: 1543990536.849     DEF: logging_info    MESSAGE：08080808     
+TIME: logging_info     DEF: logging_info    MESSAGE：08080808     
+DEF: logging_info    MESSAGE：08080808     
+'DEF: logging_info','MESSAGE：08080808'
+DEF: logging_info
+DEF: logging_info
+DEF: logging_info
+DEF: logging_infoMESSAGE：1543990740.8620002
+DEF: logging_info  MESSAGE：1543990761.9459999
+DEF: logging_info  ;MESSAGE：1543990775.465
+DEF: logging_info ; MESSAGE：1543990791.044
+DEF: logging_info ; MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0
+DEF: logging_info ; MESSAGE：ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 9.391999959945679
+DEF: logging_info ; MESSAGE：ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.6089999675750732
+DEF: logging_info ; MESSAGE：ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0
+MESSAGE: ClassName：TestLoginCase->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0 
+MESSAGE: ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 3.8549997806549072 
+MESSAGE: ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.9770002365112305 
+MESSAGE: ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0 
+1543991204.276
+1543991227.255
+ClassName：TestLoginCase->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0
+ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 12.51799988746643
+ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.7580001354217529
+ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0
+ClassName：TestLoginCases->CaseName：test_user_error22->BackMsg：None->TotalTime: 0.0
+ClassName：TestLoginCase->CaseName：test_password_error->BackMsg：None->TotalTime: 3.8610002994537354
+ClassName：TestLoginCase->CaseName：test_user_error->BackMsg：手机号码或密码错误！请联系管理人员。->TotalTime: 0.8289999961853027
+ClassName：TestLoginCase1->CaseName：test_error->BackMsg：None->TotalTime: 0.0
+ClassName：TestLoginCases->test_user_error22 ; Message: None ; TotalTime: 0.0
+ClassName：TestLoginCase->test_password_error ; Message: None ; TotalTime: 3.7639999389648438
+ClassName：TestLoginCase->test_user_error ; Message: 手机号码或密码错误！请联系管理人员。 ; TotalTime: 0.6289999485015869
+ClassName：TestLoginCase1->test_error ; Message: None ; TotalTime: 0.0
+ClassName：TestLoginCases.test_user_error22 ; Message: passed ; TotalTime: 0.0
+ClassName：TestLoginCase.test_password_error ; Message: 手机号码或密码错误！请联系管理人员。 ; TotalTime: 3.7920000553131104
+ClassName：TestLoginCase.test_user_error ; Message: 手机号码或密码错误！请联系管理人员。 ; TotalTime: 0.628000020980835
+ClassName：TestLoginCase1.test_error ; Message: errors ; TotalTime: 0.0
+ClassName：TestLoginCases.test_user_error22 ; Message: passed ; TotalTime: 0.0
+ClassName：TestLoginCase.test_password_error ; Message: 手机号码或密码错误！请联系管理人员。 ; TotalTime: 3.8449997901916504
+ClassName：TestLoginCase.test_user_error ; Message: None ; TotalTime: 30.65000009536743
+ClassName：TestLoginCase.test_user_error ; Message: None ; TotalTime: 36.073999881744385
+ClassName：TestLoginCase1.test_error ; Message: errors ; TotalTime: 0.0
+ClassName：TestLoginCases.test_user_error22 ; TotalTime: 0.0 ; Message: passed
+ClassName：TestLoginCase.test_password_error ; TotalTime: 4.769999980926514 ; Message: 手机号码或密码错误！请联系管理人员。
+ClassName：TestLoginCase.test_user_error ; TotalTime: 30.67300009727478 ; Message: None
+ClassName：TestLoginCase.test_user_error ; TotalTime: 31.460999727249146 ; Message: None
+ClassName：TestLoginCase1.test_error ; TotalTime: 0.0 ; Message: errors
+ClassName：TestLoginCases.test_user_error22 ; TotalTime: 0.0 ; Message: passed
+ClassName：TestLoginCase.test_password_error ; TotalTime: 4.0899999141693115 ; Message: 手机号码或密码错误！请联系管理人员。
+ClassName：TestLoginCase.test_user_error ; TotalTime: 0.9479999542236328 ; Message: 手机号码或密码错误！请联系管理人员。
+ClassName：TestLoginCase1.test_error ; TotalTime: 0.0 ; Message: errors
+ClassName：TestLoginCases.test_user_error22 ; TotalTime: 0.0 ; Message: passed
+ClassName：TestLoginCase.test_password_error ; TotalTime: 6.590000152587891 ; Message: 手机号码或密码错误！请联系管理人员。
+ClassName：TestLoginCase.test_user_error ; TotalTime: 1.0139999389648438 ; Message: 手机号码或密码错误！请联系管理人员。
+ClassName：TestLoginCase1.test_error ; TotalTime: 0.0 ; Message: errors
+ClassName：TestLoginCases.test_user_error22 ; TotalTime: 0.0 ; Message: passed
+ClassName：TestLoginCase.test_password_error ; TotalTime: 46.16000008583069 ; Message: 手机号码或密码错误！请联系管理人员。
+ClassName：TestLoginCase.test_user_error ; TotalTime: 9.245999813079834 ; Message: 手机号码或密码错误！请联系管理人员。
+ClassName：TestLoginCase1.test_error ; TotalTime: 0.0 ; Message: errors
+ClassName：TestLoginCases.test_user_error22 ; TotalTime: 0.0 ; Message: passed
+ClassName：TestLoginCases.test_user_error22 ; TotalTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_password_error ; TotalTime: 34.437999963760376 ; Message: None
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_password_error ; TotalUserTime: 34.48400020599365 ; Message: None
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_password_error ; TotalUserTime: 18.726999759674072 ; Message: 手机号码或密码错误！请联系管理人员。
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_user_error ; TotalUserTime: 1.0980000495910645 ; Message: 手机号码或密码错误！请联系管理人员。
+Path：KuaiQi.Login.login_ts.TestLoginCase1.test_error ; TotalUserTime: 0.0 ; Message: errors
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.jt_ts.TestLoginCases.test_user_error22 ; TotalUserTime: 0.0 ; Message: passed
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_password_error ; TotalUserTime: 21.16100001335144 ; Message: None
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_password_error ; TotalUserTime: 22.268999814987183 ; Message: None
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_user_error ; TotalUserTime: 21.293999910354614 ; Message: None
+Path：KuaiQi.Login.login_ts.TestLoginCase.test_user_error ; TotalUserTime: 23.638000011444092 ; Message: None
+Path：KuaiQi.Login.login_ts.TestLoginCase1.test_error ; TotalUserTime: 0.0 ; Message: errors

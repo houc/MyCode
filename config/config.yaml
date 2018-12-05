@@ -1,6 +1,7 @@
 base_url:
-  ukuaiqi: https://ukuaiqi.com
-  EDP: https://devadmin.edpglobal.cn:8443
+#  ukuaiqi: https://ukuaiqi.com     # 正式环境
+  ukuaiqi: http://staging.ukuaiqi.com     # staging
+  EDP: https://admin.edpglobal.cn  # 正式环境
 excel_parameter:
   project_name: 快启
   science: 正式环境

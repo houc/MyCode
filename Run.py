@@ -1,5 +1,5 @@
 import unittest
-from model.excel_report import ExcelTitle
+from model.ExcelReport import ExcelTitle
 
 class RunAll:
     def __init__(self):
