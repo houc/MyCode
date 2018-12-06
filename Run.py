@@ -8,7 +8,7 @@ class RunAll:
 
     def runner(self):
         """所有以_ts.py作为需运行的py"""
-        discover = unittest.defaultTestLoader.discover('./','*_ts.py')
+        discover = unittest.defaultTestLoader.discover('./','*_st.py')
         for i in str(discover).split('testMethod='):
             for j in i.split('>'):
                 if 'test_' in j:
