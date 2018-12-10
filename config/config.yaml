@@ -10,5 +10,18 @@ excel_parameter:
 config:
   level: 10
   account: 15928564313  # 正确的账号
-  password: Li123456      # 正确的密码
-  implicitly_wait: 20   # 隐时等待时间
+  password: Li123456    # 正确的密码
+  implicitly_wait: 10   # 隐时等待时间
+  logs_save: 7          # 日志最长保存天数
+send_email:
+  server: smtp.gouuse.cn
+  port:
+  send_account: houchao@gouuse.cn
+  send_password: Aa123456
+  receiver: [784348736@qq.com,1063116271@qq.com]
+sql:
+  account: 'root'
+  password: '123456'
+  port: 3307
+  name_db: 'test_db'
+  address: localhost

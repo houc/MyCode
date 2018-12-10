@@ -1,24 +1,44 @@
 from model.MyUnitTest import *
-from model.Public import ElementsParameter
-from selenium.webdriver.common.by import By
-import time,unittest
+from SCRM.login.public import ElementsParameter
+import unittest
+
 
 class LoginTestIn(UnitTests):
     def test_accountError(self):
+        """错误的用户账户"""
         elements = ElementsParameter(self.driver,self.url)
-        elements.out_login()
-        time.sleep(2)
-        # elements.login_elements('14012345687','123456')
-        # self.result = self.driver.find_elements(By.XPATH,'//*[contains(@class,"text-dangers")]')[0].text
-        # self.assertEqual(self.result,'手机号码或密码错误！请联系管理人员。')
+        elements.login_elements(self.data[1]['account'],self.data[1]['password'])
+        self.result = elements.xpathS('mu-text-field-help')[0].text
 
-    def test_accountSort(self):
+    def test_accountLong(self):
+        """账号为240位数字"""
         elements = ElementsParameter(self.driver, self.url)
-        elements.out_login_url()
-        time.sleep(2)
-        # elements.login_elements('14012345687' * 12, '123456')
-        # self.result = self.driver.find_elements(By.XPATH, '//*[contains(@class,"text-dangers")]')[0].text
-        # self.assertEqual(self.result, '手机号码或密码错误！请联系管理人员。')
+        elements.login_elements(self.data[1]['account'] * 5, self.data[1]['password'])
+        self.result = elements.xpathS('mu-text-field-help')[0].text
+
+    def test_accountEnglish(self):
+        """账号为英文字符"""
+        elements = ElementsParameter(self.driver, self.url)
+        elements.login_elements(self.data[1]['account'], self.data[1]['password'])
+        self.result = elements.xpathS('mu-text-field-help')[0].text
+
+    def test_accountEnglishLong(self):
+        """账号为英文240字符"""
+        elements = ElementsParameter(self.driver, self.url)
+        elements.login_elements(self.data[1]['account'] * 5, self.data[1]['password'])
+        self.result = elements.xpathS('mu-text-field-help')[0].text
+
+    def test_accountAndEnglish(self):
+        """账号为英文字符与数字组合"""
+        elements = ElementsParameter(self.driver, self.url)
+        elements.login_elements(self.data[1]['account'], self.data[1]['password'])
+        self.result = elements.xpathS('mu-text-field-help')[0].text
+
+    def test_accountAndEnglishLong(self):
+        """账号为英文字符与数字组合110字符"""
+        elements = ElementsParameter(self.driver, self.url)
+        elements.login_elements(self.data[1]['account'] * 5, self.data[1]['password'])
+        self.result = elements.xpathS('mu-text-field-help')[0].text
 
 if __name__ == '__main__':
     unittest.main()

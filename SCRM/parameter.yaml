@@ -1,0 +1,19 @@
+Interface:
+  test_accountError:
+  - Initialization: {account: 17848950808,password: Li123456}
+    asserts: ['手机号未注册']
+  test_accountLong:
+  - Initialization: {account: 17848950808,password: Li123456}
+    asserts: ['账号未注册']
+  test_accountEnglish:
+  - Initialization: {account: ABCDEFGHIJK,password: Li123456}
+    asserts: ['账号未注册']
+  test_accountEnglishLong:
+  - Initialization: {account: ABCDEFGHIJK,password: Li123456}
+    asserts: ['手机号/邮箱格式不正确']
+  test_accountAndEnglish:
+  - Initialization: {account: ABCDEFGHIJK17412345678,password: Li123456}
+    asserts: ['账号未注册']
+  test_accountAndEnglishLong:
+  - Initialization: {account: ABCDEFGHIJK17412345678,password: Li123456}
+    asserts: ['手机号/邮箱格式不正确']

@@ -2,9 +2,10 @@ import unittest,warnings,time
 from model.Logs import Logger
 from model.Yaml import MyYaml
 from model.DriverParameter import browser
-from model.Public import DriverTransmit
+from SCRM.public_transmit import DriverTransmit
 
-def setUpModule():
+
+def setUpModule(currentModule):
     """模块初始化"""
     global Driver, URL
     Driver = browser()
@@ -13,7 +14,8 @@ def setUpModule():
     password = MyYaml('password').config
     wait = MyYaml('implicitly_wait').config
     Driver.implicitly_wait(wait)
-    DriverTransmit(Driver, URL).success_login(account,password)
+    if 'login_st' not in currentModule:
+        DriverTransmit(Driver, URL).success_login(account,password)
 
 def tearDownModule():
     """模块结束"""
@@ -35,11 +37,17 @@ class UnitTests(unittest.TestCase):
 
     def setUp(self):
         """用例初始化"""
+        self.data = list()
         warnings.filterwarnings('ignore')
         self.start_time = time.time()
         self.class_name = self.__class__.__name__
         self.module = self.__class__.__module__
         self.case_info = self._testMethodName
+        caseMsg = MyYaml(self.case_info).case_parameter
+        for i in caseMsg:
+            asserts = [k for k in i['asserts']][0]
+            self.data.append(asserts)               # 参数值为 0
+            self.data.append(i['Initialization'])   # 参数值为 1
 
     def tearDown(self):
         """用例结束"""
@@ -48,7 +56,7 @@ class UnitTests(unittest.TestCase):
         total_time = end_time - self.start_time
         self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %s ; Message: %s'
                                  % (ExecutionTime,self.module,self.class_name,self.case_info,total_time,self.result))
-
+        self.assertEqual(self.result,self.data[0])
 
 if __name__ == '__main__':
     unittest.main()

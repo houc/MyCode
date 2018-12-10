@@ -7,7 +7,7 @@ class RunAll:
         self.report_excel = []
 
     def runner(self):
-        """所有以_ts.py作为需运行的py"""
+        """所有以_st.py作为需运行的py"""
         discover = unittest.defaultTestLoader.discover('./','*_st.py')
         for i in str(discover).split('testMethod='):
             for j in i.split('>'):
@@ -15,9 +15,9 @@ class RunAll:
                     self.report_excel.append(j)
         runners = unittest.TextTestRunner()
         result = runners.run(discover)
-        # print(result.classNames)
-        # print(result.skipped)
-        # print(result.testsRun,len(result.skipped),len(result.errors),len(result.failures,))
+        print(result.skipped)
+        print(result.testsRun,len(result.skipped),len(result.errors),len(result.failures,))
+        print(self.report_excel)
 
 
 if __name__ == '__main__':

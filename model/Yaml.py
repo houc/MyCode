@@ -19,11 +19,25 @@ class MyYaml:
     @property
     def AllPublic(self):
         """读取public.yaml中的全部参数"""
-        path = read_file('KuaiQi', 'Public.yaml')
+        path = read_file('KuaiQi', 'parameter.yaml')
         f = open(path, encoding = self.encoding)
         data = yaml.load(f)
         f.close()
         return data
+
+    @property
+    def Parameter(self):
+        """Parameter.yaml中的全部参数"""
+        path = read_file('SCRM', 'parameter.yaml')
+        f = open(path, encoding = self.encoding)
+        data = yaml.load(f)
+        f.close()
+        return data
+
+    @property
+    def case_parameter(self):
+        """读取用例参数信息"""
+        return self.Parameter['Interface'][self.interface]
 
     @property
     def base_url(self):
@@ -40,6 +54,16 @@ class MyYaml:
         """获取yaml中config"""
         return self.AllConfig['config'][self.interface]
 
+    @property
+    def send_email(self):
+        """邮件发送配置参数"""
+        return self.AllConfig['send_email'][self.interface]
+
+    @property
+    def sql(self):
+        """读取sql参数"""
+        return self.AllConfig['sql'][self.interface]
+
 if __name__ == '__main__':
-    t = MyYaml('Interface').AllPublic
+    t = MyYaml().sql
     print(t)
