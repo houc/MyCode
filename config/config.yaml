@@ -13,6 +13,9 @@ config:
   password: Li123456    # 正确的密码
   implicitly_wait: 10   # 隐时等待时间
   logs_save: 7          # 日志最长保存天数
+  re: '*_st.py'         # 正则匹配执行的py
+  task_time: 10         # 定时任务等待执行时间
+  browser: True         # 浏览器隐藏执行开关
 send_email:
   server: smtp.gouuse.cn
   port:
@@ -23,5 +26,28 @@ sql:
   account: 'root'
   password: '123456'
   port: 3307
-  name_db: 'test_db'
+  name_db: 'case_db'
   address: localhost
+  sql_table: DROP TABLE IF EXISTS result                    # 表是否存在
+  sql_create_title:  CREATE TABLE result (
+                     case_id smallint(225) NOT NULL,
+                     case_name  CHAR(225) NOT NULL,
+                     case_remark  CHAR(225) NOT NULL,
+                     case_status CHAR(225) NOT NULL,
+                     case_error_reason CHAR(225),
+                     case_url CHAR(225),
+                     case_wait_time CHAR(225),
+                     case_img CHAR(225) ,
+                     case_other CHAR(225))                  # 插入表头
+  sql_query: SELECT * FROM result                           # 查询result里面的所有数据
+  sql_insert: INSERT INTO result(case_id,
+                                 case_name,
+                                 case_remark,
+                                 case_img,
+                                 case_status,
+                                 case_url,
+                                 case_error_reason,
+                                 case_wait_time,
+                                 case_other) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
+  sql_delete: DELETE FROM result WHERE 1=1                 # 数据库全部清除数据
+

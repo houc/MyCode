@@ -1,19 +1,41 @@
 Interface:
   test_accountError:
   - Initialization: {account: 17848950808,password: Li123456}
+    url: /#/account/login
     asserts: ['手机号未注册']
   test_accountLong:
   - Initialization: {account: 17848950808,password: Li123456}
+    url: /#/account/login
     asserts: ['账号未注册']
   test_accountEnglish:
   - Initialization: {account: ABCDEFGHIJK,password: Li123456}
+    url: /#/account/login
     asserts: ['账号未注册']
   test_accountEnglishLong:
   - Initialization: {account: ABCDEFGHIJK,password: Li123456}
+    url: /#/account/login
     asserts: ['手机号/邮箱格式不正确']
   test_accountAndEnglish:
   - Initialization: {account: ABCDEFGHIJK17412345678,password: Li123456}
+    url: /#/account/login
     asserts: ['账号未注册']
   test_accountAndEnglishLong:
   - Initialization: {account: ABCDEFGHIJK17412345678,password: Li123456}
+    url: /#/account/login
     asserts: ['手机号/邮箱格式不正确']
+  test_accountBoundary:
+  - Initialization: {account: 15928564314,password: Li123456}
+    url: /#/account/login
+    asserts: ['密码错误请重新输入']
+  test_accountStr:
+  - Initialization: {account: 密码错误请重新输入,password: Li123456}
+    url: /#/account/login
+    asserts: ['账号未注册']
+  test_accountMerge:
+  - Initialization: {account: 密码 错误 请重新输入15928564314  ABCDE FGHIJK,password: Li123456}
+    url: /#/account/login
+    asserts: ['手机号/邮箱格式不正确']
+  test_accountSpace:
+  - Initialization: {account: '        ',password: Li123456}
+    url: /#/account/login
+    asserts: ['请输入账号00']

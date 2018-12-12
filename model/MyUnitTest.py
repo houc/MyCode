@@ -2,28 +2,42 @@ import unittest,warnings,time
 from model.Logs import Logger
 from model.Yaml import MyYaml
 from model.DriverParameter import browser
+from model.Assert import MyAssert
 from SCRM.public_transmit import DriverTransmit
+from model.SQL import Mysql
 
+def case_id():
+    """用例计算"""
+    global case_count
+    case_count += 1
+    return case_count
 
 def setUpModule(currentModule):
     """模块初始化"""
-    global Driver, URL
-    Driver = browser()
-    URL = MyYaml('SCRM').base_url
+    global Driver, URL,SQL
+    Browser = MyYaml('browser').config
     account = MyYaml('account').config
     password = MyYaml('password').config
     wait = MyYaml('implicitly_wait').config
+    Driver = browser(Browser)
+    SQL = Mysql()
+    URL = MyYaml('SCRM').base_url
     Driver.implicitly_wait(wait)
     if 'login_st' not in currentModule:
         DriverTransmit(Driver, URL).success_login(account,password)
+    else:
+        DriverTransmit(Driver,URL).opens_if()
 
 def tearDownModule():
     """模块结束"""
     Driver.quit()
+    SQL.close_sql()
 
 class UnitTests(unittest.TestCase):
+    global case_count
+    case_count = 0
     logger = Logger()
-    log = start_time = result = None
+    log = start_time = result = error = status = img = None
     @classmethod
     def setUpClass(cls):
         """类初始化"""
@@ -38,16 +52,19 @@ class UnitTests(unittest.TestCase):
     def setUp(self):
         """用例初始化"""
         self.data = list()
+        self.count = case_id()
         warnings.filterwarnings('ignore')
         self.start_time = time.time()
-        self.class_name = self.__class__.__name__
         self.module = self.__class__.__module__
-        self.case_info = self._testMethodName
-        caseMsg = MyYaml(self.case_info).case_parameter
+        self.class_name = self.__class__.__name__
+        self.case_name = self._testMethodName
+        self.case_remark = self._testMethodDoc
+        caseMsg = MyYaml(self.case_name).case_parameter
         for i in caseMsg:
             asserts = [k for k in i['asserts']][0]
             self.data.append(asserts)               # 参数值为 0
             self.data.append(i['Initialization'])   # 参数值为 1
+            self.data.append(i['url'])              # 参数值为 2
 
     def tearDown(self):
         """用例结束"""
@@ -55,8 +72,11 @@ class UnitTests(unittest.TestCase):
         end_time = time.time()
         total_time = end_time - self.start_time
         self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %s ; Message: %s'
-                                 % (ExecutionTime,self.module,self.class_name,self.case_info,total_time,self.result))
-        self.assertEqual(self.result,self.data[0])
+                                 % (ExecutionTime,self.module,self.class_name,self.case_name,total_time,self.result))
+        down_assert =  MyAssert(self.driver,self.result,self.data[0],self.count,
+                                self.error,self.case_name,self.case_remark,total_time,
+                                self.data[2])
+        down_assert.start_assert()
 
 if __name__ == '__main__':
     unittest.main()
