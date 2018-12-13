@@ -2,7 +2,6 @@ import unittest,warnings,time
 from model.Logs import Logger
 from model.Yaml import MyYaml
 from model.DriverParameter import browser
-from model.Assert import MyAssert
 from SCRM.public_transmit import DriverTransmit
 from model.SQL import Mysql
 
@@ -43,6 +42,7 @@ class UnitTests(unittest.TestCase):
         """类初始化"""
         cls.driver = Driver
         cls.url = URL
+        cls.sql = SQL
 
     @classmethod
     def tearDownClass(cls):
@@ -65,18 +65,19 @@ class UnitTests(unittest.TestCase):
             self.data.append(asserts)               # 参数值为 0
             self.data.append(i['Initialization'])   # 参数值为 1
             self.data.append(i['url'])              # 参数值为 2
+            self.data.append(i['level'])            # 参数值为 3
 
     def tearDown(self):
         """用例结束"""
         ExecutionTime = time.strftime('%Y-%m-%d %H:%M:%S')
         end_time = time.time()
         total_time = end_time - self.start_time
-        self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %s ; Message: %s'
-                                 % (ExecutionTime,self.module,self.class_name,self.case_name,total_time,self.result))
-        down_assert =  MyAssert(self.driver,self.result,self.data[0],self.count,
-                                self.error,self.case_name,self.case_remark,total_time,
-                                self.data[2])
-        down_assert.start_assert()
+        self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %s ; Message: %s'% (
+                                 ExecutionTime,self.module,self.class_name,self.case_name,
+                                 total_time,self.result))
+        self.sql.insert_data(self.count,self.data[3],self.case_name,
+                             self.case_remark,total_time,self.status,
+                             self.data[2],self.img,self.error)
 
 if __name__ == '__main__':
     unittest.main()

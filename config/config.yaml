@@ -15,7 +15,7 @@ config:
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py
   task_time: 10         # 定时任务等待执行时间
-  browser: True         # 浏览器隐藏执行开关
+  browser: True         # 浏览器隐藏执行开关,隐藏:True，不隐藏:False
 send_email:
   server: smtp.gouuse.cn
   port:
@@ -31,6 +31,7 @@ sql:
   sql_table: DROP TABLE IF EXISTS result                    # 表是否存在
   sql_create_title:  CREATE TABLE result (
                      case_id smallint(225) NOT NULL,
+                     case_level CHAR(225) NOT NULL,
                      case_name  CHAR(225) NOT NULL,
                      case_remark  CHAR(225) NOT NULL,
                      case_status CHAR(225) NOT NULL,
@@ -41,6 +42,7 @@ sql:
                      case_other CHAR(225))                  # 插入表头
   sql_query: SELECT * FROM result                           # 查询result里面的所有数据
   sql_insert: INSERT INTO result(case_id,
+                                 case_level,
                                  case_name,
                                  case_remark,
                                  case_img,
@@ -48,6 +50,6 @@ sql:
                                  case_url,
                                  case_error_reason,
                                  case_wait_time,
-                                 case_other) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
+                                 case_other) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
   sql_delete: DELETE FROM result WHERE 1=1                 # 数据库全部清除数据
-
+  sql_update: UPDATE result SET %s WHERE %s                # 更新数据

@@ -7,35 +7,43 @@ class RunAll:
     def __init__(self):
         """初始化"""
         self.report_excel = list()
+        self.caseNames = list()
         self.current_path = os.path.dirname(__file__)
         self.re = MyYaml('re').config
-        self.clear_sql = Mysql().delete_data()
+        self.sql = Mysql()
 
-    def runner(self):
+    def _clear_sql(self):
+        """清除数据库所有的内容"""
+        self.sql.delete_data()
+
+    def _running(self):
         """所有以_st.py作为需运行的py"""
-        caseNames = list()
+        self._clear_sql()
         discover = unittest.defaultTestLoader.discover(self.current_path,self.re)
         for i in str(discover).split('testMethod='):
             for j in i.split('>'):
                 if 'test_' in j:
-                    caseNames.append(j)
+                    self.caseNames.append(j)
         runners = unittest.TextTestRunner()
         result = runners.run(discover)
-        return result,caseNames
+        return result
 
-    def case_conversion(self):
+    def conversion(self):
         """测试用例数据处理"""
-        case = {}
-        result = self.runner()
-        print(result[0].skipped)
-        print(result[0].testsRun, len(result[0].skipped), len(result[0].errors), len(result[0].failures, ))
-        print(result[1])
+        result = self._running()
+        caseTotalCount = result.testsRun
+        caseSkipTotalCount = len(result.skipped)
+        caseErrorTotalCount = len(result.errors)
+        caseFailTotalCount = len(result.failures)
+        for a in result.skipped:
+            for b in a:
+                print(b)
 
-    def send_email(self):
+    def _send_email(self):
         """发送邮件"""
 
 
 
 if __name__ == '__main__':
     T = RunAll()
-    T.case_conversion()
+    T.conversion()

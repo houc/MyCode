@@ -10,6 +10,7 @@ def browser(switch=False):
     else:
         options = None
     driver = webdriver.Chrome(path,chrome_options = options)
+    driver.set_window_size(1920,1054)
     return driver
 
 if __name__ == '__main__':
