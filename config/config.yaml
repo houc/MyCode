@@ -1,3 +1,14 @@
-interface:
-  project_url: https://ukuaiqi.com
-  project_name: ukuaiqi
+base_url:
+#  KQ: https://ukuaiqi.com     # 正式环境
+#  KQ: http://staging.ukuaiqi.com     # staging 14000000000 123456
+#  EDP: https://admin.edpglobal.cn  # 正式环境
+#  EDP: https://testadmin.edpglobal.cn:8443  # 测试环境
+  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
+excel_parameter:
+  project_name: SCRM
+  science: 正式环境
+config:
+  level: 10
+  account: 15928564313  # 正确的账号
+  password: Li123456      # 正确的密码
+  implicitly_wait: 20   # 隐时等待时间
