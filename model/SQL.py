@@ -1,3 +1,5 @@
+import traceback
+
 from pymysql.connections import Connection
 from model.Yaml import MyYaml
 
@@ -50,13 +52,10 @@ class Mysql:
 
     def insert_data(self,id,level,name,remark,wait_time,status,url,img=None,error_reason=None,other=None):
         """插入数据"""
-        try:
-            DB = self.DB.cursor()
-            data = self.dbInsert%(id,level,name,remark,img,status,url,error_reason,wait_time,other)
-            DB.execute(data)
-            self.DB.commit()
-        except Exception as e:
-            print('数据写入失败:{}'.format(e))
+        DB = self.DB.cursor()
+        data = self.dbInsert%(id,level,name,remark,img,status,url,error_reason,wait_time,other)
+        DB.execute(data)
+        self.DB.commit()
 
     def delete_data(self):
         """清除所有数据"""
@@ -70,16 +69,14 @@ class Mysql:
 
     def update_sql(self,parameter,case_name):
         """更新数据库部分字段"""
-        try:
-            DB = self.DB.cursor()
-            data = self.dbUpdate%(parameter,'case_name={0!r}'.format(case_name))
-            DB.execute(data)
-            self.DB.commit()
-        except Exception as e:
-            print('数据更新失败:{}'.format(e))
+        DB = self.DB.cursor()
+        data = self.dbUpdate%(parameter,'case_name={0!r}'.format(case_name))
+        DB.execute(data)
+        self.DB.commit()
+
 
 if __name__ == '__main__':
     M = Mysql()
-    # M.insert_data('1','name','remark','26.555484845454456455','失败','/auto_ui/model')
-    M.update_sql("case_status='成功1'",'test_accountAndEnglish')
-    # print(M.query_data())
+    # M.insert_data('1','name','remark','26.555s','失败','/auto_ui/model','d:/','"chengg" ！= "ass sds sdsd !"')
+    # M.update_sql("case_status='成功1'",'test_accountAndEnglish')
+    print(M.query_data())

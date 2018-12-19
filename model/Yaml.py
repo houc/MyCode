@@ -1,8 +1,10 @@
 import yaml
+
 from config_path.path_file import read_file
 
+
 class MyYaml:
-    def __init__(self,interface='ukuaiqi',encoding='utf-8'):
+    def __init__(self,interface='EDP',encoding='utf-8'):
         """初始化参数"""
         self.interface = interface
         self.encoding = encoding
@@ -19,7 +21,7 @@ class MyYaml:
     @property
     def AllPublic(self):
         """读取public.yaml中的全部参数"""
-        path = read_file('KuaiQi', 'parameter.yaml')
+        path = read_file('IsEDP', 'Parameter.yaml')
         f = open(path, encoding = self.encoding)
         data = yaml.load(f)
         f.close()
@@ -28,16 +30,16 @@ class MyYaml:
     @property
     def Parameter(self):
         """Parameter.yaml中的全部参数"""
-        path = read_file('SCRM', 'parameter.yaml')
+        path = read_file('IsEDP', 'Parameter.yaml')
         f = open(path, encoding = self.encoding)
         data = yaml.load(f)
         f.close()
         return data
 
     @property
-    def case_parameter(self):
-        """读取用例参数信息"""
-        return self.Parameter['Interface'][self.interface]
+    def parameter(self):
+        """读取公共参数信息"""
+        return self.Parameter[self.interface]
 
     @property
     def base_url(self):
@@ -65,5 +67,5 @@ class MyYaml:
         return self.AllConfig['sql'][self.interface]
 
 if __name__ == '__main__':
-    t = MyYaml().sql
+    t = MyYaml('MenuManager').parameter
     print(t)

@@ -1,7 +1,10 @@
-import unittest,os
+import unittest
+import os
+
 from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
 from model.SQL import Mysql
+
 
 class RunAll:
     def __init__(self):
@@ -11,6 +14,8 @@ class RunAll:
         self.current_path = os.path.dirname(__file__)
         self.re = MyYaml('re').config
         self.sql = Mysql()
+        self.wait = MyYaml('while_sleep').config
+        self.case = MyYaml('while_case').config
 
     def _clear_sql(self):
         """清除数据库所有的内容"""
@@ -24,7 +29,7 @@ class RunAll:
             for j in i.split('>'):
                 if 'test_' in j:
                     self.caseNames.append(j)
-        runners = unittest.TextTestRunner()
+        runners = unittest.TextTestRunner(while_sleep = self.wait,while_case = self.case)
         result = runners.run(discover)
         return result
 

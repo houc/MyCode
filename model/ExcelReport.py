@@ -1,4 +1,5 @@
 import xlsxwriter
+
 from config_path.path_file import read_file
 from model.PCParameter import merge_config_info,merge_config_msg
 from model.Yaml import MyYaml
@@ -7,11 +8,10 @@ from model.Yaml import MyYaml
 class WriteExcel:
     def __init__(self,*args, **kwargs):
         """初始化"""
-        excel_ptah = read_file('package','ExcelReport.xlsx')
+        excel_ptah = read_file('report','ExcelReport.xlsx')
         self.report_project = MyYaml('project_name').excel_parameter
         self.report_type = MyYaml('science').excel_parameter
-        self.img_ptah = read_file('img','15422765199665.png')
-        self.login_ptah = read_file('img','logo.png')
+        self.login_path = read_file('img','logo.png')
         self.real_pc = merge_config_info()
         self.fix_pc = merge_config_msg()
         self.open_excel = xlsxwriter.Workbook(excel_ptah)
@@ -37,12 +37,12 @@ class WriteExcel:
         self.style_title.set_bg_color(bg_color)
         self.style_title.set_align('vcenter')
         self.style_title.set_center_across()
-        self.sheet_test.set_column(0, 0, 30)
-        self.sheet_test.set_column(1, 1, 45)
+        self.sheet_test.set_column(0,0,5)
+        self.sheet_test.set_column(1, 1, 10)
         self.sheet_test.set_column(2, 2, 50)
-        self.sheet_test.set_column(3, 4, 20)
-        self.sheet_test.set_column(6, 6, 60)
-        self.sheet_test.set_column(7, 7, 20)
+        self.sheet_test.set_column(3, 5, 50)
+        self.sheet_test.set_column(6, 6, 8)
+        self.sheet_test.set_column(7, 7, 50)
         self.sheet_test.set_column(8, 8, 60)
         self.sheet_test.set_column(9, 9, 100)
         self.sheet_test.set_column(10, 10, 60)
@@ -88,7 +88,7 @@ class WriteExcel:
             for c, d in enumerate(b):
                 if '失败' == d:
                     self.sheet_test.write(a, c, d, self.red)
-                    self.sheet_test.insert_image(a, c + 2, self.img_ptah, {'x_scale': 0.0757, 'y_scale': 0.099})
+                    self.sheet_test.insert_image(a, c + 2, b[-2], {'x_scale': 0.0757, 'y_scale': 0.099})
                 elif '成功' == d:
                     self.sheet_test.write(a, c, d, self.blue)
                 else:
@@ -207,7 +207,7 @@ class WriteExcel:
         self.sheet_title.merge_range(0,0,0,5,str(kwargs['title_title']).format(self.report_project,self.report_type),self.title_title)
         self.sheet_title.merge_range(1,0,6,1,' ')
         self.sheet_title.set_zoom(120)
-        self.sheet_title.insert_image(1,0,self.login_ptah,{'x_scale': 0.822,'y_scale': 0.863})
+        self.sheet_title.insert_image(1,0,self.login_path,{'x_scale': 0.822,'y_scale': 0.863})
         self.sheet_title.write(1,2,kwargs['title_version'],self.title_title_content)
         self.sheet_title.write(1,4,kwargs['title_action'],self.title_title_content)
         self.sheet_title.write(2,2,kwargs['title_tool'],self.title_title_content)
@@ -241,7 +241,7 @@ class ExcelTitle(WriteExcel):
 
     def class_merge(self,parameter):
         """合并并传参；args：报告详情的表头，kwargs：PC配置中的表头/title_开头是报告里面的数据"""
-        args = '用例名称', '测试地址', '场景', '最快响应时间(ms)', '最慢响应时间(ms)', '状态', '错误原因', '截图', '备注',
+        args = '#','用例级别','用例名称', '测试地址', '场景', '用例响应时间', '状态', '错误原因', '截图', '备注',
         kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
                   'title_title':'{}项目{}自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'总用时','title_member':'参与人员',
                   'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'跳过数','':'',
@@ -251,7 +251,7 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle(['登录', 'test/122', '符合规范的', '336.225555577', '8888.555555555', '失败', '辅导费333', ' ','苟富贵'],
-               ['登录首页', 'test/test/122', '场景', '336.225555577', '8888.555555555', '失败', '辅导费', ' ','hhj古典风格'],
-               ['登录首页', 'test/test/122', '场景', '336.225555577', '8888.555555555', '成功', ' ', ' ','hhj古典风格'],
+    ExcelTitle(['1','P0','登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'd:/','苟富贵'],
+                ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'c:/', '苟富贵'],
+
     ).class_merge(['w','u'])

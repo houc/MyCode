@@ -1,0 +1,6 @@
+Login:
+  url: /#/login
+MenuManager:
+  url: /#/system/navbarManage
+LoginTest:
+  url: /#/login
