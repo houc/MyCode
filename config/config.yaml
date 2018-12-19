@@ -1,8 +1,8 @@
 base_url:
 #  KQ: https://ukuaiqi.com     # 正式环境
 #  KQ: http://staging.ukuaiqi.com     # staging 14000000000 123456
-#  IsEDP: https://admin.edpglobal.cn  # 正式环境
-  EDP: https://testadmin.edpglobal.cn:8443  # 测试环境
+  EDP: https://admin.edpglobal.cn  # 正式环境
+#  EDP: https://testadmin.edpglobal.cn:8443  # 测试环境
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
 excel_parameter:

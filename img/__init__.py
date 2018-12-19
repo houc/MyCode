@@ -15,7 +15,7 @@ def get_log():
         f.close()
     if os.path.exists(log_path):
         img = Image.open(log_path)
-        x, y = img.size
+        x,y = img.size
         p = Image.new('RGBA', img.size, (255, 255, 255))
         p.paste(img, (0, 0, x, y), img)
         p.save(log_path)

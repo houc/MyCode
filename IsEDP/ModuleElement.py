@@ -1,7 +1,8 @@
 import time
+import requests
 
 from IsEDP.Elements import DriverTransmit
-
+from selenium.webdriver.common.keys import Keys
 
 class LoginModule(DriverTransmit):
     def success_login(self,account,password):
@@ -30,7 +31,6 @@ class MenuModule(DriverTransmit):
         self._menu(url)
         self.xpathS('新增', 'text()')[0].click()
         self.xpathS('确认', 'text()')[1].click()
-        time.sleep(2)
         self.asserts = self.xpathS('el-notification__content')[0].text
 
 
@@ -41,14 +41,17 @@ class LoginModules(DriverTransmit):
 
     def _clearInput(self):
         """清除用户名和密码中的内容"""
-        self.xpathS('el-input__inner')[0].clear()
-        self.xpathS('el-input__inner')[1].clear()
+        self.xpathS('el-input__inner')[0].send_keys(Keys.CONTROL,'a')
+        self.xpathS('el-input__inner')[0].send_keys(Keys.BACKSPACE)
+        self.xpathS('el-input__inner')[1].send_keys(Keys.CONTROL,'a')
+        self.xpathS('el-input__inner')[1].send_keys(Keys.BACKSPACE)
 
     def loginButton(self):
         """登录按钮"""
         self.xpath('btn-login').click()
-        time.sleep(2)
+        time.sleep(3)
         self.asserts = self.xpathS('el-notification__content')[0].text
+        return self.asserts
 
     def loginMsg(self,url,account,password):
         """登录信息的参数"""
@@ -56,3 +59,26 @@ class LoginModules(DriverTransmit):
         self._clearInput()
         self.xpathS('el-input__inner')[0].send_keys(account)
         self.xpathS('el-input__inner')[1].send_keys(password)
+
+    def asserts(self,parameter):
+        """断言参数"""
+        self.xpath('btn-login').click()
+        time.sleep(3)
+        self.asserts = self.xpathS(parameter)[0].text
+        return self.asserts
+
+    def logo(self,url):
+        """请求logo连接"""
+        self._login(url)
+        urls = self.url + url
+        r = requests.get(urls).status_code
+        return r
+
+    def forget(self,switch=False):
+        """忘记密码"""
+        self.xpath('忘记密码','text()').click()
+        if switch:
+            self.xpath('确定','text()').click()
+        time.sleep(2)
+        asserts = self.xpathS('el-notification__content')[0].text
+        return asserts

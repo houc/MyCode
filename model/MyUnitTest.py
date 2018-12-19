@@ -5,9 +5,10 @@ import os
 
 from model.Logs import Logger
 from model.Yaml import MyYaml
-from model.DriverParameter import browser
-from IsEDP.ModuleElement import LoginModule
 from model.SQL import Mysql
+from model.DriverParameter import browser
+from model.MyAssert import MyAsserts
+from IsEDP.ModuleElement import LoginModule
 from config_path.path_file import read_file
 
 def case_id():
@@ -31,14 +32,14 @@ def setUpModule(currentModule):
     if 'login_st' not in currentModule:
         try:
             LoginModule(Driver, URL).success_login(account,password)
-        except Exception as e:
-            Error = e
+        except Exception as exc:
+            Error = str(exc)
             Driver.quit()
     else:
         try:
             LoginModule(Driver,URL).opens_if()
-        except Exception as e:
-            Error = e
+        except Exception as exc:
+            Error = set(exc)
             Driver.quit()
 
 def tearDownModule():
@@ -52,6 +53,7 @@ class UnitTests(unittest.TestCase):
     case_count = 0
     logger = Logger()
     log = start_time = result = status = level = img = error = other =  None
+    first = second = None
 
     def setUp(self):
         """用例初始化"""
@@ -76,21 +78,19 @@ class UnitTests(unittest.TestCase):
         ExecutionTime = time.strftime('%Y-%m-%d %H:%M:%S')
         end_time = time.time()
         total_time = end_time - self.start_time
-        self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %.4fs ; Message: %s'% (
-                                 ExecutionTime,self.module,self.class_name,self.case_name,
-                                 total_time,self.error or self.setLog))
-        if os.path.exists(self.screenshots_path):
-            self.img = self.screenshots_path
-        # if '!=' in str(self.error):
-        #     self.status = '失败'
-        # elif self.error is None:
-        #     self.status = '成功'
-        # else:
-        #     self.status = '错误'
-        # if self.setLog is None:
-        #     self.sql.insert_data(self.count,self.level,self.case_name,
-        #                          self.case_remark,"%.4fs"%total_time,self.status,
-        #                          self.urls,self.img,self.error,self.other)
+        self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %.4fs ; Message: %s'
+                                  %(ExecutionTime,self.module,self.class_name,self.case_name,
+                                    total_time,self.error or self.setLog))
+        asserts = MyAsserts(self.first,self.second,self.count,self.level,self.case_name,self.case_remark,
+                            self.status,self.error,self.urls,total_time,self.other,self.driver,
+                            self.screenshots_path)
+        asserts.asserts()
+        if self.first and self.second is not None:
+            self.assertEqual(self.first,self.second,msg=self.error)
+        elif self.first is None:
+            raise TimeoutError
+        else:
+            raise AssertionError
 
 
 if __name__ == '__main__':

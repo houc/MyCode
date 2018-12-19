@@ -5,7 +5,7 @@ from model.Yaml import MyYaml
 
 
 class Mysql:
-    def __init__(self,coding = 'utf8'):
+    def __init__(self,coding='utf8'):
         """初始化"""
         self.dbHost = MyYaml('address').sql
         self.dbUser = MyYaml('account').sql
@@ -77,6 +77,6 @@ class Mysql:
 
 if __name__ == '__main__':
     M = Mysql()
-    # M.insert_data('1','name','remark','26.555s','失败','/auto_ui/model','d:/','"chengg" ！= "ass sds sdsd !"')
+    M.insert_data('1','name','remark','/auto_ui/model','失败','/auto_ui/model','user "080808admin" does not exist','0s')
     # M.update_sql("case_status='成功1'",'test_accountAndEnglish')
-    print(M.query_data())
+    # print(M.query_data())
