@@ -35,12 +35,14 @@ def setUpModule(currentModule):
         except Exception as exc:
             Error = str(exc)
             Driver.quit()
+            raise
     else:
         try:
             LoginModule(Driver,URL).opens_if()
         except Exception as exc:
             Error = set(exc)
             Driver.quit()
+            raise
 
 def tearDownModule():
     """模块结束"""
@@ -81,16 +83,19 @@ class UnitTests(unittest.TestCase):
         self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %.4fs ; Message: %s'
                                   %(ExecutionTime,self.module,self.class_name,self.case_name,
                                     total_time,self.error or self.setLog))
+        if self.first and self.second is not None:
+            self.assertEqual(self.first,self.second,msg=self.error)
+        elif self.error is not None:
+            self.error = self.error
+            raise BaseException(self.error)
+        else:
+            self.error = Exception
+            raise {"self.first 或者 self.second在用例中不存在"}
         asserts = MyAsserts(self.first,self.second,self.count,self.level,self.case_name,self.case_remark,
                             self.status,self.error,self.urls,total_time,self.other,self.driver,
                             self.screenshots_path)
         asserts.asserts()
-        if self.first and self.second is not None:
-            self.assertEqual(self.first,self.second,msg=self.error)
-        elif self.first is None:
-            raise TimeoutError
-        else:
-            raise AssertionError
+
 
 
 if __name__ == '__main__':

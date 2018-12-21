@@ -1,4 +1,6 @@
 import os
+import re
+import time
 
 from model.SQL import Mysql
 
@@ -30,19 +32,37 @@ class MyAsserts():
             elif not self.first == self.second:
                 self.status = '失败'
                 self.driver.save_screenshot(self.screenshots_path)
+                if isinstance(self.first and self.second,str):
+                    if '' in self.first or self.second:
+                        self.first = self._strConversion(self.first)
+                        self.second = self._strConversion(self.second)
                 self.reason = '%s != %s'%(self.first,self.second)
-        if self.first is None:
-            self.status = '错误'
-            self.driver.save_screenshot(self.screenshots_path)
+        else:
+            if self.reason is not None:
+                self.status = '错误'
+                self.driver.save_screenshot(self.screenshots_path)
+                if isinstance(self.reason,str):
+                    if '' in self.reason:
+                        self.reason = self._strConversion(self.reason)
         if os.path.exists(self.screenshots_path):
             self.img_path = self.screenshots_path
         self._insert_sql(self.status,self.img_path,self.reason)
 
     def _insert_sql(self,status,img_path,reason):
         """将用例插入数据库"""
-        print(reason)
+        insert_time = time.strftime('%Y-%m-%d %H:%M:%S')
         self.sql.insert_data(self.id,self.level,self.name,self.remark,"%.3fs"%self.time,status,
-                             self.url,img_path,reason,self.other)
+                             self.url,insert_time,img_path,reason,self.other)
+
+    def _strConversion(self,values):
+        """字符串中包含单引号转义成``"""
+        if isinstance(values,str):
+            res = re.sub("'",'`',values)
+            return res
+        else:
+            raise TypeError(values)
+
 
 if __name__ == '__main__':
-    MyAsserts(None,'','','','','','','','','','','','',).asserts()
+    T = MyAsserts(None,'','','','','','','','','','','','',)
+    print(T)

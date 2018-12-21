@@ -1,11 +1,9 @@
-import traceback
-
 from pymysql.connections import Connection
 from model.Yaml import MyYaml
 
 
 class Mysql:
-    def __init__(self,coding='utf8'):
+    def __init__(self,switch=False,coding='utf8'):
         """初始化"""
         self.dbHost = MyYaml('address').sql
         self.dbUser = MyYaml('account').sql
@@ -20,7 +18,8 @@ class Mysql:
         self.dbUpdate = MyYaml('sql_update').sql
         self.decoding = coding
         self.DB = self._connect_sql()
-        # self._insert_title()
+        if switch:
+            self._insert_title()
 
     def _connect_sql(self):
         """连接数据库"""
@@ -42,7 +41,7 @@ class Mysql:
 
     def query_data(self):
         """查询数据"""
-        save_data = list()
+        save_data = []
         DB = self.DB.cursor()
         DB.execute(self.dbQuery)
         data = DB.fetchall()
@@ -50,10 +49,10 @@ class Mysql:
             save_data.append(list(a))
         return save_data
 
-    def insert_data(self,id,level,name,remark,wait_time,status,url,img=None,error_reason=None,other=None):
+    def insert_data(self,id,level,name,remark,wait_time,status,url,insert_time,img=None,error_reason=None,other=None):
         """插入数据"""
         DB = self.DB.cursor()
-        data = self.dbInsert%(id,level,name,remark,img,status,url,error_reason,wait_time,other)
+        data = self.dbInsert%(id,level,name,remark,img,status,url,error_reason,wait_time,insert_time,other)
         DB.execute(data)
         self.DB.commit()
 
@@ -76,7 +75,10 @@ class Mysql:
 
 
 if __name__ == '__main__':
-    M = Mysql()
-    M.insert_data('1','name','remark','/auto_ui/model','失败','/auto_ui/model','user "080808admin" does not exist','0s')
+    M = Mysql(True)
+    # M.insert_data('1','name','remark','/auto_ui/model','失败','/auto_ui/model',"user `080808admin` does not exist",'0s')
     # M.update_sql("case_status='成功1'",'test_accountAndEnglish')
-    # print(M.query_data())
+    k = M.query_data()
+    print(k)
+    # for i in k:
+    #     print(i)

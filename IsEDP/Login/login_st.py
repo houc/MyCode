@@ -2,6 +2,7 @@ import unittest
 
 from model.MyUnitTest import setUpModule,tearDownModule,UnitTests
 from IsEDP.ModuleElement import LoginModules
+from IsEDP.Login.public import account,password
 
 
 class LoginTest(UnitTests):
@@ -10,7 +11,6 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = 'admin_admin'
-            password = '000000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.loginButton()
@@ -23,7 +23,6 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = 'admin_admin' * 12
-            password = '000000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.loginButton()
@@ -36,7 +35,6 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = ' '
-            password = '000000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.loginButton()
@@ -49,7 +47,6 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = ''
-            password = '000000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.asserts('el-form-item__error')
@@ -62,7 +59,6 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = '~！@#￥%……&*（）——+'
-            password = '000000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.loginButton()
@@ -75,7 +71,6 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = 'admi'
-            password = '000000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.loginButton()
@@ -88,7 +83,6 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = 'dmin'
-            password = '000000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.loginButton()
@@ -100,7 +94,6 @@ class LoginTest(UnitTests):
         """密码边界测试（后）"""
         try:
             self.level = 'P1'
-            account = 'admin'
             password = '00000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
@@ -113,7 +106,6 @@ class LoginTest(UnitTests):
         """密码边界测试（前）"""
         try:
             self.level = 'P1'
-            account = 'admin'
             password = '00000'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
@@ -126,7 +118,6 @@ class LoginTest(UnitTests):
         """密码为空格"""
         try:
             self.level = 'P1'
-            account = 'admin'
             password = ' '
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
@@ -139,7 +130,6 @@ class LoginTest(UnitTests):
         """密码为空"""
         try:
             self.level = 'P1'
-            account = 'admin'
             password = ''
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
@@ -152,7 +142,6 @@ class LoginTest(UnitTests):
         """错误的密码"""
         try:
             self.level = 'P1'
-            account = 'admin'
             password = '00000aa'
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
@@ -165,7 +154,6 @@ class LoginTest(UnitTests):
         """密码字符120字节"""
         try:
             self.level = 'P1'
-            account = 'admin'
             password = '000000' * 20
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
@@ -185,16 +173,11 @@ class LoginTest(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
-    def test_loginBackground(self):
-        """检查登录界面背景图案是否存在"""
-
-
     def test_passwordForgetNull(self):
         """忘记密码(空账号)"""
         try:
             self.level = 'P1'
             account = ''
-            password = ''
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.forget()
@@ -207,16 +190,28 @@ class LoginTest(UnitTests):
         try:
             self.level = 'P1'
             account = '080808admin'
+            elements = LoginModules(self.driver,self.url)
+            elements.loginMsg(self.urls,account,password)
+            self.first = elements.forget(True)
+            self.second = 'user {0!r} does not exist'.format(account)
+        except Exception as exc:
+            self.error = str(exc)
+
+    def test_passwordSuccessAccount(self):
+        """忘记密码（正确账号）"""
+        try:
+            self.level = 'P1'
             password = ''
             elements = LoginModules(self.driver,self.url)
             elements.loginMsg(self.urls,account,password)
             self.first = elements.forget(True)
-            self.second = 'user {0!r} does not exist1'.format(account)
+            self.second = '新密码已发送到您的手机！'
         except Exception as exc:
             self.error = str(exc)
 
-
-
+    @unittest.skip('未能找到背景的URL')
+    def test_backgroundExists(self):
+        """背景是否存在"""
 
 if __name__ == '__main__':
     unittest.main()

@@ -4,6 +4,7 @@ import requests
 from IsEDP.Elements import DriverTransmit
 from selenium.webdriver.common.keys import Keys
 
+
 class LoginModule(DriverTransmit):
     def success_login(self,account,password):
         """成功登陆"""
@@ -49,9 +50,11 @@ class LoginModules(DriverTransmit):
     def loginButton(self):
         """登录按钮"""
         self.xpath('btn-login').click()
-        time.sleep(3)
-        self.asserts = self.xpathS('el-notification__content')[0].text
-        return self.asserts
+        time.sleep(2)
+        asserts = self.xpathS('el-notification__content')[0].text
+        time.sleep(2)
+        return asserts
+
 
     def loginMsg(self,url,account,password):
         """登录信息的参数"""
@@ -77,8 +80,10 @@ class LoginModules(DriverTransmit):
     def forget(self,switch=False):
         """忘记密码"""
         self.xpath('忘记密码','text()').click()
+        time.sleep(2)
         if switch:
             self.xpath('确定','text()').click()
-        time.sleep(2)
+            time.sleep(2)
         asserts = self.xpathS('el-notification__content')[0].text
+        time.sleep(1)
         return asserts

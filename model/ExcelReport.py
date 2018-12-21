@@ -84,16 +84,17 @@ class WriteExcel:
         self._test_content_style()
         for a, b in enumerate(args):
             self.sheet_test.write(0, a, b, self.style_title)
-        for a, b in enumerate(self.test_data_content, 1):
-            for c, d in enumerate(b):
-                if '失败' == d:
-                    self.sheet_test.write(a, c, d, self.red)
-                    self.sheet_test.insert_image(a, c + 2, b[-2], {'x_scale': 0.0757, 'y_scale': 0.099})
-                elif '成功' == d:
-                    self.sheet_test.write(a, c, d, self.blue)
-                else:
-                    self.sheet_test.set_row(a, 78)
-                    self.sheet_test.write(a, c, d, self.test_content_style)
+        for e in self.test_data_content:
+            for a, b in enumerate(e, 1):
+                for c, d in enumerate(b):
+                    if '失败' == d:
+                        self.sheet_test.write(a, c, d, self.red)
+                        self.sheet_test.insert_image(a, c + 2, b[-2], {'x_scale': 0.0757, 'y_scale': 0.099})
+                    elif '成功' == d:
+                        self.sheet_test.write(a, c, d, self.blue)
+                    else:
+                        self.sheet_test.set_row(a, 78)
+                        self.sheet_test.write(a, c, d, self.test_content_style)
         self.sheet_test.freeze_panes(1,2)
 
     def _pc_title_style(self):
@@ -251,7 +252,7 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle(['1','P0','登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'd:/','苟富贵'],
-                ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'c:/', '苟富贵'],
+    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'd:/','苟富贵'],
+                ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'c:/', '苟富贵'],]
 
     ).class_merge(['w','u'])
