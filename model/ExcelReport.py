@@ -270,7 +270,7 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '失败', '辅导费333', 'D:/work_file/auto_script/auto_ui/img/test_createNull.png','苟富贵'],
+    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '失败', '辅导费333', '','苟富贵'],
                 ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'c:/', '苟富贵'],]
 
     ).class_merge(['w','u'])
