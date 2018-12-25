@@ -3,13 +3,13 @@ import time
 import sys
 import os
 
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 from config_path.path_file import read_file
 from model.Yaml import MyYaml
 
 
 class Logger:
-    def __init__(self,encoding='utf-8'):
+    def __init__(self, encoding='utf-8'):
         """初始化"""
         formatter = logging.Formatter()
         now_time = time.strftime('%Y-%m-%d')
@@ -48,6 +48,3 @@ class Logger:
 
 if __name__ == '__main__':
     logging_test = Logger()
-    # logging_test.logging_error('错了')
-    # logging_test.logging_debug('debug')
-    # logging_test.logging_info(time.time())

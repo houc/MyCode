@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e13794c7-a2d2-497f-a777-79551a04d043" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/auto_ui.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/IsEDP/config.ini" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/img/logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log/2018-12-19.log" beforeDir="false" />
@@ -14,6 +18,7 @@
       <change beforePath="$PROJECT_DIR$/log/2018-12-21.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log/2018-12-24.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/log/2018-12-25.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Logs.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Logs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/ExcelReport.xlsx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -136,35 +141,32 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SQL.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/SQL.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Logs.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/Logs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MyException.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/MyException.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
               <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModuleElement.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IsEDP/ModuleElement.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu_st.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IsEDP/SysManager/menu_st.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -181,11 +183,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="84">
+              <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -285,7 +287,6 @@
         <option value="$PROJECT_DIR$/IsEDP/Login/__init__.py" />
         <option value="C:/Program Files (x86)/Python3.7/Lib/unittest/case.py" />
         <option value="C:/Program Files (x86)/Python3.7/Lib/unittest/__init__.py" />
-        <option value="$PROJECT_DIR$/model/Logs.py" />
         <option value="$PROJECT_DIR$/IsEDP/SysManager/menu_st.py" />
         <option value="$PROJECT_DIR$/IsEDP/SysManager/__init__.py" />
         <option value="$PROJECT_DIR$/IsEDP/ModuleElement.py" />
@@ -298,7 +299,6 @@
         <option value="$PROJECT_DIR$/model/MyException.py" />
         <option value="$PROJECT_DIR$/model/DriverParameter.py" />
         <option value="$PROJECT_DIR$/model/__init__.py" />
-        <option value="$PROJECT_DIR$/model/SQL.py" />
         <option value="$PROJECT_DIR$/IsEDP/Login/login_st.py" />
         <option value="$PROJECT_DIR$/config_path/path_file.py" />
         <option value="$PROJECT_DIR$/model/MyUnitTest.py" />
@@ -312,7 +312,9 @@
         <option value="$PROJECT_DIR$/model/ExcelReport.py" />
         <option value="$PROJECT_DIR$/IsEDP/config.ini" />
         <option value="$PROJECT_DIR$/log/2018-12-25.log" />
+        <option value="$PROJECT_DIR$/model/SQL.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/model/Logs.py" />
       </list>
     </option>
   </component>
@@ -672,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545727474198</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="ui框架...">
+      <created>1545728527361</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1545728527361</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -713,10 +722,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50160944" side_tool="true" weight="0.26823795" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49839056" weight="0.37094972" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49839056" visible="true" weight="0.37094972" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.18942732" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32960895" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49520767" visible="true" weight="0.23551503" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
@@ -775,13 +784,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/model/SendEmail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/PCParameter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -884,9 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IsEDP/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/IsEDP/SysManager/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -975,23 +974,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/img/test_createNull.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SQL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="79" column="21" lean-forward="true" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/xlsxwriter/format.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1149,8 +1131,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="84">
+          <caret line="4" column="5" lean-forward="true" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IsEDP/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SQL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Logs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
