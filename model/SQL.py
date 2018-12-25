@@ -75,9 +75,5 @@ class Mysql:
 
 if __name__ == '__main__':
     M = Mysql(False)
-    # M.insert_data('1','name','remark','/auto_ui/model','失败','/auto_ui/model',"user `080808admin` does not exist",'0s')
-    # M.update_sql("case_status='成功1'",'test_accountAndEnglish')
     k = M.query_data()
     print(k)
-    # for i in k:
-    #     print(i)
