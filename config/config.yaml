@@ -3,6 +3,7 @@ base_url:
 #  KQ: http://staging.ukuaiqi.com     # staging 14000000000 123456
 #  EDP: https://admin.edpglobal.cn  # 正式环境
   EDP: https://testadmin.edpglobal.cn:8443  # 测试环境
+  EDP_Interface: https://testapi.edpglobal.cn:8443  # 测试环境(接口)
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
 excel_parameter:
@@ -11,22 +12,22 @@ excel_parameter:
 config:
   level: 10
   account: test  # 正确的账号
-  password: '000000'    # 正确的密码
+  password: '123456'    # 正确的密码
   implicitly_wait: 10   # 隐时等待时间
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py
   task_time: 10         # 定时任务等待执行时间
-  browser: True         # 浏览器隐藏执行开关,隐藏:True，不隐藏:False
+  browser: True         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
   logo_url: /static/images/logo.bae1317.png  # 项目logo连接
   while_case: 1         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
-  module_run:          # 指定需要运行的模块
+  module_run: SysManager      # 指定需要运行的模块
 send_email:
   server: smtp.gouuse.cn
   port:
   send_account: houchao@gouuse.cn
   send_password: Aa123456
-  receiver: [784348736@qq.com,1063116271@qq.com]
+  receiver: [784348736@qq.com, 1063116271@qq.com]
 sql:
   account: 'root'
   password: '123456'
@@ -43,9 +44,9 @@ sql:
                      case_wait_time varchar(500),
                      case_status varchar(500),
                      case_error_reason varchar(500),
-                     case_img varchar(500) ,
-                     case_other varchar(500))
-                     insert_time timestamp,                 # 插入表头
+                     case_img varchar(500),
+                     case_other varchar(500),
+                     insert_time timestamp)                # 插入表头
   sql_query: SELECT * FROM result                           # 查询result里面的所有数据
   sql_insert: INSERT INTO result(case_id,
                                  case_level,

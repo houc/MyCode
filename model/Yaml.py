@@ -1,10 +1,10 @@
 import yaml
 
-from config_path.path_file import read_file
+from config_path.path_file import read_file, module_file
 
 
-class MyYaml:
-    def __init__(self,interface='EDP',encoding='utf-8'):
+class MyYaml(object):
+    def __init__(self,interface='EDP', encoding='utf-8'):
         """初始化参数"""
         self.interface = interface
         self.encoding = encoding
@@ -12,8 +12,8 @@ class MyYaml:
     @property
     def AllConfig(self):
         """读取config.yaml中全部参数"""
-        path = read_file('config','config.yaml')
-        f = open(path, encoding = self.encoding)
+        path = read_file('config', 'config.yaml')
+        f = open(path, encoding=self.encoding)
         data = yaml.load(f)
         f.close()
         return data
@@ -22,7 +22,16 @@ class MyYaml:
     def AllPublic(self):
         """读取public.yaml中的全部参数"""
         path = read_file('IsEDP', 'Parameter.yaml')
-        f = open(path, encoding = self.encoding)
+        f = open(path, encoding=self.encoding)
+        data = yaml.load(f)
+        f.close()
+        return data
+
+    @property
+    def ModulePublic(self):
+        """读取测试模块下的public全部参数"""
+        path = module_file(self.interface,'public.yaml')
+        f = open(path, encoding=self.encoding)
         data = yaml.load(f)
         f.close()
         return data
@@ -31,15 +40,20 @@ class MyYaml:
     def Parameter(self):
         """Parameter.yaml中的全部参数"""
         path = read_file('IsEDP', 'Parameter.yaml')
-        f = open(path, encoding = self.encoding)
+        f = open(path, encoding=self.encoding)
         data = yaml.load(f)
         f.close()
         return data
 
     @property
-    def parameter(self):
-        """读取公共参数信息"""
-        return self.Parameter[self.interface]
+    def parameter_ui(self):
+        """读取公共参数UI信息"""
+        return self.Parameter['UI'][self.interface]
+
+    @property
+    def parameter_interface(self):
+        """读取公共参数接口信息"""
+        return self.Parameter['Interface'][self.interface]
 
     @property
     def base_url(self):
@@ -67,5 +81,5 @@ class MyYaml:
         return self.AllConfig['sql'][self.interface]
 
 if __name__ == '__main__':
-    t = MyYaml('MenuManager').parameter
+    t = MyYaml('Login').ModulePublic
     print(t)

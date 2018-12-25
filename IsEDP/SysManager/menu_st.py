@@ -2,8 +2,8 @@ import unittest
 
 from model.MyUnitTest import setUpModule,tearDownModule,UnitTests
 from IsEDP.ModuleElement import MenuModule
-#
-#
+
+
 class MenuManager(UnitTests):
     @unittest.skip('跳过')
     def test_createMenuNull(self):
@@ -13,7 +13,8 @@ class MenuManager(UnitTests):
         elements.CreateMenuNull(self.urls)
         self.assertEqual(elements.asserts,'menu name cannot be empty')
 
-    @unittest.skip('跳过Start')
+    # @unittest.skip('跳过Start')
     def test_createNull(self):
         """创建菜单字段为空"""
-        print(555)
+        self.first = 1
+        self.second = 2

@@ -38,7 +38,7 @@ class Email:
         <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\
         </i></b><img alt="" src="cid:image1"/>
         """.format('http://www.baidu.com')
-        content = MIMEText(link_url,'html')
+        content = MIMEText(link_url, 'html')
         self.contents.attach(content)
         self.contents.attach(img)
         return self.contents
@@ -56,8 +56,8 @@ class Email:
         try:
             content = self._send_title_msg()
             self.Mail.connect(self.server)
-            self.Mail.login(self.sender,self.sender_password)
-            self.Mail.sendmail(self.sender,self.receiver,content.as_string())
+            self.Mail.login(self.sender, self.sender_password)
+            self.Mail.sendmail(self.sender, self.receiver, content.as_string())
             self.Mail.quit()
             print('给{}邮件发送成功'.format(','.join(self.receiver)))
         except smtplib.SMTPException:

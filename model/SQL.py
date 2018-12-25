@@ -3,7 +3,7 @@ from model.Yaml import MyYaml
 
 
 class Mysql:
-    def __init__(self,switch=False,coding='utf8'):
+    def __init__(self, switch=False, coding='utf8'):
         """初始化"""
         self.dbHost = MyYaml('address').sql
         self.dbUser = MyYaml('account').sql
@@ -29,8 +29,7 @@ class Mysql:
             password = self.dbPsw,
             database = self.dbBase,
             port = self.dbPort,
-            charset = self.decoding
-        )
+            charset = self.decoding)
         return db
 
     def _insert_title(self):
@@ -49,10 +48,10 @@ class Mysql:
             save_data.append(list(a))
         return save_data
 
-    def insert_data(self,id,level,name,remark,wait_time,status,url,insert_time,img=None,error_reason=None,other=None):
+    def insert_data(self, id, level, name, remark, wait_time, status, url, insert_time, img=None, error_reason=None, other=None):
         """插入数据"""
         DB = self.DB.cursor()
-        data = self.dbInsert%(id,level,name,remark,img,status,url,error_reason,wait_time,insert_time,other)
+        data = self.dbInsert % (id, level, name, remark, img, status, url, error_reason, wait_time, insert_time, other)
         DB.execute(data)
         self.DB.commit()
 
@@ -66,16 +65,16 @@ class Mysql:
         """关闭数据库"""
         return self.DB.close()
 
-    def update_sql(self,parameter,case_name):
+    def update_sql(self, parameter, case_name):
         """更新数据库部分字段"""
         DB = self.DB.cursor()
-        data = self.dbUpdate%(parameter,'case_name={0!r}'.format(case_name))
+        data = self.dbUpdate % (parameter, 'case_name={0!r}'.format(case_name))
         DB.execute(data)
         self.DB.commit()
 
 
 if __name__ == '__main__':
-    M = Mysql(True)
+    M = Mysql(False)
     # M.insert_data('1','name','remark','/auto_ui/model','失败','/auto_ui/model',"user `080808admin` does not exist",'0s')
     # M.update_sql("case_status='成功1'",'test_accountAndEnglish')
     k = M.query_data()

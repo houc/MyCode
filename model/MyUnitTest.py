@@ -31,14 +31,14 @@ def setUpModule(currentModule):
     Driver.implicitly_wait(wait)
     if 'login_st' not in currentModule:
         try:
-            LoginModule(Driver, URL).success_login(account,password)
+            LoginModule(Driver, URL).success_login(account, password)
         except Exception as exc:
             Error = str(exc)
             Driver.quit()
             raise
     else:
         try:
-            LoginModule(Driver,URL).opens_if()
+            LoginModule(Driver, URL).opens_if()
         except Exception as exc:
             Error = set(exc)
             Driver.quit()
@@ -69,8 +69,8 @@ class UnitTests(unittest.TestCase):
         self.class_name = self.__class__.__name__
         self.case_name = self._testMethodName
         self.case_remark = self._testMethodDoc
-        self.urls = MyYaml(self.class_name).parameter['url']
-        self.screenshots_path = read_file('img','{}.png'.format(self.case_name))
+        self.urls = MyYaml(self.class_name).parameter_ui['url']
+        self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         if os.path.exists(self.screenshots_path):
             os.remove(self.screenshots_path)
 
@@ -80,21 +80,24 @@ class UnitTests(unittest.TestCase):
         ExecutionTime = time.strftime('%Y-%m-%d %H:%M:%S')
         end_time = time.time()
         total_time = end_time - self.start_time
-        self.logger.logging_debug('ExecutionTime: %s ; Path：%s.%s.%s ; TotalUserTime: %.4fs ; Message: %s'
-                                  %(ExecutionTime,self.module,self.class_name,self.case_name,
-                                    total_time,self.error or self.setLog))
+        self.logger.logging_debug('ExecutionTime: {}; Path：{}.{}.{}; TotalUserTime: {:.4f}s; Message: {}'.format(ExecutionTime,
+                                                                                                                  self.module,
+                                                                                                                  self.class_name,
+                                                                                                                  self.case_name,
+                                                                                                                  total_time,
+                                                                                                                  self.error or self.setLog))
+
+        asserts = MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
+                            self.status, self.error, self.urls, total_time, self.other, self.driver, self.screenshots_path)
+        asserts.asserts()
         if self.first and self.second is not None:
-            self.assertEqual(self.first,self.second,msg=self.error)
+            self.assertEqual(self.first, self.second, msg=self.error)
         elif self.error is not None:
-            self.error = self.error
             raise BaseException(self.error)
         else:
             self.error = Exception
             raise {"self.first 或者 self.second在用例中不存在"}
-        asserts = MyAsserts(self.first,self.second,self.count,self.level,self.case_name,self.case_remark,
-                            self.status,self.error,self.urls,total_time,self.other,self.driver,
-                            self.screenshots_path)
-        asserts.asserts()
+
 
 
 

@@ -1,0 +1,18 @@
+edit_user:
+  - url: /user/update
+    bar: {id:,roleId:,loginName:,name: 测试暂用,phone: 19950278100,email: 784348736@qq.com,loginCount: 10,idCard:,status: 1}
+get_user:
+  - url: /user/list
+    bar: {}
+add_user:
+  - url: /user/add
+    bar: {roleId:,loginName:,name: 测试暂用,phone: 19950278100,email: 784348736@qq.com,password: 123456,loginCount: 10,idCard:,status: 1}
+add_role:
+  - url: /roles/add
+    bar: {name:,}
+del_role:
+  - url: /roles/delete
+    bar: {id:}
+get_role:
+  - url: /roles/list
+    bar: {}

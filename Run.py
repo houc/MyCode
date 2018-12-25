@@ -26,9 +26,9 @@ class RunAll(object):
         module_run = MyYaml('module_run').config
         project_name = MyYaml('project_name').excel_parameter
         if module_run is not None:
-            self.current_path = self.current_path + '/{}/{}'.format(project_name,module_run)
-        discover = unittest.defaultTestLoader.discover(self.current_path,self.re)
-        runners = unittest.TextTestRunner(while_sleep=self.wait,while_case=self.case)
+            self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
+        discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
+        runners = unittest.TextTestRunner(while_sleep=self.wait, while_case=self.case)
         result = runners.run(discover)
         return result
 

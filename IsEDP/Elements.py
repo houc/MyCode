@@ -3,30 +3,30 @@ from model.Yaml import MyYaml
 
 
 class DriverTransmit(object):
-    def __init__(self,driver,url):
+    def __init__(self, driver, url):
         """初始化"""
         self.driver = driver
         self.url = url
-        self.yaml = MyYaml('Login').parameter['url']
+        self.yaml = MyYaml('Login').parameter_ui['url']
 
     def _asserts(self):
         self.driver.get(self.url + self.yaml)
         asserts = self.xpath('btn-login').text
         return asserts
 
-    def xpathS(self,parameter,type='@class',tag='*'):
+    def xpathS(self, parameter, type='@class', tag='*'):
         """xpath多元素定位"""
-        return self.driver.find_elements(By.XPATH,'//{}[contains({}, "{}")]'.format(tag,type,parameter))
+        return self.driver.find_elements(By.XPATH, '//{}[contains({}, "{}")]'.format(tag, type, parameter))
 
-    def cssS(self,css):
+    def cssS(self, css):
         """css多元素定位"""
-        return self.driver.find_elements(By.CSS_SELECTOR,'.{}'.format(css))
+        return self.driver.find_elements(By.CSS_SELECTOR, '.{}'.format(css))
 
-    def id(self,id):
+    def id(self, id):
         """id定位"""
-        return self.driver.find_element(By.ID,'{}'.format(id))
+        return self.driver.find_element(By.ID, '{}'.format(id))
 
-    def xpath(self,parameter,type='@class',tag='*'):
+    def xpath(self, parameter, type='@class', tag='*'):
         """xpath单元素定位"""
         return self.driver.find_element(By.XPATH, '//{}[contains({}, "{}")]'.format(tag, type, parameter))
 
