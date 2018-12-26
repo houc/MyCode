@@ -19,8 +19,18 @@ def browser(switch=False):
     return driver
 
 if __name__ == '__main__':
-    a = ['--1oad-images = false','--disk-cache = true']
-    path = read_file('package', 'phantomjs.exe')
-    browsers = webdriver.PhantomJS(path)
-    y = browsers.get('www.baidu.con')
-    print(y)
+    import time
+
+    driver = browser()
+    driver.implicitly_wait(10)
+    driver.get('https://www.scrm365.cn/#/account/login')
+    js = 'document.getElementsByClassName("mu-text-field-input")[0].value="15928564313"'
+    driver.execute_script(js)
+    # driver.find_elements_by_xpath('//*[contains(@class,"mu-text-field-input")]')[0].send_keys('15928564313')
+    driver.find_elements_by_xpath('//*[contains(@class,"mu-text-field-input")]')[1].send_keys('Li123456')
+    driver.find_elements_by_xpath('//*[contains(@class,"enabled")]')[0].click()
+    driver.find_elements_by_xpath('//*[contains(@class,"ivu-menu-item")]')[0].click()
+    time.sleep(2)
+    driver.execute_script('document.getElementsByClassName("iconfont-s ics-bangzhuzhongxin")')
+    time.sleep(2)
+    driver.quit()

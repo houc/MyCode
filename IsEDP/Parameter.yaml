@@ -7,6 +7,7 @@ Interface:
 UI:
   Login:
     url: /#/login
+    author: hc
   MenuManager:
     url: /#/system/navbarManage
   LoginTest:

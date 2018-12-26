@@ -48,10 +48,12 @@ class Mysql:
             save_data.append(list(a))
         return save_data
 
-    def insert_data(self, id, level, name, remark, wait_time, status, url, insert_time, img=None, error_reason=None, other=None):
+    def insert_data(self, id, level, name, remark, wait_time, status, url, insert_time, img=None,
+                    error_reason=None, author=None, other=None):
         """插入数据"""
         DB = self.DB.cursor()
-        data = self.dbInsert % (id, level, name, remark, img, status, url, error_reason, wait_time, insert_time, other)
+        data = self.dbInsert % (id, level, name, remark, img, status, url, error_reason, wait_time,
+                                author, insert_time, other)
         DB.execute(data)
         self.DB.commit()
 

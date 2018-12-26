@@ -40,15 +40,16 @@ class WriteExcel:
         self.style_title.set_center_across()
         self.sheet_test.set_column(0, 0, 5)
         self.sheet_test.set_column(1, 1, 10)
-        self.sheet_test.set_column(2, 2, 50)
-        self.sheet_test.set_column(3, 3, 50)
+        self.sheet_test.set_column(2, 2, 30)
+        self.sheet_test.set_column(3, 3, 40)
         self.sheet_test.set_column(4, 4, 50)
         self.sheet_test.set_column(5, 5, 20)
         self.sheet_test.set_column(6, 6, 8)
-        self.sheet_test.set_column(7, 7, 50)
-        self.sheet_test.set_column(8, 8, 60)
-        self.sheet_test.set_column(9, 9, 100)
-        self.sheet_test.set_column(10, 10, 60)
+        self.sheet_test.set_column(7, 7, 40)
+        self.sheet_test.set_column(8, 8, 20)
+        self.sheet_test.set_column(9, 9, 15)
+        self.sheet_test.set_column(10, 10, 30)
+        self.sheet_test.set_column(11, 11, 50)
         return self.style_title
 
     def _red_style(self, color='red'):
@@ -102,17 +103,15 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        self.sheet_test.insert_image(a, c + 2, b[-2], {'x_scale': 0.0757, 'y_scale': 0.099})
+                        self.sheet_test.insert_image(a, c + 2, b[-3], {'x_scale': 0.0757, 'y_scale': 0.099})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
+                        self.sheet_test.insert_image(a, c + 2, b[-3], {'x_scale':0.0757, 'y_scale':0.099})
                     else:
                         self.sheet_test.set_row(a, 78)
-                        if '.png' in d:
-                            pass
-                        else:
-                            self.sheet_test.write(a, c, d, self.test_content_style)
+                        self.sheet_test.write(a, c, str(d), self.test_content_style)
         self.sheet_test.freeze_panes(1, 2)
 
     def _pc_title_style(self):
@@ -225,7 +224,6 @@ class WriteExcel:
         self._title_content_style()
         self.sheet_title.merge_range(0,0,0,5,str(kwargs['title_title']).format(self.report_project,self.report_type),self.title_title)
         self.sheet_title.merge_range(1,0,6,1,' ')
-        self.sheet_title.set_zoom(120)
         self.sheet_title.insert_image(1,0,self.login_path,{'x_scale': 0.822,'y_scale': 0.863})
         self.sheet_title.write(1,2,kwargs['title_version'],self.title_title_content)
         self.sheet_title.write(1,4,kwargs['title_action'],self.title_title_content)
@@ -239,7 +237,7 @@ class WriteExcel:
         self.sheet_title.write(5,4,kwargs['title_error'],self.title_title_content)
         self.sheet_title.write(6,2,kwargs['title_skip'],self.title_title_content)
         self.sheet_title.write(6,4,kwargs['title_total_time'],self.title_title_content)
-        if isinstance(parameter,list):
+        if isinstance(parameter, list):
             print()
         else:
             raise TypeError('class_merge()函数方法应为["A","B","C","D"]')
@@ -260,7 +258,7 @@ class ExcelTitle(WriteExcel):
 
     def class_merge(self, parameter):
         """合并并传参；args：报告详情的表头，kwargs：PC配置中的表头/title_开头是报告里面的数据"""
-        args = '#', '用例级别', '用例名称', '测试地址', '场景', '用例执行时间', '状态', '错误原因', '截图', '备注',
+        args = '#', '用例级别', '用例名称', '测试地址', '场景', '用例执行时间', '状态', '错误原因', '截图', '作者','用例完成时间', '备注'
         kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
                   'title_title':'{}项目{}自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'总用时','title_member':'参与人员',
                   'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'跳过数','':'',
@@ -270,7 +268,7 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '失败', '辅导费333', '','苟富贵'],
+    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '失败', '辅导费333', 'D:/work_file/auto_script/auto_ui/img/test_createNull.png','苟富贵','2018-12-25 17:34:10',],
                 ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'c:/', '苟富贵'],]
 
     ).class_merge(['w','u'])

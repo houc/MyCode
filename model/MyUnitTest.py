@@ -55,7 +55,7 @@ class UnitTests(unittest.TestCase):
     case_count = 0
     logger = Logger()
     log = start_time = result = status = level = img = error = other =  None
-    first = second = None
+    first = second = author = None
 
     def setUp(self):
         """用例初始化"""
@@ -70,6 +70,7 @@ class UnitTests(unittest.TestCase):
         self.case_name = self._testMethodName
         self.case_remark = self._testMethodDoc
         self.urls = MyYaml(self.class_name).parameter_ui['url']
+        self.author = MyYaml(self.class_name).parameter_ui['author']
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         if os.path.exists(self.screenshots_path):
             os.remove(self.screenshots_path)
@@ -88,7 +89,8 @@ class UnitTests(unittest.TestCase):
                                                                                                                   self.error or self.setLog))
 
         asserts = MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
-                            self.status, self.error, self.urls, total_time, self.other, self.driver, self.screenshots_path)
+                            self.status, self.error, self.urls, total_time, self.other, self.driver, self.screenshots_path,
+                            self.author)
         asserts.asserts()
         if self.first and self.second is not None:
             self.assertEqual(self.first, self.second, msg=self.error)

@@ -6,7 +6,8 @@ from model.SQL import Mysql
 
 
 class MyAsserts():
-    def __init__(self, first, second, id, level, name, remark, status, reason, url, time, other, driver, screenshots_path):
+    def __init__(self, first, second, id, level, name, remark, status, reason, url, time,
+                 other, driver, screenshots_path, author):
         """初始化"""
         self.first = first
         self.second = second
@@ -21,6 +22,7 @@ class MyAsserts():
         self.other = other
         self.driver = driver
         self.screenshots_path = screenshots_path
+        self.author = author
         self.img_path = None
         self.sql = Mysql()
 
@@ -37,8 +39,7 @@ class MyAsserts():
                     second = self._strConversion(str(self.second))
                     self.reason = '%s != %s' % (first, second)
                     if os.path.exists(self.screenshots_path):
-                        self.img_path = str(self.screenshots_path).replace('\\','/')
-                        print(self.img_path)
+                        self.img_path = str(self.screenshots_path).replace('\\', '/')
             else:
                 if str(self.first) == str(self.second):
                     self.status = '成功'
@@ -64,7 +65,7 @@ class MyAsserts():
         """将用例插入数据库"""
         insert_time = time.strftime('%Y-%m-%d %H:%M:%S')
         self.sql.insert_data(self.id, self.level, self.name, self.remark, "{:.4f}s".format(self.time), status,
-                             self.url, insert_time, img_path, reason, self.other)
+                             self.url, insert_time, img_path, reason, self.author, self.other)
 
     def _strConversion(self,values):
         """字符串中包含单引号转义成``"""
@@ -76,5 +77,5 @@ class MyAsserts():
 
 
 if __name__ == '__main__':
-    T = MyAsserts(None,'','','','','','','','','','','','',)
+    T = MyAsserts(None,'','','','','','','','','','','','','')
     print(T)

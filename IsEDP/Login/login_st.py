@@ -8,7 +8,10 @@ from IsEDP.Login.public import InterfaceTest
 
 class LoginTest(UnitTests):
     def test_accountError(self):
-        """错误的用户名"""
+        """
+        错误的用户名:
+        1、输入错误的用户名
+        """
         try:
             self.level = 'P1'
             account = 'admin_admin'
@@ -20,7 +23,10 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_accountLong(self):
-        """用户名长度120字节"""
+        """
+        用户名长度120字节:
+        1、输入用户名长度120字节
+        """
         try:
             self.level = 'P1'
             account = 'admin_admin' * 12
@@ -32,7 +38,11 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_accountSpace(self):
-        """用户名为空格"""
+        """
+        用户名为空格:
+        1、输入正确的登录用户名密码；
+        2、登录用户名为空格
+        """
         try:
             self.level = 'P1'
             account = ' '
@@ -44,7 +54,11 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_accountNull(self):
-        """用户名为空"""
+        """
+        用户名为空:
+        1、输入正确的登录用户名密码；
+        2、登录用户名为空
+        """
         try:
             self.level = 'P1'
             account = ''
@@ -56,7 +70,11 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_accountSymbol(self):
-        """用户名为特殊符号"""
+        """
+        用户名为特殊符号:
+        1、输入正确的登录用户名密码；
+        2、登录用户名为特殊字符
+        """
         try:
             self.level = 'P1'
             account = '~！@#￥%……&*（）——+'
@@ -68,10 +86,14 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_accountBoundaryAfter(self):
-        """账号边界测试（后）"""
+        """
+        账号边界测试:
+        1、正确的登录用户名的密码；
+        2、输入的正确登录用户名删除后面第一位数
+        """
         try:
             self.level = 'P1'
-            account = 'admi'
+            account = ACCOUNT[:-1]
             elements = LoginModules(self.driver, self.url)
             elements.loginMsg(self.urls, account, PASSWORD)
             self.first = elements.loginButton()
@@ -80,10 +102,14 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_accountBoundaryFront(self):
-        """账号边界测试（前）"""
+        """
+        账号边界测试:
+        1、正确的登录用户名的密码；
+        2、输入的正确登录用户名删除前面第一位数
+        """
         try:
             self.level = 'P1'
-            account = 'dmin'
+            account = ACCOUNT[1:]
             elements = LoginModules(self.driver, self.url)
             elements.loginMsg(self.urls, account, PASSWORD)
             self.first = elements.loginButton()
@@ -92,31 +118,41 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_passwordBoundaryAfter(self):
-        """密码边界测试（后）"""
+        """
+        密码边界测试:
+        1、正确的登录用户名；
+        2、输入的正确密码删除前面第一位数
+        """
         try:
             self.level = 'P1'
-            password = '00000'
             elements = LoginModules(self.driver, self.url)
-            elements.loginMsg(self.urls, ACCOUNT, password)
+            elements.loginMsg(self.urls, ACCOUNT, PASSWORD[:-1])
             self.first = elements.loginButton()
             self.second = 'password error'
         except Exception as exc:
             self.error = str(exc)
 
     def test_passwordBoundaryFront(self):
-        """密码边界测试（前）"""
+        """
+        密码边界测试:
+        1、正确的登录用户名；
+        2、输入的正确密码删除前面第一位数
+        """
         try:
             self.level = 'P1'
-            password = '00000'
             elements = LoginModules(self.driver, self.url)
-            elements.loginMsg(self.urls, ACCOUNT, password)
+            elements.loginMsg(self.urls, ACCOUNT, PASSWORD[1:])
             self.first = elements.loginButton()
             self.second = 'password error'
         except Exception as exc:
             self.error = str(exc)
 
     def test_passwordSpace(self):
-        """密码为空格"""
+        """
+        密码为空格:
+        1、输入正确的用户名；
+        2、输入的密码为空格
+        """
         try:
             self.level = 'P1'
             password = ' '
@@ -128,7 +164,11 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_passwordNull(self):
-        """密码为空"""
+        """
+        密码为空:
+        1、输入正确的用户名；
+        2、不输入密码
+        """
         try:
             self.level = 'P1'
             password = ''
@@ -140,7 +180,11 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_passwordError(self):
-        """错误的密码"""
+        """
+        错误的密码:
+        1、正确的用户名；
+        2、输入的密码错误
+        """
         try:
             self.level = 'P1'
             password = '00000aa'
@@ -152,9 +196,13 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_passwordLong(self):
-        """密码字符120字节"""
+        """
+        密码:
+        1、正确的登录用户名；
+        2、密码长度字符在120个字节
+        """
         try:
-            self.level = 'P1'
+            self.level = 'P2'
             password = '000000' * 20
             elements = LoginModules(self.driver, self.url)
             elements.loginMsg(self.urls, ACCOUNT, password)
@@ -164,7 +212,10 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_loginLogo(self):
-        """检查登录界面logo是否存在"""
+        """
+        检查登录界面logo是否存在:
+        1、获取到logo的url进行请求并断言
+        """
         try:
             self.level = 'P3'
             self.urls = '/static/images/logo.bae1317.png'
@@ -175,7 +226,10 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_passwordForgetNull(self):
-        """忘记密码(空账号)"""
+        """
+        忘记密码:
+        1、未输入登录用户名
+        """
         try:
             self.level = 'P1'
             account = ''
@@ -187,7 +241,10 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_passwordForgetError(self):
-        """忘记密码(错误账号)"""
+        """
+        忘记密码:
+        1、错误的登录用户名，即在系统中不存在的登录用户名
+        """
         try:
             self.level = 'P1'
             account = '080808admin'
@@ -199,7 +256,10 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_passwordSuccessAccount(self):
-        """忘记密码（正确账号）"""
+        """
+        忘记密码:
+        1、登录用户名的手机号码正确
+        """
         try:
             self.level = 'P1'
             account = 'TESTS'
@@ -212,7 +272,32 @@ class LoginTest(UnitTests):
             self.error = str(exc)
 
     def test_errorPhone(self):
-        """忘记密码（错误的手机号）"""
+        """
+        忘记密码:
+        1、通过UI输入用户名；
+        2、通过接口将输入的用户名的手机号变更为错误的手机号码（10位数）；
+        3、在通过UI找回密码
+        """
+        try:
+            self.level = 'P1'
+            account = 'TESTS'
+            password = ''
+            modify = InterfaceTest()
+            modify.modify_error()
+            elements = LoginModules(self.driver, self.url)
+            elements.loginMsg(self.urls, account, password)
+            self.first = elements.forget(True)
+            self.second = '手机号格式错误'
+            modify.modify_correct()
+        except Exception as exc:
+            self.error = str(exc)
+
+    def test_asynchronousOperation(self):
+        """
+        异步操作:
+        1、先用UI将正确的账号密码输入到对应的输入框中，在通过接口将正确的账号删除掉；
+        2、在用UI执行登录
+        """
         try:
             self.level = 'P1'
             account = 'TESTS'

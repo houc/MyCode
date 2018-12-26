@@ -18,8 +18,8 @@ class Email:
         self.receiver = MyYaml('receiver').send_email
         self.title_name = MyYaml('project_name').excel_parameter
         self.title = MyYaml('science').excel_parameter
-        self.img_path = read_file('img','logo.png')
-        self.excel_path = read_file('report','ExcelReport.xlsx')
+        self.img_path = read_file('img', 'logo.png')
+        self.excel_path = read_file('report', 'ExcelReport.xlsx')
 
     def _send_title_msg(self):
         """发送表头信息"""
@@ -47,7 +47,7 @@ class Email:
         """发送带附件的内容"""
         att = MIMEText(open(self.excel_path, 'rb').read(), 'base64', 'utf-8')
         att["Content-Type"] = 'application/octet-stream'
-        att["Content-Disposition"] = 'attachment; filename="excel.xls"'
+        att["Content-Disposition"] = 'attachment; filename="TestReport.xls"'
         self.contents.attach(att)
         return self.contents
 
