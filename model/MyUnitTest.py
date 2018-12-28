@@ -8,6 +8,7 @@ from model.Yaml import MyYaml
 from model.SQL import Mysql
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
+from model.MyException import AssertParams, WaitTypeError, FUN_NAME
 from IsEDP.ModuleElement import LoginModule
 from config_path.path_file import read_file
 
@@ -19,7 +20,7 @@ def case_id():
 
 def setUpModule(currentModule):
     """模块初始化"""
-    global Driver, URL,SQL,Error
+    global Driver, URL, SQL, Error
     Browser = MyYaml('browser').config
     account = MyYaml('account').config
     password = MyYaml('password').config
@@ -28,7 +29,10 @@ def setUpModule(currentModule):
     SQL = Mysql()
     URL = MyYaml('EDP').base_url
     Error = None
-    Driver.implicitly_wait(wait)
+    if isinstance(wait, int):
+        Driver.implicitly_wait(wait)
+    else:
+        raise WaitTypeError(FUN_NAME())
     if 'login_st' not in currentModule:
         try:
             LoginModule(Driver, URL).success_login(account, password)
@@ -81,24 +85,18 @@ class UnitTests(unittest.TestCase):
         ExecutionTime = time.strftime('%Y-%m-%d %H:%M:%S')
         end_time = time.time()
         total_time = end_time - self.start_time
-        self.logger.logging_debug('ExecutionTime: {}; Path：{}.{}.{}; TotalUserTime: {:.4f}s; Message: {}'.format(ExecutionTime,
-                                                                                                                  self.module,
-                                                                                                                  self.class_name,
-                                                                                                                  self.case_name,
-                                                                                                                  total_time,
-                                                                                                                  self.error or self.setLog))
-
-        asserts = MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
-                            self.status, self.error, self.urls, total_time, self.other, self.driver, self.screenshots_path,
-                            self.author)
-        asserts.asserts()
+        self.logger.logging_debug('ExecutionTime: {}; Path: {}.{}.{}; TotalUserTime: {:.4f}s; Message: {}'.
+                                  format(ExecutionTime, self.module, self.class_name, self.case_name, total_time,
+                                         self.error or self.setLog))
+        MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark, self.status,
+                  self.error, self.urls, total_time, self.other, self.driver, self.screenshots_path,
+                  self.author).asserts()
         if self.first and self.second is not None:
             self.assertEqual(self.first, self.second, msg=self.error)
         elif self.error is not None:
             raise BaseException(self.error)
         else:
-            self.error = Exception
-            raise {"self.first 或者 self.second在用例中不存在"}
+            raise AssertParams(FUN_NAME(), 'self.first', 'self.second')
 
 
 

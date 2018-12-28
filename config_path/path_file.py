@@ -14,6 +14,5 @@ def module_file(dirName, lowDirName, dir='IsEDP'):
     return dir_file
 
 if __name__ == '__main__':
-    import sys
     print(read_file('img','1212.png'))
 

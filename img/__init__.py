@@ -2,6 +2,7 @@ import os
 import requests
 
 from model.Yaml import MyYaml
+from model.MyException import RequestsError, FUN_NAME
 from config_path.path_file import read_file
 from PIL import Image
 
@@ -9,7 +10,7 @@ def get_log():
     """获取项目logo"""
     url = MyYaml('EDP').base_url + MyYaml('logo_url').config
     log_path = read_file('img', 'logo.png')
-    r = requests.get(url)
+    r = requests.get(url, stream=True)
     with open(log_path, 'wb') as f:
         f.write(r.content)
         f.close()
@@ -19,15 +20,17 @@ def get_log():
         p = Image.new('RGBA', img.size, (255, 255, 255))
         p.paste(img, (0, 0, x, y), img)
         p.save(log_path)
+    else:
+        raise RequestsError(FUN_NAME(), '未能获取到logo')
 
 def current_file_path():
     """获取当前路径下所有的文件名，并删除以test_开头的png"""
-    _path = os.path.dirname(__file__)
-    paths = os.listdir(_path)
+    path = os.path.dirname(__file__)
+    paths = os.listdir(path)
     for i in paths:
-        if 'test_' in i:
-            _path = read_file('img', i)
-            os.remove(_path)
+        if '.png' in i:
+            path = read_file('img', i)
+            os.remove(path)
 
-get_log()
 current_file_path()
+get_log()

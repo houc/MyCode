@@ -22,8 +22,8 @@ class _ConfigParameter(object):
     def read_ini(self, node='session', child='token'):
         """读取配置文件中的信息"""
         self.config.read(self.path)
-        _ini = self.config.get(node, child)
-        return {"token": _ini}
+        ini = self.config.get(node, child)
+        return {"token": ini}
 
 
 class GetToken(_ConfigParameter):

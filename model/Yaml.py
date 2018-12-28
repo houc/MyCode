@@ -30,7 +30,7 @@ class MyYaml(object):
     @property
     def ModulePublic(self):
         """读取测试模块下的public全部参数"""
-        path = module_file(self.interface,'public.yaml')
+        path = module_file(self.interface, 'currency.yaml')
         f = open(path, encoding=self.encoding)
         data = yaml.load(f)
         f.close()

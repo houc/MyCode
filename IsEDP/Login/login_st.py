@@ -2,8 +2,7 @@ import unittest
 
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from IsEDP.ModuleElement import LoginModules
-from IsEDP.Login.public import ACCOUNT, PASSWORD
-from IsEDP.Login.public import InterfaceTest
+from IsEDP.Login.currency import ACCOUNT, PASSWORD, InterfaceTest
 
 
 class LoginTest(UnitTests):
@@ -303,14 +302,14 @@ class LoginTest(UnitTests):
             account = 'TESTS'
             password = ''
             modify = InterfaceTest()
-            modify.modify_error()
             elements = LoginModules(self.driver, self.url)
             elements.loginMsg(self.urls, account, password)
+            modify.del_user()
             self.first = elements.forget(True)
-            self.second = '手机号格式错误'
-            modify.modify_correct()
+            self.second = 'user {0!r} does not exist'.format(account)
         except Exception as exc:
             self.error = str(exc)
+
 
 if __name__ == '__main__':
     unittest.main()

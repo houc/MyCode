@@ -252,13 +252,21 @@ class WriteExcel:
 
 class ExcelTitle(WriteExcel):
     def __init__(self, *args):
-        """初始化，args：用例，kwargs：整个表单的sheet"""
+        """
+        初始化;
+        args：用例，
+        kwargs：整个表单的sheet
+        """
         kwargs = {'sheet_test_info': '测试报告详情', 'sheet_pc_config': '计算机配置详情', 'sheet_title': '测试报告总览'}
         super(ExcelTitle, self).__init__(*args, **kwargs)
 
     def class_merge(self, parameter):
-        """合并并传参；args：报告详情的表头，kwargs：PC配置中的表头/title_开头是报告里面的数据"""
-        args = '#', '用例级别', '用例名称', '测试地址', '场景', '用例执行时间', '状态', '错误原因', '截图', '作者','用例完成时间', '备注'
+        """
+        合并并传参->
+        args：报告详情的表头，
+        kwargs：PC配置中的表头/title_开头是报告里面的数据
+        """
+        args = '#', '用例级别', '用例名称', '测试地址', '场景', '用例执行时间', '状态', '错误原因', '截图', '负责人','用例完成时间', '备注'
         kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
                   'title_title':'{}项目{}自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'总用时','title_member':'参与人员',
                   'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'跳过数','':'',
@@ -268,7 +276,7 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '失败', '辅导费333', 'D:/work_file/auto_script/auto_ui/img/test_createNull.png','苟富贵','2018-12-25 17:34:10',],
-                ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', 'c:/', '苟富贵'],]
+    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ','苟富贵','2018-12-25 17:34:10',],
+                ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ', '苟富贵'],]
 
     ).class_merge(['w','u'])

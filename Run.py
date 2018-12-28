@@ -4,6 +4,7 @@ import os
 from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
 from model.SQL import Mysql
+from model.MyException import SQLDataError, FUN_NAME
 
 
 class RunAll(object):
@@ -38,7 +39,8 @@ class RunAll(object):
         sql_query = self.sql.query_data()
         if sql_query:
             self.excel(sql_query).class_merge([''])
-
+        else:
+            raise SQLDataError(FUN_NAME())
 
 
     def _send_email(self):

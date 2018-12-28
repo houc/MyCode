@@ -10,5 +10,7 @@ UI:
     author: hc
   MenuManager:
     url: /#/system/navbarManage
+    author: hc
   LoginTest:
     url: /#/login
+    author: hc

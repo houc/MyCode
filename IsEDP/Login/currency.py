@@ -8,7 +8,7 @@ from model.MyException import RequestsError, FUN_NAME
 ACCOUNT = MyYaml('account').config
 PASSWORD = MyYaml('password').config
 
-def read_yaml(keys, line):
+def read_public(keys, line):
     """读取public.yaml中的数据"""
     _data = []
     read = MyYaml('Login').ModulePublic[keys]
@@ -31,9 +31,9 @@ class InterfaceTest(_Login):
         role_id = self._get_role_id()
         if user_id:
             if role_id:
-                url = MyYaml('EDP_Interface').base_url + read_yaml('edit_user', 0)
+                url = MyYaml('EDP_Interface').base_url + read_public('edit_user', 0)
                 random_count = ''.join(str(i) for i in random.sample(range(1, 9), 8))
-                data = read_yaml('edit_user', 1)
+                data = read_public('edit_user', 1)
                 data['id'] = user_id[0]
                 data['roleId'] = role_id[0]
                 data['loginName'] = 'TESTS'
@@ -51,9 +51,9 @@ class InterfaceTest(_Login):
         role_id = self._get_role_id()
         if user_id:
             if role_id:
-                url = MyYaml('EDP_Interface').base_url + read_yaml('edit_user', 0)
+                url = MyYaml('EDP_Interface').base_url + read_public('edit_user', 0)
                 random_count = ''.join(str(i) for i in random.sample(range(1, 9), 8))
-                data = read_yaml('edit_user', 1)
+                data = read_public('edit_user', 1)
                 data['id'] = user_id[0]
                 data['roleId'] = role_id[0]
                 data['loginName'] = 'TESTS'
@@ -65,10 +65,23 @@ class InterfaceTest(_Login):
                 else:
                     raise RequestsError(FUN_NAME(), r.json())
 
+    def del_user(self):
+        """删除用户"""
+        user_id = self._get_user_id()
+        if user_id:
+            url = MyYaml('EDP_Interface').base_url + read_public('del_user', 0)
+            data = read_public('del_user', 1)
+            data['id'] = user_id[0]
+            r = requests.post(url, headers=self.token, data=data, stream=True)
+            if r.json().get('code') == 0:
+                return True
+            else:
+                raise RequestsError(FUN_NAME(), r.json())
+
     def _get_user_id(self):
         """获取用户id"""
         _data = []
-        url = MyYaml('EDP_Interface').base_url + read_yaml('get_user', 0)
+        url = MyYaml('EDP_Interface').base_url + read_public('get_user', 0)
         r = requests.get(url, headers=self.token)
         if r.json().get('code') == 0:
             model = r.json().get('model').get('data')
@@ -96,8 +109,8 @@ class InterfaceTest(_Login):
         role_id = self._get_role_id()
         if role_id:
             random_count = ''.join(str(i) for i in random.sample(range(1, 9), 8))
-            url = MyYaml('EDP_Interface').base_url + read_yaml('add_user', 0)
-            data = read_yaml('add_user', 1)
+            url = MyYaml('EDP_Interface').base_url + read_public('add_user', 0)
+            data = read_public('add_user', 1)
             data['roleId'] = role_id[0]
             data['loginName'] = 'TESTS'
             data['idCard'] = random_count + random_count + '57'
@@ -110,7 +123,7 @@ class InterfaceTest(_Login):
     def _get_role_id(self):
         """获取角色id"""
         _data = []
-        url = MyYaml('EDP_Interface').base_url + read_yaml('get_role', 0)
+        url = MyYaml('EDP_Interface').base_url + read_public('get_role', 0)
         r = requests.get(url, headers=self.token, stream=True)
         if r.json().get('code') == 0:
             role_id = r.json().get('model').get('data')
@@ -134,8 +147,8 @@ class InterfaceTest(_Login):
     def _add_role(self):
         """添加角色"""
         random_count = ''.join(str(i) for i in random.sample(range(1, 9), 4))
-        url = MyYaml('EDP_Interface').base_url + read_yaml('add_role', 0)
-        data = read_yaml('add_role', 1)
+        url = MyYaml('EDP_Interface').base_url + read_public('add_role', 0)
+        data = read_public('add_role', 1)
         data['name'] = '测试角色' + random_count
         r = requests.post(url, headers=self.token, data=data, stream=True)
         if r.json().get('code') == 0:
@@ -145,4 +158,4 @@ class InterfaceTest(_Login):
 
 
 if __name__ == '__main__':
-    InterfaceTest().modify_error()
+    InterfaceTest().del_user()
