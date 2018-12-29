@@ -1,10 +1,11 @@
 import os
 import time
+import asyncio
 
 from model.Yaml import MyYaml
 from IsEDP.InterfaceLogin import GetToken
 
-def check_token():
+async def check_token():
     """检查token是否失效"""
     invalid_time = MyYaml('token_invalid').config
     path = os.path.dirname(__file__)
@@ -17,5 +18,5 @@ def check_token():
     if result_time >= invalid_time:
         GetToken().login()
 
-check_token()
+asyncio.run(check_token())
 

@@ -1,10 +1,10 @@
 import inspect
 
-def _get_fun_name():
+def _get_function_name():
     """获取方法名称"""
     return inspect.stack()[1][3]
 
-FUN_NAME = _get_fun_name
+FUN_NAME = _get_function_name
 
 
 class RequestsError(Exception):
