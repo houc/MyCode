@@ -1,11 +1,14 @@
-import schedule,os
+import schedule
+import os
+
 from model.Yaml import MyYaml
+
 
 class Timing:
     def __init__(self):
         """初始化"""
         path = os.path.dirname(__file__)
-        self.RunPath = os.path.join(path,'Run.py').replace('\\','/')
+        self.RunPath = os.path.join(path, 'Run.py').replace('\\', '/')
         self.times = MyYaml('task_time').config
 
     def implement(self):
@@ -14,7 +17,7 @@ class Timing:
 
     def job(self):
         """执行时间"""
-        if isinstance(self.times,int):
+        if isinstance(self.times, int):
             schedule.every(self.times).minutes.do(self.implement)
         else:
             TypeError("task_time need int type")

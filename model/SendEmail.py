@@ -1,4 +1,5 @@
 import smtplib
+
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -17,8 +18,8 @@ class Email:
         self.receiver = MyYaml('receiver').send_email
         self.title_name = MyYaml('project_name').excel_parameter
         self.title = MyYaml('science').excel_parameter
-        self.img_path = read_file('img','logo.png')
-        self.excel_path = read_file('report','ExcelReport.xlsx')
+        self.img_path = read_file('img', 'logo.png')
+        self.excel_path = read_file('report', 'ExcelReport.xlsx')
 
     def _send_title_msg(self):
         """发送表头信息"""
@@ -37,7 +38,7 @@ class Email:
         <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\
         </i></b><img alt="" src="cid:image1"/>
         """.format('http://www.baidu.com')
-        content = MIMEText(link_url,'html')
+        content = MIMEText(link_url, 'html')
         self.contents.attach(content)
         self.contents.attach(img)
         return self.contents
@@ -46,7 +47,7 @@ class Email:
         """发送带附件的内容"""
         att = MIMEText(open(self.excel_path, 'rb').read(), 'base64', 'utf-8')
         att["Content-Type"] = 'application/octet-stream'
-        att["Content-Disposition"] = 'attachment; filename="excel.xls"'
+        att["Content-Disposition"] = 'attachment; filename="TestReport.xls"'
         self.contents.attach(att)
         return self.contents
 
@@ -55,8 +56,8 @@ class Email:
         try:
             content = self._send_title_msg()
             self.Mail.connect(self.server)
-            self.Mail.login(self.sender,self.sender_password)
-            self.Mail.sendmail(self.sender,self.receiver,content.as_string())
+            self.Mail.login(self.sender, self.sender_password)
+            self.Mail.sendmail(self.sender, self.receiver, content.as_string())
             self.Mail.quit()
             print('给{}邮件发送成功'.format(','.join(self.receiver)))
         except smtplib.SMTPException:

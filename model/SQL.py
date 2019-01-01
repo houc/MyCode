@@ -3,7 +3,7 @@ from model.Yaml import MyYaml
 
 
 class Mysql:
-    def __init__(self,coding = 'utf8'):
+    def __init__(self, switch=False, coding='utf8'):
         """初始化"""
         self.dbHost = MyYaml('address').sql
         self.dbUser = MyYaml('account').sql
@@ -18,7 +18,8 @@ class Mysql:
         self.dbUpdate = MyYaml('sql_update').sql
         self.decoding = coding
         self.DB = self._connect_sql()
-        # self._insert_title()
+        if switch:
+            self._insert_title()
 
     def _connect_sql(self):
         """连接数据库"""
@@ -28,8 +29,7 @@ class Mysql:
             password = self.dbPsw,
             database = self.dbBase,
             port = self.dbPort,
-            charset = self.decoding
-        )
+            charset = self.decoding)
         return db
 
     def _insert_title(self):
@@ -40,7 +40,7 @@ class Mysql:
 
     def query_data(self):
         """查询数据"""
-        save_data = list()
+        save_data = []
         DB = self.DB.cursor()
         DB.execute(self.dbQuery)
         data = DB.fetchall()
@@ -48,15 +48,14 @@ class Mysql:
             save_data.append(list(a))
         return save_data
 
-    def insert_data(self,id,level,name,remark,wait_time,status,url,img=None,error_reason=None,other=None):
+    def insert_data(self, id, level, name, remark, wait_time, status, url, insert_time, img=None,
+                    error_reason=None, author=None, other=None):
         """插入数据"""
-        try:
-            DB = self.DB.cursor()
-            data = self.dbInsert%(id,level,name,remark,img,status,url,error_reason,wait_time,other)
-            DB.execute(data)
-            self.DB.commit()
-        except Exception as e:
-            print('数据写入失败:{}'.format(e))
+        DB = self.DB.cursor()
+        data = self.dbInsert % (id, level, name, remark, img, status, url, error_reason, wait_time,
+                                author, insert_time, other)
+        DB.execute(data)
+        self.DB.commit()
 
     def delete_data(self):
         """清除所有数据"""
@@ -68,18 +67,15 @@ class Mysql:
         """关闭数据库"""
         return self.DB.close()
 
-    def update_sql(self,parameter,case_name):
+    def update_sql(self, parameter, case_name):
         """更新数据库部分字段"""
-        try:
-            DB = self.DB.cursor()
-            data = self.dbUpdate%(parameter,'case_name={0!r}'.format(case_name))
-            DB.execute(data)
-            self.DB.commit()
-        except Exception as e:
-            print('数据更新失败:{}'.format(e))
+        DB = self.DB.cursor()
+        data = self.dbUpdate % (parameter, 'case_name={0!r}'.format(case_name))
+        DB.execute(data)
+        self.DB.commit()
+
 
 if __name__ == '__main__':
-    M = Mysql()
-    # M.insert_data('1','name','remark','26.555484845454456455','失败','/auto_ui/model')
-    M.update_sql("case_status='成功1'",'test_accountAndEnglish')
-    # print(M.query_data())
+    M = Mysql(True)
+    k = M.query_data()
+    print(k)

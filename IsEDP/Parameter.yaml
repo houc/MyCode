@@ -1,0 +1,16 @@
+
+Interface:
+  Login:
+    url: /userLogin/login
+    data: {loginName:,password:}
+
+UI:
+  Login:
+    url: /#/login
+    author: hc
+  MenuManager:
+    url: /#/system/navbarManage
+    author: hc
+  LoginTest:
+    url: /#/login
+    author: hc

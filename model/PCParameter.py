@@ -67,9 +67,9 @@ def get_memory():
 def real_get_cpu_msg():
     """实时获取当前电脑cpu使用情况"""
     cpu_msg = {}
-    y = str(psutil.cpu_percent(interval = 1,percpu = True)).split(',')[2]
-    k = str(psutil.cpu_freq(percpu = True)).split('(')[1].split(')')[0].split('=')[1].split(',')[0]
-    p = str(psutil.cpu_times_percent(interval = 1,percpu = True))[1:-1].split('(')[1].split(')')[0]
+    y = str(psutil.cpu_percent(interval=1,percpu=True)).split(',')[2]
+    k = str(psutil.cpu_freq(percpu=True)).split('(')[1].split(')')[0].split('=')[1].split(',')[0]
+    p = str(psutil.cpu_times_percent(interval=1,percpu=True))[1:-1].split('(')[1].split(')')[0]
     cpu_msg['使用率'] = y + '%'
     cpu_msg['当前频率'] = k + 'Hz'
     cpu_msg['用户占用率'] = p.split('=')[1].split(',')[0] + '%'
@@ -101,7 +101,7 @@ def real_get_disk(path='./'):
 def real_get_network():
     """实时读取网卡使用情况"""
     network_msg = {}
-    y = str(psutil.net_io_counters(pernic = True)).split('(')[1].split(')')[0].split('=')
+    y = str(psutil.net_io_counters(pernic=True)).split('(')[1].split(')')[0].split('=')
     network_msg['最大上行'] = bytes_conversion(int(y[1].split(',')[0]))[:-12] + 'MB'
     network_msg['最大下行'] = bytes_conversion(int(y[2].split(',')[0]))[:-12] + 'MB'
     return network_msg
@@ -137,8 +137,8 @@ def merge_config_msg():
 
 def output_python_version():
     """输出python版本号"""
-    y = platform.python_version()
-    return y
+    version = platform.python_version()
+    return version
 
 if __name__ == '__main__':
     # print(merge_config_info())
