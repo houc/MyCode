@@ -14,4 +14,5 @@ def module_file(dir,dirName,lowDirName):
     return dir_file
 
 if __name__ == '__main__':
-    print(read_file('',''))
+    import sys
+

@@ -1,10 +1,16 @@
 from config_path.path_file import read_file
 from selenium import webdriver
 
-def browser():
+def browser(switch=False):
     """打开浏览器"""
     path = read_file('package','ChromeDriver.exe')
-    driver = webdriver.Chrome(path)
+    if switch is True:
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+    else:
+        options = None
+    driver = webdriver.Chrome(path,chrome_options = options)
+    driver.set_window_size(1920,1054)
     return driver
 
 if __name__ == '__main__':
