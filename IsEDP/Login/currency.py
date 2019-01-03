@@ -156,4 +156,4 @@ class InterfaceTest(_Login):
 
 
 if __name__ == '__main__':
-    InterfaceTest().del_user()
+    read_public('add_role', 0)

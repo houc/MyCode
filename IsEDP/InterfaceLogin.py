@@ -3,7 +3,9 @@ import requests
 
 from config_path.path_file import read_file
 from model.Yaml import MyYaml
-from model.MyException import RequestsError, FUN_NAME
+from model.MyException import RequestsError, FUN_NAME, LogErrors
+from model.Logs import Logger
+from model.TimeConversion import standard_time
 
 
 class _ConfigParameter(object):
@@ -33,6 +35,7 @@ class GetToken(_ConfigParameter):
         self.account = MyYaml('account').config
         self.password = MyYaml('password').config
         self.login_url = MyYaml(keys).parameter_interface['url']
+        self.log = Logger()
 
     def login(self):
         """请求登录并将token写入配置文件中"""
@@ -40,15 +43,23 @@ class GetToken(_ConfigParameter):
         data = {"loginName": self.account, "password": self.password}
         r = requests.post(url, data=data)
         if r.json().get('code') == 0:
-            tokens = r.json().get('model').get('tokens')
-            self.write_ini(tokens)
-            return self.read_tokens()
+            try:
+                tokens = r.json().get('model').get('tokens')
+            except Exception as exc:
+                log = LogErrors(FUN_NAME(), standard_time(), exc)
+                self.log.logging_debug(log)
+            else:
+                self.write_ini(tokens)
         else:
-            raise RequestsError(FUN_NAME(), r.json())
+            try:
+                raise RequestsError(FUN_NAME(), r.json())
+            except Exception as exc:
+                log = LogErrors(FUN_NAME(), standard_time(), exc)
+                self.log.logging_debug(log)
 
     def read_tokens(self):
         """读取token"""
         return self.read_ini()
 
 if __name__ == '__main__':
-    print(GetToken().login())
+    GetToken().login()

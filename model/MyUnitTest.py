@@ -1,5 +1,6 @@
 import unittest
 import warnings
+import traceback
 import time
 import os
 
@@ -9,6 +10,7 @@ from model.SQL import Mysql
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
 from model.MyException import AssertParams, WaitTypeError, FUN_NAME
+from model.TimeConversion import standard_time
 from IsEDP.ModuleElement import LoginModule
 from config_path.path_file import read_file
 
@@ -33,20 +35,18 @@ def setUpModule(currentModule):
         Driver.implicitly_wait(wait)
     else:
         raise WaitTypeError(FUN_NAME())
-    if 'login_st' not in currentModule:
-        try:
-            LoginModule(Driver, URL).success_login(account, password)
-        except Exception as exc:
-            Error = str(exc)
-            Driver.quit()
-            raise
-    else:
-        try:
-            LoginModule(Driver, URL).opens_if()
-        except Exception as exc:
-            Error = set(exc)
-            Driver.quit()
-            raise
+    # if 'login_st' not in currentModule:
+    #     try:
+    #         LoginModule(Driver, URL).success_login(account, password)
+    #     except Exception:
+    #         Error = traceback.format_exc()
+    #         Driver.quit()
+    # else:
+    #     try:
+    #         LoginModule(Driver, URL).opens_if()
+    #     except Exception:
+    #         Error = traceback.format_exc()
+    #         Driver.quit()
 
 def tearDownModule():
     """模块结束"""
@@ -75,30 +75,36 @@ class UnitTests(unittest.TestCase):
         self.case_remark = self._testMethodDoc
         self.urls = MyYaml(self.class_name).parameter_ui['url']
         self.author = MyYaml(self.class_name).parameter_ui['author']
+        self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         if os.path.exists(self.screenshots_path):
             os.remove(self.screenshots_path)
+        if self.setLog is not None:
+            self.logger.logging_debug('执行时间:{}, 用例:{}, 错误信息:{}'.
+                                      format(self.current_time, self.module, self.setLog))
 
     def tearDown(self):
         """用例结束"""
-        warnings.filterwarnings('ignore')
-        ExecutionTime = time.strftime('%Y-%m-%d %H:%M:%S')
         end_time = time.time()
         total_time = end_time - self.start_time
-        self.logger.logging_debug('ExecutionTime: {}; Path: {}.{}.{}; TotalUserTime: {:.4f}s; Message: {}'.
-                                  format(ExecutionTime, self.module, self.class_name, self.case_name, total_time,
-                                         self.error or self.setLog))
         MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark, self.status,
                   self.error, self.urls, total_time, self.other, self.driver, self.screenshots_path,
                   self.author).asserts()
         if self.first and self.second is not None:
             self.assertEqual(self.first, self.second, msg=self.error)
         elif self.error is not None:
-            raise BaseException(self.error)
+            try:
+                raise Exception(self.error)
+            finally:
+                self.logger.logging_debug('执行时间:{}, 用例:{}, 错误信息:{}'.
+                                          format(self.current_time, self.module, traceback.format_exc()))
         else:
-            raise AssertParams(FUN_NAME(), 'self.first', 'self.second')
-
-
+            try:
+                raise AssertParams(self.case_name, 'self.first', 'self.second')
+            finally:
+                self.logger.logging_debug('执行时间:{}, 用例:{}, 错误信息:{}'.
+                                          format(self.current_time, self.module, traceback.format_exc()))
+        warnings.filterwarnings('ignore')
 
 
 if __name__ == '__main__':

@@ -23,11 +23,11 @@ class LoginModule(DriverTransmit):
 
 
 class MenuModule(DriverTransmit):
-    def _menu(self,url):
+    def _menu(self, url):
         """菜单的公共方法"""
         self.driver.get(self.url + url)
 
-    def CreateMenuNull(self,url):
+    def CreateMenuNull(self, url):
         """创建菜单名称为空"""
         self._menu(url)
         self.xpathS('新增', 'text()')[0].click()

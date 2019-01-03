@@ -1,7 +1,7 @@
 import xlsxwriter
 
 from config_path.path_file import read_file
-from model.PCParameter import merge_config_info,merge_config_msg
+from model.PCParameter import merge_config_info, merge_config_msg
 from model.Yaml import MyYaml
 
 
