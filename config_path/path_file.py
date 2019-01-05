@@ -1,18 +1,33 @@
 import os
 
+def _up_file_name():
+    """获取当前文件上级文件名称"""
+    return os.path.realpath('.').split('\\')[-1]
 
-def read_file(dir, dirName):
+def _ups_file_name():
+    """获取当前文件上级的上级文件名称"""
+    return os.path.realpath('.').split('\\')[-2]
+
+def _current_path(path):
+    """当前路径"""
+    return os.path.realpath(path)
+
+UP_FILE_NAME = _up_file_name()
+UPS_FILE_NAME = _ups_file_name()
+PATH = _current_path
+
+def read_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME):
     """获取下级目录"""
     dir_file = os.path.dirname(os.path.dirname(__file__))
-    dir_file = dir_file + '/{}/{}'.format(dir, dirName)
+    dir_file = dir_file + '/{}/{}'.format(ups, up)
     return dir_file
 
-def module_file(dirName, lowDirName, dir='IsEDP'):
+def module_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME, project='IsEDP'):
     """功能模块路径"""
     dir_file = os.path.dirname(os.path.dirname(__file__))
-    dir_file = dir_file + '/{}/{}/{}'.format(dir, dirName, lowDirName)
+    dir_file = dir_file + '/{}/{}/{}'.format(project, ups, up)
     return dir_file
 
 if __name__ == '__main__':
-    print(read_file('img','1212.png'))
+    print(read_file())
 

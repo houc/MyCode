@@ -14,22 +14,36 @@ def current_module(path):
     return name
 
 class Skip(object):
-    def __init__(self, current_module=None):
+    def __init__(self, module=None):
         """初始化"""
         self.skip_module = MyYaml('skip_module').config
         if current_module is None:
             self.current_module = _current_module()
         else:
-            self.current_module = current_module
+            self.current_module = module
+
+    @property
+    def _is_skip(self):
+        """通过yaml中的数据对比当前模块名称是否相等"""
+        if isinstance(self.skip_module, dict):
+            module = list(self.skip_module.keys())
+            reason = list(self.skip_module.values())
+            for module in module:
+                if module == self.current_module:
+                    for reason in reason:
+                        return True, reason
+        else:
+            raise TypeError
 
     @property
     def is_skip(self):
-        """通过yaml中的数据对比当前模块名称是否相等"""
-        if isinstance(self.skip_module, list):
-            for module in self.skip_module:
-                if module == self.current_module:
-                    return True
-        else:
-            if self.skip_module == self.current_module:
-                return True
+        """用例执行"""
+        skip = self._is_skip[0]
+        return skip
+
+    @property
+    def is_reason(self):
+        """跳过原因"""
+        reason = self._is_skip[1]
+        return reason
 

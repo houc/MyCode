@@ -26,13 +26,15 @@ class AssertParams(_EXCEPTION):
     """
         当断言参数发生错误时，调用该方法，即可返回错误信息到控制台!
     """
-    def __init__(self, module_name, assert_first, assert_second):
+    def __init__(self, module_name, assert_first, assert_second, error):
         self.assert_first = assert_first
         self.assert_second = assert_second
         self.module_name = module_name
+        self.error = error
 
     def __str__(self):
-        return "模块:{!r},断言:{!r}不存在或者断言:{!r}不存在".format(self.module_name, self.assert_first, self.assert_second)
+        return "模块:{!r},断言:{!r}不存在或者断言:{!r}不存在,或者{!r}存在".\
+            format(self.module_name, self.assert_first, self.assert_second, self.error)
 
 
 class WaitTypeError(_EXCEPTION):
@@ -71,6 +73,20 @@ class LogErrors(_EXCEPTION):
     """
         记录错误日志到日志中!
     """
+    def __init__(self, module_name, current_time, reason):
+        self.module_name = module_name
+        self.reason = reason
+        self.time = current_time
+
+    def __str__(self):
+        return "执行时间:{},模块:{!r},错误原因:{}".format(self.time, self.module_name, self.reason)
+
+
+class CreateFileError(_EXCEPTION):
+    """
+        生成模板出现问题时，调用该异常!
+    """
+
     def __init__(self, module_name, current_time, reason):
         self.module_name = module_name
         self.reason = reason

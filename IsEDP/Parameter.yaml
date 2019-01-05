@@ -2,15 +2,30 @@
 Interface:
   Login:
     url: /userLogin/login
-    data: {loginName:,password:}
+    data: {loginName:, password:}
 
 UI:
-  Login:
-    url: /#/login
-    author: hc
-  MenuManager:
-    url: /#/system/navbarManage
-    author: hc
-  LoginTest:
-    url: /#/login
-    author: hc
+  Logins:
+    - module: user                                                # 模块
+      url: '/#/login'                                             # 当前模块url
+      public: {}                                                  # 模块下测试用例的公共方法
+      class:
+        - class_name: LoginTest                                   # 类名
+          class_doc: 测试登录类                                     # 类注释
+          case:
+            - case_name: test_accountError                          # 用例名
+              case_author: 王敏                                      # 自动化负责人
+              case_scene: '错误的用户名:
+                          1、输入错误的用户名'                           # 用例场景
+              case_elements: {}                                     # 用例中所有包含的元素名称
+              send_param: {}                                        # 用例中需要传参的值
+              case_level: P1                                        # 用例级别
+              case_assert: user {} not exist                       # 用例断言
+
+
+#  MenuManager:
+#    url: /#/system/navbarManage
+#    author: hc
+#  LoginTest:
+#    url: /#/login
+#    author: hc

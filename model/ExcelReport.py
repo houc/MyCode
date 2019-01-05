@@ -109,6 +109,8 @@ class WriteExcel:
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
                         self.sheet_test.insert_image(a, c + 2, b[-3], {'x_scale':0.0757, 'y_scale':0.099})
+                    elif 'None' == d:
+                        self.sheet_test.write(a, c, '...', self.test_content_style)
                     else:
                         self.sheet_test.set_row(a, 78)
                         self.sheet_test.write(a, c, str(d), self.test_content_style)
@@ -276,7 +278,7 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ','苟富贵','2018-12-25 17:34:10',],
+    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', '1.256s', '错误', '辅导费333', 'D:/work_file/auto_script/auto_ui/img/test_one.png','苟富贵','2018-12-25 17:34:10',],
                 ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ', '苟富贵'],]
 
     ).class_merge(['w','u'])

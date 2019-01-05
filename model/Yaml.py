@@ -48,7 +48,7 @@ class MyYaml(object):
     @property
     def parameter_ui(self):
         """读取公共参数UI信息"""
-        return self.Parameter['UI'][self.interface]
+        return self.Parameter['UI']
 
     @property
     def parameter_interface(self):
@@ -81,5 +81,5 @@ class MyYaml(object):
         return self.AllConfig['sql'][self.interface]
 
 if __name__ == '__main__':
-    t = MyYaml('Login').ModulePublic
+    t = MyYaml('Logins').parameter_ui
     print(t)

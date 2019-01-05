@@ -1,16 +1,16 @@
 import unittest
-import os
 
+from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
 from IsEDP.ModuleElement import LoginModules
 from IsEDP.Login.currency import ACCOUNT, PASSWORD, InterfaceTest
 
-_PATH = os.path.realpath(__file__)
-_SKIP = Skip(current_module(_PATH)).is_skip
+_SKIP = Skip(current_module(PATH(__file__))).is_skip
+_SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
 
 
-@unittest.skipIf(_SKIP, '登录认证更换，登录用例暂时弃用')
+@unittest.skipIf(_SKIP, _SKIP_REASON)
 class LoginTest(UnitTests):
     def test_accountError(self):
         """

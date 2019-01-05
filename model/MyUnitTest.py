@@ -1,6 +1,5 @@
 import unittest
 import warnings
-import traceback
 import time
 import os
 
@@ -9,7 +8,7 @@ from model.Yaml import MyYaml
 from model.SQL import Mysql
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
-from model.MyException import AssertParams, WaitTypeError, FUN_NAME
+from model.MyException import WaitTypeError, FUN_NAME
 from model.TimeConversion import standard_time
 from IsEDP.ModuleElement import LoginModule
 from config_path.path_file import read_file
@@ -73,39 +72,24 @@ class UnitTests(unittest.TestCase):
         self.class_name = self.__class__.__name__
         self.case_name = self._testMethodName
         self.case_remark = self._testMethodDoc
+        self.current_path = os.path.dirname(__file__)
         self.urls = MyYaml(self.class_name).parameter_ui['url']
         self.author = MyYaml(self.class_name).parameter_ui['author']
         self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
-        if os.path.exists(self.screenshots_path):
-            os.remove(self.screenshots_path)
         if self.setLog is not None:
-            self.logger.logging_debug('执行时间:{}, 用例:{}, 错误信息:{}'.
-                                      format(self.current_time, self.module, self.setLog))
+            self.logger.logging_debug('执行时间:{}, 错误路径:{}, 错误信息:{}'.
+                                      format(self.current_time, self.current_path, self.setLog))
 
     def tearDown(self):
         """用例结束"""
+        warnings.filterwarnings('ignore')
         end_time = time.time()
         total_time = end_time - self.start_time
-        MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark, self.status,
-                  self.error, self.urls, total_time, self.other, self.driver, self.screenshots_path,
-                  self.author).asserts()
-        if self.first and self.second is not None:
-            self.assertEqual(self.first, self.second, msg=self.error)
-        elif self.error is not None:
-            try:
-                raise Exception(self.error)
-            finally:
-                self.logger.logging_debug('执行时间:{}, 用例:{}, 错误信息:{}'.
-                                          format(self.current_time, self.module, traceback.format_exc()))
-        else:
-            try:
-                raise AssertParams(self.case_name, 'self.first', 'self.second')
-            finally:
-                self.logger.logging_debug('执行时间:{}, 用例:{}, 错误信息:{}'.
-                                          format(self.current_time, self.module, traceback.format_exc()))
-        warnings.filterwarnings('ignore')
-
+        error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
+        MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
+                                self.status, self.error, self.urls, total_time, self.other, self.driver,
+                                self.screenshots_path, self.author, self, error_path, self.logger).asserts()
 
 if __name__ == '__main__':
     unittest.main()

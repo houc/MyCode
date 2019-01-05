@@ -6,6 +6,7 @@ from model.Yaml import MyYaml
 from model.MyException import RequestsError, FUN_NAME, LogErrors
 from model.Logs import Logger
 from model.TimeConversion import standard_time
+from model.PrintColor import RED_BIG
 
 
 class _ConfigParameter(object):
@@ -39,23 +40,23 @@ class GetToken(_ConfigParameter):
 
     def login(self):
         """请求登录并将token写入配置文件中"""
-        url = MyYaml('EDP_Interface').base_url + self.login_url
-        data = {"loginName": self.account, "password": self.password}
-        r = requests.post(url, data=data)
-        if r.json().get('code') == 0:
-            try:
-                tokens = r.json().get('model').get('tokens')
-            except Exception as exc:
-                log = LogErrors(FUN_NAME(), standard_time(), exc)
-                self.log.logging_debug(log)
-            else:
-                self.write_ini(tokens)
-        else:
-            try:
-                raise RequestsError(FUN_NAME(), r.json())
-            except Exception as exc:
-                log = LogErrors(FUN_NAME(), standard_time(), exc)
-                self.log.logging_debug(log)
+        try:
+            url = MyYaml('EDP_Interface').base_url + self.login_url
+            data = {"loginName": self.account, "password": self.password}
+            r = requests.post(url, data=data)
+            if r.json().get('code') == 0:
+                try:
+                    tokens = r.json().get('model').get('tokens')
+                except Exception as exc:
+                    print(RED_BIG, RequestsError(FUN_NAME(), exc))
+                    log = LogErrors(FUN_NAME(), standard_time(), exc)
+                    self.log.logging_debug(log)
+                else:
+                    self.write_ini(tokens)
+        except Exception as exc:
+            print(RED_BIG, RequestsError(FUN_NAME(), exc))
+            log = LogErrors(FUN_NAME(), standard_time(), exc)
+            self.log.logging_debug(log)
 
     def read_tokens(self):
         """读取token"""

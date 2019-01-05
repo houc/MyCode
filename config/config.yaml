@@ -3,9 +3,10 @@ base_url:
 #  KQ: http://staging.ukuaiqi.com     # staging 14000000000 123456
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  EDP: https://testadmin.edpglobal.cn:8443  # 测试环境
-  EDP: https://devadmin.edpglobal.cn:8443  # 开发环境
-#  EDP_Interface: https://testapi.edpglobal.cn:8443  # 测试环境(接口)
-  EDP_Interface: https://devadmin.edpglobal.cn:8443  # 开发环境(接口)
+#  EDP: https://devadmin.edpglobal.cn:8443  # 开发环境
+  EDP: https://testapi.edpglobal.cn:8443  # 测试环境
+  EDP_Interface: https://testapi.edpglobal.cn:8443  # 测试环境(接口)
+#  EDP_Interface: https://devadmin.edpglobal.cn:8443  # 开发环境(接口)
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
 excel_parameter:
@@ -23,9 +24,9 @@ config:
   logo_url: /static/images/logo.bae1317.png  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
-  module_run: SysManager      # 指定需要运行的模块
+  module_run:       # 指定需要运行的模块
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
-  skip_module: [login_st,] # 跳过模块
+  skip_module: {login_st: 登录认证更换，登录用例暂时弃用, } # 跳过模块
 send_email:
   server: smtp.gouuse.cn
   port:

@@ -4,6 +4,7 @@ import random
 from model.Yaml import MyYaml
 from IsEDP.InterfaceLogin import GetToken
 from model.MyException import RequestsError, FUN_NAME
+from config_path.path_file import UP_FILE_NAME
 
 ACCOUNT = MyYaml('account').config
 PASSWORD = MyYaml('password').config
@@ -11,7 +12,7 @@ PASSWORD = MyYaml('password').config
 def read_public(keys, line):
     """读取public.yaml中的数据"""
     _data = []
-    read = MyYaml('Login').ModulePublic[keys]
+    read = MyYaml(UP_FILE_NAME).ModulePublic[keys]
     for i in read:
         _data.append(i['url'])
         _data.append(i['bar'])

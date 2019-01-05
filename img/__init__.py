@@ -43,5 +43,5 @@ async def current_file_path():
             path = read_file('img', i)
             os.remove(path)
 
-# loop = asyncio.get_event_loop()
-# loop.run_until_complete(asyncio.wait([current_file_path(), get_log()]))
+loop = asyncio.get_event_loop()
+loop.run_until_complete(asyncio.wait([current_file_path(), get_log()]))
