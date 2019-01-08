@@ -5,7 +5,7 @@ from IsEDP.Elements import DriverTransmit
 from selenium.webdriver.common.keys import Keys
 
 
-class LoginModule(DriverTransmit):
+class LoginTestModules(DriverTransmit):
     def success_login(self, account, password):
         """成功登陆"""
         asserts = self._asserts()

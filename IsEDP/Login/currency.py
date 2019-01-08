@@ -1,5 +1,6 @@
 import requests
 import random
+import os
 
 from model.Yaml import MyYaml
 from IsEDP.InterfaceLogin import GetToken
@@ -24,6 +25,7 @@ class _Login(GetToken):
         """初始化"""
         super(_Login, self).__init__()
         self.token = self.read_tokens()
+        self.path = os.path.realpath(__file__)
 
 class InterfaceTest(_Login):
     def modify_error(self):
@@ -44,7 +46,7 @@ class InterfaceTest(_Login):
                 if r.json().get('code') == 0:
                     return True
                 else:
-                    raise RequestsError(FUN_NAME(), r.json())
+                    raise RequestsError(FUN_NAME(self.path), r.json())
 
     def modify_correct(self):
         """修改成正确的用户名"""
@@ -64,7 +66,7 @@ class InterfaceTest(_Login):
                 if r.json().get('code') == 0:
                     return True
                 else:
-                    raise RequestsError(FUN_NAME(), r.json())
+                    raise RequestsError(FUN_NAME(self.path), r.json())
 
     def del_user(self):
         """删除用户"""
@@ -77,7 +79,7 @@ class InterfaceTest(_Login):
             if r.json().get('code') == 0:
                 return True
             else:
-                raise RequestsError(FUN_NAME(), r.json())
+                raise RequestsError(FUN_NAME(self.path), r.json())
 
     def _get_user_id(self):
         """获取用户id"""
@@ -101,7 +103,7 @@ class InterfaceTest(_Login):
                 if add_user:
                     return self._get_user_id()
         else:
-            raise RequestsError(FUN_NAME(), r.json())
+            raise RequestsError(FUN_NAME(self.path), r.json())
 
     def _add_user(self):
         """添加用户"""
@@ -117,7 +119,7 @@ class InterfaceTest(_Login):
             if r.json().get('code') == 0:
                 return True
             else:
-                raise RequestsError(FUN_NAME(), r.json())
+                raise RequestsError(FUN_NAME(self.path), r.json())
 
     def _get_role_id(self):
         """获取角色id"""
@@ -141,7 +143,7 @@ class InterfaceTest(_Login):
                 if add_role:
                     return self._get_role_id()
         else:
-            raise RequestsError(FUN_NAME(), r.json())
+            raise RequestsError(FUN_NAME(self.path), r.json())
 
     def _add_role(self):
         """添加角色"""
@@ -153,7 +155,7 @@ class InterfaceTest(_Login):
         if r.json().get('code') == 0:
             return True
         else:
-            raise RequestsError(FUN_NAME(), r.json())
+            raise RequestsError(FUN_NAME(self.path), r.json())
 
 
 if __name__ == '__main__':

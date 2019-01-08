@@ -1,8 +1,8 @@
 import inspect
 
-def _get_function_name():
+def _get_function_name(path):
     """获取方法名称"""
-    return inspect.stack()[1][3]
+    return path + '\\' + inspect.stack()[1][3]
 
 def _Exception():
     return Exception

@@ -1,5 +1,6 @@
 import configparser
 import requests
+import os
 
 from config_path.path_file import read_file
 from model.Yaml import MyYaml
@@ -37,6 +38,7 @@ class GetToken(_ConfigParameter):
         self.password = MyYaml('password').config
         self.login_url = MyYaml(keys).parameter_interface['url']
         self.log = Logger()
+        self.path = os.path.realpath(__file__)
 
     def login(self):
         """请求登录并将token写入配置文件中"""

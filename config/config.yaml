@@ -4,8 +4,8 @@ base_url:
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  EDP: https://testadmin.edpglobal.cn:8443  # 测试环境
 #  EDP: https://devadmin.edpglobal.cn:8443  # 开发环境
-  EDP: https://testapi.edpglobal.cn:8443  # 测试环境
-  EDP_Interface: https://testapi.edpglobal.cn:8443  # 测试环境(接口)
+  EDP: https://testapi.edpglobal.cn  # 测试环境
+  EDP_Interface: https://testapi.edpglobal.cn  # 测试环境(接口)
 #  EDP_Interface: https://devadmin.edpglobal.cn:8443  # 开发环境(接口)
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
