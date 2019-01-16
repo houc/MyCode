@@ -37,7 +37,7 @@ if __name__ == '__main__':
     # driver.quit()
     with driver:
         driver.get('https://testapi.edpglobal.cn:8443/#/system/navbarManage')
-        # j = driver.find_elements_by_xpath('//div[contains(@class,"side-nav left")]')[0].is_displayed()
+        j = driver.find_elements_by_xpath('//div[contains(@class,"side-nav left")]')[0].is_displayed()
         # js = "arguments[0].scrollIntoView();"
         # time.sleep(3)
         # driver.execute_script(js, j)

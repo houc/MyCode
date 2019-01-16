@@ -1,11 +1,11 @@
 UI:
-  Logins:
+  Login:
     - user:                                                       # 用例名字的py
       url: '/#/login'                                             # 当前模块url
       className: LoginTest                                        # 类名
       funName:                                                    # key值
       - test_accountErrorsa: {                                    # 用例名称
-        Author: [王敏, 后超],                                       # 自动化负责人
+        Author: [小花, 小王],                                       # 自动化负责人
         Level: P1,                                                # 用例级别
         Scene: '错误的用户名:
                 1、输入错误的用户名,
@@ -23,50 +23,3 @@ UI:
         SendParam: {},                                            # 用例中需要传参的值
         Asserts: 'user {} not exist',                              # 用例断言
         }
-  MenuManage:
-  - style_names:                                                       # 用例名字的py
-    url: '/#/logins'                                             # 当前模块url
-    className: MenuManageTest                                        # 类名
-    funName:                                                    # key值
-    - test_errors: {                                    # 用例名称
-      Author: [王敏, 后超],                                       # 自动化负责人
-      Level: P1,                                                # 用例级别
-      Scene: '错误的用户名:
-              1、输入错误的用户名,
-              2、点击确定并断言,
-              3、也许错误了吧',                                    # 用例场景
-      Elements: {},                                             # 用例中用到的元素
-      SendParam: {},                                            # 用例中需要传参的值
-      Asserts: '2',                             # 用例断言
-      }
-      test_name: {                                            # 类下面的下一条用例
-      Author: ,                                           # 自动化负责人
-      Level: P11,                                                # 用例级别
-      Scene: ,                                      # 用例场景
-      Elements: {},                                             # 用例中用到的元素
-      SendParam: {},                                            # 用例中需要传参的值
-      Asserts: '12',                              # 用例断言
-      }
-  - style_name:                                                       # 用例名字的py
-    url: '/#/logins'                                             # 当前模块url
-    className: MenuMaTest                                        # 类名
-    funName:                                                    # key值
-    - test_errors4: {                                    # 用例名称
-      Author: [王敏, 后超],                                       # 自动化负责人
-      Level: P1,                                                # 用例级别
-      Scene: '错误的用户名:
-              1、输入错误的用户名,
-              2、点击确定并断言,
-              3、也许错误了吧',                                    # 用例场景
-      Elements: {},                                             # 用例中用到的元素
-      SendParam: {},                                            # 用例中需要传参的值
-      Asserts: '2',                             # 用例断言
-      }
-      test_name_g: {                                            # 类下面的下一条用例
-      Author: ,                                           # 自动化负责人
-      Level: P11,                                                # 用例级别
-      Scene: ,                                      # 用例场景
-      Elements: {},                                             # 用例中用到的元素
-      SendParam: {},                                            # 用例中需要传参的值
-      Asserts: '12',                              # 用例断言
-      }

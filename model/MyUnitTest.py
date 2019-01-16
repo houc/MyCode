@@ -10,7 +10,7 @@ from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
 from model.MyException import WaitTypeError, FUN_NAME
 from model.TimeConversion import standard_time
-from IsEDP.ModuleElement import LoginModule
+from IsEDP.ModuleElement import LoginTestModules
 from config_path.path_file import read_file
 
 def case_id():
@@ -33,16 +33,16 @@ def setUpModule(currentModule):
     if isinstance(wait, int):
         Driver.implicitly_wait(wait)
     else:
-        raise WaitTypeError(FUN_NAME())
+        raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
     # if 'login_st' not in currentModule:
     #     try:
-    #         LoginModule(Driver, URL).success_login(account, password)
+    #         LoginTestModules(Driver, URL).success_login(account, password)
     #     except Exception:
     #         Error = traceback.format_exc()
     #         Driver.quit()
     # else:
     #     try:
-    #         LoginModule(Driver, URL).opens_if()
+    #         LoginTestModules(Driver, URL).opens_if()
     #     except Exception:
     #         Error = traceback.format_exc()
     #         Driver.quit()

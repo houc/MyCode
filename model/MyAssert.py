@@ -35,7 +35,7 @@ class MyAsserts():
         """判断first与second值是否相等"""
         try:
             if self.first and self.second is not None:
-                if type(self.first) is type(self.second):
+                if isinstance(self.first, type(self.second)):
                     if self.first == self.second:
                         self.status = '成功'
                         self._assert()
@@ -77,7 +77,7 @@ class MyAsserts():
                         raise BaseException(self.reason)
                     finally:
                         self._log(self.reason)
-                elif type(self.first) is type(self.second):
+                elif isinstance(self.first, type(self.second)):
                     if isinstance(self.first and self.second, bool):
                         if self.first == self.second:
                             self.status = '成功'
@@ -112,7 +112,8 @@ class MyAsserts():
         self.sql.insert_data(self.id, self.level, self.name, self.remark, "{:.4f}s".format(self.time), status,
                              self.url, insert_time, img_path, reason, self.author, self.other)
 
-    def _strConversion(self,values):
+    @staticmethod
+    def _strConversion(values):
         """字符串中包含单引号转义成``"""
         if isinstance(values, str):
             res = re.sub("'", "`", values)
