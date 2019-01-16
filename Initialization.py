@@ -76,8 +76,7 @@ class CreateModule(object):
                 for fun in values.get("funName"):
                     fun[name]["caseName"] = name
                     data.append(self._write_case(fun[name], switch=False))
-            else:
-                return data
+            return data
 
     def _case_py(self, modules, py, write_one=None):
         """检查用例是否存在,并创建用例中的方法"""
@@ -118,10 +117,9 @@ class CreateModule(object):
                 if test_name:
                     for c in test_name:
                         case_ya.append(c)
-            else:
-                assert_list = operator.eq(case_ya, case_py)
-                if not assert_list:
-                    return self._exists_write(case_py, case_ya, py_content, ya_content)
+            assert_list = operator.eq(case_ya, case_py)
+            if not assert_list:
+                return self._exists_write(case_py, case_ya, py_content, ya_content)
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
@@ -178,10 +176,9 @@ class CreateModule(object):
                 keys = list(value.keys())[0]
                 del value[keys]
                 case_info[keys] = value
-            else:
-                keys = list(case_info.keys())
-                for module in keys:
-                    self._case_py(modules, module, case_info)
+            keys = list(case_info.keys())
+            for module in keys:
+                self._case_py(modules, module, case_info)
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
