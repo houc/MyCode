@@ -4,7 +4,7 @@ from config_path.path_file import read_file, module_file
 
 
 class MyYaml(object):
-    def __init__(self,interface='EDP', encoding='utf-8'):
+    def __init__(self,interface='SCRM', encoding='utf-8'):
         """初始化参数"""
         self.interface = interface
         self.encoding = encoding
@@ -21,7 +21,7 @@ class MyYaml(object):
     @property
     def AllPublic(self):
         """读取public.yaml中的全部参数"""
-        path = read_file('IsEDP', 'Parameter.yaml')
+        path = read_file('SCRM', 'common.yaml')
         f = open(path, encoding=self.encoding)
         data = yaml.load(f)
         f.close()
@@ -39,7 +39,7 @@ class MyYaml(object):
     @property
     def Parameter(self):
         """Parameter.yaml中的全部参数"""
-        path = read_file('IsEDP', 'Parameter.yaml')
+        path = read_file('SCRM', 'common.yaml')
         f = open(path, encoding=self.encoding)
         data = yaml.load(f)
         f.close()
@@ -48,7 +48,7 @@ class MyYaml(object):
     @property
     def parameter_ui(self):
         """读取公共参数UI信息"""
-        return self.Parameter['UI']
+        return self.Parameter['SCRM']
 
     @property
     def parameter_interface(self):

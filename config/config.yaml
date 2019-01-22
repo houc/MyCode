@@ -10,9 +10,10 @@ base_url:
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
 excel_parameter:
-  project_name: IsEDP
+  project_name: SCRM
   science: 测试环境
 config:
+  token_keys: Authorization
   level: 10
   account: 'admin'         # 正确的账号
   password: '000000'    # 正确的密码

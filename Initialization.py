@@ -1,6 +1,7 @@
 import os
 import re
 import operator
+import shutil
 
 from model.Yaml import MyYaml
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME
@@ -13,9 +14,9 @@ from config_path.path_file import read_file, module_file, PATH
 
 class CreateModule(object):
     """
-    该模块主要用于生成测试用例
+    该模块主要用于生成测试用例，当ya文件中增加一条用例后，会自动增加载对应的模块下！
 
-    Args: 根据Parameter.yaml中的用例，执行该模块，则会自动依Parameter.yaml生成到对应的模块中
+    Args: 根据Parameter.ya中的用例，执行该模块，则会自动依Parameter.ya生成到对应的模块中
     """
     def __init__(self):
         """初始化"""
@@ -24,13 +25,13 @@ class CreateModule(object):
         self.time = standard_time()
         self.path = os.path.realpath(__file__)
         self.file_path = MyYaml('project_name').excel_parameter
-        self.paths = 'IsEDP'
+        self.paths = self.file_path
         self.init = '__init__.py'
         self.currency_py = 'currency.py'
         self.currency_ya = 'currency.yaml'
         self.encoding = 'utf-8'
 
-    def _module(self, modules):
+    def _module(self, modules: classmethod):
         """模块是否存在"""
         try:
             path = read_file(self.paths, modules)
@@ -42,7 +43,7 @@ class CreateModule(object):
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _other_py(self, modules):
+    def _other_py(self, modules: classmethod):
         """模块存在后检查__init__.py, currency.py, currency.ya是否存在,当currency.py存在时加入默认数据"""
         module = self._module(modules)
         global path
@@ -62,7 +63,7 @@ class CreateModule(object):
             except Exception as exc:
                 self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _handle_case_data(self, values):
+    def _handle_case_data(self, values: dict):
         """处理用例下的数据"""
         case_info = {}
         data = []
@@ -78,7 +79,7 @@ class CreateModule(object):
                     data.append(self._write_case(fun[name], switch=False))
             return data
 
-    def _case_py(self, modules, py, write_one=None):
+    def _case_py(self, modules: classmethod, py: str, write_one=None):
         """检查用例是否存在,并创建用例中的方法"""
         try:
             case_conversion = py + '.py' if '_st' in py else py + '_st.py'
@@ -105,7 +106,7 @@ class CreateModule(object):
         print(RED_BIG, content)
         return False
 
-    def _conversion_exists(self, py_content, ya_content):
+    def _conversion_exists(self, py_content: str, ya_content: list):
         """当用例名称相同时，处理数据判断"""
         case_py = []
         case_ya = []
@@ -123,7 +124,7 @@ class CreateModule(object):
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _exists_write(self, case_py, case_ya, py_content, ya_content):
+    def _exists_write(self, case_py: list, case_ya: list, py_content: str, ya_content: list):
         """处理py中存在的数据进行合并，以py中的数据为基础进行合并至ya中的数据"""
         try:
             case_data = []
@@ -131,33 +132,27 @@ class CreateModule(object):
             if not_eq:
                 case_data.append(py_content)
                 case_data.extend(ya_content[1:])
-                return self._remove_duplicate(case_data)
+                return self._remove_duplicate(case_data, not_eq)
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _remove_duplicate(self, data):
+    def _remove_duplicate(self, data: list, defines: list):
         """移除重复数据"""
-        first_part_storage = []
-        defines_case = []
-        is_data = [storage.splitlines() for storage in data]
-        class_name = [name for name in is_data[0] if name.startswith('class ')][0]
-        for first in is_data[0]:
-            if class_name in first:
-                first_part_storage.append(class_name)
-                break
+        ya_content = []
+        content = [storage.splitlines() for storage in data]   # content[0] py中的内容，content[↑]ya中的内容
+        for ya in range(len(content)):
+            if ya == 0:
+                for py in content[ya]:
+                    ya_content.append(py)
             else:
-                first_part_storage.append(first)
-        [is_data[0].remove(ines) for ines in first_part_storage]
-        for second in range(len(is_data)):
-            if second == 0:
-                pass
-            else:
-                defines_case.extend(is_data[second])
-        first_part_storage.extend(defines_case)
-        return self._line_feed(first_part_storage)
+                for fun in defines:
+                    if fun in str(content[ya]):
+                        for text in content[ya]:
+                            ya_content.append(text)
+        return self._line_feed(ya_content)
 
     @staticmethod
-    def _line_feed(data):
+    def _line_feed(data: list):
         """处理换行的问题"""
         is_text = []
         for text in data:
@@ -167,7 +162,7 @@ class CreateModule(object):
                 is_text.append(text + '\n')
         return is_text
 
-    def _case_data_handle(self, modules):
+    def _case_data_handle(self, modules: classmethod):
         """用例中的数据处理"""
         case_info = {}
         module = self._module(modules)
@@ -182,7 +177,7 @@ class CreateModule(object):
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _write_case(self, values, switch=True):
+    def _write_case(self, values: dict, switch=True):
         """写入测试用例"""
         try:
             global elements, case_from
@@ -193,14 +188,16 @@ class CreateModule(object):
                 return case_execute
             else:
                 case_name = values.get("caseName")
-                case_doc = values.get("Scene")
-                case_level = values.get("Level")
-                case_author = values.get("Author")
-                case_assert = values.get("Asserts")
+                case_doc = values.get("scene")
+                case_level = values.get("level")
+                case_author = values.get("author")
+                case_assert = values.get("asserts")
                 if 'test_' in case_name:
                     elements = self._spilt(case_name, 'case_name')
                 if case_doc is None:
                     case_doc = 'None'
+                if case_assert is None:
+                    case_assert = 'None'
                 else:
                     if ' ' in case_doc:
                         case_doc = self._spilt(case_doc, 'case_doc')
@@ -212,7 +209,7 @@ class CreateModule(object):
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
     @staticmethod
-    def _spilt(values, switch):
+    def _spilt(values: str, switch: str):
         """替换和切片"""
         if switch == 'case_name':
             is_split = str(values).split('_')[1]
@@ -257,7 +254,7 @@ class CreateModule(object):
         package = self._get_package()
         [package.remove(modules) for modules in module if modules in package]
         path = [PATH('.') + '/' + self.file_path + '/' + package_path for package_path in package]
-        [os.remove(remove) for remove in path]
+        [shutil.rmtree(remove) for remove in path]  # 不管目录是否为空，都将目录删除
 
 
 if __name__ == '__main__':

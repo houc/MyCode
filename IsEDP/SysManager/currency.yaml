@@ -1,3 +1,0 @@
-get_role:
-  - url: /roles/list
-    bar: {}

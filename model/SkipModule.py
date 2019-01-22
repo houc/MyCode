@@ -24,7 +24,7 @@ class Skip(object):
 
     @property
     def _is_skip(self):
-        """通过yaml中的数据对比当前模块名称是否相等"""
+        """通过.ya中的数据对比当前模块名称是否相等"""
         if isinstance(self.skip_module, dict):
             module = list(self.skip_module.keys())
             reason = list(self.skip_module.values())

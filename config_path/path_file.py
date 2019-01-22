@@ -22,11 +22,15 @@ def read_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME):
     dir_file = dir_file + '/{}/{}'.format(ups, up)
     return dir_file
 
-def module_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME, project='IsEDP'):
+def module_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME, project='SCRM'):
     """功能模块路径"""
     dir_file = os.path.dirname(os.path.dirname(__file__))
     dir_file = dir_file + '/{}/{}/{}'.format(project, ups, up)
     return dir_file
+
+def one_level_catalog(catalog):
+    """auto_ui目录下"""
+    return os.path.realpath('..' + '/' + catalog)
 
 if __name__ == '__main__':
     print(read_file())

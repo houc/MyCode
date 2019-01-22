@@ -1,0 +1,26 @@
+SCRM:
+  login:
+    - ValidateLogon:
+      url: ''
+      className: TestLogin
+      funName:
+      - test_accountError: {
+        author: [],
+        level: 低,
+        scene: '验证错误的用户名登录:
+                1、用户名输入框输入{}，
+                2、密码输入框输入{}，
+                3、点击【登录】',
+        elment: {},
+        send_param: {},
+        asserts: 'True',
+      }
+        test_accountLong: {
+        author: [],
+        level: 高,
+        scene: ,
+        elment: {},
+        send_param: {},
+        asserts: '',
+        }
+

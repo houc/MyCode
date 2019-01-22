@@ -19,7 +19,7 @@ CASE_CONTENT = '''import unittest
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
-from IsEDP.ModuleElement import {}
+from SCRM.ModuleElement import {}
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
