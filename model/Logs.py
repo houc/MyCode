@@ -34,15 +34,15 @@ class Logger:
         else:
             TypeError('日志最长保存天数格式错误，它需要是一个int型')
 
-    def logging_error(self, content):
+    def logging_error(self, content: str):
         """错误日志"""
         self.Logging.error(content)
 
-    def logging_debug(self, content):
+    def logging_debug(self, content: str):
         """debug日志"""
         self.Logging.debug(content)
 
-    def logging_info(self, content):
+    def logging_info(self, content: str):
         """日志详情"""
         self.Logging.info(content)
 

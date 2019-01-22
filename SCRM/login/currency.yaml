@@ -1,0 +1,3 @@
+get_customer:
+  - url: /user/login
+    bar: {}

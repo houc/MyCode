@@ -113,7 +113,7 @@ class MyAsserts():
                              self.url, insert_time, img_path, reason, self.author, self.other)
 
     @staticmethod
-    def _strConversion(values):
+    def _strConversion(values: str):
         """字符串中包含单引号转义成``"""
         if isinstance(values, str):
             res = re.sub("'", "`", values)

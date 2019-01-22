@@ -14,9 +14,7 @@ from config_path.path_file import read_file, module_file, PATH
 
 class CreateModule(object):
     """
-    该模块主要用于生成测试用例，当ya文件中增加一条用例后，会自动增加载对应的模块下！
-
-    Args: 根据Parameter.ya中的用例，执行该模块，则会自动依Parameter.ya生成到对应的模块中
+    该模块主要用于生成测试用例，当ya文件中增加一条用例后，会自动增加载到对应的*_st.py模块下，并且不会去覆盖原*_st.py下的内容！
     """
     def __init__(self):
         """初始化"""

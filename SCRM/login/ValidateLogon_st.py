@@ -27,8 +27,6 @@ class TestLogin(UnitTests):
         except Exception as exc:
             self.error = str(exc)
             
-
-            
     def test_accountLong(self):
         """
         None
@@ -42,3 +40,4 @@ class TestLogin(UnitTests):
         except Exception as exc:
             self.error = str(exc)
             
+

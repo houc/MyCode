@@ -40,7 +40,7 @@ class RunAll(object):
         if sql_query:
             self.excel(sql_query).class_merge([''])
         else:
-            raise SQLDataError(FUN_NAME())
+            raise SQLDataError(FUN_NAME(self.current_path))
 
 
     def _send_email(self):
