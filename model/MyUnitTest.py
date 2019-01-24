@@ -1,4 +1,5 @@
 import unittest
+import traceback
 import warnings
 import time
 import os
@@ -10,8 +11,8 @@ from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
 from model.MyException import WaitTypeError, FUN_NAME
 from model.TimeConversion import standard_time
-from IsEDP.ModuleElement import LoginTestModules
 from config_path.path_file import read_file
+from SCRM.public import LoginTestModules
 
 def case_id():
     """用例计算"""
@@ -21,31 +22,34 @@ def case_id():
 
 def setUpModule(currentModule):
     """模块初始化"""
-    global Driver, URL, SQL, Error
+    global Driver, URL, SQL, Error, LOG, wait
+    LOG = Logger()
     Browser = MyYaml('browser').config
     account = MyYaml('account').config
     password = MyYaml('password').config
     wait = MyYaml('implicitly_wait').config
     Driver = browser(Browser)
     SQL = Mysql()
-    URL = MyYaml('EDP').base_url
+    URL = MyYaml('SCRM').base_url
     Error = None
     if isinstance(wait, int):
         Driver.implicitly_wait(wait)
     else:
         raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
-    # if 'login_st' not in currentModule:
-    #     try:
-    #         LoginTestModules(Driver, URL).success_login(account, password)
-    #     except Exception:
-    #         Error = traceback.format_exc()
-    #         Driver.quit()
-    # else:
-    #     try:
-    #         LoginTestModules(Driver, URL).opens_if()
-    #     except Exception:
-    #         Error = traceback.format_exc()
-    #         Driver.quit()
+    if 'ValidateLogon_st' not in currentModule:
+        try:
+            LoginTestModules(Driver, URL).success_login(account, password)
+        except Exception:
+            Error = traceback.format_exc()
+            LOG.logging_debug(Error)
+            Driver.quit()
+    else:
+        try:
+            LoginTestModules(Driver, URL).opens_if()
+        except Exception:
+            Error = traceback.format_exc()
+            LOG.logging_debug(Error)
+            Driver.quit()
 
 def tearDownModule():
     """模块结束"""
@@ -56,12 +60,12 @@ def tearDownModule():
 class UnitTests(unittest.TestCase):
     global case_count
     case_count = 0
-    logger = Logger()
     log = start_time = result = status = level = img = error = other =  None
     first = second = author = None
 
     def setUp(self):
         """用例初始化"""
+        Driver.implicitly_wait(wait)
         self.driver = Driver
         self.url = URL
         self.sql = SQL
@@ -78,7 +82,7 @@ class UnitTests(unittest.TestCase):
         self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         if self.setLog is not None:
-            self.logger.logging_debug('执行时间:{}, 错误路径:{}, 错误信息:{}'.
+            LOG.logging_debug('执行时间:{}, 错误路径:{}, 错误信息:{}'.
                                       format(self.current_time, self.current_path, self.setLog))
 
     def tearDown(self):
@@ -89,7 +93,7 @@ class UnitTests(unittest.TestCase):
         error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
         MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
                                 self.status, self.error, self.urls, total_time, self.other, self.driver,
-                                self.screenshots_path, self.author, self, error_path, self.logger).asserts()
+                                self.screenshots_path, self.author, self, error_path, LOG).asserts()
 
 if __name__ == '__main__':
     unittest.main()

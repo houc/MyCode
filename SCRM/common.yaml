@@ -1,26 +1,30 @@
 SCRM:
   login:
     - ValidateLogon:
-      url: ''
+      url: /user/login
       className: TestLogin
       funName:
       - test_accountError: {
-        author: [],
+        url: ,
+        author: 后超,
         level: 低,
         scene: '验证错误的用户名登录:
-                1、用户名输入框输入{}，
-                2、密码输入框输入{}，
+                1、用户名输入框输入:15928564313
+                2、密码输入框输入:Li123456
                 3、点击【登录】',
-        elment: {},
-        send_param: {},
-        asserts: 'True',
+        element: ['XPATH:客户管理*/../div[1]!!send#15928564313', 'CSS:po[name="5"]','XPATH:对对对*/..', 'XPATH:下火*/../div[3]!!click', ],
+        get_asserts: ['小同学*text'],
+        asserts: '0'
       }
         test_accountLong: {
-        author: [],
+        url: ,
+        author: 后超,
         level: 高,
-        scene: ,
-        elment: {},
-        send_param: {},
-        asserts: '',
+        scene: '测试:
+                1、这是一段代码
+                2、点击【None】',
+        element: ['CSS:input[class="wd"]!!click', ],
+        get_asserts: [],
+        asserts: [],
         }
 

@@ -38,12 +38,14 @@ class Skip(object):
     @property
     def is_skip(self):
         """用例执行"""
-        skip = self._is_skip[0]
-        return skip
+        skip = self._is_skip
+        if skip:
+            return skip[0]
 
     @property
     def is_reason(self):
         """跳过原因"""
-        reason = self._is_skip[1]
-        return reason
+        reason = self._is_skip
+        if reason:
+            return reason[1]
 

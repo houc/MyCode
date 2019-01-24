@@ -16,7 +16,8 @@ class ConfigParameter(object):
         """将信息写入配置文件"""
         self.config.add_section(node)
         self.config.set(node, self.keys, content)
-        self.config.write(open(self.path, 'wt', encoding=self.encoding))
+        with open(self.path, 'wt', encoding=self.encoding) as f:
+            self.config.write(f)
 
     def read_ini(self, node='session'):
         """读取配置文件中的信息"""

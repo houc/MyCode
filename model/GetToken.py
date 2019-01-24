@@ -24,7 +24,7 @@ class BrowserToken(object):
         """处理token样式后并将token写入到config.ini中"""
         if token is not None:
             conversion_token = json.loads(token)["val"]
-            self.write_ini(child="Authorization", content=conversion_token)
+            self.write_ini(content=conversion_token)
         else:
             print(RED_BIG, "TOKEN未能在浏览器中获取成功，TOKEN写入失败")
 
