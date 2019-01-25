@@ -37,23 +37,9 @@ class MyYaml(object):
         return data
 
     @property
-    def Parameter(self):
-        """Parameter.yaml中的全部参数"""
-        path = read_file('SCRM', 'common.yaml')
-        f = open(path, encoding=self.encoding)
-        data = yaml.load(f)
-        f.close()
-        return data
-
-    @property
     def parameter_ui(self):
-        """读取公共参数UI信息"""
-        return self.Parameter['SCRM']
-
-    @property
-    def parameter_interface(self):
-        """读取公共参数接口信息"""
-        return self.Parameter['Interface'][self.interface]
+        """获取yaml中的模块"""
+        return self.AllPublic['SCRM']
 
     @property
     def base_url(self):
@@ -81,5 +67,5 @@ class MyYaml(object):
         return self.AllConfig['sql'][self.interface]
 
 if __name__ == '__main__':
-    t = MyYaml('Logins').parameter_ui
+    t = MyYaml('test_accountError').url
     print(t)

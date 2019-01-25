@@ -34,9 +34,10 @@ def setUpModule(currentModule):
     Error = None
     if isinstance(wait, int):
         Driver.implicitly_wait(wait)
+        Driver.set_page_load_timeout(wait + wait)
     else:
         raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
-    if 'ValidateLogon_st' not in currentModule:
+    if 'ValidateLogin_st' not in currentModule:
         try:
             LoginTestModules(Driver, URL).success_login(account, password)
         except Exception:
@@ -60,12 +61,11 @@ def tearDownModule():
 class UnitTests(unittest.TestCase):
     global case_count
     case_count = 0
-    log = start_time = result = status = level = img = error = other =  None
-    first = second = author = None
+    log = start_time = result = status = level = img = error  =  None
+    first = second = author = urls = None
 
     def setUp(self):
         """用例初始化"""
-        Driver.implicitly_wait(wait)
         self.driver = Driver
         self.url = URL
         self.sql = SQL
@@ -77,8 +77,8 @@ class UnitTests(unittest.TestCase):
         self.case_name = self._testMethodName
         self.case_remark = self._testMethodDoc
         self.current_path = os.path.dirname(__file__)
-        self.urls = MyYaml(self.class_name).parameter_ui['url']
-        self.author = MyYaml(self.class_name).parameter_ui['author']
+        self.driver.implicitly_wait(wait)
+        self.driver.set_page_load_timeout(wait + wait)
         self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         if self.setLog is not None:
@@ -92,8 +92,8 @@ class UnitTests(unittest.TestCase):
         total_time = end_time - self.start_time
         error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
         MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
-                                self.status, self.error, self.urls, total_time, self.other, self.driver,
-                                self.screenshots_path, self.author, self, error_path, LOG).asserts()
+                                self.status, self.error, self.urls, total_time, self.driver, self.class_name,
+                                self.screenshots_path, self.author, self, error_path, LOG, self.second).asserts()
 
 if __name__ == '__main__':
     unittest.main()

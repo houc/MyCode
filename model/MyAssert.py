@@ -9,7 +9,7 @@ from model.MyException import AssertParams
 
 class MyAsserts():
     def __init__(self, first, second, id, level, name, remark, status, reason, url, time,
-                 other, driver, screenshots_path, author, myself, error_path, log):
+                 driver, module, screenshots_path, author, myself, error_path, log, results_value,):
         """初始化"""
         self.first = first
         self.second = second
@@ -21,13 +21,14 @@ class MyAsserts():
         self.reason = reason
         self.url = url
         self.time = time
-        self.other = other
         self.driver = driver
         self.screenshots_path = screenshots_path
         self.author = author
         self.myself = myself
         self.log = log
         self.error_path = error_path
+        self.results_value = results_value
+        self.module = module
         self.img_path = None
         self.sql = Mysql()
 
@@ -109,8 +110,9 @@ class MyAsserts():
     def _insert_sql(self, status, img_path, reason):
         """将用例插入数据库"""
         insert_time = standard_time()
-        self.sql.insert_data(self.id, self.level, self.name, self.remark, "{:.4f}s".format(self.time), status,
-                             self.url, insert_time, img_path, reason, self.author, self.other)
+        self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, "{:.4f}s".format(self.time),
+                             status,self.url, insert_time, img_path, reason, self.author,
+                             results_value=self.results_value)
 
     @staticmethod
     def _strConversion(values: str):

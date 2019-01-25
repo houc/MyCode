@@ -5,6 +5,7 @@ class ElementLocation(object):
     """
     浏览器元素定位封装类
     """
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -47,6 +48,18 @@ class ElementLocation(object):
         elif type_event == "display":
             value = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).is_displayed()
             return value
+
+class OperationElement(object):
+    """
+        浏览器操作封装类
+    """
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def F5(self):
+        """浏览器刷新"""
+        self.driver.refresh()
 
 if __name__ == '__main__':
     text = '员工管理*'

@@ -48,12 +48,12 @@ class Mysql:
             save_data.append(list(a))
         return save_data
 
-    def insert_data(self, id, level, name, remark, wait_time, status, url, insert_time, img=None,
-                    error_reason=None, author=None, other=None):
+    def insert_data(self, id, level, module, name, remark, wait_time, status, url, insert_time, img=None,
+                    error_reason=None, author=None, *, results_value):
         """插入数据"""
         DB = self.DB.cursor()
-        data = self.dbInsert % (id, level, name, remark, img, status, url, error_reason, wait_time,
-                                author, insert_time, other)
+        data = self.dbInsert % (id, level, module, name, remark, img, status, url, error_reason, wait_time,
+                                author, insert_time, results_value)
         DB.execute(data)
         self.DB.commit()
 
@@ -76,6 +76,8 @@ class Mysql:
 
 
 if __name__ == '__main__':
-    M = Mysql(False)
+    M = Mysql()
     k = M.query_data()
     print(k)
+    # M.insert_data('1', '中', 'test_names', '备注', '2.3333', '成功', '/user', '2018-08-08 15:25:55',
+    #               results_value='E')

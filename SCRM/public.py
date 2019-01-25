@@ -15,11 +15,11 @@ class LoginTestModules(object):
 
     def __init__(self, driver, url):
         self.driver = driver
-        self.url = url
+        self.url = url + '/#/account/login'
 
     def success_login(self, account, password):
         """登录成功"""
-        self.driver.get(self.url + '/#/account/login')
+        self.driver.get(self.url)
         element = ElementLocation(self.driver)
         element.XPATH(self.account_element, account)
         element.XPATH(self.password_element, password)
@@ -30,6 +30,6 @@ class LoginTestModules(object):
 
     def opens_if(self):
         """网址是否打开"""
-        self.driver.get(self.url + '/#/account/login')
+        self.driver.get(self.url)
         element = ElementLocation(self.driver)
         assert element.XPATH(self.is_open) == "找回密码"

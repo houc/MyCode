@@ -1,41 +1,32 @@
 SCRM:
   login:
-    - ValidateLogon:
-      url: /user/login
+    - ValidateLogin:
+      url: /#/account/login
       className: TestLogin
       funName:
       - test_accountError: {
         url: ,
         author: 后超,
         level: 低,
-        scene: '验证错误的用户名登录:
-                1、用户名输入框输入:15928564313
+        scene: '验证错误的密码进行登录:
+                1、用户名输入框输入:15928564314999
                 2、密码输入框输入:Li123456
                 3、点击【登录】',
-        element: ["XPATH:客户管理*/../div[1]!!send#15928564313", "CSS:po[name='5']",'XPATH:对对对*/..',
-                  'XPATH:下火*/../div[3]!!click', ],
-        get_asserts: ['XPATH:小同学*text'],
-        asserts: '好好把'
+        element: ["XPATH:手机号/邮箱*/../input!!send#15928564314999", "XPATH:密码*/../input!!send#Li123456",
+                  'XPATH:登录*!!click'],
+        get_asserts: ['XPATH:账号未注册*/..!!text'],
+        asserts: '账号未注册'
       }
-        test_accountLong: {
+        test_passwordError: {
         url: ,
         author: 后超,
-        level: 高,
-        scene: '测试:
-                1、这是一段代码
-                2、点击【None】',
-        element: ["CSS:input[class='wd']!!click", "CSS:div[name='KK']!!send#4444"],
-        get_asserts: ["CSS:div[name='8']!!text",],
-        asserts: True,
-        }
-        test_mast: {
-        url: /k/g/g/g/,
-        author: 小明,
-        level: 中,
-        scene: ,
-        element: ["CSS:input[class='wd']!!click", "CSS:div[name='KK']!!send#4444","XPATH:客户管理*/../div[1]!!send#15928564313", "CSS:po[name='5']",'XPATH:对对对*/..',
-                  'XPATH:下火*/../div[3]!!click'],
-        get_asserts: ["CSS:div[name='8']!!text",],
-        asserts: '数据',
-        }
-
+        level: 低,
+        scene: '验证错误的用户名登录:
+                1、用户名输入框输入:15928564313
+                2、密码输入框输入:Li1234564444
+                3、点击【登录】',
+        element: ["XPATH:手机号/邮箱*/../input!!send#15928564313", "XPATH:密码*/../input!!send#Li1234564444",
+                  'XPATH:登录*!!click'],
+        get_asserts: ['XPATH:账号未注册*/..!!text'],
+        asserts: '账号未注册'
+      }

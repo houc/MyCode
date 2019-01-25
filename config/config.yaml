@@ -21,7 +21,7 @@ config:
   re: '*_st.py'         # 正则匹配执行的py
   task_time: 10         # 定时任务等待执行时间
   browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
-  logo_url: /static/images/logo.bae1317.png  # 项目logo连接
+  logo_url: /static/lib/image/logo.png?v=1  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
   module_run:       # 指定需要运行的模块
@@ -43,6 +43,7 @@ sql:
   sql_create_title:  CREATE TABLE result (
                      case_id smallint(225),
                      case_level varchar(500),
+                     case_module varchar(500),
                      case_name  varchar(500),
                      case_url varchar(500),
                      case_remark  varchar(500),
@@ -52,10 +53,11 @@ sql:
                      case_img varchar(500),
                      case_author varchar(500),
                      insert_time timestamp,
-                     case_other varchar(500))              # 插入表头
+                     results_value varchar(500))              # 插入表头
   sql_query: SELECT * FROM result                           # 查询result里面的所有数据
   sql_insert: INSERT INTO result(case_id,
                                  case_level,
+                                 case_module,
                                  case_name,
                                  case_remark,
                                  case_img,
@@ -65,7 +67,7 @@ sql:
                                  case_wait_time,
                                  case_author,
                                  insert_time,
-                                 case_other) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
+                                 results_value) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
   sql_delete: DELETE FROM result WHERE 1=1                 # 数据库全部清除数据
   sql_update: UPDATE result SET %s WHERE %s                # 更新数据
 

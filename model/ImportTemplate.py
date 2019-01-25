@@ -34,7 +34,7 @@ CASE_CONTENT = '''import unittest
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
-from model.SeleniumElement import ElementLocation
+from model.SeleniumElement import ElementLocation, OperationElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
@@ -50,8 +50,10 @@ CASE_NAME = '''    def {}(self):
         try:
             self.level = {}
             self.author = {}
-            self.urls = self.url + {!r}
-            self.driver.get(self.urls)
+            self.urls = {!r}
+            driver = OperationElement(self.driver)
+            driver.F5()
+            self.driver.get(self.url + self.urls)
             element = ElementLocation(self.driver)
             %s
             self.second = {}
