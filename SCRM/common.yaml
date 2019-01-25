@@ -12,9 +12,10 @@ SCRM:
                 1、用户名输入框输入:15928564313
                 2、密码输入框输入:Li123456
                 3、点击【登录】',
-        element: ['XPATH:客户管理*/../div[1]!!send#15928564313', 'CSS:po[name="5"]','XPATH:对对对*/..', 'XPATH:下火*/../div[3]!!click', ],
-        get_asserts: ['小同学*text'],
-        asserts: '0'
+        element: ["XPATH:客户管理*/../div[1]!!send#15928564313", "CSS:po[name='5']",'XPATH:对对对*/..',
+                  'XPATH:下火*/../div[3]!!click', ],
+        get_asserts: ['XPATH:小同学*text'],
+        asserts: '好好把'
       }
         test_accountLong: {
         url: ,
@@ -23,8 +24,18 @@ SCRM:
         scene: '测试:
                 1、这是一段代码
                 2、点击【None】',
-        element: ['CSS:input[class="wd"]!!click', ],
-        get_asserts: [],
-        asserts: [],
+        element: ["CSS:input[class='wd']!!click", "CSS:div[name='KK']!!send#4444"],
+        get_asserts: ["CSS:div[name='8']!!text",],
+        asserts: True,
+        }
+        test_mast: {
+        url: /k/g/g/g/,
+        author: 小明,
+        level: 中,
+        scene: ,
+        element: ["CSS:input[class='wd']!!click", "CSS:div[name='KK']!!send#4444","XPATH:客户管理*/../div[1]!!send#15928564313", "CSS:po[name='5']",'XPATH:对对对*/..',
+                  'XPATH:下火*/../div[3]!!click'],
+        get_asserts: ["CSS:div[name='8']!!text",],
+        asserts: '数据',
         }
 

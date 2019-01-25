@@ -7,7 +7,7 @@ from model.MyConfig import ConfigParameter
 def read_currency(keys: str, line: int):
     """
     读取currency.ya中的数据
-    Usage:
+    Usage: 
         url = MyYaml("SCRM").base_url + read_currency("get_customer", 0)
         data = read_currency("get_customer", 1)
     """
@@ -26,4 +26,3 @@ def token():
     """
     token = ConfigParameter().read_ini()
     return token
-

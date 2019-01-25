@@ -4,8 +4,8 @@ import operator
 import shutil
 
 from model.Yaml import MyYaml
-from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, XPATH, CSS
-from model.PrintColor import RED_BIG
+from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, XPATH, CSS, FIRST_ASSERT, CURRENCY_YA
+from model.PrintColor import RED_BIG, WHITE_BIG
 from model.MyException import CreateFileError, FUN_NAME
 from model.TimeConversion import standard_time
 from model.Logs import Logger
@@ -17,9 +17,9 @@ class CreateModule(object):
     该模块主要用于生成测试用例，当ya文件中增加一条用例后，会自动增加载到对应的*_st.py模块下，并且不会去覆盖原*_st.py下的内容！
 
     Usage:
-        common.yaml，文件写法:
+        common.yam，文件写法:
 
-            SCRM:    # 项目名称
+            SCR:    # 项目名称
               login: # 模块名称
                 - ValidateLogon: # 用例py
                   url: /user/login # 类通用url，如果此项为填写，自动调用用例下的url，反之调用此处url
@@ -38,7 +38,7 @@ class CreateModule(object):
                                 "你好吗*/..!!click"
                                 # 定位文字名称；“*”隔开后面为路径；“!!”隔开后面为执行的方式！
 
-                    get_asserts: ['小同学*'], # 获取预期结果方法，目前只支持xpath定位
+                    get_asserts: ['小同学*'], # 获取预期结果方法，目前只支持xpath和CSS定位
                     asserts: '0'  # 预期结果
                   }
                     # 此处用例作为类下多条用例，
@@ -47,8 +47,8 @@ class CreateModule(object):
                     author: 后超,
                     level: 高,
                     scene: ,
-                    element: {},
-                    get_asserts: '',
+                    element: ["CSS:input[class='wd']!!click", "CSS:div[name='KK']!!send#4444"],
+                    get_asserts: ["CSS:div[name='8']!!text",],
                     asserts: '',
                     }
 
@@ -79,7 +79,7 @@ class CreateModule(object):
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
     def _other_py(self, modules: classmethod):
-        """模块存在后检查__init__.py, currency.py, currency.ya是否存在,当currency.py存在时加入默认数据"""
+        """模块存在后检查__init__.py, currency.py, currency.ya是否存在,当currency.py、currency.ya存在时加入默认数据"""
         module = self._module(modules)
         global path
         if module:
@@ -95,6 +95,9 @@ class CreateModule(object):
                         if self.currency_py in path:
                             with open(path, 'wt', encoding=self.encoding) as f:
                                 f.write(CURRENCY_PY)
+                        if self.currency_ya in path:
+                            with open(path, 'wt', encoding=self.encoding) as f:
+                                f.write(CURRENCY_YA)
             except Exception as exc:
                 self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
@@ -219,8 +222,6 @@ class CreateModule(object):
             if switch:
                 url = values.get("url")
                 class_name = values.get("className")
-                # case_from = class_name + 'Modules'
-                # case_execute = CASE_CONTENT.format(case_from, class_name)
                 case_execute = CASE_CONTENT.format(class_name)
                 return case_execute
             else:
@@ -239,6 +240,8 @@ class CreateModule(object):
                     case_doc = '{!r}'.format(None)
                 if case_assert is None:
                     case_assert = '{!r}'.format(None)
+                if isinstance(case_assert, str):
+                    case_assert = '{!r}'.format(case_assert)
                 if not case_url:
                     if not url:
                         case_url = case_url
@@ -266,21 +269,46 @@ class CreateModule(object):
     def _element_css_handle(self, element: str):
         """css元素处理"""
         if isinstance(element, str):
-            param_event = CSS.format(element.split("!!")[0] + '"@"%s') % \
-                          element.split("!!")[1] if 'send' in element else CSS.format(element)
+            param_event = CSS % (element.split("#")[0] + '"@ "%s') % \
+                          element.split("#")[1] if 'send' in element else CSS % element
             return param_event.strip()
 
     def _xpath_css_judge(self, element: list, param: list):
-        """判断元素包含xpath或者是css，即分开传递参数"""
+        """
+        判断元素包含xpath或者是css，即分开传递参数
+
+        :return: 返回CSS和XPATH组合的数据
+        :param: 即ya里面的参数的element
+        :element: 即ya里面的参数的get_assert
+        """
         try:
             elements = []
+            first_assert = []
+
+            # ================================XPATH元素定位处理===================================================
+
             for attribute in element:
                 if 'XPATH:' in attribute:
-                    elements.append(self._element_xpath_handle(attribute.split("XPATH:")[1]))
+                    xpath = self._element_xpath_handle(attribute.split("XPATH:")[1])
+                    elements.append(xpath)
                 elif 'CSS:' in attribute:
-                    elements.append(self._element_css_handle(attribute.split("CSS:")[1]))
-            merge = str(elements)[1:-1].replace("'", "").replace(",", "\n           ").replace("@", ",")
-            print(CASE_NAME % (merge,''))
+                    css = self._element_css_handle(attribute.split("CSS:")[1])
+                    elements.append(css)
+            merge = str(elements)[1:-1].replace("'", "").replace(",", "\n           ").\
+                replace("@", ",").replace("\\", "'")
+
+            # ================================CSS元素定位处理===================================================
+
+            for first in param:
+                if 'XPATH:' in first:
+                    xpath = self._element_xpath_handle(first.split("XPATH:")[1])
+                    first_assert.append(xpath)
+                elif 'CSS:' in first:
+                    css = self._element_css_handle(first.split("CSS:")[1])
+                    first_assert.append(css)
+            assert_first = FIRST_ASSERT % str(first_assert)[1:-1].replace("'", "").\
+                replace(",", "\n           ").replace("@", ",").replace("\\", "'")
+            return CASE_NAME % (merge + '\n            ' + assert_first)
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
@@ -312,7 +340,7 @@ class CreateModule(object):
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
         finally:
-            return
+            return 'COMMON中用例已全部执行完毕！'
 
     def _get_package(self):
         """
@@ -335,3 +363,4 @@ class CreateModule(object):
 
 if __name__ == '__main__':
     RUN = CreateModule().execute_case
+    print(WHITE_BIG, RUN)

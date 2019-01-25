@@ -26,9 +26,7 @@ def token():
         r = requests.post(url, headers=token(), data=data, stream=True)
     """
     token = ConfigParameter().read_ini()
-    return token
-
-'''
+    return token\n'''
 
 
 CASE_CONTENT = '''import unittest
@@ -43,8 +41,7 @@ _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
 
 
 @unittest.skipIf(_SKIP, _SKIP_REASON)
-class {}(UnitTests):  
-'''
+class {}(UnitTests):\n'''
 
 CASE_NAME = '''    def {}(self):
         """
@@ -57,17 +54,18 @@ CASE_NAME = '''    def {}(self):
             self.driver.get(self.urls)
             element = ElementLocation(self.driver)
             %s
-            self.first = element.XPATH("%s")
             self.second = {}
         except Exception as exc:
-            self.error = str(exc)
-            
+            self.error = str(exc)\n
 '''
 
-MAIN = '''if __name__ == '__main__':
-    unittest.main()'''
 
-XPATH = '''element.XPATH("{}")
-'''
-CSS = '''element.CSS({!r})
-'''
+XPATH = '''element.XPATH("{}")'''
+
+CSS = '''element.CSS("%s")'''
+
+FIRST_ASSERT = '''self.first = %s'''
+
+CURRENCY_YA = '''#add_customer:
+#  - url: /add/customerParam
+#    bar: {name: 新增客户, address: 四川省成都市}'''
