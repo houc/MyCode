@@ -1,13 +1,27 @@
 from selenium.webdriver.common.by import By
 
 
-class ElementLocation(object):
+class _OperationElement(object):
+    """
+        浏览器操作封装类
+    """
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def F5(self):
+        """浏览器刷新"""
+        self.driver.refresh()
+
+
+
+class ElementLocation(_OperationElement):
     """
     浏览器元素定位封装类
     """
 
     def __init__(self, driver):
-        self.driver = driver
+        super(ElementLocation, self).__init__(driver)
 
     def XPATH(self, element: str, param=""):
         """
@@ -74,17 +88,6 @@ class ElementLocation(object):
             return value
 
 
-class OperationElement(object):
-    """
-        浏览器操作封装类
-    """
-
-    def __init__(self, driver):
-        self.driver = driver
-
-    def F5(self):
-        """浏览器刷新"""
-        self.driver.refresh()
 
 if __name__ == '__main__':
     text = '手机号/邮箱*/../input!!send#15928564313'

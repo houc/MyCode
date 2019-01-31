@@ -78,6 +78,7 @@ class Mysql:
 if __name__ == '__main__':
     M = Mysql()
     k = M.query_data()
-    print(k)
+    for i in k:
+        print(i)
     # M.insert_data('1', '中', 'test_names', '备注', '2.3333', '成功', '/user', '2018-08-08 15:25:55',
     #               results_value='E')

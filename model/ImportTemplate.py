@@ -34,7 +34,7 @@ CASE_CONTENT = '''import unittest
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
-from model.SeleniumElement import ElementLocation, OperationElement
+from model.SeleniumElement import ElementLocation
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
@@ -51,10 +51,9 @@ CASE_NAME = '''    def {}(self):
             self.level = {}
             self.author = {}
             self.urls = {!r}
-            driver = OperationElement(self.driver)
+            driver = ElementLocation(self.driver)
             driver.F5()
             self.driver.get(self.url + self.urls)
-            element = ElementLocation(self.driver)
             %s
             self.second = {}
         except Exception as exc:
@@ -62,9 +61,9 @@ CASE_NAME = '''    def {}(self):
 '''
 
 
-XPATH = '''element.XPATH("{}")'''
+XPATH = '''driver.XPATH("{}")'''
 
-CSS = '''element.CSS("%s")'''
+CSS = '''driver.CSS("%s")'''
 
 FIRST_ASSERT = '''self.first = %s'''
 
