@@ -15,19 +15,43 @@ class ElementLocation(object):
         Usage:
             ElementLocation(self.driver).XPATH(手机号/邮箱*/../input!!send")
         """
-        text = element.split('*')[0]                            # element中参数进行截取处理，0即为文字
-        path = element.split('*')[1].split('!!')[0]             # element中参数进行截取处理，1即为路径
-        type_event = element.split('!!')[1]                     # 执行的方式，如:send_keys/click....
-        if type_event == "send":
-            self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.format(text, path)).send_keys(param)
-        elif type_event == "click":
-            self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.format(text, path)).click()
-        elif type_event == "text":
-            value = self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.format(text, path)).text
-            return value
-        elif type_event == "display":
-            value = self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.format(text, path)).is_displayed()
-            return value
+        type_event = element.split('!!')[1]  # 执行的方式，如:send_keys/click....
+        if '$' in element:
+            first_path = element.split('$')[0]  # 如xpath中:div/a手机号/邮箱*/../input!!send#15928564313,截取前面路径:div/a
+            text = element.split('$')[1].split('*')[0]  # element中参数进行截取处理，0即为文字
+            path = element.split('*')[1].split('!!')[0]  # element中参数进行截取处理，1即为路径
+            if type_event == "send":
+                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                         format(first_path, text, path)).send_keys(param)
+            elif type_event == "click":
+                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                         format(first_path,text, path)).click()
+            elif type_event == "text":
+                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                                 format(first_path, text, path)).text
+                return value
+            elif type_event == "display":
+                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                                 format(first_path, text, path)).is_displayed()
+                return value
+        else:
+            text = element.split('*')[0]  # element中参数进行截取处理，0即为文字
+            path = element.split('*')[1].split('!!')[0]  # element中参数进行截取处理，1即为路径
+            first_path = '*'
+            if type_event == "send":
+                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                         format(first_path, text, path)).send_keys(param)
+            elif type_event == "click":
+                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                         format(first_path,text, path)).click()
+            elif type_event == "text":
+                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                                 format(first_path, text, path)).text
+                return value
+            elif type_event == "display":
+                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                                 format(first_path, text, path)).is_displayed()
+                return value
 
     def CSS(self, element: str, send=""):
         """
@@ -49,6 +73,7 @@ class ElementLocation(object):
             value = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).is_displayed()
             return value
 
+
 class OperationElement(object):
     """
         浏览器操作封装类
@@ -62,5 +87,5 @@ class OperationElement(object):
         self.driver.refresh()
 
 if __name__ == '__main__':
-    text = '员工管理*'
-    print(text.split('*'))
+    text = '手机号/邮箱*/../input!!send#15928564313'
+    print(text.split('^'))

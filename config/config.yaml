@@ -5,7 +5,7 @@ base_url:
 #  EDP: https://testadmin.edpglobal.cn:8443  # 测试环境
 #  EDP: https://devadmin.edpglobal.cn:8443  # 开发环境
   SCRM: https://www.scrm365.cn  # 测试环境
-#  EDP_Interface: https://devadmin.edpglobal.cn:8443  # 开发环境(接口)
+  Interface: http://test.platform.app.gouuse.cn  # 开发环境(接口)
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
 excel_parameter:
@@ -20,7 +20,7 @@ config:
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py
   task_time: 10         # 定时任务等待执行时间
-  browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
+  browser: True         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
   logo_url: /static/lib/image/logo.png?v=1  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
@@ -47,27 +47,27 @@ sql:
                      case_name  varchar(500),
                      case_url varchar(500),
                      case_remark  varchar(500),
-                     case_wait_time varchar(500),
                      case_status varchar(500),
+                     results_value varchar(500),
                      case_error_reason varchar(500),
+                     case_wait_time varchar(500),
                      case_img varchar(500),
                      case_author varchar(500),
-                     insert_time timestamp,
-                     results_value varchar(500))              # 插入表头
+                     insert_time timestamp)              # 插入表头
   sql_query: SELECT * FROM result                           # 查询result里面的所有数据
   sql_insert: INSERT INTO result(case_id,
                                  case_level,
                                  case_module,
                                  case_name,
-                                 case_remark,
-                                 case_img,
-                                 case_status,
                                  case_url,
+                                 case_remark,
+                                 case_status,
+                                 results_value,
                                  case_error_reason,
                                  case_wait_time,
+                                 case_img,
                                  case_author,
-                                 insert_time,
-                                 results_value) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
+                                 insert_time) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
   sql_delete: DELETE FROM result WHERE 1=1                 # 数据库全部清除数据
   sql_update: UPDATE result SET %s WHERE %s                # 更新数据
 

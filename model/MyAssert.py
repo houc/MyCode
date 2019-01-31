@@ -42,25 +42,35 @@ class MyAsserts():
                         self._assert()
                     elif not self.first == self.second:
                         self.status = '失败'
-                        self.myself.assertEqual(self.first, self.second, msg=self.reason)
                         self.driver.save_screenshot(self.screenshots_path)
                         first = self._strConversion(str(self.first))
                         second = self._strConversion(str(self.second))
-                        self.reason = '%s != %s' % (first, second)
+                        self.reason = '"%s" != "%s"' % (first, second)
                         if os.path.exists(self.screenshots_path):
                             self.img_path = str(self.screenshots_path).replace('\\', '/')
                         self._log(self.reason)
                         self._assert()
+                    if self.reason is not None:
+                        self.status = '错误'
+                        self.driver.save_screenshot(self.screenshots_path)
+                        reason = self._strConversion(str(self.reason))
+                        self.reason = reason
+                        if os.path.exists(self.screenshots_path):
+                            self.img_path = str(self.screenshots_path).replace('\\', '/')
+                        self._log(self.reason)
+                        try:
+                            raise BaseException(self.reason)
+                        finally:
+                            self._log(self.reason)
                 else:
                     if str(self.first) == str(self.second):
                         self.status = '成功'
                         self._assert()
                     elif not str(self.first) == str(self.second):
                         self.status = '失败'
-                        self.driver.save_screenshot(self.screenshots_path)
                         first = self._strConversion(str(self.first))
                         second = self._strConversion(str(self.second))
-                        self.reason = '%s != %s' % (first, second)
+                        self.reason = '"%s" != "%s"' % (first, second)
                         if os.path.exists(self.screenshots_path):
                             self.img_path = str(self.screenshots_path).replace('\\', '/')
                         self._log(self.reason)
@@ -78,7 +88,7 @@ class MyAsserts():
                         raise BaseException(self.reason)
                     finally:
                         self._log(self.reason)
-                elif isinstance(self.first, type(self.second)):
+                if isinstance(self.first, type(self.second)):
                     if isinstance(self.first and self.second, bool):
                         if self.first == self.second:
                             self.status = '成功'
@@ -88,7 +98,7 @@ class MyAsserts():
                             self.driver.save_screenshot(self.screenshots_path)
                             first = self._strConversion(str(self.first))
                             second = self._strConversion(str(self.second))
-                            self.reason = '%s != %s' % (first, second)
+                            self.reason = '"%s" != "%s"' % (first, second)
                             if os.path.exists(self.screenshots_path):
                                 self.img_path = str(self.screenshots_path).replace('\\', '/')
                             self._log(self.reason)
@@ -117,11 +127,8 @@ class MyAsserts():
     @staticmethod
     def _strConversion(values: str):
         """字符串中包含单引号转义成``"""
-        if isinstance(values, str):
-            res = re.sub("'", "`", values)
-            return res
-        else:
-            raise TypeError(values)
+        res = re.sub("'", "`", values)
+        return res
 
     def _log(self, reason):
         """记录日志"""

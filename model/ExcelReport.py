@@ -47,13 +47,13 @@ class WriteExcel:
         self.sheet_test.set_column(3, 3, 30)
         self.sheet_test.set_column(4, 4, 40)
         self.sheet_test.set_column(5, 5, 50)
-        self.sheet_test.set_column(6, 6, 30)
-        self.sheet_test.set_column(7, 7, 8)
+        self.sheet_test.set_column(6, 6, 8)
+        self.sheet_test.set_column(7, 7, 30)
         self.sheet_test.set_column(8, 8, 40)
-        self.sheet_test.set_column(9, 9, 30)
-        self.sheet_test.set_column(10, 10, 10)
-        self.sheet_test.set_column(11, 11, 25)
-        self.sheet_test.set_column(12, 12, 35)
+        self.sheet_test.set_column(9, 9, 18)
+        self.sheet_test.set_column(10, 10, 23)
+        self.sheet_test.set_column(11, 11, 10)
+        self.sheet_test.set_column(12, 12, 20)
         return self.style_title
 
     def _red_style(self, color='red'):
@@ -107,17 +107,20 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        self.sheet_test.insert_image(a, c + 2, b[-3], {'x_scale': 0.0757, 'y_scale': 0.099})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.099})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
-                        self.sheet_test.insert_image(a, c + 2, b[-3], {'x_scale':0.0757, 'y_scale':0.099})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.0757, 'y_scale': 0.099})
                     elif 'None' == d:
                         self.sheet_test.write(a, c, '...', self.test_content_style)
                     else:
                         self.sheet_test.set_row(a, 78)
-                        self.sheet_test.write(a, c, str(d), self.test_content_style)
+                        if '.png' in str(d):
+                            pass
+                        else:
+                            self.sheet_test.write(a, c, str(d), self.test_content_style)
         self.sheet_test.freeze_panes(1, 4)
 
     def _pc_title_style(self):
@@ -147,36 +150,36 @@ class WriteExcel:
         self._pc_content_style()
         for i in range(20):
             self.sheet_pc.set_row(i + 1,20)
-        self.sheet_pc.merge_range(0,0,0,4,kwargs['title'],self.pc_style_title)
-        self.sheet_pc.merge_range(1,0,4,0,kwargs['CPU'],self.style_pc_content)
-        self.sheet_pc.merge_range(5,0,8,0,kwargs['memory'],self.style_pc_content)
-        self.sheet_pc.merge_range(9,0,12,0,kwargs['disk'],self.style_pc_content)
-        self.sheet_pc.merge_range(13,0,16,0,kwargs['network'],self.style_pc_content)
-        self.sheet_pc.merge_range(17,0,20,0,kwargs['system'],self.style_pc_content)
-        self.sheet_pc.merge_range(1,1,2,1,kwargs['consume'],self.style_pc_content)
-        self.sheet_pc.merge_range(3,1,4,1,kwargs['config'],self.style_pc_content)
-        self.sheet_pc.merge_range(5,1,6,1,kwargs['consume'],self.style_pc_content)
-        self.sheet_pc.merge_range(7,1,8,1,kwargs['config'],self.style_pc_content)
-        self.sheet_pc.merge_range(9,1,10,1,kwargs['consume'],self.style_pc_content)
-        self.sheet_pc.merge_range(11,1,12,1,kwargs['config'],self.style_pc_content)
-        self.sheet_pc.merge_range(13,1,14,1,kwargs['consume'],self.style_pc_content)
-        self.sheet_pc.merge_range(15,1,16,1,kwargs['config'],self.style_pc_content)
-        self.sheet_pc.merge_range(17,1,18,1,kwargs['consume'],self.style_pc_content)
-        self.sheet_pc.merge_range(19,1,20,1,kwargs['config'],self.style_pc_content)
-        self.sheet_pc.merge_range(1,2,2,4,str(self.real_pc[0]),self.style_pc_content)
-        self.sheet_pc.merge_range(3,2,4,4,str(self.fix_pc[0]),self.style_pc_content)
-        self.sheet_pc.merge_range(5,2,6,4,str(self.real_pc[3]),self.style_pc_content)
-        self.sheet_pc.merge_range(7,2,8,4,str(self.fix_pc[4]),self.style_pc_content)
-        self.sheet_pc.merge_range(9,2,10,4,str(self.real_pc[2]),self.style_pc_content)
-        self.sheet_pc.merge_range(11,2,12,4,str(self.fix_pc[3]),self.style_pc_content)
-        self.sheet_pc.merge_range(13,2,14,4,str(self.real_pc[4]),self.style_pc_content)
-        self.sheet_pc.merge_range(15,2,16,4,str(self.fix_pc[2]),self.style_pc_content)
-        self.sheet_pc.merge_range(17,2,18,4,str(self.real_pc[1]),self.style_pc_content)
-        self.sheet_pc.merge_range(19,2,20,4,str(self.fix_pc[1]),self.style_pc_content)
+        self.sheet_pc.merge_range(0, 0, 0, 4, kwargs['title'], self.pc_style_title)
+        self.sheet_pc.merge_range(1, 0, 4, 0, kwargs['CPU'], self.style_pc_content)
+        self.sheet_pc.merge_range(5, 0, 8, 0, kwargs['memory'], self.style_pc_content)
+        self.sheet_pc.merge_range(9, 0, 12, 0, kwargs['disk'], self.style_pc_content)
+        self.sheet_pc.merge_range(13, 0, 16, 0, kwargs['network'], self.style_pc_content)
+        self.sheet_pc.merge_range(17, 0, 20, 0, kwargs['system'], self.style_pc_content)
+        self.sheet_pc.merge_range(1, 1, 2, 1, kwargs['consume'], self.style_pc_content)
+        self.sheet_pc.merge_range(3, 1, 4, 1, kwargs['config'], self.style_pc_content)
+        self.sheet_pc.merge_range(5, 1, 6, 1, kwargs['consume'], self.style_pc_content)
+        self.sheet_pc.merge_range(7, 1, 8, 1, kwargs['config'], self.style_pc_content)
+        self.sheet_pc.merge_range(9, 1, 10, 1, kwargs['consume'], self.style_pc_content)
+        self.sheet_pc.merge_range(11, 1, 12, 1, kwargs['config'], self.style_pc_content)
+        self.sheet_pc.merge_range(13, 1, 14, 1, kwargs['consume'], self.style_pc_content)
+        self.sheet_pc.merge_range(15, 1, 16, 1, kwargs['config'], self.style_pc_content)
+        self.sheet_pc.merge_range(17, 1, 18, 1, kwargs['consume'], self.style_pc_content)
+        self.sheet_pc.merge_range(19, 1, 20, 1, kwargs['config'], self.style_pc_content)
+        self.sheet_pc.merge_range(1, 2, 2, 4, str(self.real_pc[0]), self.style_pc_content)
+        self.sheet_pc.merge_range(3, 2, 4, 4, str(self.fix_pc[0]), self.style_pc_content)
+        self.sheet_pc.merge_range(5, 2, 6, 4, str(self.real_pc[3]), self.style_pc_content)
+        self.sheet_pc.merge_range(7, 2, 8, 4, str(self.fix_pc[4]), self.style_pc_content)
+        self.sheet_pc.merge_range(9, 2, 10, 4, str(self.real_pc[2]), self.style_pc_content)
+        self.sheet_pc.merge_range(11, 2, 12, 4, str(self.fix_pc[3]), self.style_pc_content)
+        self.sheet_pc.merge_range(13, 2, 14, 4, str(self.real_pc[4]), self.style_pc_content)
+        self.sheet_pc.merge_range(15, 2, 16, 4, str(self.fix_pc[2]), self.style_pc_content)
+        self.sheet_pc.merge_range(17, 2, 18, 4, str(self.real_pc[1]), self.style_pc_content)
+        self.sheet_pc.merge_range(19, 2, 20, 4, str(self.fix_pc[1]), self.style_pc_content)
 
     def _title_title_style(self):
         """测试报告总览表单样式"""
-        self.sheet_title.set_column('A1:F1',14)
+        self.sheet_title.set_column('A1:F1', 14)
         self.title_title.set_font_name('微软雅黑')
         self.title_title.set_size(11)
         self.title_title.set_text_wrap()
@@ -224,31 +227,33 @@ class WriteExcel:
         self.sheet_title.insert_chart('A10',img)
         return self.sheet_title
 
-    def _title_write(self,parameter,**kwargs):
+    def _title_write(self, parameter, **kwargs):
         """写入测试报告表头/内容数据"""
         self._title_title_style()
         self._title_content_style()
-        self.sheet_title.merge_range(0,0,0,5,str(kwargs['title_title']).format(self.report_project,self.report_type),self.title_title)
-        self.sheet_title.merge_range(1,0,6,1,' ')
-        self.sheet_title.insert_image(1,0,self.login_path,{'x_scale': 0.822,'y_scale': 0.863})
-        self.sheet_title.write(1,2,kwargs['title_version'],self.title_title_content)
-        self.sheet_title.write(1,4,kwargs['title_action'],self.title_title_content)
-        self.sheet_title.write(2,2,kwargs['title_tool'],self.title_title_content)
-        self.sheet_title.write(2,4,kwargs['title_member'],self.title_title_content)
-        self.sheet_title.write(3,2,kwargs['title_start_time'],self.title_title_content)
-        self.sheet_title.write(3,4,kwargs['title_stop_time'],self.title_title_content)
-        self.sheet_title.write(4,2,kwargs['title_case'],self.title_title_content)
-        self.sheet_title.write(4,4,kwargs['title_success'],self.title_title_content)
-        self.sheet_title.write(5,2,kwargs['title_fail'],self.title_title_content)
-        self.sheet_title.write(5,4,kwargs['title_error'],self.title_title_content)
-        self.sheet_title.write(6,2,kwargs['title_skip'],self.title_title_content)
-        self.sheet_title.write(6,4,kwargs['title_total_time'],self.title_title_content)
+        self.sheet_title.merge_range(0, 0, 0, 5,
+                                     str(kwargs['title_title']).format(self.report_project, self.report_type),
+                                     self.title_title)
+        self.sheet_title.merge_range(1, 0, 6, 1, ' ')
+        self.sheet_title.insert_image(1, 0, self.login_path, {'x_scale': 0.76, 'y_scale': 2})
+        self.sheet_title.write(1, 2, kwargs['title_version'], self.title_title_content)
+        self.sheet_title.write(1, 4, kwargs['title_action'], self.title_title_content)
+        self.sheet_title.write(2, 2, kwargs['title_tool'], self.title_title_content)
+        self.sheet_title.write(2, 4, kwargs['title_member'], self.title_title_content)
+        self.sheet_title.write(3, 2, kwargs['title_start_time'], self.title_title_content)
+        self.sheet_title.write(3, 4, kwargs['title_stop_time'], self.title_title_content)
+        self.sheet_title.write(4, 2, kwargs['title_case'], self.title_title_content)
+        self.sheet_title.write(4, 4, kwargs['title_success'], self.title_title_content)
+        self.sheet_title.write(5, 2, kwargs['title_fail'], self.title_title_content)
+        self.sheet_title.write(5, 4, kwargs['title_error'], self.title_title_content)
+        self.sheet_title.write(6, 2, kwargs['title_skip'], self.title_title_content)
+        self.sheet_title.write(6, 4, kwargs['title_total_time'], self.title_title_content)
         if isinstance(parameter, list):
             print()
         else:
             raise TypeError('class_merge()函数方法应为["A","B","C","D"]')
 
-    def _merge_def_title_data(self,parameter,*args,**kwargs):
+    def _merge_def_title_data(self, parameter, *args, **kwargs):
         """函数进行封装"""
         self._title_write(parameter,**kwargs)
         self._write_pc_content(**kwargs)
@@ -272,8 +277,8 @@ class ExcelTitle(WriteExcel):
         args：报告详情的表头，
         kwargs：PC配置中的表头/title_开头是报告里面的数据
         """
-        args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '用例执行时间', '状态', '错误原因', '截图', \
-               '负责人','用例完成时间', '预期结果'
+        args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', '异常原因', '用例执行时间', \
+               '截图','负责人','用例完成时间'
         kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
                   'title_title':'{}项目{}自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'总用时','title_member':'参与人员',
                   'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'跳过数','':'',

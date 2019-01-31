@@ -37,6 +37,15 @@ class MyYaml(object):
         return data
 
     @property
+    def AllPublicData(self):
+        """读取public.yaml全部数据"""
+        path = read_file('SCRM', 'public.yaml')
+        f = open(path, encoding=self.encoding)
+        data = yaml.load(f)
+        f.close()
+        return data
+
+    @property
     def parameter_ui(self):
         """获取yaml中的模块"""
         return self.AllPublic['SCRM']

@@ -16,17 +16,27 @@ SCRM:
                   'XPATH:登录*!!click'],
         get_asserts: ['XPATH:账号未注册*/..!!text'],
         asserts: '账号未注册'
-      }
+        }
         test_passwordError: {
         url: ,
         author: 后超,
         level: 低,
-        scene: '验证错误的用户名登录:
+        scene: '验证错误的密码登录:
                 1、用户名输入框输入:15928564313
                 2、密码输入框输入:Li1234564444
                 3、点击【登录】',
         element: ["XPATH:手机号/邮箱*/../input!!send#15928564313", "XPATH:密码*/../input!!send#Li1234564444",
                   'XPATH:登录*!!click'],
-        get_asserts: ['XPATH:账号未注册*/..!!text'],
-        asserts: '账号未注册'
-      }
+        get_asserts: ['XPATH:密码错误请重新输入*/..!!text'],
+        asserts: '密码错误请重新输入'
+        }
+        test_switchQR: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: '验证切换二维码是否生成二维码:
+                1、点击【扫码登录】',
+        element: ["CSS:div[class='ivu-tabs-tab']!!click"],
+        get_asserts: ['XPATH:span$中企智营APP*/..!!text'],
+        asserts: '中企智营APP'
+        }

@@ -52,8 +52,8 @@ class Mysql:
                     error_reason=None, author=None, *, results_value):
         """插入数据"""
         DB = self.DB.cursor()
-        data = self.dbInsert % (id, level, module, name, remark, img, status, url, error_reason, wait_time,
-                                author, insert_time, results_value)
+        data = self.dbInsert % (id, level, module, name, url, remark, status, results_value, error_reason, wait_time,
+                                img, author, insert_time)
         DB.execute(data)
         self.DB.commit()
 
