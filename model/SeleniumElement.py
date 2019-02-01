@@ -13,11 +13,14 @@ class _OperationElement(object):
         """浏览器刷新"""
         self.driver.refresh()
 
+    def get(self, url: str):
+        """请求url的参数"""
+        self.driver.get(url)
 
 
 class ElementLocation(_OperationElement):
     """
-    浏览器元素定位封装类
+        浏览器元素定位封装类
     """
 
     def __init__(self, driver):
@@ -29,43 +32,66 @@ class ElementLocation(_OperationElement):
         Usage:
             ElementLocation(self.driver).XPATH(手机号/邮箱*/../input!!send")
         """
-        type_event = element.split('!!')[1]  # 执行的方式，如:send_keys/click....
-        if '$' in element:
-            first_path = element.split('$')[0]  # 如xpath中:div/a手机号/邮箱*/../input!!send#15928564313,截取前面路径:div/a
-            text = element.split('$')[1].split('*')[0]  # element中参数进行截取处理，0即为文字
-            path = element.split('*')[1].split('!!')[0]  # element中参数进行截取处理，1即为路径
-            if type_event == "send":
-                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                         format(first_path, text, path)).send_keys(param)
-            elif type_event == "click":
-                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                         format(first_path,text, path)).click()
-            elif type_event == "text":
-                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                                 format(first_path, text, path)).text
-                return value
-            elif type_event == "display":
-                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                                 format(first_path, text, path)).is_displayed()
-                return value
-        else:
-            text = element.split('*')[0]  # element中参数进行截取处理，0即为文字
-            path = element.split('*')[1].split('!!')[0]  # element中参数进行截取处理，1即为路径
-            first_path = '*'
-            if type_event == "send":
-                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                         format(first_path, text, path)).send_keys(param)
-            elif type_event == "click":
-                self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                         format(first_path,text, path)).click()
-            elif type_event == "text":
-                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                                 format(first_path, text, path)).text
-                return value
-            elif type_event == "display":
-                value = self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                                 format(first_path, text, path)).is_displayed()
-                return value
+        step = element.split('!!')[1]
+        path_name = element.split('!!')[0]
+        if step == "text":
+            if '@' in path_name.split('*')[0]:
+                text = element.split('@')[0]
+                path = element.split('@')[1].split('*')[1].split('!!')[0]
+                if '$' in path_name.split('*')[0]:
+                    first_path = element.split('$')[0]
+                    return self.driver.find_element(By.XPATH, '//{}[text()="{}"]{}'.format(first_path, text, path)).text
+                else:
+                    return self.driver.find_element(By.XPATH, '//*[text()="{}"]{}'.format(text, path)).text
+            else:
+                text = element.split('*')[0]
+                path = element.split('*')[1].split('!!')[0]
+                if '$' in path_name.split('*')[0]:
+                    first_path = element.split('$')[0]
+                    return self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                                    format(first_path, text, path)).text
+                else:
+                    return self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.format(text, path)).text
+        elif step == "send":
+            if '@' in path_name.split('*')[0]:
+                text = element.split('@')[0]
+                path = element.split('@')[1].split('*')[1].split('!!')[0]
+                if '$' in path_name.split('*')[0]:
+                    first_path = element.split('$')[0]
+                    self.driver.find_element(By.XPATH, '//{}[text()="{}"]{}'.format(first_path, text, path)).\
+                        send_keys(param)
+                else:
+                    self.driver.find_element(By.XPATH, '//*[text()="{}"]{}'.format(text, path)).send_keys(param)
+            else:
+                text = element.split('*')[0]
+                path = element.split('*')[1].split('!!')[0]
+                if '$' in path_name.split('*')[0]:
+                    first_path = element.split('$')[0]
+                    self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                             format(first_path, text, path)).send_keys(param)
+                else:
+                    self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.
+                                             format(text, path)).send_keys(param)
+        elif step == "click":
+            if '@' in path_name.split('*')[0]:
+                text = element.split('@')[0]
+                path = element.split('@')[1].split('*')[1].split('!!')[0]
+                if '$' in path_name.split('*')[0]:
+                    first_path = element.split('$')[0]
+                    self.driver.find_element(By.XPATH, '//{}[text()="{}"]{}'.format(first_path, text, path)).\
+                        send_keys(param)
+                else:
+                    self.driver.find_element(By.XPATH, '//*[text()="{}"]{}'.format(text, path)).send_keys(param)
+            else:
+                text = element.split('*')[0]
+                path = element.split('*')[1].split('!!')[0]
+                if '$' in path_name.split('*')[0]:
+                    first_path = element.split('$')[0]
+                    self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
+                                             format(first_path, text, path)).click()
+                else:
+                    self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.
+                                             format(text, path)).click()
 
     def CSS(self, element: str, send=""):
         """
@@ -90,5 +116,5 @@ class ElementLocation(_OperationElement):
 
 
 if __name__ == '__main__':
-    text = '手机号/邮箱*/../input!!send#15928564313'
-    print(text.split('^'))
+    text = 'span$登录&*/../../..!!click'
+    print(text.split('$')[0])

@@ -53,7 +53,7 @@ CASE_NAME = '''    def {}(self):
             self.urls = {!r}
             driver = ElementLocation(self.driver)
             driver.F5()
-            self.driver.get(self.url + self.urls)
+            driver.get(self.url + self.urls)
             %s
             self.second = {}
         except Exception as exc:

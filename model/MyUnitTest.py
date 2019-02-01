@@ -44,6 +44,7 @@ def setUpModule(currentModule):
             Error = traceback.format_exc()
             LOG.logging_debug(Error)
             Driver.quit()
+            raise Error
     else:
         try:
             LoginTestModules(Driver, URL).opens_if()
@@ -51,6 +52,7 @@ def setUpModule(currentModule):
             Error = traceback.format_exc()
             LOG.logging_debug(Error)
             Driver.quit()
+            raise Error
 
 def tearDownModule():
     """模块结束"""

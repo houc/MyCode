@@ -24,10 +24,11 @@ class TestLogin(UnitTests):
             self.urls = '/#/account/login'
             driver = ElementLocation(self.driver)
             driver.F5()
-            self.driver.get(self.url + self.urls)
-            driver.XPATH("手机号/邮箱*/../input!!send", "15928564314999")
-            driver.XPATH("密码*/../input!!send", "Li123456")
-            driver.XPATH("登录*!!click")
+            driver.get(self.url + self.urls)
+            driver.XPATH("手机号/邮箱*/..!!click")
+            driver.XPATH("手机号/邮箱*/../../../div/input!!send", "15928564314999")
+            driver.XPATH("密码*/../../../div/input!!send", "Li123456")
+            driver.XPATH("登录,*/../../..!!click")
             self.first = driver.XPATH("账号未注册*/..!!text")
             self.second = '账号未注册'
         except Exception as exc:
@@ -46,30 +47,12 @@ class TestLogin(UnitTests):
             self.urls = '/#/account/login'
             driver = ElementLocation(self.driver)
             driver.F5()
-            self.driver.get(self.url + self.urls)
-            driver.XPATH("手机号/邮箱*/../input!!send", "15928564313")
-            driver.XPATH("密码*/../input!!send", "Li1234564444")
-            driver.XPATH("登录*!!click")
-            self.first = driver.XPATH("密码错误请重新输入*/..!!text")
+            driver.get(self.url + self.urls)
+            driver.XPATH("手机号/邮箱*/../../../div/input!!send", "15928564313")
+            driver.XPATH("密码*/../../../div/input!!send", "Li1234564444")
+            driver.XPATH("登录,*/../../..!!click")
+            self.first = driver.XPATH("账号密码错误*/..!!text")
             self.second = '密码错误请重新输入'
-        except Exception as exc:
-            self.error = str(exc)
-
-    def test_switchQR(self):
-        """
-        验证切换二维码是否生成二维码:
-        1、点击【扫码登录】
-        """
-        try:
-            self.level = '低'
-            self.author = '后超'
-            self.urls = '/#/account/login'
-            driver = ElementLocation(self.driver)
-            driver.F5()
-            self.driver.get(self.url + self.urls)
-            driver.CSS("div[class='ivu-tabs-tab']!!click")
-            self.first = driver.XPATH("span$中企智营APP*/..!!text")
-            self.second = '中企智营APP'
         except Exception as exc:
             self.error = str(exc)
 

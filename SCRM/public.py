@@ -13,12 +13,12 @@ from model.Yaml import MyYaml
 class LoginTestModules(object):
     # ======================================元素==================================================================== #
 
-    account_element = '手机号/邮箱*/../input!!send'
-    password_element = '密码*/../input!!send'
-    login_element = '登录*!!click'
-    company_element = '请选择要登录的公司*/../../div[2]/div/div/div/ul/li[1]!!click'
-    assert_success = '超人*/../span[1]!!text'
-    is_open = '找回密码*/../a!!text'
+    account_element = '手机号/邮箱*/../../../div/input!!send'
+    password_element = '密码*/../../../div/input!!send'
+    login_element = '登录@*/../../..!!click'
+    # company_element = '请选择要登录的公司*/../../div[2]/div/div/div/ul/li[1]!!click'
+    assert_success = '哒哒@*/..!!text'
+    is_open = '账号密码登录@*/.!!text'
 
     def __init__(self, driver, url):
         self.driver = driver
@@ -31,7 +31,7 @@ class LoginTestModules(object):
         element.XPATH(self.account_element, account)
         element.XPATH(self.password_element, password)
         element.XPATH(self.login_element)
-        element.XPATH(self.company_element)
+        # element.XPATH(self.company_element)
         assert element.XPATH(self.assert_success) == "超人"
         BrowserToken(self.driver).get_token()
 
@@ -39,7 +39,7 @@ class LoginTestModules(object):
         """网址是否打开"""
         self.driver.get(self.url)
         element = ElementLocation(self.driver)
-        assert element.XPATH(self.is_open) == "找回密码"
+        assert element.XPATH(self.is_open) == "账号密码登录"
 
 
 class Interface(object):

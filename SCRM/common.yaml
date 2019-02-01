@@ -12,8 +12,10 @@ SCRM:
                 1、用户名输入框输入:15928564314999
                 2、密码输入框输入:Li123456
                 3、点击【登录】',
-        element: ["XPATH:手机号/邮箱*/../input!!send#15928564314999", "XPATH:密码*/../input!!send#Li123456",
-                  'XPATH:登录*!!click'],
+        element: ["XPATH:手机号/邮箱*!!click",
+                  "XPATH:手机号/邮箱*/../../../div/input!!send#15928564314999",
+                  "XPATH:密码*/../../../div/input!!send#Li123456",
+                  'XPATH:登录@*/../../..!!click'],
         get_asserts: ['XPATH:账号未注册*/..!!text'],
         asserts: '账号未注册'
         }
@@ -25,18 +27,9 @@ SCRM:
                 1、用户名输入框输入:15928564313
                 2、密码输入框输入:Li1234564444
                 3、点击【登录】',
-        element: ["XPATH:手机号/邮箱*/../input!!send#15928564313", "XPATH:密码*/../input!!send#Li1234564444",
-                  'XPATH:登录*!!click'],
-        get_asserts: ['XPATH:密码错误请重新输入*/..!!text'],
+        element: ["XPATH:手机号/邮箱*/../../../div/input!!send#15928564313",
+                  "XPATH:密码*/../../../div/input!!send#Li1234564444",
+                  'XPATH:登录@*/../../..!!click'],
+        get_asserts: ['XPATH:账号密码错误*/..!!text'],
         asserts: '密码错误请重新输入'
-        }
-        test_switchQR: {
-        url: ,
-        author: 后超,
-        level: 低,
-        scene: '验证切换二维码是否生成二维码:
-                1、点击【扫码登录】',
-        element: ["CSS:div[class='ivu-tabs-tab']!!click"],
-        get_asserts: ['XPATH:span$中企智营APP*/..!!text'],
-        asserts: '中企智营APP'
         }
