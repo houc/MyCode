@@ -62,6 +62,7 @@ class MyAsserts():
                             raise BaseException(self.reason)
                         finally:
                             self._log(self.reason)
+                            self._assert()
                 else:
                     if str(self.first) == str(self.second):
                         self.status = '成功'
@@ -88,6 +89,7 @@ class MyAsserts():
                         raise BaseException(self.reason)
                     finally:
                         self._log(self.reason)
+                        self._assert()
                 if isinstance(self.first, type(self.second)):
                     if isinstance(self.first and self.second, bool):
                         if self.first == self.second:
@@ -104,11 +106,12 @@ class MyAsserts():
                             self._log(self.reason)
                             self._assert()
                     else:
-                        if self.reason is None:
+                        if self.reason is not None:
                             try:
                                 raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
                             finally:
                                 self._log(traceback.format_exc())
+                        self._assert()
                 else:
                     try:
                         raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')

@@ -6,6 +6,7 @@ import os
 from datetime import datetime, timedelta
 from config_path.path_file import read_file
 from model.Yaml import MyYaml
+from model.TimeConversion import standard_time
 
 
 class Logger:
@@ -24,6 +25,7 @@ class Logger:
         self.Logging = logging.getLogger(__name__)
         self.Logging.addHandler(file_handler)
         self.Logging.setLevel(level)
+        self.current_time = standard_time()
         if isinstance(logs_day, int):
             for i in range(logs_day):
                 dir_log = '{}.log'.format((datetime.today() - timedelta(days=i + logs_day)).strftime('%Y-%m-%d'))
@@ -40,7 +42,7 @@ class Logger:
 
     def logging_debug(self, content: str):
         """debug日志"""
-        self.Logging.debug(content)
+        self.Logging.debug('[{}]->>'.format(self.current_time) + content)
 
     def logging_info(self, content: str):
         """日志详情"""

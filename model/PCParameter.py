@@ -101,9 +101,9 @@ def real_get_disk(path='./'):
 def real_get_network():
     """实时读取网卡使用情况"""
     network_msg = {}
-    y = str(psutil.net_io_counters(pernic=True)).split('(')[1].split(')')[0].split('=')
-    network_msg['最大上行'] = bytes_conversion(int(y[1].split(',')[0]))[:-12] + 'MB'
-    network_msg['最大下行'] = bytes_conversion(int(y[2].split(',')[0]))[:-12] + 'MB'
+    network = psutil.net_io_counters()
+    network_msg['网卡最大上行'] = bytes_conversion(network.packets_sent)[:-12] + 'MB'
+    network_msg['网卡最大下行'] = bytes_conversion(network.packets_recv)[:-12] + 'MB'
     return network_msg
 
 def real_get_system():
@@ -142,4 +142,4 @@ def output_python_version():
 
 if __name__ == '__main__':
     # print(merge_config_info())
-    print(output_python_version())
+    print(real_get_network())

@@ -30,6 +30,7 @@ def token():
 
 
 CASE_CONTENT = '''import unittest
+import time
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests

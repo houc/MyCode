@@ -22,3 +22,6 @@ add_fields:
 add_config:
  - url: /api/fields/addConfig
    bar: {"field_name": "worth", "title": "DD", "descriptor": "", "type": 1}
+add_tag:
+ - url: /api/scrm/addTag
+   bar: {"tag_pid": 388, "tag_name":, "color": "#FF9999"}

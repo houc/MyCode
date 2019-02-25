@@ -13,26 +13,30 @@ from model.Yaml import MyYaml
 class LoginTestModules(object):
     # ======================================元素==================================================================== #
 
-    account_element = '手机号/邮箱*/../../../div/input!!send'
-    password_element = '密码*/../../../div/input!!send'
-    login_element = '登录@*/../../..!!click'
+    account_element_1 = "//*[text()='手机号/邮箱']/../div[1]/input!!click"
+    account_element_2 = "//*[text()='手机号/邮箱']/../div[1]/input!!send"
+    password_element_1 = "//*[text()='密码']/../div[1]/input!!click"
+    password_element_2 = "//*[text()='密码']/../div[1]/input!!send"
+    login_element = "//*[text()='登录']/..!!click"
     # company_element = '请选择要登录的公司*/../../div[2]/div/div/div/ul/li[1]!!click'
-    assert_success = '哒哒@*/..!!text'
-    is_open = '账号密码登录@*/.!!text'
+    assert_success = "//*[text()='哒哒']/.!!text"
+    is_open = "//*[text()='账号密码登录']!!text"
 
     def __init__(self, driver, url):
         self.driver = driver
-        self.url = url + '/#/account/login'
+        self.url = url + '/platform/#/account/login'
 
     def success_login(self, account, password):
         """登录成功"""
         self.driver.get(self.url)
         element = ElementLocation(self.driver)
-        element.XPATH(self.account_element, account)
-        element.XPATH(self.password_element, password)
+        element.XPATH(self.account_element_1)
+        element.XPATH(self.account_element_2, account)
+        element.XPATH(self.password_element_1)
+        element.XPATH(self.password_element_2, password)
         element.XPATH(self.login_element)
         # element.XPATH(self.company_element)
-        assert element.XPATH(self.assert_success) == "超人"
+        assert element.XPATH(self.assert_success) == "哒哒"
         BrowserToken(self.driver).get_token()
 
     def opens_if(self):
@@ -145,11 +149,21 @@ class Interface(object):
         r = self.requests.post(url, headers=self.token, data=data, stream=True)
         print(r.json())
 
+    def add_tag(self):
+        """添加客户标签"""
+        number = ''.join(str(i) for i in random.sample(range(0, 9), 9))
+        letter = ''.join(random.sample(string.ascii_uppercase, 4)) + number[: -4]
+        url = self.url + self.read_public('add_tag', 0)
+        data = self.read_public('add_tag', 1)
+        data["tag_name"] = (letter + number)[:10]
+        r = self.requests.post(url, headers=self.token, data=data, stream=True)
+        print(r.json())
+
 
 if __name__ == '__main__':
     # Interface().login_staff('15926656565')
     # for i in range(9):
     #     Interface().add_config()
-    for i in range(2):
-        Interface().add_staff()
+    for i in range(40):
+        Interface().add_tag()
     # Interface().quit_staff()

@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class _OperationElement(object):
@@ -17,6 +18,14 @@ class _OperationElement(object):
         """请求url的参数"""
         self.driver.get(url)
 
+    def drag(self, source, target):
+        """
+        元素拖拽
+
+        :param source: 拖拽元素对象
+        :param target: 拖拽元素位置
+        """
+        ActionChains(self.driver).drag_and_drop(source, target).perform()
 
 class ElementLocation(_OperationElement):
     """
@@ -30,91 +39,49 @@ class ElementLocation(_OperationElement):
         """
         结合selenium，封装一个xpath文字元素定位
         Usage:
-            ElementLocation(self.driver).XPATH(手机号/邮箱*/../input!!send")
+            ElementLocation(self.driver).XPATH(//*[text()='手机号/邮箱']/../div[1]/input!!click")
         """
-        step = element.split('!!')[1]
-        path_name = element.split('!!')[0]
-        if step == "text":
-            if '@' in path_name.split('*')[0]:
-                text = element.split('@')[0]
-                path = element.split('@')[1].split('*')[1].split('!!')[0]
-                if '$' in path_name.split('*')[0]:
-                    first_path = element.split('$')[0]
-                    return self.driver.find_element(By.XPATH, '//{}[text()="{}"]{}'.format(first_path, text, path)).text
-                else:
-                    return self.driver.find_element(By.XPATH, '//*[text()="{}"]{}'.format(text, path)).text
-            else:
-                text = element.split('*')[0]
-                path = element.split('*')[1].split('!!')[0]
-                if '$' in path_name.split('*')[0]:
-                    first_path = element.split('$')[0]
-                    return self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                                    format(first_path, text, path)).text
-                else:
-                    return self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.format(text, path)).text
-        elif step == "send":
-            if '@' in path_name.split('*')[0]:
-                text = element.split('@')[0]
-                path = element.split('@')[1].split('*')[1].split('!!')[0]
-                if '$' in path_name.split('*')[0]:
-                    first_path = element.split('$')[0]
-                    self.driver.find_element(By.XPATH, '//{}[text()="{}"]{}'.format(first_path, text, path)).\
-                        send_keys(param)
-                else:
-                    self.driver.find_element(By.XPATH, '//*[text()="{}"]{}'.format(text, path)).send_keys(param)
-            else:
-                text = element.split('*')[0]
-                path = element.split('*')[1].split('!!')[0]
-                if '$' in path_name.split('*')[0]:
-                    first_path = element.split('$')[0]
-                    self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                             format(first_path, text, path)).send_keys(param)
-                else:
-                    self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.
-                                             format(text, path)).send_keys(param)
-        elif step == "click":
-            if '@' in path_name.split('*')[0]:
-                text = element.split('@')[0]
-                path = element.split('@')[1].split('*')[1].split('!!')[0]
-                if '$' in path_name.split('*')[0]:
-                    first_path = element.split('$')[0]
-                    self.driver.find_element(By.XPATH, '//{}[text()="{}"]{}'.format(first_path, text, path)).\
-                        send_keys(param)
-                else:
-                    self.driver.find_element(By.XPATH, '//*[text()="{}"]{}'.format(text, path)).send_keys(param)
-            else:
-                text = element.split('*')[0]
-                path = element.split('*')[1].split('!!')[0]
-                if '$' in path_name.split('*')[0]:
-                    first_path = element.split('$')[0]
-                    self.driver.find_element(By.XPATH, '//{}[contains(text(), "{}")]{}'.
-                                             format(first_path, text, path)).click()
-                else:
-                    self.driver.find_element(By.XPATH, '//*[contains(text(), "{}")]{}'.
-                                             format(text, path)).click()
+        elements = element.split("!!")[0]
+        type_event = element.split('!!')[1]
+        if type_event == "click":
+            self.driver.find_element(By.XPATH, '{}'.format(elements)).click()
+        elif type_event == "send":
+            self.driver.find_element(By.XPATH, '{}'.format(elements)).send_keys(param)
+        elif type_event == "text":
+            value = self.driver.find_element(By.XPATH, '{}'.format(elements)).text
+            return value
+        elif type_event == "display":
+            value = self.driver.find_element(By.XPATH, '{}'.format(elements)).is_displayed()
+            return value
 
-    def CSS(self, element: str, send=""):
+    def CSS(self, element: str, param=""):
         """
         结合selenium，封装一个CSS
+
         :param element: "input[name='wd']", "input[name]".....
         :param param: send_keys里面的参数
         :return: 对应元素值
         """
+        global dragF
         elements = element.split("!!")[0]
         type_event = element.split('!!')[1]
         if type_event == "click":
             self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).click()
         elif type_event == "send":
-            self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).send_keys(send)
+            self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).send_keys(param)
         elif type_event == "text":
             value = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).text
             return value
         elif type_event == "display":
             value = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).is_displayed()
             return value
-
+        if type_event == "dragF":
+            dragF = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements))
+        if type_event == "dragS":
+            dragS = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements))
+            self.drag(dragF, dragS)
 
 
 if __name__ == '__main__':
-    text = 'span$登录&*/../../..!!click'
-    print(text.split('$')[0])
+    text = "//*[text()='账号未注册']/..!!text"
+    print(text.split("!!")[1])

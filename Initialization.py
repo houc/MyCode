@@ -17,40 +17,45 @@ class CreateModule(object):
     该模块主要用于生成测试用例，当ya文件中增加一条用例后，会自动增加载到对应的*_st.py模块下，并且不会去覆盖原*_st.py下的内容！
 
     Usage:
-        common.yam，文件写法:
-
-            SCR:    # 项目名称
-              login: # 模块名称
-                - ValidateLogon: # 用例py
-                  url: /user/login # 类通用url，如果此项为填写，自动调用用例下的url，反之调用此处url
-                  className: TestLogin # 类名称
-                  funName: # 键
-                  - test_accountError: {  # 用例名称
-                    url: ,  # 用例下的url
-                    author: 后超, # 该用例作者
-                    level: 低,   # 用例等级
-                    scene: '验证错误的用户名登录:
-                            1、用户名输入框输入:88888
-                            2、密码输入框输入:3333
-                            3、点击【登录】',  # 用例场景，（用例步骤或者验证什么结果）
-                    element: ['客户管理*/../div[1]', '新建客户*!!send#15928564313', '你好吗*/..!!click', ],
-                                # 用例下需要调用的元素名称，定位。目前只支持xpath定位,
-                                "你好吗*/..!!click"
-                                # 定位文字名称；“*”隔开后面为路径；“!!”隔开后面为执行的方式！
-
-                    get_asserts: ['小同学*'], # 获取预期结果方法，目前只支持xpath和CSS定位
-                    asserts: '0'  # 预期结果
-                  }
-                    # 此处用例作为类下多条用例，
-                    test_accountLong: {
-                    url: ,
-                    author: 后超,
-                    level: 高,
-                    scene: ,
-                    element: ["CSS:input[class='wd']!!click", "CSS:div[name='KK']!!send#4444"],
-                    get_asserts: ["CSS:div[name='8']!!text",],
-                    asserts: '',
-                    }
+    common.yam，文件写法:
+    SCR:
+      login:                                      # 模块名称
+        - ValidateLogin:                          # 模块下的py名称
+          url: /platform/#/account/login          # 快速访问的url
+          className: TestLogin                    # 类名名称
+          funName:                                # 键
+          - test_accountError: {                  # 用例方法
+            url: ,                                # 用例url
+            author: 后超,                          # 用例作者
+            level: 低,                             # 用例级别
+            scene: '验证错误的密码进行登录:
+                    1、用户名输入框输入:15928564314999
+                    2、密码输入框输入:Li123456
+                    3、点击【登录】',                # 用例场景
+            element: ["XPATH://*[text()='手机号/邮箱']/../div[1]/input!!click",
+                      "XPATH://*[text()='手机号/邮箱']/../div[1]/input!!send#15928564314999",
+                      "XPATH://*[text()='密码']/../div[1]/input!!click",
+                      "XPATH://*[text()='密码']/../div[1]/input!!send#Li123456",
+                      "XPATH://*[text()='登录']/..!!click"],  # 元素定位的方法
+            get_asserts: ["XPATH://*[text()='账号未注册']/..!!text"], # 元素定位断言的方法
+            asserts: '账号未注册'                    # 断言信息
+            }
+            test_passwordError: {                 # 类下第二条用例方法
+            url: ,
+            author: 后超,
+            level: 低,
+            scene: '验证错误的密码登录:
+                    1、用户名输入框输入:15928564313
+                    2、密码输入框输入:Li1234564444
+                    3、点击【登录】',
+            element: ["XPATH://*[text()='手机号/邮箱']/../div[1]/input!!click",
+                      "XPATH://*[text()='手机号/邮箱']/../div[1]/input!!send#15928564313",
+                      "XPATH://*[text()='密码']/../div[1]/input!!click",
+                      "XPATH://*[text()='密码']/../div[1]/input!!send#Li1234564444",
+                      "XPATH://*[text()='登录']/..!!click"],
+            get_asserts: ["XPATH://*[text()='密码错误请重新输入']/..!!text"],
+            asserts: '密码错误请重新输入'
+            }
 
     """
     def __init__(self):
@@ -143,7 +148,6 @@ class CreateModule(object):
         content = CreateFileError(name, time, reason)
         self.log.logging_debug(content)
         print(RED_BIG, content)
-        return False
 
     def _conversion_exists(self, py_content: str, ya_content: list):
         """当用例名称相同时，处理数据判断"""
@@ -295,7 +299,7 @@ class CreateModule(object):
                     css = self._element_css_handle(attribute.split("CSS:")[1])
                     elements.append(css)
             merge = str(elements)[1:-1].replace("'", "").replace(",", "\n           ").\
-                replace("@", ",").replace("\\", "'")
+                replace("@", ",").replace("\\", "'").replace("-", ", ")
 
             # ================================CSS元素定位处理====================================================
 

@@ -1,4 +1,5 @@
 import unittest
+import time
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -21,15 +22,17 @@ class TestLogin(UnitTests):
         try:
             self.level = '低'
             self.author = '后超'
-            self.urls = '/#/account/login'
+            self.urls = '/platform/#/account/login'
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
-            driver.XPATH("手机号/邮箱*/..!!click")
-            driver.XPATH("手机号/邮箱*/../../../div/input!!send", "15928564314999")
-            driver.XPATH("密码*/../../../div/input!!send", "Li123456")
-            driver.XPATH("登录,*/../../..!!click")
-            self.first = driver.XPATH("账号未注册*/..!!text")
+            driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!click")
+            driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!send", "15928564314999")
+            driver.XPATH("//*[text()='密码']/../div[1]/input!!click")
+            driver.XPATH("//*[text()='密码']/../div[1]/input!!send", "Li123456")
+            driver.XPATH("//*[text()='登录']/..!!click")
+            time.sleep(1)
+            self.first = driver.XPATH("//*[text()='账号未注册']/..!!text")
             self.second = '账号未注册'
         except Exception as exc:
             self.error = str(exc)
@@ -44,14 +47,17 @@ class TestLogin(UnitTests):
         try:
             self.level = '低'
             self.author = '后超'
-            self.urls = '/#/account/login'
+            self.urls = '/platform/#/account/login'
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
-            driver.XPATH("手机号/邮箱*/../../../div/input!!send", "15928564313")
-            driver.XPATH("密码*/../../../div/input!!send", "Li1234564444")
-            driver.XPATH("登录,*/../../..!!click")
-            self.first = driver.XPATH("账号密码错误*/..!!text")
+            driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!click")
+            driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!send", "15928564313")
+            driver.XPATH("//*[text()='密码']/../div[1]/input!!click")
+            driver.XPATH("//*[text()='密码']/../div[1]/input!!send", "Li1234564444")
+            driver.XPATH("//*[text()='登录']/..!!click")
+            time.sleep(1)
+            self.first = driver.XPATH("//*[text()='密码错误请重新输入']/..!!text")
             self.second = '密码错误请重新输入'
         except Exception as exc:
             self.error = str(exc)
