@@ -34,7 +34,7 @@ def setUpModule(currentModule):
     Error = None
     if isinstance(wait, int):
         Driver.implicitly_wait(wait)
-        Driver.set_page_load_timeout(wait + wait)
+        Driver.set_page_load_timeout(wait * 2)
     else:
         raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
     if 'ValidateLogin_st' not in currentModule:
@@ -80,7 +80,7 @@ class UnitTests(unittest.TestCase):
         self.case_remark = self._testMethodDoc
         self.current_path = os.path.dirname(__file__)
         self.driver.implicitly_wait(wait)
-        self.driver.set_page_load_timeout(wait + wait)
+        self.driver.set_page_load_timeout(wait * 2)
         self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         if self.setLog is not None:

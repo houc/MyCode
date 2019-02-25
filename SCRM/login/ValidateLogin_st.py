@@ -1,5 +1,6 @@
 import unittest
 import time
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -34,8 +35,8 @@ class TestLogin(UnitTests):
             time.sleep(1)
             self.first = driver.XPATH("//*[text()='账号未注册']/..!!text")
             self.second = '账号未注册'
-        except Exception as exc:
-            self.error = str(exc)
+        except Exception:
+            self.error = str(traceback.print_exc())
 
     def test_passwordError(self):
         """
@@ -59,6 +60,6 @@ class TestLogin(UnitTests):
             time.sleep(1)
             self.first = driver.XPATH("//*[text()='密码错误请重新输入']/..!!text")
             self.second = '密码错误请重新输入'
-        except Exception as exc:
-            self.error = str(exc)
+        except Exception:
+            self.error = str(traceback.print_exc())
 

@@ -1,5 +1,6 @@
 import unittest
 import time
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -30,6 +31,6 @@ class TestStaffCustomManage(UnitTests):
             time.sleep(1)
             self.first = driver.XPATH("//*[text()='属性排序成功']/.!!text")
             self.second = '属性排序成功'
-        except Exception as exc:
-            self.error = str(exc)
+        except Exception:
+            self.error = str(traceback.print_exc())
 

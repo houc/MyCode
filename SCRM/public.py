@@ -28,8 +28,9 @@ class LoginTestModules(object):
 
     def success_login(self, account, password):
         """登录成功"""
-        self.driver.get(self.url)
         element = ElementLocation(self.driver)
+        element.get(self.url)
+        element.F5()
         element.XPATH(self.account_element_1)
         element.XPATH(self.account_element_2, account)
         element.XPATH(self.password_element_1)
@@ -41,8 +42,9 @@ class LoginTestModules(object):
 
     def opens_if(self):
         """网址是否打开"""
-        self.driver.get(self.url)
         element = ElementLocation(self.driver)
+        element.get(self.url)
+        element.F5()
         assert element.XPATH(self.is_open) == "账号密码登录"
 
 

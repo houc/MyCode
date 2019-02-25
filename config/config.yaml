@@ -20,7 +20,7 @@ config:
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py
   task_time: 10         # 定时任务等待执行时间
-  browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
+  browser: True         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
   logo_url: /api/file_service/v3/img_view/logo_scrm?type=1  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
