@@ -80,8 +80,7 @@ class MyAsserts():
                 if self.reason is not None:
                     self.status = '错误'
                     self.driver.save_screenshot(self.screenshots_path)
-                    reason = self._strConversion(str(self.reason))
-                    self.reason = reason
+                    self.reason = self._strConversion(str(self.reason))
                     if os.path.exists(self.screenshots_path):
                         self.img_path = str(self.screenshots_path).replace('\\', '/')
                     self._log(self.reason)

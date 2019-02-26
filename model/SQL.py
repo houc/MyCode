@@ -76,7 +76,7 @@ class Mysql:
 
 
 if __name__ == '__main__':
-    M = Mysql()
+    M = Mysql(True)
     k = M.query_data()
     for i in k:
         print(i)

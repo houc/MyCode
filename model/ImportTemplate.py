@@ -31,7 +31,6 @@ def token():
 
 CASE_CONTENT = '''import unittest
 import time
-import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -58,8 +57,8 @@ CASE_NAME = '''    def {}(self):
             driver.get(self.url + self.urls)
             %s
             self.second = {}
-        except Exception:
-            self.error = str(traceback.print_exc())\n
+        except Exception as exc:
+            self.error = str(exc)\n
 '''
 
 

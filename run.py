@@ -38,6 +38,7 @@ class RunAll(object):
         result = self._running()
         sql_query = self.sql.query_data()
         if sql_query:
+            print("用例已全部执行完成，正在生成excel测试报告，请稍后....")
             self.excel(sql_query).class_merge([''])
         else:
             raise SQLDataError(FUN_NAME(self.current_path))

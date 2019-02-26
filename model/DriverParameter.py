@@ -16,13 +16,22 @@ def browser(switch=False):
     else:
         options = None
         driver = webdriver.Chrome(path, chrome_options=options)
+        driver.maximize_window()
     return driver
 
 if __name__ == '__main__':
     import time
     from selenium.webdriver.common.keys import Keys
-    driver = browser()
+
+    fil = read_file('img', '{}.png'.format(5))
+    driver = browser(True)
     driver.implicitly_wait(10)
+    driver.set_window_size(1920, 1054)
+    driver.set_page_load_timeout(60)
+    driver.get('http://www.baidu.com')
+    time.sleep(3)
+    driver.save_screenshot(fil)
+    driver.quit()
     # driver.set_window_size(200, 500)
     # driver.get('https://www.scrm365.cn/#/account/login')
     # js = 'document.getElementsByClassName("mu-text-field-input")[0].value="15928564313"'
@@ -35,16 +44,16 @@ if __name__ == '__main__':
     # driver.execute_script('document.getElementsByClassName("iconfont-s ics-bangzhuzhongxin")')
     # time.sleep(2)
     # driver.quit()
-    with driver:
-        driver.get('https://testapi.edpglobal.cn:8443/#/system/navbarManage')
-        j = driver.find_elements_by_xpath('//div[contains(@class,"side-nav left")]')[0].is_displayed()
-        # js = "arguments[0].scrollIntoView();"
-        # time.sleep(3)
-        # driver.execute_script(js, j)
-        time.sleep(1)
-        # js = "var q=document.getElementById('id').scrollTop=1000"
-        j = driver.find_elements_by_tag_name('button')
-        for i in j:
-            print(i.get_attribute('class'))
+    # with driver:
+    #     driver.get('https://testapi.edpglobal.cn:8443/#/system/navbarManage')
+    #     j = driver.find_elements_by_xpath('//div[contains(@class,"side-nav left")]')[0].is_displayed()
+    #     # js = "arguments[0].scrollIntoView();"
+    #     # time.sleep(3)
+    #     # driver.execute_script(js, j)
+    #     time.sleep(1)
+    #     # js = "var q=document.getElementById('id').scrollTop=1000"
+    #     j = driver.find_elements_by_tag_name('button')
+    #     for i in j:
+    #         print(i.get_attribute('class'))
 
 

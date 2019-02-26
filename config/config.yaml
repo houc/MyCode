@@ -49,7 +49,7 @@ sql:
                      case_remark  varchar(500),
                      case_status varchar(500),
                      results_value varchar(500),
-                     case_error_reason varchar(500),
+                     case_error_reason varchar(1000),
                      case_wait_time varchar(500),
                      case_img varchar(500),
                      case_author varchar(500),

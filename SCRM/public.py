@@ -30,6 +30,7 @@ class LoginTestModules(object):
         """登录成功"""
         element = ElementLocation(self.driver)
         element.get(self.url)
+        time.sleep(3)
         element.F5()
         element.XPATH(self.account_element_1)
         element.XPATH(self.account_element_2, account)
@@ -44,6 +45,7 @@ class LoginTestModules(object):
         """网址是否打开"""
         element = ElementLocation(self.driver)
         element.get(self.url)
+        time.sleep(3)
         element.F5()
         assert element.XPATH(self.is_open) == "账号密码登录"
 
