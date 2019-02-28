@@ -37,7 +37,7 @@ class LoginTestModules(object):
         element.XPATH(self.password_element_1)
         element.XPATH(self.password_element_2, password)
         element.XPATH(self.login_element)
-        # element.XPATH(self.company_element)
+        time.sleep(1)
         assert element.XPATH(self.assert_success) == "哒哒"
         BrowserToken(self.driver).get_token()
 

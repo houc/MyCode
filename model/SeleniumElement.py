@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+from model.DriverParameter import browser
+from model.Yaml import MyYaml
 
 
 class _OperationElement(object):
@@ -8,6 +10,7 @@ class _OperationElement(object):
     """
 
     def __init__(self, driver):
+        """初始化"""
         self.driver = driver
 
     def F5(self):
@@ -26,6 +29,21 @@ class _OperationElement(object):
         :param target: 拖拽元素位置
         """
         ActionChains(self.driver).drag_and_drop(source, target).perform()
+
+    def driver_quit(self):
+        """
+        浏览器退出
+        :return:
+        """
+        self.driver.quit()
+
+    def open_browser(self):
+        """
+        打开浏览器
+        :return: 返回新浏览器的session
+        """
+        return browser(MyYaml('browser').config)
+
 
 class ElementLocation(_OperationElement):
     """

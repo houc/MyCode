@@ -12,6 +12,12 @@ _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
 
 @unittest.skipIf(_SKIP, _SKIP_REASON)
 class TestStaffCustomManage(UnitTests):
+    """
+    当RE_LOGIN = True即为需要重新登录，或者是需要切换账号登录，当RE_LOGIN为True时，需要将LOGIN_INFO的value值全填写完成，否则会报错...
+    """
+    RE_LOGIN = False
+    LOGIN_INFO = {"account": None, "password": None}
+    
     def test_drag_and_drop(self):
         """
         员工属性管理，字段拖拽是否成功:
@@ -22,14 +28,15 @@ class TestStaffCustomManage(UnitTests):
             self.level = '中'
             self.author = '后超'
             self.urls = '/platform/#/manage/employeeProperty'
+            self.second = '属性排序成功'
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
-            driver.CSS("tr.line.isDrag:nth-child(1)!!dragF")
-            driver.CSS("tr.line.isDrag:nth-child(3)!!dragS")
+            driver.CSS("span > tr:nth-child(1)!!dragF")
+            driver.CSS("span > tr:nth-child(2)!!dragS")
             time.sleep(1)
+            self.driver.save_screenshot(self.screenshots_path)
             self.first = driver.XPATH("//*[text()='属性排序成功']/.!!text")
-            self.second = '属性排序成功'
         except Exception as exc:
             self.error = str(exc)
 

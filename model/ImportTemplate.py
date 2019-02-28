@@ -42,7 +42,14 @@ _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
 
 
 @unittest.skipIf(_SKIP, _SKIP_REASON)
-class {}(UnitTests):\n'''
+class {}(UnitTests):
+    """
+    当RE_LOGIN = True即为需要重新登录，或者是需要切换账号登录，当RE_LOGIN为True时，需要将LOGIN_INFO的value值全填写完成，否则会报错...
+    """
+    RE_LOGIN = False
+    LOGIN_INFO = {{"account": None, "password": None}}
+    
+'''
 
 CASE_NAME = '''    def {}(self):
         """
@@ -52,11 +59,11 @@ CASE_NAME = '''    def {}(self):
             self.level = {}
             self.author = {}
             self.urls = {!r}
+            self.second = {}
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
             %s
-            self.second = {}
         except Exception as exc:
             self.error = str(exc)\n
 '''
@@ -66,7 +73,9 @@ XPATH = '''driver.XPATH("{}")'''
 
 CSS = '''driver.CSS("%s")'''
 
-FIRST_ASSERT = '''self.first = %s'''
+FIRST_ASSERT = '''time.sleep(1)
+            self.driver.save_screenshot(self.screenshots_path)
+            self.first = %s'''
 
 CURRENCY_YA = '''#add_customer:
 #  - url: /add/customerParam

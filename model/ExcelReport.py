@@ -280,8 +280,8 @@ class ExcelTitle(WriteExcel):
         args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', '异常原因（实际结果）', '用例执行时间', \
                '截图','负责人','用例完成时间'
         kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
-                  'title_title':'{}项目{}自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'最长耗时','title_member':'参与人员',
-                  'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'最短耗时','':'',
+                  'title_title':'{}项目{}UI自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'用例最长耗时','title_member':'参与人员',
+                  'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'用例最短耗时','':'',
                   'title_action':'测试环境','title_tool':'测试工具','title_version':'测试版本'
                   }
         return self._merge_def_title_data(parameter, *args, **kwargs)

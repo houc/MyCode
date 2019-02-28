@@ -36,6 +36,54 @@ SCRM:
         get_asserts: ["XPATH://*[text()='密码错误请重新输入']/..!!text"],
         asserts: '密码错误请重新输入'
         }
+        test_accountNull: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证用户名为空格登录:
+                1、用户名输入框输入: ;
+                2、密码输入框输入:Li1234564444;
+                3、点击【登录】。",
+        element: ["XPATH://*[text()='手机号/邮箱']/../div[1]/input!!click",
+                  "XPATH://*[text()='手机号/邮箱']/../div[1]/input!!send#  ",
+                  "XPATH://*[text()='密码']/../div[1]/input!!click",
+                  "XPATH://*[text()='密码']/../div[1]/input!!send#Li1234564444",
+                  "XPATH://*[text()='登录']/..!!click"],
+        get_asserts: ["XPATH://*[text()='请输入账号']/..!!text"],
+        asserts: '请输入账号'
+        }
+        test_passwordNull: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证密码为空格登录:
+                1、用户名输入框输入: 15928564313;
+                2、密码输入框输入:  ;
+                3、点击【登录】。",
+        element: ["XPATH://*[text()='手机号/邮箱']/../div[1]/input!!click",
+                  "XPATH://*[text()='手机号/邮箱']/../div[1]/input!!send#15928564313",
+                  "XPATH://*[text()='密码']/../div[1]/input!!click",
+                  "XPATH://*[text()='密码']/../div[1]/input!!send#  ",
+                  "XPATH://*[text()='登录']/..!!click"],
+        get_asserts: ["XPATH://*[text()='请输入密码']/..!!text"],
+        asserts: '请输入密码'
+        }
+        test_passwordEnglish: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证密码为全英文字节登录:
+                1、用户名输入框输入: 15928564313;
+                2、密码输入框输入:  ASDSDSFDSFDSFSDCSDCDSFCDSFDSFDSGDSGDSGDSFGDSFSDFSD;
+                3、点击【登录】。",
+        element: ["XPATH://*[text()='手机号/邮箱']/../div[1]/input!!click",
+                  "XPATH://*[text()='手机号/邮箱']/../div[1]/input!!send#15928564313",
+                  "XPATH://*[text()='密码']/../div[1]/input!!click",
+                  "XPATH://*[text()='密码']/../div[1]/input!!send#ASDSDSFDSFDSFSDCSDCDSFCDSFDSFDSGDSGDSGDSFGDSFSDFSD",
+                  "XPATH://*[text()='登录']/..!!click"],
+        get_asserts: ["XPATH://*[text()='密码错误请重新输入']/..!!text"],
+        asserts: '密码错误请重新输入'
+        }
   staff_manage:
     - Custom:
       url: /platform/#/manage/employeeProperty
@@ -51,5 +99,5 @@ SCRM:
         element: ["CSS:span > tr:nth-child(1)!!dragF",
                   "CSS:span > tr:nth-child(2)!!dragS"],
         get_asserts: ["XPATH://*[text()='属性排序成功']/.!!text"],
-        asserts: "属性排序成功"
+        asserts: "属性排序成功",
       }

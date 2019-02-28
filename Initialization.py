@@ -299,7 +299,7 @@ class CreateModule(object):
                     css = self._element_css_handle(attribute.split("CSS:")[1])
                     elements.append(css)
             merge = str(elements)[1:-1].replace("'", "").replace(",", "\n           ").\
-                replace("@", ",").replace("\\", "'").replace("-", ", ")
+                replace("@", ",").replace("\\", "'")
 
             # ================================CSS元素定位处理====================================================
 

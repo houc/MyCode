@@ -39,10 +39,11 @@ class MyAsserts():
                 if isinstance(self.first, type(self.second)):
                     if self.first == self.second:
                         self.status = '成功'
+                        self.reason = self._strConversion(str(self.first))
                         self._assert()
                     elif not self.first == self.second:
                         self.status = '失败'
-                        self.driver.save_screenshot(self.screenshots_path)
+                        # self.driver.save_screenshot(self.screenshots_path)
                         first = self._strConversion(str(self.first))
                         second = self._strConversion(str(self.second))
                         self.reason = '"%s" != "%s"' % (first, second)
@@ -50,22 +51,10 @@ class MyAsserts():
                             self.img_path = str(self.screenshots_path).replace('\\', '/')
                         self._log(self.reason)
                         self._assert()
-                    if self.reason is not None:
-                        self.status = '错误'
-                        self.driver.save_screenshot(self.screenshots_path)
-                        reason = self._strConversion(str(self.reason))
-                        self.reason = reason
-                        if os.path.exists(self.screenshots_path):
-                            self.img_path = str(self.screenshots_path).replace('\\', '/')
-                        self._log(self.reason)
-                        try:
-                            raise BaseException(self.reason)
-                        finally:
-                            self._log(self.reason)
-                            self._assert()
                 else:
                     if str(self.first) == str(self.second):
                         self.status = '成功'
+                        self.reason = self._strConversion(str(self.first))
                         self._assert()
                     elif not str(self.first) == str(self.second):
                         self.status = '失败'
@@ -76,10 +65,22 @@ class MyAsserts():
                             self.img_path = str(self.screenshots_path).replace('\\', '/')
                         self._log(self.reason)
                         self._assert()
+                    elif self.reason is not None:
+                        self.status = '错误'
+                        # self.driver.save_screenshot(self.screenshots_path)
+                        reason = self._strConversion(str(self.reason))
+                        self.reason = reason
+                        if os.path.exists(self.screenshots_path):
+                            self.img_path = str(self.screenshots_path).replace('\\', '/')
+                        self._log(self.reason)
+                        try:
+                            raise BaseException(self.reason)
+                        finally:
+                            self._log(self.reason)
             else:
                 if self.reason is not None:
                     self.status = '错误'
-                    self.driver.save_screenshot(self.screenshots_path)
+                    # self.driver.save_screenshot(self.screenshots_path)
                     self.reason = self._strConversion(str(self.reason))
                     if os.path.exists(self.screenshots_path):
                         self.img_path = str(self.screenshots_path).replace('\\', '/')
@@ -88,15 +89,15 @@ class MyAsserts():
                         raise BaseException(self.reason)
                     finally:
                         self._log(self.reason)
-                        self._assert()
                 if isinstance(self.first, type(self.second)):
                     if isinstance(self.first and self.second, bool):
                         if self.first == self.second:
                             self.status = '成功'
+                            self.reason = self._strConversion(str(self.first))
                             self._assert()
                         elif not self.first == self.second:
                             self.status = '失败'
-                            self.driver.save_screenshot(self.screenshots_path)
+                            # self.driver.save_screenshot(self.screenshots_path)
                             first = self._strConversion(str(self.first))
                             second = self._strConversion(str(self.second))
                             self.reason = '"%s" != "%s"' % (first, second)

@@ -15,36 +15,35 @@ from config_path.path_file import read_file
 from SCRM.public import LoginTestModules
 
 def case_id():
-    """用例计算"""
+    """
+    用例计算
+    :return: 用例个数
+    """
     global case_count
     case_count += 1
     return case_count
 
-def setUpModule(currentModule):
-    """模块初始化"""
-    global Driver, URL, SQL, Error, LOG, wait
-    LOG = Logger()
-    Browser = MyYaml('browser').config
-    account = MyYaml('account').config
-    password = MyYaml('password').config
-    wait = MyYaml('implicitly_wait').config
-    Driver = browser(Browser)
-    SQL = Mysql()
-    URL = MyYaml('SCRM').base_url
-    Error = None
-    if isinstance(wait, int):
-        Driver.implicitly_wait(wait)
-        Driver.set_page_load_timeout(wait * 7)
-    else:
-        raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
-    if 'ValidateLogin_st' not in currentModule:
-        try:
-            LoginTestModules(Driver, URL).success_login(account, password)
-        except Exception:
-            Error = traceback.format_exc()
-            LOG.logging_debug(Error)
+def _login_module(account=None, password=None, in_login=False):
+    """
+    登录信息函数的封装
+    :param account: 登录账号
+    :param password: 登录的密码
+    :param in_login: 是否需要重新登录
+    :return: None
+    """
+    if in_login:
+        if account and password is not None:
+            try:
+                LoginTestModules(Driver, URL).success_login(account, password)
+            except Exception:
+                Error = traceback.format_exc()
+                LOG.logging_debug(Error)
+                Driver.quit()
+                raise Error
+        else:
+            LOG.logging_debug(text)
             Driver.quit()
-            raise Error
+            raise TypeError(text)
     else:
         try:
             LoginTestModules(Driver, URL).opens_if()
@@ -53,6 +52,29 @@ def setUpModule(currentModule):
             LOG.logging_debug(Error)
             Driver.quit()
             raise Error
+
+def setUpModule(currentModule):
+    """模块初始化"""
+    global Driver, URL, SQL, Error, LOG, wait, text
+    text = "当in_login为True时，account或者password不能为None"
+    LOG = Logger()
+    SQL = Mysql()
+    Error = None
+    wait = MyYaml('implicitly_wait').config
+    Driver = browser(MyYaml('browser').config)
+    account = MyYaml('account').config
+    password = MyYaml('password').config
+    URL = MyYaml('SCRM').base_url
+    if isinstance(wait, int):
+        Driver.implicitly_wait(wait)
+        Driver.set_page_load_timeout(wait * 7)
+    else:
+        raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
+    if 'ValidateLogin_st' not in currentModule:
+        _login_module(in_login=True, account=account, password=password)
+    else:
+        _login_module(in_login=False)
+
 
 def tearDownModule():
     """模块结束"""
@@ -64,7 +86,23 @@ class UnitTests(unittest.TestCase):
     global case_count
     case_count = 0
     log = start_time = result = status = level = img = error  =  None
-    first = second = author = urls = None
+    first = second = author = urls = RE_LOGIN = LOGIN_INFO = None
+
+    @classmethod
+    def setUpClass(cls):
+        """判断类下面是否需要重新请求账号登录"""
+        if cls.RE_LOGIN:
+            account = cls.LOGIN_INFO["account"]
+            password = cls.LOGIN_INFO["password"]
+            if account and password is not None:
+                _login_module(in_login=True, account=account, password=password)
+            else:
+                raise TypeError(text)
+
+    @classmethod
+    def tearDownClass(cls):
+        """"""
+        pass
 
     def setUp(self):
         """用例初始化"""
