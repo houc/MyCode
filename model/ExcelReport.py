@@ -107,14 +107,14 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.099})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.1})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.099})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.1})
                     elif 'None' == d:
-                        self.sheet_test.write(a, c, '...', self.test_content_style)
+                        self.sheet_test.write(a, c, '.......', self.test_content_style)
                     else:
                         self.sheet_test.set_row(a, 78)
                         if '.png' in str(d):
@@ -179,7 +179,10 @@ class WriteExcel:
 
     def _title_title_style(self):
         """测试报告总览表单样式"""
-        self.sheet_title.set_column('A1:F1', 14)
+        self.sheet_title.set_column('A1:F1', 18)
+        self.sheet_title.set_column('D1:D1', 28)
+        self.sheet_title.set_column('F1:F1', 28)
+        self.title_title.set_border(7)
         self.title_title.set_font_name('微软雅黑')
         self.title_title.set_size(11)
         self.title_title.set_text_wrap()
@@ -190,41 +193,22 @@ class WriteExcel:
 
     def _title_content_style(self):
         """测试报告表单内容"""
+        self.title_title_content.set_border(7)
         self.title_title_content.set_text_wrap()
         self.title_title_content.set_valign('vcenter')
         self.title_title_content.set_font_name('微软雅黑')
         self.title_title_content.set_size(11)
         return self.title_title_content
 
-    def _title_insert_report_img(self):
-        """插入总体测试报告分析图表"""
-        img = self.open_excel.add_chart({'type':'column'})
-        img.add_series(
-            {
-                'name': '分析',
-                'categories': '={}!$A$1:$D$1'.format(self.sheet_title),
-                'values': '={}!$A$2:$D$2'.format(self.sheet_title),
-                'fill': {'color': '#FF9900'},
-            }
-        )
-        img.set_x_axis(
-            {
-                'name': '错误',
-                'name_font': {'size': 10},
-                'min':2,
-                'max':5,
-            }
-        )
-        img.set_y_axis(
-            {
-                'name': '的',
-                'name_font': {'size': 14, 'bold': True},
-                'num_font': {'italic': True},
-                'min': 20,
-                'max': 50,
-            }
-        )
-        self.sheet_title.insert_chart('A10',img)
+    def _title_insert_report_img(self, content):
+        """
+        插入总体测试报告分析图表
+        :param content: 用例数据内容
+        """
+
+        img = self.open_excel.add_chart({'type': 'column'})
+        img.add_series()
+        self.sheet_title.insert_chart('A10', img)
         return self.sheet_title
 
     def _title_write(self, parameter, **kwargs):
@@ -235,7 +219,7 @@ class WriteExcel:
                                      str(kwargs['title_title']).format(self.report_project, self.report_type),
                                      self.title_title)
         self.sheet_title.merge_range(1, 0, 6, 1, ' ')
-        self.sheet_title.insert_image(1, 0, self.login_path, {'x_scale': 1.5, 'y_scale': 2})
+        self.sheet_title.insert_image(1, 0, self.login_path, {'x_scale': 2.2, 'y_scale': 2})
         self.sheet_title.write(1, 2, kwargs['title_version'], self.title_title_content)
         self.sheet_title.write(1, 4, kwargs['title_action'], self.title_title_content)
         self.sheet_title.write(2, 2, kwargs['title_tool'], self.title_title_content)
@@ -248,14 +232,32 @@ class WriteExcel:
         self.sheet_title.write(5, 4, kwargs['title_error'], self.title_title_content)
         self.sheet_title.write(6, 2, kwargs['title_skip'], self.title_title_content)
         self.sheet_title.write(6, 4, kwargs['title_total_time'], self.title_title_content)
-        if isinstance(parameter, list):
-            print()
+
+        # ======================================汇总表内容========================================
+
+        if isinstance(parameter, dict):
+            self._title_insert_report_img(parameter)
+            test_version = MyYaml("test_version").excel_parameter
+            test_science = MyYaml("science").excel_parameter
+            test_tool = MyYaml("test_tool").excel_parameter
+            self.sheet_title.write(1, 3, test_version, self.title_title_content)
+            self.sheet_title.write(1, 5, test_science, self.title_title_content)
+            self.sheet_title.write(2, 3, test_tool, self.title_title_content)
+            self.sheet_title.write(2, 5, str(parameter.get("member")), self.title_title_content)
+            self.sheet_title.write(3, 3, str(parameter.get("start_time")), self.title_title_content)
+            self.sheet_title.write(3, 5, str(parameter.get("end_time")), self.title_title_content)
+            self.sheet_title.write(4, 3, str(parameter.get("testsRun")) + '条', self.title_title_content)
+            self.sheet_title.write(4, 5, str(parameter.get("success")) + '条', self.title_title_content)
+            self.sheet_title.write(5, 3, str(parameter.get("failures")) + '条', self.title_title_content)
+            self.sheet_title.write(5, 5, str(parameter.get("errors")) + '条', self.title_title_content)
+            self.sheet_title.write(6, 3, str(parameter.get("short_time")) + 's', self.title_title_content)
+            self.sheet_title.write(6, 5, str(parameter.get("long_time")) + 's', self.title_title_content)
         else:
-            raise TypeError('class_merge()函数方法应为["A","B","C","D"]')
+            raise TypeError('class_merge()函数方法应为字典')
 
     def _merge_def_title_data(self, parameter, *args, **kwargs):
         """函数进行封装"""
-        self._title_write(parameter,**kwargs)
+        self._title_write(parameter, **kwargs)
         self._write_pc_content(**kwargs)
         self._write_test_title(*args)
         self.open_excel.close()
@@ -280,9 +282,9 @@ class ExcelTitle(WriteExcel):
         args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', '异常原因（实际结果）', '用例执行时间', \
                '截图','负责人','用例完成时间'
         kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
-                  'title_title':'{}项目{}UI自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'用例最长耗时','title_member':'参与人员',
+                  'title_title':'{}项目{}UI自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'用例最长耗时','title_member':'编写用例人员',
                   'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'用例最短耗时','':'',
-                  'title_action':'测试环境','title_tool':'测试工具','title_version':'测试版本'
+                  'title_action':'运行环境','title_tool':'测试工具','title_version':'测试版本'
                   }
         return self._merge_def_title_data(parameter, *args, **kwargs)
 
@@ -291,4 +293,4 @@ if __name__ == '__main__':
     ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', 'aaa', '1.256s', '错误', '辅导费333', '','苟富贵','2018-12-25 17:34:10',],
                 ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ', '苟富贵'],]
 
-    ).class_merge(['w','u'])
+    ).class_merge({"success": "33"})

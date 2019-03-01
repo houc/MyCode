@@ -103,7 +103,7 @@ class TestLogin(UnitTests):
         1、用户名输入框输入:
         15928564313;
         2、密码输入框输入:
-        
+
         ;
         3、点击【登录】。
         """
@@ -131,9 +131,7 @@ class TestLogin(UnitTests):
         验证密码为全英文字节登录:
         1、用户名输入框输入:
         15928564313;
-        2、密码输入框输入:
-        
-        ASDSDSFDSFDSFSDCSDCDSFCDSFDSFDSGDSGDSGDSFGDSFSDFSD;
+        2、密码输入框输入: ‘ASDSDSFDSFDSFSDCSDCDSFCDSFDSFDSGDSGDSGDSFGDSFSDFSD’;
         3、点击【登录】。
         """
         try:

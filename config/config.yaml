@@ -9,7 +9,9 @@ base_url:
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
 excel_parameter:
-  project_name: SCRM
+  project_name: SCRM内贸
+  test_version: V2.1.10.11
+  test_tool: python3+selenium+unittest
   science: 测试环境
 config:
   token_keys: Authorization
