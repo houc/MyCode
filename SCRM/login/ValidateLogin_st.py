@@ -86,7 +86,7 @@ class TestLogin(UnitTests):
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
-            driver.XPATH("//*[text33()='手机号/邮箱']/../div[1]/input!!click")
+            driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!click")
             driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!send", "  ")
             driver.XPATH("//*[text()='密码']/../div[1]/input!!click")
             driver.XPATH("//*[text()='密码']/../div[1]/input!!send", "Li1234564444")
@@ -136,7 +136,7 @@ class TestLogin(UnitTests):
         """
         try:
             self.level = '低'
-            self.author = '后超'
+            self.author = '李四小米'
             self.urls = '/platform/#/account/login'
             self.second = '密码错误请重新输入'
             driver = ElementLocation(self.driver)

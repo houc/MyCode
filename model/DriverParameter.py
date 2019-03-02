@@ -8,9 +8,9 @@ def browser(switch=False):
     global driver
     path = read_file('package', 'ChromeDriver.exe')
     if switch:
+        warnings.filterwarnings('ignore')
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
-        warnings.filterwarnings('ignore')
         driver = webdriver.Chrome(path, chrome_options=options)
         driver.set_window_size(1920, 1054)
     else:

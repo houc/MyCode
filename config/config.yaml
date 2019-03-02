@@ -9,10 +9,10 @@ base_url:
 #  EDP: https://admin.edpglobal.cn  # 正式环境
 #  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
 excel_parameter:
-  project_name: SCRM内贸
+  project_name: SCRM
   test_version: V2.1.10.11
   test_tool: python3+selenium+unittest
-  science: 测试环境
+  science: 内贸项目测试环境
 config:
   token_keys: Authorization
   level: 10
@@ -72,4 +72,5 @@ sql:
                                  insert_time) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
   sql_delete: DELETE FROM result WHERE 1=1                 # 数据库全部清除数据
   sql_update: UPDATE result SET %s WHERE %s                # 更新数据
+  sql_create_list: create database %s character set utf8
 

@@ -1,4 +1,5 @@
 import xlsxwriter
+import warnings
 
 from config_path.path_file import read_file
 from model.PCParameter import merge_config_info, merge_config_msg
@@ -107,12 +108,12 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.1})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.110})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.1})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.110})
                     elif 'None' == d:
                         self.sheet_test.write(a, c, '.......', self.test_content_style)
                     else:
@@ -205,11 +206,19 @@ class WriteExcel:
         插入总体测试报告分析图表
         :param content: 用例数据内容
         """
-
+        warnings.simplefilter('ignore')
         img = self.open_excel.add_chart({'type': 'column'})
-        img.add_series()
-        self.sheet_title.insert_chart('A10', img)
-        return self.sheet_title
+        data = [['Pass', 'Fail', 'Warn', 'NT'], [333, 11, 12, 22]]
+        self.sheet_title.write_row('A11', data[0])
+        self.sheet_title.write_row('A12', data[1])
+        img.add_series({'categories': '={}简报统计图!$A$11:$D$11'.format(self.report_project),
+                        'values': '={}简报统计图!$A$12:$D$12'.format(self.report_project),
+                        'points': [{'fill': {'color': '#00CD00'}},
+                                   {'fill': {'color': 'red'}},
+                                   {'fill': {'color': 'yellow'}},
+                                   {'fill': {'color': 'gray'}}]})
+        img.set_title({'name': '{}简报统计图'.format(self.report_project)})
+        self.sheet_title.insert_chart('A10', img, {'x_offset': 25, 'y_offset': 10})
 
     def _title_write(self, parameter, **kwargs):
         """写入测试报告表头/内容数据"""
@@ -282,7 +291,7 @@ class ExcelTitle(WriteExcel):
         args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', '异常原因（实际结果）', '用例执行时间', \
                '截图','负责人','用例完成时间'
         kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
-                  'title_title':'{}项目{}UI自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'用例最长耗时','title_member':'编写用例人员',
+                  'title_title':'{}{}UI自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'用例最长耗时','title_member':'编写用例人员',
                   'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'用例最短耗时','':'',
                   'title_action':'运行环境','title_tool':'测试工具','title_version':'测试版本'
                   }
@@ -293,4 +302,4 @@ if __name__ == '__main__':
     ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', 'aaa', '1.256s', '错误', '辅导费333', '','苟富贵','2018-12-25 17:34:10',],
                 ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ', '苟富贵'],]
 
-    ).class_merge({"success": "33"})
+    ).class_merge({"success": "33", "testsRun": "5", "errors": "45"})
