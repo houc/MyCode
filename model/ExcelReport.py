@@ -2,7 +2,7 @@ import xlsxwriter
 import warnings
 
 from config_path.path_file import read_file
-from model.PCParameter import merge_config_info, merge_config_msg
+from model.PCParameter import merge_config_info, merge_config_msg, output_python_version
 from model.Yaml import MyYaml
 
 
@@ -15,6 +15,7 @@ class WriteExcel:
         self.login_path = read_file('img', 'logo.png')
         self.real_pc = merge_config_info()
         self.fix_pc = merge_config_msg()
+        self.python_version = output_python_version()
         self.open_excel = xlsxwriter.Workbook(excel_ptah)
         self.style_title = self.open_excel.add_format()
         self.pc_style_title = self.open_excel.add_format()
@@ -207,18 +208,19 @@ class WriteExcel:
         :param content: 用例数据内容
         """
         warnings.simplefilter('ignore')
-        img = self.open_excel.add_chart({'type': 'column'})
-        data = [['Pass', 'Fail', 'Warn', 'NT'], [333, 11, 12, 22]]
-        self.sheet_title.write_row('A11', data[0])
-        self.sheet_title.write_row('A12', data[1])
-        img.add_series({'categories': '={}简报统计图!$A$11:$D$11'.format(self.report_project),
-                        'values': '={}简报统计图!$A$12:$D$12'.format(self.report_project),
-                        'points': [{'fill': {'color': '#00CD00'}},
-                                   {'fill': {'color': 'red'}},
-                                   {'fill': {'color': 'yellow'}},
-                                   {'fill': {'color': 'gray'}}]})
-        img.set_title({'name': '{}简报统计图'.format(self.report_project)})
-        self.sheet_title.insert_chart('A10', img, {'x_offset': 25, 'y_offset': 10})
+        # img = self.open_excel.add_chart({'type': 'column'})
+        # data = [['Pass', 'Fail', 'Warn', 'NT'], [333, 11, 12, 22]]
+        # self.sheet_title.write_row('A21', data[0])
+        # self.sheet_title.write_row('A22', data[1])
+        # img.add_series({'categories': '=Sheet1!$A$21:$D$21',
+        #                 'values': '=Sheet!$A$22:$D$22',})
+        #                 # 'points': [{'fill': {'color': '#00CD00'}},
+        #                 #            {'fill': {'color': 'red'}},
+        #                 #            {'fill': {'color': 'yellow'}},
+        #                 #            {'fill': {'color': 'gray'}}]})
+        # img.set_title({'name': '{}简报统计图'.format(self.report_project)})
+        # img.set_x_axis({'name': 'F'})
+        # self.sheet_title.insert_chart('B10', img, {'x_offset': 55, 'y_offset': 10})
 
     def _title_write(self, parameter, **kwargs):
         """写入测试报告表头/内容数据"""
@@ -245,10 +247,9 @@ class WriteExcel:
         # ======================================汇总表内容========================================
 
         if isinstance(parameter, dict):
-            self._title_insert_report_img(parameter)
             test_version = MyYaml("test_version").excel_parameter
             test_science = MyYaml("science").excel_parameter
-            test_tool = MyYaml("test_tool").excel_parameter
+            test_tool = 'Python'+ self.python_version
             self.sheet_title.write(1, 3, test_version, self.title_title_content)
             self.sheet_title.write(1, 5, test_science, self.title_title_content)
             self.sheet_title.write(2, 3, test_tool, self.title_title_content)
@@ -261,6 +262,7 @@ class WriteExcel:
             self.sheet_title.write(5, 5, str(parameter.get("errors")) + '条', self.title_title_content)
             self.sheet_title.write(6, 3, str(parameter.get("short_time")) + 's', self.title_title_content)
             self.sheet_title.write(6, 5, str(parameter.get("long_time")) + 's', self.title_title_content)
+            self._title_insert_report_img(parameter)
         else:
             raise TypeError('class_merge()函数方法应为字典')
 
@@ -288,12 +290,15 @@ class ExcelTitle(WriteExcel):
         args：报告详情的表头，
         kwargs：PC配置中的表头/title_开头是报告里面的数据
         """
-        args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', '异常原因（实际结果）', '用例执行时间', \
-               '截图','负责人','用例完成时间'
-        kwargs = {'title':'测试机配置明细单','memory':'内存','disk':'磁盘','network':'网卡','system':'操作系统','consume':'硬件消耗情况','config':'硬件配置情况','CPU':'CPU',
-                  'title_title':'{}{}UI自动化测试报告','title_start_time':'开始时间','title_stop_time':'结束时间','title_total_time':'用例最长耗时','title_member':'编写用例人员',
-                  'title_case':'总用例数','title_success':'成功数','title_fail':'失败数','title_error':'错误数','title_skip':'用例最短耗时','':'',
-                  'title_action':'运行环境','title_tool':'测试工具','title_version':'测试版本'
+        args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', \
+               '异常原因（实际结果）', '用例执行时间', '截图', '负责人', '用例完成时间'
+        kwargs = {'title': '测试机配置明细单', 'memory': '内存', 'disk': '磁盘', 'network': '网卡',
+                  'system': '操作系统', 'consume': '硬件消耗情况', 'config': '硬件配置情况', 'CPU': 'CPU',
+                  'title_title': '{}{}UI自动化测试报告', 'title_start_time': '开始时间', 'title_stop_time': '结束时间',
+                  'title_total_time': '用例最长耗时', 'title_member':'编写用例人员', 'title_case': '总用例数',
+                  'title_success': '成功数', 'title_fail': '失败数', 'title_error': '错误数',
+                  'title_skip': '用例最短耗时', '': '', 'title_action': '运行环境','title_tool': '测试工具',
+                  'title_version': '测试版本'
                   }
         return self._merge_def_title_data(parameter, *args, **kwargs)
 
