@@ -44,6 +44,21 @@ class _OperationElement(object):
         """
         return browser(MyYaml('browser').config)
 
+    def is_element_exist(self, by, element):
+        """
+        检查元素是否存在
+        :param element: 元素, 如：//*[text()='密码错误请重新输入']/..
+        :param by: 指定的方法，如：By.XPATH
+        :return: 存在返回True，反之返回False
+        """
+        flag = True
+        try:
+            self.driver.find_element(by, element)
+        except:
+            flag = False
+        finally:
+            return flag
+
 
 class ElementLocation(_OperationElement):
     """
@@ -71,6 +86,10 @@ class ElementLocation(_OperationElement):
         elif type_event == "display":
             value = self.driver.find_element(By.XPATH, '{}'.format(elements)).is_displayed()
             return value
+        elif type_event == 'exist':
+            return self.is_element_exist(by=By.XPATH, element=elements)
+        else:
+            return self.driver.find_element(By.XPATH, '{}'.format(elements))
 
     def CSS(self, element: str, param=""):
         """
@@ -93,11 +112,16 @@ class ElementLocation(_OperationElement):
         elif type_event == "display":
             value = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).is_displayed()
             return value
+        elif type_event == 'exist':
+            return self.is_element_exist(by=By.XPATH, element=elements)
+        else:
+            return self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements))
         if type_event == "dragF":
             dragF = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements))
         if type_event == "dragS":
             dragS = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements))
             self.drag(dragF, dragS)
+
 
 
 if __name__ == '__main__':

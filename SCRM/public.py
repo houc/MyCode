@@ -18,15 +18,16 @@ class LoginTestModules(object):
     password_element_1 = "//*[text()='密码']/../div[1]/input!!click"
     password_element_2 = "//*[text()='密码']/../div[1]/input!!send"
     login_element = "//*[text()='登录']/..!!click"
-    # company_element = '请选择要登录的公司*/../../div[2]/div/div/div/ul/li[1]!!click'
-    assert_success = "//*[text()='哒哒']/.!!text"
-    is_open = "//*[text()='账号密码登录']!!text"
+    company_element = "//*[contains(text(), '请选择要登录的公司')]!!exist"
+    company_element_2 = "//li[contains(text(), '%s')]!!click"
+    assert_success = "//*[text()='%s']/.!!text"
+    is_open = "//*[text()='%s']!!text"
 
     def __init__(self, driver, url):
         self.driver = driver
         self.url = url + '/platform/#/account/login'
 
-    def success_login(self, account, password):
+    def success_login(self, account, password, company=None):
         """登录成功"""
         element = ElementLocation(self.driver)
         element.get(self.url)
@@ -38,7 +39,13 @@ class LoginTestModules(object):
         element.XPATH(self.password_element_2, password)
         element.XPATH(self.login_element)
         time.sleep(1)
-        assert element.XPATH(self.assert_success) == "哒哒"
+        company_exist = element.XPATH(self.company_element)
+        if company_exist:
+            if company is None:
+                raise TypeError("该账号存在多家公司，请传入company是属于哪家公司进行登录！")
+            else:
+                element.XPATH(self.company_element_2 % company)
+        assert element.XPATH(self.assert_success % "哒哒") == "哒哒"
         BrowserToken(self.driver).get_token()
 
     def opens_if(self):
@@ -47,7 +54,7 @@ class LoginTestModules(object):
         element.get(self.url)
         time.sleep(3)
         element.F5()
-        assert element.XPATH(self.is_open) == "账号密码登录"
+        assert element.XPATH(self.is_open % "账号密码登录") == "账号密码登录"
 
 
 class Interface(object):

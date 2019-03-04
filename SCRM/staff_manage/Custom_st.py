@@ -16,7 +16,7 @@ class TestStaffCustomManage(UnitTests):
     当RE_LOGIN = True即为需要重新登录，或者是需要切换账号登录，当RE_LOGIN为True时，需要将LOGIN_INFO的value值全填写完成，否则会报错...
     """
     RE_LOGIN = False
-    LOGIN_INFO = {"account": None, "password": None}
+    LOGIN_INFO = {"account": None, "password": None, "company": None}
     
     def test_drag_and_drop(self):
         """

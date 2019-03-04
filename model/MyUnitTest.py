@@ -23,18 +23,19 @@ def case_id():
     case_count += 1
     return case_count
 
-def _login_module(account=None, password=None, in_login=False):
+def _login_module(account=None, password=None, company=None, in_login=False):
     """
     登录信息函数的封装
     :param account: 登录账号
     :param password: 登录的密码
     :param in_login: 是否需要重新登录
+    :param company: 是否同一账号存在多加公司
     :return: None
     """
     if in_login:
         if account and password is not None:
             try:
-                LoginTestModules(Driver, URL).success_login(account, password)
+                LoginTestModules(Driver, URL).success_login(account, password, company)
             except Exception:
                 Error = traceback.format_exc()
                 LOG.logging_debug(Error)
@@ -84,6 +85,7 @@ def tearDownModule():
 
 class UnitTests(unittest.TestCase):
     global case_count
+    # noinspection PyRedeclaration
     case_count = 0
     log = start_time = result = status = level = img = error  =  None
     first = second = author = urls = RE_LOGIN = LOGIN_INFO = None
@@ -94,8 +96,9 @@ class UnitTests(unittest.TestCase):
         if cls.RE_LOGIN:
             account = cls.LOGIN_INFO["account"]
             password = cls.LOGIN_INFO["password"]
+            company = cls.LOGIN_INFO.get("company")
             if account and password is not None:
-                _login_module(in_login=True, account=account, password=password)
+                _login_module(in_login=True, account=account, password=password, company=company)
             else:
                 raise TypeError(text)
 

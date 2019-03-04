@@ -16,7 +16,7 @@ class TestLogin(UnitTests):
     当RE_LOGIN = True即为需要重新登录，或者是需要切换账号登录，当RE_LOGIN为True时，需要将LOGIN_INFO的value值全填写完成，否则会报错...
     """
     RE_LOGIN = False
-    LOGIN_INFO = {"account": None, "password": None}
+    LOGIN_INFO = {"account": None, "password": None, "company": None}
     
     def test_accountError(self):
         """
@@ -29,7 +29,7 @@ class TestLogin(UnitTests):
             self.level = '低'
             self.author = '后超'
             self.urls = '/platform/#/account/login'
-            self.second = '账号未注册...'
+            self.second = '账号未注册'
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
@@ -55,7 +55,7 @@ class TestLogin(UnitTests):
             self.level = '低'
             self.author = '后超'
             self.urls = '/platform/#/account/login'
-            self.second = '密码错误请重新输入...'
+            self.second = '密码错误请重新输入'
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
@@ -103,7 +103,7 @@ class TestLogin(UnitTests):
         1、用户名输入框输入:
         15928564313;
         2、密码输入框输入:
-
+        
         ;
         3、点击【登录】。
         """
@@ -115,7 +115,7 @@ class TestLogin(UnitTests):
             driver = ElementLocation(self.driver)
             driver.F5()
             driver.get(self.url + self.urls)
-            driver.XPATH("//*[text333()='手机号/邮箱']/../div[1]/input!!click")
+            driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!click")
             driver.XPATH("//*[text()='手机号/邮箱']/../div[1]/input!!send", "15928564313")
             driver.XPATH("//*[text()='密码']/../div[1]/input!!click")
             driver.XPATH("//*[text()='密码']/../div[1]/input!!send", "  ")
@@ -131,12 +131,14 @@ class TestLogin(UnitTests):
         验证密码为全英文字节登录:
         1、用户名输入框输入:
         15928564313;
-        2、密码输入框输入: ‘ASDSDSFDSFDSFSDCSDCDSFCDSFDSFDSGDSGDSGDSFGDSFSDFSD’;
+        2、密码输入框输入:
+        
+        ASDSDSFDSFDSFSDCSDCDSFCDSFDSFDSGDSGDSGDSFGDSFSDFSD;
         3、点击【登录】。
         """
         try:
             self.level = '低'
-            self.author = '李四小米'
+            self.author = '后超'
             self.urls = '/platform/#/account/login'
             self.second = '密码错误请重新输入'
             driver = ElementLocation(self.driver)
