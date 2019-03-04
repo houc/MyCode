@@ -113,7 +113,7 @@ class ElementLocation(_OperationElement):
             value = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements)).is_displayed()
             return value
         elif type_event == 'exist':
-            return self.is_element_exist(by=By.XPATH, element=elements)
+            return self.is_element_exist(by=By.CSS_SELECTOR, element=elements)
         else:
             return self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements))
         if type_event == "dragF":
