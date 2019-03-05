@@ -46,7 +46,7 @@ def get_network():
         network_msg['子网掩码'] = i.IPSubnet[0]
         network_msg['MAC地址'] = i.MACAddress
         network_msg['网关地址'] = i.DHCPServer
-        network_msg['DNS地址'] = i.DNSServerSearchOrder[0]
+        network_msg['DNS地址'] = i.DNSServerSearchOrder
         network_msg['网卡类别'] = i.Description
     return network_msg
 

@@ -1,5 +1,6 @@
 import unittest
 import time
+import os
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -15,9 +16,11 @@ class TestStaffCustomManage(UnitTests):
     """
     当RE_LOGIN = True即为需要重新登录，或者是需要切换账号登录，当RE_LOGIN为True时，需要将LOGIN_INFO的value值全填写完成，
     如果请求的账号中只有一家公司那么company中的value就可以忽略不填写，否则会报错...
+    MODULE为当前运行的模块
     """
     RE_LOGIN = False
     LOGIN_INFO = {"account": None, "password": None, "company": None}
+    MODULE = os.path.dirname(__file__).split("\\")[-1]
     
     def test_drag_and_drop(self):
         """
@@ -26,18 +29,13 @@ class TestStaffCustomManage(UnitTests):
         2、拖拽到任意位置，释放字段属性。
         """
         try:
-            self.level = '中'
-            self.author = '后超'
-            self.urls = '/platform/#/manage/employeeProperty'
-            self.second = '属性排序成功'
             driver = ElementLocation(self.driver)
+            driver.get(self.url)
             driver.F5()
-            driver.get(self.url + self.urls)
-            driver.CSS("span > tr:nth-child(1)!!dragF")
-            driver.CSS("span > tr:nth-child(2)!!dragS")
+            driver.element_handle(self.element)
             time.sleep(1)
             self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.XPATH("//*[text()='属性排序成功']/.!!text")
+            self.first = driver.element_handle(self.get_asserts, switch=True)
         except Exception as exc:
             self.error = str(exc)
 

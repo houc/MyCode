@@ -122,6 +122,45 @@ class ElementLocation(_OperationElement):
             dragS = self.driver.find_element(By.CSS_SELECTOR, '{}'.format(elements))
             self.drag(dragF, dragS)
 
+    def element_handle(self, element: list, switch=False):
+        """
+        处理元素
+        :param element: 所有元素：包含xpath、css
+        :return:
+        """
+        if isinstance(element, list):
+            for a in element:
+                if "CSS:" in a:
+                    value = a.split("CSS:")[1]
+                    if '#' in value:
+                        re_value = value.split("#")[0]
+                        param = value.split("#")[1]
+                        if switch:
+                            return self.CSS(re_value, param)
+                        else:
+                            self.CSS(re_value, param)
+                    else:
+                        if switch:
+                            return self.CSS(value)
+                        else:
+                            self.CSS(value)
+                elif "XPATH:" in a:
+                    value = a.split("XPATH:")[1]
+                    if '#' in value:
+                        re_value = value.split("#")[0]
+                        param = value.split("#")[1]
+                        if switch:
+                            return self.XPATH(re_value, param)
+                        else:
+                            self.XPATH(re_value, param)
+                    else:
+                        if switch:
+                            return self.XPATH(value)
+                        else:
+                            self.XPATH(value)
+        else:
+            raise TypeError("element参数不是列表")
+
 
 
 if __name__ == '__main__':

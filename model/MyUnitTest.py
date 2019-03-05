@@ -9,6 +9,7 @@ from model.Yaml import MyYaml
 from model.SQL import Mysql
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
+from model.GetYamlMessages import GetConfigMessage as Get
 from model.MyException import WaitTypeError, FUN_NAME
 from model.TimeConversion import standard_time
 from config_path.path_file import read_file
@@ -88,7 +89,7 @@ class UnitTests(unittest.TestCase):
     # noinspection PyRedeclaration
     case_count = 0
     log = start_time = result = status = level = img = error  =  None
-    first = second = author = urls = RE_LOGIN = LOGIN_INFO = None
+    first = second = author = urls = RE_LOGIN = LOGIN_INFO = MODULE = None
 
     @classmethod
     def setUpClass(cls):
@@ -110,7 +111,6 @@ class UnitTests(unittest.TestCase):
     def setUp(self):
         """用例初始化"""
         self.driver = Driver
-        self.url = URL
         self.sql = SQL
         self.setLog = Error
         self.count = case_id()
@@ -120,6 +120,13 @@ class UnitTests(unittest.TestCase):
         self.case_name = self._testMethodName
         self.case_remark = self._testMethodDoc
         self.current_path = os.path.dirname(__file__)
+        CASE_DATA = Get(module=self.MODULE, class_name=self.class_name, case_name=self.case_name).re()
+        self.level = CASE_DATA.get("level")
+        self.author = CASE_DATA.get("author")
+        self.url = CASE_DATA.get("url")
+        self.second = CASE_DATA.get("asserts")
+        self.element = CASE_DATA.get("element")
+        self.get_asserts = CASE_DATA.get("get_asserts")
         self.driver.implicitly_wait(wait)
         self.driver.set_page_load_timeout(wait * 7)
         self.current_time = standard_time()
@@ -135,8 +142,8 @@ class UnitTests(unittest.TestCase):
         total_time = end_time - self.start_time
         error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
         MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
-                                self.status, self.error, self.urls, total_time, self.driver, self.class_name,
-                                self.screenshots_path, self.author, self, error_path, LOG, self.second).asserts()
+                                self.status, self.error, self.url, total_time, self.driver, self.class_name,
+                                self.screenshots_path, self.author, self, error_path, LOG).asserts()
 
 if __name__ == '__main__':
     unittest.main()

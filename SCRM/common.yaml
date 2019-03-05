@@ -16,7 +16,8 @@ SCRM:
                   "XPATH://*[text()='手机号/邮箱']/../div[1]/input!!send#15928564314999",
                   "XPATH://*[text()='密码']/../div[1]/input!!click",
                   "XPATH://*[text()='密码']/../div[1]/input!!send#Li123456",
-                  "XPATH://*[text()='登录']/..!!click"],  # 元素定位的方法
+                  "XPATH://*[text()='登录']/..!!click",
+                  ""],  # 元素定位的方法
         get_asserts: ["XPATH://*[text()='账号未注册']/..!!text"], # 元素定位断言的方法
         asserts: '账号未注册'                    # 断言信息
         }

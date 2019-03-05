@@ -4,7 +4,7 @@ import operator
 import shutil
 
 from model.Yaml import MyYaml
-from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, XPATH, CSS, FIRST_ASSERT, CURRENCY_YA
+from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, ELEMENT, CURRENCY_YA
 from model.PrintColor import RED_BIG, WHITE_BIG
 from model.MyException import CreateFileError, FUN_NAME
 from model.TimeConversion import standard_time
@@ -237,7 +237,7 @@ class CreateModule(object):
                 case_url = values.get("url")
                 case_element = values.get("element")
                 get_case_assert = values.get("get_asserts")
-                HANDLE = self._xpath_css_judge(case_element, get_case_assert)
+                # HANDLE = self._xpath_css_judge(case_element, get_case_assert)
                 if 'test_' in case_name:
                     elements = self._spilt(case_name, 'case_name')
                 if case_doc is None:
@@ -253,68 +253,69 @@ class CreateModule(object):
                         case_url = url
                 if ' ' in case_doc:
                     case_doc = self._spilt(case_doc, 'case_doc')
-                if HANDLE:
-                    case_execute = HANDLE.format(case_name, case_doc, '{!r}'.format(case_level), '{!r}'.
-                                                format(case_author), case_url, case_assert)
+                if CASE_NAME:
+                    # case_execute = HANDLE.format(case_name, case_doc, '{!r}'.format(case_level), '{!r}'.
+                    #                             format(case_author), case_url, case_assert)
+                    case_execute = CASE_NAME.format(case_name, case_doc) % ELEMENT
                     return case_execute
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _element_xpath_handle(self, element: str):
-        """xpath元素处理"""
-        try:
-            if isinstance(element, str):
-                param_event = XPATH.format(element.split("#")[0] + '"@ "%s') % \
-                              element.split("#")[1] if 'send' in element else XPATH.format(element)
-                return param_event.strip()
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
-
-    def _element_css_handle(self, element: str):
-        """css元素处理"""
-        if isinstance(element, str):
-            param_event = CSS % (element.split("#")[0] + '"@ "%s') % \
-                          element.split("#")[1] if 'send' in element else CSS % element
-            return param_event.strip()
-
-    def _xpath_css_judge(self, element: list, param: list):
-        """
-        判断元素包含xpath或者是css，即分开传递参数
-
-        :return: 返回CSS和XPATH组合的数据
-        :param: 即ya里面的参数的element
-        :element: 即ya里面的参数的get_assert
-        """
-        try:
-            elements = []
-            first_assert = []
-
-            # ================================XPATH元素定位处理===================================================
-
-            for attribute in element:
-                if 'XPATH:' in attribute:
-                    xpath = self._element_xpath_handle(attribute.split("XPATH:")[1])
-                    elements.append(xpath)
-                elif 'CSS:' in attribute:
-                    css = self._element_css_handle(attribute.split("CSS:")[1])
-                    elements.append(css)
-            merge = str(elements)[1:-1].replace("'", "").replace(",", "\n           ").\
-                replace("@", ",").replace("\\", "'")
-
-            # ================================CSS元素定位处理====================================================
-
-            for first in param:
-                if 'XPATH:' in first:
-                    xpath = self._element_xpath_handle(first.split("XPATH:")[1])
-                    first_assert.append(xpath)
-                elif 'CSS:' in first:
-                    css = self._element_css_handle(first.split("CSS:")[1])
-                    first_assert.append(css)
-            assert_first = FIRST_ASSERT % str(first_assert)[1:-1].replace("'", "").\
-                replace(",", "\n           ").replace("@", ",").replace("\\", "'")
-            return CASE_NAME % (merge + '\n            ' + assert_first)
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+    # def _element_xpath_handle(self, element: str):
+    #     """xpath元素处理"""
+    #     try:
+    #         if isinstance(element, str):
+    #             param_event = XPATH.format(element.split("#")[0] + '"@ "%s') % \
+    #                           element.split("#")[1] if 'send' in element else XPATH.format(element)
+    #             return param_event.strip()
+    #     except Exception as exc:
+    #         self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+    #
+    # def _element_css_handle(self, element: str):
+    #     """css元素处理"""
+    #     if isinstance(element, str):
+    #         param_event = CSS % (element.split("#")[0] + '"@ "%s') % \
+    #                       element.split("#")[1] if 'send' in element else CSS % element
+    #         return param_event.strip()
+    #
+    # def _xpath_css_judge(self, element: list, param: list):
+    #     """
+    #     判断元素包含xpath或者是css，即分开传递参数
+    #
+    #     :return: 返回CSS和XPATH组合的数据
+    #     :param: 即ya里面的参数的element
+    #     :element: 即ya里面的参数的get_assert
+    #     """
+    #     try:
+    #         elements = []
+    #         first_assert = []
+    #
+    #         # ================================XPATH元素定位处理===================================================
+    #
+    #         for attribute in element:
+    #             if 'XPATH:' in attribute:
+    #                 xpath = self._element_xpath_handle(attribute.split("XPATH:")[1])
+    #                 elements.append(xpath)
+    #             elif 'CSS:' in attribute:
+    #                 css = self._element_css_handle(attribute.split("CSS:")[1])
+    #                 elements.append(css)
+    #         merge = str(elements)[1:-1].replace("'", "").replace(",", "\n           ").\
+    #             replace("@", ",").replace("\\", "'")
+    #
+    #         # ================================CSS元素定位处理====================================================
+    #
+    #         for first in param:
+    #             if 'XPATH:' in first:
+    #                 xpath = self._element_xpath_handle(first.split("XPATH:")[1])
+    #                 first_assert.append(xpath)
+    #             elif 'CSS:' in first:
+    #                 css = self._element_css_handle(first.split("CSS:")[1])
+    #                 first_assert.append(css)
+    #         assert_first = FIRST_ASSERT % str(first_assert)[1:-1].replace("'", "").\
+    #             replace(",", "\n           ").replace("@", ",").replace("\\", "'")
+    #         return CASE_NAME % (merge + '\n            ' + assert_first)
+    #     except Exception as exc:
+    #         self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
     @staticmethod
     def _spilt(values: str, switch: str):

@@ -31,6 +31,7 @@ class WriteExcel:
         self.sheet_test = self.open_excel.add_worksheet(kwargs['sheet_test_info'])
         self.sheet_pc = self.open_excel.add_worksheet(kwargs['sheet_pc_config'])
         self.test_data_content = args
+        self.title_name = kwargs['sheet_title']
 
     def _test_title_style(self, style_font='微软雅黑', font_size=11, bold=False, bg_color='DeepSkyBlue'):
         """测试表单表头样式"""
@@ -207,20 +208,19 @@ class WriteExcel:
         插入总体测试报告分析图表
         :param content: 用例数据内容
         """
+        title = self.title_name
         warnings.simplefilter('ignore')
-        # img = self.open_excel.add_chart({'type': 'column'})
-        # data = [['Pass', 'Fail', 'Warn', 'NT'], [333, 11, 12, 22]]
-        # self.sheet_title.write_row('A21', data[0])
-        # self.sheet_title.write_row('A22', data[1])
-        # img.add_series({'categories': '=Sheet1!$A$21:$D$21',
-        #                 'values': '=Sheet!$A$22:$D$22',})
-        #                 # 'points': [{'fill': {'color': '#00CD00'}},
-        #                 #            {'fill': {'color': 'red'}},
-        #                 #            {'fill': {'color': 'yellow'}},
-        #                 #            {'fill': {'color': 'gray'}}]})
-        # img.set_title({'name': '{}简报统计图'.format(self.report_project)})
-        # img.set_x_axis({'name': 'F'})
-        # self.sheet_title.insert_chart('B10', img, {'x_offset': 55, 'y_offset': 10})
+        img = self.open_excel.add_chart({'type': 'column'})
+        img.add_series({'categories': '=(%s!$C$5,%s!$E$5,%s!$C$6,%s!$E$6)' % (title, title, title, title),
+                        'values': '=(%s!$D$5,%s!$F$5,%s!$D$6,%s!$F$6)' % (title, title, title, title),
+                        'points': [{'fill': {'color': 'blue'}},  # 总用例数
+                                   {'fill': {'color': 'green'}}, # 成功用例数
+                                   {'fill': {'color': 'yellow'}},   # 失败用例数
+                                   {'fill': {'color': 'red'}}]})# 错误用例数
+        img.set_title({'name': '{}简报统计图'.format(self.report_project)})
+        img.set_y_axis({'name': '个数'})
+        img.set_x_axis({'name': '状态'})
+        self.sheet_title.insert_chart('A9', img, {'x_scale': 1.93, 'y_scale': 1.60})
 
     def _title_write(self, parameter, **kwargs):
         """写入测试报告表头/内容数据"""
@@ -256,10 +256,10 @@ class WriteExcel:
             self.sheet_title.write(2, 5, str(parameter.get("member")), self.title_title_content)
             self.sheet_title.write(3, 3, str(parameter.get("start_time")), self.title_title_content)
             self.sheet_title.write(3, 5, str(parameter.get("end_time")), self.title_title_content)
-            self.sheet_title.write(4, 3, str(parameter.get("testsRun")) + '条', self.title_title_content)
-            self.sheet_title.write(4, 5, str(parameter.get("success")) + '条', self.title_title_content)
-            self.sheet_title.write(5, 3, str(parameter.get("failures")) + '条', self.title_title_content)
-            self.sheet_title.write(5, 5, str(parameter.get("errors")) + '条', self.title_title_content)
+            self.sheet_title.write(4, 3, parameter.get("testsRun"), self.title_title_content)
+            self.sheet_title.write(4, 5, parameter.get("success"), self.title_title_content)
+            self.sheet_title.write(5, 3, parameter.get("failures"), self.title_title_content)
+            self.sheet_title.write(5, 5, parameter.get("errors"), self.title_title_content)
             self.sheet_title.write(6, 3, str(parameter.get("short_time")) + 's', self.title_title_content)
             self.sheet_title.write(6, 5, str(parameter.get("long_time")) + 's', self.title_title_content)
             self._title_insert_report_img(parameter)
@@ -307,4 +307,4 @@ if __name__ == '__main__':
     ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', 'aaa', '1.256s', '错误', '辅导费333', '','苟富贵','2018-12-25 17:34:10',],
                 ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ', '苟富贵'],]
 
-    ).class_merge({"success": "33", "testsRun": "5", "errors": "45"})
+    ).class_merge({"success": 7810, "testsRun": 7810, "errors": 521, "failures": 300})
