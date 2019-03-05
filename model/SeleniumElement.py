@@ -126,7 +126,7 @@ class ElementLocation(_OperationElement):
         """
         处理元素
         :param element: 所有元素：包含xpath、css
-        :return:
+        :return: switch为真，则断言，并且返回断言获取的值
         """
         if isinstance(element, list):
             for a in element:
