@@ -5,6 +5,7 @@ from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
 from model.SQL import Mysql
 from model.MyException import SQLDataError, FUN_NAME
+from model.SendEmail import Email
 
 
 class RunAll(object):
@@ -41,12 +42,14 @@ class RunAll(object):
         if sql_query:
             print("用例已全部执行完成，正在生成excel测试报告，请稍后....")
             self.excel(sql_query).class_merge(parameter=result)
+            self._send_email()
         else:
             raise SQLDataError(FUN_NAME(self.current_path))
 
 
     def _send_email(self):
         """发送邮件"""
+        Email().sender_email()
 
     def _sqlAndCase_data_handle(self, data=None, case=None):
         """
