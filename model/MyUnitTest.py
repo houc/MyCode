@@ -125,8 +125,6 @@ class UnitTests(unittest.TestCase):
         self.author = CASE_DATA.get("author")
         self.url = CASE_DATA.get("url")
         self.second = CASE_DATA.get("asserts")
-        self.element = CASE_DATA.get("element")
-        self.get_asserts = CASE_DATA.get("get_asserts")
         self.driver.implicitly_wait(wait)
         self.driver.set_page_load_timeout(wait * 7)
         self.current_time = standard_time()

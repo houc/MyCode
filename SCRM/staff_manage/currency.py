@@ -3,6 +3,7 @@ import requests
 from model.Yaml import MyYaml
 from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
+from model.SeleniumElement import ElementLocation
 
 def read_currency(keys: str, line: int):
     """
@@ -26,3 +27,8 @@ def token():
     """
     token = ConfigParameter().read_ini()
     return token
+
+
+class FindElement(ElementLocation):
+    """"""
+    # def super(FindElement, self).super()

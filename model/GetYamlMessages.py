@@ -23,8 +23,6 @@ class GetConfigMessage(object):
                     data_messages["url"] = value["url"]
                     data_messages["author"] = value["author"]
                     data_messages["level"] = value["level"]
-                    data_messages["element"] = value["element"]
-                    data_messages["get_asserts"] = value["get_asserts"]
                     data_messages["asserts"] = value["asserts"]
         if data_messages:
             self.data_messages = data_messages
@@ -38,4 +36,4 @@ class GetConfigMessage(object):
 
 
 if __name__ == '__main__':
-    GetConfigMessage()
+    print(GetConfigMessage().re())

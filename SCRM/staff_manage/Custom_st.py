@@ -32,10 +32,7 @@ class TestStaffCustomManage(UnitTests):
             driver = ElementLocation(self.driver)
             driver.get(self.url)
             driver.F5()
-            driver.element_handle(self.element)
-            time.sleep(1)
-            self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.element_handle(self.get_asserts, switch=True)
+
         except Exception as exc:
             self.error = str(exc)
 

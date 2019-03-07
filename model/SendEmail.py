@@ -32,7 +32,7 @@ class Email:
 
     def _send_content(self):
         """发送具体内容"""
-        img = MIMEImage(open(self.img_path,'rb').read())
+        img = MIMEImage(open(self.img_path, 'rb').read())
         img.add_header('Content-ID', '<image1>')
         link_url = """
         <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\

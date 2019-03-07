@@ -40,7 +40,6 @@ class RunAll(object):
         sql_query = self.sql.query_data()
         result = self._sqlAndCase_data_handle(case=run, data=sql_query)
         if sql_query:
-            print("用例已全部执行完成，正在生成excel测试报告，请稍后....")
             self.excel(sql_query).class_merge(parameter=result)
             self._send_email()
         else:

@@ -272,6 +272,7 @@ class WriteExcel:
         self._write_pc_content(**kwargs)
         self._write_test_title(*args)
         self.open_excel.close()
+        print("测试报告已生成....")
 
 
 class ExcelTitle(WriteExcel):
