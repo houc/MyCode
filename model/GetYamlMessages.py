@@ -1,3 +1,5 @@
+import re
+
 from model.Yaml import MyYaml
 
 
@@ -24,6 +26,7 @@ class GetConfigMessage(object):
                     data_messages["author"] = value["author"]
                     data_messages["level"] = value["level"]
                     data_messages["asserts"] = value["asserts"]
+                    data_messages["scene"] = value["scene"]
         if data_messages:
             self.data_messages = data_messages
         else:
@@ -31,6 +34,10 @@ class GetConfigMessage(object):
 
     def re(self):
         """返回数据"""
+        value_data = self.data_messages.get("scene")
+        if value_data:
+            re_value = re.findall("{.*?}", value_data)
+            print(re_value)
         return self.data_messages
 
 
