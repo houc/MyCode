@@ -36,7 +36,7 @@ def _login_module(account=None, password=None, company=None, in_login=False):
     if in_login:
         if account and password is not None:
             try:
-                LoginTestModules(Driver, URL).success_login(account, password, company)
+                LoginTestModules(Driver).success_login(account, password, company)
             except Exception:
                 Error = traceback.format_exc()
                 LOG.logging_debug(Error)
@@ -48,7 +48,7 @@ def _login_module(account=None, password=None, company=None, in_login=False):
             raise TypeError(text)
     else:
         try:
-            LoginTestModules(Driver, URL).opens_if()
+            LoginTestModules(Driver).opens_if()
         except Exception:
             Error = traceback.format_exc()
             LOG.logging_debug(Error)
@@ -57,7 +57,7 @@ def _login_module(account=None, password=None, company=None, in_login=False):
 
 def setUpModule(currentModule):
     """模块初始化"""
-    global Driver, URL, SQL, Error, LOG, wait, text
+    global Driver, SQL, Error, LOG, wait, text
     text = "当in_login为True时，account或者password不能为None"
     LOG = Logger()
     SQL = Mysql()
@@ -66,14 +66,14 @@ def setUpModule(currentModule):
     Driver = browser(MyYaml('browser').config)
     account = MyYaml('account').config
     password = MyYaml('password').config
-    URL = MyYaml('SCRM').base_url
+    company = MyYaml('company').config
     if isinstance(wait, int):
         Driver.implicitly_wait(wait)
         Driver.set_page_load_timeout(wait * 7)
     else:
         raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
     if 'ValidateLogin_st' not in currentModule:
-        _login_module(in_login=True, account=account, password=password)
+        _login_module(in_login=True, account=account, password=password, company=company)
     else:
         _login_module(in_login=False)
 
@@ -119,6 +119,7 @@ class UnitTests(unittest.TestCase):
         self.class_name = self.__class__.__name__
         self.case_name = self._testMethodName
         self.case_remark = self._testMethodDoc
+        print(self.case_remark)
         self.current_path = os.path.dirname(__file__)
         CASE_DATA = Get(module=self.MODULE, class_name=self.class_name, case_name=self.case_name).re()
         self.level = CASE_DATA.get("level")

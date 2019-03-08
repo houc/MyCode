@@ -1,4 +1,5 @@
 import requests
+import time
 
 from model.Yaml import MyYaml
 from config_path.path_file import UP_FILE_NAME
@@ -29,6 +30,14 @@ def token():
     return token
 
 
-class FindElement(ElementLocation):
-    """"""
-    # def super(FindElement, self).super()
+class StaffManageElement(ElementLocation):
+    """
+    封装"StaffManageElement"元素类
+    Usage:
+        Demonstration = (By.XPATH, "(//span[text()='$'])[1]/.") 
+        
+        def add_member(self, value):
+            self.fin_element(self.str_conversion(self.Demonstration, value)).text
+    """
+
+    # ================================================元素==========================================

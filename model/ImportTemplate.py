@@ -1,9 +1,12 @@
 
 CURRENCY_PY = '''import requests
+import time
 
 from model.Yaml import MyYaml
 from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
+from model.SeleniumElement import ElementLocation
+from selenium.webdriver.common.by import By
 
 def read_currency(keys: str, line: int):
     """
@@ -26,8 +29,20 @@ def token():
         r = requests.post(url, headers=token(), data=data, stream=True)
     """
     token = ConfigParameter().read_ini()
-    return token\n'''
+    return token
 
+
+class {}(ElementLocation):
+    """
+    封装"%s"元素类
+    Usage:
+        Demonstration = (By.XPATH, "(//span[text()='$'])[1]/.") 
+        
+        def add_member(self, value):
+            self.fin_element(self.str_conversion(self.Demonstration, value)).text
+    """
+
+    # ================================================元素==========================================\n'''
 
 CASE_CONTENT = '''import unittest
 import time
@@ -36,7 +51,7 @@ import os
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
-from model.SeleniumElement import ElementLocation
+from . currency import {}
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
@@ -60,10 +75,14 @@ CASE_NAME = '''    def {}(self):
         {}
         """
         try:
-            driver = ElementLocation(self.driver)
+            driver = {}(self.driver)
             driver.get(self.url)
             driver.F5()
-            %s
+            # 操作元素.....
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)\n
 '''
@@ -77,10 +96,6 @@ CASE_NAME = '''    def {}(self):
 #             self.driver.save_screenshot(self.screenshots_path)
 #             self.first = %s'''
 
-ELEMENT = '''driver.element_handle(self.element)
-            time.sleep(1)
-            self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.element_handle(self.get_asserts, switch=True)'''
 
 CURRENCY_YA = '''#add_customer:
 #  - url: /add/customerParam

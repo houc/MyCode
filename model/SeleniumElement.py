@@ -43,36 +43,51 @@ class _OperationElement(object):
         """
         return browser(MyYaml('browser').config)
 
-    def is_element_exist(self, by, element):
+    def is_element_exist(self, element):
         """
         检查元素是否存在
-        :param element: 元素, 如：//*[text()='密码错误请重新输入']/..
-        :param by: 指定的方法，如：By.XPATH
+        :param element: 如，self.is_element_exist((By.XPATH, "//*[contains(text(),'请选择要登录的公司')]"))
         :return: 存在返回True，反之返回False
         """
         try:
-            self.driver.find_element(by, element)
+            self.find_element(element)
             return True
         except:
             return False
 
-class ElementLocation(_OperationElement):
-    """
-        浏览器元素定位封装类
-    """
+    def find_element(self, element):
+        """
+        操作类元素
+        :param element: 如：（By.XPATH, "//*[contains(text(),'请选择要登录的公司')]"）
+        :return: 对应的元素
+        """
+        by = element[0]
+        element_value = element[1]
+        if by == "xpath":
+            return self.driver.find_element(By.XPATH, element_value)
+        elif by == "css":
+            return self.driver.find_element(By.CSS_SELECTOR, element_value)
 
+    def screen_shot(self, path):
+        """
+        截图
+        :param path: 存放截图的路径位置，如：D:\work_file\auto_script\TestUi\config\TestCase.png
+        :return:
+        """
+        return self.driver.save_screenshot(path)
+
+
+class ElementLocation(_OperationElement):
     def __init__(self, driver):
         super(ElementLocation, self).__init__(driver)
 
-    def find_element(self, by):
+    def str_conversion(self, element, value):
         """
-        元素处理
-        :param by:
+        将元素定义变量中包含$进行参数化转化传递
+        :param element: 如，(By.XPATH, "//li[contains(text(),'$')]")
+        :param value：将$变更为value
         :return:
         """
-
-
-
-if __name__ == '__main__':
-    text = "//*[text()='账号未注册']/..!!text"
-    print(text.split("!!")[1])
+        if "$" in element[1]:
+            now_value = element[1].replace("$", "{}")
+            return (element[0], now_value.format(value))

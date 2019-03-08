@@ -5,7 +5,7 @@ import os
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
-from model.SeleniumElement import ElementLocation
+from . currency import StaffManageElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
@@ -29,10 +29,14 @@ class TestStaffCustomManage(UnitTests):
         2、拖拽到任意位置，释放字段属性。
         """
         try:
-            driver = ElementLocation(self.driver)
+            driver = StaffManageElement(self.driver)
             driver.get(self.url)
             driver.F5()
-
+            # 操作元素.....
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 

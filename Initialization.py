@@ -4,7 +4,7 @@ import operator
 import shutil
 
 from model.Yaml import MyYaml
-from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, ELEMENT, CURRENCY_YA
+from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA
 from model.PrintColor import RED_BIG, WHITE_BIG
 from model.MyException import CreateFileError, FUN_NAME
 from model.TimeConversion import standard_time
@@ -92,6 +92,7 @@ class CreateModule(object):
             currency_py_path = module_file(module, self.currency_py)
             currency_ya_path = module_file(module, self.currency_ya)
             path_list = [init_path, currency_py_path, currency_ya_path]
+            content = "".join(str(module).title().split("_")) + "Element"
             try:
                 for path in path_list:
                     if not os.path.exists(path):
@@ -99,14 +100,14 @@ class CreateModule(object):
                             pass
                         if self.currency_py in path:
                             with open(path, 'wt', encoding=self.encoding) as f:
-                                f.write(CURRENCY_PY)
+                                f.write(CURRENCY_PY.format(content) % (content))
                         if self.currency_ya in path:
                             with open(path, 'wt', encoding=self.encoding) as f:
                                 f.write(CURRENCY_YA)
             except Exception as exc:
                 self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _handle_case_data(self, values: dict):
+    def _handle_case_data(self, values: dict, module=None):
         """处理用例下的数据"""
         case_info = {}
         data = []
@@ -115,7 +116,7 @@ class CreateModule(object):
         if values:
             case_info["className"] = values.get("className")
             case_info["url"] = values.get("url")
-            data.append(self._write_case(case_info))
+            data.append(self._write_case(case_info, module=module))
             case_name = [list(case.keys()) for case in values.get("funName")][0]
             for name in case_name:
                 for fun in values.get("funName"):
@@ -129,11 +130,11 @@ class CreateModule(object):
             case_conversion = py + '.py' if '_st' in py else py + '_st.py'
             case_path = module_file(modules, case_conversion)
             if not os.path.exists(case_path):
-                content = self._handle_case_data(write_one[py])
+                content = self._handle_case_data(write_one[py], module=modules)
                 with open(case_path, 'wt', encoding=self.encoding) as f:
                     f.writelines(content)
             else:
-                content = self._handle_case_data(write_one[py])
+                content = self._handle_case_data(write_one[py], module=modules)
                 with open(case_path, 'rt', encoding=self.encoding) as f:
                     py_read = f.read()
                 content = self._conversion_exists(py_read, content)
@@ -219,103 +220,29 @@ class CreateModule(object):
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
-    def _write_case(self, values: dict, switch=True):
+    def _write_case(self, values: dict, switch=True, module=None):
         """写入测试用例"""
         try:
-            global elements, case_from, url, case_url
+            global elements, case_from, content
             if switch:
-                url = values.get("url")
                 class_name = values.get("className")
-                case_execute = CASE_CONTENT.format(class_name)
+                content = ''.join(str(module).title().split("_")) + "Element"
+                case_execute = CASE_CONTENT.format(content, class_name)
                 return case_execute
             else:
                 case_name = values.get("caseName")
                 case_doc = values.get("scene")
-                case_level = values.get("level")
-                case_author = values.get("author")
-                case_assert = values.get("asserts")
-                case_url = values.get("url")
-                case_element = values.get("element")
-                get_case_assert = values.get("get_asserts")
-                # HANDLE = self._xpath_css_judge(case_element, get_case_assert)
                 if 'test_' in case_name:
                     elements = self._spilt(case_name, 'case_name')
                 if case_doc is None:
                     case_doc = '{!r}'.format(None)
-                if case_assert is None:
-                    case_assert = '{!r}'.format(None)
-                if isinstance(case_assert, str):
-                    case_assert = '{!r}'.format(case_assert)
-                if not case_url:
-                    if not url:
-                        case_url = case_url
-                    else:
-                        case_url = url
                 if ' ' in case_doc:
                     case_doc = self._spilt(case_doc, 'case_doc')
                 if CASE_NAME:
-                    # case_execute = HANDLE.format(case_name, case_doc, '{!r}'.format(case_level), '{!r}'.
-                    #                             format(case_author), case_url, case_assert)
-                    case_execute = CASE_NAME.format(case_name, case_doc) % ELEMENT
+                    case_execute = CASE_NAME.format(case_name, case_doc, content)
                     return case_execute
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
-
-    # def _element_xpath_handle(self, element: str):
-    #     """xpath元素处理"""
-    #     try:
-    #         if isinstance(element, str):
-    #             param_event = XPATH.format(element.split("#")[0] + '"@ "%s') % \
-    #                           element.split("#")[1] if 'send' in element else XPATH.format(element)
-    #             return param_event.strip()
-    #     except Exception as exc:
-    #         self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
-    #
-    # def _element_css_handle(self, element: str):
-    #     """css元素处理"""
-    #     if isinstance(element, str):
-    #         param_event = CSS % (element.split("#")[0] + '"@ "%s') % \
-    #                       element.split("#")[1] if 'send' in element else CSS % element
-    #         return param_event.strip()
-    #
-    # def _xpath_css_judge(self, element: list, param: list):
-    #     """
-    #     判断元素包含xpath或者是css，即分开传递参数
-    #
-    #     :return: 返回CSS和XPATH组合的数据
-    #     :param: 即ya里面的参数的element
-    #     :element: 即ya里面的参数的get_assert
-    #     """
-    #     try:
-    #         elements = []
-    #         first_assert = []
-    #
-    #         # ================================XPATH元素定位处理===================================================
-    #
-    #         for attribute in element:
-    #             if 'XPATH:' in attribute:
-    #                 xpath = self._element_xpath_handle(attribute.split("XPATH:")[1])
-    #                 elements.append(xpath)
-    #             elif 'CSS:' in attribute:
-    #                 css = self._element_css_handle(attribute.split("CSS:")[1])
-    #                 elements.append(css)
-    #         merge = str(elements)[1:-1].replace("'", "").replace(",", "\n           ").\
-    #             replace("@", ",").replace("\\", "'")
-    #
-    #         # ================================CSS元素定位处理====================================================
-    #
-    #         for first in param:
-    #             if 'XPATH:' in first:
-    #                 xpath = self._element_xpath_handle(first.split("XPATH:")[1])
-    #                 first_assert.append(xpath)
-    #             elif 'CSS:' in first:
-    #                 css = self._element_css_handle(first.split("CSS:")[1])
-    #                 first_assert.append(css)
-    #         assert_first = FIRST_ASSERT % str(first_assert)[1:-1].replace("'", "").\
-    #             replace(",", "\n           ").replace("@", ",").replace("\\", "'")
-    #         return CASE_NAME % (merge + '\n            ' + assert_first)
-    #     except Exception as exc:
-    #         self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
     @staticmethod
     def _spilt(values: str, switch: str):

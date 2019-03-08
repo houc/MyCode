@@ -5,7 +5,7 @@ import os
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
-from model.SeleniumElement import ElementLocation
+from . currency import LoginElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
@@ -30,13 +30,14 @@ class TestLogin(UnitTests):
         3、点击【登录】。
         """
         try:
-            driver = ElementLocation(self.driver)
+            driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            driver.element_handle(self.element)
-            time.sleep(1)
-            self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.element_handle(self.get_asserts, switch=True)
+            driver.error_account("111111")
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
@@ -48,74 +49,71 @@ class TestLogin(UnitTests):
         3、点击【登录】。
         """
         try:
-            driver = ElementLocation(self.driver)
+            driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            driver.element_handle(self.element)
-            time.sleep(1)
-            self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.element_handle(self.get_asserts, switch=True)
+            # 操作元素.....
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
     def test_accountNull(self):
         """
         验证用户名为空格登录:
-        1、用户名输入框输入:
-        ;
+        1、用户名输入框输入:;
         2、密码输入框输入:Li1234564444;
         3、点击【登录】。
         """
         try:
-            driver = ElementLocation(self.driver)
+            driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            driver.element_handle(self.element)
-            time.sleep(1)
-            self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.element_handle(self.get_asserts, switch=True)
+            # 操作元素.....
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
     def test_passwordNull(self):
         """
         验证密码为空格登录:
-        1、用户名输入框输入:
-        15928564313;
-        2、密码输入框输入:
-        
-        ;
+        1、用户名输入框输入:15928564313;
+        2、密码输入框输入:DD;
         3、点击【登录】。
         """
         try:
-            driver = ElementLocation(self.driver)
+            driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            driver.element_handle(self.element)
-            time.sleep(1)
-            self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.element_handle(self.get_asserts, switch=True)
+            # 操作元素.....
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
     def test_passwordEnglish(self):
         """
         验证密码为全英文字节登录:
-        1、用户名输入框输入:
-        15928564313;
-        2、密码输入框输入:
-        
-        ASDSDSFDSFDSFSDCSDCDSFCDSFDSFDSGDSGDSGDSFGDSFSDFSD;
+        1、用户名输入框输入:15928564313;
+        2、密码输入框输入:AA;
         3、点击【登录】。
         """
         try:
-            driver = ElementLocation(self.driver)
+            driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            driver.element_handle(self.element)
-            time.sleep(1)
-            self.driver.save_screenshot(self.screenshots_path)
-            self.first = driver.element_handle(self.get_asserts, switch=True)
+            # 操作元素.....
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
