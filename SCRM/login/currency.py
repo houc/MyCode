@@ -49,8 +49,32 @@ class LoginElement(ElementLocation):
     company_element = (By.XPATH, "//li[contains(text(),'$')]")
     isExist_company = (By.XPATH, "//*[contains(text(),'请选择要登录的公司')]")
     assert_success = (By.XPATH, "(//span[text()='$'])[1]/.")
+    assert_error_message = (By.XPATH, "//div[contains(text(), '$')]/.")
     is_open = (By.XPATH, "//div[text()='账号密码登录 ']/.")
 
-    def error_account(self, value):
-        """错误的账号登录"""
-        self.find_element(self.account_element).send_keys(value)
+    def login_param(self, account, password, company=None):
+        """登录信息"""
+        self.find_element(self.account_element).send_keys(account)
+        self.find_element(self.password_element).send_keys(password)
+        self.find_element(self.login_element).click()
+        exist = self.is_element_exist(self.isExist_company)
+        if exist:
+            if company is None:
+                raise TypeError("该账号有多个公司company需要传参数，不能为空")
+            self.find_element(self.str_conversion(self.company_element, company)).click()
+
+    def assert_login(self, value):
+        """
+        断言信息参数
+        :param value: 断言的参数信息，如：小明
+        :return: 返回对应参数
+        """
+        return self.find_element(self.str_conversion(self.assert_error_message, value)).text
+
+    def success_assert(self, value):
+        """
+        登录成功后的断言信息
+        :param value: 断言参数，如：小明
+        :return:
+        """
+        return self.find_element(self.str_conversion(self.assert_success, value)).text

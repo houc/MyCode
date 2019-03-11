@@ -34,8 +34,8 @@ class RunAll(object):
         result = runners.run(discover)
         return result
 
-    def conversion(self):
-        """测试用例数据处理"""
+    def run(self):
+        """测试用例数据处理，并执行用例"""
         run = self._running()
         sql_query = self.sql.query_data()
         result = self._sqlAndCase_data_handle(case=run, data=sql_query)
@@ -94,4 +94,4 @@ class RunAll(object):
 
 if __name__ == '__main__':
     T = RunAll()
-    T.conversion()
+    T.run()

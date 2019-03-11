@@ -5,7 +5,7 @@ import os
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
 from model.SkipModule import Skip, current_module
-from . currency import LoginElement
+from SCRM.login.currency import LoginElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
@@ -26,94 +26,118 @@ class TestLogin(UnitTests):
         """
         验证错误的用户名进行登录:
         1、用户名输入框输入:{15928564314999};
-        2、密码输入框输入:Li123456;
+        2、密码输入框输入:{Li123456};
         3、点击【登录】。
         """
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            driver.error_account("111111")
-            
+            driver.login_param(self.data[0], self.data[1])
+            js = 'window.open("https://www.sogou.com")'
+            driver.execute_script(js)
+            time.sleep(2)
+            driver.switch_windows(0)
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
-            self.first = ""  # 此项为必填，第一个断言值
+            self.first = driver.assert_login("账号未注册")  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
     def test_passwordError(self):
         """
         验证错误的密码登录:
-        1、用户名输入框输入:15928564313;
-        2、密码输入框输入:Li1234564444;
+        1、用户名输入框输入:{15928564313};
+        2、密码输入框输入:{Li1234564444};
         3、点击【登录】。
         """
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            # 操作元素.....
-            
-            time.sleep(2)
+            driver.login_param(self.data[0], self.data[1])
+            # time.sleep(2)
             driver.screen_shot(self.screenshots_path)
-            self.first = ""  # 此项为必填，第一个断言值
+            self.first = driver.assert_login("密码错误请重新输入")  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
     def test_accountNull(self):
         """
         验证用户名为空格登录:
-        1、用户名输入框输入:;
-        2、密码输入框输入:Li1234564444;
+        1、用户名输入框输入:{
+        };
+        2、密码输入框输入:{Li123456};
         3、点击【登录】。
         """
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            # 操作元素.....
-            
-            time.sleep(2)
+            driver.login_param(self.data[0], self.data[1])
+            # time.sleep(2)
             driver.screen_shot(self.screenshots_path)
-            self.first = ""  # 此项为必填，第一个断言值
+            self.first = driver.assert_login("请输入账号")  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
     def test_passwordNull(self):
         """
         验证密码为空格登录:
-        1、用户名输入框输入:15928564313;
-        2、密码输入框输入:DD;
+        1、用户名输入框输入:{15928564313};
+        2、密码输入框输入:{
+        };
         3、点击【登录】。
         """
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            # 操作元素.....
-            
-            time.sleep(2)
+            driver.login_param(self.data[0], self.data[1])
+            # time.sleep(2)
             driver.screen_shot(self.screenshots_path)
-            self.first = ""  # 此项为必填，第一个断言值
+            self.first = driver.assert_login("请输入密码")  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 
     def test_passwordEnglish(self):
         """
         验证密码为全英文字节登录:
-        1、用户名输入框输入:15928564313;
-        2、密码输入框输入:AA;
+        1、用户名输入框输入:{15928564313};
+        2、密码输入框输入:{AAVDVDVD23325GDFGDFG~!@#$%^&*()_};
         3、点击【登录】。
         """
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            # 操作元素.....
-            
+            driver.login_param(self.data[0], self.data[1])
+            # time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = driver.assert_login("密码错误请重新输入")  # 此项为必填，第一个断言值
+        except Exception as exc:
+            self.error = str(exc)
+
+    def test_success(self):
+        """
+        验证账号密码正确:
+
+        1、用户名输入框输入:{15928564313};
+
+        2、密码输入框输入:{Li123456};
+
+        3、选择公司:{草草后};
+
+        4、点击【登录】。
+        """
+        try:
+            driver = LoginElement(self.driver)
+            driver.get(self.url)
+            driver.F5()
+            driver.login_param(self.data[0], self.data[1], self.data[2])
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
-            self.first = ""  # 此项为必填，第一个断言值
+            self.first = driver.success_assert("超超")  # 此项为必填，第一个断言值
         except Exception as exc:
             self.error = str(exc)
 

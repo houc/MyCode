@@ -34,13 +34,23 @@ class GetConfigMessage(object):
 
     def re(self):
         """返回数据"""
-        value_data = self.data_messages.get("scene")
-        if value_data:
-            re_value = re.findall("{.*?}", value_data)
-            print(re_value)
         return self.data_messages
+
+    def param_extract(self, value: str):
+        """
+        处理场景中存在的{XX}数据，进行转换处理
+        :param value: 场景的所有数据
+        :return: 返回{}里面的数据
+        """
+        data = re.findall("{(.+?)}", value)
+        if isinstance(data, list) and data:
+            return data
+        else:
+            return False
+
 
 
 
 if __name__ == '__main__':
-    print(GetConfigMessage().re())
+    H = GetConfigMessage()
+    print(H.re())

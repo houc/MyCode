@@ -76,6 +76,37 @@ class _OperationElement(object):
         """
         return self.driver.save_screenshot(path)
 
+    def execute_script(self, js):
+        """
+        执行js
+        :param js: 如:打开新窗口：'window.open("https://www.sogou.com")'
+        :return:
+        """
+        return self.driver.execute_script(js)
+
+    def current_windows(self):
+        """
+        当前窗口句柄
+        :return: 返回当前窗口句柄ID
+        """
+        return self.driver.current_window_handle
+
+    def more_windows(self):
+        """
+        全部窗口句柄
+        :return: 返回全部窗口句柄ID
+        """
+        return self.driver.window_handles
+
+    def switch_windows(self, name):
+        """
+        切换窗口
+        :param name: 切换到窗口列表名字，如[1]
+        :return:
+        """
+        windows = self.more_windows()
+        return self.driver.switch_to_window(windows[name])
+
 
 class ElementLocation(_OperationElement):
     def __init__(self, driver):

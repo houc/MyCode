@@ -33,6 +33,7 @@ class MyAsserts():
 
     def asserts(self):
         """判断first与second值是否相等"""
+        import time
         try:
             if self.first and self.second is not None:
                 if isinstance(self.first, type(self.second)):

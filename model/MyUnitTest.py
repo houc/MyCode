@@ -118,14 +118,18 @@ class UnitTests(unittest.TestCase):
         self.module = self.__class__.__module__
         self.class_name = self.__class__.__name__
         self.case_name = self._testMethodName
-        self.case_remark = self._testMethodDoc
-        print(self.case_remark)
         self.current_path = os.path.dirname(__file__)
-        CASE_DATA = Get(module=self.MODULE, class_name=self.class_name, case_name=self.case_name).re()
-        self.level = CASE_DATA.get("level")
-        self.author = CASE_DATA.get("author")
-        self.url = CASE_DATA.get("url")
-        self.second = CASE_DATA.get("asserts")
+        _data_initialization = Get(module=self.MODULE, class_name=self.class_name, case_name=self.case_name)
+        _return_data= _data_initialization.re()
+        self.level = _return_data.get("level")
+        self.author = _return_data.get("author")
+        self.url = _return_data.get("url")
+        self.second = _return_data.get("asserts")
+        self.case_remark = _return_data.get("scene")
+        if self.case_remark:
+            self.data = _data_initialization.param_extract(self.case_remark)
+        else:
+            raise TypeError("common中scene参数为空，此参数不能为空，请增加")
         self.driver.implicitly_wait(wait)
         self.driver.set_page_load_timeout(wait * 7)
         self.current_time = standard_time()

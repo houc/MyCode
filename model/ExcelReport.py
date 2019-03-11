@@ -230,7 +230,7 @@ class WriteExcel:
                                      str(kwargs['title_title']).format(self.report_project, self.report_type),
                                      self.title_title)
         self.sheet_title.merge_range(1, 0, 6, 1, ' ')
-        self.sheet_title.insert_image(1, 0, self.login_path, {'x_scale': 2.2, 'y_scale': 2})
+        self.sheet_title.insert_image(1, 0, self.login_path, {'x_scale': 0.3, 'y_scale': 0.7})
         self.sheet_title.write(1, 2, kwargs['title_version'], self.title_title_content)
         self.sheet_title.write(1, 4, kwargs['title_action'], self.title_title_content)
         self.sheet_title.write(2, 2, kwargs['title_tool'], self.title_title_content)
