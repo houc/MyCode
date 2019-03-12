@@ -42,3 +42,23 @@ class TestStaffCustomManage(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
+    def test_drag_and_drop2(self):
+        """
+        员工属性管理，字段拖拽是否成功:
+
+        1、进入员工属性管理，选择字段属性(姓名)按住;
+
+        2、拖拽到任意位置，释放字段属性。
+        """
+        try:
+            driver = StaffManageElement(self.driver)
+            driver.get(self.url)
+            driver.F5()
+            # 操作元素.....
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
+        except Exception as exc:
+            self.error = str(exc)
+

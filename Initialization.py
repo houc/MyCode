@@ -222,6 +222,7 @@ class CreateModule(object):
         """处理执行用例"""
         try:
             module = list(self.all_param.keys())
+            repeat = self.check_repeat
             for run in module:
                 self._other_py(run)
                 self._case_data_handle(run)
@@ -229,6 +230,17 @@ class CreateModule(object):
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
         finally:
             return 'COMMON中用例已全部执行完毕！'
+
+    @property
+    def check_repeat(self):
+        """
+        检查common中的用例是否存在重复
+        :return:
+        """
+        module_py = []
+        class_name = []
+        case_name = []
+        return "还没想好怎么实现！"
 
     def _get_package(self):
         """

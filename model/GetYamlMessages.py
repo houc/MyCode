@@ -42,15 +42,13 @@ class GetConfigMessage(object):
         :param value: 场景的所有数据
         :return: 返回{}里面的数据
         """
-        data = re.findall("{(.+?)}", value)
+        data = re.findall("{(.*?)}", value)
         if isinstance(data, list) and data:
             return data
         else:
             return False
 
-
-
-
 if __name__ == '__main__':
     H = GetConfigMessage()
     print(H.re())
+    # print(H.param_extract(H.re().get("scene")))
