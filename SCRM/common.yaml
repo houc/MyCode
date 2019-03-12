@@ -66,6 +66,19 @@ SCRM:
                 4、点击【登录】。",
         asserts: '密码错误请重新输入'
         }
+    - number:
+      url: /platform/#/manage/employeeProperty
+      className: TestStaffCustomManage
+      funName:
+      - test_drag_and_drop: {
+        url:,
+        author: 后超,
+        level: 中,
+        scene: "员工属性管理，字段拖拽是否成功:\n
+                1、进入员工属性管理，选择字段属性(姓名)按住;\n
+                2、拖拽到任意位置，释放字段属性。",
+        asserts: "属性排序成功",
+      }
   staff_manage:
     - Custom:
       url: /platform/#/manage/employeeProperty
