@@ -45,7 +45,7 @@ class MyAsserts():
                         self.status = '失败'
                         first = self._strConversion(str(self.first))
                         second = self._strConversion(str(self.second))
-                        self.reason = '"%s" != "%s"' % (first, second)
+                        self.reason = '"%s" 不等于 "%s"' % (first, second)
                         if os.path.exists(self.screenshots_path):
                             self.img_path = str(self.screenshots_path).replace('\\', '/')
                         self._log(self.reason)
@@ -59,7 +59,7 @@ class MyAsserts():
                         self.status = '失败'
                         first = self._strConversion(str(self.first))
                         second = self._strConversion(str(self.second))
-                        self.reason = '"%s" != "%s"' % (first, second)
+                        self.reason = '"%s" 不等于 "%s"' % (first, second)
                         if os.path.exists(self.screenshots_path):
                             self.img_path = str(self.screenshots_path).replace('\\', '/')
                         self._log(self.reason)
@@ -111,7 +111,7 @@ class MyAsserts():
                             self.status = '失败'
                             first = self._strConversion(str(self.first))
                             second = self._strConversion(str(self.second))
-                            self.reason = '"%s" != "%s"' % (first, second)
+                            self.reason = '"%s" 不等于 "%s"' % (first, second)
                             if os.path.exists(self.screenshots_path):
                                 self.img_path = str(self.screenshots_path).replace('\\', '/')
                             self._log(self.reason)
@@ -128,7 +128,7 @@ class MyAsserts():
         """将用例插入数据库"""
         insert_time = standard_time()
         self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, "{:.4f}s".format(self.time),
-                             status,self.url, insert_time, img_path, reason, self.author,
+                             status, self.url, insert_time, img_path, reason, self.author,
                              results_value=self.second)
 
     @staticmethod

@@ -13,7 +13,7 @@ from model.GetYamlMessages import GetConfigMessage as Get
 from model.MyException import WaitTypeError, FUN_NAME
 from model.TimeConversion import standard_time
 from model.PrintColor import RED_BIG
-from model.MyException import LoginError, LogErrors, LoginSelectError
+from model.MyException import LoginError, LogErrors, LoginSelectError, SceneError
 from config_path.path_file import read_file
 from SCRM.public import LoginTestModules
 
@@ -134,7 +134,7 @@ class UnitTests(unittest.TestCase):
         if self.case_remark:
             self.data = _data_initialization.param_extract(self.case_remark)
         else:
-            raise TypeError("common中scene参数为空，此参数不能为空，请增加")
+            raise TypeError(SceneError)
         self.driver.set_page_load_timeout(wait)
         self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))

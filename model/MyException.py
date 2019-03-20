@@ -117,3 +117,11 @@ class LoginSelectError(_EXCEPTION):
 
     def __str__(self):
         return "执行:{}时，当in_login为True时，account或者password不能为None"
+
+
+class SceneError(_EXCEPTION):
+    """
+        场景错误
+    """
+    def __str__(self):
+        return "common中scene参数为空，此参数不能为空，请增加"
