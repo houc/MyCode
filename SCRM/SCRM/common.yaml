@@ -1,0 +1,134 @@
+SCRM:
+  login:                                      # 模块名称
+    - ValidateLogin:                          # 模块下的py名称
+      url: /#/account/login                   # 快速访问的url
+      className: TestLogin                    # 类名名称
+      funName:                                # 键
+      - test_accountError: {                  # 用例方法
+        url: ,                                # 用例url， 如果此项url不植入任何值，那嚒就会读类下的url作为该条用例的url参数
+        author: 后超,                          # 用例作者
+        level: 低,                             # 用例级别
+        scene: "验证错误的用户名进行登录:\n
+                1、用户名输入框输入:{159285643130MX};\n
+                2、密码输入框输入:{123456};\n
+                3、点击【登录】。",                # 用例场景, {}传入的参数信息，用例下，第一个那么在用例中调用的是self.data[0],
+                                                # 第二位参数传入self.data[1],以此类推....\n在生成测试报告时起换行作用
+        asserts: 账号未注册                    # 断言信息
+        }
+        test_passwordError: {                 # 类下第二条用例方法
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证错误的密码登录:\n
+                1、用户名输入框输入:{15928564313};\n
+                2、密码输入框输入:{1234564444};\n
+                3、点击【登录】。",
+        asserts: 密码错误请重新输入
+        }
+        test_accountNull: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证用户名为空格登录:\n
+                1、用户名输入框输入:{ };\n
+                2、密码输入框输入:{123456};\n
+                3、点击【登录】。",
+        asserts: 请输入账号
+        }
+        test_passwordNull: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证密码为空格登录:\n
+                1、用户名输入框输入:{15928564313};\n
+                2、密码输入框输入:{ };\n
+                3、点击【登录】。",
+        asserts: 请输入密码
+        }
+        test_passwordEnglish: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证密码为全英文字节登录:\n
+                1、用户名输入框输入:{15928564313};\n
+                2、密码输入框输入:{~!@#$%^&*()};\n
+                3、点击【登录】。",
+        asserts: 密码错误请重新输入
+        }
+        test_success: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证账号密码正确:\n
+                1、用户名输入框输入:{15928564313};\n
+                2、密码输入框输入:{Li123456};\n
+                3、点击【登录】。",
+        asserts: 超人
+        }
+  data_report:
+    - contacts_report:
+      url: /#/dataReport
+      className: TestContactsReport
+      funName:
+      - test_switchCompany: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "进入联系人报表选择公司验证公司按钮是否选择成功:\n
+                1、通过url访问数据报表;\n
+                2、点击公司;",
+        asserts: 正确
+      }
+        test_valueDefault: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "进入联系人报表选择公司验证默认选中按钮:\n
+                1、通过url访问数据报表;\n
+                2、验证是否选中【自己】;",
+        asserts: 正确
+      }
+        test_contactsIncrease: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "进入联系人报表选择公司验证新增联系人分布，新增联系人后是否+1:\n
+                1、通过url访问数据报表;\n
+                2、进入新增联系人统计报告数值;\n
+                3、新增联系人;\n
+                4、在进入新增联系人统计报告是否+1",
+        asserts: 正确
+      }
+        test_contactsIncreaseStock: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "进入联系人报表选择公司验证存量联系人分布，新增联系人后是否+1:\n
+                1、通过url访问数据报表;\n
+                2、进入存量联系人统计报告数值;\n
+                3、新增联系人;\n
+                4、在进入存量联系人统计报告是否+1",
+        asserts: 正确
+      }
+        test_contactsDownload: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "进入联系人报表下载报告是否成功:\n
+                1、通过url访问数据报表;\n
+                2、点击下载报告;\n
+                3、验证是否成功下载;",
+        asserts: 正确
+      }
+        test_selectTrimester: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "进入联系人报表时间选择进3个月是否成功:\n
+                1、通过url访问数据报表;\n
+                2、点击近三个月;\n
+                3、验证是否选择成功;",
+        asserts: 近3个月
+      }
+
+

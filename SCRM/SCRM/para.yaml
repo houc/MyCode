@@ -1,0 +1,27 @@
+add_staff:
+ - url: /api/user_center/v3/edit_member
+   bar: {"form_data": '{"member_id":0,"role":"[\"45\",\"44\",\"43\"]","member_name":"%s","sex":"2","mobile":"%s",
+         "email":"%s","password":"Aa123456","department_id":"49"}', "form_tpl_id": 41}
+get_staff:
+ - url: /api/user_center/v3/admin_member_list
+   bar: {"with_key": 0, "status": 1}
+
+frozen_staff:
+ - url: /api/user_center/v3/member_modify_status_do
+   bar: {"member_ids": "80", "status": 2, "leave_date": "", "curr_status": 1}
+
+quit_staff:
+ - url: /api/user_center/v3/member_modify_status_do
+   bar: {"member_ids": "59", "status": 0, "leave_date": "2019-01-23 00:00", "curr_status": 2}
+login_staff:
+ - url: /api/auth_center/v3/login
+   bar: {"account": "18678788787", "password": "Aa123456", "company_id": 0}
+add_fields:
+ - url: /api/fields/addFields
+   bar: {'can_edit': 1, 'check_rule': None, 'data_list': None, 'data_type_id': 5, 'placeholder': None, 'title': '企业属性98', 'visible_app': 1, 'visible_web': 1, 'widget_type': 'member'}
+add_config:
+ - url: /api/fields/addConfig
+   bar: {"field_name": "worth", "title": "DD", "descriptor": "", "type": 1}
+add_tag:
+ - url: /api/scrm/addTag
+   bar: {"tag_pid": 388, "tag_name":, "color": "#FF9999"}

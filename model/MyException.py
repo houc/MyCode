@@ -79,7 +79,7 @@ class LogErrors(_EXCEPTION):
         self.time = current_time
 
     def __str__(self):
-        return "执行时间:{},模块:{!r},错误原因:{}".format(self.time, self.module_name, self.reason)
+        return "执行时间:{},错误路径:{!r},错误原因:{}".format(self.time, self.module_name, self.reason)
 
 
 class CreateFileError(_EXCEPTION):
@@ -94,3 +94,26 @@ class CreateFileError(_EXCEPTION):
 
     def __str__(self):
         return "执行时间:{},模块:{!r},错误原因:{}".format(self.time, self.module_name, self.reason)
+
+class LoginError(_EXCEPTION):
+    """
+        登录出现异常
+    """
+    def __init__(self, class_name, reason):
+        self.class_name = class_name
+        self.reason = reason
+
+    def __str__(self):
+        return "执行:{}时，在登录过程中遇到异常，测试被终止；异常原因:{}".format(self.class_name, self.reason)
+
+
+class LoginSelectError(_EXCEPTION):
+    """
+        登录出现公司异常
+    """
+
+    def __init__(self, class_name):
+        self.class_name = class_name
+
+    def __str__(self):
+        return "执行:{}时，当in_login为True时，account或者password不能为None"
