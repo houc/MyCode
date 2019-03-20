@@ -4,25 +4,25 @@ import string
 import time
 import datetime
 
-from model.SeleniumElement import ElementLocation
+from model.SeleniumElement import OperationElement
 from model.GetToken import BrowserToken
 from model.MyConfig import ConfigParameter
 from model.Yaml import MyYaml
 from selenium.webdriver.common.by import By
 
 
-class LoginTestModules(ElementLocation):
+class LoginTestModules(OperationElement):
     # ======================================URL====================================================================
 
     Login_URL = MyYaml("SCRM").base_url + "/#/account/login"
 
     # ======================================元素==================================================================== #
 
-    account_element = (By.XPATH, "//*[contains(text(),'手机号/邮箱')]/../input")
-    password_element = (By.XPATH, "//*[contains(text(),'密码')]/../input")
-    login_element = (By.XPATH, "//button[contains(text(),'登录')]")
-    company_element = (By.XPATH, "//li[contains(text(),'$')]")
-    isExist_company = (By.XPATH, "//*[contains(text(),'请选择要登录的公司')]")
+    account_element = (By.XPATH, "//*[contains(text(), '手机号/邮箱')]/../input")
+    password_element = (By.XPATH, "//*[contains(text(), '密码')]/../input")
+    login_element = (By.XPATH, "//button[contains(text(), '登录')]")
+    company_element = (By.XPATH, "//li[contains(text(), '$')]")
+    isExist_company = (By.XPATH, "//*[contains(text(), '请选择要登录的公司')]")
     assert_success = (By.XPATH, "(//span[text()='$'])[1]/.")
     is_open = (By.XPATH, "//div[text()='账号密码登录 ']/.")
 
@@ -32,22 +32,22 @@ class LoginTestModules(ElementLocation):
     def success_login(self, account, password, company=None):
         """登录成功"""
         self.get(self.Login_URL)
-        self.find_element(self.account_element).send_keys(account)
-        self.find_element(self.password_element).send_keys(password)
-        self.find_element(self.login_element).click()
-        exist = self.is_element_exist(self.isExist_company)
+        self.operation_element(self.account_element).send_keys(account)
+        self.operation_element(self.password_element).send_keys(password)
+        self.operation_element(self.login_element).click()
+        exist = self.operation_element(self.isExist_company)
         if exist:
             if company is None:
                 raise TypeError("该账号存在多家公司，请传入company是属于哪家公司进行登录！")
-            self.find_element(self.str_conversion(self.company_element, company)).click()
-        assert self.find_element(self.str_conversion(self.assert_success, "超超")).text == "超超"
+            self.operation_element(self.str_conversion(self.company_element, company)).click()
+        assert self.operation_element(self.str_conversion(self.assert_success, "超人")).text == "超人"
         time.sleep(3) or self.F5()
         BrowserToken(self.driver).get_token()
 
     def opens_if(self):
         """网址是否打开"""
         self.get(self.Login_URL)
-        assert self.find_element(self.is_open).text == "账号密码登录"
+        assert self.operation_element(self.is_open).text == "账号密码登录"
 
 
 class Interface(object):

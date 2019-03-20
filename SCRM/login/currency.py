@@ -4,8 +4,9 @@ import time
 from model.Yaml import MyYaml
 from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
-from model.SeleniumElement import ElementLocation
+from model.SeleniumElement import OperationElement
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 def read_currency(keys: str, line: int):
     """
@@ -31,7 +32,7 @@ def token():
     return token
 
 
-class LoginElement(ElementLocation):
+class LoginElement(OperationElement):
     """
     封装"LoginElement"元素类
     Usage:
@@ -54,14 +55,19 @@ class LoginElement(ElementLocation):
 
     def login_param(self, account, password, company=None):
         """登录信息"""
-        self.find_element(self.account_element).send_keys(account)
-        self.find_element(self.password_element).send_keys(password)
-        self.find_element(self.login_element).click()
-        exist = self.is_element_exist(self.isExist_company)
+        self.operation_element(self.account_element).send_keys(Keys.CONTROL, "a")
+        self.operation_element(self.account_element).send_keys(Keys.ENTER)
+        self.operation_element(self.account_element).send_keys(account)
+        self.operation_element(self.password_element).send_keys(Keys.CONTROL, "a")
+        self.operation_element(self.password_element).send_keys(Keys.ENTER)
+        self.operation_element(self.password_element).send_keys(password)
+        time.sleep(1)
+        self.operation_element(self.login_element).click()
+        exist = self.is_element(self.isExist_company)
         if exist:
             if company is None:
                 raise TypeError("该账号有多个公司company需要传参数，不能为空")
-            self.find_element(self.str_conversion(self.company_element, company)).click()
+            self.operation_element(self.str_conversion(self.company_element, company)).click()
 
     def assert_login(self, value):
         """
@@ -69,7 +75,7 @@ class LoginElement(ElementLocation):
         :param value: 断言的参数信息，如：小明
         :return: 返回对应参数
         """
-        return self.find_element(self.str_conversion(self.assert_error_message, value)).text
+        return self.operation_element(self.str_conversion(self.assert_error_message, value)).text
 
     def success_assert(self, value):
         """
@@ -77,4 +83,4 @@ class LoginElement(ElementLocation):
         :param value: 断言参数，如：小明
         :return:
         """
-        return self.find_element(self.str_conversion(self.assert_success, value)).text
+        return self.operation_element(self.str_conversion(self.assert_success, value)).text
