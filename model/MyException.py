@@ -1,16 +1,16 @@
 import inspect
+import traceback
+
+from model.PrintColor import RED_BIG
 
 def _get_function_name(path):
     """获取方法名称"""
     return path + '\\' + inspect.stack()[1][3]
 
-def _Exception():
-    return Exception
-
 FUN_NAME = _get_function_name
-_EXCEPTION = _Exception()
 
-class RequestsError(_EXCEPTION):
+
+class RequestsError(Exception):
     """
         当接口发生错误时，调用该方法，即可返回错误信息到控制台!
     """
@@ -22,7 +22,7 @@ class RequestsError(_EXCEPTION):
         return "接口{!r}-请求失败，失败原因:{!r}".format(self.interface_name, self.back_message)
 
 
-class AssertParams(_EXCEPTION):
+class AssertParams(Exception):
     """
         当断言参数发生错误时，调用该方法，即可返回错误信息到控制台!
     """
@@ -37,7 +37,7 @@ class AssertParams(_EXCEPTION):
             format(self.module_name, self.assert_first, self.assert_second, self.error)
 
 
-class WaitTypeError(_EXCEPTION):
+class WaitTypeError(Exception):
     """
         当浏览器等待参数发生错误时，调用该方法，即可返回错误信息到控制台!
     """
@@ -48,7 +48,7 @@ class WaitTypeError(_EXCEPTION):
         return "模块:{!r},等待时间格式错误,格式应该为int类型".format(self.module_name)
 
 
-class SQLDataError(_EXCEPTION):
+class SQLDataError(Exception):
     """
         当SQL数据为空时时，调用该方法，即可返回错误信息到控制台!
     """
@@ -59,7 +59,7 @@ class SQLDataError(_EXCEPTION):
         return "模块:{!r},SQL数据库为空数据,未能生成Excel测试报告".format(self.module_name)
 
 
-class TypeErrors(_EXCEPTION):
+class TypeErrors(Exception):
     """
         类型有误时，调用该方法，即可返回错误的信息到控制台!
     """
@@ -69,7 +69,7 @@ class TypeErrors(_EXCEPTION):
     def __str__(self):
         return "模块:{!r},类型错误,请更正".format(self.module_name)
 
-class LogErrors(_EXCEPTION):
+class LogErrors(Exception):
     """
         记录错误日志到日志中!
     """
@@ -82,7 +82,7 @@ class LogErrors(_EXCEPTION):
         return "执行时间:{},错误路径:{!r},错误原因:{}".format(self.time, self.module_name, self.reason)
 
 
-class CreateFileError(_EXCEPTION):
+class CreateFileError(Exception):
     """
         生成模板出现问题时，调用该异常!
     """
@@ -95,7 +95,7 @@ class CreateFileError(_EXCEPTION):
     def __str__(self):
         return "执行时间:{},模块:{!r},错误原因:{}".format(self.time, self.module_name, self.reason)
 
-class LoginError(_EXCEPTION):
+class LoginError(Exception):
     """
         登录出现异常
     """
@@ -107,7 +107,7 @@ class LoginError(_EXCEPTION):
         return "执行:{}时，在登录过程中遇到异常，测试被终止；异常原因:{}".format(self.class_name, self.reason)
 
 
-class LoginSelectError(_EXCEPTION):
+class LoginSelectError(Exception):
     """
         登录出现公司异常
     """
@@ -119,9 +119,25 @@ class LoginSelectError(_EXCEPTION):
         return "执行:{}时，当in_login为True时，account或者password不能为None"
 
 
-class SceneError(_EXCEPTION):
+class SceneError(Exception):
     """
         场景错误
     """
     def __str__(self):
         return "common中scene参数为空，此参数不能为空，请增加"
+
+
+class ExceptionPackage(object):
+    """异常类的封装"""
+    def __init__(self, module, driver, text=None):
+        from model.Logs import Logger
+        error = traceback.format_exc()
+        self.log = Logger()
+        if text is None:
+            self.log.logging_debug(error)
+            driver.quit()
+            print(RED_BIG, LoginError(module, error))
+        else:
+            self.log.logging_debug(text)
+            driver.quit()
+            print(RED_BIG, LoginSelectError(module))

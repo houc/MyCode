@@ -59,9 +59,9 @@ class Email:
             self.Mail.login(self.sender, self.sender_password)
             self.Mail.sendmail(self.sender, self.receiver, content.as_string())
             self.Mail.quit()
-            print('给{}邮件发送成功'.format(','.join(self.receiver)))
+            print('给{}邮件发送成功'.format(', '.join(self.receiver)))
         except smtplib.SMTPException:
-            print('给{}邮件发送失败'.format(','.join(self.receiver)))
+            print('给{}邮件发送失败'.format(', '.join(self.receiver)))
 
 
 

@@ -175,3 +175,5 @@ class TestContactsReport(UnitTests):
         except Exception:
             self.error = str(traceback.format_exc())
 
+if __name__ == '__main__':
+    unittest.main()

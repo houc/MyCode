@@ -88,7 +88,7 @@ class DataReportElement(OperationElement):
         :param value: 2
         :return:
         """
-        self.operation_element(self.str_conversion(self.company_and_self_switch, value)).click()
+        self.is_click(self.str_conversion(self.company_and_self_switch, value))
 
     def graphical_data(self, location):
         """
@@ -97,7 +97,7 @@ class DataReportElement(OperationElement):
         :return: 返回对应数据值
         """
         time.sleep(self.create_wait_time)
-        return self.operation_element(self.str_conversion(self.pie_in_data, location)).text
+        return self.is_text(self.str_conversion(self.pie_in_data, location))
 
     def add_contacts(self, location, text, content, save):
         """
@@ -109,13 +109,10 @@ class DataReportElement(OperationElement):
         :return:
         """
         self.get(self.Add_Contacts_URL)
-        time.sleep(self.create_wait_time)
-        self.operation_element(self.str_conversion(self.add_contacts_button, location)).click()
+        self.is_click(self.str_conversion(self.add_contacts_button, location))
         self.operation_element(self.str_conversion(self.input_button, text)).send_keys(content)
-        time.sleep(self.create_wait_time - 1)
-        self.operation_element(self.str_conversion(self.add_contacts_button, save)).click()
-        time.sleep(self.create_wait_time * 3)
-        self.operation_element(self.str_conversion(self.add_contacts_button, save)).click()
+        self.is_click(self.str_conversion(self.add_contacts_button, save))
+        self.is_click(self.str_conversion(self.add_contacts_button, save), wait_time=4)
 
     def download_report(self, location, message_location):
         """
@@ -123,9 +120,8 @@ class DataReportElement(OperationElement):
         :param location: 1
         :return: 对应数据
         """
-        self.operation_element(self.str_conversion(self.add_contacts_button, location)).click()
-        time.sleep(self.assert_wait_time)
-        return self.operation_element(self.str_conversion(self.message, message_location)).text
+        self.is_click(self.str_conversion(self.add_contacts_button, location))
+        return self.is_text(self.str_conversion(self.message, message_location))
 
     def time_table(self, location):
         """
@@ -133,9 +129,8 @@ class DataReportElement(OperationElement):
         :param location: # 1:进30天，2:进三个月，3:近半年，4:近一年
         :return:
         """
-        self.operation_element(self.str_conversion(self.time_switch, location)).click()
-        time.sleep(self.assert_wait_time)
-        return self.operation_element(self.time_switch_display).text
+        self.is_click(self.str_conversion(self.time_switch, location))
+        return self.is_text(self.time_switch_display)
 
     def custom_time_select(self, location=1):
         """
@@ -143,18 +138,18 @@ class DataReportElement(OperationElement):
         :param location:
         :return:
         """
-        self.operation_element(self.str_conversion(self.custom_time, 1)).click()  # 点击开始时间
-        self.operation_element(self.str_conversion(self.select_time, 12)).click()  # 选择时间
-        self.operation_element(self.str_conversion(self.custom_time, 2)).click()  # 点击结束时间
-        self.operation_element(self.str_conversion(self.select_time, 55)).click()  # 选择时间
-        self.operation_element(self.str_conversion(self.confirm, location)).click()  # 确定
+        self.is_click(self.str_conversion(self.custom_time, 1))  # 点击开始时间
+        self.is_click(self.str_conversion(self.select_time, 12))  # 选择时间
+        self.is_click(self.str_conversion(self.custom_time, 2))  # 点击结束时间
+        self.is_click(self.str_conversion(self.select_time, 55))  # 选择时间
+        self.is_click(self.str_conversion(self.confirm, location))  # 确定
 
     def assert_time_selection(self):
         """
         时间默认选中的选项
         :return:
         """
-        return self.operation_element(self.time_switch_display).text
+        return self.is_text(self.time_switch_display)
 
     def pie_click(self, location):
         """
@@ -162,7 +157,7 @@ class DataReportElement(OperationElement):
         :param location:
         :return:
         """
-        self.operation_element(self.str_conversion(self.select_pie, location)).click()
+        self.is_click(self.str_conversion(self.select_pie, location))
 
     def pie_select(self, location):
         """
@@ -170,7 +165,7 @@ class DataReportElement(OperationElement):
         :param location: 1:系统评级，2:生命周期，3:国家，4:来源
         :return:
         """
-        self.operation_element(self.str_conversion(self.select_pie_content, location)).click()
+        self.is_click(self.str_conversion(self.select_pie_content, location))
         return self.is_attribute_class(self.str_conversion(self.select_pie_content, location),
                                        "ivu-select-item-selected")
 

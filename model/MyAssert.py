@@ -96,7 +96,7 @@ class MyAsserts():
                             self.status = '失败'
                             first = self._strConversion(str(self.first))
                             second = self._strConversion(str(self.second))
-                            self.reason = '"%s" != "%s"' % (first, second)
+                            self.reason = '"%s" 不等于 "%s"' % (first, second)
                             if os.path.exists(self.screenshots_path):
                                 self.img_path = str(self.screenshots_path).replace('\\', '/')
                             self._log(self.reason)
@@ -135,7 +135,7 @@ class MyAsserts():
     def _strConversion(values: str):
         """字符串中包含单引号转义成``"""
         res = re.sub("'", "`", values)
-        return res
+        return res.replace("\\", "/")
 
     def _log(self, reason):
         """记录日志"""

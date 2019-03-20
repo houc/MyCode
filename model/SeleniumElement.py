@@ -38,7 +38,7 @@ class OperationElement(object):
         :param source: 拖拽元素对象
         :param target: 拖拽元素位置
         """
-        hover(self.driver).drag_and_drop(self._find_element(source), self._find_element(target)).perform()
+        hover(self.driver).drag_and_drop(self.operation_element(source), self.operation_element(target)).perform()
 
     def driver_quit(self):
         """
@@ -122,6 +122,34 @@ class OperationElement(object):
         else:
             return exist_element
 
+    def is_click(self, element, wait_time=2):
+        """
+        判断元素是否可点击,当第一次点击报错，等待默认时间2秒后再执行点击操作是否可点击，如过还是不可点击，就抛出异常错误
+        :param element: self.is_click((By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"))
+        :param wait_time: 等待时间
+        :return:
+        """
+        try:
+            self.operation_element(element).click()
+        except Exception:
+            import time
+            time.sleep(wait_time)
+            self.operation_element(element).click()
+
+    def is_text(self, element, wait_time=2):
+        """
+        获取元素中的文本值，第一次获取文本值如果为空，就默认等待2秒时间，再次获取
+        :param element: self.is_text((By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"))
+        :param wait_time: 等待时间
+        :return: 返回对应的文本值
+        """
+        value = self.operation_element(element).text
+        if not value:
+            import time
+            time.sleep(wait_time)
+            value = self.operation_element(element).text
+        return value
+
     def is_attribute_class(self, element, text):
         """
         获取元素列表中的属性值(该项为class)
@@ -130,7 +158,7 @@ class OperationElement(object):
         :param attribute: class
         :return: 返回对应bool，存在返回True，反之False
         """
-        attribute_value = self.operation_element(element).get_attribute("class")
+        attribute_value = self.operation_element(element).get_attribute('class')
         return text in attribute_value
 
     def is_element(self, element):
@@ -156,7 +184,7 @@ class OperationElement(object):
             now_value = element[1].replace("$", "{}")
             return (element[0], now_value.format(value))
 
-    def is_text(self, element, content: str):
+    def is_in_text(self, element, content: str):
         """
         断定element的文本值，是否与content的文本值包含，包含返回True， 反之返回False
         :param element: is_text(By.XPATH, "//*[contains(text(),'请选择要登录的公司')]")， "小明")
@@ -196,7 +224,6 @@ class OperationElement(object):
         :param element: 如，self.is_element_exist((By.XPATH, "//*[contains(text(),'请选择要登录的公司')]"))
         :return: 可见返回True，反之返回False
         """
-        display = self.support.until(EC.visibility_of_element_located(element))
-        return not display
+        return self.support.until(EC.visibility_of_element_located(element))
 
 
