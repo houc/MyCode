@@ -23,7 +23,7 @@ class TestContactsReport(UnitTests):
     LOGIN_INFO = {"account": None, "password": None, "company": None}
     MODULE = os.path.dirname(__file__).split("\\")[-1]
     
-
+    @unittest.skip('暂时跳过！')
     def test_switchCompany(self):
         """
         进入联系人报表选择公司验证公司按钮是否选择成功:

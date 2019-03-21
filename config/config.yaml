@@ -18,9 +18,9 @@ config:
   logo_url: /api/file_service/v3/img_view/logo_scrm?type=1  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
-  module_run: data_report     # 指定需要运行的模块，示例：login
+  module_run:      # 指定需要运行的模块，示例：login
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
-  skip_module: {contacts_report_st: } # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
+  skip_module: {} # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
 send_email:
   server: smtp.gouuse.cn                # 邮件发送的服务器
   port:                                   # 发送邮件端口
@@ -35,7 +35,7 @@ sql:
   address: localhost                    # 数据库地址，此处为本地数据库地址
   sql_table: DROP TABLE IF EXISTS result                    # 表是否存在
   sql_create_title:  CREATE TABLE result (
-                     case_id smallint(225),
+                     case_id varchar(225),
                      case_level varchar(500),
                      case_module varchar(500),
                      case_name  varchar(500),
@@ -43,7 +43,7 @@ sql:
                      case_remark  varchar(500),
                      case_status varchar(500),
                      results_value varchar(500),
-                     case_error_reason varchar(1000),
+                     case_error_reason varchar(10000),
                      case_wait_time varchar(500),
                      case_img varchar(500),
                      case_author varchar(500),

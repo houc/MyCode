@@ -23,6 +23,7 @@ class WriteExcel:
         self.title_title_content = self.open_excel.add_format()
         self.red = self.open_excel.add_format()
         self.blue = self.open_excel.add_format()
+        self.skip = self.open_excel.add_format()
         self.yellow = self.open_excel.add_format()
         self.test_content_style = self.open_excel.add_format()
         self.style_pc_content = self.open_excel.add_format()
@@ -86,6 +87,15 @@ class WriteExcel:
         self.blue.set_align('vcenter')
         return self.blue
 
+    def _skip_style(self):
+        """跳过字体颜色"""
+        self.skip.set_font_color('orange')
+        self.skip.set_size(11)
+        self.skip.set_font_name('微软雅黑')
+        self.skip.set_border(7)
+        self.skip.set_align('vcenter')
+        return self.skip
+
     def _test_content_style(self, border=7):
         """内容样式,border:1:实线,2:加粗实线,3:间隙虚线,4:均匀虚线,
         5:更粗实线,6:双实线,7:点点虚线,8:加粗虚线,9:细虚线,10/12/13:加粗虚线"""
@@ -101,6 +111,7 @@ class WriteExcel:
         self._test_title_style()
         self._red_style()
         self._blue_style()
+        self._skip_style()
         self._yellow_style()
         self._test_content_style()
         for a, b in enumerate(args):
@@ -116,6 +127,8 @@ class WriteExcel:
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
                         self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.110})
+                    elif '跳过' == d:
+                        self.sheet_test.write(a, c, d, self.skip)
                     elif 'None' == d:
                         self.sheet_test.write(a, c, '.......', self.test_content_style)
                     else:
@@ -211,12 +224,15 @@ class WriteExcel:
         title = self.title_name
         warnings.simplefilter('ignore')
         img = self.open_excel.add_chart({'type': 'column'})
-        img.add_series({'categories': '=(%s!$C$5,%s!$E$5,%s!$C$6,%s!$E$6)' % (title, title, title, title),
-                        'values': '=(%s!$D$5,%s!$F$5,%s!$D$6,%s!$F$6)' % (title, title, title, title),
+        img.add_series({'categories': '=(%s!$C$5,%s!$E$5,%s!$C$6,%s!$E$6,%s!$C$7)' % (title, title, title,
+                                                                                      title, title),
+                        'values': '=(%s!$D$5,%s!$F$5,%s!$D$6,%s!$F$6,%s!$D$7)' % (title, title, title,
+                                                                                  title, title),
                         'points': [{'fill': {'color': 'blue'}},  # 总用例数
                                    {'fill': {'color': 'green'}}, # 成功用例数
                                    {'fill': {'color': 'yellow'}},   # 失败用例数
-                                   {'fill': {'color': 'red'}}]})# 错误用例数
+                                   {'fill': {'color': 'red'}},   # 错误用例数
+                                   {'fill': {'color': 'orange'}}]})    # 跳过用例数
         img.set_title({'name': '{}简报统计图'.format(self.report_project)})
         img.set_y_axis({'name': '个数'})
         img.set_x_axis({'name': '状态'})
@@ -241,8 +257,10 @@ class WriteExcel:
         self.sheet_title.write(4, 4, kwargs['title_success'], self.title_title_content)
         self.sheet_title.write(5, 2, kwargs['title_fail'], self.title_title_content)
         self.sheet_title.write(5, 4, kwargs['title_error'], self.title_title_content)
-        self.sheet_title.write(6, 2, kwargs['title_skip'], self.title_title_content)
-        self.sheet_title.write(6, 4, kwargs['title_total_time'], self.title_title_content)
+        self.sheet_title.write(6, 2, kwargs['skip'], self.title_title_content)
+        self.sheet_title.write(6, 4, kwargs['other'], self.title_title_content)
+        self.sheet_title.write(7, 2, kwargs['title_skip'], self.title_title_content)
+        self.sheet_title.write(7, 4, kwargs['title_total_time'], self.title_title_content)
 
         # ======================================汇总表内容========================================
 
@@ -260,8 +278,10 @@ class WriteExcel:
             self.sheet_title.write(4, 5, parameter.get("success"), self.title_title_content)
             self.sheet_title.write(5, 3, parameter.get("failures"), self.title_title_content)
             self.sheet_title.write(5, 5, parameter.get("errors"), self.title_title_content)
-            self.sheet_title.write(6, 3, str(parameter.get("short_time")) + 's', self.title_title_content)
-            self.sheet_title.write(6, 5, str(parameter.get("long_time")) + 's', self.title_title_content)
+            self.sheet_title.write(6, 3, parameter.get("skipped"), self.title_title_content)
+            self.sheet_title.write(6, 5, parameter.get("other"), self.title_title_content)
+            self.sheet_title.write(7, 3, str(parameter.get("short_time")) + 's', self.title_title_content)
+            self.sheet_title.write(7, 5, str(parameter.get("long_time")) + 's', self.title_title_content)
             self._title_insert_report_img(parameter)
         else:
             raise TypeError('class_merge()函数方法应为字典')
@@ -297,9 +317,9 @@ class ExcelTitle(WriteExcel):
                   'system': '操作系统', 'consume': '硬件消耗情况', 'config': '硬件配置情况', 'CPU': 'CPU',
                   'title_title': '{}{}UI自动化测试报告', 'title_start_time': '开始时间', 'title_stop_time': '结束时间',
                   'title_total_time': '用例最长耗时', 'title_member':'编写用例人员', 'title_case': '总用例数',
-                  'title_success': '成功数', 'title_fail': '失败数', 'title_error': '错误数',
-                  'title_skip': '用例最短耗时', '': '', 'title_action': '运行环境','title_tool': '测试工具',
-                  'title_version': '测试版本'
+                  'title_success': '成功数', 'title_fail': '失败数', 'title_error': '错误数', 'skip': '跳过数',
+                  'title_skip': '用例最短耗时', 'other': '其他情况', 'title_action': '运行环境','title_tool': '测试工具',
+                  'title_version': '测试版本',
                   }
         return self._merge_def_title_data(parameter, *args, **kwargs)
 

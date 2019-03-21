@@ -1,5 +1,4 @@
 import unittest
-import traceback
 import warnings
 import time
 import os

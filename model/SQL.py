@@ -82,6 +82,8 @@ class Mysql:
                     error_reason=None, author=None, *, results_value):
         """插入数据"""
         DB = self.DB.cursor()
+        if len(error_reason) < 10000:
+            error_reason = error_reason[:10000]
         data = self.dbInsert % (id, level, module, name, url, remark, status, results_value, error_reason, wait_time,
                                 img, author, insert_time)
         DB.execute(data)
@@ -106,7 +108,7 @@ class Mysql:
 
 
 if __name__ == '__main__':
-    M = Mysql()
+    M = Mysql(True)
     k = M.query_data()
     for i in k:
         print(i)

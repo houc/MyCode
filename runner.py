@@ -6,7 +6,7 @@ from model.Yaml import MyYaml
 from model.SQL import Mysql
 from model.MyException import SQLDataError, FUN_NAME
 from model.SendEmail import Email
-from model.CaseHandle import data_handle
+from model.CaseHandle import DataHandleConversion
 
 
 class RunAll(object):
@@ -18,6 +18,7 @@ class RunAll(object):
         self.wait = MyYaml('while_sleep').config
         self.case = MyYaml('while_case').config
         self.excel = ExcelTitle
+        self.handle_data = DataHandleConversion
 
     def _clear_sql(self):
         """清除数据库所有的内容"""
@@ -38,11 +39,13 @@ class RunAll(object):
     def run(self):
         """测试用例数据处理，并执行用例"""
         run = self._running()
+        self.handle_data(case_data=run).case_data_handle()
         sql_query = self.sql.query_data()
-        result = data_handle(data=sql_query, case=run)
+        result = self.handle_data(sql_data=sql_query).sql_data_handle()
         if sql_query:
             self.excel(sql_query).class_merge(parameter=result)
             self._send_email()
+            self.sql.close_sql()
         else:
             raise SQLDataError(FUN_NAME(self.current_path))
 
