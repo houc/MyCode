@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/currency.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/currency.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BrowserToken.ini" beforeDir="false" afterPath="$PROJECT_DIR$/BrowserToken.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/common.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/common.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ImportTemplate.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/ImportTemplate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SeleniumElement.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/SeleniumElement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ExcelReport.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/ExcelReport.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/ExcelReport.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/report/ExcelReport.xlsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,6 +42,7 @@
     <SUITE FILE_PATH="coverage/MyCode$runner.coverage" NAME="runner Coverage Results" MODIFIED="1553044598880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_staff_manage_Custom_st_TestStaffCustomManage_test_drag_and_drop.coverage" NAME="Unittests for staff_manage.Custom_st.TestStaffCustomManage.test_drag_and_drop Coverage Results" MODIFIED="1552030624586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport_test_contactsDownload.coverage" NAME="Unittests for contacts_report_st.TestContactsReport.test_contactsDownload Coverage Results" MODIFIED="1553064652747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
+    <SUITE FILE_PATH="coverage/UI$ExcelReport.coverage" NAME="ExcelReport Coverage Results" MODIFIED="1553160880150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_success.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_success Coverage Results" MODIFIED="1552286628142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
     <SUITE FILE_PATH="coverage/MyCode$GetYamlMessages.coverage" NAME="GetYamlMessages Coverage Results" MODIFIED="1552529659220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$pc_config.coverage" NAME="pc_config Coverage Results" MODIFIED="1542297322630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
@@ -77,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mail_marketing_st.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mail_marketing_st.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+            <state relative-caret-position="147">
+              <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -94,6 +90,27 @@
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyUnitTest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/MyUnitTest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -168,7 +185,6 @@
         <option value="$PROJECT_DIR$/SCRM/public.py" />
         <option value="$PROJECT_DIR$/model/SendEmail.py" />
         <option value="C:/Program Files (x86)/Python3.7/Lib/unittest/result.py" />
-        <option value="$PROJECT_DIR$/model/ExcelReport.py" />
         <option value="$PROJECT_DIR$/SCRM/login/ValidateLogin_st.py" />
         <option value="$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py" />
         <option value="$PROJECT_DIR$/model/MyUnitTest.py" />
@@ -184,6 +200,8 @@
         <option value="$PROJECT_DIR$/SCRM/marketing_transformation/currency.py" />
         <option value="$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py" />
         <option value="$PROJECT_DIR$/SCRM/common.yaml" />
+        <option value="$PROJECT_DIR$/model/ExcelReport.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -216,6 +234,11 @@
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
@@ -273,7 +296,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy">
+  <component name="RunManager" selected="Python.ExcelReport">
+    <configuration name="ExcelReport" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="auto_ui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/model" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model/ExcelReport.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Initialization" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -288,25 +330,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Initialization.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="SQL" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="auto_ui" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/model" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model/SQL.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -386,18 +409,18 @@
     <list>
       <item itemvalue="Python.run" />
       <item itemvalue="Python.runner" />
-      <item itemvalue="Python.SQL" />
       <item itemvalue="Python.__init__" />
       <item itemvalue="Python.Initialization" />
       <item itemvalue="Python tests.Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" />
+      <item itemvalue="Python.ExcelReport" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ExcelReport" />
         <item itemvalue="Python tests.Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" />
         <item itemvalue="Python.Initialization" />
         <item itemvalue="Python.runner" />
         <item itemvalue="Python.__init__" />
-        <item itemvalue="Python.SQL" />
       </list>
     </recent_temporary>
   </component>
@@ -447,12 +470,12 @@
       <option name="project" value="LOCAL" />
       <updated>1553152326650</updated>
     </task>
-    <task id="LOCAL-00006" summary="ui框架...7">
-      <created>1552287017542</created>
+    <task id="LOCAL-00006" summary="优化10">
+      <created>1553160301043</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1552287017542</updated>
+      <updated>1553160301043</updated>
     </task>
     <task id="LOCAL-00007" summary="ui框架...8">
       <created>1552383980354</created>
@@ -594,7 +617,7 @@
       <option name="project" value="LOCAL" />
       <updated>1551953410553</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -644,7 +667,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50107294" side_tool="true" weight="0.37988827" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.49385476" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.43463686" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49839056" weight="0.5877095" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946353" weight="0.37988827" />
@@ -714,15 +737,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="优化10" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/model/Thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/SCRM/data_report/currency.py" />
-    <entry file="file://$PROJECT_DIR$/SCRM/SCRM/login/ValidateLogin_st.py" />
     <entry file="file://$PROJECT_DIR$/SCRM/SCRM/data_report/contacts_report_st.py" />
     <entry file="file://$PROJECT_DIR$/SCRM/staff_manage/currency.py" />
     <entry file="file://$PROJECT_DIR$/BrowserToken.ini">
@@ -792,16 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="153" selection-start-line="153" selection-end-line="153" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/public.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="46" column="23" lean-forward="true" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,36 +926,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/MyUnitTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ExcelReport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="68" column="37" lean-forward="true" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files (x86)/Python3.7/Lib/asyncio/events.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="218" column="8" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/2019-03-21.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4528" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/SQL.py">
@@ -987,16 +966,6 @@
           <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1072,8 +1041,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+        <state relative-caret-position="147">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/public.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="31" column="61" lean-forward="true" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ExcelReport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1339">
+          <caret line="252" column="57" selection-start-line="252" selection-start-column="57" selection-end-line="252" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/HtmlReport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10408" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/2019-03-21.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8006" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config_path/path_file.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/MyUnitTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
