@@ -90,6 +90,14 @@ class OperationElement(object):
         """
         return self.driver.current_window_handle
 
+    def hovers(self, element):
+        """
+        悬浮元素
+        :param element: self.hovers(((By.XPATH, "(//tr[starts-with(@class, 'ivu-table-row')])[1]")))
+        :return: 返回对应的操作元素
+        """
+        return hover(self.driver).move_to_element(self.operation_element(element)).perform()
+
     def more_windows(self):
         """
         全部窗口句柄

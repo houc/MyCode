@@ -5,8 +5,9 @@ import time
 from model.Yaml import MyYaml
 from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
-from model.SeleniumElement import ElementLocation
+from model.SeleniumElement import OperationElement
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 def read_currency(keys: str, line: int):
     """
@@ -32,7 +33,7 @@ def token():
     return token
 
 
-class {}(ElementLocation):
+class {}(OperationElement):
     """
     封装"%s"元素类
     Usage:
@@ -41,7 +42,8 @@ class {}(ElementLocation):
         def add_member(self, value):
             self.fin_element(self.str_conversion(self.Demonstration, value)).text
     """
-
+    # ================================================URL==========================================\n
+    
     # ================================================元素==========================================\n'''
 
 CASE_CONTENT = '''import unittest
@@ -77,7 +79,6 @@ CASE_NAME = '''    def {}(self):
         try:
             driver = {}(self.driver)
             driver.get(self.url)
-            driver.F5()
             # 操作元素.....
             
             time.sleep(2)

@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/currency.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/currency.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BrowserToken.ini" beforeDir="false" afterPath="$PROJECT_DIR$/BrowserToken.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/img/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/ExcelReport.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/report/ExcelReport.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/runner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCRM/common.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/common.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/ImportTemplate.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/ImportTemplate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SeleniumElement.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/SeleniumElement.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,6 +31,7 @@
     <SUITE FILE_PATH="coverage/MyCode$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1551781086892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$runner.coverage" NAME="runner Coverage Results" MODIFIED="1553152079360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_accountError.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_accountError Coverage Results" MODIFIED="1552633213582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/UI$Initialization.coverage" NAME="Initialization Coverage Results" MODIFIED="1553157027707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$path_file.coverage" NAME="path_file Coverage Results" MODIFIED="1542289231300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config_path" />
     <SUITE FILE_PATH="coverage/MyCode$case.coverage" NAME="case Coverage Results" MODIFIED="1542984805504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python3.6.3/Lib/unittest" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_exist.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_exist Coverage Results" MODIFIED="1551685419770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
@@ -56,44 +61,51 @@
     <SUITE FILE_PATH="coverage/MyCode$PCParameter.coverage" NAME="PCParameter Coverage Results" MODIFIED="1551695202417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport.coverage" NAME="Unittests for contacts_report_st.TestContactsReport Coverage Results" MODIFIED="1553068136703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
     <SUITE FILE_PATH="coverage/MyCode$Initialization.coverage" NAME="Initialization Coverage Results" MODIFIED="1553044367715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy.coverage" NAME="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy Coverage Results" MODIFIED="1553159999384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/marketing_transformation" />
     <SUITE FILE_PATH="coverage/MyCode$run.coverage" NAME="run Coverage Results" MODIFIED="1542985873547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1552991662042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/img" />
     <SUITE FILE_PATH="coverage/UI$Unittests_in_contacts_report_st_py.coverage" NAME="Unittests in contacts_report_st.py Coverage Results" MODIFIED="1553062286884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="contacts_report_st.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py">
+      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="120" column="33" lean-forward="true" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+            <state relative-caret-position="624">
+              <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mail_marketing_st.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="currency.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SCRM/data_report/currency.py">
+        <entry file="file://$PROJECT_DIR$/SCRM/marketing_transformation/currency.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
+            <state relative-caret-position="185">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config.yaml">
+      <file leaf-file-name="SeleniumElement.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="50" column="77" lean-forward="true" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="109" column="36" lean-forward="true" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+            <state relative-caret-position="1769">
+              <caret line="214" column="36" lean-forward="true" selection-start-line="214" selection-start-column="36" selection-end-line="214" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,7 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>testsRun</find>
       <find>stopTestRun</find>
       <find>_previousTestClass</find>
       <find>_testMethodName</find>
@@ -139,6 +150,7 @@
       <find>LoginSelectError</find>
       <find>_blue_style</find>
       <find>download_report</find>
+      <find>select</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -151,7 +163,6 @@
         <option value="$PROJECT_DIR$/SCRM/staff_manage/currency.py" />
         <option value="$PROJECT_DIR$/model/MyAssert.py" />
         <option value="$PROJECT_DIR$/SCRM/data_report/currency.py" />
-        <option value="$PROJECT_DIR$/model/SeleniumElement.py" />
         <option value="$PROJECT_DIR$/model/Logs.py" />
         <option value="$PROJECT_DIR$/model/MyException.py" />
         <option value="$PROJECT_DIR$/SCRM/public.py" />
@@ -167,6 +178,12 @@
         <option value="$PROJECT_DIR$/log/__init__.py" />
         <option value="$PROJECT_DIR$/img/__init__.py" />
         <option value="$PROJECT_DIR$/runner.py" />
+        <option value="$PROJECT_DIR$/SCRM/mrketing_transformation/mail_marketing_st.py" />
+        <option value="$PROJECT_DIR$/model/SeleniumElement.py" />
+        <option value="$PROJECT_DIR$/model/ImportTemplate.py" />
+        <option value="$PROJECT_DIR$/SCRM/marketing_transformation/currency.py" />
+        <option value="$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py" />
+        <option value="$PROJECT_DIR$/SCRM/common.yaml" />
       </list>
     </option>
   </component>
@@ -203,16 +220,6 @@
             <path>
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UI" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UI" type="462c0819:PsiDirectoryNode" />
               <item name="report" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -231,6 +238,12 @@
               <item name="UI" type="462c0819:PsiDirectoryNode" />
               <item name="SCRM" type="462c0819:PsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="SCRM" type="462c0819:PsiDirectoryNode" />
+              <item name="marketing_transformation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,7 +273,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.runner">
+  <component name="RunManager" selected="Python tests.Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy">
+    <configuration name="Initialization" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="auto_ui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Initialization.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="SQL" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -337,49 +369,35 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Unittests for contacts_report_st.TestContactsReport" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/data_report" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/marketing_transformation" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;contacts_report_st.TestContactsReport&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for contacts_report_st.TestContactsReport.test_contactsDownload" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="auto_ui" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/data_report" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;contacts_report_st.TestContactsReport.test_contactsDownload&quot;" />
+      <option name="_new_target" value="&quot;mail_marketing_st.TestMarketingTransformation.test_mailCopy&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <list>
       <item itemvalue="Python.run" />
       <item itemvalue="Python.runner" />
-      <item itemvalue="Python tests.Unittests for contacts_report_st.TestContactsReport.test_contactsDownload" />
-      <item itemvalue="Python tests.Unittests for contacts_report_st.TestContactsReport" />
       <item itemvalue="Python.SQL" />
       <item itemvalue="Python.__init__" />
+      <item itemvalue="Python.Initialization" />
+      <item itemvalue="Python tests.Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" />
+        <item itemvalue="Python.Initialization" />
         <item itemvalue="Python.runner" />
         <item itemvalue="Python.__init__" />
         <item itemvalue="Python.SQL" />
-        <item itemvalue="Python tests.Unittests for contacts_report_st.TestContactsReport" />
-        <item itemvalue="Python tests.Unittests for contacts_report_st.TestContactsReport.test_contactsDownload" />
       </list>
     </recent_temporary>
   </component>
@@ -422,12 +440,12 @@
       <option name="project" value="LOCAL" />
       <updated>1553148901878</updated>
     </task>
-    <task id="LOCAL-00005" summary="ui框架...7">
-      <created>1552040930795</created>
+    <task id="LOCAL-00005" summary="优化10">
+      <created>1553152326650</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1552040930795</updated>
+      <updated>1553152326650</updated>
     </task>
     <task id="LOCAL-00006" summary="ui框架...7">
       <created>1552287017542</created>
@@ -576,28 +594,10 @@
       <option name="project" value="LOCAL" />
       <updated>1551953410553</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_contacts_report_st_TestContactsReport_test_contactsIncreaseStock - 2019.03.20 at 14h 40m 25s.xml">
-      <configuration name="Unittests for contacts_report_st.TestContactsReport.test_contactsIncreaseStock" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_contacts_report_st_TestContactsReport_test_contactsIncreaseStock - 2019.03.20 at 14h 45m 38s.xml">
-      <configuration name="Unittests for contacts_report_st.TestContactsReport.test_contactsIncreaseStock" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_contacts_report_st_TestContactsReport_test_contactsIncreaseStock - 2019.03.20 at 14h 47m 11s.xml">
-      <configuration name="Unittests for contacts_report_st.TestContactsReport.test_contactsIncreaseStock" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_contacts_report_st_TestContactsReport_test_contactsDownload - 2019.03.20 at 14h 50m 48s.xml">
-      <configuration name="Unittests for contacts_report_st.TestContactsReport.test_contactsDownload" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_contacts_report_st_TestContactsReport_test_contactsDownload - 2019.03.20 at 14h 51m 51s.xml">
-      <configuration name="Unittests for contacts_report_st.TestContactsReport.test_contactsDownload" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_contacts_report_st_TestContactsReport - 2019.03.20 at 15h 45m 05s.xml">
-      <configuration name="Unittests for contacts_report_st.TestContactsReport" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_contacts_report_st_TestContactsReport - 2019.03.20 at 15h 46m 13s.xml">
       <configuration name="Unittests for contacts_report_st.TestContactsReport" configurationId="tests" />
     </history-entry>
@@ -609,6 +609,24 @@
     </history-entry>
     <history-entry file="Unittests_for_contacts_report_st_TestContactsReport - 2019.03.20 at 15h 48m 56s.xml">
       <configuration name="Unittests for contacts_report_st.TestContactsReport" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy - 2019.03.21 at 17h 00m 59s.xml">
+      <configuration name="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy - 2019.03.21 at 17h 02m 39s.xml">
+      <configuration name="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy - 2019.03.21 at 17h 03m 58s.xml">
+      <configuration name="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy - 2019.03.21 at 17h 08m 31s.xml">
+      <configuration name="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy - 2019.03.21 at 17h 19m 36s.xml">
+      <configuration name="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy - 2019.03.21 at 17h 20m 44s.xml">
+      <configuration name="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -626,7 +644,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50107294" side_tool="true" weight="0.37988827" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.39664805" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.49385476" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49839056" weight="0.5877095" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946353" weight="0.37988827" />
@@ -692,34 +710,10 @@
     <MESSAGE value="e11" />
     <MESSAGE value="优化" />
     <MESSAGE value="优化1" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化1" />
+    <MESSAGE value="优化10" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化10" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/log/2019-03-19.log" />
-    <entry file="file://$PROJECT_DIR$/model/PrintColor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Initialization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="254" column="22" lean-forward="true" selection-start-line="254" selection-start-column="22" selection-end-line="254" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/Thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -742,13 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/support/expected_conditions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="292" column="8" selection-start-line="292" selection-start-column="8" selection-end-line="292" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -945,13 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="50" column="77" lean-forward="true" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/ExcelReport.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-61">
@@ -978,30 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="120" column="33" lean-forward="true" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/data_report/currency.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="152" column="48" lean-forward="true" selection-start-line="152" selection-start-column="48" selection-end-line="152" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1045,10 +1001,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="50" column="77" lean-forward="true" selection-start-line="50" selection-start-column="77" selection-end-line="50" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/mrketing_transformation/mail_marketing_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-168">
+          <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/data_report/currency.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="102" column="11" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ImportTemplate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="83" column="25" lean-forward="true" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="109" column="36" lean-forward="true" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+        <state relative-caret-position="624">
+          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/support/expected_conditions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1769">
+          <caret line="214" column="36" lean-forward="true" selection-start-line="214" selection-start-column="36" selection-end-line="214" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/marketing_transformation/currency.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/marketing_transformation/mail_marketing_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
         </state>
       </provider>
     </entry>
