@@ -30,7 +30,5 @@ def current_file_path():
             path = read_file('img', i)
             os.remove(path)
 
-try:
-    ExecuteThread(method=[current_file_path, get_log]).run()
-except Exception:
-    pass
+ExecuteThread(method=[current_file_path, get_log]).run()
+

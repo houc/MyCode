@@ -4,13 +4,7 @@
     <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BrowserToken.ini" beforeDir="false" afterPath="$PROJECT_DIR$/BrowserToken.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/ValidateLogin_st.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/login/ValidateLogin_st.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CaseHandle.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/CaseHandle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ExcelReport.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/ExcelReport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/MyUnitTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/MyUnitTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SQL.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/SQL.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/img/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/ExcelReport.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/report/ExcelReport.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/runner.py" afterDir="false" />
     </list>
@@ -31,7 +25,7 @@
     <SUITE FILE_PATH="coverage/MyCode$DriverParameter.coverage" NAME="DriverParameter Coverage Results" MODIFIED="1544102419766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$InterfaceLogin.coverage" NAME="InterfaceLogin Coverage Results" MODIFIED="1546314063342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/IsEDP" />
     <SUITE FILE_PATH="coverage/MyCode$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1551781086892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UI$runner.coverage" NAME="runner Coverage Results" MODIFIED="1553148539531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$runner.coverage" NAME="runner Coverage Results" MODIFIED="1553152079360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_accountError.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_accountError Coverage Results" MODIFIED="1552633213582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
     <SUITE FILE_PATH="coverage/MyCode$path_file.coverage" NAME="path_file Coverage Results" MODIFIED="1542289231300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config_path" />
     <SUITE FILE_PATH="coverage/MyCode$case.coverage" NAME="case Coverage Results" MODIFIED="1542984805504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python3.6.3/Lib/unittest" />
@@ -44,7 +38,7 @@
     <SUITE FILE_PATH="coverage/MyCode$Thread.coverage" NAME="Thread Coverage Results" MODIFIED="1552982845883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$currency.coverage" NAME="currency Coverage Results" MODIFIED="1552872911303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_contacts_report_st_TestContactsReport_test_companySelect.coverage" NAME="Unittests for contacts_report_st.TestContactsReport.test_companySelect Coverage Results" MODIFIED="1552957024588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
-    <SUITE FILE_PATH="coverage/UI$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1553148783505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/log" />
+    <SUITE FILE_PATH="coverage/UI$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1553149109241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/log" />
     <SUITE FILE_PATH="coverage/MyCode$runner.coverage" NAME="runner Coverage Results" MODIFIED="1553044598880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_staff_manage_Custom_st_TestStaffCustomManage_test_drag_and_drop.coverage" NAME="Unittests for staff_manage.Custom_st.TestStaffCustomManage.test_drag_and_drop Coverage Results" MODIFIED="1552030624586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport_test_contactsDownload.coverage" NAME="Unittests for contacts_report_st.TestContactsReport.test_contactsDownload Coverage Results" MODIFIED="1553064652747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
@@ -71,8 +65,17 @@
       <file leaf-file-name="contacts_report_st.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1575">
-              <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+            <state relative-caret-position="273">
+              <caret line="120" column="33" lean-forward="true" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="currency.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SCRM/data_report/currency.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -86,49 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
+            <state relative-caret-position="66">
               <caret line="109" column="36" lean-forward="true" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="runner.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/runner.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQL.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/SQL.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="92" column="20" lean-forward="true" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="CaseHandle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/CaseHandle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -190,7 +155,6 @@
         <option value="$PROJECT_DIR$/model/Logs.py" />
         <option value="$PROJECT_DIR$/model/MyException.py" />
         <option value="$PROJECT_DIR$/SCRM/public.py" />
-        <option value="$PROJECT_DIR$/img/__init__.py" />
         <option value="$PROJECT_DIR$/model/SendEmail.py" />
         <option value="C:/Program Files (x86)/Python3.7/Lib/unittest/result.py" />
         <option value="$PROJECT_DIR$/model/ExcelReport.py" />
@@ -199,9 +163,10 @@
         <option value="$PROJECT_DIR$/model/MyUnitTest.py" />
         <option value="$PROJECT_DIR$/model/CaseHandle.py" />
         <option value="$PROJECT_DIR$/config/config.yaml" />
-        <option value="$PROJECT_DIR$/runner.py" />
-        <option value="$PROJECT_DIR$/log/__init__.py" />
         <option value="$PROJECT_DIR$/model/SQL.py" />
+        <option value="$PROJECT_DIR$/log/__init__.py" />
+        <option value="$PROJECT_DIR$/img/__init__.py" />
+        <option value="$PROJECT_DIR$/runner.py" />
       </list>
     </option>
   </component>
@@ -234,6 +199,11 @@
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
@@ -290,7 +260,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.__init__">
+  <component name="RunManager" selected="Python.runner">
     <configuration name="SQL" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -405,8 +375,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.__init__" />
         <item itemvalue="Python.runner" />
+        <item itemvalue="Python.__init__" />
         <item itemvalue="Python.SQL" />
         <item itemvalue="Python tests.Unittests for contacts_report_st.TestContactsReport" />
         <item itemvalue="Python tests.Unittests for contacts_report_st.TestContactsReport.test_contactsDownload" />
@@ -445,12 +415,12 @@
       <option name="project" value="LOCAL" />
       <updated>1553075031474</updated>
     </task>
-    <task id="LOCAL-00004" summary="ui框架...7">
-      <created>1552040895103</created>
+    <task id="LOCAL-00004" summary="优化1">
+      <created>1553148901878</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1552040895103</updated>
+      <updated>1553148901878</updated>
     </task>
     <task id="LOCAL-00005" summary="ui框架...7">
       <created>1552040930795</created>
@@ -606,7 +576,7 @@
       <option name="project" value="LOCAL" />
       <updated>1551953410553</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -656,11 +626,11 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50107294" side_tool="true" weight="0.37988827" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.39664805" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.39664805" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49839056" weight="0.5877095" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946353" weight="0.37988827" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49520767" visible="true" weight="0.24839056" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49520767" visible="true" weight="0.24839056" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -721,30 +691,10 @@
     <MESSAGE value="e1" />
     <MESSAGE value="e11" />
     <MESSAGE value="优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化" />
+    <MESSAGE value="优化1" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/asyncio/events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="218" column="8" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="861" column="11" lean-forward="true" selection-start-line="861" selection-start-column="11" selection-end-line="861" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ImportTemplate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/2019-03-19.log" />
     <entry file="file://$PROJECT_DIR$/model/PrintColor.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -844,27 +794,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/data_report/currency.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1313">
-          <caret line="147" column="11" lean-forward="true" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/builtins.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="925" column="6" selection-start-line="925" selection-start-column="6" selection-end-line="925" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="197" column="32" lean-forward="true" selection-start-line="197" selection-start-column="32" selection-end-line="197" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -944,16 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files (x86)/Python3.7/Lib/unittest/result.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
@@ -995,13 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1575">
-          <caret line="32" column="15" lean-forward="true" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/MyException.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1347">
@@ -1029,13 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="109" column="36" lean-forward="true" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1053,12 +962,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/CaseHandle.py">
+    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/asyncio/events.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+        <state relative-caret-position="21">
+          <caret line="218" column="8" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/2019-03-21.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4528" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SQL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/data_report/contacts_report_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="120" column="33" lean-forward="true" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/data_report/currency.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157">
+          <caret line="152" column="48" lean-forward="true" selection-start-line="152" selection-start-column="48" selection-end-line="152" selection-end-column="48" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1066,20 +1008,47 @@
     <entry file="file://$PROJECT_DIR$/log/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/SQL.py">
+    <entry file="file://$PROJECT_DIR$/model/CaseHandle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="92" column="20" lean-forward="true" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+        <state relative-caret-position="-8">
+          <caret line="34" column="56" lean-forward="true" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/asyncio/coroutines.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20">
+          <caret line="103" column="4" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="102">
+          <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="109" column="36" lean-forward="true" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
         </state>
       </provider>
     </entry>

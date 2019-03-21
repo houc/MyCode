@@ -1,10 +1,10 @@
 import unittest
 import os
+import asyncio
 
 from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
 from model.SQL import Mysql
-from model.MyException import SQLDataError, FUN_NAME
 from model.SendEmail import Email
 from model.CaseHandle import DataHandleConversion
 
@@ -36,24 +36,43 @@ class RunAll(object):
         result = runners.run(discover)
         return result
 
-    def run(self):
+    @asyncio.coroutine
+    async def run(self):
         """测试用例数据处理，并执行用例"""
         run = self._running()
-        self.handle_data(case_data=run).case_data_handle()
+        self._case_data(case_data=run)
         sql_query = self.sql.query_data()
-        result = self.handle_data(sql_data=sql_query).sql_data_handle()
+        result = self._sql_data(sql_data=sql_query)
         if sql_query:
             self.excel(sql_query).class_merge(parameter=result)
             self._send_email()
             self.sql.close_sql()
-        else:
-            raise SQLDataError(FUN_NAME(self.current_path))
 
     def _send_email(self):
         """发送邮件"""
         Email().sender_email()
 
+    def _case_data(self, case_data=None):
+        """
+        数据处理中心
+        :param case_data: 处理self._running中的用例数据
+        :param sql_data:
+        :return 返回处理后的数据
+        """
+        self.handle_data(case_data=case_data).case_data_handle()
+
+    def _sql_data(self, sql_data=None):
+        """
+
+        :param sql_data: 处理sql查询出来的数据，主要用于excel表总况的统计处理数据
+        :return: 返回处理后的数据
+        """
+        return self.handle_data(sql_data=sql_data).sql_data_handle()
+
+
 
 if __name__ == '__main__':
-    T = RunAll()
-    T.run()
+    runner = RunAll()
+    pool = asyncio.get_event_loop()
+    pool.run_until_complete(runner.run())
+    pool.close()
