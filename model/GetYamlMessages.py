@@ -5,7 +5,7 @@ from model.Yaml import MyYaml
 
 class GetConfigMessage(object):
     """用例读取common.yaml文件中的内容"""
-    def __init__(self, module="login", class_name="TestLogin", case_name="test_accountError"):
+    def __init__(self, module="marketing_transformation", class_name="TestMarketingTransformation", case_name="test_up"):
         """
         初始化，读取common中的数据，self.data_messages为对应数据
         :param module: 模块：如 staff_manage
@@ -17,12 +17,12 @@ class GetConfigMessage(object):
         self.all_parm = MyYaml().parameter_ui
         for a in self.all_parm[module]:
             if a["className"] == class_name:
-                data_messages["url"] = a["url"]
+                url = self.url + a['url']
                 for b in a["funName"]:
                     value = b[case_name]
-                    if value["url"] is None:
-                        value["url"] = self.url + data_messages["url"]
-                    data_messages["url"] = value["url"]
+                    if value["url"] is not None:
+                        url = self.url + value["url"]
+                    data_messages["url"] = url
                     data_messages["author"] = value["author"]
                     data_messages["level"] = value["level"]
                     data_messages["asserts"] = value["asserts"]

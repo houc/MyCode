@@ -63,7 +63,7 @@ class RunAll(object):
 
     def _sql_data(self, sql_data=None):
         """
-
+        处理sql中的数据
         :param sql_data: 处理sql查询出来的数据，主要用于excel表总况的统计处理数据
         :return: 返回处理后的数据
         """

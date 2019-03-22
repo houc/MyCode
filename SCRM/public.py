@@ -41,7 +41,7 @@ class LoginTestModules(OperationElement):
                 raise TypeError("该账号存在多家公司，请传入company是属于哪家公司进行登录！")
             self.operation_element(self.str_conversion(self.company_element, company)).click()
         assert self.operation_element(self.str_conversion(self.assert_success, "超人")).text == "超人"
-        time.sleep(3) or self.F5()
+        # time.sleep(3)
         BrowserToken(self.driver).get_token()
 
     def opens_if(self):

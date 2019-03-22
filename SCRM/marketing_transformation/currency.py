@@ -48,6 +48,7 @@ class MarketingTransformationElement(OperationElement):
 
     hover = (By.XPATH, "(//tr[starts-with(@class, 'ivu-table-row')])[1]")
     select = (By.XPATH, "(//div[@class='m-menu-handle']/div/div/div/i)[$]") # 1:复制，2:编辑，3:删除
+    up = (By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[2]")
 
     def test_element(self, location):
         self.hovers(self.hover)
@@ -55,3 +56,6 @@ class MarketingTransformationElement(OperationElement):
 
     def assert_url(self):
         return self.is_url_contain(url="marketing_mail_id")
+
+    def ups(self):
+        self.operation_element(self.up).send_keys('D:\\work_file\\auto_script\\UI\\img\\logo.png')

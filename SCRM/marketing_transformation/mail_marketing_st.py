@@ -40,3 +40,24 @@ class TestMarketingTransformation(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
+    def test_up(self):
+        """
+        进入邮件营销库，复制第一条营销邮件:
+
+        1、通过url访问邮箱邮件库;
+
+        2、hover后点击复制;
+
+        3、验证是否能正常跳转到复制页面
+        """
+        try:
+            driver = MarketingTransformationElement(self.driver)
+            driver.get(self.url)
+            driver.ups()
+            
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
+        except Exception as exc:
+            self.error = str(exc)
+

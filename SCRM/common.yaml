@@ -145,4 +145,13 @@ SCRM:
                 3、验证是否能正常跳转到复制页面",
         asserts: True
       }
-
+        test_up: {
+        url: '/#/document/public',
+        author: 后超,
+        level: 低,
+        scene: "进入邮件营销库，复制第一条营销邮件:\n
+                1、通过url访问邮箱邮件库;\n
+                2、hover后点击复制;\n
+                3、验证是否能正常跳转到复制页面",
+        asserts: True
+        }
