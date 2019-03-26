@@ -37,14 +37,10 @@ class TestContactsReport(UnitTests):
             driver = DataReportElement(self.driver)
             driver.get(self.url)
             driver.table_click(value=3)
-            value = driver.table_switch(value=3, text="active")
+            self.second = driver.table_switch(value=3)
             time.sleep(2)
-            if value:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "正确"  # 此项为必填，第一个断言值
-            else:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "不正确"  # 此项为必填，第一个断言值
+            driver.screen_shot(self.screenshots_path)
+            self.first = driver.table_switch(value=3)  # 此项为必填，第一个断言值
         except Exception:
             self.error = str(traceback.format_exc())
 
@@ -61,14 +57,10 @@ class TestContactsReport(UnitTests):
             driver = DataReportElement(self.driver)
             driver.get(self.url)
             driver.F5()
-            value = driver.table_switch(value=2, text="active")
+            self.second = driver.table_switch(value=2)
             time.sleep(2)
-            if value:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "正确"  # 此项为必填，第一个断言值
-            else:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "不正确"  # 此项为必填，第一个断言值
+            driver.screen_shot(self.screenshots_path)
+            self.first = driver.table_switch(value=2)  # 此项为必填，第一个断言值
         except Exception:
             self.error = str(traceback.format_exc())
 
@@ -85,21 +77,17 @@ class TestContactsReport(UnitTests):
         4、在进入新增联系人统计报告是否+1
         """
         try:
+            self.is_asserts = False
             driver = DataReportElement(self.driver)
             driver.get(self.url)
-            value = driver.graphical_data(location=10)
+            self.second = driver.graphical_data(location=10)
             content = time.strftime("%Y%m%d%H%M%S") + "@qq.com"
             driver.add_contacts(location=2, text="请输入邮箱", content=content, save=6)
             driver.F5()
             driver.get(self.url)
-            value_1 = driver.graphical_data(location=10)
             time.sleep(2)
-            if not value == value_1:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "正确"  # 此项为必填，第一个断言值
-            else:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "不正确"  # 此项为必填，第一个断言值
+            driver.screen_shot(self.screenshots_path)
+            self.first = driver.graphical_data(location=10)
         except Exception:
             self.error = str(traceback.format_exc())
 
@@ -116,21 +104,17 @@ class TestContactsReport(UnitTests):
         4、在进入存量联系人统计报告是否+1
         """
         try:
+            self.is_asserts = False
             driver = DataReportElement(self.driver)
             driver.get(self.url)
-            value = driver.graphical_data(location=9)
+            self.second = driver.graphical_data(location=9)
             content = time.strftime("%Y%m%d%H%M%S") + "@qq.com"
             driver.add_contacts(location=2, text="请输入邮箱", content=content, save=6)
             driver.F5()
             driver.get(self.url)
-            value_1 = driver.graphical_data(location=9)
             time.sleep(2)
-            if not value == value_1:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "正确"  # 此项为必填，第一个断言值
-            else:
-                driver.screen_shot(self.screenshots_path)
-                self.first = "不正确"  # 此项为必填，第一个断言值
+            driver.screen_shot(self.screenshots_path)
+            self.first = driver.graphical_data(location=9)
         except Exception:
             self.error = str(traceback.format_exc())
 

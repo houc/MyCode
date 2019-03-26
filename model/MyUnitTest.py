@@ -47,7 +47,7 @@ def _login_module(account=None, password=None, company=None, in_login=False, mod
         except Exception:
             ExceptionPackage(module, Driver)
 
-def setUpModule(currentModule):
+def setUpModule():
     """模块初始化"""
     global Driver, SQL, Error, LOG, wait
     LOG = Logger()
@@ -62,10 +62,10 @@ def setUpModule(currentModule):
         Driver.set_page_load_timeout(wait)
     else:
         raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
-    if 'ValidateLogin_st' not in currentModule:
-        _login_module(in_login=True, account=account, password=password, company=company, module=currentModule)
-    else:
-        _login_module(in_login=False, module=currentModule)
+    # if 'ValidateLogin_st' not in currentModule:
+    _login_module(in_login=True, account=account, password=password, company=company)
+    # else:
+    #     _login_module(in_login=False, module=currentModule)
 
 
 def tearDownModule():
@@ -81,6 +81,7 @@ class UnitTests(unittest.TestCase):
     log = start_time = result = status = level = img = error = None
     first = second = author = urls =  None
     RE_LOGIN, LOGIN_INFO, MODULE = False, None, None
+    is_asserts = True # True:断言self.first与self.second是否相等, 反之不相等返回
 
     @classmethod
     def setUpClass(cls):
@@ -133,6 +134,10 @@ class UnitTests(unittest.TestCase):
         total_time = end_time - self.start_time
         warnings.filterwarnings('ignore')
         error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
-        MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
+        is_assert = MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
                   self.status, self.error, self.url, total_time, self.driver, self.class_name,
-                  self.screenshots_path, self.author, self, error_path, LOG).asserts()
+                  self.screenshots_path, self.author, self, error_path, LOG)
+        if self.is_asserts:
+            is_assert.asserts_eq()
+        else:
+            is_assert.assert_not_eq()

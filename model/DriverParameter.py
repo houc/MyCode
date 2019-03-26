@@ -12,7 +12,7 @@ def browser(switch=False):
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         driver = webdriver.Chrome(path, chrome_options=options)
-        driver.set_window_size(1920, 1054)
+        driver.set_window_size(1900, 980)
     else:
         options = None
         driver = webdriver.Chrome(path, chrome_options=options)
@@ -23,14 +23,14 @@ if __name__ == '__main__':
     import time
     from selenium.webdriver.common.keys import Keys
 
-    fil = read_file('img', '{}.png'.format(5))
+    fil = read_file('img', '{}.png'.format('test'))
     driver = browser(True)
-    driver.implicitly_wait(10)
-    driver.set_window_size(1920, 1054)
-    driver.set_page_load_timeout(60)
-    driver.get('http://www.baidu.com')
-    time.sleep(3)
+    # driver.set_window_size(1920, 1054)
+    # driver.set_page_load_timeout(60)
+    driver.get('C:\\Users\\lenovo\\Desktop\\UI\\report\\html_report.html')
+    time.sleep(2)
     driver.save_screenshot(fil)
+    print(driver.get_window_size())
     driver.quit()
     # driver.set_window_size(200, 500)
     # driver.get('https://www.scrm365.cn/#/account/login')

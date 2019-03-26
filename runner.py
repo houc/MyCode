@@ -4,7 +4,7 @@ import asyncio
 
 from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
-from model.SQL import Mysql
+from model.MyDB import MyDB
 from model.SendEmail import Email
 from model.CaseHandle import DataHandleConversion
 
@@ -14,7 +14,8 @@ class RunAll(object):
         """初始化"""
         self.current_path = os.path.dirname(__file__)
         self.re = MyYaml('re').config
-        self.sql = Mysql()
+        self.sql = MyDB(switch=False)
+        self.mail = Email()
         self.wait = MyYaml('while_sleep').config
         self.case = MyYaml('while_case').config
         self.excel = ExcelTitle
@@ -45,12 +46,8 @@ class RunAll(object):
         result = self._sql_data(sql_data=sql_query)
         if sql_query:
             self.excel(sql_query).class_merge(parameter=result)
-            self._send_email()
+            self.mail.sender_email(case_name=result)
             self.sql.close_sql()
-
-    def _send_email(self):
-        """发送邮件"""
-        Email().sender_email()
 
     def _case_data(self, case_data=None):
         """
@@ -63,7 +60,7 @@ class RunAll(object):
 
     def _sql_data(self, sql_data=None):
         """
-
+        处理sql中的数据
         :param sql_data: 处理sql查询出来的数据，主要用于excel表总况的统计处理数据
         :return: 返回处理后的数据
         """

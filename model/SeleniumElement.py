@@ -125,7 +125,8 @@ class OperationElement(object):
         try:
             exist_element = self.support.until(EC.presence_of_element_located(element))
         except Exception as exc:
-            print(RED_BIG, exc, element, "超时或者不存在...\n")
+            import warnings
+            warnings.warn(str(exc) + str(element) + "超时或者不存在...\n")
             return False
         else:
             return exist_element

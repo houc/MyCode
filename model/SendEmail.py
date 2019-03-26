@@ -1,4 +1,5 @@
 import smtplib
+import os
 
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
@@ -6,6 +7,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 from model.Yaml import MyYaml
 from config_path.path_file import read_file
+from model.HtmlDataHandle import AmilSupport
 
 
 class Email:
@@ -18,12 +20,13 @@ class Email:
         self.receiver = MyYaml('receiver').send_email
         self.title_name = MyYaml('project_name').excel_parameter
         self.title = MyYaml('science').excel_parameter
-        self.img_path = read_file('img', 'logo.png')
+        self.img_path = read_file('img', 'html.png')
         self.excel_path = read_file('report', 'ExcelReport.xlsx')
 
-    def _send_title_msg(self):
+    def _send_title_msg(self, case_name):
         """发送表头信息"""
         self._send_content()
+        self._send_enclosure(case_name)
         self._send_file()
         self.contents['from'] = Header(self.sender)
         self.contents['to'] = Header(','.join(self.receiver))
@@ -32,16 +35,28 @@ class Email:
 
     def _send_content(self):
         """发送具体内容"""
-        img = MIMEImage(open(self.img_path, 'rb').read())
-        img.add_header('Content-ID', '<image1>')
-        link_url = """
-        <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\
-        </i></b><img alt="" src="cid:image1"/>
-        """.format('http://www.baidu.com')
-        content = MIMEText(link_url, 'html')
-        self.contents.attach(content)
-        self.contents.attach(img)
-        return self.contents
+        # img = MIMEImage(open(self.img_path, 'rb').read())
+        # img.add_header('Content-ID', '<image1>')
+        # link_url = """
+        # <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\
+        # </i></b><img alt="" src="cid:image1"/>
+        # """.format('http://www.baidu.com')
+        # content = MIMEText(link_url, 'html')
+        # self.content.attach(content)
+        # self.content.attach(img)
+        # return self.content
+
+    def _send_enclosure(self, case_name):
+        """发送附件统计图"""
+        AmilSupport(case_name)
+        if os.path.exists(self.img_path):
+            img = MIMEImage(open(self.img_path, 'rb').read())
+            img.add_header('Content-ID', '<image1>')
+            img_text = '''<b><i><font size="3" color="blue"></font></i></b><img alt="" src="cid:image1"/>'''
+            text = MIMEText(img_text, 'html', 'utf-8')
+            self.contents.attach(text)
+            self.contents.attach(img)
+            return self.contents
 
     def _send_file(self):
         """发送带附件的内容"""
@@ -51,10 +66,10 @@ class Email:
         self.contents.attach(att)
         return self.contents
 
-    def sender_email(self):
+    def sender_email(self, case_name):
         """发送邮件"""
         try:
-            content = self._send_title_msg()
+            content = self._send_title_msg(case_name)
             self.Mail.connect(self.server)
             self.Mail.login(self.sender, self.sender_password)
             self.Mail.sendmail(self.sender, self.receiver, content.as_string())
@@ -66,4 +81,4 @@ class Email:
 
 
 if __name__ == '__main__':
-    Email().sender_email()
+    Email().sender_email(case_name={})

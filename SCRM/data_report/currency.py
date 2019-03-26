@@ -72,7 +72,7 @@ class DataReportElement(OperationElement):
         """
         return self.is_attribute_class(self.str_conversion(element, location), text)
 
-    def table_switch(self, value, text):
+    def table_switch(self, value):
         """
         后去对应属性值
         :param value: 2:自己，3:公司
@@ -80,7 +80,7 @@ class DataReportElement(OperationElement):
         :return:
         """
         time.sleep(self.assert_wait_time)
-        return self._in_class_attribute(self.company_and_self_switch, value, text)
+        return self.operation_element(self.str_conversion(self.company_and_self_switch, value)).text
 
     def table_click(self, value):
         """

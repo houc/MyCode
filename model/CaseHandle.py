@@ -1,13 +1,13 @@
 import os
 import time
 
-from model.SQL import Mysql
+from model.MyDB import MyDB
 from model.MyException import SQLDataError, FUN_NAME
 
 
 class DataHandleConversion(object):
     def __init__(self, case_data=None, sql_data=None, sql_query=None):
-        self.sql = Mysql()
+        self.sql = MyDB(switch=False)
         self.case_data = case_data
         self.sql_data = sql_data
         self.sql_query = sql_query
