@@ -51,8 +51,9 @@ class MyDB(object):
                     error_reason=None, author=None, *, results_value):
         """插入数据"""
         DB = self.sql.cursor()
-        if len(error_reason) < 10000:
-            error_reason = error_reason[:10000]
+        if error_reason:
+            if len(error_reason) < 10000:
+                error_reason = error_reason[:10000]
         data = self.dbInsert % (id, level, module, name, url, remark, status, results_value, error_reason, wait_time,
                                 img, author, insert_time)
         DB.execute(data)
@@ -63,4 +64,4 @@ class MyDB(object):
         return self.sql.close()
 
 if __name__ == '__main__':
-    query = MyDB().query_data()
+    query = MyDB(True).query_data()

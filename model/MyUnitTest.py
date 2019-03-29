@@ -5,7 +5,7 @@ import os
 
 from model.Logs import Logger
 from model.Yaml import MyYaml
-from model.SQL import Mysql
+from model.MyDB import MyDB
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
 from model.GetYamlMessages import GetConfigMessage as Get
@@ -13,7 +13,6 @@ from model.MyException import WaitTypeError, FUN_NAME
 from model.TimeConversion import standard_time
 from model.MyException import ExceptionPackage, LogErrors, LoginSelectError, SceneError
 from config_path.path_file import read_file
-from SCRM.public import LoginTestModules
 
 def _case_id():
     """
@@ -36,14 +35,16 @@ def _login_module(account=None, password=None, company=None, in_login=False, mod
     if in_login:
         if account and password is not None:
             try:
-                LoginTestModules(Driver).success_login(account, password, company)
+                pass
+                # LoginTestModules(Driver).success_login(account, password, company)
             except Exception:
                 ExceptionPackage(module, Driver)
         else:
             ExceptionPackage(module, Driver, LoginSelectError(module))
     else:
         try:
-            LoginTestModules(Driver).opens_if()
+            pass
+            # LoginTestModules(Driver).opens_if()
         except Exception:
             ExceptionPackage(module, Driver)
 
@@ -51,19 +52,19 @@ def setUpModule():
     """模块初始化"""
     global Driver, SQL, Error, LOG, wait
     LOG = Logger()
-    SQL = Mysql()
+    SQL = MyDB()
     Error = None
     wait = MyYaml('page_loading_wait').config
-    Driver = browser(MyYaml('browser').config)
+    Driver = browser(switch=MyYaml('browser').config)
     account = MyYaml('account').config
     password = MyYaml('password').config
     company = MyYaml('company').config
-    if isinstance(wait, int):
-        Driver.set_page_load_timeout(wait)
-    else:
-        raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
+    # if isinstance(wait, int):
+    #     Driver.set_page_load_timeout(wait)
+    # else:
+    #     raise WaitTypeError(FUN_NAME(os.path.dirname(__file__)))
     # if 'ValidateLogin_st' not in currentModule:
-    _login_module(in_login=True, account=account, password=password, company=company)
+    # _login_module(in_login=True, account=account, password=password, company=company)
     # else:
     #     _login_module(in_login=False, module=currentModule)
 
@@ -120,8 +121,10 @@ class UnitTests(unittest.TestCase):
         if self.case_remark:
             self.data = _data_initialization.param_extract(self.case_remark)
         else:
-            raise TypeError(SceneError)
+            msg = "{}.{}.{}".format(self.module, self.class_name, self.case_name)
+            warnings.warn(msg + "common中scene参数为空，此参数不能为空，请增加")
         self.driver.set_page_load_timeout(wait)
+        self.driver.set_script_timeout(wait)
         self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         if self.setLog is not None:
@@ -132,7 +135,6 @@ class UnitTests(unittest.TestCase):
         """用例结束"""
         end_time = time.time()
         total_time = end_time - self.start_time
-        warnings.filterwarnings('ignore')
         error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
         is_assert = MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
                   self.status, self.error, self.url, total_time, self.driver, self.class_name,

@@ -33,7 +33,7 @@ class AssertParams(Exception):
         self.error = error
 
     def __str__(self):
-        return "模块:{!r},断言:{!r}不存在或者断言:{!r}不存在,或者{!r}存在".\
+        return "模块:{!r},断言:{!r}不存在或者断言:{!r}不存在,或者{!r}存在；或者用例中未定义元素执行".\
             format(self.module_name, self.assert_first, self.assert_second, self.error)
 
 
@@ -141,3 +141,14 @@ class ExceptionPackage(object):
             self.log.logging_debug(text)
             driver.quit()
             print(RED_BIG, LoginSelectError(module))
+
+
+class ReadCommonError():
+    def __init__(self, module, class_name, case_name):
+        self.module = module
+        self.class_name = class_name
+        self.case_name = case_name
+
+    def __str__(self):
+        return "{}.{}.{}，场景中scene存在空数据，此项不能存在为空的数据，需修正...".\
+                format(self.module, self.class_name, self.case_name, )

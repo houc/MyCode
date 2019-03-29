@@ -32,9 +32,9 @@ def token():
     return token
 
 
-class MarketingTransformationElement(OperationElement):
+class HomeElement(OperationElement):
     """
-    封装"MarketingTransformationElement"元素类
+    封装"HomeElement"元素类
     Usage:
         Demonstration = (By.XPATH, "(//span[text()='$'])[1]/.") 
         
@@ -45,13 +45,30 @@ class MarketingTransformationElement(OperationElement):
 
     
     # ================================================元素==========================================
+    table = (By.XPATH, "(//a[starts-with(@class, 'Fourm')])[$]")
+    new_table = (By.XPATH, "(//div[@class='bodr'])[$]/a[1]")
 
-    hover = (By.XPATH, "(//tr[starts-with(@class, 'ivu-table-row')])[1]")
-    select = (By.XPATH, "(//div[@class='m-menu-handle']/div/div/div/i)[$]") # 1:复制，2:编辑，3:删除
+    def table_click(self, location):
+        """
+        table测试的位置
+        :param location: 1:About Us, 2:Products Center, 3:Technological Strength, 4:Contact Us
+        :return: ...
+        """
 
-    def test_element(self, location):
-        self.hovers(self.hover)
-        self.is_click(self.str_conversion(self.select, location))
+        self.is_click(self.str_conversion(self.table, location))
 
-    def assert_url(self):
-        return self.is_url_contain(url="marketing_mail_id")
+    def new_table_click(self, location):
+        """
+        newCenter断言值l
+        :param location: 1:news一，2:news二，3:launching
+        :return: ..
+        """
+        self.is_click(self.str_conversion(self.new_table, location))
+
+    def news_assert(self, url):
+        """
+        news断言值
+        :param url: /news/71.html
+        :return: 返回对应的url是否正确
+        """
+        return self.is_url_contain(url)

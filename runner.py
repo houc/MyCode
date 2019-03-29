@@ -1,6 +1,5 @@
 import unittest
 import os
-import asyncio
 
 from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
@@ -33,12 +32,11 @@ class RunAll(object):
         if module_run is not None:
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
-        runners = unittest.TextTestRunner()
+        runners = unittest.TextTestRunner(verbosity=2)
         result = runners.run(discover)
         return result
 
-    @asyncio.coroutine
-    async def run(self):
+    def run(self):
         """测试用例数据处理，并执行用例"""
         run = self._running()
         self._case_data(case_data=run)
@@ -47,7 +45,6 @@ class RunAll(object):
         if sql_query:
             self.excel(sql_query).class_merge(parameter=result)
             self.mail.sender_email(case_name=result)
-            self.sql.close_sql()
 
     def _case_data(self, case_data=None):
         """
@@ -70,6 +67,4 @@ class RunAll(object):
 
 if __name__ == '__main__':
     runner = RunAll()
-    pool = asyncio.get_event_loop()
-    pool.run_until_complete(runner.run())
-    pool.close()
+    runner.run()

@@ -4,7 +4,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from model.DriverParameter import browser
 from model.Yaml import MyYaml
-from model.PrintColor import RED_BIG
 
 
 class OperationElement(object):
@@ -12,7 +11,7 @@ class OperationElement(object):
         浏览器操作封装类
     """
 
-    def __init__(self, driver, timeout=20, detection=1, exception=EC.NoSuchElementException):
+    def __init__(self, driver, timeout=21, detection=0.5, exception=EC.NoSuchElementException):
         """
         初始化类参数
         :param driver: 浏览器session
@@ -64,8 +63,9 @@ class OperationElement(object):
         element_value = element[1]
         if by == "xpath":
             return self.driver.find_element(By.XPATH, element_value)
-        elif by == "css":
+        elif by == "css selector":
             return self.driver.find_element(By.CSS_SELECTOR, element_value)
+
 
     def screen_shot(self, path):
         """
@@ -109,10 +109,17 @@ class OperationElement(object):
         """
         切换窗口
         :param name: 切换到窗口列表名字，如[1]
-        :return:
+        :return: 对应的窗口
         """
         windows = self.more_windows()
-        return self.driver.switch_to_window(windows[name])
+        return self.driver.switch_to.window(windows[name])
+
+    def close_current_windows(self):
+        """
+        关闭当前窗口
+        :return:
+        """
+        self.driver.close()
     
     def operation_element(self, element):
         """
@@ -144,6 +151,21 @@ class OperationElement(object):
             import time
             time.sleep(wait_time)
             self.operation_element(element).click()
+
+    def is_send(self, element, value, wait_time=2):
+        """
+        判断是否可执行输入，当第一次出现异常，默认等待2秒后再次尝试是否可输入，直到再次获得信息
+        :param element: self.is_send(By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"), "小明")
+        :param value: "小明"
+        :param wait_time: 等待时间
+        :return: ...
+        """
+        try:
+            self.operation_element(element).send_keys(value)
+        except Exception:
+            import time
+            time.sleep(wait_time)
+            self.operation_element(element).send_keys(value)
 
     def is_text(self, element, wait_time=2):
         """
@@ -216,7 +238,12 @@ class OperationElement(object):
         :param url: "http://www.sina"
         :return: 包含返回True,不包含返回False
         """
-        return self.support.until(EC.url_contains(url))
+        try:
+            is_url = self.support.until(EC.url_contains(url))
+        except Exception:
+            return False
+        else:
+            return is_url
 
     def is_attribute_value(self, element, text: str):
         """

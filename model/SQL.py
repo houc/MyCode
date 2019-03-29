@@ -7,7 +7,7 @@ from model.Yaml import MyYaml
 class Mysql:
     def __init__(self, switch=False, coding='utf8'):
         """
-        初始化数据库数据
+        初始化数据库数据(用于mysql)
         :param switch: False:不创建表字段，True创建表
         :param coding: 转码
         """
@@ -105,12 +105,3 @@ class Mysql:
         data = self.dbUpdate % (parameter, 'case_name={0!r}'.format(case_name))
         DB.execute(data)
         self.DB.commit()
-
-
-if __name__ == '__main__':
-    M = Mysql(True)
-    k = M.query_data()
-    for i in k:
-        print(i)
-    # M.insert_data('1', '中', 'test_names', '备注', '2.3333', '成功', '/user', '2018-08-08 15:25:55',
-    #               results_value='E')

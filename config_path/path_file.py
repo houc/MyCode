@@ -22,7 +22,7 @@ def read_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME):
     dir_file = dir_file + '/{}/{}'.format(ups, up)
     return dir_file
 
-def module_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME, project='SCRM'):
+def module_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME, project='Manufacture'):
     """功能模块路径"""
     dir_file = os.path.dirname(os.path.dirname(__file__))
     dir_file = dir_file + '/{}/{}/{}'.format(project, ups, up)

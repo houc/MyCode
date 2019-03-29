@@ -4,7 +4,7 @@ from config_path.path_file import read_file, module_file
 
 
 class MyYaml(object):
-    def __init__(self,interface='SCRM', encoding='utf-8'):
+    def __init__(self,interface='Manufacture', encoding='utf-8'):
         """初始化参数"""
         self.interface = interface
         self.encoding = encoding
@@ -14,16 +14,16 @@ class MyYaml(object):
         """读取config.yaml中全部参数"""
         path = read_file('config', 'config.yaml')
         f = open(path, encoding=self.encoding)
-        data = yaml.load(f)
+        data = yaml.safe_load(f)
         f.close()
         return data
 
     @property
     def AllPublic(self):
         """读取public.yaml中的全部参数"""
-        path = read_file('SCRM', 'common.yaml')
+        path = read_file('Manufacture', 'common.yaml')
         f = open(path, encoding=self.encoding)
-        data = yaml.load(f)
+        data = yaml.safe_load(f)
         f.close()
         return data
 
@@ -32,23 +32,23 @@ class MyYaml(object):
         """读取测试模块下的public全部参数"""
         path = module_file(self.interface, 'currency.yaml')
         f = open(path, encoding=self.encoding)
-        data = yaml.load(f)
+        data = yaml.safe_load(f)
         f.close()
         return data
 
     @property
     def AllPublicData(self):
         """读取public.yaml全部数据"""
-        path = read_file('SCRM', 'public.yaml')
+        path = read_file('Manufacture', 'public.yaml')
         f = open(path, encoding=self.encoding)
-        data = yaml.load(f)
+        data = yaml.safe_load(f)
         f.close()
         return data
 
     @property
     def parameter_ui(self):
         """获取yaml中的模块"""
-        return self.AllPublic['SCRM']
+        return self.AllPublic['Manufacture']
 
     @property
     def base_url(self):
@@ -76,5 +76,5 @@ class MyYaml(object):
         return self.AllConfig['sql'][self.interface]
 
 if __name__ == '__main__':
-    t = MyYaml('test_accountError').url
+    t = MyYaml('test_accountError').parameter_ui
     print(t)

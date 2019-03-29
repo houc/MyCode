@@ -84,7 +84,7 @@ CASE_NAME = '''    def {}(self):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
-            self.is_asserts = False # 断言self.first与self.second是否相等, True:相等，False:不相等
+            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
             self.error = str(exc)\n
 '''

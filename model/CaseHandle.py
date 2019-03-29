@@ -3,6 +3,7 @@ import time
 
 from model.MyDB import MyDB
 from model.MyException import SQLDataError, FUN_NAME
+from model.TimeConversion import beijing_time_conversion_unix, time_conversion
 
 
 class DataHandleConversion(object):
@@ -40,21 +41,24 @@ class DataHandleConversion(object):
                             skip.append(_data[second_data])
                     if second_data == 9:
                         if _data[second_data] != 'None':
-                            sql_data.append(float(_data[second_data][:-1]))
+                            sql_data.append(float(_data[second_data][:-2]))
                     if second_data == 11:
                         member.append(_data[second_data])
                     if first_data == len(self.sql_data) - 1:
                         if second_data == 12:
                             case_messages['end_time'] = _data[second_data]
             if sql_data and member:
-                case_messages["short_time"] = min(sql_data)
-                case_messages["long_time"] = max(sql_data)
+                case_messages["short_time"] = time_conversion(min(sql_data))
+                case_messages["long_time"] = time_conversion(max(sql_data))
                 case_messages["member"] = list(set(member))
             case_messages["testsRun"] = len(error) + len(fail) + len(success) + len(skip)
             case_messages["errors"] = len(error)
             case_messages["failures"] = len(fail)
             case_messages["success"] = len(success)
             case_messages['skipped'] = len(skip)
+            start_time = beijing_time_conversion_unix(case_messages['start_time'])
+            ends_time = beijing_time_conversion_unix(case_messages['end_time'])
+            case_messages['total_time'] = time_conversion(ends_time - start_time)
             if case_messages:
                 return case_messages
         else:
@@ -86,4 +90,9 @@ class DataHandleConversion(object):
                                      remark=None, wait_time=None, status="跳过", url=None,
                                      insert_time=is_data["insert_time"], img=None, error_reason=is_data["reason"],
                                      author=None, results_value=None)
+
+
+class DiscoverSpilt(object):
+    def __init__(self, discover):
+        self.discover = discover
 

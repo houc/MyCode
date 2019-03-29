@@ -258,7 +258,7 @@ class WriteExcel:
         self.sheet_title.write(5, 2, kwargs['title_fail'], self.title_title_content)
         self.sheet_title.write(5, 4, kwargs['title_error'], self.title_title_content)
         self.sheet_title.write(6, 2, kwargs['skip'], self.title_title_content)
-        self.sheet_title.write(6, 4, kwargs['other'], self.title_title_content)
+        self.sheet_title.write(6, 4, kwargs['total_time'], self.title_title_content)
         self.sheet_title.write(7, 2, kwargs['title_skip'], self.title_title_content)
         self.sheet_title.write(7, 4, kwargs['title_total_time'], self.title_title_content)
 
@@ -279,9 +279,9 @@ class WriteExcel:
             self.sheet_title.write(5, 3, parameter.get("failures"), self.title_title_content)
             self.sheet_title.write(5, 5, parameter.get("errors"), self.title_title_content)
             self.sheet_title.write(6, 3, parameter.get("skipped"), self.title_title_content)
-            self.sheet_title.write(6, 5, parameter.get("other"), self.title_title_content)
-            self.sheet_title.write(7, 3, str(parameter.get("short_time")) + 's', self.title_title_content)
-            self.sheet_title.write(7, 5, str(parameter.get("long_time")) + 's', self.title_title_content)
+            self.sheet_title.write(6, 5, parameter.get("total_time"), self.title_title_content)
+            self.sheet_title.write(7, 3, str(parameter.get("short_time")), self.title_title_content)
+            self.sheet_title.write(7, 5, str(parameter.get("long_time")), self.title_title_content)
             self._title_insert_report_img(parameter)
         else:
             raise TypeError('class_merge()函数方法应为字典')
@@ -318,7 +318,7 @@ class ExcelTitle(WriteExcel):
                   'title_title': '{}{}UI自动化测试报告', 'title_start_time': '开始时间', 'title_stop_time': '结束时间',
                   'title_total_time': '用例最长耗时', 'title_member':'编写用例人员', 'title_case': '总用例数',
                   'title_success': '成功数', 'title_fail': '失败数', 'title_error': '错误数', 'skip': '跳过数',
-                  'title_skip': '用例最短耗时', 'other': '其他情况', 'title_action': '运行环境','title_tool': '测试工具',
+                  'title_skip': '用例最短耗时', 'total_time': '执行用例总耗时', 'title_action': '运行环境','title_tool': '测试工具',
                   'title_version': '测试版本',
                   }
         return self._merge_def_title_data(parameter, *args, **kwargs)

@@ -3,7 +3,7 @@ import re
 import traceback
 
 from model.MyDB import MyDB
-from model.TimeConversion import standard_time
+from model.TimeConversion import standard_time, time_conversion
 from model.MyException import AssertParams
 
 
@@ -106,6 +106,8 @@ class MyAsserts():
                                 raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
                             finally:
                                 self._log(traceback.format_exc())
+                                self.status = '错误'
+                                self.reason = str(self._strConversion(traceback.format_exc()))
                         elif not self.first:
                             self.status = '失败'
                             first = self._strConversion(str(self.first))
@@ -120,6 +122,8 @@ class MyAsserts():
                         raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
                     finally:
                         self._log(traceback.format_exc())
+                        self.status = '错误'
+                        self.reason = str(self._strConversion(traceback.format_exc()))
         finally:
             self._insert_sql(self.status, self.img_path, self.reason)
 
@@ -198,6 +202,8 @@ class MyAsserts():
                                 raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
                             finally:
                                 self._log(traceback.format_exc())
+                                self.status = '错误'
+                                self.reason = str(self._strConversion(traceback.format_exc()))
                         elif not self.first:
                             self.status = '失败'
                             first = self._strConversion(str(self.first))
@@ -212,13 +218,15 @@ class MyAsserts():
                         raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
                     finally:
                         self._log(traceback.format_exc())
+                        self.status = '错误'
+                        self.reason = str(self._strConversion(traceback.format_exc()))
         finally:
             self._insert_sql(self.status, self.img_path, self.reason)
 
     def _insert_sql(self, status, img_path, reason):
         """将用例插入数据库"""
         insert_time = standard_time()
-        self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, "{:.4f}s".format(self.time),
+        self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, time_conversion(self.time),
                              status, self.url, insert_time, img_path, reason, self.author,
                              results_value=self.second)
 

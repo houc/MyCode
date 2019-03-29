@@ -1,32 +1,37 @@
 base_url:
-  SCRM: https://www.scrm365.cn  # 正式环境 15928564313 Li123456
+  Manufacture: http://1903265005.pool4-site.make.yun300.cn  # 测试地址
 excel_parameter:
-  project_name: SCRM          # 项目名称
-  test_version: V2.1.10.11    # 测试时的版本号
-  science: 内贸项目测试环境    # 测试环境
+  project_name: Manufacture          # 项目名称
+  test_version: V0.0.0    # 测试时的版本号
+  science: 线上环境   # 测试环境
 config:
   token_keys: Authorization   # token表示key名
   level: 10                   # 日志等级
   account: '15928564313'         # 正确的账号
   password: 'Li123456'    # 正确的密码
   company: 草草后
-  page_loading_wait: 60   # 隐时等待时间
+  page_loading_wait: 20   # 超时时间
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
   task_time: 10         # 定时任务等待执行时间
   browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
-  logo_url: /api/file_service/v3/img_view/logo_scrm?type=1  # 项目logo连接
+  logo_url: /repository/image/6Nj1TrvnQT-X3V2FLiW3FQ.jpg  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
-  module_run:      # 指定需要运行的模块，示例：login
+  module_run:  #data_report     # 指定需要运行的模块，示例：login
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
-  skip_module: {} # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
+  skip_module: {about_table_st: 为了执行速度，暂时跳过,
+                about_us_st: 为了执行速度，暂时跳过,
+                new_center_st: 为了执行速度，暂时跳过,
+                products_center_st: 为了执行速度，暂时跳过,
+                module_in_info_st: 为了执行速度，暂时跳过,
+                news_table_st: 跳跳跳跳跳跳} # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
 send_email:
   server: smtp.gouuse.cn                # 邮件发送的服务器
   port:                                   # 发送邮件端口
-  send_account: houchao@gouuse.cn       # 发送账号
-  send_password: Aa123456                 # 发送密码
-  receiver: [784348736@qq.com, 1063116271@qq.com] # 接受的邮件地址
+  send_account: houchao@gouuse.cn #wanghaibin@300.cn       # 发送账号
+  send_password: Aa123456 #Ccwoaini521$                 # 发送密码
+  receiver: [houchao@gouuse.cn, 784348736@qq.com, 1063116271@qq.com] # 接收的邮件地址
 sql:
   account: 'root'                       # 数据库账号
   password: '123456'                    # 数据库密码

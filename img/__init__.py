@@ -2,13 +2,12 @@ import os
 import requests
 
 from model.Yaml import MyYaml
-from model.Thread import ExecuteThread
 from config_path.path_file import read_file
 from PIL import Image
 
 def get_log():
     """获取项目logo"""
-    url = MyYaml('SCRM').base_url + MyYaml('logo_url').config
+    url = MyYaml('Manufacture').base_url + MyYaml('logo_url').config
     r = requests.get(url, stream=True)
     if r.content:
         log_path = read_file('img', 'logo.png')
@@ -18,7 +17,7 @@ def get_log():
             img = Image.open(log_path)
             x, y = img.size
             p = Image.new('RGBA', img.size, (255, 255, 255))
-            p.paste(img, (0, 0, x, y), img)
+            p.paste(img, (0, 0, x, y))
             p.save(log_path)
 
 def current_file_path():
@@ -30,5 +29,9 @@ def current_file_path():
             path = read_file('img', i)
             os.remove(path)
 
-ExecuteThread(method=[current_file_path, get_log]).run()
+def execute():
+    """执行"""
+    current_file_path()
+    get_log()
 
+execute()
