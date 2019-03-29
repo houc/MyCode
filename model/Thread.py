@@ -2,18 +2,27 @@ import threading
 
 
 class ExecuteThread(threading.Thread):
-    def __init__(self, method=list()):
+    """
+    usage:
+        不带参数:ExecuteThread([func_1, func_2, func_3]).run()
+        带参数:ExecuteThread([func_1, func_2, func_3], []).run()
+    """
+    def __init__(self, *args, **kwargs):
         threading.Thread.__init__(self)
-        self.method = method
+        self.function = args
+        self.param = kwargs
 
     def _method_conversion_list(self):
         """多个方法进行封装"""
-        Thread = list()
-        if isinstance(self.method, list):
-            for i in self.method:
-                thread = threading.Thread(target=i)
-                Thread.append(thread)
-            return Thread
+        Thread = []
+        if self.function:
+            for funcs in self.function:
+                if isinstance(funcs, list):
+                    for fun in funcs:
+                        Thread.append(threading.Thread(target=fun))
+                else:
+                    Thread.append(threading.Thread(target=funcs))
+        return Thread
 
     def run(self):
         """执行所有方法中的功能"""
