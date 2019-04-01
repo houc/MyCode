@@ -32,6 +32,7 @@ class RunAll(object):
         if module_run is not None:
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
+        print(discover)
         runners = unittest.TextTestRunner(verbosity=2)
         result = runners.run(discover)
         return result

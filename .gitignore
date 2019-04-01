@@ -3,3 +3,4 @@
 config.ini
 *.xlsx
 *.xml
+__pycache__
