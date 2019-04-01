@@ -1,6 +1,7 @@
 import unittest
 import time
 import os
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -39,9 +40,9 @@ class TestNewCenter(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.news_assert(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_good_news_table_two(self):
         """
@@ -60,9 +61,9 @@ class TestNewCenter(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.news_assert(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_launching(self):
         """
@@ -81,6 +82,6 @@ class TestNewCenter(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.news_assert(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())

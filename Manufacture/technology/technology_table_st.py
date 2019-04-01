@@ -1,6 +1,7 @@
 import unittest
 import time
 import os
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -39,9 +40,9 @@ class TestTechnologyTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_switch_equipment(self):
         """
@@ -60,30 +61,9 @@ class TestTechnologyTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
-
-    def test_switch_technology(self):
-        """
-        验证Technology是否能正常跳转;
-
-        1、打开Technology;
-
-        2、点击Technology;
-
-        3、断言跳转的url是否包含{/news/10/}
-        """
-        try:
-            driver = TechnologyElement(self.driver)
-            driver.get(self.url)
-            driver.technology_table_click(location=3)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
-            self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_technology_info(self):
         """
@@ -102,9 +82,9 @@ class TestTechnologyTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_equipment_info(self):
         """
@@ -123,9 +103,9 @@ class TestTechnologyTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, None)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_download_info(self):
         """
@@ -144,7 +124,28 @@ class TestTechnologyTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+
+    def test_switch_technology(self):
+        """
+        验证Technology是否能正常跳转;
+
+        1、打开Technology;
+
+        2、点击Technology;
+
+        3、断言跳转的url是否包含{/news/10/}
+        """
+        try:
+            driver = TechnologyElement(self.driver)
+            driver.get(self.url)
+            driver.technology_table_click(location=3)
+            time.sleep(2)
+            driver.screen_shot(self.screenshots_path)
+            self.first = driver.is_url_equal(url=self.data[0]) # 此项为必填，第一个断言值
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 

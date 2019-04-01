@@ -230,7 +230,12 @@ class OperationElement(object):
         :param url: "http://www.sina.com.cn"
         :return: 相等返回True,不相等返回False
         """
-        return self.support.until(EC.url_to_be(url))
+        try:
+            is_url = self.support.until(EC.url_to_be(url))
+        except Exception:
+            return False
+        else:
+            return is_url
 
     def is_url_contain(self, url: str):
         """

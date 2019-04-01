@@ -1,6 +1,7 @@
 import unittest
 import time
 import os
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -39,9 +40,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_equipment(self):
         """
@@ -60,9 +61,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_technology(self):
         """
@@ -81,9 +82,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_company_news_info(self):
         """
@@ -102,9 +103,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_download_info(self):
         """
@@ -123,9 +124,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_equipment_info(self):
         """
@@ -144,9 +145,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_technology_info(self):
         """
@@ -165,9 +166,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_industry_dynamics_info(self):
         """
@@ -186,9 +187,9 @@ class TestCompanyNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_notice_info(self):
         """
@@ -203,13 +204,13 @@ class TestCompanyNewsTable(UnitTests):
         try:
             driver = NewsElement(self.driver)
             driver.get(self.url)
-            driver.company_img_info(location=self.data[0])
+            driver.company_img_info(location=self.data[2])
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_knowledge_info(self):
         """
@@ -224,13 +225,13 @@ class TestCompanyNewsTable(UnitTests):
         try:
             driver = NewsElement(self.driver)
             driver.get(self.url)
-            driver.company_img_info(location=self.data[0])
+            driver.company_img_info(location=self.data[2])
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.url)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_public_welfare(self):
         """
@@ -245,11 +246,11 @@ class TestCompanyNewsTable(UnitTests):
         try:
             driver = NewsElement(self.driver)
             driver.get(self.url)
-            driver.company_img_info(location=self.data[0])
+            driver.company_img_info(location=self.data[3])
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 

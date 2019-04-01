@@ -1,6 +1,7 @@
 import unittest
 import time
 import os
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -39,9 +40,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_speech(self):
         """
@@ -60,9 +61,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_organization(self):
         """
@@ -81,9 +82,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_philosophy(self):
         """
@@ -102,9 +103,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_honor(self):
         """
@@ -123,9 +124,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_staff_style(self):
         """
@@ -144,9 +145,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_honor_next_page(self):
         """
@@ -168,9 +169,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_staff_style_next_page(self):
         """
@@ -192,9 +193,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_honor_img(self):
         """
@@ -217,9 +218,9 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_staff_style_img(self):
         """
@@ -242,7 +243,7 @@ class TestAboutUs(UnitTests):
             driver.screen_shot(self.screenshots_path)
             time.sleep(2)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 

@@ -5,13 +5,11 @@ from model.Yaml import MyYaml
 
 def _current_module():
     """获取当前py名称"""
-    name = os.path.basename(sys.argv[0]).split('.')[0]
-    return name
+    return os.path.basename(sys.argv[0]).split('.')[0]
 
 def current_module(path):
     """获取当前py名称"""
-    name = os.path.basename(path).split('.')[0]
-    return name
+    return os.path.basename(path).split('.')[0]
 
 class Skip(object):
     def __init__(self, module=None):
@@ -26,12 +24,11 @@ class Skip(object):
     def _is_skip(self):
         """通过.ya中的数据对比当前模块名称是否相等"""
         if isinstance(self.skip_module, dict):
-            module = list(self.skip_module.keys())
+            modules = list(self.skip_module.keys())
             reason = list(self.skip_module.values())
-            for module in module:
-                if module == self.current_module:
-                    for reason in reason:
-                        return True, reason
+            for module in range(len(modules)):
+                if modules[module] == self.current_module:
+                    return True, reason[module]
         else:
             raise TypeError
 

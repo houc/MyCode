@@ -32,9 +32,9 @@ def token():
     return token
 
 
-class AboutElement(OperationElement):
+class MarketingContactElement(OperationElement):
     """
-    封装"AboutElement"元素类
+    封装"MarketingContactElement"元素类
     Usage:
         Demonstration = (By.XPATH, "(//span[text()='$'])[1]/.") 
         
@@ -45,29 +45,3 @@ class AboutElement(OperationElement):
 
     
     # ================================================元素==========================================
-    about_us_table = (By.XPATH, "(//div[contains(@style, 'padding-left')])[$]")
-    next_page = (By.XPATH, "//div[starts-with(@class, 'next')]")
-    img = (By.XPATH, "//div[contains(@class, 'p_AtlasList')]/div[1]/div[$]")
-
-    def about_table_click(self, location):
-        """
-        aboutUs title的点击以及切换
-        :param location: 1:Profile，2:Speech，3:Organization，4:Philosophy，5:Honor，6:Staff Style
-        :return: ...
-        """
-        self.is_click(self.str_conversion(self.about_us_table, location)).C()
-
-    def about_next_click_page(self):
-        """
-        点击下一页操作
-        :return:
-        """
-        self.is_click(self.next_page)
-
-    def img_click(self, location):
-        """
-        带图片点击元素
-        :param location: 图片第几张
-        :return: ...
-        """
-        self.is_click(self.str_conversion(self.img, location))

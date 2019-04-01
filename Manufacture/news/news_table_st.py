@@ -1,6 +1,7 @@
 import unittest
 import time
 import os
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -9,7 +10,6 @@ from Manufacture.news.currency import NewsElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
-
 
 @unittest.skipIf(_SKIP, _SKIP_REASON)
 class TestNewsTable(UnitTests):
@@ -39,9 +39,9 @@ class TestNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_industry_dynamics(self):
         """
@@ -60,9 +60,9 @@ class TestNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_notice(self):
         """
@@ -81,9 +81,9 @@ class TestNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_knowledge(self):
         """
@@ -102,9 +102,9 @@ class TestNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_public_welfare(self):
         """
@@ -123,9 +123,9 @@ class TestNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_news_center(self):
         """
@@ -145,9 +145,9 @@ class TestNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_news_center_next_page(self):
         """
@@ -168,7 +168,7 @@ class TestNewsTable(UnitTests):
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.url)
+        except Exception:
+            self.error = str(traceback.format_exc())
 

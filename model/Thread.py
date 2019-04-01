@@ -14,15 +14,15 @@ class ExecuteThread(threading.Thread):
 
     def _method_conversion_list(self):
         """多个方法进行封装"""
-        Thread = []
+        thread = []
         if self.function:
             for funcs in self.function:
                 if isinstance(funcs, list):
                     for fun in funcs:
-                        Thread.append(threading.Thread(target=fun))
+                        thread.append(threading.Thread(target=fun))
                 else:
-                    Thread.append(threading.Thread(target=funcs))
-        return Thread
+                    thread.append(threading.Thread(target=funcs))
+        return thread
 
     def run(self):
         """执行所有方法中的功能"""

@@ -1,6 +1,7 @@
 import unittest
 import time
 import os
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -36,14 +37,13 @@ class TestMarketing(UnitTests):
             driver = MarketingElement(self.driver)
             driver.get(self.url)
             time.sleep(5)
-            # 操作元素.....
             driver.market_click()
-            time.sleep(5)
+            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True  # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_market_concept(self):
         """
@@ -60,16 +60,14 @@ class TestMarketing(UnitTests):
         try:
             driver = MarketingElement(self.driver)
             driver.get(self.url)
-            # 操作元素.....
             driver.market_click()
-            time.sleep(5)
             driver.concept_click()
-            time.sleep(5)
+            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_market_network(self):
         """
@@ -86,16 +84,14 @@ class TestMarketing(UnitTests):
         try:
             driver = MarketingElement(self.driver)
             driver.get(self.url)
-            # 操作元素.....
             driver.market_click()
-            time.sleep(5)
             driver.network_click()
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
     def test_market_marketing_knowledge(self):
         """
@@ -113,18 +109,16 @@ class TestMarketing(UnitTests):
         try:
             driver = MarketingElement(self.driver)
             driver.get(self.url)
-            # 操作元素.....
             driver.market_click()
-            time.sleep(5)
             driver.marketing_knowledge_click()
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
 
-    @unittest.skip('暂时跳过')
+    @unittest.skip('暂时跳过A')
     def test_market_home(self):
         """
         验证marketing页跳转表头home页;
@@ -149,7 +143,7 @@ class TestMarketing(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
-    @unittest.skip('暂时跳过')
+    @unittest.skip('暂时跳过B')
     def test_market_about(self):
         """
         验证marketing页跳转表头about页;
@@ -174,7 +168,7 @@ class TestMarketing(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
-    @unittest.skip('暂时跳过')
+    @unittest.skip('暂时跳过C')
     def test_market_news(self):
         """
         验证marketing页跳转表头news页;
@@ -199,7 +193,7 @@ class TestMarketing(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
-    @unittest.skip('暂时跳过')
+    @unittest.skip('暂时跳过D')
     def test_market_product(self):
         """
         验证marketing页跳转表头product页;
@@ -224,7 +218,7 @@ class TestMarketing(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
-    @unittest.skip('暂时跳过')
+    @unittest.skip('暂时跳过E')
     def test_market_technology(self):
         """
         验证marketing页跳转表头technology页;
@@ -249,7 +243,7 @@ class TestMarketing(UnitTests):
         except Exception as exc:
             self.error = str(exc)
 
-    @unittest.skip('暂时跳过')
+    @unittest.skip('暂时跳过F')
     def test_market_contact(self):
         """
         验证marketing页跳转表头contact页;

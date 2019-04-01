@@ -69,16 +69,16 @@ class DataHandleConversion(object):
         global module, is_case, da
         skipped = [] # 跳过用例封装的数据
         if self.case_data is not None:
-            for skip in self.case_data.skipped:
-                for da in skip:
-                    if "test_" in str(da):
-                        module = str(da).split(' ')[-1].split('.')[-1].split(')')[0]
-                        is_case = str(da).split(' ')[0]
+            for skipp in self.case_data.skipped:
+                for skip in skipp:
+                    if "test_" in str(skip):
+                        module = str(skip).split(' ')[-1].split('.')[-1].split(')')[0]
+                        is_case = str(skip).split(' ')[0]
                     else:
-                        if not da:
-                            da = "未说明跳过原因..."
+                        if not skip:
+                            skip = "None"
                         skipped.append({"module": module, "case_name": is_case,
-                                        "reason": "跳过原因: {}".format(da),
+                                        "reason": "跳过原因: {}".format(skip),
                                         "insert_time": time.strftime('%Y-%m-%d %H:%M:%S')})
             self._insert_case_data(data=skipped)
 

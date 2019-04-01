@@ -104,7 +104,6 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/intro/10.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-
         test_market_network: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
@@ -116,7 +115,6 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/intro/11.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-
         test_market_marketing_knowledge: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
@@ -150,7 +148,6 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/2.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-
         test_market_news: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
@@ -173,7 +170,6 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/11.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-
         test_market_technology: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
@@ -201,7 +197,7 @@ Manufacture:                          # 项目名称
       url:                            # 测试类下的url，为空请求，config.yaml的URL
       className: TestMarketingContactAbout          # 类名
       funName:
-      - test_market_contect_about: {     # 测试方法
+      - test_market_contact_about: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -212,7 +208,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/51.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_about_profile: {     # 测试方法
+        test_market_contact_about_profile: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -223,7 +219,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/52.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_about_speech: {     # 测试方法
+        test_market_contact_about_speech: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -234,8 +230,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/53.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-
-        test_market_contect_about_organization: {     # 测试方法
+        test_market_contact_about_organization: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -246,7 +241,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/54.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_about_system: {     # 测试方法
+        test_market_contact_about_system: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -257,8 +252,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/55.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-
-        test_market_contect_about_philosophy: {     # 测试方法
+        test_market_contact_about_philosophy: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -269,7 +263,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/56.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_about_honor: {     # 测试方法
+        test_market_contact_about_honor: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -280,8 +274,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/57.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-
-        test_market_contect_about_stafStyle: {     # 测试方法
+        test_market_contact_about_stafStyle: {     # 测试方法
         url: ,                        # 用例下的url，为空请求，类下URL
         author: 王海宾,                  # 用例作者
         level: 高,                     # 用例级别
@@ -296,7 +289,7 @@ Manufacture:                          # 项目名称
       url:
       className: TestMarketingContactNews
       funName:
-      - test_market_contect_news: {     # 测试方法
+      - test_market_contact_news: {     # 测试方法
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -307,7 +300,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/58.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_companyNews: {     # 测试方法
+        test_market_contact_companyNews: {     # 测试方法
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -318,7 +311,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/58.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_industryDynamics: {     # 测试方法
+        test_market_contact_industryDynamics: {     # 测试方法
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -329,7 +322,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/60.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_notice: {     # 测试方法
+        test_market_contact_notice: {     # 测试方法
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -341,7 +334,7 @@ Manufacture:                          # 项目名称
         asserts: True
       }
 
-        test_market_contect_knowledge: {     # 测试方法
+        test_market_contact_knowledge: {     # 测试方法
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -352,7 +345,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/62.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_publicWelfare: {     # 测试方法
+        test_market_contact_publicWelfare: {     # 测试方法
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -367,7 +360,7 @@ Manufacture:                          # 项目名称
       url:
       className: TestMarketingContactProducts
       funName:
-      - test_market_contect_products: {
+      - test_market_contact_products: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -378,7 +371,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/72.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_automoticeFilterSeries: {
+        test_market_contact_automoticeFilterSeries: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -389,7 +382,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/74.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_automotiveBrake: {
+        test_market_contact_automotiveBrake: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -400,7 +393,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/75.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_compressor: {
+        test_market_contact_compressor: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -411,7 +404,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/76.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_sealSeriesOilSeal: {
+        test_market_contact_sealSeriesOilSeal: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -422,7 +415,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/77.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_motorDrainValue: {
+        test_market_contact_motorDrainValue: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -433,7 +426,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/78.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_shockAbsorber: {
+        test_market_contact_shockAbsorber: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -444,7 +437,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/79.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_rubberMiscellaneousItems: {
+        test_market_contact_rubberMiscellaneousItems: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别
@@ -455,7 +448,7 @@ Manufacture:                          # 项目名称
                 4、断言跳转的url是否包含{/nav/80.html}",    #用例描述场景、测试步骤，其中{}传入用例的参数
         asserts: True
       }
-        test_market_contect_generalRubberParts: {
+        test_market_contact_generalRubberParts: {
         url: ,                             # 用例下的url，为空请求，类下URL
         author: 王海宾,                    # 用例作者
         level: 高,                         # 用例级别

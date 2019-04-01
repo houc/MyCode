@@ -1,10 +1,7 @@
-import os
 import re
-import traceback
 
 from model.MyDB import MyDB
 from model.TimeConversion import standard_time, time_conversion
-from model.MyException import AssertParams
 
 
 class MyAsserts():
@@ -31,195 +28,23 @@ class MyAsserts():
         self.img_path = None
         self.sql = MyDB()
 
-    def asserts_eq(self):
-        """判断first与second值是否相等"""
+    def asserts(self):
+        """用例断言"""
+        self._exc(self.first, self.second, self.name)
         try:
-            if self.first and self.second is not None:
-                if isinstance(self.first, type(self.second)):
-                    if self.first == self.second:
-                        self.status = '成功'
-                        self.reason = self._strConversion(str(self.first))
-                        self._assert_eq()
-                    elif not self.first == self.second:
-                        self.status = '失败'
-                        first = self._strConversion(str(self.first))
-                        second = self._strConversion(str(self.second))
-                        self.reason = '"%s" 不等于 "%s"' % (first, second)
-                        if os.path.exists(self.screenshots_path):
-                            self.img_path = str(self.screenshots_path).replace('\\', '/')
-                        self._log(self.reason)
-                        self._assert_eq()
+            if self.reason is not None:
+                if 'AssertionError' in self.reason:
+                    self.status = '失败'
                 else:
-                    if str(self.first) == str(self.second):
-                        self.status = '成功'
-                        self.reason = self._strConversion(str(self.first))
-                        self._assert_eq()
-                    elif not str(self.first) == str(self.second):
-                        self.status = '失败'
-                        first = self._strConversion(str(self.first))
-                        second = self._strConversion(str(self.second))
-                        self.reason = '"%s" 不等于 "%s"' % (first, second)
-                        if os.path.exists(self.screenshots_path):
-                            self.img_path = str(self.screenshots_path).replace('\\', '/')
-                        self._log(self.reason)
-                        self._assert_eq()
-                    elif self.reason is not None:
-                        self.status = '错误'
-                        reason = self._strConversion(str(self.reason))
-                        self.reason = reason
-                        if os.path.exists(self.screenshots_path):
-                            self.img_path = str(self.screenshots_path).replace('\\', '/')
-                        self._log(self.reason)
-                        try:
-                            raise BaseException(self.reason)
-                        finally:
-                            self._log(self.reason)
-            else:
-                if self.reason is not None:
                     self.status = '错误'
-                    self.reason = self._strConversion(str(self.reason))
-                    if os.path.exists(self.screenshots_path):
-                        self.img_path = str(self.screenshots_path).replace('\\', '/')
-                    self._log(self.reason)
-                    try:
-                        raise BaseException(self.reason)
-                    finally:
-                        self._log(self.reason)
-                if isinstance(self.first, type(self.second)):
-                    if isinstance(self.first and self.second, bool):
-                        if self.first == self.second:
-                            self.status = '成功'
-                            self.reason = self._strConversion(str(self.first))
-                            self._assert_eq()
-                        elif not self.first == self.second:
-                            self.status = '失败'
-                            first = self._strConversion(str(self.first))
-                            second = self._strConversion(str(self.second))
-                            self.reason = '"%s" 不等于 "%s"' % (first, second)
-                            if os.path.exists(self.screenshots_path):
-                                self.img_path = str(self.screenshots_path).replace('\\', '/')
-                            self._log(self.reason)
-                            self._assert_eq()
-                    else:
-                        if self.reason is not None:
-                            try:
-                                raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
-                            finally:
-                                self._log(traceback.format_exc())
-                                self.status = '错误'
-                                self.reason = str(self._strConversion(traceback.format_exc()))
-                        elif not self.first:
-                            self.status = '失败'
-                            first = self._strConversion(str(self.first))
-                            second = self._strConversion(str(self.second))
-                            self.reason = '"%s" 不等于 "%s"' % (first, second)
-                            if os.path.exists(self.screenshots_path):
-                                self.img_path = str(self.screenshots_path).replace('\\', '/')
-                            self._log(self.reason)
-                        self._assert_eq()
-                else:
-                    try:
-                        raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
-                    finally:
-                        self._log(traceback.format_exc())
-                        self.status = '错误'
-                        self.reason = str(self._strConversion(traceback.format_exc()))
-        finally:
-            self._insert_sql(self.status, self.img_path, self.reason)
-
-    def assert_not_eq(self):
-        """判断first与second值是不能相等"""
-        try:
-            if self.first and self.second is not None:
-                if isinstance(self.first, type(self.second)):
-                    if not self.first == self.second:
-                        self.status = '成功'
-                        self.reason = self._strConversion(str(self.first))
-                        self._assert_not_eq()
-                    elif self.first == self.second:
-                        self.status = '失败'
-                        first = self._strConversion(str(self.first))
-                        second = self._strConversion(str(self.second))
-                        self.reason = '"%s" 等于 "%s"' % (first, second)
-                        if os.path.exists(self.screenshots_path):
-                            self.img_path = str(self.screenshots_path).replace('\\', '/')
-                        self._log(self.reason)
-                        self._assert_not_eq()
-                else:
-                    if not str(self.first) == str(self.second):
-                        self.status = '成功'
-                        self.reason = self._strConversion(str(self.first))
-                        self._assert_not_eq()
-                    elif str(self.first) == str(self.second):
-                        self.status = '失败'
-                        first = self._strConversion(str(self.first))
-                        second = self._strConversion(str(self.second))
-                        self.reason = '"%s" 等于 "%s"' % (first, second)
-                        if os.path.exists(self.screenshots_path):
-                            self.img_path = str(self.screenshots_path).replace('\\', '/')
-                        self._log(self.reason)
-                        self._assert_not_eq()
-                    elif self.reason is not None:
-                        self.status = '错误'
-                        reason = self._strConversion(str(self.reason))
-                        self.reason = reason
-                        if os.path.exists(self.screenshots_path):
-                            self.img_path = str(self.screenshots_path).replace('\\', '/')
-                        self._log(self.reason)
-                        try:
-                            raise BaseException(self.reason)
-                        finally:
-                            self._log(self.reason)
+                self._log(self.reason)
+                self.reason = self._strConversion(self.reason)
+                raise BaseException(self.reason)
             else:
-                if self.reason is not None:
-                    self.status = '错误'
-                    self.reason = self._strConversion(str(self.reason))
-                    if os.path.exists(self.screenshots_path):
-                        self.img_path = str(self.screenshots_path).replace('\\', '/')
-                    self._log(self.reason)
-                    try:
-                        raise BaseException(self.reason)
-                    finally:
-                        self._log(self.reason)
-                if isinstance(self.first, type(self.second)):
-                    if isinstance(self.first and self.second, bool):
-                        if not self.first == self.second:
-                            self.status = '成功'
-                            self.reason = self._strConversion(str(self.first))
-                            self._assert_not_eq()
-                        elif self.first == self.second:
-                            self.status = '失败'
-                            first = self._strConversion(str(self.first))
-                            second = self._strConversion(str(self.second))
-                            self.reason = '"%s" 等于 "%s"' % (first, second)
-                            if os.path.exists(self.screenshots_path):
-                                self.img_path = str(self.screenshots_path).replace('\\', '/')
-                            self._log(self.reason)
-                            self._assert_not_eq()
-                    else:
-                        if self.reason is not None:
-                            try:
-                                raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
-                            finally:
-                                self._log(traceback.format_exc())
-                                self.status = '错误'
-                                self.reason = str(self._strConversion(traceback.format_exc()))
-                        elif not self.first:
-                            self.status = '失败'
-                            first = self._strConversion(str(self.first))
-                            second = self._strConversion(str(self.second))
-                            self.reason = '"%s" 等于 "%s"' % (first, second)
-                            if os.path.exists(self.screenshots_path):
-                                self.img_path = str(self.screenshots_path).replace('\\', '/')
-                            self._log(self.reason)
-                        self._assert_not_eq()
-                else:
-                    try:
-                        raise AssertParams(self.error_path, 'self.first', 'self.second', 'self.error')
-                    finally:
-                        self._log(traceback.format_exc())
-                        self.status = '错误'
-                        self.reason = str(self._strConversion(traceback.format_exc()))
+                self.status = '成功'
+                self.reason = self._strConversion(str(self.first))
+        except Exception:
+            raise
         finally:
             self._insert_sql(self.status, self.img_path, self.reason)
 
@@ -240,11 +65,9 @@ class MyAsserts():
         """记录日志"""
         self.log.logging_debug('执行时间:{},错误路径:{},错误原因:{}'.
                                format(standard_time(), self.error_path, reason))
-
-    def _assert_eq(self):
-        """断言相等"""
-        self.myself.assertEqual(self.first, self.second, msg=self.reason)
-
-    def _assert_not_eq(self):
-        """断言不相等"""
-        self.myself.assertNotEqual(self.first, self.second, msg=self.reason)
+    @staticmethod
+    def _exc(first, second, case_name):
+        """异常判断"""
+        if first is None and second is None:
+            import warnings
+            warnings.warn('请检查用例:{}，是否定义Element...'.format(case_name))

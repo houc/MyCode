@@ -89,7 +89,7 @@ class WriteExcel:
 
     def _skip_style(self):
         """跳过字体颜色"""
-        self.skip.set_font_color('orange')
+        self.skip.set_font_color('brown')
         self.skip.set_size(11)
         self.skip.set_font_name('微软雅黑')
         self.skip.set_border(7)
@@ -216,27 +216,39 @@ class WriteExcel:
         self.title_title_content.set_size(11)
         return self.title_title_content
 
-    def _title_insert_report_img(self, content):
+    def _title_insert_report_img(self):
         """
         插入总体测试报告分析图表
-        :param content: 用例数据内容
         """
         title = self.title_name
         warnings.simplefilter('ignore')
-        img = self.open_excel.add_chart({'type': 'column'})
-        img.add_series({'categories': '=(%s!$C$5,%s!$E$5,%s!$C$6,%s!$E$6,%s!$C$7)' % (title, title, title,
-                                                                                      title, title),
-                        'values': '=(%s!$D$5,%s!$F$5,%s!$D$6,%s!$F$6,%s!$D$7)' % (title, title, title,
-                                                                                  title, title),
-                        'points': [{'fill': {'color': 'blue'}},  # 总用例数
-                                   {'fill': {'color': 'green'}}, # 成功用例数
-                                   {'fill': {'color': 'yellow'}},   # 失败用例数
-                                   {'fill': {'color': 'red'}},   # 错误用例数
-                                   {'fill': {'color': 'orange'}}]})    # 跳过用例数
-        img.set_title({'name': '{}简报统计图'.format(self.report_project)})
-        img.set_y_axis({'name': '个数'})
-        img.set_x_axis({'name': '状态'})
-        self.sheet_title.insert_chart('A9', img, {'x_scale': 1.93, 'y_scale': 1.60})
+        chart = self.open_excel.add_chart({
+            'type':'column'
+        })
+        chart.add_series({
+            'categories': '=(%s!$C$5,%s!$E$5,%s!$C$6,%s!$E$6,%s!$C$7)' % (title, title, title,
+                                                                         title, title),
+            'values': '=(%s!$D$5,%s!$F$5,%s!$D$6,%s!$F$6,%s!$D$7)' % (title, title, title,
+                                                                     title, title),
+            'points': [{'fill': {'color': 'blue'}},  # 总用例数
+                      {'fill': {'color': 'green'}},  # 成功用例数
+                      {'fill': {'color': 'yellow'}},  # 失败用例数
+                      {'fill': {'color': 'red'}},  # 错误用例数
+                      {'fill': {'color': 'orange'}}]
+        })    # 跳过用例数
+        chart.set_title({
+            'name':'{}简报统计图'.format(self.report_project)
+        })
+        chart.set_legend({
+            'position': 'top'
+        })
+        chart.set_y_axis({
+            'name':'个数'
+        })
+        chart.set_x_axis({
+            'name':'状态'
+        })
+        self.sheet_title.insert_chart('A9', chart, {'x_scale': 1.93, 'y_scale': 1.60})
 
     def _title_write(self, parameter, **kwargs):
         """写入测试报告表头/内容数据"""
@@ -282,7 +294,7 @@ class WriteExcel:
             self.sheet_title.write(6, 5, parameter.get("total_time"), self.title_title_content)
             self.sheet_title.write(7, 3, str(parameter.get("short_time")), self.title_title_content)
             self.sheet_title.write(7, 5, str(parameter.get("long_time")), self.title_title_content)
-            self._title_insert_report_img(parameter)
+            self._title_insert_report_img()
         else:
             raise TypeError('class_merge()函数方法应为字典')
 
@@ -292,7 +304,8 @@ class WriteExcel:
         self._write_pc_content(**kwargs)
         self._write_test_title(*args)
         self.open_excel.close()
-        print("测试报告已生成....")
+        import sys
+        print("测试报告已生成....", file=sys.stderr)
 
 
 class ExcelTitle(WriteExcel):
@@ -328,4 +341,4 @@ if __name__ == '__main__':
     ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', 'aaa', '1.256s', '错误', '辅导费333', '','苟富贵','2018-12-25 17:34:10',],
                 ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ', '苟富贵'],]
 
-    ).class_merge({"success": 7810, "testsRun": 7810, "errors": 521, "failures": 300})
+    ).class_merge({"success": 10, "testsRun": 70, "errors": 51, "failures": 30})

@@ -82,7 +82,6 @@ class UnitTests(unittest.TestCase):
     log = start_time = result = status = level = img = error = None
     first = second = author = urls =  None
     RE_LOGIN, LOGIN_INFO, MODULE = False, None, None
-    is_asserts = True # True:断言self.first与self.second是否相等, 反之不相等返回
 
     @classmethod
     def setUpClass(cls):
@@ -136,10 +135,6 @@ class UnitTests(unittest.TestCase):
         end_time = time.time()
         total_time = end_time - self.start_time
         error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
-        is_assert = MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
+        MyAsserts(self.first, self.second, self.count, self.level, self.case_name, self.case_remark,
                   self.status, self.error, self.url, total_time, self.driver, self.class_name,
-                  self.screenshots_path, self.author, self, error_path, LOG)
-        if self.is_asserts:
-            is_assert.asserts_eq()
-        else:
-            is_assert.assert_not_eq()
+                  self.screenshots_path, self.author, self, error_path, LOG).asserts()

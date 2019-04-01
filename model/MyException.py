@@ -26,15 +26,14 @@ class AssertParams(Exception):
     """
         当断言参数发生错误时，调用该方法，即可返回错误信息到控制台!
     """
-    def __init__(self, module_name, assert_first, assert_second, error):
+    def __init__(self, module_name, assert_first, assert_second):
         self.assert_first = assert_first
         self.assert_second = assert_second
         self.module_name = module_name
-        self.error = error
 
     def __str__(self):
-        return "模块:{!r},断言:{!r}不存在或者断言:{!r}不存在,或者{!r}存在；或者用例中未定义元素执行".\
-            format(self.module_name, self.assert_first, self.assert_second, self.error)
+        return "模块:{!r},断言:{!r}不存在或者断言:{!r}不存在；或者用例中未定义元素执行".\
+            format(self.module_name, self.assert_first, self.assert_second)
 
 
 class WaitTypeError(Exception):

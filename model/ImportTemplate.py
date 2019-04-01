@@ -49,6 +49,7 @@ class {}(OperationElement):
 CASE_CONTENT = '''import unittest
 import time
 import os
+import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
@@ -79,14 +80,13 @@ CASE_NAME = '''    def {}(self):
         try:
             driver = {}(self.driver)
             driver.get(self.url)
-            # 操作元素.....
             
             time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
-            self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
-        except Exception as exc:
-            self.error = str(exc)\n
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())\n
 '''
 
 
