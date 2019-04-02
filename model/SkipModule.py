@@ -24,11 +24,9 @@ class Skip(object):
     def _is_skip(self):
         """通过.ya中的数据对比当前模块名称是否相等"""
         if isinstance(self.skip_module, dict):
-            modules = list(self.skip_module.keys())
-            reason = list(self.skip_module.values())
-            for module in range(len(modules)):
-                if modules[module] == self.current_module:
-                    return True, reason[module]
+            for module, reason in self.skip_module.items():
+                if module == self.current_module:
+                    return True, reason
         else:
             raise TypeError
 

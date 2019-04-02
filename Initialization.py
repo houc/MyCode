@@ -5,7 +5,7 @@ import shutil
 
 from model.Yaml import MyYaml
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA
-from model.PrintColor import RED_BIG, WHITE_BIG
+from model.PrintColor import RED_BIG
 from model.MyException import CreateFileError, FUN_NAME
 from model.TimeConversion import standard_time
 from model.Logs import Logger
@@ -221,26 +221,31 @@ class CreateModule(object):
     def execute_case(self):
         """处理执行用例"""
         try:
-            module = list(self.all_param.keys())
-            repeat = self.check_repeat
-            for run in module:
-                self._other_py(run)
-                self._case_data_handle(run)
+            self.check_repeat()
+            for key, values in self.all_param.items():
+                self._other_py(key)
+                self._case_data_handle(key)
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
         finally:
             return 'COMMON中用例已全部执行完毕！'
 
-    @property
     def check_repeat(self):
         """
-        检查common中的用例是否存在重复
-        :return:
+        检查common中的用例是否存在重复, 存在重复提示异常！
+        :return: ...
         """
-        module_py = []
-        class_name = []
         case_name = []
-        return "还没想好怎么实现！"
+        for key, values in self.all_param.items():
+            for value in values:
+                for value in value['funName']:
+                    for key, values in value.items():
+                        case_name.append(key)
+        if case_name:
+            repeat = [val for val in list(set(case_name)) if case_name.count(val) >= 2]
+            if repeat:
+                import warnings
+                warnings.warn('注意-->有重复的用例名称，用例名称:' + ', '.join(repeat))
 
     def _get_package(self):
         """
@@ -263,4 +268,5 @@ class CreateModule(object):
 
 if __name__ == '__main__':
     RUN = CreateModule().execute_case
-    print(WHITE_BIG, RUN)
+    import sys
+    print(RUN, file=sys.stderr)
