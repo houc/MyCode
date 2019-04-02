@@ -37,8 +37,7 @@ class TestNewCenter(UnitTests):
             driver = HomeElement(self.driver)
             driver.get(self.url)
             driver.new_table_click(location=1)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.news_assert(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -58,8 +57,7 @@ class TestNewCenter(UnitTests):
             driver = HomeElement(self.driver)
             driver.get(self.url)
             driver.new_table_click(location=2)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.news_assert(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -79,8 +77,7 @@ class TestNewCenter(UnitTests):
             driver = HomeElement(self.driver)
             driver.get(self.url)
             driver.new_table_click(location=3)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.news_assert(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:

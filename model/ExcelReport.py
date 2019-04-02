@@ -1,5 +1,6 @@
 import xlsxwriter
 import warnings
+import os
 
 from config_path.path_file import read_file
 from model.PCParameter import merge_config_info, merge_config_msg, output_python_version
@@ -10,6 +11,9 @@ class WriteExcel:
     def __init__(self,*args, **kwargs):
         """初始化"""
         excel_ptah = read_file('report', 'ExcelReport.xlsx')
+        if not os.path.exists(excel_ptah):
+            with open(excel_ptah, 'wt'):
+                pass
         self.report_project = MyYaml('project_name').excel_parameter
         self.report_type = MyYaml('science').excel_parameter
         self.login_path = read_file('img', 'logo.png')

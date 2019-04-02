@@ -38,14 +38,13 @@ class TestMarketingContactNews(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_companyNews(self):
+    def test_market_contect_companyNews(self):
         """
         验证marketing页跳转页末companyNews页
         1、打开首页;
@@ -54,20 +53,19 @@ class TestMarketingContactNews(UnitTests):
 
         3、点击页末companyNews;
 
-        4、断言跳转的url是否包含{/nav/58.html}
+        4、断言跳转的url是否包含{/nav/59.html}
         """
         try:
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_industryDynamics(self):
+    def test_market_contect_industryDynamics(self):
         """
         验证marketing页跳转页末industryDynamics页
         1、打开首页;
@@ -82,14 +80,13 @@ class TestMarketingContactNews(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_notice(self):
+    def test_market_contect_notice(self):
         """
         验证marketing页跳转页末notice页
         1、打开首页;
@@ -104,7 +101,6 @@ class TestMarketingContactNews(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
@@ -126,7 +122,6 @@ class TestMarketingContactNews(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
@@ -148,7 +143,6 @@ class TestMarketingContactNews(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)

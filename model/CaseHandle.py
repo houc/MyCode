@@ -50,7 +50,9 @@ class DataHandleConversion(object):
             if sql_data and member:
                 case_messages["short_time"] = time_conversion(min(sql_data))
                 case_messages["long_time"] = time_conversion(max(sql_data))
-                case_messages["member"] = list(set(member))
+                set_member = list(set(member))
+                set_member.remove('None') if 'None' in set_member else ''
+                case_messages["member"] = set_member
             case_messages["testsRun"] = len(error) + len(fail) + len(success) + len(skip)
             case_messages["errors"] = len(error)
             case_messages["failures"] = len(fail)
@@ -91,8 +93,4 @@ class DataHandleConversion(object):
                                      insert_time=is_data["insert_time"], img=None, error_reason=is_data["reason"],
                                      author=None, results_value=None)
 
-
-class DiscoverSpilt(object):
-    def __init__(self, discover):
-        self.discover = discover
 

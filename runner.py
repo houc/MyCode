@@ -24,6 +24,7 @@ class RunAll(object):
         """清除数据库所有的内容"""
         self.sql.delete_data()
 
+    @property
     def _running(self):
         """所有以_st.py作为需运行的py"""
         self._clear_sql()
@@ -31,16 +32,14 @@ class RunAll(object):
         project_name = MyYaml('project_name').excel_parameter
         if module_run is not None:
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
-        discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
-        print(discover)
+        unittest_discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
         runners = unittest.TextTestRunner(verbosity=2)
-        result = runners.run(discover)
+        result = runners.run(unittest_discover)
         return result
 
     def run(self):
         """测试用例数据处理，并执行用例"""
-        run = self._running()
-        self._case_data(case_data=run)
+        self._case_data(self._running)
         sql_query = self.sql.query_data()
         result = self._sql_data(sql_data=sql_query)
         if sql_query:

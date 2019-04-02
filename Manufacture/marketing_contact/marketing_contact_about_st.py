@@ -39,14 +39,13 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_about_profile(self):
+    def test_market_contect_about_profile(self):
         """
         验证marketing页跳转页末profile页是否正常;
 
@@ -62,14 +61,13 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_about_speech(self):
+    def test_market_contect_about_speech(self):
         """
         验证marketing页跳转页末speech页是否正常;
 
@@ -85,7 +83,6 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
@@ -108,14 +105,13 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_about_system(self):
+    def test_market_contect_about_system(self):
         """
         验证marketing页跳转页末system页是否正常;
 
@@ -131,7 +127,6 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
@@ -154,14 +149,13 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_about_honor(self):
+    def test_market_contect_about_honor(self):
         """
         验证marketing页跳转页末honor页是否正常;
 
@@ -177,7 +171,6 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
@@ -200,7 +193,6 @@ class TestMarketingContactAbout(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)

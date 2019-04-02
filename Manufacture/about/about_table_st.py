@@ -37,8 +37,7 @@ class TestAboutUs(UnitTests):
             driver = AboutElement(self.driver)
             driver.get(self.url)
             driver.about_table_click(location=1)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -58,8 +57,7 @@ class TestAboutUs(UnitTests):
             driver = AboutElement(self.driver)
             driver.get(self.url)
             driver.about_table_click(location=2)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -79,8 +77,7 @@ class TestAboutUs(UnitTests):
             driver = AboutElement(self.driver)
             driver.get(self.url)
             driver.about_table_click(location=3)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -100,8 +97,7 @@ class TestAboutUs(UnitTests):
             driver = AboutElement(self.driver)
             driver.get(self.url)
             driver.about_table_click(location=4)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -121,8 +117,7 @@ class TestAboutUs(UnitTests):
             driver = AboutElement(self.driver)
             driver.get(self.url)
             driver.about_table_click(location=5)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -142,8 +137,7 @@ class TestAboutUs(UnitTests):
             driver = AboutElement(self.driver)
             driver.get(self.url)
             driver.about_table_click(location=6)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -166,8 +160,7 @@ class TestAboutUs(UnitTests):
             driver.get(self.url)
             driver.about_table_click(location=5)
             driver.about_next_click_page()
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -190,8 +183,7 @@ class TestAboutUs(UnitTests):
             driver.get(self.url)
             driver.about_table_click(location=6)
             driver.about_next_click_page()
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -215,8 +207,7 @@ class TestAboutUs(UnitTests):
             driver.about_table_click(location=5)
             driver.img_click(location=self.data[0])
             driver.switch_windows(name=-1)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -240,8 +231,7 @@ class TestAboutUs(UnitTests):
             driver.about_table_click(location=6)
             driver.img_click(location=self.data[0])
             driver.switch_windows(name=-1)
-            driver.screen_shot(self.screenshots_path)
-            time.sleep(2)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:

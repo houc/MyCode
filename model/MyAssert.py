@@ -39,6 +39,7 @@ class MyAsserts():
                     self.status = '错误'
                 self._log(self.reason)
                 self.reason = self._strConversion(self.reason)
+                self.img_path = self.screenshots_path.replace('\\', '/')
                 raise BaseException(self.reason)
             else:
                 self.status = '成功'
@@ -58,8 +59,7 @@ class MyAsserts():
     @staticmethod
     def _strConversion(values: str):
         """字符串中包含单引号转义成``"""
-        res = re.sub("'", "`", values)
-        return res.replace("\\", "/")
+        return re.sub("'", "`", values).replace('\\', '/')
 
     def _log(self, reason):
         """记录日志"""

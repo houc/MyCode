@@ -36,8 +36,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -57,8 +56,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -78,8 +76,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -99,8 +96,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -120,8 +116,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -141,8 +136,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -162,8 +156,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -183,8 +176,7 @@ class InModuleInfo(UnitTests):
             driver = ProductsElement(self.driver)
             driver.get(self.url)
             driver.img_click(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1]) # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:

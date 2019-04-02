@@ -38,14 +38,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_automoticeFilterSeries(self):
+    def test_market_contect_automoticeFilterSeries(self):
         """
         验证marketing页跳转页末automoticeFilterSeries页
         1、打开首页;
@@ -60,14 +59,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_automotiveBrake(self):
+    def test_market_contect_automotiveBrake(self):
         """
         验证marketing页跳转页末automotiveBrake页
         1、打开首页;
@@ -82,14 +80,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_compressor(self):
+    def test_market_contect_compressor(self):
         """
         验证marketing页跳转页末compressor页
         1、打开首页;
@@ -104,14 +101,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_sealSeriesOilSeal(self):
+    def test_market_contect_sealSeriesOilSeal(self):
         """
         验证marketing页跳转页末sealSeriesOilSeal页
         1、打开首页;
@@ -126,14 +122,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_motorDrainValue(self):
+    def test_market_contect_motorDrainValue(self):
         """
         验证marketing页跳转页末motorDrainValue页
         1、打开首页;
@@ -148,14 +143,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_shockAbsorber(self):
+    def test_market_contect_shockAbsorber(self):
         """
         验证marketing页跳转页末shockAbsorber页
         1、打开首页;
@@ -170,14 +164,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_rubberMiscellaneousItems(self):
+    def test_market_contect_rubberMiscellaneousItems(self):
         """
         验证marketing页跳转页末rubberMiscellaneousItems页
         1、打开首页;
@@ -192,14 +185,13 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
-    def test_market_contact_generalRubberParts(self):
+    def test_market_contect_generalRubberParts(self):
         """
         验证marketing页跳转页末generalRubberParts页
         1、打开首页;
@@ -214,7 +206,6 @@ class TestMarketingContactProducts(UnitTests):
             driver = MarketingContactElement(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)

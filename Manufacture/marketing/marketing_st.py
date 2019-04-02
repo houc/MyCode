@@ -38,8 +38,7 @@ class TestMarketing(UnitTests):
             driver.get(self.url)
             time.sleep(5)
             driver.market_click()
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -62,8 +61,7 @@ class TestMarketing(UnitTests):
             driver.get(self.url)
             driver.market_click()
             driver.concept_click()
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -86,8 +84,7 @@ class TestMarketing(UnitTests):
             driver.get(self.url)
             driver.market_click()
             driver.network_click()
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -111,8 +108,7 @@ class TestMarketing(UnitTests):
             driver.get(self.url)
             driver.market_click()
             driver.marketing_knowledge_click()
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -135,9 +131,8 @@ class TestMarketing(UnitTests):
             driver = MarketingElement(self.driver)
             driver.get(self.url)
             # 操作元素.....
-            
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = ""  # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -160,9 +155,8 @@ class TestMarketing(UnitTests):
             driver = MarketingElement(self.driver)
             driver.get(self.url)
             # 操作元素.....
-            
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = ""  # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -185,9 +179,8 @@ class TestMarketing(UnitTests):
             driver = MarketingElement(self.driver)
             driver.get(self.url)
             # 操作元素.....
-            
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = ""  # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -210,9 +203,8 @@ class TestMarketing(UnitTests):
             driver = MarketingElement(self.driver)
             driver.get(self.url)
             # 操作元素.....
-            
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = ""  # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -235,9 +227,8 @@ class TestMarketing(UnitTests):
             driver = MarketingElement(self.driver)
             driver.get(self.url)
             # 操作元素.....
-            
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = ""  # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:
@@ -260,9 +251,8 @@ class TestMarketing(UnitTests):
             driver = MarketingElement(self.driver)
             driver.get(self.url)
             # 操作元素.....
-            
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = ""  # 此项为必填，第一个断言值
             self.is_asserts = True # 断言self.first与self.second是否相等, True:相等，False:不相等
         except Exception as exc:

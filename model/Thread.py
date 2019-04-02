@@ -1,16 +1,12 @@
 import threading
+import multiprocessing
 
 
 class ExecuteThread(threading.Thread):
-    """
-    usage:
-        不带参数:ExecuteThread([func_1, func_2, func_3]).run()
-        带参数:ExecuteThread([func_1, func_2, func_3], []).run()
-    """
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, parm=()):
         threading.Thread.__init__(self)
         self.function = args
-        self.param = kwargs
+        self.param = parm
 
     def _method_conversion_list(self):
         """多个方法进行封装"""
@@ -31,3 +27,14 @@ class ExecuteThread(threading.Thread):
             i.start()
             i.join(timeout=10)
 
+
+class Process(object):
+    def __init__(self, func, parm=()):
+        self._run(func, parm)
+
+    def _run(self, func, parm=()):
+        """执行多进程运行"""
+        loop = multiprocessing.Pool()
+        loop.map_async(func=func, iterable=parm)
+        loop.close()
+        loop.join()

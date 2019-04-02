@@ -81,7 +81,6 @@ CASE_NAME = '''    def {}(self):
             driver = {}(self.driver)
             driver.get(self.url)
             
-            time.sleep(2)
             driver.screen_shot(self.screenshots_path)
             self.first = ""  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)

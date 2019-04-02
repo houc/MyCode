@@ -2,6 +2,7 @@ import os
 import requests
 
 from model.Yaml import MyYaml
+from model.Thread import ExecuteThread
 from config_path.path_file import read_file
 from PIL import Image
 
@@ -29,9 +30,4 @@ def current_file_path():
             path = read_file('img', i)
             os.remove(path)
 
-def execute():
-    """执行"""
-    current_file_path()
-    get_log()
-
-execute()
+ExecuteThread([get_log, current_file_path]).run()

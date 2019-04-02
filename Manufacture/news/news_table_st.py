@@ -36,8 +36,7 @@ class TestNewsTable(UnitTests):
             driver = NewsElement(self.driver)
             driver.get(self.url)
             driver.news_table_click(location=1)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -57,8 +56,7 @@ class TestNewsTable(UnitTests):
             driver = NewsElement(self.driver)
             driver.get(self.url)
             driver.news_table_click(location=2)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -78,8 +76,7 @@ class TestNewsTable(UnitTests):
             driver = NewsElement(self.driver)
             driver.get(self.url)
             driver.news_table_click(location=3)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -99,8 +96,7 @@ class TestNewsTable(UnitTests):
             driver = NewsElement(self.driver)
             driver.get(self.url)
             driver.news_table_click(location=4)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -120,8 +116,7 @@ class TestNewsTable(UnitTests):
             driver = NewsElement(self.driver)
             driver.get(self.url)
             driver.news_table_click(location=5)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -142,8 +137,7 @@ class TestNewsTable(UnitTests):
             driver.get(self.url)
             driver.news_info_click(location=self.data[0])
             driver.switch_windows(name=-1)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -165,10 +159,9 @@ class TestNewsTable(UnitTests):
             driver = NewsElement(self.driver)
             driver.get(self.url)
             driver.next_page_click()
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
-            self.assertEqual(self.first, self.url)
+            self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 

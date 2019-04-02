@@ -1,6 +1,3 @@
-import os
-import warnings
-
 from package.pie_link import HTML
 from model.DriverParameter import browser
 from config_path.path_file import read_file
@@ -15,7 +12,6 @@ class AmilSupport(object):
         self.switch_browser = browser_switch
         self.title = MyYaml('project_name').excel_parameter
         self.science = MyYaml('science').excel_parameter
-        warnings.warn("正在处理用例统计数据表，此过程需较长时间，请耐心等待...")
         self._browser_get_html(case_data)
 
     def _html_handle(self, case_data):
@@ -36,8 +32,6 @@ class AmilSupport(object):
         :return: 返回对应的路径
         """
         path = read_file('report', '{}.html'.format(self.html_name))
-        if os.path.exists(path):
-            os.remove(path)
         html = self._html_handle(case_name)
         with open(path, 'wt', encoding=self.encoding) as f:
             f.writelines(html)
@@ -49,17 +43,11 @@ class AmilSupport(object):
         :return: ...
         """
         path = self._save_as_report(case_name)
-        if os.path.exists(path):
-            img_path = read_file('img', 'html.png')
-            if os.path.exists(img_path):
-                os.remove(img_path)
-            driver = browser(switch=self.switch_browser)
-            driver.get(path)
-            with open(img_path, 'wt', encoding=self.encoding):
-                pass
-            if os.path.exists(img_path):
-                import time
-                time.sleep(2)
-                driver.save_screenshot(img_path)
-            driver.quit()
+        img_path = read_file('img', 'html.png')
+        driver = browser(switch=self.switch_browser)
+        driver.get(path)
+        import time
+        time.sleep(2)
+        driver.save_screenshot(img_path)
+        driver.quit()
 

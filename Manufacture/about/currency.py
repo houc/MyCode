@@ -55,7 +55,7 @@ class AboutElement(OperationElement):
         :param location: 1:Profile，2:Speech，3:Organization，4:Philosophy，5:Honor，6:Staff Style
         :return: ...
         """
-        self.is_click(self.str_conversion(self.about_us_table, location)).C()
+        self.is_click(self.str_conversion(self.about_us_table, location))
 
     def about_next_click_page(self):
         """

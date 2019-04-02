@@ -1,5 +1,6 @@
 import smtplib
 import os
+import sys
 
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
@@ -49,6 +50,7 @@ class Email:
     def _send_enclosure(self, case_name):
         """发送附件统计图"""
         AmilSupport(case_name)
+        print('用例报告已执行完毕，正在发送邮件中...', file=sys.stderr)
         if os.path.exists(self.img_path):
             img = MIMEImage(open(self.img_path, 'rb').read())
             img.add_header('Content-ID', '<image1>')
@@ -74,9 +76,9 @@ class Email:
             self.Mail.login(self.sender, self.sender_password)
             self.Mail.sendmail(self.sender, self.receiver, content.as_string())
             self.Mail.quit()
-            print('给{}邮件发送成功'.format(', '.join(self.receiver)))
+            print('给{}邮件发送成功'.format(', '.join(self.receiver)), file=sys.stderr)
         except smtplib.SMTPException:
-            print('给{}邮件发送失败'.format(', '.join(self.receiver)))
+            print('给{}邮件发送失败'.format(', '.join(self.receiver)), file=sys.stderr)
 
 
 

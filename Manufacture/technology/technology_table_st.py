@@ -37,8 +37,7 @@ class TestTechnologyTable(UnitTests):
             driver = TechnologyElement(self.driver)
             driver.get(self.url)
             driver.technology_table_click(location=1)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -58,8 +57,7 @@ class TestTechnologyTable(UnitTests):
             driver = TechnologyElement(self.driver)
             driver.get(self.url)
             driver.technology_table_click(location=2)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[0])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -79,8 +77,7 @@ class TestTechnologyTable(UnitTests):
             driver = TechnologyElement(self.driver)
             driver.get(self.url)
             driver.img_info(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -100,10 +97,9 @@ class TestTechnologyTable(UnitTests):
             driver = TechnologyElement(self.driver)
             driver.get(self.url)
             driver.img_info(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
-            self.assertEqual(self.first, None)
+            self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
 
@@ -121,8 +117,7 @@ class TestTechnologyTable(UnitTests):
             driver = TechnologyElement(self.driver)
             driver.get(self.url)
             driver.img_info(location=self.data[0])
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_contain(url=self.data[1])  # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -142,8 +137,7 @@ class TestTechnologyTable(UnitTests):
             driver = TechnologyElement(self.driver)
             driver.get(self.url)
             driver.technology_table_click(location=3)
-            time.sleep(2)
-            driver.screen_shot(self.screenshots_path)
+            driver.full_windows_screen(self.screenshots_path, 1920, 980)
             self.first = driver.is_url_equal(url=self.data[0]) # 此项为必填，第一个断言值
             self.assertEqual(self.first, self.second)
         except Exception:

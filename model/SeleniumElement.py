@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from model.DriverParameter import browser
 from model.Yaml import MyYaml
+from PIL import ImageGrab
 
 
 class OperationElement(object):
@@ -66,6 +67,18 @@ class OperationElement(object):
         elif by == "css selector":
             return self.driver.find_element(By.CSS_SELECTOR, element_value)
 
+    def full_windows_screen(self, path, Length=None, height=None):
+        """
+        自定义当前屏幕截图范围
+        :param path: 存放截图的路径位置，如：D:\work_file\auto_script\TestUi\config\TestCase.png
+        :param Length: 自定义截取屏幕长度位置, 默认为当前屏幕的值
+        :param height: 自定义截取屏幕宽度位置， 默认为当前屏幕的值
+        :return: ...
+        """
+        screen = ImageGrab.grab()
+        if Length is not None and height is not None:
+            screen.size = Length, height
+        screen.save(path)
 
     def screen_shot(self, path):
         """
