@@ -2,5 +2,5 @@
 *.png
 config.ini
 *.xlsx
-*.xml
+*.html
 __pycache__
