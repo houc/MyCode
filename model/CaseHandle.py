@@ -10,6 +10,7 @@ from model.Yaml import MyYaml
 from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
 from config_path.path_file import read_file
+from model.MyDB import MyDB
 
 
 class DataHandleConversion(object):
@@ -132,7 +133,7 @@ class ConversionDiscover(object):
                     module.append(import_module)
                     class_name.append(get_tests.split('.')[-1])
         if module and class_name:
-            content = {'\n\n__all__ = {%s}' % str(set(class_name)).replace('{', '').replace('}', '').
+            content = {'\n\n__all__ = [%s]' % str(set(class_name)).replace('{', '').replace('}', '').
                 replace("'", "").replace(' ', '').replace(',', ', ')}
             return self._write_execute_module(set(module), content)
         else:
@@ -148,10 +149,10 @@ class ConversionDiscover(object):
         self._execute_class_name()
 
     def _execute_class_name(self):
-        """"""
+        """执行多线程或者是多进程运行测试用例以className方式进行执行操作"""
         from Manufacture import __all__
-        for class_name in __all__:
-            run = _proccess(class_name)
+        for class_name in range(len(__all__)):
+            run = _proccess(__all__[class_name])
             run.start()
 
 

@@ -38,15 +38,7 @@ class RunAll(object):
     def run(self):
         """测试用例数据处理，并执行用例"""
         self._get_execute_case()
-        self._case_handle()
 
-    def _case_handle(self):
-        """case处理"""
-        print(6666)
-        end_time = standard_time()
-        case_data = self.sql.query_data()
-        result = self.handle_data(case_data=case_data).sql_data_handle(self.start_time, end_time)
-        print(result)
 
 
 if __name__ == '__main__':

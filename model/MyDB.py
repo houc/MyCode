@@ -56,12 +56,19 @@ class MyDB(object):
                 error_reason = error_reason[:10000]
         data = self.dbInsert % (id, level, module, name, url, remark, status, results_value, error_reason, wait_time,
                                 img, author, insert_time)
-        DB.execute(data)
-        self.sql.commit()
+        try:
+            DB.execute(data)
+            self.sql.commit()
+        except Exception:
+            import time
+            time.sleep(0.1)
+            DB.execute(data)
+            self.sql.commit()
 
     def close_sql(self):
         """关闭数据库"""
         return self.sql.close()
 
 if __name__ == '__main__':
-    query = MyDB(True).query_data()
+    query = MyDB().query_data()
+    print(query)
