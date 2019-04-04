@@ -5,7 +5,6 @@ import unittest
 import threading
 import multiprocessing
 
-from model.MyDB import MyDB
 from model.Yaml import MyYaml
 from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time

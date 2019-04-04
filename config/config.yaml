@@ -5,6 +5,7 @@ excel_parameter:
   test_version: V0.0.0    # 测试时的版本号
   science: 线上环境   # 测试环境
 config:
+  thread: True                # 是否启用多线程运行测试用例
   token_keys: Authorization   # token表示key名
   level: 10                   # 日志等级
   account: '15928564313'         # 正确的账号

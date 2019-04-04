@@ -19,6 +19,7 @@ class RunAll(object):
         self.start_time = standard_time()
         self.wait = MyYaml('while_sleep').config
         self.case = MyYaml('while_case').config
+        self.thread = MyYaml('thread').config
         self.excel = ExcelTitle
         self.handle_data = DataHandleConversion
         self._clear_sql()
@@ -33,11 +34,17 @@ class RunAll(object):
         project_name = MyYaml('project_name').excel_parameter
         if module_run is not None:
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
-        ConversionDiscover(unittest.defaultTestLoader.discover(self.current_path, self.re))
+        discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
+        if self.thread:
+            ConversionDiscover(discover)
+        else:
+            runner = unittest.TextTestRunner(verbosity=2)
+
 
     def run(self):
         """测试用例数据处理，并执行用例"""
-        self._get_execute_case()
+
+
 
 
 
