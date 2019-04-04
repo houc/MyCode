@@ -2,6 +2,7 @@ from package.pie_link import HTML
 from model.DriverParameter import browser
 from config_path.path_file import read_file
 from model.Yaml import MyYaml
+from model.Thread import MyThread
 
 
 class AmilSupport(object):
@@ -12,7 +13,7 @@ class AmilSupport(object):
         self.switch_browser = browser_switch
         self.title = MyYaml('project_name').excel_parameter
         self.science = MyYaml('science').excel_parameter
-        self._browser_get_html(case_data)
+        MyThread({self._browser_get_html: (case_data, )}).run()
 
     def _html_handle(self, case_data):
         """

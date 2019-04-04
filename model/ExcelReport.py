@@ -1,6 +1,7 @@
 import xlsxwriter
 import warnings
 import os
+import sys
 
 from config_path.path_file import read_file
 from model.PCParameter import merge_config_info, merge_config_msg, output_python_version
@@ -308,7 +309,6 @@ class WriteExcel:
         self._write_pc_content(**kwargs)
         self._write_test_title(*args)
         self.open_excel.close()
-        import sys
         print("测试报告已生成....", file=sys.stderr)
 
 

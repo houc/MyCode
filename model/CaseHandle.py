@@ -1,9 +1,15 @@
 import os
 import time
+import warnings
+import unittest
+import threading
+import multiprocessing
 
 from model.MyDB import MyDB
+from model.Yaml import MyYaml
 from model.MyException import SQLDataError, FUN_NAME
-from model.TimeConversion import beijing_time_conversion_unix, time_conversion
+from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
+from config_path.path_file import read_file
 
 
 class DataHandleConversion(object):
@@ -14,7 +20,7 @@ class DataHandleConversion(object):
         self.sql_query = sql_query
         self.current_path = os.path.dirname(__file__)
 
-    def sql_data_handle(self):
+    def sql_data_handle(self, start_time, end_time):
         """数据库数据处理"""
         case_messages = {}  # 封装进行集体打包
         sql_data = []  # 用例执行的时间
@@ -29,7 +35,7 @@ class DataHandleConversion(object):
                 for second_data in range(len(_data)):
                     if first_data == 0:
                         if second_data == 12:
-                            case_messages['start_time'] = _data[second_data]
+                            case_messages['start_time'] = start_time
                     if second_data == 6:
                         if _data[second_data] == "错误":
                             error.append(_data[second_data])
@@ -46,7 +52,7 @@ class DataHandleConversion(object):
                         member.append(_data[second_data])
                     if first_data == len(self.sql_data) - 1:
                         if second_data == 12:
-                            case_messages['end_time'] = _data[second_data]
+                            case_messages['end_time'] = end_time
             if sql_data and member:
                 case_messages["short_time"] = time_conversion(min(sql_data))
                 case_messages["long_time"] = time_conversion(max(sql_data))
@@ -81,8 +87,10 @@ class DataHandleConversion(object):
                             skip = "None"
                         skipped.append({"module": module, "case_name": is_case,
                                         "reason": "跳过原因: {}".format(skip),
-                                        "insert_time": time.strftime('%Y-%m-%d %H:%M:%S')})
+                                        "insert_time": standard_time()})
             self._insert_case_data(data=skipped)
+        else:
+            warnings.warn('self.case_data is None')
 
     def _insert_case_data(self, data):
         """用例数据插入sql"""
@@ -94,3 +102,76 @@ class DataHandleConversion(object):
                                      author=None, results_value=None)
 
 
+class ConversionDiscover(object):
+    def __init__(self, discover, encoding='utf8'):
+        self.discover = discover
+        self.encoding = encoding
+        self.project = MyYaml('project_name').excel_parameter
+        self.module = MyYaml('module_run').config
+        self._execute_discover()
+
+    def _execute_discover(self):
+        """处理discover"""
+        module = []
+        class_name = []
+        discover = str(self.discover).split(',')
+        for search in discover:
+            get_tests = search.split('tests')[-1].split('<')[-1].split('testMethod')[0]
+            if '=[]>' in get_tests:
+                pass
+            else:
+                if self.module is not None:
+                    import_module = 'from {}.'.format(self.project) + '{}.'.format(self.module) + \
+                                    '.'.join(get_tests.split('.')[:-1]) + \
+                                    ' import ' + get_tests.split('.')[-1] + '\n'
+                    module.append(import_module)
+                    class_name.append(get_tests.split('.')[-1])
+                else:
+                    import_module = 'from ' + '.'.join(get_tests.split('.')[:-1]) + \
+                                    ' import ' + get_tests.split('.')[-1] + '\n'
+                    module.append(import_module)
+                    class_name.append(get_tests.split('.')[-1])
+        if module and class_name:
+            content = {'\n\n__all__ = {%s}' % str(set(class_name)).replace('{', '').replace('}', '').
+                replace("'", "").replace(' ', '').replace(',', ', ')}
+            return self._write_execute_module(set(module), content)
+        else:
+            raise ValueError('The test suite is empty')
+
+    def _write_execute_module(self, module, class_name):
+        """写入需要执行的模块"""
+        write_path = read_file(self.project, '__init__.py')
+        with open(write_path, 'wt', encoding=self.encoding) as f:
+            f.writelines(module)
+        with open(write_path, 'at', encoding=self.encoding) as f:
+            f.writelines(class_name)
+        self._execute_class_name()
+
+    def _execute_class_name(self):
+        """"""
+        from Manufacture import __all__
+        for class_name in __all__:
+            run = _proccess(class_name)
+            run.start()
+
+
+class _thread(threading.Thread):
+    def __init__(self, class_name):
+        threading.Thread.__init__(self)
+        self.class_name = class_name
+
+    def run(self):
+        discover = unittest.defaultTestLoader.loadTestsFromTestCase(self.class_name)
+        runner = unittest.TextTestRunner(verbosity=2)
+        DataHandleConversion(case_data=runner.run(discover)).case_data_handle()
+
+
+class _proccess(multiprocessing.Process):
+    def __init__(self, class_name):
+        multiprocessing.Process.__init__(self)
+        self.class_name = class_name
+
+    def run(self):
+        discover = unittest.defaultTestLoader.loadTestsFromTestCase(self.class_name)
+        runner = unittest.TextTestRunner(verbosity=2)
+        DataHandleConversion(case_data=runner.run(discover)).case_data_handle()

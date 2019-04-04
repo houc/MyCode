@@ -8,8 +8,7 @@ PATH = os.path.dirname(__file__)
 
 def standard_time():
     """返回当前标准的时间"""
-    now_time = time.strftime(_format())
-    return now_time
+    return time.strftime(_format())
 
 def timestamp_time(second=1):
     """返回当前时间戳"""

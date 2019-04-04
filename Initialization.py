@@ -250,7 +250,6 @@ class CreateModule(object):
     def _get_package(self):
         """
         获取包名
-
         :return 包名以列表形式返回
         """
         path = PATH('.') + '/' + self.file_path
@@ -267,6 +266,6 @@ class CreateModule(object):
 
 
 if __name__ == '__main__':
-    RUN = CreateModule().execute_case
+    execute = CreateModule().execute_case
     import sys
-    print(RUN, file=sys.stderr)
+    print(execute, file=sys.stderr)

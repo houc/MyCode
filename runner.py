@@ -5,7 +5,8 @@ from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
 from model.MyDB import MyDB
 from model.SendEmail import Email
-from model.CaseHandle import DataHandleConversion
+from model.CaseHandle import DataHandleConversion, ConversionDiscover
+from model.TimeConversion import standard_time
 
 
 class RunAll(object):
@@ -15,54 +16,37 @@ class RunAll(object):
         self.re = MyYaml('re').config
         self.sql = MyDB(switch=False)
         self.mail = Email()
+        self.start_time = standard_time()
         self.wait = MyYaml('while_sleep').config
         self.case = MyYaml('while_case').config
         self.excel = ExcelTitle
         self.handle_data = DataHandleConversion
+        self._clear_sql()
 
     def _clear_sql(self):
         """清除数据库所有的内容"""
         self.sql.delete_data()
 
-    @property
-    def _running(self):
-        """所有以_st.py作为需运行的py"""
-        self._clear_sql()
+    def _get_execute_case(self):
+        """获取需要执行的路径"""
         module_run = MyYaml('module_run').config
         project_name = MyYaml('project_name').excel_parameter
         if module_run is not None:
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
-        unittest_discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
-        runners = unittest.TextTestRunner(verbosity=2)
-        result = runners.run(unittest_discover)
-        return result
+        ConversionDiscover(unittest.defaultTestLoader.discover(self.current_path, self.re))
 
     def run(self):
         """测试用例数据处理，并执行用例"""
-        self._case_data(self._running)
-        sql_query = self.sql.query_data()
-        result = self._sql_data(sql_data=sql_query)
-        if sql_query:
-            self.excel(sql_query).class_merge(parameter=result)
-            self.mail.sender_email(case_name=result)
+        self._get_execute_case()
+        self._case_handle()
 
-    def _case_data(self, case_data=None):
-        """
-        数据处理中心
-        :param case_data: 处理self._running中的用例数据
-        :param sql_data:
-        :return 返回处理后的数据
-        """
-        self.handle_data(case_data=case_data).case_data_handle()
-
-    def _sql_data(self, sql_data=None):
-        """
-        处理sql中的数据
-        :param sql_data: 处理sql查询出来的数据，主要用于excel表总况的统计处理数据
-        :return: 返回处理后的数据
-        """
-        return self.handle_data(sql_data=sql_data).sql_data_handle()
-
+    def _case_handle(self):
+        """case处理"""
+        print(6666)
+        end_time = standard_time()
+        case_data = self.sql.query_data()
+        result = self.handle_data(case_data=case_data).sql_data_handle(self.start_time, end_time)
+        print(result)
 
 
 if __name__ == '__main__':

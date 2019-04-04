@@ -72,7 +72,6 @@ def setUpModule():
 def tearDownModule():
     """模块结束"""
     Driver.quit()
-    SQL.close_sql()
 
 
 class UnitTests(unittest.TestCase):

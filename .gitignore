@@ -4,3 +4,4 @@ config.ini
 *.xlsx
 *.html
 __pycache__
+*.xml

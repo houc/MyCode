@@ -8,12 +8,12 @@ class Timing:
     def __init__(self):
         """初始化"""
         path = os.path.dirname(__file__)
-        self.RunPath = os.path.join(path, 'Run.py').replace('\\', '/')
+        self.runner = os.path.join(path, 'runner.py').replace('\\', '/')
         self.times = MyYaml('task_time').config
 
     def implement(self):
         """执行模块"""
-        return os.system(self.RunPath)
+        return os.system(self.runner)
 
     def job(self):
         """执行时间"""
