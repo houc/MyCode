@@ -1,33 +1,12 @@
-from model.Thread import MyThread
-import time
+import multiprocessing
 
-def one(i):
-    time.sleep(1)
-    four(i)
-    print('one', i)
+class One():
+    def test(self):
+        for i in range(10):
+            print('test is nums %d' % i)
 
-def two(i):
-    time.sleep(1)
-    print('two', i)
-
-def three():
-    time.sleep(1)
-    print('three')
-
-def four(i):
-    time.sleep(1)
-    print('four', i)
-
-def five():
-    time.sleep(1)
-    print('five')
-
-def six(i):
-    time.sleep(1)
-    one(i)
-    three()
-    print('在执行six时 ，执行one，three完成')
+    def in_test(self):
+        multiprocessing.Process(target=self.test).start()
 
 if __name__ == '__main__':
-    execute = {six: (55,)}
-    MyThread(execute).run()
+    One().in_test()

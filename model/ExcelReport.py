@@ -126,18 +126,18 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.110})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.160})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.110})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.160})
                     elif '跳过' == d:
                         self.sheet_test.write(a, c, d, self.skip)
                     elif 'None' == d:
-                        self.sheet_test.write(a, c, '.......', self.test_content_style)
+                        self.sheet_test.write(a, c, '.........', self.test_content_style)
                     else:
-                        self.sheet_test.set_row(a, 78)
+                        self.sheet_test.set_row(a, 120)
                         if '.png' in str(d):
                             pass
                         else:
@@ -342,7 +342,9 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle([['1','P0','登录', 'test/122', '符合规范的', 'aaa', '1.256s', '错误', '辅导费333', '','苟富贵','2018-12-25 17:34:10',],
-                ['1', 'P0', '登录', 'test/122', '符合规范的', '1.256s', '成功', '辅导费333', ' ', '苟富贵'],]
+    ExcelTitle([['1','P0','登录', '这是测试名称', 'www.sina.com.cn', '1、今天你好吗？\n', '成功', 'true', 'true',
+                 '4.555秒','E:\\UI\\img\\test_good_news_table_one.png','小宁', '2019-4-15 15:50'],
+                ['2', 'P3', '登录', '这是测试名称', 'www.baidu.com', '1、我今天很不好哇？\n', '错误', 'false', 'true',
+                 '5.6662秒', 'E:\\UI\\img\\test_launching.png', '邓超', '2018-5-5 15:55'],]
 
     ).class_merge({"success": 10, "testsRun": 70, "errors": 51, "failures": 30})

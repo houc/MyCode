@@ -21,15 +21,15 @@ class RunAll(object):
         self.case = MyYaml('while_case').config
         self.thread = MyYaml('thread').config
         self.excel = ExcelTitle
-        self.handle_data = DataHandleConversion
+        self.handle_data = DataHandleConversion()
         self._clear_sql()
 
     def _clear_sql(self):
         """清除数据库所有的内容"""
         self.sql.delete_data()
 
-    def _get_execute_case(self):
-        """获取需要执行的路径"""
+    def run(self):
+        """获取需要执行的路径，并执行用例"""
         module_run = MyYaml('module_run').config
         project_name = MyYaml('project_name').excel_parameter
         if module_run is not None:
@@ -38,14 +38,15 @@ class RunAll(object):
         if self.thread:
             ConversionDiscover(discover)
         else:
-            runner = unittest.TextTestRunner(verbosity=2)
-
-
-    def run(self):
-        """测试用例数据处理，并执行用例"""
-
-
-
+            runner = unittest.TextTestRunner(verbosity=2).run(discover)
+            self.handle_data.case_data_handle(in_case_data=runner)
+            case_data = self.sql.query_data()
+            total_case = self.handle_data.sql_data_handle(in_sql_data=case_data,
+                                                          start_time=self.start_time,
+                                                          end_time=standard_time())
+            if total_case and case_data:
+                self.excel(case_data).class_merge(parameter=total_case)
+                self.mail.sender_email(case_name=total_case)
 
 
 if __name__ == '__main__':
