@@ -14,6 +14,16 @@ Manufacture:                          # 项目名称
                 3、断言跳转的url是否包含{/nav/2.html}", # 用例描述场景，或者是测试步骤，按照此格式书写，其中{}传入用例的参数
         asserts: True                 # 预期结果
       }
+        test_product_member: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "验证ProductsCenter是否能正常打开;\n
+                1、打开首页;\n
+                2、点击ProductsCenter;\n
+                3、断言跳转的url是否包含{/nav/11.html}",
+        asserts: True
+        }
         test_product_center: {
         url: ,
         author: 后超,

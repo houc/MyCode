@@ -12,7 +12,7 @@ class OperationElement(object):
         浏览器操作封装类
     """
 
-    def __init__(self, driver, timeout=21, detection=0.5, exception=EC.NoSuchElementException):
+    def __init__(self, driver, timeout=12, detection=0.5, exception=EC.NoSuchElementException):
         """
         初始化类参数
         :param driver: 浏览器session
@@ -143,13 +143,9 @@ class OperationElement(object):
         """
         global exist_element
         try:
-            exist_element = self.support.until(EC.presence_of_element_located(element))
-        except Exception as exc:
-            import warnings
-            warnings.warn(str(exc) + str(element) + "超时或者不存在...\n")
-            return False
-        else:
-            return exist_element
+            return self.support.until(EC.presence_of_element_located(element))
+        except Exception:
+            raise
 
     def is_click(self, element, wait_time=2):
         """

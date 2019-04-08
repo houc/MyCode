@@ -217,11 +217,10 @@ class CreateModule(object):
                 is_assert = '{!r}'.format(values)
                 return is_assert
 
-    @property
-    def execute_case(self):
-        """处理执行用例"""
+    def execute_case(self, switch):
+        """处理执行用例,switch计算用例总计"""
         try:
-            self.check_repeat()
+            self.check_repeat(switch)
             for key, values in self.all_param.items():
                 self._other_py(key)
                 self._case_data_handle(key)
@@ -230,9 +229,10 @@ class CreateModule(object):
         finally:
             return 'COMMON中用例已全部执行完毕！'
 
-    def check_repeat(self):
+    def check_repeat(self, switch):
         """
         检查common中的用例是否存在重复, 存在重复提示异常！
+        :parameter switch 计算用例条数
         :return: ...
         """
         case_name = []
@@ -242,6 +242,9 @@ class CreateModule(object):
                     for key, values in value.items():
                         case_name.append(key)
         if case_name:
+            if switch:
+                import sys
+                print('当前用例条数：{}'.format(len(case_name)), file=sys.stderr)
             repeat = [val for val in list(set(case_name)) if case_name.count(val) >= 2]
             if repeat:
                 import warnings
@@ -266,6 +269,6 @@ class CreateModule(object):
 
 
 if __name__ == '__main__':
-    execute = CreateModule().execute_case
+    execute = CreateModule().execute_case(True)
     import sys
     print(execute, file=sys.stderr)

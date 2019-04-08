@@ -245,7 +245,7 @@ class WriteExcel:
             'name':'{}简报统计图'.format(self.report_project)
         })
         chart.set_legend({
-            'position': 'top'
+            'position': 'right'
         })
         chart.set_y_axis({
             'name':'个数'

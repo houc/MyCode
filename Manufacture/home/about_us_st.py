@@ -104,3 +104,24 @@ class TestHome(UnitTests):
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
+
+    def test_product_member(self):
+        """
+        验证ProductsCenter是否能正常打开;
+
+        1、打开首页;
+
+        2、点击ProductsCenter;
+
+        3、断言跳转的url是否包含{/nav/11.html}
+        """
+        try:
+            driver = HomeElement(self.driver)
+            driver.get(self.url)
+            
+            driver.screen_shot(self.screenshots_path)
+            self.first = ""  # 此项为必填，第一个断言值
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+

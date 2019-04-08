@@ -5,13 +5,13 @@ excel_parameter:
   test_version: V0.0.0    # 测试时的版本号
   science: 线上环境   # 测试环境
 config:
-  thread: True                # 是否启用多线程运行测试用例，True，开启多线程，False，不采用多线程执行
+  thread: #True # True，开启多线程（注意开启此项会大量占用CPU资源，确保计算机CPU至少四核以上）；False，不采用多线程执行
   token_keys: Authorization   # token表示key名
   level: 10                   # 日志等级
   account: '15928564313'         # 正确的账号
   password: 'Li123456'    # 正确的密码
   company: 草草后
-  page_loading_wait: 20   # 超时时间
+  page_loading_wait: 15   # 超时时间
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
   task_time: 1         # 定时任务等待执行时间
@@ -19,17 +19,18 @@ config:
   logo_url: /repository/image/6Nj1TrvnQT-X3V2FLiW3FQ.jpg  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
-  module_run: #contact     # 指定需要运行的模块，示例：login
+  module_run: # technology     # 指定需要运行的模块，示例：login
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
-  skip_module: {contact_st: 'L', marketing_contact_about_st: 'F',
-                about_table_st: 'K', contact_st: 'KJ',
-                about_us_st: 'B', #new_center_st: 'JH',
-                company_news_st: 'D', news_table_st: 'I', products_center_st: 'Y',
-                module_in_info_st: 'DS', technology_table_st: 'H',
-                marketing_st: 'G',
-                marketing_contact_about_st: 'PK',
-                marketing_contact_products_st: 'HJ',
-                marketing_contact_news_st: 'OP'} # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
+  skip_module: {contact_st: 'contact_st', marketing_contact_about_st: 'marketing_contact_about_st',
+                about_table_st: 'about_table_st', contact_st: 'contact_st',
+                about_us_st: 'about_us_st', #new_center_st: 'new_center_st',
+                company_news_st: 'company_news_st', news_table_st: 'news_table_st',
+                products_center_st: 'products_center_st',
+                module_in_info_st: 'module_in_info_st', technology_table_st: 'technology_table_st',
+                marketing_st: 'marketing_st',
+                marketing_contact_about_st: 'marketing_contact_about_st',
+                marketing_contact_products_st: 'marketing_contact_products_st',
+                marketing_contact_news_st: 'marketing_contact_news_st'} # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
 send_email:
   server: smtp.gouuse.cn                # 邮件发送的服务器
   port:                                   # 发送邮件端口
@@ -37,6 +38,7 @@ send_email:
   send_password: Aa123456 #Ccwoaini521$                 # 发送密码
   receiver: [houchao@gouuse.cn, 784348736@qq.com, 1063116271@qq.com] # 接收的邮件地址
 sql:
+  execute_type: my_sql                # 调用数据库类型，为空，调用：sql_lite, 填入：my_sql，调用：my_sql
   account: 'root'                       # 数据库账号
   password: '123456'                    # 数据库密码
   port: 3307                            # 数据库端口

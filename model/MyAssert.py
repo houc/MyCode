@@ -1,6 +1,8 @@
 import re
 
 from model.MyDB import MyDB
+from model.SQL import Mysql
+from model.Yaml import MyYaml
 from model.TimeConversion import standard_time, time_conversion
 
 
@@ -26,7 +28,11 @@ class MyAsserts():
         self.error_path = error_path
         self.module = module
         self.img_path = None
-        self.sql = MyDB()
+        sql_type = MyYaml('execute_type').sql
+        if 'my_sql' == sql_type:
+            self.sql = Mysql()
+        else:
+            self.sql = MyDB()
 
     def asserts(self):
         """用例断言"""

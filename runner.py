@@ -3,10 +3,12 @@ import os
 
 from model.ExcelReport import ExcelTitle
 from model.Yaml import MyYaml
+from model.SQL import Mysql
 from model.MyDB import MyDB
 from model.SendEmail import Email
 from model.CaseHandle import DataHandleConversion, ConversionDiscover
 from model.TimeConversion import standard_time
+from config_path.path_file import read_file
 
 
 class RunAll(object):
@@ -14,21 +16,24 @@ class RunAll(object):
         """初始化"""
         self.current_path = os.path.dirname(__file__)
         self.re = MyYaml('re').config
-        self.sql = MyDB(switch=False)
+        sql_type = MyYaml('execute_type').sql
+        if 'my_sql' == sql_type:
+            self.sql = Mysql()
+        else:
+            self.sql = MyDB()
         self.mail = Email()
         self.start_time = standard_time()
         self.wait = MyYaml('while_sleep').config
         self.case = MyYaml('while_case').config
         self.thread = MyYaml('thread').config
         self.excel = ExcelTitle
-        self.handle_data = DataHandleConversion()
         self._clear_sql()
 
     def _clear_sql(self):
         """清除数据库所有的内容"""
         self.sql.delete_data()
 
-    def run(self):
+    def _get_case_status(self):
         """获取需要执行的路径，并执行用例"""
         module_run = MyYaml('module_run').config
         project_name = MyYaml('project_name').excel_parameter
@@ -36,19 +41,30 @@ class RunAll(object):
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
         if self.thread:
-            ConversionDiscover(discover)
+           ConversionDiscover(discover).case_package()
         else:
+            path = read_file(project_name, 'thread_case.py')
+            with open(path, 'wt'):
+                pass
             runner = unittest.TextTestRunner(verbosity=2).run(discover)
-            self.handle_data.case_data_handle(in_case_data=runner)
-            case_data = self.sql.query_data()
-            total_case = self.handle_data.sql_data_handle(in_sql_data=case_data,
-                                                          start_time=self.start_time,
-                                                          end_time=standard_time())
-            if total_case and case_data:
-                self.excel(case_data).class_merge(parameter=total_case)
-                self.mail.sender_email(case_name=total_case)
+            DataHandleConversion().case_data_handle(in_case_data=runner)
+            self._get_case_detailed()
+
+    def _get_case_detailed(self):
+        """获取需要执行的用例并运行对应的用例"""
+        case_data = self.sql.query_data()
+        total_case = DataHandleConversion().sql_data_handle(in_sql_data=case_data,
+                                                      start_time=self.start_time,
+                                                      end_time=standard_time())
+        if total_case and case_data:
+            self.excel(case_data).class_merge(parameter=total_case)
+            self.mail.sender_email(case_name=total_case)
+
+    def runner(self):
+        """运行全部的测试用例数"""
+        self._get_case_status()
 
 
 if __name__ == '__main__':
-    runner = RunAll()
-    runner.run()
+    RunAll().runner()
+

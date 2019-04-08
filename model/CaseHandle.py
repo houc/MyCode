@@ -1,20 +1,26 @@
 import os
 import time
 import warnings
+import multiprocessing
 import unittest
 
-from threading import Thread
-from multiprocessing import Pool, Process
 from model.Yaml import MyYaml
+from model.SendEmail import Email
 from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
 from config_path.path_file import read_file
+from model.SQL import Mysql
 from model.MyDB import MyDB
+from model.ExcelReport import ExcelTitle
 
 
 class DataHandleConversion(object):
     def __init__(self):
-        self.sql = MyDB(switch=False)
+        sql_type = MyYaml('execute_type').sql
+        if 'my_sql' == sql_type:
+            self.sql = Mysql()
+        else:
+            self.sql = MyDB()
         self.current_path = os.path.dirname(__file__)
 
     def sql_data_handle(self, in_sql_data, start_time, end_time):
@@ -113,8 +119,15 @@ class ConversionDiscover(object):
         self.encoding = encoding
         self.project = MyYaml('project_name').excel_parameter
         self.module = MyYaml('module_run').config
+        sql_type = MyYaml('execute_type').sql
+        self.excel = ExcelTitle
+        if 'my_sql' == sql_type:
+            self.sql = Mysql()
+        else:
+            self.sql = MyDB()
+        self.mail = Email()
+        self.start_time = standard_time()
         self.case_handle = DataHandleConversion()
-        self._execute_discover()
 
     def _execute_discover(self):
         """处理discover"""
@@ -138,43 +151,50 @@ class ConversionDiscover(object):
                     module.append(import_module)
                     class_name.append(get_tests.split('.')[-1])
         if module and class_name:
-            content = {'\n\n__all__ = [%s]' % str(set(class_name)).replace('{', '').replace('}', '').
-                replace("'", "").replace(',', ', \n')}
+            content = {'\n\n__all__ = {%s}' % str(set(class_name)).replace('{', '').replace('}', '').
+                replace("'", "").replace(',', ',')}
             return self._write_execute_module(set(module), content)
         else:
             raise ValueError('The test suite is empty')
 
     def _write_execute_module(self, module, class_name):
         """写入需要执行的模块"""
-        write_path = read_file(self.project, '__init__.py')
+        write_path = read_file(self.project, 'thread_case.py')
         with open(write_path, 'wt', encoding=self.encoding) as f:
             f.writelines(module)
         with open(write_path, 'at', encoding=self.encoding) as f:
             f.writelines(class_name)
-        # self._execute_class_name()
-        Process(target=self.test).start()
 
-    def test(self):
-        print(5555)
+    def case_package(self):
+        """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
+        thread = []
+        self._execute_discover()
+        from Manufacture.thread_case import __all__
+        for case in __all__:
+            thread.append(_my_process(case))
+        for start in thread:
+            start.start()
+        for ends in thread:
+            ends.join()
+        self._handle_case()
 
-    # def _execute_class_name(self):
-    #     """执行多线程或者是多进程运行测试用例以className方式进行执行操作"""
-        # from Manufacture import __all__
-        # for process in __all__:
-        #     discover = unittest.defaultTestLoader.loadTestsFromTestCase(process)
-            # result = unittest.TextTestRunner(verbosity=2).run(discover)
-            # print(result)
-        # for process in __all__:
-        #     run = _process(process)
-        #     run.start()
+    def _handle_case(self):
+        """处理运行完成后的用例集"""
+        case_data = self.sql.query_data()
+        total_case = self.case_handle.sql_data_handle(in_sql_data=case_data,
+                                                      start_time=self.start_time,
+                                                      end_time=standard_time())
+        if total_case and case_data:
+            self.excel(case_data).class_merge(parameter=total_case)
+            self.mail.sender_email(case_name=total_case)
 
 
-# class _process(Process):
-#     def __init__(self, class_name):
-#         Process.__init__(self)
-#         self.class_name = class_name
-#
-#     def run(self):
-#         discover = unittest.defaultTestLoader.loadTestsFromTestCase(self.class_name)
-#         result = unittest.TextTestRunner(verbosity=2).run(discover)
-#         print(self.)
+class _my_process(multiprocessing.Process):
+    def __init__(self, case_set):
+        multiprocessing.Process.__init__(self)
+        self.case_set = case_set
+
+    def run(self):
+        discover = unittest.defaultTestLoader.loadTestsFromTestCase(self.case_set)
+        result = unittest.TextTestRunner(verbosity=2).run(discover)
+        DataHandleConversion().case_data_handle(result)
