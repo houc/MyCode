@@ -104,7 +104,6 @@ class UnitTests(unittest.TestCase):
         self.driver = Driver
         self.sql = SQL
         self.setLog = Error
-        self.count = _case_id()
         self.module = self.__class__.__module__
         self.class_name = self.__class__.__name__
         self.case_name = self._testMethodName
@@ -128,6 +127,7 @@ class UnitTests(unittest.TestCase):
         if self.setLog is not None:
             LOG.logging_debug(LogErrors(self.current_time, self.current_path, self.setLog))
         self.start_time = time.time()
+        self.count = MyYaml('project_name').excel_parameter + '_>' + self.MODULE + '_>' + self.module
 
     def tearDown(self):
         """用例结束"""

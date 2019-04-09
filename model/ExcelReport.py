@@ -50,7 +50,7 @@ class WriteExcel:
 
         # ===========这里是调试报告详情的行距宽度==============================
 
-        self.sheet_test.set_column(0, 0, 5)
+        self.sheet_test.set_column(0, 0, 25)
         self.sheet_test.set_column(1, 1, 10)
         self.sheet_test.set_column(2, 2, 20)
         self.sheet_test.set_column(3, 3, 30)
@@ -328,7 +328,7 @@ class ExcelTitle(WriteExcel):
         args：报告详情的表头，
         kwargs：PC配置中的表头/title_开头是报告里面的数据
         """
-        args = '#', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', \
+        args = '目录', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', \
                '异常原因（实际结果）', '用例执行时间', '截图', '负责人', '用例完成时间'
         kwargs = {'title': '测试机配置明细单', 'memory': '内存', 'disk': '磁盘', 'network': '网卡',
                   'system': '操作系统', 'consume': '硬件消耗情况', 'config': '硬件配置情况', 'CPU': 'CPU',
