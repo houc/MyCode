@@ -32,6 +32,10 @@ def one_level_catalog(catalog):
     """auto_ui目录下"""
     return os.path.realpath('..' + '/' + catalog)
 
+def module_low(directory_name):
+    """UI下的目录名称"""
+    return os.path.realpath('.' + '/' + directory_name)
+
 if __name__ == '__main__':
     print(read_file())
 

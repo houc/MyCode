@@ -1,5 +1,6 @@
 import re
 
+from config_path.path_file import read_file
 from model.MyDB import MyDB
 from model.SQL import Mysql
 from model.Yaml import MyYaml
@@ -8,7 +9,8 @@ from model.TimeConversion import standard_time, time_conversion
 
 class MyAsserts():
     def __init__(self, first, second, id, level, name, remark, status, reason, url, time,
-                 driver, module, screenshots_path, author, myself, error_path, log):
+                 driver, module, screenshots_path, author, myself, error_path, log,
+                 encoding='utf8'):
         """初始化"""
         self.first = first
         self.second = second
@@ -27,9 +29,13 @@ class MyAsserts():
         self.log = log
         self.error_path = error_path
         self.module = module
+        self.encoding = encoding
         self.img_path = None
-        sql_type = MyYaml('execute_type').sql
-        if 'my_sql' == sql_type:
+        self.thread = MyYaml('thread').config
+        self.sql_type = MyYaml('execute_type').sql
+        self.project = MyYaml('project_name').excel_parameter
+        self.case_path = read_file(self.project, 'case.txt')
+        if 'my_sql' == self.sql_type:
             self.sql = Mysql()
         else:
             self.sql = MyDB()
@@ -56,11 +62,20 @@ class MyAsserts():
             self._insert_sql(self.status, self.img_path, self.reason)
 
     def _insert_sql(self, status, img_path, reason):
-        """将用例插入数据库"""
+        """将用例插入数据库,判断采用的数据库类型"""
         insert_time = standard_time()
-        self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, time_conversion(self.time),
-                             status, self.url, insert_time, img_path, reason, self.author,
-                             results_value=self.second)
+        if self.sql_type == 'my_sql':
+            self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, time_conversion(self.time),
+                                 status, self.url, insert_time, img_path, reason, self.author,
+                                 results_value=self.second)
+        else:
+            case_data = {'id': self.id, 'level': self.level, 'module': self.module,
+                         'name': self.name, 'mark': self.remark, 'run_time': time_conversion(self.time),
+                         'status': status, 'url': self.url, 'insert_time': insert_time,
+                         'img_path': img_path, 'reason': reason, 'author': self.author,
+                         'result': self.second}
+            with open(self.case_path, 'at', encoding=self.encoding) as f:
+                f.write(str(case_data) + '\n')
 
     @staticmethod
     def _strConversion(values: str):

@@ -12,7 +12,7 @@ from config_path.path_file import read_file
 
 
 class RunAll(object):
-    def __init__(self):
+    def __init__(self, encoding='utf8'):
         """初始化"""
         self.current_path = os.path.dirname(__file__)
         self.re = MyYaml('re').config
@@ -21,6 +21,10 @@ class RunAll(object):
             self.sql = Mysql()
         else:
             self.sql = MyDB()
+        project = MyYaml('project_name').excel_parameter
+        path = read_file(project, 'case.txt')
+        with open(path, 'wt', encoding=encoding):
+            pass
         self.mail = Email()
         self.start_time = standard_time()
         self.wait = MyYaml('while_sleep').config
@@ -43,9 +47,6 @@ class RunAll(object):
         if self.thread:
            ConversionDiscover(discover).case_package()
         else:
-            path = read_file(project_name, 'thread_case.py')
-            with open(path, 'wt'):
-                pass
             runner = unittest.TextTestRunner(verbosity=2).run(discover)
             DataHandleConversion().case_data_handle(in_case_data=runner)
             self._get_case_detailed()
@@ -54,8 +55,8 @@ class RunAll(object):
         """获取需要执行的用例并运行对应的用例"""
         case_data = self.sql.query_data()
         total_case = DataHandleConversion().sql_data_handle(in_sql_data=case_data,
-                                                      start_time=self.start_time,
-                                                      end_time=standard_time())
+                                                            start_time=self.start_time,
+                                                            end_time=standard_time())
         if total_case and case_data:
             self.excel(case_data).class_merge(parameter=total_case)
             self.mail.sender_email(case_name=total_case)

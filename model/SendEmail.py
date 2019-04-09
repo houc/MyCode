@@ -50,7 +50,7 @@ class Email:
     def _send_enclosure(self, case_name):
         """发送附件统计图"""
         AmilSupport(case_name)
-        print('用例报告已执行完毕，正在发送邮件中...', file=sys.stderr)
+        print('用例统计已执行完成，正在发送邮件...', file=sys.stderr)
         if os.path.exists(self.img_path):
             img = MIMEImage(open(self.img_path, 'rb').read())
             img.add_header('Content-ID', '<image1>')

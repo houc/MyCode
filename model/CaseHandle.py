@@ -1,8 +1,9 @@
 import os
-import time
+import sys
 import warnings
 import multiprocessing
 import unittest
+import queue
 
 from model.Yaml import MyYaml
 from model.SendEmail import Email
@@ -15,9 +16,12 @@ from model.ExcelReport import ExcelTitle
 
 
 class DataHandleConversion(object):
-    def __init__(self):
-        sql_type = MyYaml('execute_type').sql
-        if 'my_sql' == sql_type:
+    def __init__(self, encoding='utf8'):
+        self.sql_type = MyYaml('execute_type').sql
+        self.project_name = MyYaml('project_name').excel_parameter
+        self.path = read_file(self.project_name, 'case.txt')
+        self.encoding = encoding
+        if 'my_sql' == self.sql_type:
             self.sql = Mysql()
         else:
             self.sql = MyDB()
@@ -75,6 +79,8 @@ class DataHandleConversion(object):
             case_messages['skipped'] = len(skip)
             if case_messages.get('end_time') is None:
                 case_messages['end_time'] = end_time
+            if case_messages.get('start_time') is None:
+                case_messages['start_time'] = start_time
             start_time = beijing_time_conversion_unix(case_messages['start_time'])
             ends_time = beijing_time_conversion_unix(case_messages['end_time'])
             case_messages['total_time'] = time_conversion(ends_time - start_time)
@@ -85,7 +91,7 @@ class DataHandleConversion(object):
 
     def case_data_handle(self, in_case_data):
         """用例数据处理"""
-        global module, is_case, da
+        global module, is_case, da, path
         skipped = [] # 跳过用例封装的数据
         if in_case_data is not None:
             for skipp in in_case_data.skipped:
@@ -93,24 +99,32 @@ class DataHandleConversion(object):
                     if "test_" in str(skip):
                         module = str(skip).split(' ')[-1].split('.')[-1].split(')')[0]
                         is_case = str(skip).split(' ')[0]
+                        path = str(skip).split(' ')[-1].split('(')[-1].split(')')[0]
                     else:
                         if not skip:
                             skip = "None"
-                        skipped.append({"module": module, "case_name": is_case,
+                        skipped.append({"module": module, "name": is_case,
                                         "reason": "跳过原因: {}".format(skip),
-                                        "insert_time": standard_time()})
+                                        "insert_time": standard_time(),
+                                        'status': '跳过', 'id': path})
             self._insert_case_data(data=skipped)
         else:
             warnings.warn('self.case_data is None')
 
     def _insert_case_data(self, data):
-        """用例数据插入sql"""
+        """用例数据插入skip_cast.txt"""
         if data:
-            for is_data in data:
-                self.sql.insert_data(id=None, level=None, module=is_data["module"], name=is_data["case_name"],
-                                     remark=None, wait_time=None, status="跳过", url=None,
-                                     insert_time=is_data["insert_time"], img=None, error_reason=is_data["reason"],
-                                     author=None, results_value=None)
+            if 'my_sql' == self.sql_type:
+                for read in data:
+                    self.sql.insert_data(id=read['id'], level=None,
+                                         module=read["module"], name=read["case_name"],
+                                         remark=None, wait_time=None, status="跳过", url=None,
+                                         insert_time=read["insert_time"], img=None, error_reason=read["reason"],
+                                         author=None, results_value=None)
+            else:
+                with open(self.path, 'at', encoding=self.encoding) as f:
+                    for case in data:
+                        f.write(str(case) + '\n')
 
 
 class ConversionDiscover(object):
@@ -119,12 +133,14 @@ class ConversionDiscover(object):
         self.encoding = encoding
         self.project = MyYaml('project_name').excel_parameter
         self.module = MyYaml('module_run').config
+        self.path = read_file(self.project, 'case.txt')
         sql_type = MyYaml('execute_type').sql
         self.excel = ExcelTitle
         if 'my_sql' == sql_type:
             self.sql = Mysql()
         else:
             self.sql = MyDB()
+        self.queue = queue.LifoQueue()
         self.mail = Email()
         self.start_time = standard_time()
         self.case_handle = DataHandleConversion()
@@ -180,6 +196,21 @@ class ConversionDiscover(object):
 
     def _handle_case(self):
         """处理运行完成后的用例集"""
+        print('多进程执行用例完成，正在生成测试报告...', file=sys.stderr)
+        with open(self.path, 'rt', encoding=self.encoding) as f:
+            re = f.readlines()
+        if re:
+            for case in re:
+                self.queue.put(eval(case))
+            while not self.queue.empty():
+                read = self.queue.get()
+                self.sql.insert_data(id=read.get('id'), level=read.get('level'),
+                                     module=read.get('module'), name=read.get('name'),
+                                     remark=read.get('mark'), wait_time=read.get('run_time'),
+                                     status=read.get('status'), url=read.get('url'),
+                                     insert_time=read.get('insert_time'), img=read.get('img_path'),
+                                     error_reason=read.get('reason'), author=read.get('author'),
+                                     results_value=read.get('result'))
         case_data = self.sql.query_data()
         total_case = self.case_handle.sql_data_handle(in_sql_data=case_data,
                                                       start_time=self.start_time,
@@ -190,6 +221,7 @@ class ConversionDiscover(object):
 
 
 class _my_process(multiprocessing.Process):
+    """自定义封装的多进程"""
     def __init__(self, case_set):
         multiprocessing.Process.__init__(self)
         self.case_set = case_set

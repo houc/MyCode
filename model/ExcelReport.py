@@ -309,7 +309,7 @@ class WriteExcel:
         self._write_pc_content(**kwargs)
         self._write_test_title(*args)
         self.open_excel.close()
-        print("测试报告已生成....", file=sys.stderr)
+        print("测试报告已生成, 正在处理用例统计...", file=sys.stderr)
 
 
 class ExcelTitle(WriteExcel):
