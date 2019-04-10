@@ -4,7 +4,7 @@ import os
 import traceback
 
 from config_path.path_file import PATH
-from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
+from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
 from Manufacture.technology.currency import TechnologyElement
 
@@ -20,8 +20,8 @@ class TestTechnologyTable(UnitTests):
     :param: MODULE: 为当前运行的模块，根据当前运行的模块调用common中的对应的用例方法，需保留此变量方法
     """
     RE_LOGIN = False
-    LOGIN_INFO = {"account": None, "password": None, "company": None}
-    MODULE = os.path.dirname(__file__).split("\\")[-1]
+    LOGIN_INFO = {"account": '15928564313', "password": 'Al', "company": None}
+    MODULE = os.path.abspath(__file__)
     
     def test_switch_download(self):
         """

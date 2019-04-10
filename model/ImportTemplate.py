@@ -23,14 +23,13 @@ def read_currency(keys: str, line: int):
         data.append(i['bar'])
     return data[line]
 
-def token():
+def token(module):
     """
-    获取token值
+    获取token值,module:获取的值
     Usage:
-        r = requests.post(url, headers=token(), data=data, stream=True)
+        r = requests.post(url, headers=token(module), data=data, stream=True)
     """
-    token = ConfigParameter().read_ini()
-    return token
+    return ConfigParameter().read_ini(node=module)
 
 
 class {}(OperationElement):
@@ -52,7 +51,7 @@ import os
 import traceback
 
 from config_path.path_file import PATH
-from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
+from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
 from {} import {}
 
@@ -69,7 +68,7 @@ class {}(UnitTests):
     """
     RE_LOGIN = False
     LOGIN_INFO = {{"account": None, "password": None, "company": None}}
-    MODULE = os.path.dirname(__file__).split("\\\\")[-1]
+    MODULE = os.path.abspath(__file__)
     
 '''
 
@@ -88,16 +87,50 @@ CASE_NAME = '''    def {}(self):
             self.error = str(traceback.format_exc())\n
 '''
 
-
-# XPATH = '''driver.XPATH("{}")'''
-#
-# CSS = '''driver.CSS("%s")'''
-
-# FIRST_ASSERT = '''time.sleep(1)
-#             self.driver.save_screenshot(self.screenshots_path)
-#             self.first = %s'''
-
-
 CURRENCY_YA = '''#add_customer:
 #  - url: /add/customerParam
 #    bar: {name: 新增客户, address: 四川省成都市}'''
+
+PROJECT_COMMON = '''from model.GetToken import BrowserToken
+
+
+class LoginPublic(BrowserToken):
+    """
+    封装"LoginPublic"元素类
+    Usage:
+        Demonstration = (By.XPATH, "(//span[text()='$'])[1]/.") 
+        
+        def add_member(self, value):
+            self.fin_element(self.str_conversion(self.Demonstration, value)).text
+
+    # ================================================URL==========================================
+
+    
+    # ================================================元素==========================================
+    """
+    def __init__(self, driver, account, password, company=None, *, module):
+        BrowserToken.__init__(self, driver)
+        self.account = account
+        self.password = password
+        self.company = company
+        self.module = module
+
+    def login(self, switch_toke=True):
+        """登录：登录成功后是否需要获取token"""
+        if switch_toke:
+            self.get_token()
+
+    def get_token(self):
+        """获取浏览器中的token"""
+        js = "return window.localStorage.getItem('token')"
+        token = self.driver.execute_script(js)
+        if token:
+            token = json.loads(token)
+            self.config.write_ini(content=token, node=self.module)
+        else:
+            warnings.warn('获取浏览器token失败...')
+
+    def remove_key(self):
+        """从配置文件中删除写入的token值"""
+        self.config.remove_node(self.module)\n
+'''

@@ -4,7 +4,7 @@ import os
 import traceback
 
 from config_path.path_file import PATH
-from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
+from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
 from Manufacture.products.currency import ProductsElement
 
@@ -21,7 +21,7 @@ class TestProductsCenterTable(UnitTests):
     """
     RE_LOGIN = False
     LOGIN_INFO = {"account": None, "password": None, "company": None}
-    MODULE = os.path.dirname(__file__).split("\\")[-1]
+    MODULE = os.path.abspath(__file__)
     
     def test_automotive_filter_series(self):
         """

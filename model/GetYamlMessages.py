@@ -20,32 +20,35 @@ class GetConfigMessage(object):
         self.url = MyYaml('Manufacture').base_url
         data_messages = {}
         self.all_parm = MyYaml().parameter_ui
-        for a in self.all_parm[module]:
-            if a["className"] == class_name:
-                if a['url'] is None:
-                    url = self.url
-                else:
-                    url = self.url + a['url']
-                for b in a["funName"]:
-                    try:
-                        value = b[case_name]
-                        if value["url"] is not None:
-                            url = self.url + value["url"]
-                        data_messages["url"] = url
-                        data_messages["author"] = value["author"]
-                        data_messages["level"] = value["level"]
-                        data_messages["asserts"] = value["asserts"]
-                        data_messages["scene"] = value["scene"]
-                    except Exception as exc:
-                        reason = "{}.{}.{}.common.yaml中的caseName与测试类caseName不存在，该条用例已终止测试...原因:{}".\
-                            format(self.module, self.class_name, self.case_name, exc)
-                        warnings.warn(reason)
-        if data_messages:
-            self.data_messages = data_messages
-        else:
-            reason_one = "{}.{}.{}.data_messages无数据，请检查对应参数是否正确，该条用例已终止测试...".\
-                          format(self.module, self.class_name, self.case_name)
-            warnings.warn(reason_one)
+        try:
+            for a in self.all_parm[module]:
+                if a["className"] == class_name:
+                    if a['url'] is None:
+                        url = self.url
+                    else:
+                        url = self.url + a['url']
+                    for b in a["funName"]:
+                        try:
+                            value = b[case_name]
+                            if value["url"] is not None:
+                                url = self.url + value["url"]
+                            data_messages["url"] = url
+                            data_messages["author"] = value["author"]
+                            data_messages["level"] = value["level"]
+                            data_messages["asserts"] = value["asserts"]
+                            data_messages["scene"] = value["scene"]
+                        except Exception as exc:
+                            reason = "{}.{}.{}.common.yaml中的caseName与测试类caseName不存在，该条用例已终止测试...原因:{}".\
+                                format(self.module, self.class_name, self.case_name, exc)
+                            warnings.warn(reason)
+            if data_messages:
+                self.data_messages = data_messages
+            else:
+                reason_one = "{}.{}.{}.data_messages无数据，请检查对应参数是否正确，该条用例已终止测试...".\
+                              format(self.module, self.class_name, self.case_name)
+                warnings.warn(reason_one)
+        except Exception as exc:
+            warnings.warn(str(exc))
 
     def re(self):
         """返回数据"""

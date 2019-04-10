@@ -22,14 +22,13 @@ def read_currency(keys: str, line: int):
         data.append(i['bar'])
     return data[line]
 
-def token():
+def token(module):
     """
-    获取token值
+    获取token值,module:获取的值
     Usage:
         r = requests.post(url, headers=token(), data=data, stream=True)
     """
-    token = ConfigParameter().read_ini()
-    return token
+    return ConfigParameter().read_ini(node=module)
 
 
 class TechnologyElement(OperationElement):
@@ -63,3 +62,4 @@ class TechnologyElement(OperationElement):
         :return: ...
         """
         self.is_click(self.str_conversion(self.info, location))
+

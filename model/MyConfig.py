@@ -16,7 +16,7 @@ class ConfigParameter(object):
         """将信息写入配置文件"""
         self.config.add_section(node)
         self.config.set(node, self.keys, content)
-        with open(self.path, 'wt', encoding=self.encoding) as f:
+        with open(self.path, 'at', encoding=self.encoding) as f:
             self.config.write(f)
 
     def read_ini(self, node='session'):
@@ -25,6 +25,14 @@ class ConfigParameter(object):
         ini = self.config.get(node, self.keys)
         return {self.keys: ini}
 
+    def remove_node(self, node='session'):
+        """删除不用的session"""
+        self.config.remove_section(node)
+        with open(self.path, 'wt', encoding=self.encoding) as f:
+            self.config.write(f)
+
 if __name__ == '__main__':
-    h = ConfigParameter().read_ini()
-    print(h)
+    h = ConfigParameter()
+    h.write_ini(content='eyJhbGciOiJSUzI1NiIsInR5cCI6Imp3dCJ9.eyJtZW1iZXJfa', node='st')
+    h.write_ini(content='I1NiIsInR5cCI6Imp3dCJ9.eyJtZW1iZXJfa')
+

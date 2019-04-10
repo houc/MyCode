@@ -3,7 +3,7 @@ import time
 import os
 
 from config_path.path_file import PATH
-from model.MyUnitTest import setUpModule, tearDownModule, UnitTests
+from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
 from Manufacture.contact.currency import ContactElement
 
@@ -20,7 +20,7 @@ class TestContact(UnitTests):
     """
     RE_LOGIN = False
     LOGIN_INFO = {"account": None, "password": None, "company": None}
-    MODULE = os.path.dirname(__file__).split("\\")[-1]
+    MODULE = os.path.abspath(__file__)
     
     def test_contact(self):
         """

@@ -4,7 +4,7 @@ import operator
 import shutil
 
 from model.Yaml import MyYaml
-from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA
+from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
 from model.PrintColor import RED_BIG
 from model.MyException import CreateFileError, FUN_NAME
 from model.TimeConversion import standard_time
@@ -24,6 +24,8 @@ class CreateModule(object):
         self.init = '__init__.py'
         self.currency_py = 'currency.py'
         self.currency_ya = 'currency.yaml'
+        self.common_ya = 'common.yaml'
+        self.common_py = 'common.py'
         self.encoding = 'utf-8'
 
     def _module(self, modules: classmethod):
@@ -217,23 +219,32 @@ class CreateModule(object):
                 is_assert = '{!r}'.format(values)
                 return is_assert
 
-    def execute_case(self, switch):
-        """处理执行用例,switch计算用例总计"""
-        try:
-            self.check_repeat(switch)
-            for key, values in self.all_param.items():
-                self._other_py(key)
-                self._case_data_handle(key)
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
-        finally:
-            return 'COMMON中用例已全部执行完毕！'
+    def _project_check(self):
+        """用于判断项目目录是否存在，不存在重新创建，项目并生成对应的py"""
+        project_path = PATH('.') + '\\' + self.file_path
+        if not os.path.exists(project_path):
+            os.makedirs(project_path)
+            with open(project_path + '\\' + self.common_py, 'wt', encoding=self.encoding) as f:
+                f.write(PROJECT_COMMON)
+                with open(project_path + '\\' + self.common_ya, 'wt', encoding=self.encoding):
+                    with open(project_path + '\\' + self.init, 'wt', encoding=self.encoding):
+                        pass
 
-    def check_repeat(self, switch):
+    def execute_case(self):
+        """处理执行用例,switch计算用例总计"""
+        self._project_check()
+        case = self.check_repeat()
+        for key, values in self.all_param.items():
+            self._other_py(key)
+            self._case_data_handle(key)
+        import sys
+        print('共{}条用例,已全部初始化完毕...'.format(len(case)), file=sys.stderr)
+
+    def check_repeat(self):
         """
         检查common中的用例是否存在重复, 存在重复提示异常！
         :parameter switch 计算用例条数
-        :return: ...
+        :return: 返回所有的case
         """
         case_name = []
         for key, values in self.all_param.items():
@@ -242,13 +253,11 @@ class CreateModule(object):
                     for key, values in value.items():
                         case_name.append(key)
         if case_name:
-            if switch:
-                import sys
-                print('当前用例条数：{}'.format(len(case_name)), file=sys.stderr)
             repeat = [val for val in list(set(case_name)) if case_name.count(val) >= 2]
             if repeat:
                 import warnings
                 warnings.warn('注意-->有重复的用例名称，用例名称:' + ', '.join(repeat))
+            return case_name
 
     def _get_package(self):
         """
@@ -269,6 +278,5 @@ class CreateModule(object):
 
 
 if __name__ == '__main__':
-    execute = CreateModule().execute_case(True)
-    import sys
-    print(execute, file=sys.stderr)
+    CreateModule().execute_case()
+

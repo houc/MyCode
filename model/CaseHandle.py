@@ -99,13 +99,14 @@ class DataHandleConversion(object):
                     if "test_" in str(skip):
                         module = str(skip).split(' ')[-1].split('.')[-1].split(')')[0]
                         is_case = str(skip).split(' ')[0]
+                        path = str(skip).split(' ')[-1].split('(')[-1].split(')')[0]
                     else:
                         if not skip:
                             skip = "None"
                         skipped.append({"module": module, "name": is_case,
                                         "reason": "跳过原因: {}".format(skip),
                                         "insert_time": standard_time(),
-                                        'status': '跳过'})
+                                        'status': '跳过', 'id': path})
             self._insert_case_data(data=skipped)
         else:
             warnings.warn('self.case_data is None')
@@ -115,7 +116,7 @@ class DataHandleConversion(object):
         if data:
             if 'my_sql' == self.sql_type:
                 for read in data:
-                    self.sql.insert_data(id=None, level=None,
+                    self.sql.insert_data(id=read['id'], level=None,
                                          module=read["module"], name=read["case_name"],
                                          remark=None, wait_time=None, status="跳过", url=None,
                                          insert_time=read["insert_time"], img=None, error_reason=read["reason"],

@@ -14,12 +14,12 @@ config:
   page_loading_wait: 15   # 超时时间
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
-  task_time: 1         # 定时任务等待执行时间
+  task_time: 5         # 定时任务等待执行时间
   browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
   logo_url: /repository/image/6Nj1TrvnQT-X3V2FLiW3FQ.jpg  # 项目logo连接
   while_case: 0         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
-  module_run: #marketing     # 指定需要运行的模块，示例：login
+  module_run:      # 指定需要运行的模块，示例：login
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
   skip_module: {} # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
 send_email:
@@ -29,7 +29,7 @@ send_email:
   send_password: Aa123456 #Ccwoaini521$                 # 发送密码
   receiver: [houchao@gouuse.cn, 784348736@qq.com, 1063116271@qq.com] # 接收的邮件地址
 sql:
-  execute_type:         #为空调用sql_lite，my_sql，调用本地的my_sql数据库
+  execute_type:         #为空调用sqlite，为my_sql，调用本地的my_sql数据库
   account: 'root'                       # 数据库账号
   password: '123456'                    # 数据库密码
   port: 3307                            # 数据库端口

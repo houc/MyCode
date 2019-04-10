@@ -9,7 +9,7 @@ from model.TimeConversion import standard_time, time_conversion
 
 class MyAsserts():
     def __init__(self, first, second, id, level, name, remark, status, reason, url, time,
-                 driver, module, screenshots_path, author, myself, error_path, log,
+                 driver, module, screenshots_path, author, myself, error_path, log=None,
                  encoding='utf8'):
         """初始化"""
         self.first = first
