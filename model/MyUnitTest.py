@@ -12,7 +12,7 @@ from model.GetYamlMessages import GetConfigMessage as Get
 from model.TimeConversion import standard_time
 from model.MyException import LoginSelectError
 from config_path.path_file import read_file
-from Manufacture.common import LoginPublic
+from SCRM.common import LoginPublic
 
 
 class UnitTests(unittest.TestCase):
@@ -22,21 +22,25 @@ class UnitTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """判断类下面是否需要重新请求账号登录"""
-        cls.driver = browser(switch=MyConfig('browser').config)
-        cls.wait = MyConfig('page_loading_wait').config
-        cls.sql = MyDB()
-        cls.log = Logger()
-        if cls.RE_LOGIN:
-            account = cls.LOGIN_INFO['account']
-            password = cls.LOGIN_INFO['password']
-            company = cls.LOGIN_INFO['company']
-            if account and password:
-                cls.login = LoginPublic(driver=cls.driver, account=account,
-                            password=password, company=company,
-                            module=cls.MODULE.split('\\')[-1].split('.')[0])
-                cls.login.login()
-            else:
-                raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
+        try:
+            cls.driver = browser(switch=MyConfig('browser').config)
+            cls.wait = MyConfig('page_loading_wait').config
+            cls.sql = MyDB()
+            cls.log = Logger()
+            if cls.RE_LOGIN:
+                account = cls.LOGIN_INFO['account']
+                password = cls.LOGIN_INFO['password']
+                company = cls.LOGIN_INFO['company']
+                if account and password:
+                    cls.login = LoginPublic(driver=cls.driver, account=account,
+                                password=password, company=company,
+                                module=cls.MODULE.split('\\')[-1].split('.')[0])
+                    cls.login.login()
+                else:
+                    raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
+        except Exception:
+            cls.driver.quit()
+            raise
 
     @classmethod
     def tearDownClass(cls):

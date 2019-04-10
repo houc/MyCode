@@ -91,8 +91,14 @@ CURRENCY_YA = '''#add_customer:
 #  - url: /add/customerParam
 #    bar: {name: 新增客户, address: 四川省成都市}'''
 
-PROJECT_COMMON = '''from model.GetToken import BrowserToken
+PROJECT_COMMON = '''import warnings
+import json
+import time
 
+from model.GetToken import BrowserToken
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from model.Yaml import MyConfig
 
 class LoginPublic(BrowserToken):
     """
@@ -102,12 +108,12 @@ class LoginPublic(BrowserToken):
         
         def add_member(self, value):
             self.fin_element(self.str_conversion(self.Demonstration, value)).text
-
+    """
     # ================================================URL==========================================
 
     
     # ================================================元素==========================================
-    """
+    
     def __init__(self, driver, account, password, company=None, *, module):
         BrowserToken.__init__(self, driver)
         self.account = account

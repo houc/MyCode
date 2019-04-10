@@ -1,0 +1,18 @@
+SCRM:
+  workbench:
+    - work_effectiveness:
+      url: /#/home
+      className: WorkEffectiveness
+      funName:
+      - test_send_ordinary_mail: {
+        url: ,
+        author: 后超,
+        level: 中,
+        scene: "验证发送普通邮件后，工作台【发送普通邮件】是否会+1\n
+                1、点击{新建邮件}；\n
+                2、收件人输入{1063116271@qq.com}；\n
+                3、主题输入{自动化测试}；\n
+                4、点击{发送}；\n
+                5、刷新浏览器查看是否+1",
+        asserts:
+      }

@@ -1,13 +1,13 @@
 import configparser
-import os
 
 from model.Yaml import MyConfig
+from config_path.path_file import one_level_catalog
 
 
 class ConfigParameter(object):
-    def __init__(self, dirName='/BrowserToken.ini', encoding='utf-8'):
+    def __init__(self, dirName='/token.ini', encoding='utf-8'):
         """初始化"""
-        self.path = os.path.realpath(os.path.dirname(os.path.dirname(__file__))) + dirName
+        self.path = one_level_catalog(dirName)
         self.encoding = encoding
         self.config = configparser.ConfigParser()
         self.keys = MyConfig('token_keys').config
@@ -33,6 +33,6 @@ class ConfigParameter(object):
 
 if __name__ == '__main__':
     h = ConfigParameter()
-    h.write_ini(content='eyJhbGciOiJSUzI1NiIsInR5cCI6Imp3dCJ9.eyJtZW1iZXJfa', node='st')
+    h.write_ini(content='eyJhbGciOiJSUzI1NiIsInR5cCI6Imp3dCJ9.eyJtZW1iZXJfa', node='st_t')
     h.write_ini(content='I1NiIsInR5cCI6Imp3dCJ9.eyJtZW1iZXJfa')
 

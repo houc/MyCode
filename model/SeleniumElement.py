@@ -141,7 +141,6 @@ class OperationElement(object):
         :param timeout: 如：20
         :return: 存在则返回，不存在则抛出异常！
         """
-        global exist_element
         try:
             return self.support.until(EC.presence_of_element_located(element))
         except Exception:
@@ -208,7 +207,7 @@ class OperationElement(object):
         :return: 存在返回True，不存在返回False
         """
         try:
-            self._find_element(element)
+            self.operation_element(element)
             return True
         except EC.NoSuchElementException:
             return False

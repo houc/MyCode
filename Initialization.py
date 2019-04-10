@@ -270,11 +270,14 @@ class CreateModule(object):
 
     def __del__(self):
         """删除不存在的module"""
-        module = list(self.all_param.keys())
-        package = self._get_package()
-        [package.remove(modules) for modules in module if modules in package]
-        path = [PATH('.') + '/' + self.file_path + '/' + package_path for package_path in package]
-        [shutil.rmtree(remove) for remove in path]  # 不管目录是否为空，都将目录删除
+        try:
+            module = list(self.all_param.keys())
+            package = self._get_package()
+            [package.remove(modules) for modules in module if modules in package]
+            path = [PATH('.') + '/' + self.file_path + '/' + package_path for package_path in package]
+            [shutil.rmtree(remove) for remove in path]  # 不管目录是否为空，都将目录删除
+        except Exception:
+            pass
 
 
 if __name__ == '__main__':

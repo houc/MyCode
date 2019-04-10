@@ -185,7 +185,7 @@ class ConversionDiscover(object):
         """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
         thread = []
         self._execute_discover()
-        from Manufacture.thread_case import __all__
+        from SCRM.thread_case import __all__
         for case in __all__:
             thread.append(_my_process(case))
         for start in thread:
