@@ -3,7 +3,7 @@ import re
 from config_path.path_file import read_file
 from model.MyDB import MyDB
 from model.SQL import Mysql
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from model.TimeConversion import standard_time, time_conversion
 
 
@@ -31,9 +31,9 @@ class MyAsserts():
         self.module = module
         self.encoding = encoding
         self.img_path = None
-        self.thread = MyYaml('thread').config
-        self.sql_type = MyYaml('execute_type').sql
-        self.project = MyYaml('project_name').excel_parameter
+        self.thread = MyConfig('thread').config
+        self.sql_type = MyConfig('execute_type').sql
+        self.project = MyConfig('project_name').excel_parameter
         self.case_path = read_file(self.project, 'case.txt')
         if 'my_sql' == self.sql_type:
             self.sql = Mysql()

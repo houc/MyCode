@@ -1,7 +1,7 @@
 import sqlite3
 
 from config_path.path_file import read_file
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 
 
 class MyDB(object):
@@ -11,11 +11,11 @@ class MyDB(object):
         :param switch:
         """
         self.sql = self._connect_sql()
-        self.dbTable = MyYaml('sql_table').sql
-        self.dbTitle = MyYaml('sql_create_title').sql
-        self.dbQuery = MyYaml('sql_query').sql
-        self.dbDelete = MyYaml('sql_delete').sql
-        self.dbInsert = MyYaml('sql_insert').sql
+        self.dbTable = MyConfig('sql_table').sql
+        self.dbTitle = MyConfig('sql_create_title').sql
+        self.dbQuery = MyConfig('sql_query').sql
+        self.dbDelete = MyConfig('sql_delete').sql
+        self.dbInsert = MyConfig('sql_insert').sql
         if switch:
             self._insert_title()
 

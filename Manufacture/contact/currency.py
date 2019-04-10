@@ -1,7 +1,7 @@
 import requests
 import time
 
-from model.Yaml import MyYaml
+from model.Yaml import MyProject
 from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
 from model.SeleniumElement import OperationElement
@@ -11,12 +11,12 @@ from selenium.webdriver.common.keys import Keys
 def read_currency(keys: str, line: int):
     """
     读取currency.ya中的数据
-    Usage: 
+    Usage:
         url = MyYaml("SCRM").base_url + read_currency("get_customer", 0)
         data = read_currency("get_customer", 1)
     """
     data = []
-    read = MyYaml(UP_FILE_NAME).ModulePublic[keys]
+    read = MyProject(UP_FILE_NAME, keys).module_data
     for i in read:
         data.append(i['url'])
         data.append(i['bar'])
@@ -28,8 +28,7 @@ def token():
     Usage:
         r = requests.post(url, headers=token(), data=data, stream=True)
     """
-    token = ConfigParameter().read_ini()
-    return token
+    return ConfigParameter().read_ini()
 
 
 class ContactElement(OperationElement):

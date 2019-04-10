@@ -22,10 +22,10 @@ def read_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME):
     dir_file = dir_file + '/{}/{}'.format(ups, up)
     return dir_file
 
-def module_file(ups=UPS_FILE_NAME, up=UP_FILE_NAME, project='Manufacture'):
+def module_file(pro, ups=UPS_FILE_NAME, up=UP_FILE_NAME):
     """功能模块路径"""
     dir_file = os.path.dirname(os.path.dirname(__file__))
-    dir_file = dir_file + '/{}/{}/{}'.format(project, ups, up)
+    dir_file = dir_file + '/{}/{}/{}'.format(pro, ups, up)
     return dir_file
 
 def one_level_catalog(catalog):

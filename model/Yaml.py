@@ -3,78 +3,77 @@ import yaml
 from config_path.path_file import read_file, module_file
 
 
-class MyYaml(object):
-    def __init__(self,interface='Manufacture', encoding='utf-8'):
-        """初始化参数"""
-        self.interface = interface
+class MyConfig(object):
+    def __init__(self, query_key, encoding='utf8'):
+        """初始化参数读取config中的数据"""
+        self.query_key = query_key
         self.encoding = encoding
 
     @property
-    def AllConfig(self):
-        """读取config.yaml中全部参数"""
+    def _read_config_data(self):
+        """读取config.yaml中的全部数据"""
         path = read_file('config', 'config.yaml')
-        f = open(path, encoding=self.encoding)
-        data = yaml.safe_load(f)
-        f.close()
-        return data
-
-    @property
-    def AllPublic(self):
-        """读取public.yaml中的全部参数"""
-        path = read_file('Manufacture', 'common.yaml')
-        f = open(path, encoding=self.encoding)
-        data = yaml.safe_load(f)
-        f.close()
-        return data
-
-    @property
-    def ModulePublic(self):
-        """读取测试模块下的public全部参数"""
-        path = module_file(self.interface, 'currency.yaml')
-        f = open(path, encoding=self.encoding)
-        data = yaml.safe_load(f)
-        f.close()
-        return data
-
-    @property
-    def AllPublicData(self):
-        """读取public.yaml全部数据"""
-        path = read_file('Manufacture', 'public.yaml')
-        f = open(path, encoding=self.encoding)
-        data = yaml.safe_load(f)
-        f.close()
-        return data
-
-    @property
-    def parameter_ui(self):
-        """获取yaml中的模块"""
-        return self.AllPublic['Manufacture']
+        with open(path, 'rt', encoding=self.encoding) as f:
+            return yaml.safe_load(f)
 
     @property
     def base_url(self):
-        """获取yaml中base_url链接"""
-        return self.AllConfig['base_url'][self.interface]
+        """读取配置文件中的base_url"""
+        return self._read_config_data['base_url'][self.query_key]
 
     @property
     def excel_parameter(self):
-        """获取yaml中excel_parameter"""
-        return self.AllConfig['excel_parameter'][self.interface]
+        """读取配置文件中的excel_parameter"""
+        return self._read_config_data['excel_parameter'][self.query_key]
 
     @property
     def config(self):
-        """获取yaml中config"""
-        return self.AllConfig['config'][self.interface]
+        """读取配置文件中的config"""
+        return self._read_config_data['config'][self.query_key]
 
     @property
     def send_email(self):
-        """邮件发送配置参数"""
-        return self.AllConfig['send_email'][self.interface]
+        """读取配置文件中的send_email"""
+        return self._read_config_data['send_email'][self.query_key]
 
     @property
     def sql(self):
-        """读取sql参数"""
-        return self.AllConfig['sql'][self.interface]
+        """读取配置文件中的sql"""
+        return self._read_config_data['sql'][self.query_key]
+
+
+class MyProject(object):
+    def __init__(self, module, query_key='', encoding='utf8'):
+        self.query_key = query_key
+        self.module = module
+        self.encoding = encoding
+        self.pro_name = MyConfig('project_name').excel_parameter
+
+    @property
+    def _read_project_data(self):
+        """读取项目下common.yaml全部数据"""
+        path = read_file(self.pro_name, 'common.yaml')
+        with open(path, 'rt', encoding=self.encoding) as f:
+            return yaml.safe_load(f)
+
+    @property
+    def parameter_ui(self):
+        """返回项目下common.yaml全部数据"""
+        return self._read_project_data[self.pro_name]
+
+    @property
+    def module_data(self):
+        """返回项目模块下对应的数据"""
+        return self._read_pro_module_data[self.query_key]
+
+    @property
+    def _read_pro_module_data(self):
+        """读取项目目录下currency.yaml中的数据"""
+        path = module_file(self.pro_name, self.module, 'currency.yaml')
+        with open(path, 'rt', encoding=self.encoding) as f:
+            return yaml.safe_load(f)
+
 
 if __name__ == '__main__':
-    t = MyYaml('test_accountError').parameter_ui
-    print(t)
+    y = MyProject('').parameter_ui
+    print(y['home'])

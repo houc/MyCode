@@ -5,7 +5,7 @@ import multiprocessing
 import unittest
 import queue
 
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from model.SendEmail import Email
 from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
@@ -17,8 +17,8 @@ from model.ExcelReport import ExcelTitle
 
 class DataHandleConversion(object):
     def __init__(self, encoding='utf8'):
-        self.sql_type = MyYaml('execute_type').sql
-        self.project_name = MyYaml('project_name').excel_parameter
+        self.sql_type = MyConfig('execute_type').sql
+        self.project_name = MyConfig('project_name').excel_parameter
         self.path = read_file(self.project_name, 'case.txt')
         self.encoding = encoding
         if 'my_sql' == self.sql_type:
@@ -117,7 +117,7 @@ class DataHandleConversion(object):
             if 'my_sql' == self.sql_type:
                 for read in data:
                     self.sql.insert_data(id=read['id'], level=None,
-                                         module=read["module"], name=read["case_name"],
+                                         module=read["module"], name=read["name"],
                                          remark=None, wait_time=None, status="跳过", url=None,
                                          insert_time=read["insert_time"], img=None, error_reason=read["reason"],
                                          author=None, results_value=None)
@@ -131,10 +131,10 @@ class ConversionDiscover(object):
     def __init__(self, discover, encoding='utf8'):
         self.discover = discover
         self.encoding = encoding
-        self.project = MyYaml('project_name').excel_parameter
-        self.module = MyYaml('module_run').config
+        self.project = MyConfig('project_name').excel_parameter
+        self.module = MyConfig('module_run').config
         self.path = read_file(self.project, 'case.txt')
-        sql_type = MyYaml('execute_type').sql
+        sql_type = MyConfig('execute_type').sql
         self.excel = ExcelTitle
         if 'my_sql' == sql_type:
             self.sql = Mysql()
@@ -151,8 +151,8 @@ class ConversionDiscover(object):
         class_name = []
         discover = str(self.discover).split(',')
         for search in discover:
-            get_tests = search.split('tests')[-1].split('<')[-1].split('testMethod')[0]
-            if '=[]>' in get_tests:
+            get_tests = search.split('tests=')[-1].split(' testMethod')[0].split('<')[-1]
+            if '[]>' in get_tests:
                 pass
             else:
                 if self.module is not None:

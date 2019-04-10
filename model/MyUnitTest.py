@@ -4,7 +4,7 @@ import time
 import os
 
 from model.Logs import Logger
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from model.MyDB import MyDB
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
@@ -22,8 +22,8 @@ class UnitTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """判断类下面是否需要重新请求账号登录"""
-        cls.driver = browser(switch=MyYaml('browser').config)
-        cls.wait = MyYaml('page_loading_wait').config
+        cls.driver = browser(switch=MyConfig('browser').config)
+        cls.wait = MyConfig('page_loading_wait').config
         cls.sql = MyDB()
         cls.log = Logger()
         if cls.RE_LOGIN:
@@ -36,7 +36,7 @@ class UnitTests(unittest.TestCase):
                             module=cls.MODULE.split('\\')[-1].split('.')[0])
                 cls.login.login()
             else:
-                raise LoginSelectError(cls.__module__)
+                raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
 
     @classmethod
     def tearDownClass(cls):

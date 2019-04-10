@@ -1,7 +1,7 @@
 import schedule
 import os
 
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 
 
 class TimingRunning:
@@ -9,7 +9,7 @@ class TimingRunning:
         """初始化"""
         path = os.path.dirname(__file__)
         self.runner = os.path.join(path, 'runner.py').replace('\\', '/')
-        self.times = MyYaml('task_time').config
+        self.times = MyConfig('task_time').config
 
     def _implement(self):
         """执行模块"""

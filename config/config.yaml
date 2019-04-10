@@ -1,8 +1,8 @@
 base_url:
-  Manufacture: http://1903265005.pool4-site.make.yun300.cn  # 测试地址
+  url: http://1903265005.pool4-site.make.yun300.cn  # 测试地址
 excel_parameter:
   project_name: Manufacture          # 项目名称
-  test_version: V0.0.0    # 测试时的版本号
+  test_version: V1.7.0    # 测试时的版本号
   science: 线上环境   # 测试环境
 config:
   thread: True # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
@@ -29,7 +29,7 @@ send_email:
   send_password: Aa123456 #Ccwoaini521$                 # 发送密码
   receiver: [houchao@gouuse.cn, 784348736@qq.com, 1063116271@qq.com] # 接收的邮件地址
 sql:
-  execute_type:         #为空调用sqlite，为my_sql，调用本地的my_sql数据库
+  execute_type:         #为空调用:sqlite，为:my_sql，调用本地的my_sql数据库
   account: 'root'                       # 数据库账号
   password: '123456'                    # 数据库密码
   port: 3307                            # 数据库端口

@@ -5,7 +5,7 @@ import sys
 
 from config_path.path_file import read_file
 from model.PCParameter import merge_config_info, merge_config_msg, output_python_version
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 
 
 class WriteExcel:
@@ -15,8 +15,8 @@ class WriteExcel:
         if not os.path.exists(excel_ptah):
             with open(excel_ptah, 'wt'):
                 pass
-        self.report_project = MyYaml('project_name').excel_parameter
-        self.report_type = MyYaml('science').excel_parameter
+        self.report_project = MyConfig('project_name').excel_parameter
+        self.report_type = MyConfig('science').excel_parameter
         self.login_path = read_file('img', 'logo.png')
         self.real_pc = merge_config_info()
         self.fix_pc = merge_config_msg()
@@ -282,8 +282,8 @@ class WriteExcel:
         # ======================================汇总表内容========================================
 
         if isinstance(parameter, dict):
-            test_version = MyYaml("test_version").excel_parameter
-            test_science = MyYaml("science").excel_parameter
+            test_version = MyConfig("test_version").excel_parameter
+            test_science = MyConfig("science").excel_parameter
             test_tool = 'Python'+ self.python_version
             self.sheet_title.write(1, 3, test_version, self.title_title_content)
             self.sheet_title.write(1, 5, test_science, self.title_title_content)

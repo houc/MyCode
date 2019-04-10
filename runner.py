@@ -2,7 +2,7 @@ import unittest
 import os
 
 from model.ExcelReport import ExcelTitle
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from model.SQL import Mysql
 from model.MyDB import MyDB
 from model.SendEmail import Email
@@ -15,21 +15,21 @@ class RunAll(object):
     def __init__(self, encoding='utf8'):
         """初始化"""
         self.current_path = os.path.dirname(__file__)
-        self.re = MyYaml('re').config
-        sql_type = MyYaml('execute_type').sql
+        self.re = MyConfig('re').config
+        sql_type = MyConfig('execute_type').sql
         if 'my_sql' == sql_type:
             self.sql = Mysql()
         else:
             self.sql = MyDB()
-        project = MyYaml('project_name').excel_parameter
+        project = MyConfig('project_name').excel_parameter
         path = read_file(project, 'case.txt')
         with open(path, 'wt', encoding=encoding):
             pass
         self.mail = Email()
         self.start_time = standard_time()
-        self.wait = MyYaml('while_sleep').config
-        self.case = MyYaml('while_case').config
-        self.thread = MyYaml('thread').config
+        self.wait = MyConfig('while_sleep').config
+        self.case = MyConfig('while_case').config
+        self.thread = MyConfig('thread').config
         self.excel = ExcelTitle
         self._clear_sql()
 
@@ -39,8 +39,8 @@ class RunAll(object):
 
     def _get_case_status(self):
         """获取需要执行的路径，并执行用例"""
-        module_run = MyYaml('module_run').config
-        project_name = MyYaml('project_name').excel_parameter
+        module_run = MyConfig('module_run').config
+        project_name = MyConfig('project_name').excel_parameter
         if module_run is not None:
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)

@@ -1,7 +1,7 @@
 import os
 import sys
 
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 
 def _current_module():
     """获取当前py名称"""
@@ -14,7 +14,7 @@ def current_module(path):
 class Skip(object):
     def __init__(self, module=None):
         """初始化"""
-        self.skip_module = MyYaml('skip_module').config
+        self.skip_module = MyConfig('skip_module').config
         if current_module is None:
             self.current_module = _current_module()
         else:

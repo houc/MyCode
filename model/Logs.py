@@ -5,7 +5,7 @@ import os
 
 from datetime import datetime, timedelta
 from config_path.path_file import read_file
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from model.TimeConversion import standard_time
 
 
@@ -16,8 +16,8 @@ class Logger:
         now_time = time.strftime('%Y-%m-%d')
         dir_log = '{}.log'.format(now_time)
         log_dir = read_file('log', dir_log)
-        level = MyYaml('level').config
-        logs_day = MyYaml('logs_save').config
+        level = MyConfig('level').config
+        logs_day = MyConfig('logs_save').config
         file_handler = logging.FileHandler(log_dir, encoding=encoding)
         file_handler.setFormatter(formatter)
         console_handler = logging.StreamHandler(sys.stdout)

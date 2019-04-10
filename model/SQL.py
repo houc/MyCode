@@ -1,7 +1,7 @@
 import warnings
 
 from pymysql.connections import Connection
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 
 
 class Mysql:
@@ -11,18 +11,18 @@ class Mysql:
         :param switch: False:不创建表字段，True创建表
         :param coding: 转码
         """
-        self.dbHost = MyYaml('address').sql
-        self.dbUser = MyYaml('account').sql
-        self.dbPsw = MyYaml('password').sql
-        self.dbPort = MyYaml('port').sql
-        self.dbBase = MyYaml('name_db').sql
-        self.dbTable = MyYaml('sql_table').sql
-        self.dbTitle = MyYaml('sql_create_title').sql
-        self.dbQuery = MyYaml('sql_query').sql
-        self.dbInsert = MyYaml('sql_insert').sql
-        self.dbDelete = MyYaml('sql_delete').sql
-        self.dbUpdate = MyYaml('sql_update').sql
-        self.dbCreate = MyYaml('sql_create_list').sql
+        self.dbHost = MyConfig('address').sql
+        self.dbUser = MyConfig('account').sql
+        self.dbPsw = MyConfig('password').sql
+        self.dbPort = MyConfig('port').sql
+        self.dbBase = MyConfig('name_db').sql
+        self.dbTable = MyConfig('sql_table').sql
+        self.dbTitle = MyConfig('sql_create_title').sql
+        self.dbQuery = MyConfig('sql_query').sql
+        self.dbInsert = MyConfig('sql_insert').sql
+        self.dbDelete = MyConfig('sql_delete').sql
+        self.dbUpdate = MyConfig('sql_update').sql
+        self.dbCreate = MyConfig('sql_create_list').sql
         self.decoding = coding
         self.DB = self._check_sql_list()
         if switch:

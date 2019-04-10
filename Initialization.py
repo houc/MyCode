@@ -3,7 +3,7 @@ import re
 import operator
 import shutil
 
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig, MyProject
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
 from model.PrintColor import RED_BIG
 from model.MyException import CreateFileError, FUN_NAME
@@ -15,11 +15,11 @@ from config_path.path_file import read_file, module_file, PATH
 class CreateModule(object):
     def __init__(self):
         """初始化"""
-        self.all_param = MyYaml().parameter_ui
         self.log = Logger()
         self.time = standard_time()
         self.path = os.path.realpath(__file__)
-        self.file_path = MyYaml('project_name').excel_parameter
+        self.file_path = MyConfig('project_name').excel_parameter
+        self.all_param = MyProject(self.file_path).parameter_ui
         self.paths = self.file_path
         self.init = '__init__.py'
         self.currency_py = 'currency.py'
@@ -45,9 +45,9 @@ class CreateModule(object):
         module = self._module(modules)
         global path
         if module:
-            init_path = module_file(module, self.init)
-            currency_py_path = module_file(module, self.currency_py)
-            currency_ya_path = module_file(module, self.currency_ya)
+            init_path = module_file(self.file_path, module, self.init)
+            currency_py_path = module_file(self.file_path, module, self.currency_py)
+            currency_ya_path = module_file(self.file_path, module, self.currency_ya)
             path_list = [init_path, currency_py_path, currency_ya_path]
             content = "".join(str(module).title().split("_")) + "Element"
             try:
@@ -85,7 +85,7 @@ class CreateModule(object):
         """检查用例是否存在,并创建用例中的方法"""
         try:
             case_conversion = py + '.py' if '_st' in py else py + '_st.py'
-            case_path = module_file(modules, case_conversion)
+            case_path = module_file(self.file_path, modules, case_conversion)
             if not os.path.exists(case_path):
                 content = self._handle_case_data(write_one[py], module=modules)
                 with open(case_path, 'wt', encoding=self.encoding) as f:

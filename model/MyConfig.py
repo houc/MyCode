@@ -1,7 +1,7 @@
 import configparser
 import os
 
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 
 
 class ConfigParameter(object):
@@ -10,7 +10,7 @@ class ConfigParameter(object):
         self.path = os.path.realpath(os.path.dirname(os.path.dirname(__file__))) + dirName
         self.encoding = encoding
         self.config = configparser.ConfigParser()
-        self.keys = MyYaml('token_keys').config
+        self.keys = MyConfig('token_keys').config
 
     def write_ini(self, content, node='session'):
         """将信息写入配置文件"""

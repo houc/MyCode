@@ -3,7 +3,7 @@ from selenium.webdriver.common.action_chains import ActionChains as hover
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from model.DriverParameter import browser
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from PIL import ImageGrab
 
 
@@ -52,7 +52,7 @@ class OperationElement(object):
         打开浏览器
         :return: 返回新浏览器的session
         """
-        return browser(MyYaml('browser').config)
+        return browser(MyConfig('browser').config)
 
     def _find_element(self, element):
         """

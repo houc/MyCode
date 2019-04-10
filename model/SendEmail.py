@@ -6,7 +6,7 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.header import Header
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from config_path.path_file import read_file
 from model.HtmlDataHandle import AmilSupport
 
@@ -15,12 +15,12 @@ class Email:
     def __init__(self):
         self.Mail = smtplib.SMTP()
         self.contents = MIMEMultipart()
-        self.sender = MyYaml('send_account').send_email
-        self.sender_password = MyYaml('send_password').send_email
-        self.server = MyYaml('server').send_email
-        self.receiver = MyYaml('receiver').send_email
-        self.title_name = MyYaml('project_name').excel_parameter
-        self.title = MyYaml('science').excel_parameter
+        self.sender = MyConfig('send_account').send_email
+        self.sender_password = MyConfig('send_password').send_email
+        self.server = MyConfig('server').send_email
+        self.receiver = MyConfig('receiver').send_email
+        self.title_name = MyConfig('project_name').excel_parameter
+        self.title = MyConfig('science').excel_parameter
         self.img_path = read_file('img', 'html.png')
         self.excel_path = read_file('report', 'ExcelReport.xlsx')
 

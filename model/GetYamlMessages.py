@@ -1,7 +1,7 @@
 import re
 import warnings
 
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig, MyProject
 
 
 class GetConfigMessage(object):
@@ -13,14 +13,14 @@ class GetConfigMessage(object):
         :param class_name: 类：如：'className': 'TestLogin'
         :param case_name: 用例名称：如：test_accountError
         """
-        global url, value
-        self.module = module
-        self.class_name = class_name
-        self.case_name = case_name
-        self.url = MyYaml('Manufacture').base_url
-        data_messages = {}
-        self.all_parm = MyYaml().parameter_ui
         try:
+            global url, value
+            self.module = module
+            self.class_name = class_name
+            self.case_name = case_name
+            self.url = MyConfig('url').base_url
+            self.all_parm = MyProject('').parameter_ui
+            data_messages = {}
             for a in self.all_parm[module]:
                 if a["className"] == class_name:
                     if a['url'] is None:
@@ -48,7 +48,7 @@ class GetConfigMessage(object):
                               format(self.module, self.class_name, self.case_name)
                 warnings.warn(reason_one)
         except Exception as exc:
-            warnings.warn(str(exc))
+            warnings.warn('存在异常错误' + str(exc))
 
     def re(self):
         """返回数据"""

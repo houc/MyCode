@@ -1,14 +1,14 @@
 import os
 import requests
 
-from model.Yaml import MyYaml
+from model.Yaml import MyConfig
 from model.Thread import MyThread
 from config_path.path_file import read_file
 from PIL import Image
 
 def get_log():
     """获取项目logo"""
-    url = MyYaml('Manufacture').base_url + MyYaml('logo_url').config
+    url = MyConfig('url').base_url + MyConfig('logo_url').config
     r = requests.get(url, stream=True)
     if r.content:
         log_path = read_file('img', 'logo.png')
