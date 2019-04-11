@@ -12,7 +12,7 @@ class OperationElement(object):
         浏览器操作封装类
     """
 
-    def __init__(self, driver, timeout=12, detection=0.5, exception=EC.NoSuchElementException):
+    def __init__(self, driver, timeout=20, detection=1, exception=EC.NoSuchElementException):
         """
         初始化类参数
         :param driver: 浏览器session
@@ -139,12 +139,17 @@ class OperationElement(object):
         显示等待某一个元素是否存在，默认超时20秒，每次0.5秒侦查一次是否存在
         :param element: 如：如：operation_element(By.XPATH, "//*[contains(text(),'请选择要登录的公司')]")).click()
         :param timeout: 如：20
+        :param wait_time: 默认等待2秒
         :return: 存在则返回，不存在则抛出异常！
         """
         try:
             return self.support.until(EC.presence_of_element_located(element))
         except Exception:
-            raise
+            self.F5()
+            try:
+                return self.support.until(EC.presence_of_element_located(element))
+            except Exception as exc:
+                raise ValueError('呀！元素:{}异常啦，异常原因:{}'.format(element, exc))
 
     def is_click(self, element, wait_time=2):
         """
@@ -182,6 +187,7 @@ class OperationElement(object):
         :param wait_time: 等待时间
         :return: 返回对应的文本值
         """
+        global value
         value = self.operation_element(element).text
         if not value:
             import time
@@ -200,6 +206,14 @@ class OperationElement(object):
         attribute_value = self.operation_element(element).get_attribute('class')
         return text in attribute_value
 
+    def get_attribute_class(self, element):
+        """
+        获取元素列表中的属性值(该项为class)
+        :param element: 元素
+        :return: 返回对应的class属性值
+        """
+        return self.operation_element(element).get_attribute('class')
+
     def is_element(self, element):
         """
         检查元素是否存在
@@ -207,8 +221,7 @@ class OperationElement(object):
         :return: 存在返回True，不存在返回False
         """
         try:
-            self.operation_element(element)
-            return True
+            return self.operation_element(element)
         except EC.NoSuchElementException:
             return False
 

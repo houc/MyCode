@@ -12,7 +12,128 @@ SCRM:
                 1、点击{新建邮件}；\n
                 2、收件人输入{1063116271@qq.com}；\n
                 3、主题输入{自动化测试}；\n
-                4、点击{发送}；\n
+                4、点击【发送】；\n
                 5、刷新浏览器查看是否+1",
         asserts:
       }
+        test_create_contacts: {
+        url: ,
+        author: 后超,
+        level: 中,
+        scene: "验证新增联系人后，工作台【新增联系人】是否会+1\n
+                1、点击{新增联系人}并提示{联系人已成功创建！};\n
+                2、输入邮箱地址{201904111236@qq.com};\n
+                3、点击【保存】;\n
+                4、刷新浏览器查看是否+1",
+        asserts:
+        }
+        test_create_customer: {
+        url: ,
+        author: 后超,
+        level: 中,
+        scene: "验证新增客户后，工作台【新增客户】是否会+1\n
+                1、点击{新增客户}并提示{保存成功！};\n
+                2、输入国家选择{中国};\n
+                3、输入{测试客户}后，点击【保存】;\n
+                4、刷新浏览器查看是否+1",
+        asserts:
+        }
+    - shortcut_function:
+      url: /#/home
+      className: ShortcutFunction
+      funName:
+      - test_create_mail: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新建邮件快捷功能是否能正常跳转\n
+                1、点击{新建邮件};",
+        asserts: "收件人:"
+      }
+        test_create_task: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新增任务快捷功能是否能正常跳转\n
+                1、点击{新增任务};",
+        asserts: "任务主题 *"
+        }
+        test_quick_create_contacts: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新增联系人快捷功能是否能正常跳转\n
+                1、点击{新增联系人};",
+        asserts: 邮箱
+        }
+        test_quick_create_customer: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新增客户快捷功能是否能正常跳转\n
+                1、点击{新增客户};",
+        asserts: 客户名称
+        }
+        test_quick_create_marketing: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新建营销邮件快捷功能是否能正常跳转\n
+                1、点击{新建营销邮件};\n
+                2、验证跳转的URL是否包含{template/myTemplate}",
+        asserts: True
+        }
+        test_marketing_standard: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新建营销邮件流程标准快捷功能是否能正常跳转\n
+                1、点击{新建营销邮件流程};\n
+                2、选择{标准}，点击{确定};\n
+                3、验证跳转的URL是否包含{/flow/flow_new?type=1}",
+        asserts: True
+        }
+        test_marketing_fixed: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新建营销邮件流程固定日期快捷功能是否能正常跳转\n
+                1、点击{新建营销邮件流程};\n
+                2、选择{固定日期型}，点击{确定};\n
+                3、验证跳转的URL是否包含{/flow/flow_new?type=2&value=}",
+        asserts: True
+        }
+        test_marketing_week: {
+        url: ,
+        author: 后超,
+        level: 低,
+        scene: "验证新建营销邮件流程周期快捷功能是否能正常跳转\n
+                1、点击{新建营销邮件流程};\n
+                2、选择{周期型}，选择{生日}，点击{确定};\n
+                3、验证跳转的URL是否包含{/flow_new?type=3&value=birth_day}",
+        asserts: True
+        }
+    - three_table:
+      url: /#/home
+      className: ThreeTable
+      funName:
+      - test_mail_star: {
+        url: ,
+        author: 后超,
+        level: 中,
+        scene: "验证星标邮件是否成功\n
+                1、选择第{1}条邮件;\n
+                2、点击星标",
+        asserts: 标记为星标邮件成功
+      }
+        test_today_task: {
+        url: ,
+        author: 后超,
+        level: 中,
+        scene: "验证新增任务后今日任务统计是否+1\n
+                1、点击{新增任务};\n
+                2、任务主题输入{测试任务主题};\n
+                3、负责人选择当前登录的人员;\n
+                4、点击【确定】，并提示{任务新增成功}，刷新浏览器",
+        asserts:
+        }

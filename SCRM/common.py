@@ -40,9 +40,9 @@ class LoginPublic(BrowserToken):
         self.is_send(self.str_conversion(self.account_and_password, 1), self.account)
         self.is_send(self.str_conversion(self.account_and_password, 2), self.password)
         self.is_click(self.login_button)
-        if self.is_element(self.my_self):
-            if switch_toke:
-                self.get_token()
+        assert self.is_element(self.my_self), '登录失败！'
+        if switch_toke:
+            self.get_token()
 
     def get_token(self):
         """获取浏览器中的token"""
@@ -57,4 +57,5 @@ class LoginPublic(BrowserToken):
     def remove_key(self):
         """从配置文件中删除写入的token值"""
         self.config.remove_node(self.module)
+
 

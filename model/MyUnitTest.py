@@ -69,7 +69,6 @@ class UnitTests(unittest.TestCase):
             msg = "{}.{}.{}".format(self.module, self.class_name, self.case_name)
             warnings.warn(msg + "common中scene参数为空，此参数不能为空，请增加")
         self.driver.set_page_load_timeout(self.wait)
-        self.driver.set_script_timeout(self.wait)
         self.current_time = standard_time()
         self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         self.start_time = time.time()
