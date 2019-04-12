@@ -84,7 +84,7 @@ class JurisdictionElement(OperationElement):
 
     def execute_op(self, role_name):
         """
-        获取设置权限人员的账号
+        获取设置权限人员的账号,并执行后台方法
         :param role_name: 权限的名字
         :return: 设置人员的姓名，bool值
         """
