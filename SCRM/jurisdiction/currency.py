@@ -77,12 +77,12 @@ class JurisdictionElement(OperationElement):
     def _is_role_switch_false(self, role_name):
         """
         判断权限是否关闭
-        :param role_name:
+        :param role_name: 权限名称
         :return: 返回对应的bool值
         """
         return self.is_attribute_value(self.str_conversion(self.is_role, role_name), 'false')
 
-    def _get_set_member_account(self, role_name):
+    def execute_op(self, role_name):
         """
         获取设置权限人员的账号
         :param role_name: 权限的名字
