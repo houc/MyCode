@@ -75,6 +75,7 @@ class WorkbenchElement(OperationElement):
         :return: ...
         """
         self.is_click(self.str_conversion(self.process_week, week))
+        time.sleep(1)
         self.is_click(self.str_conversion(self.china, type))
 
     def cancel_button(self, location):
@@ -109,6 +110,7 @@ class WorkbenchElement(OperationElement):
         :return: ...
         """
         self.is_send(self.addressee, addressee)
+        time.sleep(1)
         self.is_send(self.theme, theme)
 
     def send_button(self):
@@ -145,7 +147,9 @@ class WorkbenchElement(OperationElement):
 
     def add_customer(self, china, customer, location):
         self.is_click(self.country_select)
+        time.sleep(0.5)
         self.is_click(self.str_conversion(self.china, china))
+        time.sleep(0.5)
         self.is_send(self.str_conversion(self.input_button, location), customer)
 
     def text_mail(self, location):
@@ -180,6 +184,7 @@ class WorkbenchElement(OperationElement):
     def mark_star_mail(self):
         """标记为星标邮件"""
         if self.is_attribute_class(self.mark_star, 'icon-ic_star_border_black'):
+            time.sleep(1)
             self.is_click(self.mark_star)
         else:
             self.is_click(self.mark_star)
@@ -189,12 +194,19 @@ class WorkbenchElement(OperationElement):
     def add_task(self, theme, member='负责人'):
         """"""
         name = self.is_text(self.get_user_name)
+        time.sleep(0.5)
         self.is_send(self.str_conversion(self.input_button, 1), theme)
+        time.sleep(0.5)
         self.is_click(self.str_conversion(self.quick, member))
+        time.sleep(0.5)
         self.is_send(self.select_member, name)
+        time.sleep(0.5)
         self.operation_element(self.select_member).send_keys(Keys.ENTER)
+        time.sleep(0.5)
         self.is_click(self.select_confirm)
+        time.sleep(0.5)
         self.is_click(self.str_conversion(self.confirm, 4))
+        time.sleep(0.5)
         self.is_click(self.str_conversion(self.quick, '提交'))
 
     def get_table_text(self, location=3):
