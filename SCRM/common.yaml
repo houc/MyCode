@@ -157,6 +157,146 @@ SCRM:
         level: 高,
         scene: "开启导入权限，验证导入按钮是否存在\n
                 1、使用超管账号，进入权限管理后台，开启{导入}权限，并提示{权限更新成功};\n
-                2、使用设置的账号进行验证{导入客户/联系人}是否存在;",
+                2、使用设置的账号进行验证{导入客户/联系人}是否存在",
         asserts: True
+        }
+        test_close_export: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭导出权限，验证导出按钮是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{导出}权限，并提示{权限更新成功};\n
+                2、使用设置的账号进行验证{导出客户}是否存在;",
+        asserts: False
+        }
+        test_open_export: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启导出权限，验证导出按钮是否存在\n
+                1、使用超管账号，进入权限管理后台，开启{导出}权限，并提示{权限更新成功};\n
+                2、使用设置的账号进行验证{导出客户}是否存在;",
+        asserts: True
+        }
+        test_open_distribution: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启分配权限，验证分配按钮是否存在\n
+                1、使用超管账号，进入权限管理后台，开启{分配}权限，并提示{权限更新成功};\n
+                2、使用设置的账号进行验证{分配}是否存在;",
+        asserts: True
+        }
+        test_close_distribution: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭分配权限，验证分配按钮是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{分配}权限，并提示{权限更新成功};\n
+                2、使用设置的账号进行验证{分配}是否存在;",
+        asserts: False
+        }
+        test_open_field: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启设置属性字段分配权限，验证设置属性字段是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{设置属性字段}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/filed?state=contact};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+        test_close_field: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭设置属性字段分配权限，验证设置属性字段是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{设置属性字段}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/filed?state=contact};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+        test_close_tag: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭标签管理权限，验证标签管理是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{标签管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/tag?state=contact};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+        test_open_tag: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启标签管理权限，验证标签管理是否存在\n
+                1、使用超管账号，进入权限管理后台，开启{标签管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/tag?state=contact};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+        test_open_public: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启公海管理权限，验证公海管理是否存在\n
+                1、使用超管账号，进入权限管理后台，开启{公海管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/globalClient/rule};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+        test_close_public: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭公海管理权限，验证公海管理是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{公海管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/globalClient/rule};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+        test_open_private: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启私海管理权限，验证私海管理是否存在\n
+                1、使用超管账号，进入权限管理后台，开启{私海管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/selfNum};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+        test_close_private: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭私海管理权限，验证私海管理是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{私海管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/selfNum};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+        }
+    - coordination_app:
+      url: /#/manage/authority_setting
+      className: CoordinationApp
+      funName:
+      - test_open_SkyDrive: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "打开网盘管理权限，验证网盘管理是否存在\n
+                1、使用超管账号，进入权限管理后台，打开{网盘管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/selfNum};\n
+                3、验证是否跳转{/#/home}",
+        asserts: True
+      }
+        test_close_SkyDrive: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭网盘管理权限，验证网盘管理是否存在\n
+                1、使用超管账号，进入权限管理后台，关闭{网盘管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/salesManagement/selfNum};\n
+                3、验证是否跳转{/#/home}",
+        asserts: False
         }

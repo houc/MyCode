@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/SCRM/jurisdiction/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SCRM/jurisdiction/currency.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SCRM/jurisdiction/currency.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCRM/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCRM/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/common.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SCRM/common.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/common.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/workbench/currency.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/workbench/currency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCRM/jurisdiction/currency.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/jurisdiction/currency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/MyUnitTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/MyUnitTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SeleniumElement.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/SeleniumElement.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,123 +20,136 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_public.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_public Coverage Results" MODIFIED="1555313430946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_three_table_st_ThreeTable.coverage" NAME="Unittests for three_table_st.ThreeTable Coverage Results" MODIFIED="1554973971622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/MyCode$excel_report.coverage" NAME="excel_report Coverage Results" MODIFIED="1542298561371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/MyCode$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1552988717176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
-    <SUITE FILE_PATH="coverage/UI$DriverParameter.coverage" NAME="DriverParameter Coverage Results" MODIFIED="1554175218827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/UI$CaseHandle.coverage" NAME="CaseHandle Coverage Results" MODIFIED="1554688055986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/MyCode$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1551781086892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_in_about_table_st_py.coverage" NAME="Unittests in about_table_st.py Coverage Results" MODIFIED="1554792103335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/about" />
     <SUITE FILE_PATH="coverage/UI$MyDB.coverage" NAME="MyDB Coverage Results" MODIFIED="1554887177876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_work_effectiveness_st_WorkEffectiveness_test_send_ordinary_mail.coverage" NAME="Unittests for work_effectiveness_st.WorkEffectiveness.test_send_ordinary_mail Coverage Results" MODIFIED="1554944419617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_accountError.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_accountError Coverage Results" MODIFIED="1552633213582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
-    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_exist.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_exist Coverage Results" MODIFIED="1551685419770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_Custom_st_TestStaffCustomManage_test_drag_and_drop2.coverage" NAME="Unittests for Custom_st.TestStaffCustomManage.test_drag_and_drop2 Coverage Results" MODIFIED="1552533470890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/staff_manage" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport_test_contactsIncreaseStock.coverage" NAME="Unittests for contacts_report_st.TestContactsReport.test_contactsIncreaseStock Coverage Results" MODIFIED="1553064359358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
-    <SUITE FILE_PATH="coverage/MyCode$Unittests_in_login_st_py.coverage" NAME="Unittests in login_st.py Coverage Results" MODIFIED="1544104484785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
-    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_passwordEnglish.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_passwordEnglish Coverage Results" MODIFIED="1552634306950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_import.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_import Coverage Results" MODIFIED="1555309411301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction Coverage Results" MODIFIED="1554967416572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_import.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_import Coverage Results" MODIFIED="1555299004926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_contacts_report_st_TestContactsReport_test_companySelect.coverage" NAME="Unittests for contacts_report_st.TestContactsReport.test_companySelect Coverage Results" MODIFIED="1552957024588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
-    <SUITE FILE_PATH="coverage/UI$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1554282010434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/img" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_quick_create_customer.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_quick_create_customer Coverage Results" MODIFIED="1554951326486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport_test_contactsDownload.coverage" NAME="Unittests for contacts_report_st.TestContactsReport.test_contactsDownload Coverage Results" MODIFIED="1553064652747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_three_table_st_ThreeTable_test_today_task.coverage" NAME="Unittests for three_table_st.ThreeTable.test_today_task Coverage Results" MODIFIED="1554973939054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_success.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_success Coverage Results" MODIFIED="1552286628142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
     <SUITE FILE_PATH="coverage/UI$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1554352664719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture" />
     <SUITE FILE_PATH="coverage/MyCode$pc_config.coverage" NAME="pc_config Coverage Results" MODIFIED="1542297322630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_passwordNull.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_passwordNull Coverage Results" MODIFIED="1551771465388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_marketing_st_TestMarketing_test_market_marketing_knowledge.coverage" NAME="Unittests for marketing_st.TestMarketing.test_market_marketing_knowledge Coverage Results" MODIFIED="1554804830587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/marketing" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_technology_table_st_TestTechnologyTable_test_switch_download.coverage" NAME="Unittests for technology_table_st.TestTechnologyTable.test_switch_download Coverage Results" MODIFIED="1554867339311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/technology" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_create_task.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_create_task Coverage Results" MODIFIED="1554950971588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_Custom_st_TestStaffCustomManage_test_drag_and_drop.coverage" NAME="Unittests for Custom_st.TestStaffCustomManage.test_drag_and_drop Coverage Results" MODIFIED="1551952563909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/staff_manage" />
     <SUITE FILE_PATH="coverage/UI$Yaml.coverage" NAME="Yaml Coverage Results" MODIFIED="1554884331254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_in_Custom_st_py.coverage" NAME="Unittests in Custom_st.py Coverage Results" MODIFIED="1551770489072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/staff_manage" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_login_ValidateLogin_st_TestLogin_test_accountError.coverage" NAME="Unittests for login.ValidateLogin_st.TestLogin.test_accountError Coverage Results" MODIFIED="1552269762768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM" />
     <SUITE FILE_PATH="coverage/UI$debug.coverage" NAME="debug Coverage Results" MODIFIED="1554793216522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_quick_create_marketing.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_quick_create_marketing Coverage Results" MODIFIED="1554953578118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/MyCode$PCParameter.coverage" NAME="PCParameter Coverage Results" MODIFIED="1551695202417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_marketing_week.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_marketing_week Coverage Results" MODIFIED="1554961605596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport.coverage" NAME="Unittests for contacts_report_st.TestContactsReport Coverage Results" MODIFIED="1553068136703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_three_table_st_ThreeTable_test_mail_star.coverage" NAME="Unittests for three_table_st.ThreeTable.test_mail_star Coverage Results" MODIFIED="1554970714645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy.coverage" NAME="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy Coverage Results" MODIFIED="1553159999384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/marketing_transformation" />
     <SUITE FILE_PATH="coverage/UI$Unittests_in_work_effectiveness_st_py.coverage" NAME="Unittests in work_effectiveness_st.py Coverage Results" MODIFIED="1554891588137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/MyCode$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1552991662042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/img" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_marketing_fixed.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_marketing_fixed Coverage Results" MODIFIED="1554955136167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_technology_table_st_TestTechnologyTable_test_switch_technology.coverage" NAME="Unittests for technology_table_st.TestTechnologyTable.test_switch_technology Coverage Results" MODIFIED="1554171302406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/technology" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_three_table_st_ThreeTable_test_cancel_star.coverage" NAME="Unittests for three_table_st.ThreeTable.test_cancel_star Coverage Results" MODIFIED="1554971315873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/UI$debugging.coverage" NAME="debugging Coverage Results" MODIFIED="1554090525288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UI$Thread.coverage" NAME="Thread Coverage Results" MODIFIED="1554285364505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_export.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_export Coverage Results" MODIFIED="1555307575013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_tag.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_tag Coverage Results" MODIFIED="1555316513122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/MyCode$ExcelReport.coverage" NAME="ExcelReport Coverage Results" MODIFIED="1551756743732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/MyCode$SQL.coverage" NAME="SQL Coverage Results" MODIFIED="1552636543198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_quick_create_contacts.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_quick_create_contacts Coverage Results" MODIFIED="1554951171018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/MyCode$TimingRun.coverage" NAME="TimingRun Coverage Results" MODIFIED="1546310728937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_in_ValidateLogin_st_py.coverage" NAME="Unittests in ValidateLogin_st.py Coverage Results" MODIFIED="1552637225173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_debug_My_test_ont.coverage" NAME="Unittests for debug.My.test_ont Coverage Results" MODIFIED="1554090700771" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$DriverParameter.coverage" NAME="DriverParameter Coverage Results" MODIFIED="1544102419766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_news_table_st_TestNewsTable.coverage" NAME="Unittests for news_table_st.TestNewsTable Coverage Results" MODIFIED="1554104033773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/news" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_export.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_export Coverage Results" MODIFIED="1555308250249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/MyCode$InterfaceLogin.coverage" NAME="InterfaceLogin Coverage Results" MODIFIED="1546314063342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/IsEDP" />
     <SUITE FILE_PATH="coverage/UI$runner.coverage" NAME="runner Coverage Results" MODIFIED="1554975556340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UI$Initialization.coverage" NAME="Initialization Coverage Results" MODIFIED="1554976813600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$HtmlDataHandle.coverage" NAME="HtmlDataHandle Coverage Results" MODIFIED="1554188626634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$path_file.coverage" NAME="path_file Coverage Results" MODIFIED="1542289231300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config_path" />
-    <SUITE FILE_PATH="coverage/MyCode$case.coverage" NAME="case Coverage Results" MODIFIED="1542984805504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python3.6.3/Lib/unittest" />
     <SUITE FILE_PATH="coverage/UI$Unittests_in_technology_table_st_py.coverage" NAME="Unittests in technology_table_st.py Coverage Results" MODIFIED="1554086109767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/technology" />
-    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_login_st_LoginTestIn_test_accountError.coverage" NAME="Unittests for login_st.LoginTestIn.test_accountError Coverage Results" MODIFIED="1544103344616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
     <SUITE FILE_PATH="coverage/MyCode$Thread.coverage" NAME="Thread Coverage Results" MODIFIED="1552982845883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/MyCode$currency.coverage" NAME="currency Coverage Results" MODIFIED="1552872911303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_marketing_contact_about_st_TestMarketingContactAbout_test_market_contact_about.coverage" NAME="Unittests for marketing_contact_about_st.TestMarketingContactAbout.test_market_contact_about Coverage Results" MODIFIED="1554169964997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/marketing_contact" />
-    <SUITE FILE_PATH="coverage/MyCode$runner.coverage" NAME="runner Coverage Results" MODIFIED="1553044598880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_staff_manage_Custom_st_TestStaffCustomManage_test_drag_and_drop.coverage" NAME="Unittests for staff_manage.Custom_st.TestStaffCustomManage.test_drag_and_drop Coverage Results" MODIFIED="1552030624586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM" />
     <SUITE FILE_PATH="coverage/UI$ExcelReport.coverage" NAME="ExcelReport Coverage Results" MODIFIED="1554804961906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$GetYamlMessages.coverage" NAME="GetYamlMessages Coverage Results" MODIFIED="1552529659220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/UI$SeleniumElement.coverage" NAME="SeleniumElement Coverage Results" MODIFIED="1554881351883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$SeleniumElement.coverage" NAME="SeleniumElement Coverage Results" MODIFIED="1552555836811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
-    <SUITE FILE_PATH="coverage/UI$SQL.coverage" NAME="SQL Coverage Results" MODIFIED="1553148193063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$GetOther.coverage" NAME="GetOther Coverage Results" MODIFIED="1552982957684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin.coverage" NAME="Unittests for ValidateLogin_st.TestLogin Coverage Results" MODIFIED="1551772321913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_in_contact_st_py.coverage" NAME="Unittests in contact_st.py Coverage Results" MODIFIED="1554198051085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/contact" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_for_company_news_st_TestCompanyNewsTable_test_public_welfare.coverage" NAME="Unittests for company_news_st.TestCompanyNewsTable.test_public_welfare Coverage Results" MODIFIED="1554100092892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/news" />
-    <SUITE FILE_PATH="coverage/UI$currency.coverage" NAME="currency Coverage Results" MODIFIED="1554878595914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/about" />
     <SUITE FILE_PATH="coverage/UI$TimingRun.coverage" NAME="TimingRun Coverage Results" MODIFIED="1554871455420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_create_mail.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_create_mail Coverage Results" MODIFIED="1554965591747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/MyCode$Initialization.coverage" NAME="Initialization Coverage Results" MODIFIED="1553044367715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/UI$Unittests_in_debug_py.coverage" NAME="Unittests in debug.py Coverage Results" MODIFIED="1554112383632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_work_effectiveness_st_WorkEffectiveness_test_create_contacts.coverage" NAME="Unittests for work_effectiveness_st.WorkEffectiveness.test_create_contacts Coverage Results" MODIFIED="1554948007383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
-    <SUITE FILE_PATH="coverage/MyCode$run.coverage" NAME="run Coverage Results" MODIFIED="1542985873547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_work_effectiveness_st_WorkEffectiveness_test_create_customer.coverage" NAME="Unittests for work_effectiveness_st.WorkEffectiveness.test_create_customer Coverage Results" MODIFIED="1554966092966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_work_effectiveness_st_WorkEffectiveness.coverage" NAME="Unittests for work_effectiveness_st.WorkEffectiveness Coverage Results" MODIFIED="1554967266885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage.coverage" NAME="Unittests for sale_manage_st.SaleManage Coverage Results" MODIFIED="1555315883518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_marketing_standard.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_marketing_standard Coverage Results" MODIFIED="1554954936239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/UI$Unittests_in_contacts_report_st_py.coverage" NAME="Unittests in contacts_report_st.py Coverage Results" MODIFIED="1553062286884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
     <SUITE FILE_PATH="coverage/UI$MyConfig.coverage" NAME="MyConfig Coverage Results" MODIFIED="1554962523813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_private.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_private Coverage Results" MODIFIED="1555314848922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
+    <SUITE FILE_PATH="coverage/MyCode$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1552988717176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
+    <SUITE FILE_PATH="coverage/UI$DriverParameter.coverage" NAME="DriverParameter Coverage Results" MODIFIED="1554175218827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$CaseHandle.coverage" NAME="CaseHandle Coverage Results" MODIFIED="1554688055986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/MyCode$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1551781086892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_accountError.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_accountError Coverage Results" MODIFIED="1552633213582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_exist.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_exist Coverage Results" MODIFIED="1551685419770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/MyCode$Unittests_in_login_st_py.coverage" NAME="Unittests in login_st.py Coverage Results" MODIFIED="1544104484785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_passwordEnglish.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_passwordEnglish Coverage Results" MODIFIED="1552634306950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/UI$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1555305997938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport_test_contactsDownload.coverage" NAME="Unittests for contacts_report_st.TestContactsReport.test_contactsDownload Coverage Results" MODIFIED="1553064652747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_three_table_st_ThreeTable_test_today_task.coverage" NAME="Unittests for three_table_st.ThreeTable.test_today_task Coverage Results" MODIFIED="1554973939054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_success.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_success Coverage Results" MODIFIED="1552286628142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_ValidateLogin_st_TestLogin_test_passwordNull.coverage" NAME="Unittests for ValidateLogin_st.TestLogin.test_passwordNull Coverage Results" MODIFIED="1551771465388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_marketing_st_TestMarketing_test_market_marketing_knowledge.coverage" NAME="Unittests for marketing_st.TestMarketing.test_market_marketing_knowledge Coverage Results" MODIFIED="1554804830587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/marketing" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_technology_table_st_TestTechnologyTable_test_switch_download.coverage" NAME="Unittests for technology_table_st.TestTechnologyTable.test_switch_download Coverage Results" MODIFIED="1554867339311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/technology" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_quick_create_marketing.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_quick_create_marketing Coverage Results" MODIFIED="1554953578118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/MyCode$PCParameter.coverage" NAME="PCParameter Coverage Results" MODIFIED="1551695202417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_three_table_st_ThreeTable_test_mail_star.coverage" NAME="Unittests for three_table_st.ThreeTable.test_mail_star Coverage Results" MODIFIED="1554970714645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_mail_marketing_st_TestMarketingTransformation_test_mailCopy.coverage" NAME="Unittests for mail_marketing_st.TestMarketingTransformation.test_mailCopy Coverage Results" MODIFIED="1553159999384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/marketing_transformation" />
+    <SUITE FILE_PATH="coverage/MyCode$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1552991662042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/img" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_technology_table_st_TestTechnologyTable_test_switch_technology.coverage" NAME="Unittests for technology_table_st.TestTechnologyTable.test_switch_technology Coverage Results" MODIFIED="1554171302406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/technology" />
+    <SUITE FILE_PATH="coverage/UI$debugging.coverage" NAME="debugging Coverage Results" MODIFIED="1554090525288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_private.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_private Coverage Results" MODIFIED="1555314780233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
+    <SUITE FILE_PATH="coverage/UI$Thread.coverage" NAME="Thread Coverage Results" MODIFIED="1554285364505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/MyCode$SQL.coverage" NAME="SQL Coverage Results" MODIFIED="1552636543198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_quick_create_contacts.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_quick_create_contacts Coverage Results" MODIFIED="1554951171018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/MyCode$TimingRun.coverage" NAME="TimingRun Coverage Results" MODIFIED="1546310728937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_news_table_st_TestNewsTable.coverage" NAME="Unittests for news_table_st.TestNewsTable Coverage Results" MODIFIED="1554104033773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/news" />
+    <SUITE FILE_PATH="coverage/UI$Initialization.coverage" NAME="Initialization Coverage Results" MODIFIED="1555317929726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MyCode$case.coverage" NAME="case Coverage Results" MODIFIED="1542984805504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Python3.6.3/Lib/unittest" />
+    <SUITE FILE_PATH="coverage/MyCode$Unittests_for_login_st_LoginTestIn_test_accountError.coverage" NAME="Unittests for login_st.LoginTestIn.test_accountError Coverage Results" MODIFIED="1544103344616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/login" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_distribution.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_distribution Coverage Results" MODIFIED="1555310243717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
+    <SUITE FILE_PATH="coverage/MyCode$currency.coverage" NAME="currency Coverage Results" MODIFIED="1552872911303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_marketing_contact_about_st_TestMarketingContactAbout_test_market_contact_about.coverage" NAME="Unittests for marketing_contact_about_st.TestMarketingContactAbout.test_market_contact_about Coverage Results" MODIFIED="1554169964997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/marketing_contact" />
+    <SUITE FILE_PATH="coverage/MyCode$runner.coverage" NAME="runner Coverage Results" MODIFIED="1553044598880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_field.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_field Coverage Results" MODIFIED="1555311740535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_field.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_field Coverage Results" MODIFIED="1555315739578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
+    <SUITE FILE_PATH="coverage/UI$SeleniumElement.coverage" NAME="SeleniumElement Coverage Results" MODIFIED="1554881351883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$SQL.coverage" NAME="SQL Coverage Results" MODIFIED="1553148193063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_in_contact_st_py.coverage" NAME="Unittests in contact_st.py Coverage Results" MODIFIED="1554198051085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/contact" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_company_news_st_TestCompanyNewsTable_test_public_welfare.coverage" NAME="Unittests for company_news_st.TestCompanyNewsTable.test_public_welfare Coverage Results" MODIFIED="1554100092892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/news" />
+    <SUITE FILE_PATH="coverage/UI$currency.coverage" NAME="currency Coverage Results" MODIFIED="1554878595914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/about" />
+    <SUITE FILE_PATH="coverage/MyCode$Initialization.coverage" NAME="Initialization Coverage Results" MODIFIED="1553044367715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_in_debug_py.coverage" NAME="Unittests in debug.py Coverage Results" MODIFIED="1554112383632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MyCode$run.coverage" NAME="run Coverage Results" MODIFIED="1542985873547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_tag.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_tag Coverage Results" MODIFIED="1555312337119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="config.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config.yaml">
+      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="5" />
+            <state relative-caret-position="388">
+              <caret line="301" column="9" lean-forward="true" selection-start-line="301" selection-start-column="9" selection-end-line="301" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeleniumElement.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
+      <file leaf-file-name="coordination_app_st.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="273" column="8" selection-start-line="273" selection-start-column="8" selection-end-line="273" selection-end-column="8" />
+            <state relative-caret-position="-599">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyUnitTest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/MyUnitTest.py">
+      <file leaf-file-name="currency.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/currency.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="-324">
+              <caret line="123" column="26" lean-forward="true" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -145,8 +160,8 @@
       <file leaf-file-name="sale_manage_st.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+            <state relative-caret-position="129">
+              <caret line="427" column="36" lean-forward="true" selection-start-line="427" selection-start-column="36" selection-end-line="427" selection-end-column="36" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -154,32 +169,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
+      <file leaf-file-name="common.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SCRM/common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="161" column="9" selection-start-line="161" selection-start-column="9" selection-end-line="161" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="currency.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/currency.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+            <state relative-caret-position="332">
+              <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="currency.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SCRM/workbench/currency.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3422">
-              <caret line="213" column="16" lean-forward="true" selection-start-line="213" selection-start-column="16" selection-end-line="213" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -195,8 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>threading</find>
-      <find>FileCheckerThread</find>
       <find>_target</find>
       <find>news</find>
       <find>TestCompanyNewsTable</find>
@@ -225,6 +220,8 @@
       <find>test_quick_create_customer</find>
       <find>test_create_customer</find>
       <find>title</find>
+      <find>ivu-input</find>
+      <find>member_search</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -278,7 +275,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/img/__init__.py" />
         <option value="$PROJECT_DIR$/model/MyAssert.py" />
         <option value="$PROJECT_DIR$/TimingRun.py" />
         <option value="$PROJECT_DIR$/model/SkipModule.py" />
@@ -313,22 +309,23 @@
         <option value="$PROJECT_DIR$/SCRM/BrowserToken.ini" />
         <option value="$PROJECT_DIR$/model/DriverParameter.py" />
         <option value="$PROJECT_DIR$/token.ini" />
-        <option value="$PROJECT_DIR$/SCRM/common.py" />
         <option value="$PROJECT_DIR$/runner.py" />
         <option value="$PROJECT_DIR$/model/MyConfig.py" />
         <option value="$PROJECT_DIR$/SCRM/workbench/shortcut_function_st.py" />
         <option value="$PROJECT_DIR$/model/ImportTemplate.py" />
-        <option value="$PROJECT_DIR$/SCRM/token.ini" />
-        <option value="$PROJECT_DIR$/model/MyUnitTest.py" />
         <option value="$PROJECT_DIR$/config/config.yaml" />
-        <option value="$PROJECT_DIR$/model/SeleniumElement.py" />
         <option value="$PROJECT_DIR$/SCRM/workbench/three_table_st.py" />
         <option value="$PROJECT_DIR$/model/CaseHandle.py" />
         <option value="$PROJECT_DIR$/SCRM/workbench/work_effectiveness_st.py" />
-        <option value="$PROJECT_DIR$/SCRM/common.yaml" />
-        <option value="$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py" />
         <option value="$PROJECT_DIR$/SCRM/workbench/currency.py" />
+        <option value="$PROJECT_DIR$/model/MyUnitTest.py" />
+        <option value="$PROJECT_DIR$/SCRM/token.ini" />
+        <option value="$PROJECT_DIR$/SCRM/__init__.py" />
+        <option value="$PROJECT_DIR$/SCRM/common.py" />
+        <option value="$PROJECT_DIR$/model/SeleniumElement.py" />
+        <option value="$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py" />
         <option value="$PROJECT_DIR$/SCRM/jurisdiction/currency.py" />
+        <option value="$PROJECT_DIR$/SCRM/common.yaml" />
       </list>
     </option>
   </component>
@@ -350,6 +347,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -362,17 +360,26 @@
               <item name="UI" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="package" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="SCRM" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scrm_ui" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -437,82 +444,77 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="runner" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="auto_ui" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/runner.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="Unittests for three_table_st.ThreeTable" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for sale_manage_st.SaleManage" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/workbench" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/jurisdiction" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;three_table_st.ThreeTable&quot;" />
+      <option name="_new_target" value="&quot;sale_manage_st.SaleManage&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for three_table_st.ThreeTable.test_cancel_star" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for sale_manage_st.SaleManage.test_open_field" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/workbench" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/jurisdiction" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;three_table_st.ThreeTable.test_cancel_star&quot;" />
+      <option name="_new_target" value="&quot;sale_manage_st.SaleManage.test_open_field&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for three_table_st.ThreeTable.test_today_task" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for sale_manage_st.SaleManage.test_open_private" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/workbench" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/jurisdiction" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;three_table_st.ThreeTable.test_today_task&quot;" />
+      <option name="_new_target" value="&quot;sale_manage_st.SaleManage.test_open_private&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for sale_manage_st.SaleManage.test_open_tag" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="auto_ui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/jurisdiction" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;sale_manage_st.SaleManage.test_open_tag&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <list>
       <item itemvalue="Python.run" />
+      <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage.test_open_private" />
+      <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage" />
+      <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage.test_open_tag" />
+      <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage.test_open_field" />
       <item itemvalue="Python.Initialization" />
-      <item itemvalue="Python tests.Unittests for three_table_st.ThreeTable.test_cancel_star" />
-      <item itemvalue="Python tests.Unittests for three_table_st.ThreeTable" />
-      <item itemvalue="Python tests.Unittests for three_table_st.ThreeTable.test_today_task" />
-      <item itemvalue="Python.runner" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Initialization" />
-        <item itemvalue="Python.runner" />
-        <item itemvalue="Python tests.Unittests for three_table_st.ThreeTable" />
-        <item itemvalue="Python tests.Unittests for three_table_st.ThreeTable.test_today_task" />
-        <item itemvalue="Python tests.Unittests for three_table_st.ThreeTable.test_cancel_star" />
+        <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage.test_open_tag" />
+        <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage" />
+        <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage.test_open_field" />
+        <item itemvalue="Python tests.Unittests for sale_manage_st.SaleManage.test_open_private" />
       </list>
     </recent_temporary>
   </component>
@@ -702,46 +704,60 @@
       <option name="project" value="LOCAL" />
       <updated>1554975599131</updated>
     </task>
-    <task id="LOCAL-00026" summary="ui框架......">
-      <created>1551953410553</created>
+    <task id="LOCAL-00026" summary="增加SCRM用例">
+      <created>1555034763137</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1551953410553</updated>
+      <updated>1555034763137</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00027" summary="增加SCRM用例">
+      <created>1555034873114</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1555034873114</updated>
+    </task>
+    <task id="LOCAL-00028" summary="增加SCRM用例">
+      <created>1555034919646</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1555034919646</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_cancel_star - 2019.04.11 at 16h 23m 57s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_cancel_star" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_open_public - 2019.04.15 at 15h 30m 31s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_open_public" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_cancel_star - 2019.04.11 at 16h 28m 01s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_cancel_star" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_close_private - 2019.04.15 at 15h 32m 54s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_close_private" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_cancel_star - 2019.04.11 at 16h 28m 59s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_cancel_star" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_close_private - 2019.04.15 at 15h 34m 24s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_close_private" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable - 2019.04.11 at 16h 32m 31s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_close_private - 2019.04.15 at 15h 54m 02s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_close_private" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_today_task - 2019.04.11 at 17h 01m 07s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_today_task" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_open_private - 2019.04.15 at 15h 55m 40s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_open_private" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_today_task - 2019.04.11 at 17h 04m 56s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_today_task" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage - 2019.04.15 at 16h 05m 30s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_today_task - 2019.04.11 at 17h 10m 01s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_today_task" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_open_tag - 2019.04.15 at 16h 08m 27s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_open_tag" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_today_task - 2019.04.11 at 17h 11m 55s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_today_task" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_open_field - 2019.04.15 at 16h 09m 34s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_open_field" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable_test_today_task - 2019.04.11 at 17h 12m 46s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable.test_today_task" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage - 2019.04.15 at 16h 21m 12s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_three_table_st_ThreeTable - 2019.04.11 at 17h 13m 49s.xml">
-      <configuration name="Unittests for three_table_st.ThreeTable" configurationId="tests" />
+    <history-entry file="Unittests_for_sale_manage_st_SaleManage_test_open_tag - 2019.04.15 at 16h 22m 25s.xml">
+      <configuration name="Unittests for sale_manage_st.SaleManage.test_open_tag" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -757,66 +773,51 @@
     <frame x="-8" y="-8" width="1936" height="1062" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5032189" weight="0.36648044" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5032189" side_tool="true" weight="0.36648044" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.2793296" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49839056" weight="0.21452513" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32960895" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.37598205" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946353" weight="0.37988827" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49050632" visible="true" weight="0.2811159" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48818898" visible="true" weight="0.28487125" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49892703" weight="0.326257" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info id="Structure" order="1" sideWeight="0.50949365" side_tool="true" weight="0.26984978" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946353" weight="0.37094972" />
+      <window_info id="Structure" order="1" sideWeight="0.511811" side_tool="true" weight="0.28487125" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946353" weight="0.37037036" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49050632" visible="true" weight="0.2811159" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49839056" weight="0.21452513" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.38324022" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info id="Structure" order="1" sideWeight="0.50949365" side_tool="true" weight="0.26984978" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946353" weight="0.37988827" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5032189" weight="0.36648044" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946353" weight="0.37094972" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49892703" weight="0.326257" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32960895" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.39776537" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49050632" visible="true" weight="0.2811159" />
       <window_info id="Structure" order="1" sideWeight="0.50949365" side_tool="true" weight="0.26984978" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49839056" weight="0.21452513" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32960895" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.39776537" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49892703" weight="0.326257" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946353" weight="0.37988827" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5032189" side_tool="true" weight="0.36648044" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49839056" weight="0.21452513" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946353" weight="0.37094972" />
       <window_info anchor="right" id="Coverage" order="5" side_tool="true" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32960895" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -875,7 +876,8 @@
     <MESSAGE value="优化增加多线程运行..." />
     <MESSAGE value="优化增加多线程运行...1" />
     <MESSAGE value="优化增加多线程运行" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化增加多线程运行" />
+    <MESSAGE value="增加SCRM用例" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加SCRM用例" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -883,6 +885,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/currency.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1827">
+          <caret line="95" column="30" lean-forward="true" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Manufacture/news/news_table_st.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/products/module_in_info_st.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/products/products_center_st.py" />
@@ -900,9 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2562">
           <caret line="288" column="52" selection-start-line="288" selection-start-column="52" selection-end-line="288" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -944,9 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/public.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/DriverParameter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -956,12 +962,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/test_create_mail.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/logo.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -984,19 +984,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/token.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/workbench/currency.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BrowserToken.ini">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/token.ini" />
     <entry file="file://$PROJECT_DIR$/runner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1038,16 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/remote/webelement.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-487">
@@ -1059,17 +1037,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="226" column="33" selection-start-line="226" selection-start-column="33" selection-end-line="226" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/token.ini">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package/pie_link.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Initialization.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1078,23 +1047,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/MyUnitTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SCRM/workbench/shortcut_function_st.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2520">
           <caret line="132" column="25" lean-forward="true" selection-start-line="132" selection-start-column="25" selection-end-line="132" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1102,9 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,54 +1065,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2226">
           <caret line="115" column="25" lean-forward="true" selection-start-line="115" selection-start-column="25" selection-end-line="115" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
+    <entry file="file://$PROJECT_DIR$/SCRM/workbench/currency.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="273" column="8" selection-start-line="273" selection-start-column="8" selection-end-line="273" selection-end-column="8" />
+        <state relative-caret-position="443">
+          <caret line="213" column="16" selection-start-line="213" selection-start-column="16" selection-end-line="213" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/MyException.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="113" column="8" selection-start-line="113" selection-start-column="8" selection-end-line="113" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
+    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/support/expected_conditions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="161" column="9" selection-start-line="161" selection-start-column="9" selection-end-line="161" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/workbench/currency.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3422">
-          <caret line="213" column="16" lean-forward="true" selection-start-line="213" selection-start-column="16" selection-end-line="213" selection-end-column="16" />
+        <state relative-caret-position="126">
+          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/Yaml.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        <state relative-caret-position="882">
+          <caret line="44" column="6" selection-start-line="44" selection-start-column="6" selection-end-line="44" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.yaml">
+    <entry file="file://$PROJECT_DIR$/model/MyUnitTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="5" />
+        <state relative-caret-position="252">
+          <caret line="71" column="13" lean-forward="true" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/token.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+        <state relative-caret-position="129">
+          <caret line="427" column="36" lean-forward="true" selection-start-line="427" selection-start-column="36" selection-end-line="427" selection-end-column="36" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -1168,11 +1152,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/currency.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+        <state relative-caret-position="-324">
+          <caret line="123" column="26" lean-forward="true" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="26" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="136" column="8" selection-start-line="136" selection-start-column="8" selection-end-line="136" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-599">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package/DB.db">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="301" column="9" lean-forward="true" selection-start-line="301" selection-start-column="9" selection-end-line="301" selection-end-column="9" />
         </state>
       </provider>
     </entry>

@@ -39,6 +39,10 @@ class UnitTests(unittest.TestCase):
                 else:
                     raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
         except Exception:
+            try:
+                cls.login.remove_key()
+            except:
+                pass
             cls.driver.quit()
             raise
 

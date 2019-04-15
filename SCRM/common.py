@@ -40,7 +40,7 @@ class LoginPublic(BrowserToken):
         self.is_send(self.str_conversion(self.account_and_password, 1), self.account)
         self.is_send(self.str_conversion(self.account_and_password, 2), self.password)
         self.is_click(self.login_button)
-        assert self.is_element(self.my_self), '登录失败！'
+        assert self.operation_element(self.my_self), '登录失败！'
         if switch_toke:
             self.get_token()
 

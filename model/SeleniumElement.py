@@ -214,6 +214,14 @@ class OperationElement(object):
         """
         return self.operation_element(element).get_attribute('class')
 
+    def get_attribute_value(self, element):
+        """
+        获取value值属性
+        :param element: 元素
+        :return: 返回对应的value值
+        """
+        return self.operation_element(element).get_attribute('value')
+
     def is_element(self, element):
         """
         检查元素是否存在
@@ -221,8 +229,8 @@ class OperationElement(object):
         :return: 存在返回True，不存在返回False
         """
         try:
-            return self.operation_element(element)
-        except EC.NoSuchElementException:
+            return self._find_element(element)
+        except Exception:
             return False
 
     def str_conversion(self, element, value):
