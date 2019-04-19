@@ -300,3 +300,63 @@ SCRM:
                 3、验证是否存在{新建文件}",
         asserts: False
         }
+        test_open_mail_list: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "打开通讯录权限，验证通讯录是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{协同应用}，打开{通讯录}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/others/task/field};\n
+                3、验证是否存在{企业通讯录}",
+        asserts: True
+        }
+        test_close_mail_list: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭通讯录权限，验证通讯录是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{协同应用}，关闭{通讯录}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/others/task/field};\n
+                3、验证是否存在{企业通讯录}",
+        asserts: False
+        }
+        test_open_notice_manage: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启公告管理权限，验证{公告}管理的新增公告是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{协同应用}，开启{公告管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{新增公告}",
+        asserts: True
+        }
+        test_close_notice_manage: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭公告管理权限，验证{公告}管理的新增公告是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{协同应用}，关闭{公告管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{新增公告}",
+        asserts: False
+        }
+        test_close_notice_column: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭公告栏目权限，验证{公告}栏目的新增栏目是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{协同应用}，关闭{公告栏目管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{公告栏目}",
+        asserts: False
+        }
+        test_open_notice_column: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "打开公告栏目权限，验证{公告}栏目的新增栏目是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{协同应用}，打开{公告栏目管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{公告栏目}",
+        asserts: True
+        }

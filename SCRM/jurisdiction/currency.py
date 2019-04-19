@@ -62,7 +62,9 @@ class JurisdictionElement(OperationElement):
     customer_box = (By.XPATH, "//tbody[@class='ivu-table-tbody']/tr[$]/td/div/label") # 客户选择框
     jurisdiction = (By.XPATH, "(//span[text()='$'])[1]/..") # 小的权限框
     title_table = (By.XPATH, "//span[contains(text(), '$')]") # 左侧权限是否存在
+    left_table = (By.XPATH, "//li[contains(text(), '$')]") # 左边靠中间是否存在
     title_switch = (By.XPATH, "//div[text()='$ ']") # 权限的table切换，如切换到公司管理
+    notice_status = (By.XPATH, "//td[text()='$']/../td[2]/span/input") # 公告状态
 
 
     def _dept_and_member(self, location=2):
@@ -161,3 +163,34 @@ class JurisdictionElement(OperationElement):
         :return: 返回对应权限名称
         """
         return self.is_element(self.str_conversion(self.title_table, module))
+
+    def is_module(self, role_name):
+        """
+        点击模块
+        :param role_name: 执行的模块
+        :return:
+        """
+        self._is_role_switch_false(role_name)
+
+    def get_left_tab(self, module):
+        """
+        获取左边元素是否存在
+        :param module: 权限名称
+        :return: 返回对应是否存在
+        """
+        return self.is_element(self.str_conversion(self.left_table, module))
+
+    def get_notice_status(self, role_name, dept_location=2, member_location=1, table_switch='', notice='公告'):
+        """
+        公告名称
+        :param role_name: 公告
+        :return:
+        """
+        self.is_click(self.str_conversion(self.dept, dept_location))
+        self.is_click(self.str_conversion(self.member, member_location))
+        name = self.is_text(self.get_user_name)
+        self.is_click(self.str_conversion(self.title_switch, table_switch))
+        status = self.get_attribute_value(self.str_conversion(self.notice_status, notice))
+        if 'false' == status:
+            self.message_box(notice)
+        return name, self.get_attribute_value(self.str_conversion(self.is_role, role_name))

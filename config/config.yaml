@@ -27,7 +27,7 @@ send_email:
   port:                                   # 发送邮件端口
   send_account: houchao@gouuse.cn #wanghaibin@300.cn       # 发送账号
   send_password: Aa123456 #Ccwoaini521$                 # 发送密码
-  receiver: [houchao@gouuse.cn, 784348736@qq.com, 1063116271@qq.com, luomenhan@gouuse.cn, wangjie@gouuse.cn] # 接收的邮件地址
+  receiver: [houchao@gouuse.cn, 784348736@qq.com, 1063116271@qq.com, luomenghan@gouuse.cn, wangjie@gouuse.cn] # 接收的邮件地址
 sql:
   execute_type: my_sql         #为空调用:sqlite，为:my_sql，调用本地的my_sql数据库
   account: 'root'                       # 数据库账号

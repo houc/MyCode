@@ -92,3 +92,201 @@ class CoordinationApp(UnitTests):
         except Exception:
             self.error = str(traceback.format_exc())
 
+    def test_open_mail_list(self):
+        """
+        打开通讯录权限，验证通讯录是否存在
+
+        1、使用超管账号，进入权限管理后台，切换至{协同应用}，打开{通讯录}权限，并提示{权限更新成功};
+
+        2、使用设置的账号访问{/#/manage/others/task/field};
+
+        3、验证是否存在{企业通讯录}
+        """
+        try:
+            driver = JurisdictionElement(self.driver)
+            driver.get_current_name(self.LOGIN_INFO['account'], self.LOGIN_INFO['password'],
+                                    driver=self.driver, name='这是超管测试账号')
+            driver.get(self.url)
+            name_and_switch = driver.execute_op(self.data[1], self.data[0])
+            if 'false' == name_and_switch[1]:
+                message = driver.message_box(self.data[1])
+                driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[2])
+                driver.get(driver.home_url)
+                return self.test_open_mail_list()
+            driver.get(driver.member_list_url)
+            account = driver.get_set_member_account(name_and_switch[0])
+            LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
+            driver.get(driver.url + self.data[3])
+            driver.F5()
+            self.first = driver.get_title(self.data[-1])
+            driver.screen_shot(self.screenshots_path)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+
+    def test_close_mail_list(self):
+        """
+        关闭通讯录权限，验证通讯录是否存在
+
+        1、使用超管账号，进入权限管理后台，切换至{协同应用}，关闭{通讯录}权限，并提示{权限更新成功};
+
+        2、使用设置的账号访问{/#/manage/others/task/field};
+
+        3、验证是否存在{企业通讯录}
+        """
+        try:
+            driver = JurisdictionElement(self.driver)
+            driver.get_current_name(self.LOGIN_INFO['account'], self.LOGIN_INFO['password'],
+                                    driver=self.driver, name='这是超管测试账号')
+            driver.get(self.url)
+            name_and_switch = driver.execute_op(self.data[1], self.data[0])
+            if 'true' == name_and_switch[1]:
+                message = driver.message_box(self.data[1])
+                driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[2])
+                driver.get(driver.home_url)
+                return self.test_close_mail_list()
+            driver.get(driver.member_list_url)
+            account = driver.get_set_member_account(name_and_switch[0])
+            LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
+            driver.get(driver.url + self.data[3])
+            driver.F5()
+            self.first = driver.get_title(self.data[-1])
+            driver.screen_shot(self.screenshots_path)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+
+    def test_open_notice_manage(self):
+        """
+        开启公告管理权限，验证{公告}管理的新增公告是否存在
+
+        1、使用超管账号，进入权限管理后台，切换至{协同应用}，开启{公告管理}权限，并提示{权限更新成功};
+
+        2、使用设置的账号访问{/#/manage/notice/list};
+
+        3、验证是否存在{新增公告}
+        """
+        try:
+            driver = JurisdictionElement(self.driver)
+            driver.get_current_name(self.LOGIN_INFO['account'], self.LOGIN_INFO['password'],
+                                    driver=self.driver, name='这是超管测试账号')
+            driver.get(self.url)
+            name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
+            if 'false' == name_and_switch[1]:
+                message = driver.message_box(self.data[2])
+                driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[3])
+                driver.get(driver.home_url)
+                return self.test_open_notice_manage()
+            driver.get(driver.member_list_url)
+            account = driver.get_set_member_account(name_and_switch[0])
+            LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
+            driver.get(driver.url + self.data[4])
+            driver.F5()
+            self.first = driver.get_title(self.data[-1])
+            driver.screen_shot(self.screenshots_path)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+
+    def test_close_notice_manage(self):
+        """
+        关闭公告管理权限，验证{公告}管理的新增公告是否存在
+
+        1、使用超管账号，进入权限管理后台，切换至{协同应用}，关闭{公告管理}权限，并提示{权限更新成功};
+
+        2、使用设置的账号访问{/#/manage/notice/list};
+
+        3、验证是否存在{新增公告}
+        """
+        try:
+            driver = JurisdictionElement(self.driver)
+            driver.get_current_name(self.LOGIN_INFO['account'], self.LOGIN_INFO['password'],
+                                    driver=self.driver, name='这是超管测试账号')
+            driver.get(self.url)
+            name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
+            if 'true' == name_and_switch[1]:
+                message = driver.message_box(self.data[2])
+                driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[3])
+                driver.get(driver.home_url)
+                return self.test_close_notice_manage()
+            driver.get(driver.member_list_url)
+            account = driver.get_set_member_account(name_and_switch[0])
+            LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
+            driver.get(driver.url + self.data[4])
+            driver.F5()
+            self.first = driver.get_title(self.data[-1])
+            driver.screen_shot(self.screenshots_path)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+
+    def test_close_notice_column(self):
+        """
+        关闭公告栏目权限，验证{公告}栏目的新增栏目是否存在
+
+        1、使用超管账号，进入权限管理后台，切换至{协同应用}，关闭{公告栏目管理}权限，并提示{权限更新成功};
+
+        2、使用设置的账号访问{/#/manage/notice/list};
+
+        3、验证是否存在{公告栏目}
+        """
+        try:
+            driver = JurisdictionElement(self.driver)
+            driver.get_current_name(self.LOGIN_INFO['account'], self.LOGIN_INFO['password'],
+                                    driver=self.driver, name='这是超管测试账号')
+            driver.get(self.url)
+            name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
+            if 'true' == name_and_switch[1]:
+                message = driver.message_box(self.data[2])
+                driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[3])
+                driver.get(driver.home_url)
+                return self.test_close_notice_column()
+            driver.get(driver.member_list_url)
+            account = driver.get_set_member_account(name_and_switch[0])
+            LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
+            driver.get(driver.url + self.data[4])
+            driver.F5()
+            self.first = driver.get_left_tab(self.data[-1])
+            driver.screen_shot(self.screenshots_path)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+
+    def test_open_notice_column(self):
+        """
+        打开公告栏目权限，验证{公告}栏目的新增栏目是否存在
+
+        1、使用超管账号，进入权限管理后台，切换至{协同应用}，打开{公告栏目管理}权限，并提示{权限更新成功};
+
+        2、使用设置的账号访问{/#/manage/notice/list};
+
+        3、验证是否存在{公告栏目}
+        """
+        try:
+            driver = JurisdictionElement(self.driver)
+            driver.get_current_name(self.LOGIN_INFO['account'], self.LOGIN_INFO['password'],
+                                    driver=self.driver, name='这是超管测试账号')
+            driver.get(self.url)
+            name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
+            if 'false' == name_and_switch[1]:
+                message = driver.message_box(self.data[2])
+                driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[3])
+                driver.get(driver.home_url)
+                return self.test_open_notice_column()
+            driver.get(driver.member_list_url)
+            account = driver.get_set_member_account(name_and_switch[0])
+            LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
+            driver.get(driver.url + self.data[4])
+            driver.F5()
+            self.first = driver.get_left_tab(self.data[-1])
+            driver.screen_shot(self.screenshots_path)
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+
