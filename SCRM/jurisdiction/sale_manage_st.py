@@ -41,8 +41,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_import()
             driver.get(driver.member_list_url)
@@ -50,11 +50,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.customer_url)
             driver.F5()
-            first = driver.module_switch(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.module_switch(self.data[2])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -75,8 +71,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_import()
             driver.get(driver.member_list_url)
@@ -84,11 +80,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.customer_url)
             driver.F5()
-            first = driver.module_switch(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.module_switch(self.data[2])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -110,8 +102,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_export()
             driver.get(driver.member_list_url)
@@ -119,11 +111,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.customer_url)
             driver.F5()
-            first = driver.get_customer_button(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_customer_button(self.data[2])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -144,8 +132,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_export()
             driver.get(driver.member_list_url)
@@ -153,11 +141,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.customer_url)
             driver.F5()
-            first = driver.get_customer_button(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_customer_button(self.data[2])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -178,8 +162,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_distribution()
             driver.get(driver.member_list_url)
@@ -187,11 +171,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.customer_url)
             driver.F5()
-            first = driver.get_customer_button(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_customer_button(self.data[2])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -212,8 +192,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_distribution()
             driver.get(driver.member_list_url)
@@ -221,11 +201,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.customer_url)
             driver.F5()
-            first = driver.get_customer_button(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_customer_button(self.data[2])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -238,7 +214,7 @@ class SaleManage(UnitTests):
 
         1、使用超管账号，进入权限管理后台，关闭{设置属性字段}权限，并提示{权限更新成功};
 
-        2、使用设置的账号访问{/#/manage/salesManagement/filed?state=contact};
+        2、使用设置的账号访问{/#/manage/salesManagement/tag?state=contact};
 
         3、跳转到{/#/home}
         """
@@ -249,8 +225,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_field()
             driver.get(driver.member_list_url)
@@ -258,11 +234,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -285,20 +257,16 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_field()
             driver.get(driver.member_list_url)
             account = driver.get_set_member_account(name_and_switch[0])
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
-            driver.get(driver.field_url)
+            driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[-1])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -321,8 +289,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_tag()
             driver.get(driver.member_list_url)
@@ -330,11 +298,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[-1])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -347,9 +311,9 @@ class SaleManage(UnitTests):
 
         1、使用超管账号，进入权限管理后台，开启{标签管理}权限，并提示{权限更新成功};
 
-        2、使用设置的账号访问{/#/manage/salesManagement/tag?state=contact};
+        2、使用设置的账号访问{/#/manage/salesManagement/globalClient/rule};
 
-        3、跳转到{/#/home}
+        3、验证是否存在{标签}
         """
         try:
             driver = JurisdictionElement(self.driver)
@@ -358,8 +322,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_tag()
             driver.get(driver.member_list_url)
@@ -367,11 +331,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -394,8 +354,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_public()
             driver.get(driver.member_list_url)
@@ -403,11 +363,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -420,9 +376,9 @@ class SaleManage(UnitTests):
 
         1、使用超管账号，进入权限管理后台，关闭{公海管理}权限，并提示{权限更新成功};
 
-        2、使用设置的账号访问{/#/manage/salesManagement/globalClient/rule};
+        2、使用设置的账号访问{/#/manage/salesManagement/tag?state=contact};
 
-        3、验证{/#/home}是否存在
+        3、验证是否存在{公海客户}
         """
         try:
             driver = JurisdictionElement(self.driver)
@@ -431,8 +387,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_public()
             driver.get(driver.member_list_url)
@@ -440,16 +396,11 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[3])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
-
 
     def test_open_private(self):
         """
@@ -468,8 +419,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_private()
             driver.get(driver.member_list_url)
@@ -477,11 +428,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[2])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:
@@ -494,9 +441,9 @@ class SaleManage(UnitTests):
 
         1、使用超管账号，进入权限管理后台，关闭{私海管理}权限，并提示{权限更新成功};
 
-        2、使用设置的账号访问{/#/manage/salesManagement/selfNum};
+        2、使用设置的账号访问{/#/manage/salesManagement/filed?state=contact};
 
-        3、验证{/#/home}是否存在
+        3、验证是否存在{私海客户限额}
         """
         try:
             driver = JurisdictionElement(self.driver)
@@ -505,8 +452,8 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                self.assertEqual(message, self.data[1])
                 driver.screen_shot(self.screenshots_path)
+                self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_private()
             driver.get(driver.member_list_url)
@@ -514,11 +461,7 @@ class SaleManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[2])
             driver.F5()
-            first = driver.is_url_contain(self.data[3])
-            if not first:
-                self.first = False
-            else:
-                self.first = True
+            self.first = driver.get_title(self.data[-1])
             driver.screen_shot(self.screenshots_path)
             self.assertEqual(self.first, self.second)
         except Exception:

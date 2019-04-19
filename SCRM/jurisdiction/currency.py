@@ -62,6 +62,7 @@ class JurisdictionElement(OperationElement):
     customer_box = (By.XPATH, "//tbody[@class='ivu-table-tbody']/tr[$]/td/div/label") # 客户选择框
     jurisdiction = (By.XPATH, "(//span[text()='$'])[1]/..") # 小的权限框
     title_table = (By.XPATH, "//span[contains(text(), '$')]") # 左侧权限是否存在
+    title_switch = (By.XPATH, "//div[text()='$ ']") # 权限的table切换，如切换到公司管理
 
 
     def _dept_and_member(self, location=2):
@@ -90,13 +91,21 @@ class JurisdictionElement(OperationElement):
         """
         return self.get_attribute_value(self.str_conversion(self.is_role, role_name))
 
-    def execute_op(self, role_name):
+    def execute_op(self, role_name, table_switch='', dept_location=2, member_location=1):
         """
         获取设置权限人员的账号,并执行后台方法
         :param role_name: 权限的名字
+        :param table_switch: 是否table切换
         :return: 设置人员的姓名，bool值
         """
-        return self._dept_and_member(), self._is_role_switch_false(role_name)
+        if table_switch:
+            self.is_click(self.str_conversion(self.dept, dept_location))
+            self.is_click(self.str_conversion(self.member, member_location))
+            name = self.is_text(self.get_user_name)
+            self.is_click(self.str_conversion(self.title_switch, table_switch))
+            return name, self._is_role_switch_false(role_name)
+        else:
+            return self._dept_and_member(), self._is_role_switch_false(role_name)
 
     def message_box(self, role_name):
         """

@@ -203,8 +203,7 @@ class OperationElement(object):
         :param attribute: class
         :return: 返回对应bool，存在返回True，反之False
         """
-        attribute_value = self.operation_element(element).get_attribute('class')
-        return text in attribute_value
+        return text in self.operation_element(element).get_attribute('class')
 
     def get_attribute_class(self, element):
         """
@@ -229,7 +228,8 @@ class OperationElement(object):
         :return: 存在返回True，不存在返回False
         """
         try:
-            return self._find_element(element)
+            self.support.until(EC.presence_of_element_located(element))
+            return True
         except Exception:
             return False
 
