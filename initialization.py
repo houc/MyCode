@@ -282,4 +282,3 @@ class CreateModule(object):
 
 if __name__ == '__main__':
     CreateModule().execute_case()
-

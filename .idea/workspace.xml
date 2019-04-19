@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Initialization.py" beforeDir="false" afterPath="$PROJECT_DIR$/initialization.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SCRM/common.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/common.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/jurisdiction/currency.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/jurisdiction/currency.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TimingRun.py" beforeDir="false" afterPath="$PROJECT_DIR$/timing_run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/initialization.py" beforeDir="false" afterPath="$PROJECT_DIR$/initialization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/ExcelReport.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/report/ExcelReport.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report/html_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/report/html_report.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,6 +32,7 @@
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_quick_create_customer.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_quick_create_customer Coverage Results" MODIFIED="1554951326486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/UI$__init____1_.coverage" NAME="__init__ (1) Coverage Results" MODIFIED="1554352664719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture" />
     <SUITE FILE_PATH="coverage/MyCode$pc_config.coverage" NAME="pc_config Coverage Results" MODIFIED="1542297322630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_company_manage_st_CompanyManage_test_open_user_manage.coverage" NAME="Unittests for company_manage_st.CompanyManage.test_open_user_manage Coverage Results" MODIFIED="1555663890605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_create_task.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_create_task Coverage Results" MODIFIED="1554950971588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/MyCode$Unittests_for_Custom_st_TestStaffCustomManage_test_drag_and_drop.coverage" NAME="Unittests for Custom_st.TestStaffCustomManage.test_drag_and_drop Coverage Results" MODIFIED="1551952563909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/staff_manage" />
     <SUITE FILE_PATH="coverage/UI$Yaml.coverage" NAME="Yaml Coverage Results" MODIFIED="1554884331254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
@@ -43,7 +43,9 @@
     <SUITE FILE_PATH="coverage/UI$Unittests_for_contacts_report_st_TestContactsReport.coverage" NAME="Unittests for contacts_report_st.TestContactsReport Coverage Results" MODIFIED="1553068136703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/data_report" />
     <SUITE FILE_PATH="coverage/UI$Unittests_in_work_effectiveness_st_py.coverage" NAME="Unittests in work_effectiveness_st.py Coverage Results" MODIFIED="1554891588137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_marketing_fixed.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_marketing_fixed Coverage Results" MODIFIED="1554955136167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_company_manage_st_CompanyManage_test_open_company_info.coverage" NAME="Unittests for company_manage_st.CompanyManage.test_open_company_info Coverage Results" MODIFIED="1555663606775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_three_table_st_ThreeTable_test_cancel_star.coverage" NAME="Unittests for three_table_st.ThreeTable.test_cancel_star Coverage Results" MODIFIED="1554971315873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/UI$initialization.coverage" NAME="initialization Coverage Results" MODIFIED="1555663117268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_export.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_export Coverage Results" MODIFIED="1555307575013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_tag.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_tag Coverage Results" MODIFIED="1555316513122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_coordination_app_st_CoordinationApp_test_close_notice_manage.coverage" NAME="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage Coverage Results" MODIFIED="1555657250593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
@@ -54,7 +56,7 @@
     <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_open_export.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_open_export Coverage Results" MODIFIED="1555308250249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_coordination_app_st_CoordinationApp_test_close_SkyDrive.coverage" NAME="Unittests for coordination_app_st.CoordinationApp.test_close_SkyDrive Coverage Results" MODIFIED="1555573595105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/MyCode$InterfaceLogin.coverage" NAME="InterfaceLogin Coverage Results" MODIFIED="1546314063342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/IsEDP" />
-    <SUITE FILE_PATH="coverage/UI$runner.coverage" NAME="runner Coverage Results" MODIFIED="1555586613691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/UI$runner.coverage" NAME="runner Coverage Results" MODIFIED="1555664088151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_coordination_app_st_CoordinationApp_test_open_mail_list.coverage" NAME="Unittests for coordination_app_st.CoordinationApp.test_open_mail_list Coverage Results" MODIFIED="1555653107359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$HtmlDataHandle.coverage" NAME="HtmlDataHandle Coverage Results" MODIFIED="1554188626634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$path_file.coverage" NAME="path_file Coverage Results" MODIFIED="1542289231300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config_path" />
@@ -69,6 +71,7 @@
     <SUITE FILE_PATH="coverage/UI$TimingRun.coverage" NAME="TimingRun Coverage Results" MODIFIED="1554871455420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_create_mail.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_create_mail Coverage Results" MODIFIED="1555575315490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_work_effectiveness_st_WorkEffectiveness_test_create_contacts.coverage" NAME="Unittests for work_effectiveness_st.WorkEffectiveness.test_create_contacts Coverage Results" MODIFIED="1554948007383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_company_manage_st_CompanyManage_test_close_company_info.coverage" NAME="Unittests for company_manage_st.CompanyManage.test_close_company_info Coverage Results" MODIFIED="1555663684307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_coordination_app_st_CoordinationApp.coverage" NAME="Unittests for coordination_app_st.CoordinationApp Coverage Results" MODIFIED="1555657592329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_coordination_app_st_CoordinationApp_test_open_notice_column.coverage" NAME="Unittests for coordination_app_st.CoordinationApp.test_open_notice_column Coverage Results" MODIFIED="1555657514022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_work_effectiveness_st_WorkEffectiveness_test_create_customer.coverage" NAME="Unittests for work_effectiveness_st.WorkEffectiveness.test_create_customer Coverage Results" MODIFIED="1554966092966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
@@ -104,6 +107,7 @@
     <SUITE FILE_PATH="coverage/UI$Unittests_for_technology_table_st_TestTechnologyTable_test_switch_technology.coverage" NAME="Unittests for technology_table_st.TestTechnologyTable.test_switch_technology Coverage Results" MODIFIED="1554171302406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/technology" />
     <SUITE FILE_PATH="coverage/UI$debugging.coverage" NAME="debugging Coverage Results" MODIFIED="1554090525288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_sale_manage_st_SaleManage_test_close_private.coverage" NAME="Unittests for sale_manage_st.SaleManage.test_close_private Coverage Results" MODIFIED="1555580755201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
+    <SUITE FILE_PATH="coverage/UI$Unittests_for_company_manage_st_CompanyManage_test_close_user_manage.coverage" NAME="Unittests for company_manage_st.CompanyManage.test_close_user_manage Coverage Results" MODIFIED="1555663795439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
     <SUITE FILE_PATH="coverage/UI$Thread.coverage" NAME="Thread Coverage Results" MODIFIED="1554285364505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$SQL.coverage" NAME="SQL Coverage Results" MODIFIED="1552636543198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_shortcut_function_st_ShortcutFunction_test_quick_create_contacts.coverage" NAME="Unittests for shortcut_function_st.ShortcutFunction.test_quick_create_contacts Coverage Results" MODIFIED="1554951171018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/workbench" />
@@ -131,20 +135,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="362" column="8" lean-forward="true" selection-start-line="362" selection-start-column="8" selection-end-line="362" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SeleniumElement.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="215" column="8" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="8" />
+            <state relative-caret-position="231">
+              <caret line="225" column="16" lean-forward="true" selection-start-line="225" selection-start-column="16" selection-end-line="225" selection-end-column="16" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -152,11 +147,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="coordination_app_st.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="coordination_app_st.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="292" lean-forward="true" selection-start-line="292" selection-end-line="292" />
+            <state relative-caret-position="189">
+              <caret line="122" column="53" lean-forward="true" selection-start-line="122" selection-start-column="53" selection-end-line="122" selection-end-column="53" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -167,26 +162,26 @@
       <file leaf-file-name="work_effectiveness_st.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SCRM/workbench/work_effectiveness_st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-330">
-              <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+            <state relative-caret-position="-240">
+              <caret line="93" column="11" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initialization.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/initialization.py">
+      <file leaf-file-name="ExcelReport.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/ExcelReport.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-927">
-              <caret line="213" column="35" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
+            <state relative-caret-position="-1248">
+              <caret line="273" column="48" selection-start-line="273" selection-start-column="48" selection-end-line="273" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config.yaml">
+      <file leaf-file-name="thread_case.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SCRM/thread_case.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+            <state relative-caret-position="63">
+              <caret line="8" column="103" lean-forward="true" selection-start-line="8" selection-start-column="103" selection-end-line="8" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -194,8 +189,8 @@
       <file leaf-file-name="currency.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/currency.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="158" column="17" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="17" />
+            <state relative-caret-position="165">
+              <caret line="158" column="8" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="8" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -206,8 +201,8 @@
       <file leaf-file-name="sale_manage_st.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="268" column="37" lean-forward="true" selection-start-line="268" selection-start-column="37" selection-end-line="268" selection-end-column="37" />
+            <state relative-caret-position="156">
+              <caret line="254" column="12" selection-start-line="254" selection-start-column="12" selection-end-line="256" selection-end-column="61" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -252,10 +247,10 @@
       <find>test_close_field</find>
       <find>test_close_private</find>
       <find>mark_star_mail</find>
-      <find>test_open_field</find>
       <find>test_open_notice_manage</find>
-      <find>title_table</find>
       <find>test_open_notice_column</find>
+      <find>test_open_field</find>
+      <find>title_table</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -309,8 +304,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/model/SkipModule.py" />
-        <option value="$PROJECT_DIR$/Manufacture/technology/technology_table_st.py" />
         <option value="$PROJECT_DIR$/Manufacture/products/module_in_info_st.py" />
         <option value="$PROJECT_DIR$/Manufacture/products/products_center_st.py" />
         <option value="$PROJECT_DIR$/Manufacture/news/company_news_st.py" />
@@ -356,10 +349,12 @@
         <option value="$PROJECT_DIR$/SCRM/workbench/three_table_st.py" />
         <option value="$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py" />
         <option value="$PROJECT_DIR$/debug.py" />
-        <option value="$PROJECT_DIR$/config/config.yaml" />
         <option value="$PROJECT_DIR$/SCRM/jurisdiction/currency.py" />
         <option value="$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py" />
         <option value="$PROJECT_DIR$/SCRM/common.yaml" />
+        <option value="$PROJECT_DIR$/SCRM/jurisdiction/company_manage_st.py" />
+        <option value="$PROJECT_DIR$/config/config.yaml" />
+        <option value="$PROJECT_DIR$/initialization.py" />
       </list>
     </option>
   </component>
@@ -387,6 +382,11 @@
             <path>
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="report" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
@@ -429,7 +429,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for coordination_app_st.CoordinationApp">
+  <component name="RunManager" selected="Python.runner">
     <configuration name="run" type="PythonConfigurationType" factoryName="Python">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -449,7 +449,26 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Unittests for coordination_app_st.CoordinationApp" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="runner" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="auto_ui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/runner.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="Unittests for company_manage_st.CompanyManage.test_close_company_info" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -460,10 +479,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;coordination_app_st.CoordinationApp&quot;" />
+      <option name="_new_target" value="&quot;company_manage_st.CompanyManage.test_close_company_info&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_column" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for company_manage_st.CompanyManage.test_close_user_manage" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -474,10 +493,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;coordination_app_st.CoordinationApp.test_close_notice_column&quot;" />
+      <option name="_new_target" value="&quot;company_manage_st.CompanyManage.test_close_user_manage&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for company_manage_st.CompanyManage.test_open_company_info" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -488,10 +507,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;coordination_app_st.CoordinationApp.test_close_notice_manage&quot;" />
+      <option name="_new_target" value="&quot;company_manage_st.CompanyManage.test_open_company_info&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for coordination_app_st.CoordinationApp.test_open_notice_column" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for company_manage_st.CompanyManage.test_open_user_manage" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -502,38 +521,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;coordination_app_st.CoordinationApp.test_open_notice_column&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for coordination_app_st.CoordinationApp.test_open_notice_manage" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="auto_ui" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SCRM/jurisdiction" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;coordination_app_st.CoordinationApp.test_open_notice_manage&quot;" />
+      <option name="_new_target" value="&quot;company_manage_st.CompanyManage.test_open_user_manage&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <list>
       <item itemvalue="Python.run" />
-      <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_open_notice_manage" />
-      <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" />
-      <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_close_notice_column" />
-      <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_open_notice_column" />
-      <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp" />
+      <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_open_company_info" />
+      <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_close_company_info" />
+      <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_close_user_manage" />
+      <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_open_user_manage" />
+      <item itemvalue="Python.runner" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp" />
-        <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_open_notice_column" />
-        <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_close_notice_column" />
-        <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_open_notice_manage" />
-        <item itemvalue="Python tests.Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" />
+        <item itemvalue="Python.runner" />
+        <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_open_user_manage" />
+        <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_close_user_manage" />
+        <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_close_company_info" />
+        <item itemvalue="Python tests.Unittests for company_manage_st.CompanyManage.test_open_company_info" />
       </list>
     </recent_temporary>
   </component>
@@ -758,28 +763,17 @@
       <option name="project" value="LOCAL" />
       <updated>1555636211563</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="增加SCRM用例..">
+      <created>1555661880014</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1555661880014</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_coordination_app_st_CoordinationApp_test_close_notice_manage - 2019.04.19 at 14h 54m 20s.xml">
-      <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_coordination_app_st_CoordinationApp_test_close_notice_manage - 2019.04.19 at 14h 55m 40s.xml">
-      <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_coordination_app_st_CoordinationApp_test_close_notice_manage - 2019.04.19 at 14h 55m 57s.xml">
-      <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_coordination_app_st_CoordinationApp_test_close_notice_manage - 2019.04.19 at 14h 57m 16s.xml">
-      <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_coordination_app_st_CoordinationApp_test_close_notice_manage - 2019.04.19 at 14h 58m 32s.xml">
-      <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_coordination_app_st_CoordinationApp_test_close_notice_manage - 2019.04.19 at 15h 01m 40s.xml">
-      <configuration name="Unittests for coordination_app_st.CoordinationApp.test_close_notice_manage" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_coordination_app_st_CoordinationApp_test_open_notice_manage - 2019.04.19 at 15h 02m 50s.xml">
       <configuration name="Unittests for coordination_app_st.CoordinationApp.test_open_notice_manage" configurationId="tests" />
     </history-entry>
@@ -791,6 +785,24 @@
     </history-entry>
     <history-entry file="Unittests_for_coordination_app_st_CoordinationApp - 2019.04.19 at 15h 11m 54s.xml">
       <configuration name="Unittests for coordination_app_st.CoordinationApp" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_company_manage_st_CompanyManage_test_open_company_info - 2019.04.19 at 16h 44m 48s.xml">
+      <configuration name="Unittests for company_manage_st.CompanyManage.test_open_company_info" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_company_manage_st_CompanyManage_test_open_company_info - 2019.04.19 at 16h 46m 04s.xml">
+      <configuration name="Unittests for company_manage_st.CompanyManage.test_open_company_info" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_company_manage_st_CompanyManage_test_open_company_info - 2019.04.19 at 16h 47m 27s.xml">
+      <configuration name="Unittests for company_manage_st.CompanyManage.test_open_company_info" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_company_manage_st_CompanyManage_test_close_company_info - 2019.04.19 at 16h 49m 07s.xml">
+      <configuration name="Unittests for company_manage_st.CompanyManage.test_close_company_info" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_company_manage_st_CompanyManage_test_close_user_manage - 2019.04.19 at 16h 50m 47s.xml">
+      <configuration name="Unittests for company_manage_st.CompanyManage.test_close_user_manage" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_company_manage_st_CompanyManage_test_open_user_manage - 2019.04.19 at 16h 52m 31s.xml">
+      <configuration name="Unittests for company_manage_st.CompanyManage.test_open_user_manage" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -809,11 +821,11 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5032189" side_tool="true" weight="0.36648044" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.33519554" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.33519554" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49839056" weight="0.21452513" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32960895" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946353" weight="0.37988827" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48818898" visible="true" weight="0.2886266" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48818898" visible="true" weight="0.2886266" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -912,7 +924,8 @@
     <MESSAGE value="优化增加多线程运行" />
     <MESSAGE value="增加SCRM用例3" />
     <MESSAGE value="增加SCRM用例" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加SCRM用例" />
+    <MESSAGE value="增加SCRM用例.." />
+    <option name="LAST_COMMIT_MESSAGE" value="增加SCRM用例.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -920,21 +933,12 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Manufacture/news/currency.py" />
-    <entry file="file://$PROJECT_DIR$/Manufacture/marketing_contact/currency.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/marketing/currency.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/home/about_us_st.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/home/currency.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/contact/currency.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/about/currency.py" />
     <entry file="file://$PROJECT_DIR$/Manufacture/thread_case.py" />
-    <entry file="file://$PROJECT_DIR$/model/ExcelReport.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2562">
-          <caret line="288" column="52" selection-start-line="288" selection-start-column="52" selection-end-line="288" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/GetYamlMessages.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1037,6 +1041,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1074,9 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/token.ini">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/support/expected_conditions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1105,13 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="599">
           <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/workbench/work_effectiveness_st.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-330">
-          <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1146,60 +1143,9 @@
     <entry file="file://$PROJECT_DIR$/debug.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="268" column="37" lean-forward="true" selection-start-line="268" selection-start-column="37" selection-end-line="268" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="215" column="8" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/currency.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="158" column="17" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/2019-04-19.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-441" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/thread_case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/initialization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-927">
-          <caret line="213" column="35" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/DriverParameter.py">
@@ -1229,20 +1175,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py">
+    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/sale_manage_st.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="292" lean-forward="true" selection-start-line="292" selection-end-line="292" />
+        <state relative-caret-position="156">
+          <caret line="254" column="12" selection-start-line="254" selection-start-column="12" selection-end-line="256" selection-end-column="61" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/currency.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="158" column="8" selection-start-line="158" selection-start-column="8" selection-end-line="158" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/case.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/thread_case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="8" column="103" lean-forward="true" selection-start-line="8" selection-start-column="103" selection-end-line="8" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ExcelReport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1248">
+          <caret line="273" column="48" selection-start-line="273" selection-start-column="48" selection-end-line="273" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/initialization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-693">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/token.ini">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/workbench/work_effectiveness_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="93" column="11" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="362" column="8" lean-forward="true" selection-start-line="362" selection-start-column="8" selection-end-line="362" selection-end-column="8" />
+        <state relative-caret-position="2637">
+          <caret line="396" column="24" selection-start-line="396" selection-start-column="24" selection-end-line="396" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/company_manage_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="59" column="25" lean-forward="true" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/SeleniumElement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="225" column="16" lean-forward="true" selection-start-line="225" selection-start-column="16" selection-end-line="225" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/jurisdiction/coordination_app_st.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="122" column="53" lean-forward="true" selection-start-line="122" selection-start-column="53" selection-end-line="122" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -360,3 +360,47 @@ SCRM:
                 3、验证是否存在{公告栏目}",
         asserts: True
         }
+    - company_manage:
+      url: /#/manage/authority_setting
+      className: CompanyManage
+      funName:
+      - test_open_company_info: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "打开验证公司信息维护，验证账户管理是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{公司管理}，打开{公司信息维护}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{账户管理}",
+        asserts: True,
+      }
+        test_close_company_info: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭验证公司信息维护，验证账户管理是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{公司管理}，关闭{公司信息维护}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{账户管理}",
+        asserts: False,
+        }
+        test_close_user_manage: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "关闭验证用户管理，验证用户和部门是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{公司管理}，关闭{用户管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{用户和部门}",
+        asserts: False,
+        }
+        test_open_user_manage: {
+        url: ,
+        author: 后超,
+        level: 高,
+        scene: "开启验证用户管理，验证用户和部门是否存在\n
+                1、使用超管账号，进入权限管理后台，切换至{公司管理}，开启{用户管理}权限，并提示{权限更新成功};\n
+                2、使用设置的账号访问{/#/manage/notice/list};\n
+                3、验证是否存在{用户和部门}",
+        asserts: True,
+        }
