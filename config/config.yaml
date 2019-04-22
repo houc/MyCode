@@ -1,5 +1,5 @@
 base_url:
-  url: https://www.scrm365.cn  # 测试地址
+  url: http://1903265005.pool4-site.make.yun300.cn  # 测试地址
 excel_parameter:
   project_name: SCRM          # 项目名称
   test_version: V1.7.5    # 测试时的版本号
