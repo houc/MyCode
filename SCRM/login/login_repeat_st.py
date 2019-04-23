@@ -25,27 +25,6 @@ class TestLogin(UnitTests):
     LOGIN_INFO = {"account": None, "password": None, "company": None}
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\')[-1].split('.')[0]
-    
-    def test_repeat_login(self):
-        """
-        测试循环登录，用例时长
-
-        1、输入账号{15882223197}，输入密码{Po123456};
-
-        2、点击登录
-
-        3、验证是否加载出邮件元素
-        """
-        try:
-            driver = LoginElement(self.driver)
-            driver.get(self.url)
-            LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
-            self.first = driver.assert_mail()
-            driver.screen_shot(self.screenshots_path)
-            self.assertEqual(self.first, self.second)
-        except Exception:
-            self.error = str(traceback.format_exc())
-
 
     def test_repeat_login_1(self):
         """
@@ -60,6 +39,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -80,6 +60,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -100,6 +81,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -120,6 +102,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -140,6 +123,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -160,6 +144,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -180,6 +165,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -200,6 +186,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -220,6 +207,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -240,6 +228,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -260,6 +249,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -280,6 +270,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -300,6 +291,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -320,6 +312,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -340,6 +333,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -360,6 +354,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -380,6 +375,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -400,6 +396,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -420,6 +417,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -440,6 +438,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -460,6 +459,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -480,6 +480,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -500,6 +501,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -520,6 +522,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -540,6 +543,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -560,6 +564,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -580,6 +585,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -600,6 +606,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -620,6 +627,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -640,6 +648,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -660,6 +669,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -680,6 +690,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -700,6 +711,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -720,6 +732,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -740,6 +753,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -760,6 +774,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -780,6 +795,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -800,6 +816,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -820,6 +837,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -840,6 +858,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -860,6 +879,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -880,6 +900,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -900,6 +921,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -920,6 +942,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -940,6 +963,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -960,6 +984,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -980,6 +1005,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1000,6 +1026,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1020,6 +1047,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1040,6 +1068,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1060,6 +1089,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1080,6 +1110,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1100,6 +1131,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1120,6 +1152,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1140,6 +1173,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1160,6 +1194,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1180,6 +1215,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1200,6 +1236,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1220,6 +1257,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1240,6 +1278,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1260,6 +1299,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1280,6 +1320,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1300,6 +1341,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1320,6 +1362,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1340,6 +1383,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1360,6 +1404,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1380,6 +1425,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1400,6 +1446,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1420,6 +1467,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1440,6 +1488,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1460,6 +1509,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1480,6 +1530,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1500,6 +1551,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1520,6 +1572,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1540,6 +1593,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1560,6 +1614,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1580,6 +1635,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1600,6 +1656,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1620,6 +1677,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1640,6 +1698,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1660,6 +1719,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1680,6 +1740,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1700,6 +1761,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1720,6 +1782,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1740,6 +1803,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1760,6 +1824,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1780,6 +1845,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1800,6 +1866,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1820,6 +1887,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1840,6 +1908,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1860,6 +1929,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1880,6 +1950,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1900,6 +1971,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1920,6 +1992,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1940,6 +2013,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1960,6 +2034,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -1980,6 +2055,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2000,6 +2076,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2020,6 +2097,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2040,6 +2118,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2060,6 +2139,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2080,6 +2160,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2100,6 +2181,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2120,6 +2202,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2140,6 +2223,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2160,6 +2244,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2180,6 +2265,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2200,6 +2286,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2220,6 +2307,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2240,6 +2328,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2260,6 +2349,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2280,6 +2370,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2300,6 +2391,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2320,6 +2412,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2340,6 +2433,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2360,6 +2454,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2380,6 +2475,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2400,6 +2496,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2420,6 +2517,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2440,6 +2538,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2460,6 +2559,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2480,6 +2580,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2500,6 +2601,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2520,6 +2622,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2540,6 +2643,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2560,6 +2664,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2580,6 +2685,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2600,6 +2706,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2620,6 +2727,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2640,6 +2748,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2660,6 +2769,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2680,6 +2790,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2700,6 +2811,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2720,6 +2832,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2740,6 +2853,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2760,6 +2874,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2780,6 +2895,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2800,6 +2916,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2820,6 +2937,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2840,6 +2958,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2860,6 +2979,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2880,6 +3000,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2900,6 +3021,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2920,6 +3042,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2940,6 +3063,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2960,6 +3084,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -2980,6 +3105,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3000,6 +3126,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3020,6 +3147,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3040,6 +3168,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3060,6 +3189,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3080,6 +3210,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3100,6 +3231,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3120,6 +3252,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3140,6 +3273,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3160,6 +3294,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3180,6 +3315,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3200,6 +3336,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3220,6 +3357,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3240,6 +3378,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3260,6 +3399,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3280,6 +3420,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3300,6 +3441,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3320,6 +3462,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3340,6 +3483,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3360,6 +3504,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3380,6 +3525,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3400,6 +3546,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3420,6 +3567,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3440,6 +3588,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3460,6 +3609,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3480,6 +3630,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3500,6 +3651,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3520,6 +3672,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3540,6 +3693,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3560,6 +3714,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3580,6 +3735,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3600,6 +3756,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3620,6 +3777,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3640,6 +3798,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3660,6 +3819,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3680,6 +3840,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3700,6 +3861,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3720,6 +3882,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3740,6 +3903,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3760,6 +3924,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3780,6 +3945,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3800,6 +3966,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3820,6 +3987,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3840,6 +4008,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3860,6 +4029,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3880,6 +4050,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3900,6 +4071,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3920,6 +4092,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3940,6 +4113,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3960,6 +4134,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -3980,6 +4155,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -4000,6 +4176,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -4020,6 +4197,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -4040,6 +4218,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -4060,6 +4239,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -4080,6 +4260,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)
@@ -4100,6 +4281,7 @@ class TestLogin(UnitTests):
         try:
             driver = LoginElement(self.driver)
             driver.get(self.url)
+            driver.F5()
             LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
             self.first = driver.assert_mail()
             driver.screen_shot(self.screenshots_path)

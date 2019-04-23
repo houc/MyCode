@@ -64,7 +64,7 @@ class Email:
         """发送带附件的内容"""
         att = MIMEText(open(self.excel_path, 'rb').read(), 'base64', 'utf-8')
         att["Content-Type"] = 'application/octet-stream'
-        att["Content-Disposition"] = 'attachment; filename="TestReport.xls"'
+        att["Content-Disposition"] = 'attachment; filename="TestReport.xlsx"'
         self.contents.attach(att)
         return self.contents
 

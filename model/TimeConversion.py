@@ -68,4 +68,4 @@ def time_conversion(time):
         return '{:.3f}'.format(time / 86400) + '天' # 计算的是天，保留小数后3位数
 
 if __name__ == '__main__':
-    print(beijing_time_conversion_unix(standard_time()))
+    print(time_conversion(86300))

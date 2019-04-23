@@ -47,11 +47,11 @@ class MyAsserts():
             if self.reason is not None:
                 if 'AssertionError' in self.reason:
                     self.status = '失败'
+                    self.reason = self._strConversion(self.reason)
+                    self.img_path = self.screenshots_path.replace('\\', '/')
                 else:
                     self.status = '错误'
                 self._log(self.reason)
-                self.reason = self._strConversion(self.reason)
-                self.img_path = self.screenshots_path.replace('\\', '/')
                 raise BaseException(self.reason)
             else:
                 self.status = '成功'
@@ -70,7 +70,7 @@ class MyAsserts():
                                  results_value=self.second)
         else:
             case_data = {'id': self.id, 'level': self.level, 'module': self.module,
-                         'name': self.name, 'mark': self.remark, 'run_time': time_conversion(self.time),
+                         'name': self.name, 'mark': self.remark, 'run_time': self.time + '秒',
                          'status': status, 'url': self.url, 'insert_time': insert_time,
                          'img_path': img_path, 'reason': reason, 'author': self.author,
                          'result': self.second}

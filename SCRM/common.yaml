@@ -405,7 +405,7 @@ SCRM:
         asserts: True,
         }
   login:
-    - login_pro:
+    - login_repeat:
       url: /#/account/login
       className: TestLogin
       funName:
