@@ -233,14 +233,15 @@ class CreateModule(object):
     def execute_case(self):
         """处理执行用例,switch计算用例总计"""
         self._project_check()
-        case = self.check_repeat()
+        case = self._check_repeat
         for key, values in self.all_param.items():
             self._other_py(key)
             self._case_data_handle(key)
         import sys
         print('共{}条用例,已全部初始化完毕...'.format(len(case)), file=sys.stderr)
 
-    def check_repeat(self):
+    @property
+    def _check_repeat(self):
         """
         检查common中的用例是否存在重复, 存在重复提示异常！
         :parameter switch 计算用例条数

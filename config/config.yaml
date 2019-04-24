@@ -8,9 +8,6 @@ config:
   thread:  # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
   token_keys: Authorization   # token表示key名
   level: 10                   # 日志等级
-  account: '15928564313'         # 正确的账号
-  password: 'Li123456'    # 正确的密码
-  company: 草草后
   page_loading_wait: 30   # 超时时间
   logs_save: 7          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
