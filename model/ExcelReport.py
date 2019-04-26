@@ -17,7 +17,11 @@ class WriteExcel:
                 pass
         self.report_project = MyConfig('project_name').excel_parameter
         self.report_type = MyConfig('science').excel_parameter
-        self.login_path = read_file('img', 'logo.png')
+        path = os.path.exists(read_file('img', 'logo.png'))
+        if path:
+            self.login_path = read_file('img', 'logo.png')
+        else:
+            self.login_path = False
         self.real_pc = merge_config_info()
         self.fix_pc = merge_config_msg()
         self.python_version = output_python_version()
@@ -263,7 +267,8 @@ class WriteExcel:
                                      str(kwargs['title_title']).format(self.report_project, self.report_type),
                                      self.title_title)
         self.sheet_title.merge_range(1, 0, 7, 1, ' ')
-        self.sheet_title.insert_image(3, 0, self.login_path, {'x_scale': 0.3, 'y_scale': 0.7})
+        if self.login_path:
+            self.sheet_title.insert_image(3, 0, self.login_path, {'x_scale': 0.3, 'y_scale': 0.7})
         self.sheet_title.write(1, 2, kwargs['title_version'], self.title_title_content)
         self.sheet_title.write(1, 4, kwargs['title_action'], self.title_title_content)
         self.sheet_title.write(2, 2, kwargs['title_tool'], self.title_title_content)

@@ -1,4 +1,5 @@
 import base64
+import warnings
 
 from config_path.path_file import read_file
 from PIL import Image, ImageEnhance
@@ -27,6 +28,7 @@ class VerificationCode(object):
 
     def _img_handle_gray(self):
         """图像处理——置灰"""
+        warnings.filterwarnings('ignore')
         image = Image.open(self.verification_code_path).convert('L')  # convert图片颜色变化灰色（L）
         sharpness = ImageEnhance.Contrast(image).enhance(1)  # 对比度增强
         threshold = 140

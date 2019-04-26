@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/CodeDistinguish.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/CodeDistinguish.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,7 +57,7 @@
     <SUITE FILE_PATH="coverage/MyCode$InterfaceLogin.coverage" NAME="InterfaceLogin Coverage Results" MODIFIED="1546314063342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/IsEDP" />
     <SUITE FILE_PATH="coverage/UI$runner.coverage" NAME="runner Coverage Results" MODIFIED="1555985291389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/UI$Unittests_for_coordination_app_st_CoordinationApp_test_open_mail_list.coverage" NAME="Unittests for coordination_app_st.CoordinationApp.test_open_mail_list Coverage Results" MODIFIED="1555653107359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/jurisdiction" />
-    <SUITE FILE_PATH="coverage/UI$CodeDistinguish.coverage" NAME="CodeDistinguish Coverage Results" MODIFIED="1555994469875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
+    <SUITE FILE_PATH="coverage/UI$CodeDistinguish.coverage" NAME="CodeDistinguish Coverage Results" MODIFIED="1556069280674" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/UI$HtmlDataHandle.coverage" NAME="HtmlDataHandle Coverage Results" MODIFIED="1554188626634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/model" />
     <SUITE FILE_PATH="coverage/MyCode$path_file.coverage" NAME="path_file Coverage Results" MODIFIED="1542289231300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config_path" />
     <SUITE FILE_PATH="coverage/UI$Unittests_in_technology_table_st_py.coverage" NAME="Unittests in technology_table_st.py Coverage Results" MODIFIED="1554086109767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Manufacture/technology" />
@@ -148,7 +148,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/img/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
@@ -169,11 +169,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="common.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+            <state relative-caret-position="374">
+              <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -181,10 +181,15 @@
       <file leaf-file-name="initialization.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/initialization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+            <state relative-caret-position="294">
+              <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ver_code.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/img/ver_code.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="path_file.py" pinned="false" current-in-tab="false">
@@ -201,15 +206,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="441">
               <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="currency.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SCRM/login/currency.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="903">
-              <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -368,9 +364,9 @@
         <option value="$PROJECT_DIR$/model/SendEmail.py" />
         <option value="$PROJECT_DIR$/SCRM/common.yaml" />
         <option value="$PROJECT_DIR$/model/TimeConversion.py" />
-        <option value="$PROJECT_DIR$/model/CodeDistinguish.py" />
-        <option value="$PROJECT_DIR$/initialization.py" />
         <option value="$PROJECT_DIR$/config/config.yaml" />
+        <option value="$PROJECT_DIR$/initialization.py" />
+        <option value="$PROJECT_DIR$/model/CodeDistinguish.py" />
       </list>
     </option>
   </component>
@@ -402,17 +398,12 @@
             <path>
               <item name="UI" type="b2602c69:ProjectViewProjectNode" />
               <item name="UI" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UI" type="462c0819:PsiDirectoryNode" />
-              <item name="config_path" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UI" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="SCRM" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -450,7 +441,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.initialization">
+  <component name="RunManager" selected="Python.CodeDistinguish">
     <configuration name="CodeDistinguish" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto_ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -570,8 +561,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.initialization" />
         <item itemvalue="Python.CodeDistinguish" />
+        <item itemvalue="Python.initialization" />
         <item itemvalue="Python.TimeConversion" />
         <item itemvalue="Python.runner" />
         <item itemvalue="Python tests.Unittests for SCRM.login.login_repeat_st.TestLogin" />
@@ -834,7 +825,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556009955377</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="增加SCRM用例..">
+      <created>1556068090985</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1556068090985</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -885,7 +883,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5032189" side_tool="true" weight="0.36648044" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.3765363" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" weight="0.3765363" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49839056" weight="0.21452513" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32960895" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49946353" weight="0.37988827" />
@@ -997,16 +995,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11508">
@@ -1215,6 +1203,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1296,38 +1287,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/PIL/Image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-254">
-          <caret line="1117" column="54" selection-start-line="1117" selection-start-column="54" selection-end-line="1117" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/CodeDistinguish.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="52" column="34" lean-forward="true" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/SendEmail.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="624">
           <caret line="67" column="23" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/initialization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1362,6 +1325,40 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/PIL/Image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1718" column="8" selection-start-line="1718" selection-start-column="8" selection-end-line="1718" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/ver_code.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/CodeDistinguish.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="50" column="67" lean-forward="true" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/initialization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SCRM/common.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
         </state>
       </provider>
     </entry>

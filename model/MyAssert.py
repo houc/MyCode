@@ -4,7 +4,7 @@ from config_path.path_file import read_file
 from model.MyDB import MyDB
 from model.SQL import Mysql
 from model.Yaml import MyConfig
-from model.TimeConversion import standard_time, time_conversion
+from model.TimeConversion import standard_time
 
 
 class MyAsserts():
@@ -51,6 +51,7 @@ class MyAsserts():
                     self.img_path = self.screenshots_path.replace('\\', '/')
                 else:
                     self.status = '错误'
+                    self.reason = self._strConversion(self.reason)
                 self._log(self.reason)
                 raise BaseException(self.reason)
             else:
@@ -65,12 +66,12 @@ class MyAsserts():
         """将用例插入数据库,判断采用的数据库类型"""
         insert_time = standard_time()
         if self.sql_type == 'my_sql':
-            self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, time_conversion(self.time),
+            self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, str(self.time) + '秒',
                                  status, self.url, insert_time, img_path, reason, self.author,
                                  results_value=self.second)
         else:
             case_data = {'id': self.id, 'level': self.level, 'module': self.module,
-                         'name': self.name, 'mark': self.remark, 'run_time': self.time + '秒',
+                         'name': self.name, 'mark': self.remark, 'run_time': str(self.time) + '秒',
                          'status': status, 'url': self.url, 'insert_time': insert_time,
                          'img_path': img_path, 'reason': reason, 'author': self.author,
                          'result': self.second}
