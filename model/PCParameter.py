@@ -142,4 +142,4 @@ def output_python_version():
 
 if __name__ == '__main__':
     # print(merge_config_info())
-    print(get_network())
+    print(real_get_cpu_msg())

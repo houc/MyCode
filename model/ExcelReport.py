@@ -64,7 +64,7 @@ class WriteExcel:
         self.sheet_test.set_column(7, 7, 30)
         self.sheet_test.set_column(8, 8, 40)
         self.sheet_test.set_column(9, 9, 18)
-        self.sheet_test.set_column(10, 10, 23)
+        self.sheet_test.set_column(10, 10, 34)
         self.sheet_test.set_column(11, 11, 10)
         self.sheet_test.set_column(12, 12, 20)
         return self.style_title
@@ -130,12 +130,12 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.160})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.087, 'y_scale': 0.160})
+                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '跳过' == d:
                         self.sheet_test.write(a, c, d, self.skip)
                     elif 'None' == d:
@@ -347,8 +347,8 @@ class ExcelTitle(WriteExcel):
 
 
 if __name__ == '__main__':
-    ExcelTitle([['1','P0','登录', '这是测试名称', 'www.sina.com.cn', '1、今天你好吗？\n', '成功', 'true', 'true',
-                 '4.555秒','E:\\UI\\img\\test_good_news_table_one.png','小宁', '2019-4-15 15:50'],
+    ExcelTitle([['1','P0','登录', '这是测试名称', 'www.sina.com.cn', '1、今天你好吗？\n', '失败', 'true', 'true',
+                 '4.555秒','D:\work_file\\auto_script\\ui-test\img\\test_leave_a_message.png','小宁', '2019-4-15 15:50'],
                 ['2', 'P3', '登录', '这是测试名称', 'www.baidu.com', '1、我今天很不好哇？\n', '错误', 'false', 'true',
                  '5.6662秒', 'E:\\UI\\img\\test_launching.png', '邓超', '2018-5-5 15:55'],]
 

@@ -47,11 +47,10 @@ class MyAsserts():
             if self.reason is not None:
                 if 'AssertionError' in self.reason:
                     self.status = '失败'
-                    self.reason = self._strConversion(self.reason)
-                    self.img_path = self.screenshots_path.replace('\\', '/')
                 else:
                     self.status = '错误'
-                    self.reason = self._strConversion(self.reason)
+                self.reason = self._strConversion(self.reason)
+                self.img_path = self.screenshots_path.replace('\\', '/')
                 self._log(self.reason)
                 raise BaseException(self.reason)
             else:
@@ -66,12 +65,12 @@ class MyAsserts():
         """将用例插入数据库,判断采用的数据库类型"""
         insert_time = standard_time()
         if self.sql_type == 'my_sql':
-            self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark, str(self.time) + '秒',
-                                 status, self.url, insert_time, img_path, reason, self.author,
-                                 results_value=self.second)
+            self.sql.insert_data(self.id, self.level, self.module, self.name, self.remark,
+                                 '{:.3f}秒'.format(self.time), status, self.url, insert_time,
+                                 img_path, reason, self.author, results_value=self.second)
         else:
             case_data = {'id': self.id, 'level': self.level, 'module': self.module,
-                         'name': self.name, 'mark': self.remark, 'run_time': str(self.time) + '秒',
+                         'name': self.name, 'mark': self.remark, 'run_time': '{:.3f}秒'.format(self.time),
                          'status': status, 'url': self.url, 'insert_time': insert_time,
                          'img_path': img_path, 'reason': reason, 'author': self.author,
                          'result': self.second}
