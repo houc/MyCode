@@ -2,6 +2,7 @@ import os
 import re
 import operator
 import shutil
+import sys
 
 from model.Yaml import MyConfig, MyProject
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
@@ -21,6 +22,7 @@ class CreateModule(object):
         self.file_path = MyConfig('project_name').excel_parameter
         self.all_param = MyProject(self.file_path).parameter_ui
         self.paths = self.file_path
+        self.stream = sys.stderr
         self.init = '__init__.py'
         self.currency_py = 'currency.py'
         self.currency_ya = 'currency.yaml'
@@ -237,8 +239,8 @@ class CreateModule(object):
         for key, values in self.all_param.items():
             self._other_py(key)
             self._case_data_handle(key)
-        import sys
-        print('共{}条用例,已全部初始化完毕...'.format(len(case)), file=sys.stderr)
+        self.stream.write('共{}条用例,已全部初始化完毕...'.format(len(case)))
+        self.stream.flush()
 
     @property
     def _check_repeat(self):

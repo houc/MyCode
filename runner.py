@@ -8,6 +8,7 @@ from model.MyDB import MyDB
 from model.SendEmail import Email
 from model.CaseHandle import DataHandleConversion, ConversionDiscover
 from model.TimeConversion import standard_time
+from model.CaseReRun import ReRun
 from config_path.path_file import read_file
 
 
@@ -47,7 +48,12 @@ class RunAll(object):
         if self.thread:
            ConversionDiscover(discover).case_package()
         else:
-            runner = unittest.TextTestRunner(verbosity=2).run(discover)
+            if self.case != 0:
+                runner = unittest.TextTestRunner(verbosity=2,
+                                                 while_case=self.case,
+                                                 while_sleep=self.wait,).run(discover)
+            else:
+                runner = unittest.TextTestRunner(verbosity=2).run(discover)
             DataHandleConversion().case_data_handle(in_case_data=runner)
             self._get_case_detailed()
 

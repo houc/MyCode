@@ -12,7 +12,7 @@ class OperationElement(object):
         浏览器操作封装类
     """
 
-    def __init__(self, driver, timeout=20, detection=1, exception=EC.NoSuchElementException):
+    def __init__(self, driver, timeout=20, detection=0.5, exception=EC.NoSuchElementException):
         """
         初始化类参数
         :param driver: 浏览器session
@@ -67,17 +67,17 @@ class OperationElement(object):
         elif by == "css selector":
             return self.driver.find_element(By.CSS_SELECTOR, element_value)
 
-    def full_windows_screen(self, path, Length=None, height=None):
+    def full_windows_screen(self, path, length=None, height=None):
         """
         自定义当前屏幕截图范围
         :param path: 存放截图的路径位置，如：D:\work_file\auto_script\TestUi\config\TestCase.png
-        :param Length: 自定义截取屏幕长度位置, 默认为当前屏幕的值
+        :param length: 自定义截取屏幕长度位置, 默认为当前屏幕的值
         :param height: 自定义截取屏幕宽度位置， 默认为当前屏幕的值
         :return: ...
         """
         screen = ImageGrab.grab()
-        if Length is not None and height is not None:
-            screen.size = Length, height
+        if length is not None and height is not None:
+            screen.size = length, height
         screen.save(path)
 
     def screen_shot(self, path):
@@ -180,7 +180,7 @@ class OperationElement(object):
             time.sleep(wait_time)
             self.operation_element(element).send_keys(value)
 
-    def is_text(self, element, wait_time=2):
+    def is_text(self, element, wait_time=1):
         """
         获取元素中的文本值，第一次获取文本值如果为空，就默认等待2秒时间，再次获取
         :param element: self.is_text((By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"))
@@ -266,6 +266,13 @@ class OperationElement(object):
         else:
             return is_url
 
+    def get_url(self):
+        """
+        获取当前url
+        :return: 返回获取的url
+        """
+        return self.support.until(_get_url())
+
     def is_url_contain(self, url: str):
         """
         断定current_url值，是否包含url值
@@ -296,4 +303,12 @@ class OperationElement(object):
         """
         return self.support.until(EC.visibility_of_element_located(element))
 
+
+class _get_url(object):
+    """获取当前页面url"""
+    def __init__(self):
+        pass
+
+    def __call__(self, driver):
+        return driver.current_url
 
