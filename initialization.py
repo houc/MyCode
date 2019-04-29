@@ -2,7 +2,6 @@ import os
 import re
 import operator
 import shutil
-import sys
 
 from model.Yaml import MyConfig, MyProject
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
@@ -22,7 +21,6 @@ class CreateModule(object):
         self.file_path = MyConfig('project_name').excel_parameter
         self.all_param = MyProject(self.file_path).parameter_ui
         self.paths = self.file_path
-        self.stream = sys.stderr
         self.init = '__init__.py'
         self.currency_py = 'currency.py'
         self.currency_ya = 'currency.yaml'
@@ -187,8 +185,7 @@ class CreateModule(object):
                 path = self.file_path + "." + module + ".currency"
                 class_name = values.get("className")
                 content = ''.join(str(module).title().split("_")) + "Element"
-                case_execute = CASE_CONTENT.format(path ,content, class_name)
-                return case_execute
+                return CASE_CONTENT.format(path ,content, class_name)
             else:
                 case_name = values.get("caseName")
                 case_doc = values.get("scene")
@@ -199,8 +196,7 @@ class CreateModule(object):
                 if ' ' in case_doc:
                     case_doc = self._spilt(case_doc, 'case_doc')
                 if CASE_NAME:
-                    case_execute = CASE_NAME.format(case_name, case_doc, content)
-                    return case_execute
+                    return CASE_NAME.format(case_name, case_doc, content)
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 
@@ -208,18 +204,14 @@ class CreateModule(object):
     def _spilt(values: str, switch: str):
         """替换和切片"""
         if switch == 'case_name':
-            is_split = str(values).split('_')[1]
-            return is_split
+            return str(values).split('_')[1]
         if switch == 'case_doc':
-            is_replace = str(values).replace(' ', '\n{}'.format(' ' * 8))
-            return is_replace
+            return str(values).replace(' ', '{}'.format(' ' * 8))
         if switch == 'case_assert':
             if '{}' in values:
-                is_assert = '{!r}'.format(values) + '.format()'
-                return is_assert
+                return '{!r}'.format(values) + '.format()'
             else:
-                is_assert = '{!r}'.format(values)
-                return is_assert
+                return '{!r}'.format(values)
 
     def _project_check(self):
         """用于判断项目目录是否存在，不存在重新创建，项目并生成对应的py"""
@@ -239,8 +231,8 @@ class CreateModule(object):
         for key, values in self.all_param.items():
             self._other_py(key)
             self._case_data_handle(key)
-        self.stream.write('共{}条用例,已全部初始化完毕...'.format(len(case)))
-        self.stream.flush()
+        import sys
+        print('共{}条用例,已全部初始化完毕...'.format(len(case)), file=sys.stderr)
 
     @property
     def _check_repeat(self):

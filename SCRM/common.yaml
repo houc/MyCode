@@ -427,7 +427,7 @@ SCRM:
                 1、输入账号{15882223197}，输入密码{Po123456};\n
                 2、点击登录;\n
                 3、验证是否加载出邮件元素",
-        asserts: True,
+        asserts: True2,
         }
         test_test_repeat_login_3: {
         url: ,
