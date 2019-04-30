@@ -165,6 +165,14 @@ class OperationElement(object):
             time.sleep(wait_time)
             self.operation_element(element).click()
 
+    def method_driver(self, method):
+        """
+        方法继承
+        :param method: 方法
+        :return: ...
+        """
+        return method(self.driver)
+
     def is_send(self, element, value, wait_time=2):
         """
         判断是否可执行输入，当第一次出现异常，默认等待2秒后再次尝试是否可输入，直到再次获得信息
@@ -233,16 +241,18 @@ class OperationElement(object):
         except Exception:
             return False
 
-    def str_conversion(self, element, value):
+    def str_conversion(self, element, *args):
         """
         将元素定义变量中包含$进行参数化转化传递
         :param element: 如，(By.XPATH, "//li[contains(text(),'$')]")
-        :param value：将$变更为value
+        :param args：将$变更为value
         :return:
         """
         if "$" in element[1]:
             now_value = element[1].replace("$", "{}")
-            return (element[0], now_value.format(value))
+            return (element[0], now_value.format(*args))
+        else:
+            raise ValueError('无需参数化，请不要调用该方法，或者参数化中需要为“$”')
 
     def is_in_text(self, element, content: str):
         """
@@ -306,9 +316,6 @@ class OperationElement(object):
 
 class _get_url(object):
     """获取当前页面url"""
-    def __init__(self):
-        pass
-
     def __call__(self, driver):
         return driver.current_url
 

@@ -64,7 +64,3 @@ class GetConfigMessage(object):
         else:
             return data
 
-if __name__ == '__main__':
-    H = GetConfigMessage()
-    print(H.re())
-    # print(H.param_extract(H.re().get("scene")))
