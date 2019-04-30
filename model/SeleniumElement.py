@@ -127,6 +127,18 @@ class OperationElement(object):
         windows = self.more_windows()
         return self.driver.switch_to.window(windows[name])
 
+    def switch_frame(self, frame_reference):
+        """
+        切换frame位置
+        :param frame_reference: 框架位置
+        :return: 返回对应框架中
+        """
+        return self.driver.switch_to.frame(frame_reference)
+
+    def release_frame(self):
+        """释放frame"""
+        return self.driver.switch_to.default_content()
+
     def close_current_windows(self):
         """
         关闭当前窗口
