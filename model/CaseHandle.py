@@ -238,6 +238,9 @@ class _my_process(multiprocessing.Process):
         self.case_set = case_set
 
     def run(self):
+        lock = multiprocessing.RLock()
+        lock.acquire()
         discover = unittest.defaultTestLoader.loadTestsFromTestCase(self.case_set)
         result = unittest.TextTestRunner(verbosity=2).run(discover)
         DataHandleConversion().case_data_handle(result)
+        lock.release()

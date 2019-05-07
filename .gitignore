@@ -7,3 +7,4 @@ __pycache__
 *.xml
 case.txt
 thread_case.py
+*db

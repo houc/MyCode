@@ -1,5 +1,6 @@
 import unittest
 import os
+import sys
 
 from model.ExcelReport import ExcelTitle
 from model.Yaml import MyConfig
@@ -48,6 +49,7 @@ class RunAll(object):
             ConversionDiscover(discover).case_package()
         else:
             runner = unittest.TextTestRunner(verbosity=2).run(discover)
+            print('单线程执行用例完成，正在生成测试报告...', file=sys.stderr)
             DataHandleConversion().case_data_handle(in_case_data=runner)
             self._get_case_detailed()
 
@@ -61,7 +63,6 @@ class RunAll(object):
             self.excel(case_data).class_merge(parameter=total_case)
             self.mail.sender_email(case_name=total_case)
         else:
-            import sys
             print('测试用例数据为空，无测试报告统计，无邮件...', file=sys.stderr)
 
     def runner(self):
