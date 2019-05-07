@@ -60,6 +60,9 @@ class RunAll(object):
         if total_case and case_data:
             self.excel(case_data).class_merge(parameter=total_case)
             self.mail.sender_email(case_name=total_case)
+        else:
+            import sys
+            print('测试用例数据为空，无测试报告统计，无邮件...', file=sys.stderr)
 
     def runner(self):
         """运行全部的测试用例数"""
