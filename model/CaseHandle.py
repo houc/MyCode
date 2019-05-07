@@ -18,6 +18,7 @@ from model.ExcelReport import ExcelTitle
 class DataHandleConversion(object):
     def __init__(self, encoding='utf8'):
         self.sql_type = MyConfig('execute_type').sql
+        self.thread = MyConfig('thread').config
         self.project_name = MyConfig('project_name').excel_parameter
         self.path = read_file(self.project_name, 'case.txt')
         self.encoding = encoding
@@ -114,17 +115,25 @@ class DataHandleConversion(object):
     def _insert_case_data(self, data):
         """用例数据插入skip_cast.txt"""
         if data:
-            if 'my_sql' == self.sql_type:
+            if self.thread:
+                if 'my_sql' == self.sql_type:
+                    for read in data:
+                        self.sql.insert_data(id=read['id'], level=None,
+                                             module=read["module"], name=read["name"],
+                                             remark=None, wait_time=None, status="跳过", url=None,
+                                             insert_time=read["insert_time"], img=None, error_reason=read["reason"],
+                                             author=None, results_value=None)
+                else:
+                    with open(self.path, 'at', encoding=self.encoding) as f:
+                        for case in data:
+                            f.write(str(case) + '\n')
+            else:
                 for read in data:
                     self.sql.insert_data(id=read['id'], level=None,
                                          module=read["module"], name=read["name"],
                                          remark=None, wait_time=None, status="跳过", url=None,
                                          insert_time=read["insert_time"], img=None, error_reason=read["reason"],
                                          author=None, results_value=None)
-            else:
-                with open(self.path, 'at', encoding=self.encoding) as f:
-                    for case in data:
-                        f.write(str(case) + '\n')
 
 
 class ConversionDiscover(object):
