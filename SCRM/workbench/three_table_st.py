@@ -38,7 +38,7 @@ class ThreeTable(UnitTests):
             driver.get(self.url)
             driver.mark_star_mail()
             self.first = driver.message_top_box()
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -65,7 +65,7 @@ class ThreeTable(UnitTests):
             self.assertEqual(message, self.data[2])
             driver.F5()
             self.second = driver.get_table_text()
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())

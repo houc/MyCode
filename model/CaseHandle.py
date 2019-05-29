@@ -4,6 +4,7 @@ import warnings
 import multiprocessing
 import unittest
 import queue
+import platform
 
 from model.Yaml import MyConfig
 from model.SendEmail import Email
@@ -12,14 +13,16 @@ from model.TimeConversion import beijing_time_conversion_unix, time_conversion, 
 from config_path.path_file import read_file
 from model.SQL import Mysql
 from model.MyDB import MyDB
+from model.HtmlDataHandle import MyReport
 from model.ExcelReport import ExcelTitle
 
 
 class DataHandleConversion(object):
     def __init__(self, encoding='utf8'):
         self.sql_type = MyConfig('execute_type').sql
-        self.thread = MyConfig('thread').config
         self.project_name = MyConfig('project_name').excel_parameter
+        self.version = MyConfig('test_version').excel_parameter
+        self.science = MyConfig('science').excel_parameter
         self.path = read_file(self.project_name, 'case.txt')
         self.encoding = encoding
         if 'my_sql' == self.sql_type:
@@ -73,6 +76,12 @@ class DataHandleConversion(object):
                 set_member = list(set(member))
                 set_member.remove('None') if 'None' in set_member else ''
                 case_messages["member"] = set_member
+            else:
+                case_messages["short_time"] = 0
+                case_messages["long_time"] = 0
+                set_member = list(set(member))
+                set_member.remove('None') if 'None' in set_member else ''
+                case_messages["member"] = set_member
             case_messages["testsRun"] = len(error) + len(fail) + len(success) + len(skip)
             case_messages["errors"] = len(error)
             case_messages["failures"] = len(fail)
@@ -85,6 +94,16 @@ class DataHandleConversion(object):
             start_time = beijing_time_conversion_unix(case_messages['start_time'])
             ends_time = beijing_time_conversion_unix(case_messages['end_time'])
             case_messages['total_time'] = time_conversion(ends_time - start_time)
+            case_messages['tool'] = 'Python' + platform.python_version()
+            case_messages['version'] = self.version
+            case_messages['efficiency'] = '{:.2f}'.format(float((case_messages["errors"] + case_messages["failures"] +
+                                           case_messages["success"]) / case_messages["testsRun"] * 100))
+            case_messages['science'] = self.science
+            case_messages['fraction'] = '{:.2f}'.format(float((case_messages["errors"] + case_messages["failures"])
+                                               / case_messages["testsRun"] * 100))
+            case_messages['project'] = self.project_name
+            if case_messages['fraction'] == '0.00':
+                case_messages['fraction'] = '100.00'
             if case_messages:
                 return case_messages
         else:
@@ -115,25 +134,17 @@ class DataHandleConversion(object):
     def _insert_case_data(self, data):
         """用例数据插入skip_cast.txt"""
         if data:
-            if self.thread:
-                if 'my_sql' == self.sql_type:
-                    for read in data:
-                        self.sql.insert_data(id=read['id'], level=None,
-                                             module=read["module"], name=read["name"],
-                                             remark=None, wait_time=None, status="跳过", url=None,
-                                             insert_time=read["insert_time"], img=None, error_reason=read["reason"],
-                                             author=None, results_value=None)
-                else:
-                    with open(self.path, 'at', encoding=self.encoding) as f:
-                        for case in data:
-                            f.write(str(case) + '\n')
-            else:
+            if 'my_sql' == self.sql_type:
                 for read in data:
                     self.sql.insert_data(id=read['id'], level=None,
                                          module=read["module"], name=read["name"],
                                          remark=None, wait_time=None, status="跳过", url=None,
                                          insert_time=read["insert_time"], img=None, error_reason=read["reason"],
                                          author=None, results_value=None)
+            else:
+                with open(self.path, 'at', encoding=self.encoding) as f:
+                    for case in data:
+                        f.write(str(case) + '\n')
 
 
 class ConversionDiscover(object):
@@ -144,12 +155,11 @@ class ConversionDiscover(object):
         self.module = MyConfig('module_run').config
         self.path = read_file(self.project, 'case.txt')
         sql_type = MyConfig('execute_type').sql
-        self.excel = ExcelTitle
         if 'my_sql' == sql_type:
             self.sql = Mysql()
         else:
             self.sql = MyDB()
-        self.queue = queue.LifoQueue()
+        self.queue = queue.Queue()
         self.mail = Email()
         self.start_time = standard_time()
         self.case_handle = DataHandleConversion()
@@ -225,8 +235,19 @@ class ConversionDiscover(object):
                                                       start_time=self.start_time,
                                                       end_time=standard_time())
         if total_case and case_data:
-            self.excel(case_data).class_merge(parameter=total_case)
-            self.mail.sender_email(case_name=total_case)
+            ExcelTitle(case_data).class_merge(total_case)
+            report = MyReport().execute(case_data, start_time=total_case['start_time'],
+                                        ends_time=total_case['end_time'], short_time=total_case['short_time'],
+                                        long_time=total_case['long_time'], total_case=total_case['testsRun'],
+                                        error_case=total_case['errors'], failed_case=total_case['failures'],
+                                        success_case=total_case['success'], skipped_case=total_case['skipped'],
+                                        execute_time=total_case['total_time'], execute_method='多线程',
+                                        efficiency=total_case['efficiency'], version=total_case['version'],
+                                        tool=total_case['tool'], science=total_case['science'],
+                                        sort_time=total_case['short_time'], fraction=total_case['fraction'],
+                                        project=total_case['project'])
+            print('HTML测试报告已生成，可访问url在线预览报告啦：', report, file=sys.stderr)
+            self.mail.sender_email(url=report, case_name=total_case)
         else:
             print('测试用例数据为空，无测试报告统计，无邮件...', file=sys.stderr)
 
@@ -234,7 +255,7 @@ class ConversionDiscover(object):
 class _my_process(multiprocessing.Process):
     """自定义封装的多进程"""
     def __init__(self, case_set):
-        multiprocessing.Process.__init__(self)
+        super(_my_process, self).__init__()
         self.case_set = case_set
 
     def run(self):

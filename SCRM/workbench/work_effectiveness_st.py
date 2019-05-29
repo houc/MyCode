@@ -53,7 +53,7 @@ class WorkEffectiveness(UnitTests):
             driver.F5()
             time.sleep(5)
             self.second = driver.work_num(location=1)
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -85,7 +85,7 @@ class WorkEffectiveness(UnitTests):
             driver.F5()
             time.sleep(5)
             self.first = driver.work_num(location=4)
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -115,7 +115,7 @@ class WorkEffectiveness(UnitTests):
             driver.F5()
             time.sleep(5)
             self.first = driver.work_num(location=5)
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())

@@ -80,13 +80,12 @@ class OperationElement(object):
             screen.size = length, height
         screen.save(path)
 
-    def screen_shot(self, path):
+    def screen_base64_shot(self):
         """
         截图
-        :param path: 存放截图的路径位置，如：D:\work_file\auto_script\TestUi\config\TestCase.png
-        :return: None
+        :return: base64
         """
-        self.driver.save_screenshot(path)
+        return self.driver.get_screenshot_as_base64()
 
     def execute_js(self, js):
         """

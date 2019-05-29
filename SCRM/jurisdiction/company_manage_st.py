@@ -45,7 +45,7 @@ class CompanyManage(UnitTests):
             driver.get(self.url)
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_open_company_info()
@@ -55,7 +55,7 @@ class CompanyManage(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -79,7 +79,7 @@ class CompanyManage(UnitTests):
             driver.get(self.url)
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_close_company_info()
@@ -89,7 +89,7 @@ class CompanyManage(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -113,7 +113,7 @@ class CompanyManage(UnitTests):
             driver.get(self.url)
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_close_user_manage()
@@ -123,7 +123,7 @@ class CompanyManage(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -147,7 +147,7 @@ class CompanyManage(UnitTests):
             driver.get(self.url)
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_open_user_manage()
@@ -157,7 +157,7 @@ class CompanyManage(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())

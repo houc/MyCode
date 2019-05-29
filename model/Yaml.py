@@ -27,6 +27,11 @@ class MyConfig(object):
         return self._read_config_data['excel_parameter'][self.query_key]
 
     @property
+    def report(self):
+        """读取配置文件中的report"""
+        return self._read_config_data['report'][self.query_key]
+
+    @property
     def config(self):
         """读取配置文件中的config"""
         return self._read_config_data['config'][self.query_key]

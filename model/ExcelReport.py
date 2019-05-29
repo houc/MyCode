@@ -2,6 +2,7 @@ import xlsxwriter
 import warnings
 import os
 import sys
+import base64
 
 from config_path.path_file import read_file
 from model.PCParameter import merge_config_info, merge_config_msg, output_python_version
@@ -130,19 +131,21 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.127, 'y_scale': 0.169})
+                        path = _base64_conversion_img(img_name=b[3], base64=b[-3]).as_img()
+                        self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
-                        self.sheet_test.insert_image(a, c + 4, b[-3], {'x_scale': 0.127, 'y_scale': 0.169})
+                        path = _base64_conversion_img(img_name=b[3], base64=b[-3]).as_img()
+                        self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '跳过' == d:
                         self.sheet_test.write(a, c, d, self.skip)
                     elif 'None' == d:
                         self.sheet_test.write(a, c, '.........', self.test_content_style)
                     else:
                         self.sheet_test.set_row(a, 120)
-                        if '.png' in str(d):
+                        if len(str(d)) >= 5000:
                             pass
                         else:
                             self.sheet_test.write(a, c, str(d), self.test_content_style)
@@ -314,7 +317,7 @@ class WriteExcel:
         self._write_pc_content(**kwargs)
         self._write_test_title(*args)
         self.open_excel.close()
-        print("测试报告已生成, 正在处理用例统计...", file=sys.stderr)
+        print("excel测试报告已生成, 正在生成HTML形式报告...", file=sys.stderr)
 
 
 class ExcelTitle(WriteExcel):
@@ -346,10 +349,15 @@ class ExcelTitle(WriteExcel):
         return self._merge_def_title_data(parameter, *args, **kwargs)
 
 
-if __name__ == '__main__':
-    ExcelTitle([['1','P0','登录', '这是测试名称', 'www.sina.com.cn', '1、今天你好吗？\n', '失败', 'true', 'true',
-                 '4.555秒','D:\work_file\\auto_script\\ui-test\img\\test_leave_a_message.png','小宁', '2019-4-15 15:50'],
-                ['2', 'P3', '登录', '这是测试名称', 'www.baidu.com', '1、我今天很不好哇？\n', '错误', 'false', 'true',
-                 '5.6662秒', 'E:\\UI\\img\\test_launching.png', '邓超', '2018-5-5 15:55'],]
+class _base64_conversion_img(object):
+    def __init__(self, img_name, base64):
+        self.base64 = base64
+        self.path = read_file('img', '{}.png'.format(img_name))
 
-    ).class_merge({"success": 10, "testsRun": 70, "errors": 51, "failures": 30})
+    def as_img(self):
+        if self.base64:
+            shot = base64.b64decode(self.base64.encode('ascii'))
+            with open(self.path, 'wb') as f:
+                f.write(shot)
+            if os.path.exists(self.path):
+                return self.path

@@ -1,0 +1,273 @@
+/*h1标签样式*/
+h1{
+    text-align: center;      /*字体居中*/
+    color: blue;            /*字体颜色*/
+    font-weight: bold;      /*字体加粗*/
+    font-family: 微软雅黑 serif;
+}
+
+/*p标签样式*/
+p{
+    border-bottom: 1px solid #E0E0E0;   /*实线向下，颜色*/
+}
+
+/*基本信息/饼型图背景颜色*/
+.public_background{
+    background: #F5F5F5; /*背景颜色*/
+}
+
+/*基本信息的基本信息样式*/
+.base_msg{
+    font-size: 16px;        /*字体大小*/
+    font-family: 微软雅黑, serif; /*字体格式*/
+}
+
+/*基本信息整体偏移量样式*/
+.base_all{
+    margin: 10px 10px; /*偏移【上下】/【左右】*/
+    float: left; /*整体偏移量*/
+    height: 380px; /*高度*/
+    width: auto; /*宽度*/
+    position: relative;
+    overflow: hidden
+}
+
+/*基本信息边框偏移*/
+.border_x_y{
+    margin: 10px 12px; /*偏移【上下】/【左右】*/
+}
+
+/*基本信息边框样式*/
+.border_style{
+    border: 1px solid #E0E0E0; /*实线边框，颜色*/
+    line-height: 40px; /*字体高度*/
+    word-break: break-all; /*自动换行*/
+    width: 140px;  /*字体宽度*/
+    position: relative;
+    overflow: hidden
+}
+
+/*基本信息的td字体宽度*/
+.font_width{
+    width: 190px;
+}
+
+/*基本信息字体偏移*/
+.base_font_x_y{
+    margin: 8px 1px; /*偏移【上下】/【左右】*/
+}
+
+/*饼型图div偏移*/
+.pie_style{
+    margin: 20px 10px; /*偏移【上下】/【左右】*/
+    background-color: #F5F5F5; /*背景颜色*/
+    float: revert; /*整体偏移*/
+    height: 380px; /*高度*/
+    width: 62%; /*宽度*/
+    position: relative;
+    overflow: hidden
+}
+
+
+/*table按钮样式展示*/
+.table_click:active {
+    /*color: black; !*点击颜色*!*/
+    transform: translateY(5px); /*点击后按钮向下偏移量*/
+}
+
+/*table样式*/
+.button {
+    border: none; /*边框样式重写*/
+    color: white; /*字体颜色*/
+    padding: 10px 1px; /*按钮位置*/
+    text-align: center; /*字体居中*/
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /*字体大小*/
+    outline: none;
+    list-style: none;
+    overflow: hidden;
+    cursor: pointer; /*手势*/
+    border-radius: 15px; /*圆角*/
+}
+
+/*table鼠标悬停颜色*/
+.hover:hover {
+    color: black; /*字体颜色*/
+    /*transform: scale(1.07); !*鼠标悬停按钮位置放大*!*/
+    box-shadow: 0 5px 16px 0 rgba(0,0,0,0.24),0 1px 2px 0 rgba(0,0,0,0.19); /* 鼠标悬停背景加深*/
+}
+.click:focus{
+    color: gold; /*点击后颜色*/
+    font-weight: bold; /*字体加粗*/
+    /*transform: scale(1.08); !*鼠标悬停按钮位置放大*!*/
+}
+
+/*tab按钮样式展示*/
+.click:active {
+    color: black;
+    /*transform: translateY(5px); !*点击后按钮向下偏移量*!*/
+}
+/*附件图片默认缩小*/
+.min{
+    width: 100px;
+}
+/*附件图片放大*/
+.max{
+    width: auto;
+    height: auto;
+}
+
+/*table移除默认样式ul标记*/
+.tab_title ul{
+    list-style: none;
+    overflow: hidden;
+    /*margin: 1px 20px; !*按钮位置偏移[上下,左右]*!*/
+}
+/*table样式左方向*/
+.tab_title li{
+    float: left;
+    margin: 1px 1px; /*按钮位置偏移[上下,左右]*/
+}
+
+/*table方向*/
+.tab_title table{
+    margin: 10px 1px; /*按钮位置偏移[上下,左右]*/
+}
+
+/*table方向*/
+.table_style{
+    float: left;
+    margin: 5px 10px; /*按钮位置偏移[上下,左右]*/
+    font-family: 微软雅黑 serif;
+    font-size: 16px;
+}
+
+/*失败背景色*/
+.failed{
+    background-color: #B87070;
+}
+
+/*成功背景色*/
+.success{
+    background-color: #006000;
+}
+
+/*跳过背景色*/
+.skip{
+    background-color: #8E8E8E;
+}
+
+/*错误背景色*/
+.error{
+    background-color: #EA0000;
+}
+
+/*移除pre背景以及默认样式*/
+.is_p{
+    background-color: white; /* 背景样式*/
+    border-style: none; /*默认表格样式取消*/
+    list-style: none; /*默认列表样式取消*/
+    font-size: 16px;
+    font-family: 微软雅黑 serif;
+    margin: 5px 0;  /*字体偏移[上下，左右]*/
+}
+
+/*列表样式*/
+.list_th{
+    border: 1px solid #E0E0E0; /*实线边框，颜色*/
+    font-size: 16px;
+    font-family: 微软雅黑 serif;
+    background-color: #dff0d8;
+    text-align: center;
+    height: 35px;
+}
+
+/*列表样式*/
+.list_td{
+    border: 1px solid #E0E0E0; /*实线边框，颜色*/
+    font-family: 微软雅黑 serif;
+    font-size: 16px;
+    height: 35px;
+}
+
+/*表格里面的模块间距*/
+.modules{
+    width: 200px;
+}
+
+/*表格里面的目录间距*/
+.catalog{
+    width: 350px;
+}
+
+/*表格里面的用例方法间距*/
+.case{
+   width: 500px
+}
+
+/*表格里面的测试地址间距*/
+.address{
+    width: 700px
+}
+
+/*表格里面的状态间距*/
+.status{
+    width: 60px
+}
+/*表格里面的类型间距*/
+.type{
+    width: 70px
+}
+
+/*表格里面的用例耗时间距*/
+.time{
+    width: 100px
+}
+/*表格里面负责人间距*/
+.member{
+    width: 150px
+}
+
+/*表格里面详情间距*/
+.info{
+    width: 100px
+}
+
+/*自动识别屏幕宽度和高度*/
+.auto_div{
+    overflow:hidden
+}
+
+/*弹窗位置*/
+.popUp{
+    width: 80%; /*宽度*/
+}
+
+/*弹窗字体样式th*/
+.th{
+    font-size: 16px; /*字体大小*/
+    font-family: 微软雅黑 serif; /*字体*/
+    width: 240px; /*宽度*/
+    padding: 15px; /*间距*/
+    border: 1px solid #E0E0E0; /*边框*/
+}
+
+/*弹窗字体样式td*/
+.td{
+    font-size: 16px; /*字体大小*/
+    font-family: 微软雅黑 serif; /*字体*/
+    width: 85%; /*边框宽度*/
+    border: 1px solid #E0E0E0; /*边框以及颜色*/
+    padding: 0 10px; /*字体偏移[上下，左右]*/
+}
+
+/*手势*/
+.hand{
+    cursor: pointer; /*手势*/
+}
+
+/*弹窗表格样式*/
+.popUp_table{
+    height: auto; /*表格高度*/
+}

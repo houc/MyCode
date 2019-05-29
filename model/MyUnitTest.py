@@ -10,12 +10,11 @@ from model.MyAssert import MyAsserts
 from model.GetYamlMessages import GetConfigMessage as Get
 from model.TimeConversion import standard_time
 from model.MyException import LoginSelectError
-from config_path.path_file import read_file
 from SCRM.common import LoginPublic
 
 
 class UnitTests(unittest.TestCase):
-    first = second = author = urls = login = driver = status = error = None
+    first = second = author = urls = login = driver = status = error = screenshots= None
     RE_LOGIN, LOGIN_INFO, MODULE = False, None, None
 
     @classmethod
@@ -54,33 +53,33 @@ class UnitTests(unittest.TestCase):
 
     def setUp(self):
         """用例初始化"""
-        self.module = self.__class__.__module__
         self.class_name = self.__class__.__name__
         self.case_name = self._testMethodName
         self.current_path = os.path.dirname(__file__)
+        self.catalog = self.__class__.__module__ + '.' + self.__class__.__name__
         _data_initialization = Get(module=self.MODULE.split('\\')[-2],
                                    class_name=self.class_name, case_name=self.case_name)
         _return_data= _data_initialization.re()
         self.level = _return_data.get('level')
         self.author = _return_data.get('author')
         self.url = _return_data.get('url')
+        self.assembly = _return_data.get('assembly')
         self.second = _return_data.get('asserts')
         self.case_remark = _return_data.get('scene')
         if self.case_remark:
             self.data = _data_initialization.param_extract(self.case_remark)
         else:
-            msg = "{}.{}.{}".format(self.module, self.class_name, self.case_name)
+            msg = "{}.{}.{}".format(self.catalog, self.class_name, self.case_name)
             raise ValueError(msg + "common中scene参数为空，此参数不能为空，请增加")
         self.driver.set_page_load_timeout(self.wait)
         self.current_time = standard_time()
-        self.screenshots_path = read_file('img', '{}.png'.format(self.case_name))
         self.start_time = time.time()
 
     def tearDown(self):
         """用例结束"""
         end_time = time.time()
         total_time = end_time - self.start_time
-        error_path = '{}/{}/{}'.format(self.module, self.class_name, self.case_name)
-        MyAsserts(self.first, self.second, self.module, self.level, self.case_name, self.case_remark,
-                  self.status, self.error, self.url, total_time, self.driver, self.class_name,
-                  self.screenshots_path, self.author, self, error_path, self.log).asserts()
+        error_path = '{}/{}/{}'.format(self.catalog, self.assembly, self.case_name)
+        MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_remark,
+                  self.status, self.error, self.url, total_time, self.driver, self.assembly,
+                  self.screenshots, self.author, self, error_path, self.log).asserts()

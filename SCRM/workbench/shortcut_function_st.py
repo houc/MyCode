@@ -37,7 +37,7 @@ class ShortcutFunction(UnitTests):
             driver.F5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=1)
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -54,7 +54,7 @@ class ShortcutFunction(UnitTests):
             driver.F5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=1)
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
             driver.cancel_button(location=1)
         except Exception:
@@ -72,7 +72,7 @@ class ShortcutFunction(UnitTests):
             driver.F5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=1)
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -89,7 +89,7 @@ class ShortcutFunction(UnitTests):
             driver.F5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=2)
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -106,7 +106,7 @@ class ShortcutFunction(UnitTests):
             driver.F5()
             driver.quick_button(text=self.data[0])
             self.first = driver.is_url_contain(url=self.data[1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -128,7 +128,7 @@ class ShortcutFunction(UnitTests):
             driver.quick_button(text=self.data[0])
             driver.process_click()
             self.first = driver.is_url_contain(url=self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -151,7 +151,7 @@ class ShortcutFunction(UnitTests):
             driver.marketing_type(text=self.data[1])
             driver.process_click()
             self.first = driver.is_url_contain(url=self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -175,7 +175,7 @@ class ShortcutFunction(UnitTests):
             driver.week_type(type=self.data[2])
             driver.process_click()
             self.first = driver.is_url_contain(url=self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())

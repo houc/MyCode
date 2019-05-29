@@ -24,9 +24,9 @@ class Email:
         self.img_path = read_file('img', 'html.png')
         self.excel_path = read_file('report', 'ExcelReport.xlsx')
 
-    def _send_title_msg(self, case_name):
+    def _send_title_msg(self, url, case_name):
         """发送表头信息"""
-        self._send_content()
+        self._send_content(url)
         self._send_enclosure(case_name)
         self._send_file()
         self.contents['from'] = Header(self.sender)
@@ -34,44 +34,34 @@ class Email:
         self.contents['subject'] = Header('{}自动化测试报告'.format(self.title_name + self.title))
         return self.contents
 
-    def _send_content(self):
+    def _send_content(self, url):
         """发送具体内容"""
-        # img = MIMEImage(open(self.img_path, 'rb').read())
-        # img.add_header('Content-ID', '<image1>')
-        # link_url = """
-        # <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\
-        # </i></b><img alt="" src="cid:image1"/>
-        # """.format('http://www.baidu.com')
-        # content = MIMEText(link_url, 'html')
-        # self.content.attach(content)
-        # self.content.attach(img)
-        # return self.content
+        link_url = """
+        <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\
+        </i></b><img alt="" src="cid:image1"/>
+        """.format(url)
+        self.contents.attach(MIMEText(link_url, 'html', 'utf8'))
 
     def _send_enclosure(self, case_name):
         """发送附件统计图"""
         AmilSupport(case_name)
-        print('用例统计已执行完成，正在发送邮件...', file=sys.stderr)
+        print('邮件中的截图统计已完成，正在发送邮件...', file=sys.stderr)
         if os.path.exists(self.img_path):
             img = MIMEImage(open(self.img_path, 'rb').read())
             img.add_header('Content-ID', '<image1>')
-            img_text = '''<b><i><font size="3" color="blue"></font></i></b><img alt="" src="cid:image1"/>'''
-            text = MIMEText(img_text, 'html', 'utf-8')
-            self.contents.attach(text)
             self.contents.attach(img)
-            return self.contents
 
     def _send_file(self):
         """发送带附件的内容"""
         att = MIMEText(open(self.excel_path, 'rb').read(), 'base64', 'utf-8')
         att["Content-Type"] = 'application/octet-stream'
-        att["Content-Disposition"] = 'attachment; filename="详情.xlsx"'
+        att["Content-Disposition"] = 'attachment; filename="info.xlsx"'
         self.contents.attach(att)
-        return self.contents
 
-    def sender_email(self, case_name):
+    def sender_email(self, url, case_name):
         """发送邮件"""
         try:
-            content = self._send_title_msg(case_name)
+            content = self._send_title_msg(url, case_name)
             self.Mail.connect(self.server)
             self.Mail.login(self.sender, self.sender_password)
             self.Mail.sendmail(self.sender, self.receiver, content.as_string())
@@ -83,4 +73,4 @@ class Email:
 
 
 if __name__ == '__main__':
-    Email().sender_email(case_name={})
+    Email().sender_email('http://www.baidu.com', '')

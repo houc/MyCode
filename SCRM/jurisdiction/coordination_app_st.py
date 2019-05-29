@@ -44,7 +44,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.execute_op(self.data[1], self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_open_SkyDrive()
@@ -54,7 +54,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[4])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -77,7 +77,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.execute_op(self.data[1], self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_close_SkyDrive()
@@ -87,7 +87,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[4])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -110,7 +110,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.execute_op(self.data[1], self.data[0])
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_open_mail_list()
@@ -120,7 +120,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -143,7 +143,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.execute_op(self.data[1], self.data[0])
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[1])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[2])
                 driver.get(driver.home_url)
                 return self.test_close_mail_list()
@@ -153,7 +153,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[3])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -176,7 +176,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[2])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[3])
                 driver.get(driver.home_url)
                 return self.test_open_notice_manage()
@@ -186,7 +186,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[4])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -209,7 +209,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[2])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[3])
                 driver.get(driver.home_url)
                 return self.test_close_notice_manage()
@@ -219,7 +219,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[4])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -242,7 +242,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[2])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[3])
                 driver.get(driver.home_url)
                 return self.test_close_notice_column()
@@ -252,7 +252,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[4])
             driver.F5()
             self.first = driver.get_left_tab(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -275,7 +275,7 @@ class CoordinationApp(UnitTests):
             name_and_switch = driver.get_notice_status(self.data[2], table_switch=self.data[1])
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[2])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[3])
                 driver.get(driver.home_url)
                 return self.test_open_notice_column()
@@ -285,7 +285,7 @@ class CoordinationApp(UnitTests):
             driver.get(driver.url + self.data[4])
             driver.F5()
             self.first = driver.get_left_tab(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())

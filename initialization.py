@@ -250,8 +250,7 @@ class CreateModule(object):
         if case_name:
             repeat = [val for val in list(set(case_name)) if case_name.count(val) >= 2]
             if repeat:
-                import warnings
-                warnings.warn('注意-->有重复的用例名称，用例名称:' + ', '.join(repeat))
+                raise TypeError('注意-->有重复的用例名称，, 请变更重复方法：' + ', 请变更重复方法：'.join(repeat))
             return case_name
 
     def _get_package(self):

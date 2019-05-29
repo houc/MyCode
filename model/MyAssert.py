@@ -50,7 +50,7 @@ class MyAsserts():
                 else:
                     self.status = '错误'
                 self.reason = self._strConversion(self.reason)
-                self.img_path = self.screenshots_path.replace('\\', '/')
+                self.img_path = self.screenshots_path
                 self._log(self.reason)
                 raise BaseException(self.reason)
             else:
@@ -67,12 +67,12 @@ class MyAsserts():
         if self.thread:
             if 'my_sql' == self.sql_type:
                 self.sql.insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
-                                     '{:.3f}秒'.format(self.time), status, self.url, insert_time,
+                                     '{:.2f}秒'.format(self.time), status, self.url, insert_time,
                                      img_path, reason, self.author, results_value=self.second)
             else:
                 case_data = {'id': self.id, 'level': self.level, 'module': self.module,
                              'name': self.name, 'mark': self._strConversion(self.remark),
-                             'run_time': '{:.3f}秒'.format(self.time),'status': status, 'url': self.url,
+                             'run_time': '{:.2f}秒'.format(self.time),'status': status, 'url': self.url,
                              'insert_time': insert_time, 'img_path': img_path, 'reason': reason,
                              'author': self.author, 'result': self.second}
                 with open(self.case_path, 'at', encoding=self.encoding) as f:

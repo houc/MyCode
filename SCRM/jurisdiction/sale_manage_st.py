@@ -41,7 +41,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_import()
@@ -51,7 +51,7 @@ class SaleManage(UnitTests):
             driver.get(driver.customer_url)
             driver.F5()
             self.first = driver.module_switch(self.data[2])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -71,7 +71,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_import()
@@ -81,7 +81,7 @@ class SaleManage(UnitTests):
             driver.get(driver.customer_url)
             driver.F5()
             self.first = driver.module_switch(self.data[2])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -102,7 +102,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_export()
@@ -112,7 +112,7 @@ class SaleManage(UnitTests):
             driver.get(driver.customer_url)
             driver.F5()
             self.first = driver.get_customer_button(self.data[2])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -132,7 +132,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_export()
@@ -142,7 +142,7 @@ class SaleManage(UnitTests):
             driver.get(driver.customer_url)
             driver.F5()
             self.first = driver.get_customer_button(self.data[2])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -162,7 +162,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_distribution()
@@ -172,7 +172,7 @@ class SaleManage(UnitTests):
             driver.get(driver.customer_url)
             driver.F5()
             self.first = driver.get_customer_button(self.data[2])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -192,7 +192,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_distribution()
@@ -202,7 +202,7 @@ class SaleManage(UnitTests):
             driver.get(driver.customer_url)
             driver.F5()
             self.first = driver.get_customer_button(self.data[2])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -225,7 +225,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_field()
@@ -235,7 +235,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -257,7 +257,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_field()
@@ -267,7 +267,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -289,7 +289,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_tag()
@@ -299,7 +299,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -322,7 +322,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0]) # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_tag()
@@ -332,7 +332,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -354,7 +354,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_public()
@@ -364,7 +364,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -387,7 +387,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_public()
@@ -397,7 +397,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -419,7 +419,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'false' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_open_private()
@@ -429,7 +429,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
@@ -452,7 +452,7 @@ class SaleManage(UnitTests):
             name_and_switch = driver.execute_op(self.data[0])  # 0设置员工的姓名，1获取当前的权限是否是开启或者是关闭状态
             if 'true' == name_and_switch[1]:
                 message = driver.message_box(self.data[0])
-                driver.screen_shot(self.screenshots_path)
+                self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(message, self.data[1])
                 driver.get(driver.home_url)
                 return self.test_close_private()
@@ -462,7 +462,7 @@ class SaleManage(UnitTests):
             driver.get(driver.url + self.data[2])
             driver.F5()
             self.first = driver.get_title(self.data[-1])
-            driver.screen_shot(self.screenshots_path)
+            self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())

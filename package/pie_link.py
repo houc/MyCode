@@ -1,6 +1,4 @@
-
 """发送邮件生成的饼型统计图"""
-
 
 HTML = '''<!DOCTYPE html>
 <html style="height: %s">
@@ -41,6 +39,7 @@ setTimeout(function () {
             trigger: 'axis',
             showContent: true,
         },
+        color : ['#EA0000', '#B87070', '#8E8E8E', '#006000'], // 饼型图背景颜色重写
         dataset: {
             source: [
                 ['product', '错误数', '失败数', '跳过数', '成功数'],
@@ -110,5 +109,5 @@ if (option && typeof option === "object") {
        </script>
    </body>
 </html>
- 
+
 '''
