@@ -12,20 +12,8 @@ def report(dir_name, html_name):
     path = read_file('report/{}'.format(dir_name) , html_name)
     return template(path)
 
-@route('/my_js/<filename>')
-def my_html_js(filename):
-    return static_file(filename, root='../package/report/static')
-
-@route('/404/<filename>')
-def is_404_css(filename):
-    return static_file(filename, root='../package/report/static')
-
-@route('/500/<filename>')
-def is_500_css(filename):
-    return static_file(filename, root='../package/report/static')
-
-@route('/my_css/<filename>')
-def my_html_css(filename):
+@route('/my_static/<filename>')
+def my_static_file(filename):
     return static_file(filename, root='../package/report/static')
 
 @error(500)

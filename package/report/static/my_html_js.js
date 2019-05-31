@@ -53,7 +53,7 @@ function pie_img(error, success, skip, fail) {
 
 /*附件新窗口打开*/
 function look_img_windows(content) {
-    if (content === "" || content === "None") {
+    if (content == "" || content == "None") {
         return false
     }
     else {

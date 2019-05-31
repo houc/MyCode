@@ -102,8 +102,6 @@ class DataHandleConversion(object):
             case_messages['fraction'] = '{:.2f}'.format(float((case_messages["errors"] + case_messages["failures"])
                                                / case_messages["testsRun"] * 100))
             case_messages['project'] = self.project_name
-            if case_messages['fraction'] == '0.00':
-                case_messages['fraction'] = '100.00'
             if case_messages:
                 return case_messages
         else:

@@ -15,8 +15,12 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{url}}/my_js/my_html_js.js"></script>
-    <link rel="stylesheet" href="{{url}}/my_css/my_html_css.css">
+    <script type="text/javascript" src="{{url}}/my_static/my_html_js.js"></script>
+    <script type="text/javascript" src="{{url}}/my_static/success.js"></script>
+    <script type="text/javascript" src="{{url}}/my_static/skipped.js"></script>
+    <script type="text/javascript" src="{{url}}/my_static/failed.js"></script>
+    <script type="text/javascript" src="{{url}}/my_static/errors.js"></script>
+    <link rel="stylesheet" href="{{url}}/my_static/my_to_html_css.css">
 </head>
 <body>
     <h1>{{project}}测试报告</h1>
@@ -110,7 +114,7 @@
 
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="fail"> <!--失败用例集合-->
-                    <table>
+                    <table id="failed_page">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -127,9 +131,14 @@
                             {{fail_list}}
                         </tbody>
                     </table>
+                    <ul class="pager page_style" id="failed_next">
+                    </ul>
+                    <ul class="pager page_style" id="failed_pre">
+                    </ul>
+                <script>failedMethod('failed_page')</script>
                 </div>
                 <div class="tab-pane fade in" id="error"> <!--错误用例集合-->
-                    <table>
+                    <table id="errors_page">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -146,10 +155,14 @@
                             {{error_list}}
                         </tbody>
                     </table>
+                    <ul class="pager page_style" id="errors_next">
+                    </ul>
+                    <ul class="pager page_style" id="errors_pre">
+                    </ul>
+                <script>errorsMethod('errors_page')</script>
                 </div>
-
                 <div class="tab-pane fade in" id="skip"> <!--跳过用例集合-->
-                    <table>
+                    <table id="skipped_page">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -166,10 +179,15 @@
                             {{skip_list}}
                         </tbody>
                     </table>
+                    <ul class="pager page_style" id="skip_next">
+                    </ul>
+                    <ul class="pager page_style" id="skip_pre">
+                    </ul>
+                <script>skippedMethod('skipped_page')</script>
                 </div>
 
                 <div class="tab-pane fade in" id="success"> <!--成功用例集合-->
-                    <table>
+                    <table id="success_page">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -186,6 +204,11 @@
                             {{success_list}}
                         </tbody>
                     </table>
+                    <ul class="pager page_style" id="success_next">
+                    </ul>
+                    <ul class="pager page_style" id="success_pre">
+                    </ul>
+                <script>successMethod('success_page')</script>
                 </div>
             </div>
         </div>

@@ -271,3 +271,9 @@ p{
 .popUp_table{
     height: auto; /*表格高度*/
 }
+
+/*page_style样式*/
+.page_style{
+    float: right;
+    margin: 10px 5px;
+}
