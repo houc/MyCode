@@ -5,9 +5,9 @@ excel_parameter:
   test_version: V1.7.5    # 测试时的版本号
   science: 线上环境   # 测试环境
 report:
-  ip:  192.168.4.76 # 服务器ip
+  ip:  192.168.4.6 # 服务器ip
   port: 2222 # 端口
-  save: 2
+  save: 5
 config:
   thread: True # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
   token_keys: Authorization   # token表示key名
@@ -20,7 +20,7 @@ config:
   logo_url: ./static/lib/image/logo.png?v=3 # 项目logo连接
   while_case: 1         # 失败重跑次数
   while_sleep: 3        # 失败重跑等待时间
-  module_run:      # 指定需要运行的模块，示例：login
+  module_run: login   # 指定需要运行的模块，示例：login
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
   skip_module: {coordination_app_st: 太复杂, coordination_app_st: 负责, sale_manage_st: 在哪跳, shortcut_function_st: 默默人,
                 login_repeat_st: 太多，暂跳, #company_manage_st: 跳一跳, work_effectiveness_st: 哈哈哈, three_table_st: PPP

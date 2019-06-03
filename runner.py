@@ -1,5 +1,6 @@
 import unittest
 import os
+import sys
 
 from model.HtmlDataHandle import MyReport
 from model.Yaml import MyConfig
@@ -17,6 +18,7 @@ class RunAll(object):
         """初始化"""
         self.current_path = os.path.dirname(__file__)
         self.re = MyConfig('re').config
+        self.save = MyConfig('save').report
         sql_type = MyConfig('execute_type').sql
         if 'my_sql' == sql_type:
             self.sql = Mysql()
@@ -68,11 +70,13 @@ class RunAll(object):
                                efficiency=total_case['efficiency'], version=total_case['version'],
                                tool=total_case['tool'], science=total_case['science'], project=total_case['project'],
                                sort_time=total_case['short_time'], fraction=total_case['fraction'])
-            print('HTML测试报告已生成，访问url', report)
+            print('HTML测试报告已生成，访问url', report, file=sys.stderr)
             self.mail.sender_email(url=report, case_name=total_case)
 
     def runner(self):
         """运行全部的测试用例数"""
+        if self.save < 7:
+            raise ValueError('报告存放日期需大于7天以上！')
         self._get_case_status()
 
 
