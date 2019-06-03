@@ -7,13 +7,13 @@ excel_parameter:
 report:
   ip:  192.168.4.6 # 服务器ip
   port: 2222 # 端口
-  save: 5
+  save: 7
 config:
   thread: True # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
   token_keys: Authorization   # token表示key名
   level: 10                   # 日志等级
   page_loading_wait: 30   # 超时时间
-  logs_save: 7          # 日志最长保存天数
+  logs_save: 5          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
   task_time: 30         # 定时任务等待执行时间
   browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False

@@ -1,6 +1,6 @@
 
 //全局变量
-var pageSize = 15; //默认展示几行
+var pageSize = 10; //默认展示几行
 var page = 1;
 var skippedPageId = '';
 
