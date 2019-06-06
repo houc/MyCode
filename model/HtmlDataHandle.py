@@ -12,6 +12,7 @@ from model.ImportTemplate import GetTemplateHTML
 from model.DriverParameter import browser
 from package.pie_link import HTML
 from model.Thread import MyThread
+from model.PCParameter import get_network
 
 
 class AmilSupport(object):
@@ -68,13 +69,18 @@ class MyReport(object):
         self.new_dict = defaultdict(dict)
         self.finish_dict = defaultdict(dict)
         self.save = MyConfig('save').report
-        self.server = 'http://{}:{}'.format(MyConfig('ip').report, MyConfig('port').report)
         self.encoding = 'utf8'
         self.skipped = ''
         self.success = ''
         self.error = ''
         self.failed = ''
         self.case_info = ''
+        ip = MyConfig('ip').report
+        port = MyConfig('port').report
+        if ip and port:
+            self.server = 'http://{}:{}'.format(ip, port) # 服务器ip
+        else:
+            self.server = 'http://{}:{}'.format(get_network()['ip地址'], port if port else 2222) # 本地ip
 
     def execute(self, *args, **kwargs):
         conversion_list = self._conversion_list(args)

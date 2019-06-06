@@ -36,10 +36,7 @@ class Email:
 
     def _send_content(self, url):
         """发送具体内容"""
-        link_url = """
-        <b><i><font size="3" color="red"><a href="{}" target="_blank" class="mnav">点击此处在线查看测试报告</a></font>\
-        </i></b><img alt="" src="cid:image1"/>
-        """.format(url)
+        link_url = """<a href="{}" target="_blank">点击此处在线查看测试报告</a><img alt="" src="cid:image1"/>""".format(url)
         self.contents.attach(MIMEText(link_url, 'html', 'utf8'))
 
     def _send_enclosure(self, case_name):

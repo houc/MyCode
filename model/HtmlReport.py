@@ -5,7 +5,9 @@ sys.path.append(PATH)
 
 from bottle import run, route, template, static_file, error
 from config_path.path_file import module_file, read_file
+from model.PCParameter import get_network
 
+IP = 'http://{}:{}'.format(get_network()['ip地址'], 2222) # 默认获取当前计算IP
 
 @route('/report/<dir_name>/<html_name>')
 def report(dir_name, html_name):
@@ -18,21 +20,15 @@ def my_static_file(filename):
 
 @error(500)
 def error_500(error):
-    from model.Yaml import MyConfig
-    url = 'http://{}:{}'.format(MyConfig('ip').report, MyConfig('port').report)
     path = module_file('package/report', 'tpl', 'is_500_tpl.tpl')
-    return template(path, url=url)
+    return template(path, url=IP)
 
 @error(404)
 def error_404(error):
-    from model.Yaml import MyConfig
-    url = 'http://{}:{}'.format(MyConfig('ip').report, MyConfig('port').report)
     path = module_file('package/report', 'tpl', 'is_404_tpl.tpl')
-    return template(path, url=url)
+    return template(path, url=IP)
 
 
 if __name__ == '__main__':
-    from model.Yaml import MyConfig
-    ip = MyConfig('ip').report
-    port = MyConfig('port').report
-    run(host=ip, port=port)
+    ip = IP.split('http://')[-1].split(':')
+    run(host=ip[0], port=ip[-1])
