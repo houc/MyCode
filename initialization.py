@@ -34,9 +34,7 @@ class CreateModule(object):
             path = read_file(self.paths, modules)
             if not os.path.exists(path):
                 os.mkdir(path)
-                return modules
-            else:
-                return modules
+            return modules
         except Exception as exc:
             self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
 

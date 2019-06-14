@@ -20,7 +20,7 @@
     <script type="text/javascript" src="{{url}}/my_static/skipped.js"></script>
     <script type="text/javascript" src="{{url}}/my_static/failed.js"></script>
     <script type="text/javascript" src="{{url}}/my_static/errors.js"></script>
-    <link rel="stylesheet" href="{{url}}/my_static/my_to_html_css.css">
+    <link rel="stylesheet" href="{{url}}/my_static/my_html_css.css">
 </head>
 <body>
     <h1>{{project}}测试报告</h1>

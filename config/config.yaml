@@ -5,8 +5,8 @@ excel_parameter:
   test_version: V1.7.5    # 测试时的版本号
   science: 线上环境   # 测试环境
 report:
-  ip: 21.125.114.7  # 服务器ip
-  port: 62019 # 端口
+  ip:   # 服务器ip
+  port:  # 端口
   save: 7 # 报告存放时间（天）
 config:
   thread: True # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
