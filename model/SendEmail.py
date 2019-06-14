@@ -19,6 +19,7 @@ class Email:
         self.sender_password = MyConfig('send_password').send_email
         self.server = MyConfig('server').send_email
         self.receiver = MyConfig('receiver').send_email
+        self.cc = MyConfig('CC').send_email
         self.title_name = MyConfig('project_name').excel_parameter
         self.title = MyConfig('science').excel_parameter
         self.img_path = read_file('img', 'html.png')
@@ -30,7 +31,8 @@ class Email:
         self._send_enclosure(case_name)
         self._send_file()
         self.contents['from'] = Header(self.sender)
-        self.contents['to'] = Header(','.join(self.receiver))
+        self.contents['to'] = Header(', '.join(self.receiver))
+        self.contents['cc'] = Header(', '.join(self.cc))
         self.contents['subject'] = Header('{}自动化测试报告'.format(self.title_name + self.title))
         return self.contents
 
@@ -61,9 +63,12 @@ class Email:
             content = self._send_title_msg(url, case_name)
             self.Mail.connect(self.server)
             self.Mail.login(self.sender, self.sender_password)
-            self.Mail.sendmail(self.sender, self.receiver, content.as_string())
+            self.Mail.sendmail(self.sender, self.receiver + self.cc, content.as_string())
             self.Mail.quit()
-            print('给{}邮件发送成功'.format(', '.join(self.receiver)), file=sys.stderr)
+            if self.cc:
+                print('抄送{}发送{}成功'.format(', '.join(self.cc), ', '.join(self.receiver)), file=sys.stderr)
+            else:
+                print('给{}邮件发送成功'.format(', '.join(self.receiver)), file=sys.stderr)
         except smtplib.SMTPException:
             print('给{}邮件发送失败'.format(', '.join(self.receiver)), file=sys.stderr)
 
