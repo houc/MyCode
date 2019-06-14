@@ -52,6 +52,7 @@ import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
+from model.CaseHandle import CaseRunning
 from model.SkipModule import Skip, current_module
 from {} import {}
 
@@ -71,10 +72,13 @@ class {}(UnitTests):
     LOGIN_INFO = {{"account": None, "password": None, "company": None}}
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\\\')[-1].split('.')[0]
+    
+    set_up = UnitTests.setUp
 
 '''
 
-CASE_NAME = '''    def {}(self):
+CASE_NAME = '''    @CaseRunning(set_up)
+    def {}(self):
         """
         {}
         """
@@ -86,7 +90,8 @@ CASE_NAME = '''    def {}(self):
             self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
-            self.error = str(traceback.format_exc())\n
+            self.error = str(traceback.format_exc())
+            raise\n
 '''
 
 CURRENCY_YA = '''#add_customer:

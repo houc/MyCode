@@ -5,6 +5,7 @@ import multiprocessing
 import unittest
 import queue
 import platform
+import time
 
 from model.Yaml import MyConfig
 from model.SendEmail import Email
@@ -263,3 +264,27 @@ class _my_process(multiprocessing.Process):
         result = unittest.TextTestRunner(verbosity=2).run(discover)
         DataHandleConversion().case_data_handle(result)
         lock.release()
+
+
+class CaseRunning(object):
+    def __init__(self, set_up, switch=False):
+        self.setUp = set_up
+        self.switch = switch
+        self.frequency = MyConfig('while_case').config
+        self.wait = MyConfig('while_sleep').config
+
+    def __call__(self, method):
+        def execute(*args, **kwargs):
+            for k, v in enumerate(range(self.frequency)):
+                try:
+                    case_method = method(*args, **kwargs)
+                    return case_method
+                except:
+                    driver = self.setUp(*args, **kwargs)
+                    if (k + 1) == self.frequency:
+                        raise
+                    else:
+                        time.sleep(self.wait)
+                        if self.switch:
+                            driver.refresh()
+        return execute

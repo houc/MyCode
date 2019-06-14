@@ -6,6 +6,7 @@ import traceback
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
+from model.CaseHandle import CaseRunning
 from SCRM.workbench.currency import WorkbenchElement
 from model.TimeConversion import compact_time
 
@@ -25,7 +26,10 @@ class WorkEffectiveness(UnitTests):
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\')[-1].split('.')[0]
 
+    set_up = UnitTests.setUp
+
     @unittest.skip('创建邮件后，延迟比较严重..')
+    @CaseRunning(set_up)
     def test_send_ordinary_mail(self):
         """
         验证发送普通邮件后，工作台【发送普通邮件】是否会+1
@@ -58,6 +62,7 @@ class WorkEffectiveness(UnitTests):
         except Exception:
             self.error = str(traceback.format_exc())
 
+    @CaseRunning(set_up)
     def test_create_contacts(self):
         """
         验证新增联系人后，工作台【新增联系人】是否会+1
@@ -86,9 +91,11 @@ class WorkEffectiveness(UnitTests):
             time.sleep(5)
             self.first = driver.work_num(location=4)
             self.screenshots = driver.screen_base64_shot()
+            self.assertEqual(self.first, self.second)
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
+            raise
 
     def test_create_customer(self):
         """
@@ -119,4 +126,3 @@ class WorkEffectiveness(UnitTests):
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
-

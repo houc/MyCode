@@ -52,7 +52,6 @@ class MyAsserts():
                 self.reason = self._strConversion(self.reason)
                 self.img_path = self.screenshots_path
                 self._log(self.reason)
-                raise BaseException(self.reason)
             else:
                 self.status = '成功'
                 self.reason = self._strConversion(str(self.first))

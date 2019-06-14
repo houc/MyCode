@@ -74,6 +74,7 @@ class UnitTests(unittest.TestCase):
         self.driver.set_page_load_timeout(self.wait)
         self.current_time = standard_time()
         self.start_time = time.time()
+        return self.driver
 
     def tearDown(self):
         """用例结束"""
