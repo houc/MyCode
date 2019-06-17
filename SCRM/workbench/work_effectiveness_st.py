@@ -61,6 +61,7 @@ class WorkEffectiveness(UnitTests):
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
+            raise
 
     @CaseRunning(set_up)
     def test_create_contacts(self):
@@ -91,12 +92,12 @@ class WorkEffectiveness(UnitTests):
             time.sleep(5)
             self.first = driver.work_num(location=4)
             self.screenshots = driver.screen_base64_shot()
-            self.assertEqual(self.first, self.second)
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
             raise
 
+    @CaseRunning(set_up)
     def test_create_customer(self):
         """
         验证新增客户后，工作台【新增客户】是否会+1
@@ -126,3 +127,4 @@ class WorkEffectiveness(UnitTests):
             self.assertNotEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
+            raise

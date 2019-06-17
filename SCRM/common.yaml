@@ -139,7 +139,7 @@ SCRM:
         scene: "验证星标邮件是否成功\n
                 1、选择第{1}条邮件;\n
                 2、点击星标",
-        asserts: 标记为星标邮件成功1
+        asserts: 标记为星标邮件成功
       }
         test_today_task: {
         url: ,

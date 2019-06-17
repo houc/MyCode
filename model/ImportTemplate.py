@@ -1,7 +1,6 @@
 CURRENCY_PY = '''import requests
 import time
 
-from door.common import new_hover
 from model.Yaml import MyProject
 from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
@@ -83,7 +82,7 @@ CASE_NAME = '''    @CaseRunning(set_up)
         {}
         """
         try:
-            driver = LoginElement(self.driver)
+            driver = {}(self.driver)
             driver.get(self.url)
             driver.F5()
             self.first = 

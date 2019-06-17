@@ -49,7 +49,7 @@ class RunAll(object):
         if self.thread:
             ConversionDiscover(discover).case_package()
         else:
-            runner = unittest.TextTestRunner(verbosity=2).run(discover)
+            runner = unittest.TextTestRunner(verbosity=1).run(discover)
             DataHandleConversion().case_data_handle(in_case_data=runner)
             self._get_case_detailed()
 
