@@ -21,7 +21,8 @@ class UnitTests(unittest.TestCase):
     def setUpClass(cls):
         """判断类下面是否需要重新请求账号登录"""
         try:
-            cls.driver = browser(switch=MyConfig('browser').config)
+            driver_headless = MyConfig('browser').config
+            cls.driver = browser(switch=driver_headless)
             cls.wait = MyConfig('page_loading_wait').config
             cls.sql = MyDB()
             cls.log = Logger()

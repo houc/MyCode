@@ -9,7 +9,7 @@ report:
   port:  # 端口
   save: 7 # 报告存放时间（天）
 config:
-  thread: True # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
+  thread: False # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
   token_keys: Authorization   # token表示key名
   level: 10                   # 日志等级
   page_loading_wait: 30   # 超时时间
