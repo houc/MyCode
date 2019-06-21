@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from config_path.path_file import read_file, module_file
 from collections import defaultdict
 from model.Yaml import MyConfig
+from model.HtmlReport import PORT
 from model.TimeConversion import standard_time, compact_time
 from model.ImportTemplate import GetTemplateHTML
 from model.DriverParameter import browser
@@ -80,7 +81,7 @@ class MyReport(object):
         if ip and port:
             self.server = 'http://{}:{}'.format(ip, port) # 服务器ip
         else:
-            self.server = 'http://{}:{}'.format(get_network()['ip地址'], port if port else 2222) # 本地ip
+            self.server = 'http://{}:{}'.format(get_network()['ip地址'], port if port else PORT) # 本地ip
 
     def execute(self, *args, **kwargs):
         conversion_list = self._conversion_list(args)

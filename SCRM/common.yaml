@@ -2699,3 +2699,504 @@ SCRM:
                 3、验证是否加载出邮件元素",
         asserts: True,
         }
+  report_test:
+    - report_check_success:
+      url:
+      className: TestCheckSuccess
+      assembly: 测试报告正确
+      funName:
+      - test_success_1: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+      }
+        test_success_2: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_3: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_4: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_5: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_6: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_7: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_8: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_9: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_10: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_11: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_12: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_13: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_14: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+        test_success_15: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "正确校验",
+        asserts: True,
+        }
+    - report_check_errors:
+      url:
+      className: TestCheckErrors
+      assembly: 测试报告错误
+      funName:
+      - test_error_1: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+      }
+        test_error_2: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_3: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_4: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_5: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_6: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_7: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_8: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_9: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_10: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_11: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_12: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_13: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_14: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_15: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_16: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_17: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+    - report_check_skipped:
+      url:
+      className: TestCheckSkipped
+      assembly: 测试报告跳过
+      funName:
+      - test_skip_1: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+      }
+        test_skip_2: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_3: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_4: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_5: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_6: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_7: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_8: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_10: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_11: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_12: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_13: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_14: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_15: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_16: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+        test_skip_17: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "跳过校验",
+        asserts: True,
+        }
+    - report_check_failed:
+      url:
+      className: TestCheckFailed
+      assembly: 测试报告失败
+      funName:
+      - test_fail_1: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+      }
+        test_fail_1: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_2: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_3: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_4: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_5: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_6: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_7: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_8: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_9: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_10: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }
+        test_fail_11: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "失败校验",
+        asserts: True,
+        }

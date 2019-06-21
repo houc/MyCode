@@ -7,7 +7,8 @@ from bottle import run, route, template, static_file, error
 from config_path.path_file import module_file, read_file
 from model.PCParameter import get_network
 
-IP = 'http://{}:{}'.format(get_network()['ip地址'], 2222) # 默认获取当前计算IP
+PORT = 2019
+IP = 'http://{}:{}'.format(get_network()['ip地址'], PORT) # 默认获取当前计算IP
 
 @route('/report/<dir_name>/<html_name>')
 def report(dir_name, html_name):

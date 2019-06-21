@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains as hover
 from selenium.webdriver.support.ui import WebDriverWait
@@ -155,12 +157,8 @@ class OperationElement(object):
         """
         try:
             return self.support.until(EC.presence_of_element_located(element))
-        except Exception:
-            self.F5()
-            try:
-                return self.support.until(EC.presence_of_element_located(element))
-            except Exception as exc:
-                raise ValueError('呀！元素:{}异常啦，异常原因:{}'.format(element, exc))
+        except Exception as exc:
+            raise ValueError('元素: {!r}异常啦，异常原因:{!r}'.format(element, exc))
 
     def is_click(self, element, wait_time=2):
         """
@@ -170,11 +168,12 @@ class OperationElement(object):
         :return:
         """
         try:
-            self.operation_element(element).click()
-        except Exception:
-            import time
-            time.sleep(wait_time)
-            self.operation_element(element).click()
+            is_click = self.support.until(EC.element_to_be_clickable(element))
+            if is_click:
+                is_click.click()
+            else: raise
+        except Exception as exc:
+            raise ValueError('元素：{!r}未能检测出可点击,原因：{}'.format(element, exc))
 
     def method_driver(self, method):
         """
@@ -192,12 +191,8 @@ class OperationElement(object):
         :param wait_time: 等待时间
         :return: ...
         """
-        try:
-            self.operation_element(element).send_keys(value)
-        except Exception:
-            import time
-            time.sleep(wait_time)
-            self.operation_element(element).send_keys(value)
+        self.operation_element(element).send_keys(value)
+
 
     def is_text(self, element, wait_time=1):
         """
@@ -206,13 +201,7 @@ class OperationElement(object):
         :param wait_time: 等待时间
         :return: 返回对应的文本值
         """
-        global value
-        value = self.operation_element(element).text
-        if not value:
-            import time
-            time.sleep(wait_time)
-            value = self.operation_element(element).text
-        return value
+        return self.operation_element(element).text
 
     def is_attribute_class(self, element, text):
         """
@@ -247,7 +236,7 @@ class OperationElement(object):
         :return: 存在返回True，不存在返回False
         """
         try:
-            self.support.until(EC.presence_of_element_located(element))
+            self.operation_element(element)
             return True
         except Exception:
             return False

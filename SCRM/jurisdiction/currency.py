@@ -45,6 +45,7 @@ class JurisdictionElement(OperationElement):
     home_url = MyConfig('url').base_url + '/#/home'
     member_list_url = MyConfig('url').base_url + '/#/manage/staff/staff-entry/staff-table'
     customer_url = MyConfig('url').base_url + '/#/sale/customer'
+    contact_url = MyConfig('url').base_url + '/#/sale/contact'
     field_url = MyConfig('url').base_url + '/#/manage/salesManagement/filed?state=contact'
     url = MyConfig('url').base_url
     

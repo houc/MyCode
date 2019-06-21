@@ -174,11 +174,12 @@ class ConversionDiscover(object):
                 pass
             else:
                 if self.module is not None:
-                    import_module = 'from {}.'.format(self.project) + '{}.'.format(self.module) + \
-                                    '.'.join(get_tests.split('.')[:-1]) + \
-                                    ' import ' + get_tests.split('.')[-1] + '\n'
-                    module.append(import_module)
-                    class_name.append(get_tests.split('.')[-1])
+                    if '_FailedTest' not in get_tests.split('.'):
+                        import_module = 'from {}.'.format(self.project) + '{}.'.format(self.module) + \
+                                        '.'.join(get_tests.split('.')[:-1]) + \
+                                        ' import ' + get_tests.split('.')[-1] + '\n'
+                        module.append(import_module)
+                        class_name.append(get_tests.split('.')[-1])
                 else:
                     import_module = 'from ' + '.'.join(get_tests.split('.')[:-1]) + \
                                     ' import ' + get_tests.split('.')[-1] + '\n'
@@ -214,7 +215,7 @@ class ConversionDiscover(object):
 
     def _handle_case(self):
         """处理运行完成后的用例集"""
-        print('多进程执行用例完成，正在生成测试报告...', file=sys.stderr)
+        sys.stderr.write('多进程执行用例完成，正在生成测试报告...\n')
         with open(self.path, 'rt', encoding=self.encoding) as f:
             re = f.readlines()
         if re:
@@ -245,10 +246,11 @@ class ConversionDiscover(object):
                                         tool=total_case['tool'], science=total_case['science'],
                                         sort_time=total_case['short_time'], fraction=total_case['fraction'],
                                         project=total_case['project'])
-            print('HTML测试报告已生成，可访问url在线预览报告啦：', report, file=sys.stderr)
+            sys.stderr.write('HTML测试报告已生成，可访问url在线预览报告啦: {}\n'.format(report))
             self.mail.sender_email(url=report, case_name=total_case)
         else:
-            print('测试用例数据为空，无测试报告统计，无邮件...', file=sys.stderr)
+            sys.stderr.write('测试用例数据为空，无测试报告统计，无邮件...\n')
+        sys.stderr.flush()
 
 
 class _my_process(multiprocessing.Process):
@@ -267,9 +269,9 @@ class _my_process(multiprocessing.Process):
 
 
 class CaseRunning(object):
-    def __init__(self, set_up, switch=False):
+    def __init__(self, set_up, refresh=False):
         self.setUp = set_up
-        self.switch = switch
+        self.switch = refresh
         self.frequency = MyConfig('while_case').config
         self.wait = MyConfig('while_sleep').config
 

@@ -70,7 +70,8 @@ class RunAll(object):
                                efficiency=total_case['efficiency'], version=total_case['version'],
                                tool=total_case['tool'], science=total_case['science'], project=total_case['project'],
                                sort_time=total_case['short_time'], fraction=total_case['fraction'])
-            print('HTML测试报告已生成，访问url', report, file=sys.stderr)
+            sys.stderr.wtite('HTML测试报告已生成，访问url：{}\n'.format(report))
+            sys.stderr.flush()
             self.mail.sender_email(url=report, case_name=total_case)
 
     def runner(self):

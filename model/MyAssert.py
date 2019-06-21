@@ -45,11 +45,11 @@ class MyAsserts():
         self._exc(self.first, self.second, self.name)
         try:
             if self.reason is not None:
-                if 'AssertionError' in self.reason:
+                if 'AssertionError' in str(self.reason):
                     self.status = '失败'
                 else:
                     self.status = '错误'
-                self.reason = self._strConversion(self.reason)
+                self.reason = self._strConversion(str(self.reason))
                 self.img_path = self.screenshots_path
                 self._log(self.reason)
             else:
@@ -84,7 +84,7 @@ class MyAsserts():
     @staticmethod
     def _strConversion(values: str):
         """字符串中包含单引号转义成``"""
-        return re.sub("'", "`", values).replace('\\', '/')
+        return re.sub("'", "`", values).replace('\\', '/').replace('"', "`")
 
     def _log(self, reason):
         """记录日志"""

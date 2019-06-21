@@ -15,14 +15,15 @@ from SCRM.common import LoginPublic
 
 class UnitTests(unittest.TestCase):
     first = second = author = urls = login = driver = status = error = screenshots= None
-    RE_LOGIN, LOGIN_INFO, MODULE = False, None, None
+    RE_LOGIN, LOGIN_INFO, MODULE, BROWSER = False, None, None, True
 
     @classmethod
     def setUpClass(cls):
         """判断类下面是否需要重新请求账号登录"""
         try:
             driver_headless = MyConfig('browser').config
-            cls.driver = browser(switch=driver_headless)
+            if cls.BROWSER:
+                cls.driver = browser(switch=driver_headless)
             cls.wait = MyConfig('page_loading_wait').config
             cls.sql = MyDB()
             cls.log = Logger()
@@ -50,7 +51,8 @@ class UnitTests(unittest.TestCase):
         """清除配置文件中的token"""
         if cls.login is not None:
             cls.login.remove_key()
-        cls.driver.quit()
+        if cls.BROWSER:
+            cls.driver.quit()
 
     def setUp(self):
         """用例初始化"""
@@ -72,7 +74,6 @@ class UnitTests(unittest.TestCase):
         else:
             msg = "{}.{}.{}".format(self.catalog, self.class_name, self.case_name)
             raise ValueError(msg + "common中scene参数为空，此参数不能为空，请增加")
-        self.driver.set_page_load_timeout(self.wait)
         self.current_time = standard_time()
         self.start_time = time.time()
         return self.driver

@@ -15,6 +15,6 @@ def browser(switch=False):
 
 if __name__ == '__main__':
     driver = browser(True)
-    driver.get('www.baidu.com')
+    driver.get('http://www.ukuaiqi.com')
     driver.save_screenshot(r'D:\work_file\auto_script\UI\img\logo.png')
     driver.quit()

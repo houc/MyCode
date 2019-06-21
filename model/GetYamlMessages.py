@@ -60,10 +60,6 @@ class GetConfigMessage(object):
         :param value: 场景的所有数据
         :return: 返回{}里面的数据
         """
-        data = re.findall("{(.*?)}", value)
-        if not data:
-            raise ValueError("{}.{}.{}，场景中scene存在空数据，此项不能存在为空，否则会影响测试用例的正常执行情况，需修正...".
-                             format(self.module, self.class_name, self.case_name, ))
-        else:
-            return data
+        return re.findall("{(.*?)}", value)
+
 

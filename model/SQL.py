@@ -105,3 +105,8 @@ class Mysql:
         data = self.dbUpdate % (parameter, 'case_name={0!r}'.format(case_name))
         DB.execute(data)
         self.DB.commit()
+
+
+if __name__ == '__main__':
+    data = Mysql().query_data()
+    print(data)

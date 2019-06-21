@@ -83,7 +83,6 @@ class WorkEffectiveness(UnitTests):
             self.second = driver.work_num(location=4)
             driver.quick_button(self.data[0])
             driver.add_contacts(input_location=1, mail=compact_time() + '@qq.com')
-            time.sleep(1)
             driver.save(location=4)
             driver.save(location=4)
             message = driver.message_top_box()

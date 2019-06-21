@@ -44,7 +44,7 @@ class Email:
     def _send_enclosure(self, case_name):
         """发送附件统计图"""
         AmilSupport(case_name)
-        print('邮件中的截图统计已完成，正在发送邮件...', file=sys.stderr)
+        sys.stderr.write('邮件中的截图统计已完成，正在发送邮件...\n')
         if os.path.exists(self.img_path):
             img = MIMEImage(open(self.img_path, 'rb').read())
             img.add_header('Content-ID', '<image1>')
@@ -66,12 +66,12 @@ class Email:
             self.Mail.sendmail(self.sender, self.receiver + self.cc, content.as_string())
             self.Mail.quit()
             if self.cc:
-                print('抄送{}发送{}成功'.format(', '.join(self.cc), ', '.join(self.receiver)), file=sys.stderr)
+                sys.stderr.write('抄送{}; 发送{}成功\n'.format('、 '.join(self.cc), '、 '.join(self.receiver)))
             else:
-                print('给{}邮件发送成功'.format(', '.join(self.receiver)), file=sys.stderr)
+                sys.stderr.write('给{}邮件发送成功\n'.format('、 '.join(self.receiver)))
         except smtplib.SMTPException:
-            print('给{}邮件发送失败'.format(', '.join(self.receiver)), file=sys.stderr)
-
+            sys.stderr.write('给{}邮件发送失败\n'.format('、 '.join(self.receiver)))
+        sys.stderr.flush()
 
 
 if __name__ == '__main__':

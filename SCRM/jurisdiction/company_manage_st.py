@@ -166,7 +166,8 @@ class CompanyManage(UnitTests):
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[3])
             driver.F5()
-            self.first = driver.get_title(self.data[-1])
+            # self.first = driver.get_title(self.data[-1])
+            self.first = driver.is_url_equal(driver.home_url)
             self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:

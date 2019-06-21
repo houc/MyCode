@@ -131,14 +131,16 @@ class WriteExcel:
                 for c, d in enumerate(b):
                     if '失败' == d:
                         self.sheet_test.write(a, c, d, self.yellow)
-                        path = _base64_conversion_img(img_name=b[3], base64=b[-3]).as_img()
-                        self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
+                        path = _base64_conversion_img(img_name=b[3], base64=b[-3]).as_img
+                        if not 'None' == path and path is not None:
+                            self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '成功' == d:
                         self.sheet_test.write(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write(a, c, d, self.red)
-                        path = _base64_conversion_img(img_name=b[3], base64=b[-3]).as_img()
-                        self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
+                        path = _base64_conversion_img(img_name=b[3], base64=b[-3]).as_img
+                        if not 'None' == path and path is not None:
+                            self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '跳过' == d:
                         self.sheet_test.write(a, c, d, self.skip)
                     elif 'None' == d:
@@ -317,7 +319,7 @@ class WriteExcel:
         self._write_pc_content(**kwargs)
         self._write_test_title(*args)
         self.open_excel.close()
-        print("excel测试报告已生成, 正在生成HTML形式报告...", file=sys.stderr)
+        sys.stderr.write("excel测试报告已生成, 正在生成HTML形式报告...\n")
 
 
 class ExcelTitle(WriteExcel):
@@ -354,8 +356,9 @@ class _base64_conversion_img(object):
         self.base64 = base64
         self.path = read_file('img', '{}.png'.format(img_name))
 
+    @property
     def as_img(self):
-        if self.base64:
+        if self.base64 and (not 'None' == self.base64):
             shot = base64.b64decode(self.base64.encode('ascii'))
             with open(self.path, 'wb') as f:
                 f.write(shot)
