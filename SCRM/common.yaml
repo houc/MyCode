@@ -3200,3 +3200,17 @@ SCRM:
         scene: "失败校验",
         asserts: True,
         }
+  public_test:
+    - method_up:
+      url:
+      className: TestPublicMethod
+      assembly: 测试报告失败
+      funName:
+      - test_topUp_to: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "验证滚动是否有效",
+        asserts: True,
+      }

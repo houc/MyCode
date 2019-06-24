@@ -20,7 +20,7 @@ config:
   logo_url: ./static/lib/image/logo.png?v=3 # 项目logo连接
   while_case: 2         # 失败重跑次数 1 表示1次，从1开始，并非从0开始
   while_sleep: 1        # 失败重跑等待时间，单位为 秒
-  module_run: report_test    # 指定需要运行的模块，示例：login
+  module_run:     # 指定需要运行的模块，示例：login
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
   skip_module: {login_repeat_st: 太多，暂跳}
 #  skip_module: {#sale_manage_st:555

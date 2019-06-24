@@ -180,6 +180,8 @@ class ConversionDiscover(object):
                                         ' import ' + get_tests.split('.')[-1] + '\n'
                         module.append(import_module)
                         class_name.append(get_tests.split('.')[-1])
+                    else:
+                        warnings.warn('用例中可能存在书写错误，程序已忽略该类....')
                 else:
                     import_module = 'from ' + '.'.join(get_tests.split('.')[:-1]) + \
                                     ' import ' + get_tests.split('.')[-1] + '\n'
@@ -260,12 +262,9 @@ class _my_process(multiprocessing.Process):
         self.case_set = case_set
 
     def run(self):
-        lock = multiprocessing.RLock()
-        lock.acquire()
         discover = unittest.defaultTestLoader.loadTestsFromTestCase(self.case_set)
         result = unittest.TextTestRunner(verbosity=1).run(discover)
         DataHandleConversion().case_data_handle(result)
-        lock.release()
 
 
 class CaseRunning(object):

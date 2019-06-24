@@ -63,7 +63,7 @@ p{
     background-color: #F5F5F5; /*背景颜色*/
     float: revert; /*整体偏移*/
     height: 380px; /*高度*/
-    width: 62.3%; /*宽度*/
+    width: 62.5%; /*宽度*/
     position: relative;
     overflow: hidden
 }

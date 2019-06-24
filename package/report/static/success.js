@@ -110,4 +110,3 @@ function successClose() {
         table.rows[i].style.display = 'none';
     }
 }
-

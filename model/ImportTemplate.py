@@ -69,7 +69,6 @@ class {}(UnitTests):
     :param: BROWSER: True执行浏览器，默认为开启
     """
     RE_LOGIN = False
-    BROWSER = False
     LOGIN_INFO = {{"account": None, "password": None, "company": None}}
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\\\')[-1].split('.')[0]
@@ -86,7 +85,6 @@ CASE_NAME = '''    @CaseRunning(set_up)
         try:
             driver = {}(self.driver)
             driver.get(self.url)
-            driver.F5()
             self.first = 
             self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)

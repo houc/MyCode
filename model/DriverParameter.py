@@ -9,8 +9,8 @@ def browser(switch=False):
     drivers = webdriver.Chrome(driver_path, options=options)
     if switch:
         drivers.set_window_size(1900, 980)
-    else:
-        drivers.maximize_window()
+    # else:
+    #     drivers.maximize_window()
     return drivers
 
 if __name__ == '__main__':

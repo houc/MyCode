@@ -11,14 +11,14 @@ class TimingRunning:
         self.runner = os.path.join(path, 'runner.py').replace('\\', '/')
         self.times = MyConfig('task_time').config
 
-    def _implement(self):
+    def implement(self):
         """执行模块"""
         return os.system(self.runner)
 
     def job(self):
         """执行时间"""
         if isinstance(self.times, int):
-            schedule.every(self.times).minutes.do(self._implement)
+            schedule.every(self.times).minutes.do(self.implement)
         else:
             TypeError("task_time need int type")
 
