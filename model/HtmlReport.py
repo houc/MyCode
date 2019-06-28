@@ -1,14 +1,10 @@
-import sys
-import os
-PATH = os.path.dirname(os.path.abspath('.'))
-sys.path.append(PATH)
-
 from bottle import run, route, template, static_file, error
 from config_path.path_file import module_file, read_file
 from model.PCParameter import get_network
+from model.Yaml import MyConfig
 
-PORT = 2019
-IP = 'http://{}:{}'.format(get_network()['ip地址'], PORT) # 默认获取当前计算IP
+PORT = MyConfig('port').report if  MyConfig('ip').report else 2019
+IP = MyConfig('ip').report if MyConfig('ip').report else get_network()['ip地址']
 
 @route('/report/<dir_name>/<html_name>')
 def report(dir_name, html_name):
@@ -31,5 +27,4 @@ def error_404(error):
 
 
 if __name__ == '__main__':
-    ip = IP.split('http://')[-1].split(':')
-    run(host=ip[0], port=ip[-1])
+    run(host=IP, port=PORT)

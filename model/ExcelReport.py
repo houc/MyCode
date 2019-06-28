@@ -12,7 +12,7 @@ from model.Yaml import MyConfig
 class WriteExcel:
     def __init__(self,*args, **kwargs):
         """初始化"""
-        excel_ptah = read_file('report', 'ExcelReport.xlsx')
+        excel_ptah = read_file('report', 'case_info.xlsx')
         if not os.path.exists(excel_ptah):
             with open(excel_ptah, 'wt'):
                 pass

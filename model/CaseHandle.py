@@ -147,8 +147,9 @@ class DataHandleConversion(object):
 
 
 class ConversionDiscover(object):
-    def __init__(self, discover, encoding='utf8'):
+    def __init__(self, discover, encoding='utf8', processes=8):
         self.discover = discover
+        self.processes = processes
         self.encoding = encoding
         self.project = MyConfig('project_name').excel_parameter
         self.module = MyConfig('module_run').config
@@ -204,15 +205,14 @@ class ConversionDiscover(object):
 
     def case_package(self):
         """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
-        thread = []
         self._execute_discover()
         from SCRM.thread_case import __all__
+        p = multiprocessing.Pool(processes=self.processes) # 默认起订8个进程池
         for case in __all__:
-            thread.append(_my_process(case))
-        for start in thread:
-            start.start()
-        for ends in thread:
-            ends.join()
+            runner = _my_process(case)
+            p.apply_async(func=runner.run)
+        p.close()
+        p.join()
         self._handle_case()
 
     def _handle_case(self):
@@ -255,10 +255,9 @@ class ConversionDiscover(object):
         sys.stderr.flush()
 
 
-class _my_process(multiprocessing.Process):
+class _my_process():
     """自定义封装的多进程"""
     def __init__(self, case_set):
-        super(_my_process, self).__init__()
         self.case_set = case_set
 
     def run(self):
