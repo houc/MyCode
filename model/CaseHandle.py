@@ -147,9 +147,8 @@ class DataHandleConversion(object):
 
 
 class ConversionDiscover(object):
-    def __init__(self, discover, encoding='utf8', processes=8):
+    def __init__(self, discover, encoding='utf8'):
         self.discover = discover
-        self.processes = processes
         self.encoding = encoding
         self.project = MyConfig('project_name').excel_parameter
         self.module = MyConfig('module_run').config
@@ -206,14 +205,20 @@ class ConversionDiscover(object):
     def case_package(self):
         """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
         self._execute_discover()
+        p = multiprocessing.Pool(processes=8)
         from SCRM.thread_case import __all__
-        p = multiprocessing.Pool(processes=self.processes) # 默认起订8个进程池
         for case in __all__:
-            runner = _my_process(case)
-            p.apply_async(func=runner.run)
+            p.apply_async(func=self._case_set, args=(case,))
         p.close()
         p.join()
         self._handle_case()
+
+    @staticmethod
+    def _case_set(case):
+        runner = unittest.TextTestRunner()
+        suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
+        result = runner.run(suite)
+        DataHandleConversion().case_data_handle(result)
 
     def _handle_case(self):
         """处理运行完成后的用例集"""
@@ -253,17 +258,6 @@ class ConversionDiscover(object):
         else:
             sys.stderr.write('测试用例数据为空，无测试报告统计，无邮件...\n')
         sys.stderr.flush()
-
-
-class _my_process():
-    """自定义封装的多进程"""
-    def __init__(self, case_set):
-        self.case_set = case_set
-
-    def run(self):
-        discover = unittest.defaultTestLoader.loadTestsFromTestCase(self.case_set)
-        result = unittest.TextTestRunner(verbosity=1).run(discover)
-        DataHandleConversion().case_data_handle(result)
 
 
 class CaseRunning(object):
