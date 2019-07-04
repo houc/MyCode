@@ -70,7 +70,7 @@ class RunAll(object):
                                efficiency=total_case['efficiency'], version=total_case['version'],
                                tool=total_case['tool'], science=total_case['science'], project=total_case['project'],
                                sort_time=total_case['short_time'], fraction=total_case['fraction'])
-            sys.stderr.wtite('HTML测试报告已生成，访问url：{}\n'.format(report))
+            sys.stderr.write(f'HTML测试报告已生成，可访问url在线预览报告啦: {report}\n')
             sys.stderr.flush()
             self.mail.sender_email(url=report, case_name=total_case)
 

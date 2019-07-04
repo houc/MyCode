@@ -47,7 +47,7 @@ class DataHandleConversion(object):
         fail = []  # 用例失败
         success = []  # 用例成功
         skip = [] # 用例跳过数
-        if in_sql_data is not None:
+        if in_sql_data:
             for first_data in range(len(in_sql_data)):
                 _data = in_sql_data[first_data]
                 for second_data in range(len(_data)):
@@ -97,8 +97,8 @@ class DataHandleConversion(object):
             case_messages['total_time'] = time_conversion(ends_time - start_time)
             case_messages['tool'] = 'Python' + platform.python_version()
             case_messages['version'] = self.version
-            case_messages['efficiency'] = '{:.2f}'.format(float((case_messages["errors"] + case_messages["failures"] +
-                                           case_messages["success"]) / case_messages["testsRun"] * 100))
+            total = case_messages["errors"] + case_messages["failures"] + case_messages["success"]
+            case_messages['efficiency'] = '{:.2f}'.format(float((total) / case_messages["testsRun"] * 100))
             case_messages['science'] = self.science
             case_messages['fraction'] = '{:.2f}'.format(float((case_messages["errors"] + case_messages["failures"])
                                                / case_messages["testsRun"] * 100))
@@ -133,17 +133,12 @@ class DataHandleConversion(object):
     def _insert_case_data(self, data):
         """用例数据插入skip_cast.txt"""
         if data:
-            if 'my_sql' == self.sql_type:
-                for read in data:
-                    self.sql.insert_data(id=read['id'], level=None,
-                                         module=read["module"], name=read["name"],
-                                         remark=None, wait_time=None, status="跳过", url=None,
-                                         insert_time=read["insert_time"], img=None, error_reason=read["reason"],
-                                         author=None, results_value=None)
-            else:
-                with open(self.path, 'at', encoding=self.encoding) as f:
-                    for case in data:
-                        f.write(str(case) + '\n')
+            for read in data:
+                self.sql.insert_data(id=read['id'], level=None,
+                                     module=read["module"], name=read["name"],
+                                     remark=None, wait_time=None, status="跳过", url=None,
+                                     insert_time=read["insert_time"], img=None, error_reason=read["reason"],
+                                     author=None, results_value=None)
 
 
 class ConversionDiscover(object):
@@ -223,20 +218,20 @@ class ConversionDiscover(object):
     def _handle_case(self):
         """处理运行完成后的用例集"""
         sys.stderr.write('多进程执行用例完成，正在生成测试报告...\n')
-        with open(self.path, 'rt', encoding=self.encoding) as f:
-            re = f.readlines()
-        if re:
-            for case in re:
-                self.queue.put(eval(case))
-            while not self.queue.empty():
-                read = self.queue.get()
-                self.sql.insert_data(id=read.get('id'), level=read.get('level'),
-                                     module=read.get('module'), name=read.get('name'),
-                                     remark=read.get('mark'), wait_time=read.get('run_time'),
-                                     status=read.get('status'), url=read.get('url'),
-                                     insert_time=read.get('insert_time'), img=read.get('img_path'),
-                                     error_reason=read.get('reason'), author=read.get('author'),
-                                     results_value=read.get('result'))
+        # with open(self.path, 'rt', encoding=self.encoding) as f:
+        #     re = f.readlines()
+        # if re:
+        #     for case in re:
+        #         self.queue.put(eval(case))
+        #     while not self.queue.empty():
+        #         read = self.queue.get()
+        #         self.sql.insert_data(id=read.get('id'), level=read.get('level'),
+        #                              module=read.get('module'), name=read.get('name'),
+        #                              remark=read.get('mark'), wait_time=read.get('run_time'),
+        #                              status=read.get('status'), url=read.get('url'),
+        #                              insert_time=read.get('insert_time'), img=read.get('img_path'),
+        #                              error_reason=read.get('reason'), author=read.get('author'),
+        #                              results_value=read.get('result'))
         case_data = self.sql.query_data()
         total_case = self.case_handle.sql_data_handle(in_sql_data=case_data,
                                                       start_time=self.start_time,

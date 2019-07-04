@@ -22,7 +22,7 @@ class MyDB(object):
     def _connect_sql(self):
         """连接数据库"""
         db_path = read_file('package', 'DB.db')
-        conn = sqlite3.connect(db_path)
+        conn = sqlite3.connect(db_path, check_same_thread=False)
         return conn
 
     def _insert_title(self):

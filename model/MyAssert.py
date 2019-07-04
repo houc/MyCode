@@ -64,18 +64,18 @@ class MyAsserts():
         """将用例插入数据库,判断采用的数据库类型"""
         insert_time = standard_time()
         if self.thread:
-            if 'my_sql' == self.sql_type:
-                self.sql.insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
-                                     '{:.2f}秒'.format(self.time), status, self.url, insert_time,
-                                     img_path, reason, self.author, results_value=self.second)
-            else:
-                case_data = {'id': self.id, 'level': self.level, 'module': self.module,
-                             'name': self.name, 'mark': self._strConversion(self.remark),
-                             'run_time': '{:.2f}秒'.format(self.time),'status': status, 'url': self.url,
-                             'insert_time': insert_time, 'img_path': img_path, 'reason': reason,
-                             'author': self.author, 'result': self.second}
-                with open(self.case_path, 'at', encoding=self.encoding) as f:
-                    f.write(str(case_data) + '\n')
+            # if 'my_sql' == self.sql_type:
+            self.sql.insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
+                                 '{:.2f}秒'.format(self.time), status, self.url, insert_time,
+                                 img_path, reason, self.author, results_value=self.second)
+            # else:
+            #     case_data = {'id': self.id, 'level': self.level, 'module': self.module,
+            #                  'name': self.name, 'mark': self._strConversion(self.remark),
+            #                  'run_time': '{:.2f}秒'.format(self.time),'status': status, 'url': self.url,
+            #                  'insert_time': insert_time, 'img_path': img_path, 'reason': reason,
+            #                  'author': self.author, 'result': self.second}
+            #     with open(self.case_path, 'at', encoding=self.encoding) as f:
+            #         f.write(str(case_data) + '\n')
         else:
             self.sql.insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
                                  '{:.3f}秒'.format(self.time), status, self.url, insert_time,

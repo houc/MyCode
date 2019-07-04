@@ -54,7 +54,7 @@ class GetConfigMessage(object):
         """返回数据"""
         return self.data_messages
 
-    def param_extract(self, value: str):
+    def param_extract(self, value):
         """
         处理场景中存在的{XX}数据，进行转换处理
         :param value: 场景的所有数据

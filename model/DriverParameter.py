@@ -1,6 +1,7 @@
 from config_path.path_file import read_file
 from selenium import webdriver
 
+
 def browser(switch=False):
     """打开浏览器"""
     driver_path = read_file('package', 'ChromeDriver.exe')
