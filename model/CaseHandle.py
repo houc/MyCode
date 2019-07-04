@@ -20,16 +20,10 @@ from model.ExcelReport import ExcelTitle
 
 class DataHandleConversion(object):
     def __init__(self, encoding='utf8'):
-        self.sql_type = MyConfig('execute_type').sql
         self.project_name = MyConfig('project_name').excel_parameter
         self.version = MyConfig('test_version').excel_parameter
         self.science = MyConfig('science').excel_parameter
-        self.path = read_file(self.project_name, 'case.txt')
         self.encoding = encoding
-        if 'my_sql' == self.sql_type:
-            self.sql = Mysql()
-        else:
-            self.sql = MyDB()
         self.current_path = os.path.dirname(__file__)
 
     def sql_data_handle(self, in_sql_data, start_time, end_time):
@@ -134,7 +128,7 @@ class DataHandleConversion(object):
         """用例数据插入skip_cast.txt"""
         if data:
             for read in data:
-                self.sql.insert_data(id=read['id'], level=None,
+                MyDB().insert_data(id=read['id'], level=None,
                                      module=read["module"], name=read["name"],
                                      remark=None, wait_time=None, status="跳过", url=None,
                                      insert_time=read["insert_time"], img=None, error_reason=read["reason"],
@@ -147,12 +141,6 @@ class ConversionDiscover(object):
         self.encoding = encoding
         self.project = MyConfig('project_name').excel_parameter
         self.module = MyConfig('module_run').config
-        self.path = read_file(self.project, 'case.txt')
-        sql_type = MyConfig('execute_type').sql
-        if 'my_sql' == sql_type:
-            self.sql = Mysql()
-        else:
-            self.sql = MyDB()
         self.queue = queue.Queue()
         self.mail = Email()
         self.start_time = standard_time()
@@ -210,7 +198,7 @@ class ConversionDiscover(object):
 
     @staticmethod
     def _case_set(case):
-        runner = unittest.TextTestRunner()
+        runner = unittest.TextTestRunner(verbosity=2)
         suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
         result = runner.run(suite)
         DataHandleConversion().case_data_handle(result)
@@ -218,21 +206,7 @@ class ConversionDiscover(object):
     def _handle_case(self):
         """处理运行完成后的用例集"""
         sys.stderr.write('多进程执行用例完成，正在生成测试报告...\n')
-        # with open(self.path, 'rt', encoding=self.encoding) as f:
-        #     re = f.readlines()
-        # if re:
-        #     for case in re:
-        #         self.queue.put(eval(case))
-        #     while not self.queue.empty():
-        #         read = self.queue.get()
-        #         self.sql.insert_data(id=read.get('id'), level=read.get('level'),
-        #                              module=read.get('module'), name=read.get('name'),
-        #                              remark=read.get('mark'), wait_time=read.get('run_time'),
-        #                              status=read.get('status'), url=read.get('url'),
-        #                              insert_time=read.get('insert_time'), img=read.get('img_path'),
-        #                              error_reason=read.get('reason'), author=read.get('author'),
-        #                              results_value=read.get('result'))
-        case_data = self.sql.query_data()
+        case_data = MyDB().query_data()
         total_case = self.case_handle.sql_data_handle(in_sql_data=case_data,
                                                       start_time=self.start_time,
                                                       end_time=standard_time())

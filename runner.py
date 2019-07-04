@@ -14,20 +14,11 @@ from model.ExcelReport import ExcelTitle
 
 
 class RunAll(object):
-    def __init__(self, encoding='utf8'):
+    def __init__(self):
         """初始化"""
         self.current_path = os.path.dirname(__file__)
         self.re = MyConfig('re').config
         self.save = MyConfig('save').report
-        sql_type = MyConfig('execute_type').sql
-        if 'my_sql' == sql_type:
-            self.sql = Mysql()
-        else:
-            self.sql = MyDB()
-        project = MyConfig('project_name').excel_parameter
-        path = read_file(project, 'case.txt')
-        with open(path, 'wt', encoding=encoding):
-            pass
         self.mail = Email()
         self.start_time = standard_time()
         self.wait = MyConfig('while_sleep').config
@@ -37,7 +28,7 @@ class RunAll(object):
 
     def _clear_sql(self):
         """清除数据库所有的内容"""
-        self.sql.delete_data()
+        MyDB().delete_data()
 
     def _get_case_status(self):
         """获取需要执行的路径，并执行用例"""
@@ -55,7 +46,7 @@ class RunAll(object):
 
     def _get_case_detailed(self):
         """获取需要执行的用例并运行对应的用例"""
-        case_data = self.sql.query_data()
+        case_data = MyDB().query_data()
         total_case = DataHandleConversion().sql_data_handle(in_sql_data=case_data,
                                                             start_time=self.start_time,
                                                             end_time=standard_time())

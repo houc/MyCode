@@ -32,17 +32,10 @@ class MyAsserts():
         self.encoding = encoding
         self.img_path = None
         self.thread = MyConfig('thread').config
-        self.sql_type = MyConfig('execute_type').sql
         self.project = MyConfig('project_name').excel_parameter
-        self.case_path = read_file(self.project, 'case.txt')
-        if 'my_sql' == self.sql_type:
-            self.sql = Mysql()
-        else:
-            self.sql = MyDB()
 
     def asserts(self):
         """用例断言"""
-        self._exc(self.first, self.second, self.name)
         try:
             if self.reason is not None:
                 if 'AssertionError' in str(self.reason):
@@ -63,23 +56,9 @@ class MyAsserts():
     def _insert_sql(self, status, img_path, reason):
         """将用例插入数据库,判断采用的数据库类型"""
         insert_time = standard_time()
-        if self.thread:
-            # if 'my_sql' == self.sql_type:
-            self.sql.insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
-                                 '{:.2f}秒'.format(self.time), status, self.url, insert_time,
-                                 img_path, reason, self.author, results_value=self.second)
-            # else:
-            #     case_data = {'id': self.id, 'level': self.level, 'module': self.module,
-            #                  'name': self.name, 'mark': self._strConversion(self.remark),
-            #                  'run_time': '{:.2f}秒'.format(self.time),'status': status, 'url': self.url,
-            #                  'insert_time': insert_time, 'img_path': img_path, 'reason': reason,
-            #                  'author': self.author, 'result': self.second}
-            #     with open(self.case_path, 'at', encoding=self.encoding) as f:
-            #         f.write(str(case_data) + '\n')
-        else:
-            self.sql.insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
-                                 '{:.3f}秒'.format(self.time), status, self.url, insert_time,
-                                 img_path, reason, self.author, results_value=self.second)
+        MyDB().insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
+                             '{:.2f}秒'.format(self.time), status, self.url, insert_time,
+                             img_path, reason, self.author, results_value=self.second)
 
     @staticmethod
     def _strConversion(values: str):
@@ -90,9 +69,4 @@ class MyAsserts():
         """记录日志"""
         self.log.logging_debug('执行时间:{},错误路径:{},错误原因:{}'.
                                format(standard_time(), self.error_path, reason))
-    @staticmethod
-    def _exc(first, second, case_name):
-        """异常判断"""
-        if first is None and second is None:
-            import warnings
-            warnings.warn('请检查用例:{}，是否定义Element...'.format(case_name))
+
