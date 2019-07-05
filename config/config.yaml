@@ -12,10 +12,9 @@ config:
   thread: True # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
   token_keys: Authorization   # token表示key名
   level: 10                   # 日志等级
-  page_loading_wait: 30   # 超时时间
   logs_save: 5          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
-  task_time: 10         # 定时任务等待执行时间(分钟计算)
+  task_time: 1         # 定时任务等待执行时间(分钟计算)
   browser: True         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
   logo_url: ./static/lib/image/logo.png?v=3 # 项目logo连接
   while_case: 1         # 失败重跑次数 1 表示1次，从1开始，并非从0开始
@@ -42,18 +41,18 @@ sql:
   address: localhost                    # 数据库地址，此处为本地数据库地址
   sql_table: DROP TABLE IF EXISTS result                    # 表是否存在
   sql_create_title:  CREATE TABLE result (
-                     case_id varchar(225),
-                     case_level varchar(500),
-                     case_module varchar(500),
-                     case_name  varchar(500),
-                     case_url varchar(500),
-                     case_remark  varchar(500),
-                     case_status varchar(500),
-                     results_value varchar(500),
-                     case_error_reason varchar(10000),
-                     case_wait_time varchar(500),
+                     case_id longtext,
+                     case_level longtext,
+                     case_module longtext,
+                     case_name  longtext,
+                     case_url longtext,
+                     case_remark  longtext,
+                     case_status longtext,
+                     results_value longtext,
+                     case_error_reason longtext,
+                     case_wait_time longtext,
                      case_img longtext,
-                     case_author varchar(500),
+                     case_author longtext,
                      insert_time timestamp)              # 插入表头
   sql_query: SELECT * FROM result                           # 查询result里面的所有数据
   sql_insert: INSERT INTO result(case_id,

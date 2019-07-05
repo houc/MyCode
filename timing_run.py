@@ -18,9 +18,10 @@ class TimingRunning:
     def job(self):
         """执行时间"""
         if isinstance(self.times, int):
-            schedule.every(self.times).minutes.do(self.implement)
+            schedule.every(self.times).seconds.do(self.implement)
         else:
             TypeError("task_time need int type")
+
 
 if __name__ == '__main__':
     TimingRunning().job()

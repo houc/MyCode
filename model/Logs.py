@@ -20,7 +20,7 @@ class Logger:
         logs_day = MyConfig('logs_save').config
         file_handler = logging.FileHandler(log_dir, encoding=encoding)
         file_handler.setFormatter(formatter)
-        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler = logging.StreamHandler(sys.stderr)
         console_handler.formatter = formatter
         self.Logging = logging.getLogger(__name__)
         self.Logging.addHandler(file_handler)

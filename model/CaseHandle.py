@@ -179,7 +179,7 @@ class ConversionDiscover(object):
 
     def _write_execute_module(self, module, class_name):
         """写入需要执行的模块"""
-        write_path = read_file(self.project, 'thread_case.py')
+        write_path = read_file(self.project, 'case_set.py')
         with open(write_path, 'wt', encoding=self.encoding) as f:
             f.writelines(module)
         with open(write_path, 'at', encoding=self.encoding) as f:
@@ -189,7 +189,7 @@ class ConversionDiscover(object):
         """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
         self._execute_discover()
         p = multiprocessing.Pool(processes=8)
-        from SCRM.thread_case import __all__
+        from SCRM.case_set import __all__
         for case in __all__:
             p.apply_async(func=self._case_set, args=(case,))
         p.close()

@@ -52,12 +52,8 @@ class MyDB(object):
     def insert_data(self, id, level, module, name, remark, wait_time, status, url, insert_time, img=None,
                     error_reason=None, author=None, *, results_value):
         """插入数据"""
-        if error_reason:
-            if len(error_reason) < 10000:
-                error_reason = error_reason[:10000]
         data = self.dbInsert % (id, level, module, name, url, remark, status, results_value, error_reason, wait_time,
                                 img, author, insert_time)
-
         DB = self.sql.cursor()
         self.queue.put(data)
         while not self.queue.empty():
@@ -69,6 +65,7 @@ class MyDB(object):
     def close_sql(self):
         """关闭数据库"""
         return self.sql.close()
+
 
 if __name__ == '__main__':
     query = MyDB(True).query_data()

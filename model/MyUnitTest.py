@@ -24,7 +24,6 @@ class UnitTests(unittest.TestCase):
             driver_headless = MyConfig('browser').config
             if cls.BROWSER:
                 cls.driver = browser(switch=driver_headless)
-            cls.wait = MyConfig('page_loading_wait').config
             cls.sql = MyDB()
             cls.log = Logger()
             if cls.RE_LOGIN:
@@ -41,7 +40,7 @@ class UnitTests(unittest.TestCase):
         except Exception:
             try:
                 cls.login.remove_key()
-            except:
+            except TimeoutError:
                 pass
             cls.driver.quit()
             raise
@@ -63,17 +62,18 @@ class UnitTests(unittest.TestCase):
         _data_initialization = Get(module=self.MODULE.split('\\')[-2],
                                    class_name=self.class_name, case_name=self.case_name)
         _return_data= _data_initialization.re()
-        self.level = _return_data.get('level')
-        self.author = _return_data.get('author')
-        self.url = _return_data.get('url')
-        self.assembly = _return_data.get('assembly')
-        self.second = _return_data.get('asserts')
-        self.case_remark = _return_data.get('scene')
+        self.level = _return_data['level']
+        self.author = _return_data['author']
+        self.url = _return_data['url']
+        self.assembly = _return_data['assembly']
+        self.second = _return_data['asserts']
+        self.case_remark = _return_data['scene']
         if self.case_remark:
             self.data = _data_initialization.param_extract(self.case_remark)
         else:
-            msg = "{}.{}.{}".format(self.catalog, self.class_name, self.case_name)
-            raise ValueError(msg + "common中scene参数为空，此参数不能为空，请增加")
+            print(self.case_name)
+            msg = "{}.{}".format(self.catalog, self.case_name)
+            raise ValueError(msg + "   common中scene参数为空，此参数不能为空，请增加")
         self.current_time = standard_time()
         self.start_time = time.time()
         return self.driver

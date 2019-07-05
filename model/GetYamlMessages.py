@@ -43,12 +43,7 @@ class GetConfigMessage(object):
                     data_messages["level"] = value["level"]
                     data_messages["asserts"] = value["asserts"]
                     data_messages["scene"] = value["scene"]
-        if data_messages:
-            self.data_messages = data_messages
-        else:
-            reason_one = "{}.{}.{}.data_messages无数据，请检查对应参数是否正确，该条用例已终止测试...".\
-                          format(self.module, self.class_name, self.case_name)
-            raise ValueError(reason_one)
+        self.data_messages = data_messages
 
     def re(self):
         """返回数据"""
