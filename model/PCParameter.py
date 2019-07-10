@@ -8,6 +8,7 @@ def bytes_conversion(value):
     conversion = value / (1024 * 1024)
     return str(conversion)
 
+
 def get_cpu_msg():
     """获取当前电脑CPU信息"""
     cpu_msg = {}
@@ -25,6 +26,7 @@ def get_cpu_msg():
         cpu_msg["电脑名称"] = i.SystemName
     return cpu_msg
 
+
 def get_disk_msg():
     """获取当前电脑disk信息"""
     disk_msg = {}
@@ -35,6 +37,7 @@ def get_disk_msg():
         disk_msg['型号'] = y.Win32_PhysicalMedia()[0].SerialNumber.lstrip().rstrip()
         disk_msg['容量'] = bytes_conversion(int(i.Size) / 1024 / 1024)[:-14] + 'TB'
     return disk_msg
+
 
 def get_network():
     """获取当前电脑网卡信息"""
@@ -50,6 +53,7 @@ def get_network():
         network_msg['网卡类别'] = i.Description
     return network_msg
 
+
 def get_memory():
     """获取当前电脑内存信息"""
     memory_msg = {}
@@ -64,6 +68,7 @@ def get_memory():
         memory_msg['厂家'] = i.Manufacturer
     return memory_msg
 
+
 def real_get_cpu_msg():
     """实时获取当前电脑cpu使用情况"""
     cpu_msg = {}
@@ -77,6 +82,7 @@ def real_get_cpu_msg():
     cpu_msg['空闲值'] = p.split('=')[3].split(',')[0] + '%'
     return cpu_msg
 
+
 def real_get_memory():
     """实时读取当前电脑内存消耗情况"""
     memory_msg = {}
@@ -86,6 +92,7 @@ def real_get_memory():
     memory_msg['使用率'] = y[3].split(',')[0] + '%'
     memory_msg['占用'] = bytes_conversion(int(y[4].split(',')[0]) / 1024)[:-13] + 'GB'
     return memory_msg
+
 
 def real_get_disk(path='./'):
     # 默认当前路径的磁盘大小
@@ -98,6 +105,7 @@ def real_get_disk(path='./'):
     disk_msg['使用率'] = y[4] + '%'
     return disk_msg
 
+
 def real_get_network():
     """实时读取网卡使用情况"""
     network_msg = {}
@@ -105,6 +113,7 @@ def real_get_network():
     network_msg['网卡最大上行'] = bytes_conversion(network.packets_sent)[:-12] + 'MB'
     network_msg['网卡最大下行'] = bytes_conversion(network.packets_recv)[:-12] + 'MB'
     return network_msg
+
 
 def real_get_system():
     """读取当前电脑系统"""
@@ -114,6 +123,7 @@ def real_get_system():
     system_msg['操作系统位数'] = platform.architecture()
     system_msg['计算机类型'] = platform.machine()
     return system_msg
+
 
 def merge_config_info():
     """实时合并当前电脑下的所有参数"""
@@ -125,6 +135,7 @@ def merge_config_info():
     MSG.append(real_get_network())
     return MSG
 
+
 def merge_config_msg():
     """固定合并当前电脑下的所有参数"""
     MSG = []
@@ -135,10 +146,12 @@ def merge_config_msg():
     MSG.append(get_memory())
     return MSG
 
+
 def output_python_version():
     """输出python版本号"""
     version = platform.python_version()
     return version
+
 
 if __name__ == '__main__':
     # print(merge_config_info())

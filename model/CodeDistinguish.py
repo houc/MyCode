@@ -9,7 +9,7 @@ from pytesseract import pytesseract
 class VerificationCode(object):
     """该类主要用于验证码识别，类型为base64格式！并且是为字母和数字类型的验证码"""
     def __init__(self, base64_data):
-        pytesseract.tesseract_cmd = 'C:\Program Files (x86)\Tesseract-OCR\\tesseract.exe' # tesseract安装位置，必须指定
+        pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe' # tesseract安装位置，必须指定
         self.base64_data = base64_data
         self.verification_code_path = read_file('img', 'ver_code.png')
 

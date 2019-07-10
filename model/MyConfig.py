@@ -39,6 +39,7 @@ class ConfigParameter(object):
         with open(self.path, 'wt', encoding=self.encoding) as f:
             self.config.write(f)
 
+
 if __name__ == '__main__':
     cf = ConfigParameter()
 

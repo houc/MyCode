@@ -8,10 +8,8 @@ def browser(switch=False):
     options = webdriver.ChromeOptions()
     options.headless = switch
     drivers = webdriver.Chrome(driver_path, options=options)
-    if switch:
-        drivers.set_window_size(1900, 980)
-    else:
-        drivers.maximize_window()
+    if switch: drivers.set_window_size(1900, 980)
+    else: drivers.maximize_window()
     return drivers
 
 

@@ -48,5 +48,6 @@ class Logger:
         """日志详情"""
         self.Logging.info(content)
 
+
 if __name__ == '__main__':
     logging_test = Logger()

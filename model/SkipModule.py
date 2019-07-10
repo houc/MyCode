@@ -3,13 +3,16 @@ import sys
 
 from model.Yaml import MyConfig
 
+
 def _current_module():
     """获取当前py名称"""
     return os.path.basename(sys.argv[0]).split('.')[0]
 
+
 def current_module(path):
     """获取当前py名称"""
     return os.path.basename(path).split('.')[0]
+
 
 class Skip(object):
     def __init__(self, module=None):

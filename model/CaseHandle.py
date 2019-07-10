@@ -1,9 +1,8 @@
 import os
-import asyncio
+import threading
 import sys
 import warnings
 import unittest
-import multiprocessing
 import platform
 
 from model.Yaml import MyConfig
@@ -144,8 +143,6 @@ class ConversionDiscover(unittest.TestCase):
         self.mail = Email()
         self.start_time = standard_time()
         self.case_handle = DataHandleConversion()
-        if platform.system().lower() == 'windows':
-            multiprocessing.freeze_support()
 
     def _execute_discover(self):
         """处理discover"""
@@ -195,15 +192,16 @@ class ConversionDiscover(unittest.TestCase):
         thread = []
         from SCRM.case_set import __all__
         for case in __all__:
-            suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
-            thread.append(self._threading(suite))
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(asyncio.gather(*thread))
+            result = threading.Thread(target=self._threading, args=(case,))
+            thread.append(result)
+            result.start()
+        [_th.join() for _th in thread]
         self._handle_case()
 
-    async def _threading(self, case):
+    def _threading(self, case):
+        suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
         runner = unittest.TextTestRunner()
-        result = runner.run(case)
+        result = runner.run(suite)
         DataHandleConversion().case_data_handle(result)
 
     def _handle_case(self):

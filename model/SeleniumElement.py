@@ -26,7 +26,7 @@ class OperationElement(object):
         self.support = WebDriverWait(driver=self.driver, timeout=timeout, poll_frequency=detection,
                                      ignored_exceptions=exception)
 
-    def F5(self):
+    def f5(self):
         """浏览器刷新"""
         self.driver.refresh()
 
@@ -69,7 +69,8 @@ class OperationElement(object):
         elif by == "css selector":
             return self.driver.find_element(By.CSS_SELECTOR, element_value)
 
-    def full_windows_screen(self, path, length=None, height=None):
+    @staticmethod
+    def full_windows_screen(path, length=None, height=None):
         """
         自定义当前屏幕截图范围
         :param path: 存放截图的路径位置，如：D:\work_file\auto_script\TestUi\config\TestCase.png
@@ -193,7 +194,6 @@ class OperationElement(object):
         """
         self.operation_element(element).send_keys(value)
 
-
     def is_text(self, element):
         """
         获取元素中的文本值，第一次获取文本值如果为空，就默认等待2秒时间，再次获取
@@ -241,7 +241,8 @@ class OperationElement(object):
         except Exception:
             return False
 
-    def str_conversion(self, element, *args):
+    @staticmethod
+    def str_conversion(element, *args):
         """
         将元素定义变量中包含$进行参数化转化传递
         :param element: 如，(By.XPATH, "//li[contains(text(),'$')]")
@@ -250,7 +251,8 @@ class OperationElement(object):
         """
         if "$" in element[1]:
             now_value = element[1].replace("$", "{}")
-            return (element[0], now_value.format(*args))
+            new_element = (element[0], now_value.format(*args))
+            return new_element
         else:
             raise ValueError('无需参数化，请不要调用该方法，或者参数化需要“$”')
 
@@ -281,7 +283,7 @@ class OperationElement(object):
         获取当前url
         :return: 返回获取的url
         """
-        url = _get_url()
+        url = _Get()
         return self.support.until(url)
 
     def is_url_contain(self, url: str):
@@ -315,7 +317,7 @@ class OperationElement(object):
         return self.support.until(EC.visibility_of_element_located(element))
 
 
-class _get_url(object):
+class _Get(object):
     """获取当前页面url"""
     def __call__(self, driver):
         return driver.current_url

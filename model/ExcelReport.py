@@ -251,16 +251,16 @@ class WriteExcel:
                       {'fill': {'color': 'orange'}}]
         })    # 跳过用例数
         chart.set_title({
-            'name':'{}简报统计图'.format(self.report_project)
+            'name': f'{self.report_project}简报统计图'
         })
         chart.set_legend({
             'position': 'right'
         })
         chart.set_y_axis({
-            'name':'个数'
+            'name': '个数'
         })
         chart.set_x_axis({
-            'name':'状态'
+            'name': '状态'
         })
         self.sheet_title.insert_chart('A9', chart, {'x_scale': 1.93, 'y_scale': 1.60})
 

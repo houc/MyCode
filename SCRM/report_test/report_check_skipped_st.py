@@ -29,6 +29,7 @@ class TestCheckSkipped(UnitTests):
     
     set_up = UnitTests.setUp
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_1(self):
         """
@@ -44,6 +45,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_2(self):
         """
@@ -59,6 +61,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_3(self):
         """
@@ -74,6 +77,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_4(self):
         """
@@ -89,6 +93,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_5(self):
         """
@@ -104,6 +109,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_6(self):
         """
@@ -119,6 +125,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_7(self):
         """
@@ -134,6 +141,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_8(self):
         """
@@ -149,6 +157,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_10(self):
         """
@@ -164,6 +173,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_11(self):
         """
@@ -179,6 +189,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_12(self):
         """
@@ -194,6 +205,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_13(self):
         """
@@ -224,6 +236,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_15(self):
         """
@@ -239,6 +252,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_16(self):
         """
@@ -254,6 +268,7 @@ class TestCheckSkipped(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
+    @unittest.skip('暂跳..')
     @test_re_runner(set_up)
     def test_skip_17(self):
         """

@@ -5,8 +5,6 @@ import shutil
 
 from model.Yaml import MyConfig, MyProject
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
-from model.PrintColor import RED_BIG
-from model.MyException import CreateFileError, FUN_NAME
 from model.TimeConversion import standard_time
 from model.Logs import Logger
 from config_path.path_file import read_file, module_file, PATH
@@ -30,13 +28,10 @@ class CreateModule(object):
 
     def _module(self, modules: classmethod):
         """模块是否存在"""
-        try:
-            path = read_file(self.paths, modules)
-            if not os.path.exists(path):
-                os.mkdir(path)
-            return modules
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+        path = read_file(self.paths, modules)
+        if not os.path.exists(path):
+            os.mkdir(path)
+        return modules
 
     def _other_py(self, modules: classmethod):
         """模块存在后检查__init__.py, currency.py, currency.ya是否存在,当currency.py、currency.ya存在时加入默认数据"""
@@ -48,19 +43,16 @@ class CreateModule(object):
             currency_ya_path = module_file(self.file_path, module, self.currency_ya)
             path_list = [init_path, currency_py_path, currency_ya_path]
             content = "".join(str(module).title().split("_")) + "Element"
-            try:
-                for path in path_list:
-                    if not os.path.exists(path):
-                        with open(path, 'wt'):
-                            pass
-                        if self.currency_py in path:
-                            with open(path, 'wt', encoding=self.encoding) as f:
-                                f.write(CURRENCY_PY.format(content) % (content))
-                        if self.currency_ya in path:
-                            with open(path, 'wt', encoding=self.encoding) as f:
-                                f.write(CURRENCY_YA)
-            except Exception as exc:
-                self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+            for path in path_list:
+                if not os.path.exists(path):
+                    with open(path, 'wt'):
+                        pass
+                    if self.currency_py in path:
+                        with open(path, 'wt', encoding=self.encoding) as f:
+                            f.write(CURRENCY_PY.format(content) % (content))
+                    if self.currency_ya in path:
+                        with open(path, 'wt', encoding=self.encoding) as f:
+                            f.write(CURRENCY_YA)
 
     def _handle_case_data(self, values: dict, module=None):
         """处理用例下的数据"""
@@ -81,59 +73,44 @@ class CreateModule(object):
 
     def _case_py(self, modules: classmethod, py: str, write_one=None):
         """检查用例是否存在,并创建用例中的方法"""
-        try:
-            case_conversion = py + '.py' if '_st' in py else py + '_st.py'
-            case_path = module_file(self.file_path, modules, case_conversion)
-            if not os.path.exists(case_path):
-                content = self._handle_case_data(write_one[py], module=modules)
+        case_conversion = py + '.py' if '_st' in py else py + '_st.py'
+        case_path = module_file(self.file_path, modules, case_conversion)
+        if not os.path.exists(case_path):
+            content = self._handle_case_data(write_one[py], module=modules)
+            with open(case_path, 'wt', encoding=self.encoding) as f:
+                f.writelines(content)
+        else:
+            content = self._handle_case_data(write_one[py], module=modules)
+            with open(case_path, 'rt', encoding=self.encoding) as f:
+                py_read = f.read()
+            content = self._conversion_exists(py_read, content)
+            if content:
                 with open(case_path, 'wt', encoding=self.encoding) as f:
                     f.writelines(content)
-            else:
-                content = self._handle_case_data(write_one[py], module=modules)
-                with open(case_path, 'rt', encoding=self.encoding) as f:
-                    py_read = f.read()
-                content = self._conversion_exists(py_read, content)
-                if content:
-                    with open(case_path, 'wt', encoding=self.encoding) as f:
-                        f.writelines(content)
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
-
-    def _EXCEPTIONS(self, name, time, reason):
-        """异常函数"""
-        content = CreateFileError(name, time, reason)
-        self.log.logging_debug(content)
-        print(RED_BIG, content)
 
     def _conversion_exists(self, py_content: str, ya_content: list):
         """当用例名称相同时，处理数据判断"""
         case_py = []
         case_ya = []
-        try:
-            test_name = re.findall('def test_.*?:', py_content)
-            [case_py.append(case) for case in test_name]
-            for b in ya_content:
-                test_name = re.findall('def test_.*?:', b)
-                if test_name:
-                    for c in test_name:
-                        case_ya.append(c)
-            assert_list = operator.eq(case_ya, case_py)
-            if not assert_list:
-                return self._exists_write(case_py, case_ya, py_content, ya_content)
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+        test_name = re.findall('def test_.*?:', py_content)
+        [case_py.append(case) for case in test_name]
+        for b in ya_content:
+            test_name = re.findall('def test_.*?:', b)
+            if test_name:
+                for c in test_name:
+                    case_ya.append(c)
+        assert_list = operator.eq(case_ya, case_py)
+        if not assert_list:
+            return self._exists_write(case_py, case_ya, py_content, ya_content)
 
     def _exists_write(self, case_py: list, case_ya: list, py_content: str, ya_content: list):
         """处理py中存在的数据进行合并，以py中的数据为基础进行合并至ya中的数据"""
-        try:
-            case_data = []
-            not_eq = [eq for eq in case_ya if not eq in case_py]
-            if not_eq:
-                case_data.append(py_content)
-                case_data.extend(ya_content[1:])
-                return self._remove_duplicate(case_data, not_eq)
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+        case_data = []
+        not_eq = [eq for eq in case_ya if not eq in case_py]
+        if not_eq:
+            case_data.append(py_content)
+            case_data.extend(ya_content[1:])
+            return self._remove_duplicate(case_data, not_eq)
 
     def _remove_duplicate(self, data: list, defines: list):
         """移除重复数据"""
@@ -164,39 +141,33 @@ class CreateModule(object):
     def _case_data_handle(self, modules: classmethod):
         """用例中的数据处理"""
         case_info = {}
-        try:
-            for value in self.all_param[modules]:
-                keys = list(value.keys())[0]
-                del value[keys]
-                case_info[keys] = value
-            keys = list(case_info.keys())
-            for module in keys:
-                self._case_py(modules, module, case_info)
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+        for value in self.all_param[modules]:
+            keys = list(value.keys())[0]
+            del value[keys]
+            case_info[keys] = value
+        keys = list(case_info.keys())
+        for module in keys:
+            self._case_py(modules, module, case_info)
 
     def _write_case(self, values: dict, switch=True, module=None):
         """写入测试用例"""
-        try:
-            global elements, case_from, content
-            if switch:
-                path = self.file_path + "." + module + ".currency"
-                class_name = values.get("className")
-                content = ''.join(str(module).title().split("_")) + "Element"
-                return CASE_CONTENT.format(path ,content, class_name)
-            else:
-                case_name = values.get("caseName")
-                case_doc = values.get("scene")
-                if 'test_' in case_name:
-                    elements = self._spilt(case_name, 'case_name')
-                if case_doc is None:
-                    case_doc = '{!r}'.format(None)
-                if ' ' in case_doc:
-                    case_doc = self._spilt(case_doc, 'case_doc')
-                if CASE_NAME:
-                    return CASE_NAME.format(case_name, case_doc, content)
-        except Exception as exc:
-            self._EXCEPTIONS(FUN_NAME(self.path), self.time, exc)
+        global elements, case_from, content
+        if switch:
+            path = self.file_path + "." + module + ".currency"
+            class_name = values.get("className")
+            content = ''.join(str(module).title().split("_")) + "Element"
+            return CASE_CONTENT.format(path ,content, class_name)
+        else:
+            case_name = values.get("caseName")
+            case_doc = values.get("scene")
+            if 'test_' in case_name:
+                elements = self._spilt(case_name, 'case_name')
+            if case_doc is None:
+                case_doc = '{!r}'.format(None)
+            if ' ' in case_doc:
+                case_doc = self._spilt(case_doc, 'case_doc')
+            if CASE_NAME:
+                return CASE_NAME.format(case_name, case_doc, content)
 
     @staticmethod
     def _spilt(values: str, switch: str):
@@ -262,14 +233,11 @@ class CreateModule(object):
 
     def __del__(self):
         """删除不存在的module"""
-        try:
-            module = list(self.all_param.keys())
-            package = self._get_package()
-            [package.remove(modules) for modules in module if modules in package]
-            path = [PATH('.') + '/' + self.file_path + '/' + package_path for package_path in package]
-            [shutil.rmtree(remove) for remove in path]  # 不管目录是否为空，都将目录删除
-        except Exception:
-            pass
+        module = list(self.all_param.keys())
+        package = self._get_package()
+        [package.remove(modules) for modules in module if modules in package]
+        path = [PATH('.') + '/' + self.file_path + '/' + package_path for package_path in package]
+        [shutil.rmtree(remove) for remove in path]  # 不管目录是否为空，都将目录删除
 
 
 if __name__ == '__main__':

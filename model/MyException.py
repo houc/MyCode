@@ -3,9 +3,11 @@ import traceback
 
 from model.PrintColor import RED_BIG
 
+
 def _get_function_name(path):
     """获取方法名称"""
     return path + '\\' + inspect.stack()[1][3]
+
 
 FUN_NAME = _get_function_name
 
@@ -68,6 +70,7 @@ class TypeErrors(Exception):
     def __str__(self):
         return "模块:{!r},类型错误,请更正".format(self.module_name)
 
+
 class LogErrors(Exception):
     """
         记录错误日志到日志中!
@@ -93,6 +96,7 @@ class CreateFileError(Exception):
 
     def __str__(self):
         return "执行时间:{},模块:{!r},错误原因:{}".format(self.time, self.module_name, self.reason)
+
 
 class LoginError(Exception):
     """
