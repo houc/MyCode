@@ -4,7 +4,6 @@ import os
 
 from model.Logs import Logger
 from model.Yaml import MyConfig
-from model.MyDB import MyDB
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
 from model.GetYamlMessages import GetConfigMessage as Get
@@ -21,28 +20,28 @@ class UnitTests(unittest.TestCase):
     def setUpClass(cls):
         """判断类下面是否需要重新请求账号登录"""
         try:
+            cls.log = Logger()
             driver_headless = MyConfig('browser').config
             if cls.BROWSER:
                 cls.driver = browser(switch=driver_headless)
-            cls.sql = MyDB()
-            cls.log = Logger()
-            if cls.RE_LOGIN:
-                account = cls.LOGIN_INFO['account']
-                password = cls.LOGIN_INFO['password']
-                company = cls.LOGIN_INFO['company']
-                if account and password:
-                    cls.login = LoginPublic(driver=cls.driver, account=account,
-                                password=password, company=company,
-                                module=cls.MODULE.split('\\')[-1].split('.')[0])
-                    cls.login.login()
-                else:
-                    raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
+                if cls.RE_LOGIN:
+                    account = cls.LOGIN_INFO['account']
+                    password = cls.LOGIN_INFO['password']
+                    company = cls.LOGIN_INFO['company']
+                    if account and password:
+                        cls.login = LoginPublic(driver=cls.driver, account=account,
+                                    password=password, company=company,
+                                    module=cls.MODULE.split('\\')[-1].split('.')[0])
+                        cls.login.login()
+                    else:
+                        raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
         except Exception:
             try:
                 cls.login.remove_key()
-            except TimeoutError:
+            except BaseException:
                 pass
-            cls.driver.quit()
+            if cls.BROWSER:
+                cls.driver.quit()
             raise
 
     @classmethod
@@ -82,7 +81,7 @@ class UnitTests(unittest.TestCase):
         """用例结束"""
         end_time = time.time()
         total_time = end_time - self.start_time
-        error_path = '{}/{}/{}'.format(self.catalog, self.assembly, self.case_name)
+        error_path = '{}/{}'.format(self.catalog, self.case_name)
         MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_remark,
                   self.status, self.error, self.url, total_time, self.driver, self.assembly,
                   self.screenshots, self.author, self, error_path, self.log).asserts()

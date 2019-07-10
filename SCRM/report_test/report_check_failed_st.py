@@ -5,7 +5,7 @@ import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from model.SkipModule import Skip, current_module
 from SCRM.report_test.currency import ReportTestElement
 
@@ -30,7 +30,7 @@ class TestCheckFailed(UnitTests):
     
     set_up = UnitTests.setUp
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_1(self):
         """
         失败校验
@@ -42,7 +42,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_2(self):
         """
         失败校验
@@ -54,7 +54,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_3(self):
         """
         失败校验
@@ -66,7 +66,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_4(self):
         """
         失败校验
@@ -78,7 +78,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_5(self):
         """
         失败校验
@@ -90,7 +90,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_6(self):
         """
         失败校验
@@ -102,7 +102,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_7(self):
         """
         失败校验
@@ -114,7 +114,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_8(self):
         """
         失败校验
@@ -126,7 +126,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_9(self):
         """
         失败校验
@@ -138,7 +138,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_10(self):
         """
         失败校验
@@ -150,7 +150,7 @@ class TestCheckFailed(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_fail_11(self):
         """
         失败校验

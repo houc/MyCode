@@ -6,7 +6,7 @@ SCRM:
       className: WorkEffectiveness
       funName:
       - test_send_ordinary_mail: {
-        url: ,
+        url: /login,
         assembly:,
         author: 后超,
         level: 中,
@@ -2959,6 +2959,30 @@ SCRM:
         asserts: True,
         }
         test_error_17: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_18: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_19: {
+        url: ,
+        assembly:,
+        author: 后超,
+        level: 低,
+        scene: "错误校验",
+        asserts: True,
+        }
+        test_error_20: {
         url: ,
         assembly:,
         author: 后超,

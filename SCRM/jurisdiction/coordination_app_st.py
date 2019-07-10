@@ -6,7 +6,7 @@ import traceback
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from SCRM.jurisdiction.currency import JurisdictionElement
 from SCRM.common import LoginPublic
 
@@ -29,7 +29,7 @@ class CoordinationApp(UnitTests):
 
     set_up = UnitTests.setUp
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_SkyDrive(self):
         """
         打开网盘管理权限，验证网盘管理是否存在
@@ -64,7 +64,7 @@ class CoordinationApp(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_SkyDrive(self):
         """
         关闭网盘管理权限，验证网盘管理是否存在
@@ -99,7 +99,7 @@ class CoordinationApp(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_mail_list(self):
         """
         打开通讯录权限，验证通讯录是否存在
@@ -134,7 +134,7 @@ class CoordinationApp(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_mail_list(self):
         """
         关闭通讯录权限，验证通讯录是否存在
@@ -169,7 +169,7 @@ class CoordinationApp(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_notice_manage(self):
         """
         开启公告管理权限，验证{公告}管理的新增公告是否存在
@@ -204,7 +204,7 @@ class CoordinationApp(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_notice_manage(self):
         """
         关闭公告管理权限，验证{公告}管理的新增公告是否存在
@@ -239,7 +239,7 @@ class CoordinationApp(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_notice_column(self):
         """
         关闭公告栏目权限，验证{公告}栏目的新增栏目是否存在
@@ -274,7 +274,7 @@ class CoordinationApp(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_notice_column(self):
         """
         打开公告栏目权限，验证{公告}栏目的新增栏目是否存在

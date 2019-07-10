@@ -1,18 +1,16 @@
 import os
+import asyncio
 import sys
 import warnings
-import multiprocessing
 import unittest
-import queue
+import multiprocessing
 import platform
-import time
 
 from model.Yaml import MyConfig
 from model.SendEmail import Email
 from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
 from config_path.path_file import read_file
-from model.SQL import Mysql
 from model.MyDB import MyDB
 from model.HtmlDataHandle import MyReport
 from model.ExcelReport import ExcelTitle
@@ -124,32 +122,35 @@ class DataHandleConversion(object):
         else:
             warnings.warn('self.case_data is None')
 
-    def _insert_case_data(self, data):
+    @staticmethod
+    def _insert_case_data(data):
         """用例数据插入skip_cast.txt"""
         if data:
             for read in data:
-                MyDB().insert_data(id=read['id'], level=None,
-                                     module=read["module"], name=read["name"],
-                                     remark=None, wait_time=None, status="跳过", url=None,
-                                     insert_time=read["insert_time"], img=None, error_reason=read["reason"],
-                                     author=None, results_value=None)
+                MyDB().insert_data(ids=read['id'], level=None,
+                                   module=read["module"], name=read["name"],
+                                   remark=None, wait_time=None, status="跳过", url=None,
+                                   insert_time=read["insert_time"], img=None, error_reason=read["reason"],
+                                   author=None, results_value=None)
 
 
-class ConversionDiscover(object):
+class ConversionDiscover(unittest.TestCase):
     def __init__(self, discover, encoding='utf8'):
+        unittest.TestCase.__init__(self)
         self.discover = discover
         self.encoding = encoding
         self.project = MyConfig('project_name').excel_parameter
         self.module = MyConfig('module_run').config
-        self.queue = queue.Queue()
         self.mail = Email()
         self.start_time = standard_time()
         self.case_handle = DataHandleConversion()
+        if platform.system().lower() == 'windows':
+            multiprocessing.freeze_support()
 
     def _execute_discover(self):
         """处理discover"""
-        module = []
         class_name = []
+        module_import = []
         discover = str(self.discover).split(',')
         for search in discover:
             get_tests = search.split('tests=')[-1].split(' testMethod')[0].split('<')[-1]
@@ -161,19 +162,22 @@ class ConversionDiscover(object):
                         import_module = 'from {}.'.format(self.project) + '{}.'.format(self.module) + \
                                         '.'.join(get_tests.split('.')[:-1]) + \
                                         ' import ' + get_tests.split('.')[-1] + '\n'
-                        module.append(import_module)
+                        module_import.append(import_module)
                         class_name.append(get_tests.split('.')[-1])
                     else:
                         warnings.warn('用例中可能存在书写错误，程序已忽略该类....')
                 else:
-                    import_module = 'from ' + '.'.join(get_tests.split('.')[:-1]) + \
-                                    ' import ' + get_tests.split('.')[-1] + '\n'
-                    module.append(import_module)
-                    class_name.append(get_tests.split('.')[-1])
-        if module and class_name:
+                    if '_FailedTest' in get_tests.split('.'):
+                        warnings.warn('用例中可能存在书写错误，程序已忽略该类....')
+                    else:
+                        import_module = 'from ' + '.'.join(get_tests.split('.')[:-1]) + \
+                                        ' import ' + get_tests.split('.')[-1] + '\n'
+                        module_import.append(import_module)
+                        class_name.append(get_tests.split('.')[-1])
+        if module_import and class_name:
             content = {'\n\n__all__ = {%s}' % str(set(class_name)).replace('{', '').replace('}', '').
                 replace("'", "").replace(',', ',')}
-            return self._write_execute_module(set(module), content)
+            return self._write_execute_module(set(module_import), content)
         else:
             raise ValueError('The test suite is empty')
 
@@ -188,19 +192,18 @@ class ConversionDiscover(object):
     def case_package(self):
         """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
         self._execute_discover()
-        p = multiprocessing.Pool(processes=8)
+        thread = []
         from SCRM.case_set import __all__
         for case in __all__:
-            p.apply_async(func=self._case_set, args=(case,))
-        p.close()
-        p.join()
+            suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
+            thread.append(self._threading(suite))
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(asyncio.gather(*thread))
         self._handle_case()
 
-    @staticmethod
-    def _case_set(case):
-        runner = unittest.TextTestRunner(verbosity=2)
-        suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
-        result = runner.run(suite)
+    async def _threading(self, case):
+        runner = unittest.TextTestRunner()
+        result = runner.run(case)
         DataHandleConversion().case_data_handle(result)
 
     def _handle_case(self):
@@ -227,27 +230,3 @@ class ConversionDiscover(object):
         else:
             sys.stderr.write('测试用例数据为空，无测试报告统计，无邮件...\n')
         sys.stderr.flush()
-
-
-class CaseRunning(object):
-    def __init__(self, set_up, refresh=False):
-        self.setUp = set_up
-        self.switch = refresh
-        self.frequency = MyConfig('while_case').config
-        self.wait = MyConfig('while_sleep').config
-
-    def __call__(self, method):
-        def execute(*args, **kwargs):
-            for k, v in enumerate(range(self.frequency)):
-                try:
-                    case_method = method(*args, **kwargs)
-                    return case_method
-                except:
-                    driver = self.setUp(*args, **kwargs)
-                    if (k + 1) == self.frequency:
-                        raise
-                    else:
-                        time.sleep(self.wait)
-                        if self.switch:
-                            driver.refresh()
-        return execute

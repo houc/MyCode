@@ -6,7 +6,7 @@ import traceback
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from SCRM.workbench.currency import WorkbenchElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
@@ -28,7 +28,7 @@ class ThreeTable(UnitTests):
 
     set_up = UnitTests.setUp
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_mail_star(self):
         """
         验证星标邮件是否成功
@@ -48,7 +48,7 @@ class ThreeTable(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_today_task(self):
         """
         验证新增任务后今日任务统计是否+1

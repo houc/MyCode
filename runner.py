@@ -4,12 +4,10 @@ import sys
 
 from model.HtmlDataHandle import MyReport
 from model.Yaml import MyConfig
-from model.SQL import Mysql
 from model.MyDB import MyDB
 from model.SendEmail import Email
 from model.CaseHandle import DataHandleConversion, ConversionDiscover
 from model.TimeConversion import standard_time
-from config_path.path_file import read_file
 from model.ExcelReport import ExcelTitle
 
 
@@ -21,8 +19,6 @@ class RunAll(object):
         self.save = MyConfig('save').report
         self.mail = Email()
         self.start_time = standard_time()
-        self.wait = MyConfig('while_sleep').config
-        self.case = MyConfig('while_case').config
         self.thread = MyConfig('thread').config
         self._clear_sql()
 
@@ -38,7 +34,8 @@ class RunAll(object):
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
         if self.thread:
-            ConversionDiscover(discover).case_package()
+            dis = ConversionDiscover(discover)
+            dis.case_package()
         else:
             runner = unittest.TextTestRunner(verbosity=1).run(discover)
             DataHandleConversion().case_data_handle(in_case_data=runner)
@@ -53,14 +50,15 @@ class RunAll(object):
         if total_case and case_data:
             ExcelTitle(case_data).class_merge(total_case)
             report = MyReport().execute(case_data, start_time=total_case['start_time'],
-                               ends_time=total_case['end_time'], short_time=total_case['short_time'],
-                               long_time=total_case['long_time'], total_case=total_case['testsRun'],
-                               error_case=total_case['errors'], failed_case=total_case['failures'],
-                               success_case=total_case['success'], skipped_case=total_case['skipped'],
-                               execute_time=total_case['total_time'], execute_method='单线程',
-                               efficiency=total_case['efficiency'], version=total_case['version'],
-                               tool=total_case['tool'], science=total_case['science'], project=total_case['project'],
-                               sort_time=total_case['short_time'], fraction=total_case['fraction'])
+                                        ends_time=total_case['end_time'], short_time=total_case['short_time'],
+                                        long_time=total_case['long_time'], total_case=total_case['testsRun'],
+                                        error_case=total_case['errors'], failed_case=total_case['failures'],
+                                        success_case=total_case['success'], skipped_case=total_case['skipped'],
+                                        execute_time=total_case['total_time'], execute_method='单线程',
+                                        efficiency=total_case['efficiency'], version=total_case['version'],
+                                        tool=total_case['tool'], science=total_case['science'],
+                                        project=total_case['project'], sort_time=total_case['short_time'],
+                                        fraction=total_case['fraction'])
             sys.stderr.write(f'HTML测试报告已生成，可访问url在线预览报告啦: {report}\n')
             sys.stderr.flush()
             self.mail.sender_email(url=report, case_name=total_case)
@@ -74,4 +72,3 @@ class RunAll(object):
 
 if __name__ == '__main__':
     RunAll().runner()
-

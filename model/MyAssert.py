@@ -1,8 +1,6 @@
 import re
 
-from config_path.path_file import read_file
 from model.MyDB import MyDB
-from model.SQL import Mysql
 from model.Yaml import MyConfig
 from model.TimeConversion import standard_time
 
@@ -36,22 +34,18 @@ class MyAsserts():
 
     def asserts(self):
         """用例断言"""
-        try:
-            if self.reason is not None:
-                if 'AssertionError' in str(self.reason):
-                    self.status = '失败'
-                else:
-                    self.status = '错误'
-                self.reason = self._strConversion(str(self.reason))
-                self.img_path = self.screenshots_path
-                self._log(self.reason)
+        if self.reason is not None:
+            if 'AssertionError' in str(self.reason):
+                self.status = '失败'
             else:
-                self.status = '成功'
-                self.reason = self._strConversion(str(self.first))
-        except Exception:
-            raise
-        finally:
-            self._insert_sql(self.status, self.img_path, self.reason)
+                self.status = '错误'
+            self.reason = self._strConversion(str(self.reason))
+            self.img_path = self.screenshots_path
+            self._log(self.reason)
+        else:
+            self.status = '成功'
+            self.reason = self._strConversion(str(self.first))
+        self._insert_sql(self.status, self.img_path, self.reason)
 
     def _insert_sql(self, status, img_path, reason):
         """将用例插入数据库,判断采用的数据库类型"""

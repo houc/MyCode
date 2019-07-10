@@ -5,7 +5,7 @@ import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from model.SkipModule import Skip, current_module
 from SCRM.public_test.currency import PublicTestElement
 
@@ -30,7 +30,7 @@ class TestPublicMethod(UnitTests):
     set_up = UnitTests.setUp
 
     @unittest.skip('失效...')
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_topUp_to(self):
         """
         验证滚动是否有效

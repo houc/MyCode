@@ -6,7 +6,7 @@ import traceback
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from SCRM.jurisdiction.currency import JurisdictionElement
 from SCRM.common import LoginPublic
 
@@ -29,7 +29,7 @@ class SaleManage(UnitTests):
 
     set_up = UnitTests.setUp
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_import(self):
         """
         关闭导入权限，验证导入按钮是否存在
@@ -61,7 +61,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_import(self):
         """
         开启导入权限，验证导入按钮是否存在
@@ -94,7 +94,7 @@ class SaleManage(UnitTests):
             raise
 
     # @unittest.skip('')
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_export(self):
         """
         关闭导出权限，验证导出按钮是否存在
@@ -126,7 +126,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_export(self):
         """
         开启导出权限，验证导出按钮是否存在
@@ -158,7 +158,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_distribution(self):
         """
         开启分配权限，验证分配按钮是否存在
@@ -190,7 +190,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_distribution(self):
         """
         关闭分配权限，验证分配按钮是否存在
@@ -223,7 +223,7 @@ class SaleManage(UnitTests):
             raise
 
     # @unittest.skip('')
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_field(self):
         """
         开启设置属性字段分配权限，验证设置属性字段是否存在
@@ -257,7 +257,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_field(self):
         """
         开启设置属性字段分配权限，验证设置属性字段是否存在
@@ -291,7 +291,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_tag(self):
         """
         关闭标签管理权限，验证标签管理是否存在
@@ -326,7 +326,7 @@ class SaleManage(UnitTests):
             raise
 
     # @unittest.skip('')
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_tag(self):
         """
         开启标签管理权限，验证标签管理是否存在
@@ -360,7 +360,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_public(self):
         """
         开启公海管理权限，验证公海管理是否存在
@@ -394,7 +394,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     # @unittest.skip('')
     def test_close_public(self):
         """
@@ -429,7 +429,7 @@ class SaleManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_private(self):
         """
         开启私海管理权限，验证私海管理是否存在
@@ -464,7 +464,7 @@ class SaleManage(UnitTests):
             raise
 
     # @unittest.skip('')
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_private(self):
         """
         关闭私海管理权限，验证私海管理是否存在

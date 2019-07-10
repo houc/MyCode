@@ -14,6 +14,7 @@ def browser(switch=False):
         drivers.maximize_window()
     return drivers
 
+
 if __name__ == '__main__':
     driver = browser(True)
     driver.get('http://www.ukuaiqi.com')

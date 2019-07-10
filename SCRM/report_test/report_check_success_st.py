@@ -5,7 +5,7 @@ import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from model.SkipModule import Skip, current_module
 from SCRM.report_test.currency import ReportTestElement
 
@@ -30,7 +30,7 @@ class TestCheckSuccess(UnitTests):
     
     set_up = UnitTests.setUp
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_1(self):
         """
         正确校验
@@ -42,7 +42,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_2(self):
         """
         正确校验
@@ -54,7 +54,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_3(self):
         """
         正确校验
@@ -66,7 +66,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_4(self):
         """
         正确校验
@@ -78,7 +78,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_5(self):
         """
         正确校验
@@ -90,7 +90,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_6(self):
         """
         正确校验
@@ -102,7 +102,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_7(self):
         """
         正确校验
@@ -114,7 +114,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_8(self):
         """
         正确校验
@@ -126,7 +126,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_9(self):
         """
         正确校验
@@ -138,7 +138,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_10(self):
         """
         正确校验
@@ -150,7 +150,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_11(self):
         """
         正确校验
@@ -162,7 +162,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_12(self):
         """
         正确校验
@@ -174,7 +174,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_13(self):
         """
         正确校验
@@ -186,7 +186,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_14(self):
         """
         正确校验
@@ -198,7 +198,7 @@ class TestCheckSuccess(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_success_15(self):
         """
         正确校验

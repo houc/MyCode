@@ -230,7 +230,7 @@ class CreateModule(object):
             self._other_py(key)
             self._case_data_handle(key)
         import sys
-        print('共{}条用例,已全部初始化完毕...'.format(len(case)), file=sys.stderr)
+        sys.stderr.write('共{}条用例,已全部初始化完毕...'.format(len(case)))
 
     @property
     def _check_repeat(self):

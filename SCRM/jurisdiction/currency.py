@@ -143,7 +143,7 @@ class JurisdictionElement(OperationElement):
         :param name: 姓名
         :return: 返回当前登录人姓名
         """
-        get_name = self.is_text(self.get_login_name, name)
+        get_name = self.is_text(self.get_login_name)
         if not name == get_name:
             LoginPublic(driver, account, password, module=None).login(False)
 

@@ -51,7 +51,7 @@ import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from model.SkipModule import Skip, current_module
 from {} import {}
 
@@ -77,7 +77,7 @@ class {}(UnitTests):
 
 '''
 
-CASE_NAME = '''    @CaseRunning(set_up)
+CASE_NAME = '''    @test_re_runner(set_up)
     def {}(self):
         """
         {}

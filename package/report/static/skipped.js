@@ -43,7 +43,7 @@ function skippedNext_pager() {
     const class_page = document.getElementById('skip_next');//获取按钮div的id
     var number = skippedTotalRows(); //table总的总行数
     var currentRow = pageSize * page; //获取当前行数
-    var nextRow = currentRow + (pageSize + 1); //下一页截止行数
+    var nextRow = currentRow + pageSize; //下一页截止行数
     if (nextRow == number || number <= pageSize) { // 下一页截止行数等于行数，禁用下一页点击
         class_page.innerHTML = "<li class='next disabled' id='deposit'><a>下一页</a></li>"
     }

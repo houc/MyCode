@@ -14,12 +14,12 @@ class OperationElement(object):
         浏览器操作封装类
     """
 
-    def __init__(self, driver, timeout=20, detection=0.5, exception=EC.NoSuchElementException):
+    def __init__(self, driver, timeout=5, detection=0.2, exception=EC.NoSuchElementException):
         """
         初始化类参数
         :param driver: 浏览器session
         :param timeout: 等待超时默认20秒
-        :param detection: 默认间隔0.2秒侦查一次元素是否存在或者消失
+        :param detection: 默认间隔0.5秒侦查一次元素是否存在或者消失
         :param exception: 默认异常为未能找到元素异常类
         """
         self.driver = driver
@@ -160,7 +160,7 @@ class OperationElement(object):
         except Exception as exc:
             raise ValueError('元素: {!r}异常啦，异常原因:{!r}'.format(element, exc))
 
-    def is_click(self, element, wait_time=2):
+    def is_click(self, element):
         """
         判断元素是否可点击,当第一次点击报错，等待默认时间2秒后再执行点击操作是否可点击，如过还是不可点击，就抛出异常错误
         :param element: self.is_click((By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"))
@@ -172,8 +172,8 @@ class OperationElement(object):
             if is_click:
                 is_click.click()
             else: raise
-        except Exception as exc:
-            raise ValueError('元素：{!r}未能检测出可点击,原因：{}'.format(element, exc))
+        except Exception:
+            raise
 
     def method_driver(self, method):
         """
@@ -183,7 +183,7 @@ class OperationElement(object):
         """
         return method(self.driver)
 
-    def is_send(self, element, value, wait_time=2):
+    def is_send(self, element, value):
         """
         判断是否可执行输入，当第一次出现异常，默认等待2秒后再次尝试是否可输入，直到再次获得信息
         :param element: self.is_send(By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"), "小明")
@@ -194,7 +194,7 @@ class OperationElement(object):
         self.operation_element(element).send_keys(value)
 
 
-    def is_text(self, element, wait_time=1):
+    def is_text(self, element):
         """
         获取元素中的文本值，第一次获取文本值如果为空，就默认等待2秒时间，再次获取
         :param element: self.is_text((By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"))
@@ -252,7 +252,7 @@ class OperationElement(object):
             now_value = element[1].replace("$", "{}")
             return (element[0], now_value.format(*args))
         else:
-            raise ValueError('无需参数化，请不要调用该方法，或者参数化中需要为“$”')
+            raise ValueError('无需参数化，请不要调用该方法，或者参数化需要“$”')
 
     def is_in_text(self, element, content: str):
         """
@@ -281,7 +281,8 @@ class OperationElement(object):
         获取当前url
         :return: 返回获取的url
         """
-        return self.support.until(_get_url())
+        url = _get_url()
+        return self.support.until(url)
 
     def is_url_contain(self, url: str):
         """

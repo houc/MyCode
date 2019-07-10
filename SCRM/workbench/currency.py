@@ -8,6 +8,7 @@ from model.SeleniumElement import OperationElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
+
 def read_currency(keys: str, line: int):
     """
     读取currency.ya中的数据
@@ -21,6 +22,7 @@ def read_currency(keys: str, line: int):
         data.append(i['url'])
         data.append(i['bar'])
     return data[line]
+
 
 def token(module):
     """
@@ -127,13 +129,13 @@ class WorkbenchElement(OperationElement):
         """
         self.is_send(self.str_conversion(self.input_button, input_location), mail)
 
-    def save(self, location, wait=20):
+    def save(self, location):
         """
         保存按钮的具体位置
         :param location:
         :return:
         """
-        self.is_click(self.str_conversion(self.save_button, location), wait)
+        self.is_click(self.str_conversion(self.save_button, location))
 
     def message_top_box(self):
         """

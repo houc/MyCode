@@ -23,7 +23,7 @@ class Email:
         self.title_name = MyConfig('project_name').excel_parameter
         self.title = MyConfig('science').excel_parameter
         self.img_path = read_file('img', 'html.png')
-        self.excel_path = read_file('report', 'ExcelReport.xlsx')
+        self.excel_path = read_file('report', 'case_info.xlsx')
 
     def _send_title_msg(self, url, case_name):
         """发送表头信息"""

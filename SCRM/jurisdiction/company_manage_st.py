@@ -5,7 +5,7 @@ import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from model.SkipModule import Skip, current_module
 from SCRM.jurisdiction.currency import JurisdictionElement
 from SCRM.common import LoginPublic
@@ -29,7 +29,7 @@ class CompanyManage(UnitTests):
 
     set_up = UnitTests.setUp
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_company_info(self):
         """
         打开验证公司信息维护，验证账户管理是否存在
@@ -65,7 +65,7 @@ class CompanyManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_company_info(self):
         """
         关闭验证公司信息维护，验证账户管理是否存在
@@ -101,7 +101,7 @@ class CompanyManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_close_user_manage(self):
         """
         关闭验证用户管理，验证用户和部门是否存在
@@ -137,7 +137,7 @@ class CompanyManage(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_open_user_manage(self):
         """
         开启验证用户管理，验证用户和部门是否存在

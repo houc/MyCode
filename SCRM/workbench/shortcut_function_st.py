@@ -6,7 +6,7 @@ import traceback
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
 from model.SkipModule import Skip, current_module
-from model.CaseHandle import CaseRunning
+from model.CaseSupport import test_re_runner
 from SCRM.workbench.currency import WorkbenchElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
@@ -28,7 +28,7 @@ class ShortcutFunction(UnitTests):
 
     set_up = UnitTests.setUp
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_create_mail(self):
         """
         验证新建邮件快捷功能是否能正常跳转
@@ -47,7 +47,7 @@ class ShortcutFunction(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_create_task(self):
         """
         验证新增任务快捷功能是否能正常跳转
@@ -67,7 +67,7 @@ class ShortcutFunction(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_quick_create_contacts(self):
         """
         验证新增联系人快捷功能是否能正常跳转
@@ -86,7 +86,7 @@ class ShortcutFunction(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_quick_create_customer(self):
         """
         验证新增客户快捷功能是否能正常跳转
@@ -105,7 +105,7 @@ class ShortcutFunction(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_quick_create_marketing(self):
         """
         验证新增营销邮件快捷功能是否能正常跳转
@@ -124,7 +124,7 @@ class ShortcutFunction(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_marketing_standard(self):
         """
         验证新建营销邮件流程标准快捷功能是否能正常跳转
@@ -148,7 +148,7 @@ class ShortcutFunction(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_marketing_fixed(self):
         """
         验证新建营销邮件流程固定日期快捷功能是否能正常跳转
@@ -173,7 +173,7 @@ class ShortcutFunction(UnitTests):
             self.error = str(traceback.format_exc())
             raise
 
-    @CaseRunning(set_up)
+    @test_re_runner(set_up)
     def test_marketing_week(self):
         """
         验证新建营销邮件流程周期快捷功能是否能正常跳转

@@ -49,10 +49,10 @@ class MyDB(object):
         DB.execute(self.dbDelete)
         self.sql.commit()
 
-    def insert_data(self, id, level, module, name, remark, wait_time, status, url, insert_time, img=None,
+    def insert_data(self, ids, level, module, name, remark, wait_time, status, url, insert_time, img=None,
                     error_reason=None, author=None, *, results_value):
         """插入数据"""
-        data = self.dbInsert % (id, level, module, name, url, remark, status, results_value, error_reason, wait_time,
+        data = self.dbInsert % (ids, level, module, name, url, remark, status, results_value, error_reason, wait_time,
                                 img, author, insert_time)
         DB = self.sql.cursor()
         self.queue.put(data)
@@ -68,5 +68,5 @@ class MyDB(object):
 
 
 if __name__ == '__main__':
-    query = MyDB(True).query_data()
+    query = MyDB().query_data()
     print(query)
