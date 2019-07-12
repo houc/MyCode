@@ -6,5 +6,5 @@ config.ini
 __pycache__
 *.xml
 case.txt
-thread_case.py
+case_set.py
 *db

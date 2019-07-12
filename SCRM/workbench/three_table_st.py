@@ -69,7 +69,7 @@ class ThreeTable(UnitTests):
             driver.add_task(self.data[1])
             message = driver.message_top_box()
             self.assertEqual(message, self.data[2])
-            driver.F5()
+            driver.f5()
             self.second = driver.get_table_text()
             self.screenshots = driver.screen_base64_shot()
             self.assertNotEqual(self.first, self.second)

@@ -1,5 +1,4 @@
 import os
-import threading
 import sys
 import warnings
 import unittest
@@ -13,6 +12,7 @@ from config_path.path_file import read_file
 from model.MyDB import MyDB
 from model.HtmlDataHandle import MyReport
 from model.ExcelReport import ExcelTitle
+from model.CaseSupport import TestRunning
 
 
 class DataHandleConversion(object):
@@ -133,9 +133,8 @@ class DataHandleConversion(object):
                                    author=None, results_value=None)
 
 
-class ConversionDiscover(unittest.TestCase):
-    def __init__(self, discover, encoding='utf8'):
-        unittest.TestCase.__init__(self)
+class ConversionDiscover(object):
+    def __init__(self, discover=None, encoding='utf8'):
         self.discover = discover
         self.encoding = encoding
         self.project = MyConfig('project_name').excel_parameter
@@ -189,28 +188,24 @@ class ConversionDiscover(unittest.TestCase):
     def case_package(self):
         """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
         self._execute_discover()
-        thread = []
+        suite = unittest.TestSuite()
         from SCRM.case_set import __all__
         for case in __all__:
-            result = threading.Thread(target=self._threading, args=(case,))
-            thread.append(result)
-            result.start()
-        [_th.join() for _th in thread]
-        self._handle_case()
+            get_suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
+            suite.addTest(get_suite)
+        self._threading(suite)
+        self.get_case_detailed()
 
-    def _threading(self, case):
-        suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
-        runner = unittest.TextTestRunner()
-        result = runner.run(suite)
-        DataHandleConversion().case_data_handle(result)
+    def _threading(self, suite):
+        runner = TestRunning(sequential_execution=True)
+        runner.run(suite)
 
-    def _handle_case(self):
-        """处理运行完成后的用例集"""
-        sys.stderr.write('多进程执行用例完成，正在生成测试报告...\n')
+    def get_case_detailed(self):
+        """获取需要执行的用例并运行对应的用例"""
         case_data = MyDB().query_data()
         total_case = self.case_handle.sql_data_handle(in_sql_data=case_data,
-                                                      start_time=self.start_time,
-                                                      end_time=standard_time())
+                                                            start_time=self.start_time,
+                                                            end_time=standard_time())
         if total_case and case_data:
             ExcelTitle(case_data).class_merge(total_case)
             report = MyReport().execute(case_data, start_time=total_case['start_time'],
@@ -218,13 +213,11 @@ class ConversionDiscover(unittest.TestCase):
                                         long_time=total_case['long_time'], total_case=total_case['testsRun'],
                                         error_case=total_case['errors'], failed_case=total_case['failures'],
                                         success_case=total_case['success'], skipped_case=total_case['skipped'],
-                                        execute_time=total_case['total_time'], execute_method='多线程',
+                                        execute_time=total_case['total_time'], execute_method='单线程',
                                         efficiency=total_case['efficiency'], version=total_case['version'],
                                         tool=total_case['tool'], science=total_case['science'],
-                                        sort_time=total_case['short_time'], fraction=total_case['fraction'],
-                                        project=total_case['project'])
-            sys.stderr.write('HTML测试报告已生成，可访问url在线预览报告啦: {}\n'.format(report))
+                                        project=total_case['project'], sort_time=total_case['short_time'],
+                                        fraction=total_case['fraction'])
+            sys.stderr.write(f'HTML测试报告已生成，可访问url在线预览报告啦: {report}\n')
+            sys.stderr.flush()
             self.mail.sender_email(url=report, case_name=total_case)
-        else:
-            sys.stderr.write('测试用例数据为空，无测试报告统计，无邮件...\n')
-        sys.stderr.flush()

@@ -57,7 +57,7 @@ class CompanyManage(UnitTests):
             account = driver.get_set_member_account(name_and_switch[0])
             LoginPublic(self.driver, account, 'Li123456', module=None).login(False)
             driver.get(driver.url + self.data[3])
-            driver.F5()
+            driver.f5()
             self.first = driver.get_title(self.data[-1])
             self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)

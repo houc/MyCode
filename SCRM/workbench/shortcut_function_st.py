@@ -38,7 +38,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=1)
             self.screenshots = driver.screen_base64_shot()
@@ -57,7 +57,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=1)
             self.screenshots = driver.screen_base64_shot()
@@ -77,7 +77,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=1)
             self.screenshots = driver.screen_base64_shot()
@@ -96,7 +96,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             self.first = driver.text_mail(location=2)
             self.screenshots = driver.screen_base64_shot()
@@ -115,7 +115,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             self.first = driver.is_url_contain(url=self.data[1])
             self.screenshots = driver.screen_base64_shot()
@@ -138,7 +138,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             driver.process_click()
             self.first = driver.is_url_contain(url=self.data[-1])
@@ -162,7 +162,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             driver.marketing_type(text=self.data[1])
             driver.process_click()
@@ -187,7 +187,7 @@ class ShortcutFunction(UnitTests):
         try:
             driver = WorkbenchElement(self.driver)
             driver.get(self.url)
-            driver.F5()
+            driver.f5()
             driver.quick_button(text=self.data[0])
             driver.marketing_type(text=self.data[1])
             driver.week_type(type=self.data[2])
