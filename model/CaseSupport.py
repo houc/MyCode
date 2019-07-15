@@ -43,7 +43,7 @@ class _Result(TestResult):
     separator1 = '=' * 160
     separator2 = '-' * 160
 
-    def __init__(self, verbosity: bool=True, stream: type=None):
+    def __init__(self, verbosity=True, stream=None):
         super(_Result, self).__init__(self)
         if stream is None:
             stream = sys.stderr
@@ -118,8 +118,8 @@ class TestRunning(TestSuite):
 
     __class_result = _Result
 
-    def __init__(self, sequential_execution: bool=False, verbosity: bool=True,
-                 stream: type=None):
+    def __init__(self, sequential_execution=False, verbosity=True,
+                 stream=None):
         super(TestRunning, self).__init__(self)
         self.sequential_execution = sequential_execution
         self.verbosity = verbosity
