@@ -67,12 +67,7 @@ class UnitTests(unittest.TestCase):
         self.assembly = _return_data['assembly']
         self.second = _return_data['asserts']
         self.case_remark = _return_data['scene']
-        if self.case_remark:
-            self.data = _data_initialization.param_extract(self.case_remark)
-        else:
-            print(self.case_name)
-            msg = "{}.{}".format(self.catalog, self.case_name)
-            raise ValueError(msg + "   common中scene参数为空，此参数不能为空，请增加")
+        self.data = _data_initialization.param_extract(self.case_remark)
         self.current_time = standard_time()
         self.start_time = time.time()
         return self.driver

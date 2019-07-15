@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="优化..">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/case_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/case_set.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/token.ini" beforeDir="false" afterPath="$PROJECT_DIR$/SCRM/token.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CaseSupport.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/CaseSupport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/html_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/report/html_report.html" afterDir="false" />
-    </list>
+    <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="优化.." />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -389,7 +383,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../interface" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -616,14 +610,7 @@
       <workItem from="1562281456779" duration="18230000" />
       <workItem from="1562312257824" duration="158090000" />
       <workItem from="1562830780684" duration="30575000" />
-      <workItem from="1563153465614" duration="3924000" />
-    </task>
-    <task id="LOCAL-00018" summary="优化增加多线程运行">
-      <created>1554356784485</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1554356784485</updated>
+      <workItem from="1563153465614" duration="3954000" />
     </task>
     <task id="LOCAL-00019" summary="优化增加多线程运行..">
       <created>1554372169259</created>
@@ -961,7 +948,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562917761694</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="优化..">
+      <created>1563157806739</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1563157806740</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -997,7 +991,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="294615000" />
+    <option name="totallyTimeSpent" value="294645000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1010,13 +1004,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1062" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4866785" visible="true" weight="0.26835853" />
       <window_info id="Structure" order="1" sideWeight="0.5133215" side_tool="true" weight="0.25971922" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49892703" weight="0.32423207" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" visible="true" weight="0.39590445" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4967811" weight="0.39590445" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946353" weight="0.41069397" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
