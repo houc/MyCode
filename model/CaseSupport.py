@@ -27,13 +27,18 @@ def test_re_runner(set_up, refresh=False, refresh_url=None):
                 try:
                     execute = method(*args, **kwargs)
                     return execute
-                except SyntaxError: raise
-                except MemoryError: raise
-                except KeyError: raise
-                except WindowsError: raise
+                except SyntaxError:
+                    raise
+                except MemoryError:
+                    raise
+                except KeyError:
+                    raise
+                except WindowsError:
+                    raise
                 except Exception:
                     driver = set_up(*args, **kwargs)
-                    if (k + 1) == re_running_count: raise
+                    if (k + 1) == re_running_count:
+                        raise
                     else:
                         time.sleep(except_wait_time)
                         if refresh:
