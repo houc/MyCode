@@ -1,4 +1,6 @@
 import time
+import pykeyboard
+import pymouse
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains as hover
@@ -23,6 +25,8 @@ class OperationElement(object):
         :param exception: 默认异常为未能找到元素异常类
         """
         self.driver = driver
+        self.key = pykeyboard.PyKeyboard()
+        self.mouse = pymouse.PyMouse()
         self.support = WebDriverWait(driver=self.driver, timeout=timeout, poll_frequency=detection,
                                      ignored_exceptions=exception)
 
@@ -166,15 +170,38 @@ class OperationElement(object):
         判断元素是否可点击,当第一次点击报错，等待默认时间2秒后再执行点击操作是否可点击，如过还是不可点击，就抛出异常错误
         :param element: self.is_click((By.XPATH, "(//button[starts-with(@class, 'ivu-btn')])[5]"))
         :param wait_time: 等待时间
-        :return:
+        :return: ....
         """
         try:
             is_click = self.support.until(EC.element_to_be_clickable(element))
             if is_click:
                 is_click.click()
-            else: raise
-        except Exception:
+            else: raise TimeoutError(f'元素:{element}超时...')
+        except TimeoutError:
             raise
+
+    def script_upload(self, path):
+        """
+        使用PyUserInput库上传附件 | 使用该方法时，请勿操作其他程序，否则可能会存在上传失败！
+        :param path: 上传文件的对应路径
+        :return: ....
+        """
+        time.sleep(1)
+        self.key.tap_key(self.key.shift_key)
+        self.key.type_string(path.replace('/', '\\'))
+        time.sleep(1)
+        self.key.tap_key(self.key.enter_key)
+
+    def script_click(self, x, y, button=1, n=1):
+        """
+        使用PyUserInput库鼠标点击
+        :param x: 坐标x
+        :param y: 坐标y
+        :param button: 按照位置
+        :param n: 执行循环次数
+        :return: ....
+        """
+        self.mouse.click(x, y, button, n)
 
     def method_driver(self, method):
         """
@@ -238,7 +265,7 @@ class OperationElement(object):
         try:
             self.operation_element(element)
             return True
-        except Exception:
+        except TimeoutError:
             return False
 
     @staticmethod
@@ -273,7 +300,7 @@ class OperationElement(object):
         """
         try:
             is_url = self.support.until(EC.url_to_be(url))
-        except Exception:
+        except TimeoutError:
             return False
         else:
             return is_url
@@ -294,7 +321,7 @@ class OperationElement(object):
         """
         try:
             is_url = self.support.until(EC.url_contains(url))
-        except Exception:
+        except TimeoutError:
             return False
         else:
             return is_url

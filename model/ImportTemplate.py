@@ -8,6 +8,7 @@ from model.SeleniumElement import OperationElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
+
 def read_currency(keys: str, line: int):
     """
     读取currency.ya中的数据
@@ -21,6 +22,7 @@ def read_currency(keys: str, line: int):
         data.append(i['url'])
         data.append(i['bar'])
     return data[line]
+
 
 def token(module):
     """

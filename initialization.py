@@ -211,11 +211,17 @@ class CreateModule(object):
         :return: 返回所有的case
         """
         case_name = []
+        class_name = []
         for key, values in self.all_param.items():
             for value in values:
+                class_name.append(value['className'])
                 for value in value['funName']:
                     for key, values in value.items():
                         case_name.append(key)
+        if class_name:
+            repeat_class = [val for val in list(set(class_name)) if class_name.count(val) >= 2]
+            if repeat_class:
+                raise TypeError('注意-->有重复的用例类名，, 请变更重复方法：' + ', 请变更重复方法：'.join(repeat_class))
         if case_name:
             repeat = [val for val in list(set(case_name)) if case_name.count(val) >= 2]
             if repeat:

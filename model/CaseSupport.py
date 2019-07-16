@@ -11,11 +11,14 @@ from unittest.runner import _WritelnDecorator
 from unittest.result import TestResult
 
 __Skip_Status = True
+__Refresh_Url = MyConfig('url').base_url
 
 
-def test_re_runner(set_up, refresh=False):
+def test_re_runner(set_up, refresh=False, refresh_url=None):
     re_running_count = MyConfig('re_run_count').config
     except_wait_time = MyConfig('re_sleep').config
+    if refresh_url is None:
+        refresh_url = __Refresh_Url
 
     def decorator(method):
         @functools.wraps(method)
@@ -33,7 +36,9 @@ def test_re_runner(set_up, refresh=False):
                     if (k + 1) == re_running_count: raise
                     else:
                         time.sleep(except_wait_time)
-                        if refresh: driver.refresh()
+                        if refresh:
+                            driver.get(refresh_url)
+                            driver.refresh()
         return execute_case
     return decorator
 
