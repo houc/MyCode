@@ -223,6 +223,9 @@ class CreateModule(object):
             if repeat_class:
                 raise TypeError('注意-->有重复的用例类名，, 请变更重复方法：' + ', 请变更重复方法：'.join(repeat_class))
         if case_name:
+            for case in case_name:
+                if 'test_' not in case:
+                    raise NameError('注意-->用例名需包含“test_”开头：' + ', 请变更错误用例：'.join(case_name))
             repeat = [val for val in list(set(case_name)) if case_name.count(val) >= 2]
             if repeat:
                 raise TypeError('注意-->有重复的用例名称，, 请变更重复方法：' + ', 请变更重复方法：'.join(repeat))

@@ -44,7 +44,9 @@ class OperationElement(object):
         :param source: 拖拽元素对象
         :param target: 拖拽元素位置
         """
-        hover(self.driver).drag_and_drop(self.operation_element(source), self.operation_element(target)).perform()
+        element_source = self.operation_element(source)
+        element_target = self.operation_element(target)
+        hover(self.driver).drag_and_drop(element_source, element_target).perform()
 
     def driver_quit(self):
         """
@@ -53,12 +55,14 @@ class OperationElement(object):
         """
         self.driver.quit()
 
-    def open_browser(self):
+    @staticmethod
+    def open_browser():
         """
         打开浏览器
         :return: 返回新浏览器的session
         """
-        return browser(MyConfig('browser').config)
+        headless = MyConfig('browser').config
+        return browser(switch=headless)
 
     def _find_element(self, element):
         """
@@ -74,7 +78,7 @@ class OperationElement(object):
             return self.driver.find_element(By.CSS_SELECTOR, element_value)
 
     @staticmethod
-    def full_windows_screen(path, length=None, height=None):
+    def full_windows_screen(path: str, length=None, height=None):
         """
         自定义当前屏幕截图范围
         :param path: 存放截图的路径位置，如：D:\work_file\auto_script\TestUi\config\TestCase.png
@@ -94,7 +98,7 @@ class OperationElement(object):
         """
         return self.driver.get_screenshot_as_base64()
 
-    def execute_js(self, js):
+    def execute_js(self, js: str):
         """
         执行js
         :param js: 如:打开新窗口：'window.open("https://www.sogou.com")'
@@ -102,7 +106,7 @@ class OperationElement(object):
         """
         return self.driver.execute_script(js)
 
-    def current_windows(self):
+    def current_window(self):
         """
         当前窗口句柄
         :return: 返回当前窗口句柄ID
@@ -115,25 +119,26 @@ class OperationElement(object):
         :param element: self.hovers(((By.XPATH, "(//tr[starts-with(@class, 'ivu-table-row')])[1]")))
         :return: 返回对应的操作元素
         """
-        return hover(self.driver).move_to_element(self.operation_element(element)).perform()
+        hover_element = self.operation_element(element)
+        hover(self.driver).move_to_element(hover_element).perform()
 
-    def more_windows(self):
+    def more_window(self):
         """
         全部窗口句柄
         :return: 返回全部窗口句柄ID
         """
         return self.driver.window_handles
 
-    def switch_windows(self, name: int):
+    def switch_window(self, indexes: int):
         """
         切换窗口
         :param name: 切换到窗口列表名字，如[1]
         :return: 对应的窗口
         """
-        windows = self.more_windows()
-        return self.driver.switch_to.window(windows[name])
+        windows = self.more_window()
+        return self.driver.switch_to.window(windows[indexes])
 
-    def switch_frame(self, frame_reference):
+    def switch_frame(self, frame_reference: str):
         """
         切换frame位置
         :param frame_reference: 框架位置
@@ -145,7 +150,7 @@ class OperationElement(object):
         """释放frame"""
         return self.driver.switch_to.default_content()
 
-    def close_current_windows(self):
+    def close_current_window(self):
         """
         关闭当前窗口
         :return:
@@ -160,10 +165,8 @@ class OperationElement(object):
         :param wait_time: 默认等待2秒
         :return: 存在则返回，不存在则抛出异常！
         """
-        try:
-            return self.support.until(EC.presence_of_element_located(element))
-        except Exception as exc:
-            raise ValueError('元素: {!r}异常啦，异常原因:{!r}'.format(element, exc))
+        return self.support.until(EC.presence_of_element_located(element),
+                                  message=f'元素: {element}  超时...')
 
     def is_click(self, element):
         """
@@ -172,15 +175,12 @@ class OperationElement(object):
         :param wait_time: 等待时间
         :return: ....
         """
-        try:
-            is_click = self.support.until(EC.element_to_be_clickable(element))
-            if is_click:
-                is_click.click()
-            else: raise TimeoutError(f'元素:{element}超时...')
-        except TimeoutError:
-            raise
+        is_click = self.support.until(EC.element_to_be_clickable(element),
+                                      message=f'元素: {element}  超时...')
+        if is_click:
+            is_click.click()
 
-    def script_upload(self, path):
+    def script_upload(self, path: str):
         """
         使用PyUserInput库上传附件 | 使用该方法时，请勿操作其他程序，否则可能会存在上传失败！
         :param path: 上传文件的对应路径
@@ -192,7 +192,7 @@ class OperationElement(object):
         time.sleep(1)
         self.key.tap_key(self.key.enter_key)
 
-    def script_click(self, x, y, button=1, n=1):
+    def script_click(self, x: int, y: int, button: int=1, n: int=1):
         """
         使用PyUserInput库鼠标点击
         :param x: 坐标x
@@ -230,7 +230,7 @@ class OperationElement(object):
         """
         return self.operation_element(element).text
 
-    def is_attribute_class(self, element, text):
+    def is_attribute(self, element, text, value):
         """
         获取元素列表中的属性值(该项为class)
         :param element: is_attribute((By.XPATH, "//*[contains(text(),'请选择要登录的公司')]"))
@@ -238,23 +238,17 @@ class OperationElement(object):
         :param attribute: class
         :return: 返回对应bool，存在返回True，反之False
         """
-        return text in self.operation_element(element).get_attribute('class')
+        attribute_element = self.operation_element(element)
+        return text in attribute_element.get_attribute(value)
 
-    def get_attribute_class(self, element):
+    def get_attributed(self, element, value):
         """
         获取元素列表中的属性值(该项为class)
         :param element: 元素
         :return: 返回对应的class属性值
         """
-        return self.operation_element(element).get_attribute('class')
-
-    def get_attribute_value(self, element):
-        """
-        获取value值属性
-        :param element: 元素
-        :return: 返回对应的value值
-        """
-        return self.operation_element(element).get_attribute('value')
+        attribute_element = self.operation_element(element)
+        return attribute_element.get_attribute(value)
 
     def is_element(self, element):
         """
@@ -290,7 +284,8 @@ class OperationElement(object):
         :param content:  "小明"
         :return: 相同返回True， 不相同返回False
         """
-        return self.support.until(EC.text_to_be_present_in_element(element, content))
+        return self.support.until(EC.text_to_be_present_in_element(element, content),
+                                  message=f'元素: {element}  超时...')
 
     def is_url_equal(self, url: str):
         """
@@ -299,7 +294,7 @@ class OperationElement(object):
         :return: 相等返回True,不相等返回False
         """
         try:
-            is_url = self.support.until(EC.url_to_be(url))
+            is_url = self.support.until(EC.url_to_be(url), message=f'url: {url} 超时...')
         except TimeoutError:
             return False
         else:
@@ -311,7 +306,7 @@ class OperationElement(object):
         :return: 返回获取的url
         """
         url = _Get()
-        return self.support.until(url)
+        return self.support.until(url, message=f'url: {url} 超时...')
 
     def is_url_contain(self, url: str):
         """
@@ -320,7 +315,7 @@ class OperationElement(object):
         :return: 包含返回True,不包含返回False
         """
         try:
-            is_url = self.support.until(EC.url_contains(url))
+            is_url = self.support.until(EC.url_contains(url), message=f'url: {url} 超时...')
         except TimeoutError:
             return False
         else:
@@ -333,7 +328,8 @@ class OperationElement(object):
         :param text: "true"
         :return: 包含返回True,不相等返回False
         """
-        return self.support.until(EC.text_to_be_present_in_element_value(element, text))
+        return self.support.until(EC.text_to_be_present_in_element_value(element, text),
+                                  message=f'元素: {element}  超时...')
 
     def is_displayed(self, element):
         """
@@ -341,7 +337,8 @@ class OperationElement(object):
         :param element: 如，self.is_element_exist((By.XPATH, "//*[contains(text(),'请选择要登录的公司')]"))
         :return: 可见返回True，反之返回False
         """
-        return self.support.until(EC.visibility_of_element_located(element))
+        return self.support.until(EC.visibility_of_element_located(element),
+                                  message=f'元素: {element}  超时...')
 
 
 class _Get(object):

@@ -12,18 +12,22 @@ from unittest.result import TestResult
 
 __Skip_Status = True
 __Refresh_Url = MyConfig('url').base_url
+__Re_Runner_Test_Count = MyConfig('re_run_count').config
+__Wait_Timer = MyConfig('re_sleep').config
 
 
-def test_re_runner(set_up, refresh=False, refresh_url=None):
-    re_running_count = MyConfig('re_run_count').config
-    except_wait_time = MyConfig('re_sleep').config
+def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retry_count=None):
+    if retry_count is None:
+        retry_count = __Re_Runner_Test_Count
+    if wait_time is None:
+        wait_time = __Wait_Timer
     if refresh_url is None:
         refresh_url = __Refresh_Url
 
     def decorator(method):
         @functools.wraps(method)
         def execute_case(*args, **kwargs):
-            for k in range(re_running_count):
+            for count in range(retry_count):
                 try:
                     execute = method(*args, **kwargs)
                     return execute
@@ -37,10 +41,10 @@ def test_re_runner(set_up, refresh=False, refresh_url=None):
                     raise
                 except Exception:
                     driver = set_up(*args, **kwargs)
-                    if (k + 1) == re_running_count:
+                    if (count + 1) == retry_count:
                         raise
                     else:
-                        time.sleep(except_wait_time)
+                        time.sleep(wait_time)
                         if refresh:
                             driver.get(refresh_url)
                             driver.refresh()
