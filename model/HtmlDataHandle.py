@@ -13,7 +13,6 @@ from model.ImportTemplate import GetTemplateHTML
 from model.DriverParameter import browser
 from package.pie_link import HTML
 from model.Thread import MyThread
-from model.PCParameter import get_network
 
 
 class AmilSupport(object):
