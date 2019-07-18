@@ -40,13 +40,24 @@ class OperationElement(object):
 
     def drag(self, source, target):
         """
-        元素拖拽
+        元素拖拽到某个元素内
         :param source: 拖拽元素对象
         :param target: 拖拽元素位置
         """
         element_source = self.operation_element(source)
         element_target = self.operation_element(target)
         hover(self.driver).drag_and_drop(element_source, element_target).perform()
+
+    def drag_offset(self, element, x_offset, y_offset):
+        """
+        指定坐标进行元素拖拽
+        :param element: 元素
+        :param x_offset: x坐标
+        :param y_offset: y坐标
+        :return:
+        """
+        is_element = self.operation_element(element)
+        hover(self.driver).drag_and_drop_by_offset(is_element, x_offset, y_offset).perform()
 
     def driver_quit(self):
         """
@@ -78,7 +89,7 @@ class OperationElement(object):
             return self.driver.find_element(By.CSS_SELECTOR, element_value)
 
     @staticmethod
-    def full_windows_screen(path: str, length=None, height=None):
+    def full_window_screen(path: str, length=None, height=None):
         """
         自定义当前屏幕截图范围
         :param path: 存放截图的路径位置，如：D:\work_file\auto_script\TestUi\config\TestCase.png
@@ -241,7 +252,7 @@ class OperationElement(object):
         """
         return self.operation_element(element).text
 
-    def is_attribute(self, element, text, value):
+    def is_attributed(self, element, text, value):
         """
         获取元素列表中的属性值
         :param element: is_attribute((By.XPATH, "//*[contains(text(),'请选择要登录的公司')]"))
@@ -304,12 +315,7 @@ class OperationElement(object):
         :param url: "http://www.sina.com.cn"
         :return: 相等返回True,不相等返回False
         """
-        try:
-            is_url = self.support.until(EC.url_to_be(url), message=f'url: {url} 超时...')
-        except TimeoutError:
-            return False
-        else:
-            return is_url
+        return self.support.until(EC.url_to_be(url), message=f'url: {url} 超时...')
 
     def get_url(self):
         """
@@ -325,12 +331,7 @@ class OperationElement(object):
         :param url: "http://www.sina"
         :return: 包含返回True,不包含返回False
         """
-        try:
-            is_url = self.support.until(EC.url_contains(url), message=f'url: {url} 超时...')
-        except TimeoutError:
-            return False
-        else:
-            return is_url
+        return self.support.until(EC.url_contains(url), message=f'url: {url} 超时...')
 
     def is_attribute_value(self, element, text: str):
         """
