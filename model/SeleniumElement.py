@@ -98,13 +98,13 @@ class OperationElement(object):
         """
         return self.driver.get_screenshot_as_base64()
 
-    def execute_js(self, js: str):
+    def execute_js(self, js: str, *args):
         """
         执行js
         :param js: 如:打开新窗口：'window.open("https://www.sogou.com")'
         :return:
         """
-        return self.driver.execute_script(js)
+        return self.driver.execute_script(js, *args)
 
     def current_window(self):
         """
@@ -168,6 +168,15 @@ class OperationElement(object):
         return self.support.until(EC.presence_of_element_located(element),
                                   message=f'元素: {element}  超时...')
 
+    def operation_elements(self, elements):
+        """
+        dom中存在多个元素时，可调用该方法
+        :param elements: 存在多个时，调用
+        :return: 返回多应的元素
+        """
+        return self.support.until(EC.presence_of_all_elements_located(elements),
+                                  message=f'元素: {elements}  超时...')
+
     def is_click(self, element):
         """
         判断元素是否可点击,当第一次点击报错，等待默认时间2秒后再执行点击操作是否可点击，如过还是不可点击，就抛出异常错误
@@ -179,6 +188,8 @@ class OperationElement(object):
                                       message=f'元素: {element}  超时...')
         if is_click:
             is_click.click()
+        else:
+            raise TimeoutError(f'元素: {element}  不可见或者未启用...')
 
     def script_upload(self, path: str):
         """
@@ -232,7 +243,7 @@ class OperationElement(object):
 
     def is_attribute(self, element, text, value):
         """
-        获取元素列表中的属性值(该项为class)
+        获取元素列表中的属性值
         :param element: is_attribute((By.XPATH, "//*[contains(text(),'请选择要登录的公司')]"))
         :param text: 属性内容是否包含，包含返回True, 反之返回False
         :param attribute: class
@@ -243,7 +254,7 @@ class OperationElement(object):
 
     def get_attributed(self, element, value):
         """
-        获取元素列表中的属性值(该项为class)
+        获取元素列表中的属性值
         :param element: 元素
         :return: 返回对应的class属性值
         """
@@ -339,6 +350,17 @@ class OperationElement(object):
         """
         return self.support.until(EC.visibility_of_element_located(element),
                                   message=f'元素: {element}  超时...')
+
+    def change_element_value(self, element, attribute_name: str, change_name: str):
+        """
+        变更属性中的值
+        :param element: 元素值
+        :param attribute_name: 属性名
+        :param change_name: 变更值
+        :return: ...
+        """
+        is_element = self.operation_element(element)
+        self.execute_js(f"arguments[0].setAttribute('{attribute_name}', '{change_name}');", is_element)
 
 
 class _Get(object):

@@ -14,7 +14,10 @@ def browser(switch=False):
 
 
 if __name__ == '__main__':
-    driver = browser(True)
-    driver.get('http://www.ukuaiqi.com')
-    driver.save_screenshot(r'D:\work_file\auto_script\UI\img\logo.png')
+    import time
+    driver = browser()
+    driver.get('https://www.baidu.com/')
+    get = driver.find_element_by_xpath("//input[@id='su']")
+    r = driver.execute_script("arguments[0].setAttribute('value','尼玛一下');", get)
+    time.sleep(5)
     driver.quit()
