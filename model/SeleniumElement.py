@@ -11,7 +11,8 @@ from PIL import ImageGrab
 
 
 class OperationElement(object):
-    def __init__(self, driver, timeout=5, detection=0.2, exception=EC.NoSuchElementException):
+    # 浏览器所需元素操作方法封装类
+    def __init__(self, driver, timeout=5, detection=0.5, exception=EC.NoSuchElementException):
         self.driver = driver
         self.key = pykeyboard.PyKeyboard()
         self.mouse = pymouse.PyMouse()
@@ -190,7 +191,7 @@ class OperationElement(object):
                                   message=f'元素: {element}  超时...')
 
     def is_displayed(self, element):
-        # 判断元素是否显示
+        # 判断元素是否显示，显示返回对应元素，不显示则返回False
         return self.support.until(EC.visibility_of_element_located(element),
                                   message=f'元素: {element}  超时...')
 
@@ -198,6 +199,11 @@ class OperationElement(object):
         # 修改元素中属性的值
         is_element = self.operation_element(element)
         self.execute_js(f"arguments[0].setAttribute('{attribute_name}', '{change_name}');", is_element)
+
+    def del_element_attributed(self, element, attribute_name: str):
+        # 删除元素中属性
+        is_element = self.operation_element(element)
+        self.execute_js(f"arguments[0].removeAttribute('{attribute_name}');", is_element)
 
 
 class _Get(object):
