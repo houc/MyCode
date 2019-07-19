@@ -31,13 +31,7 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
                 try:
                     execute = method(*args, **kwargs)
                     return execute
-                except SyntaxError:
-                    raise
-                except MemoryError:
-                    raise
-                except KeyError:
-                    raise
-                except WindowsError:
+                except (SyntaxError, MemoryError, KeyError, WindowsError, IndexError):
                     raise
                 except Exception:
                     driver = set_up(*args, **kwargs)
@@ -197,3 +191,5 @@ class TestRunning(TestSuite):
     @staticmethod
     def _thread_execute_call(suite, result):
         raise SyntaxError('多线程暂不完善，请使用单线程运行该用例集....')
+
+

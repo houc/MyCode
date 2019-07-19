@@ -30,7 +30,7 @@ class TestCheckFailed(UnitTests):
     
     set_up = UnitTests.setUp
 
-    @test_re_runner(set_up)
+    @test_re_runner(set_up, retry_count=2)
     def test_fail_1(self):
         """
         失败校验

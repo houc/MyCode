@@ -181,3 +181,4 @@ from .HtmlReport import *
 from .TimeConversion import (standard_time, timestamp_time,
                              beijing_time_conversion_unix, time_conversion)
 from .SkipModule import Skip
+from .ElementSupport import *

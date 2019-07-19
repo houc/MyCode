@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from model.DriverParameter import browser
 from model.Yaml import MyConfig
+from model.ElementSupport import GetCurrentUrl
 from PIL import ImageGrab
 
 
@@ -33,7 +34,7 @@ class OperationElement(object):
         element_target = self.operation_element(target)
         hover(self.driver).drag_and_drop(element_source, element_target).perform()
 
-    def drag_offset(self, element, x_offset, y_offset):
+    def drag_offset(self, element, x_offset: int, y_offset: int):
         # 单个元素进行拖拽到指定的x坐标和y坐标位置
         is_element = self.operation_element(element)
         hover(self.driver).drag_and_drop_by_offset(is_element, x_offset, y_offset).perform()
@@ -82,11 +83,14 @@ class OperationElement(object):
         window = self.more_window()
         return self.driver.switch_to.window(window[indexes])
 
-    def switch_frame(self, frame_reference: str):
-        # 切换到ifr的dom上
-        return self.driver.switch_to.frame(frame_reference)
+    def switch_iframe(self, frame_element):
+        # 切换到iframe的dom上
+        iframe = self.support.until(EC.frame_to_be_available_and_switch_to_it(frame_element),
+                                    message=f'iframe_element:  {frame_element}  timeout...')
+        if not iframe:
+            raise EC.NoSuchFrameException(f'switch {frame_element} it failed！')
 
-    def release_frame(self):
+    def release_iframe(self):
         # 回跳至默认dom上
         return self.driver.switch_to.default_content()
 
@@ -97,21 +101,21 @@ class OperationElement(object):
     def operation_element(self, element):
         # 对元素进行判断是否存在
         return self.support.until(EC.presence_of_element_located(element),
-                                  message=f'元素: {element}  超时...')
+                                  message=f'element: {element}  timeout...')
 
     def operation_elements(self, elements):
         # 对多个元素进行判断是否存在
         return self.support.until(EC.presence_of_all_elements_located(elements),
-                                  message=f'元素: {elements}  超时...')
+                                  message=f'elements: {elements}  timout...')
 
     def is_click(self, element):
         # 执行点击操作
         is_click = self.support.until(EC.element_to_be_clickable(element),
-                                      message=f'元素: {element}  超时...')
+                                      message=f'element: {element}  timeout...')
         if is_click:
             is_click.click()
         else:
-            raise TimeoutError(f'元素: {element}  不可见或者未启用...')
+            raise EC.NoSuchElementException(f'element: {element}  Not visible or enabled...')
 
     def script_upload(self, path: str):
         # 采用PyUserInput，上传附件可避免非input标签进行上传附件
@@ -129,7 +133,7 @@ class OperationElement(object):
         # 定义一个driver继承
         return method(self.driver)
 
-    def is_send(self, element, value):
+    def is_send(self, element, value: str):
         # 输入对应内容
         is_element = self.operation_element(element)
         is_element.send_keys(value)
@@ -139,7 +143,7 @@ class OperationElement(object):
         is_element = self.operation_element(element)
         return is_element.text
 
-    def is_attributed(self, element, text, value):
+    def is_attributed(self, element, text: str, value: str):
         # 判断属性中是否包含text内容
         attribute_element = self.operation_element(element)
         return text in attribute_element.get_attribute(value)
@@ -165,48 +169,44 @@ class OperationElement(object):
             new_element = (element[0], now_value.format(*args))
             return new_element
         else:
-            raise ValueError('无需参数化，请不要调用该方法，或者参数化需要“$”')
+            raise ValueError('No parameter is required. Please do not call this method or parameter it“$”')
 
     def is_in_text(self, element, content: str):
         # 判断元素是否包含content
         return self.support.until(EC.text_to_be_present_in_element(element, content),
-                                  message=f'元素: {element}  超时...')
+                                  message=f'element: {element}  timeout...')
 
     def is_url_equal(self, url: str):
         # 判断浏览器当前中的url是否与url相等
-        return self.support.until(EC.url_to_be(url), message=f'url: {url} 超时...')
+        return self.support.until(EC.url_to_be(url), message=f'url: {url} timeout...')
 
     def get_url(self):
         # 获取浏览器当前中的url
-        url = _Get()
-        return self.support.until(url, message=f'url: {url} 超时...')
+        url = GetCurrentUrl()
+        return self.support.until(url, message=f'url: {url} timeout...')
 
     def is_url_contain(self, url: str):
         # 判断url在当前浏览器的url是否呈包含关系
-        return self.support.until(EC.url_contains(url), message=f'url: {url} 超时...')
+        return self.support.until(EC.url_contains(url), message=f'url: {url} timeout...')
 
     def is_attribute_value(self, element, text: str):
         # 判断元素中为“value”属性的值，是否包含text
         return self.support.until(EC.text_to_be_present_in_element_value(element, text),
-                                  message=f'元素: {element}  超时...')
+                                  message=f'element: {element}  timeout...')
 
     def is_displayed(self, element):
         # 判断元素是否显示，显示返回对应元素，不显示则返回False
         return self.support.until(EC.visibility_of_element_located(element),
-                                  message=f'元素: {element}  超时...')
+                                  message=f'element: {element}  timeout...')
 
-    def change_element_value(self, element, attribute_name: str, change_name: str):
-        # 修改元素中属性的值
+    def set_attributed(self, element, attribute_name: str, change_name: str):
+        # 修改或者创建元素中属性的值
         is_element = self.operation_element(element)
         self.execute_js(f"arguments[0].setAttribute('{attribute_name}', '{change_name}');", is_element)
 
-    def del_element_attributed(self, element, attribute_name: str):
+    def del_attributed(self, element, attribute_name: str):
         # 删除元素中属性
         is_element = self.operation_element(element)
         self.execute_js(f"arguments[0].removeAttribute('{attribute_name}');", is_element)
 
-
-class _Get(object):
-    def __call__(self, driver):
-        return driver.current_url
 

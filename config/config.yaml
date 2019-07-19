@@ -15,7 +15,7 @@ config:
   logs_save: 5          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
   task_time: 1         # 定时任务等待执行时间(分钟计算)
-  browser: True         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
+  browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False
   logo_url: ./static/lib/image/logo.png?v=3 # 项目logo连接
   re_run_count: 1         # 失败重跑次数 1 表示1次，从1开始，并非从0开始
   re_sleep: 1        # 失败重跑等待时间，单位为 秒  建议不超过300秒
