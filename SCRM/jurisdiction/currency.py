@@ -92,7 +92,7 @@ class JurisdictionElement(OperationElement):
         :param role_name: 权限名称
         :return: 返回对应的bool值
         """
-        return self.get_attribute_value(self.str_conversion(self.is_role, role_name))
+        return self.get_attributed(self.str_conversion(self.is_role, role_name), 'value')
 
     def execute_op(self, role_name, table_switch='', dept_location=2, member_location=1):
         """
@@ -191,7 +191,7 @@ class JurisdictionElement(OperationElement):
         self.is_click(self.str_conversion(self.member, member_location))
         name = self.is_text(self.get_user_name)
         self.is_click(self.str_conversion(self.title_switch, table_switch))
-        status = self.get_attribute_value(self.str_conversion(self.notice_status, notice))
+        status = self.get_attributed(self.str_conversion(self.notice_status, notice), 'value')
         if 'false' == status:
             self.message_box(notice)
-        return name, self.get_attribute_value(self.str_conversion(self.is_role, role_name))
+        return name, self.get_attributed(self.str_conversion(self.is_role, role_name), 'value')

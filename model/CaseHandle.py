@@ -134,13 +134,13 @@ class DataHandleConversion(object):
 
 
 class ConversionDiscover(object):
-    def __init__(self, discover=None, encoding='utf8'):
+    def __init__(self, discover=None, encoding='utf8', *, start_time):
         self.discover = discover
         self.encoding = encoding
         self.project = MyConfig('project_name').excel_parameter
         self.module = MyConfig('module_run').config
         self.mail = Email()
-        self.start_time = standard_time()
+        self.start_time = start_time
         self.case_handle = DataHandleConversion()
 
     def _execute_discover(self):
@@ -194,18 +194,18 @@ class ConversionDiscover(object):
             get_suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
             suite.addTest(get_suite)
         self._threading(suite)
-        self.get_case_detailed()
+        self.get_case_detailed(execute_method='多线程')
 
     def _threading(self, suite):
         runner = TestRunning(sequential_execution=True)
         runner.run(suite)
 
-    def get_case_detailed(self):
+    def get_case_detailed(self, execute_method='单线程'):
         """获取需要执行的用例并运行对应的用例"""
         case_data = MyDB().query_data()
         total_case = self.case_handle.sql_data_handle(in_sql_data=case_data,
-                                                            start_time=self.start_time,
-                                                            end_time=standard_time())
+                                                      start_time=self.start_time,
+                                                      end_time=standard_time())
         if total_case and case_data:
             ExcelTitle(case_data).class_merge(total_case)
             report = MyReport().execute(case_data, start_time=total_case['start_time'],
@@ -213,7 +213,7 @@ class ConversionDiscover(object):
                                         long_time=total_case['long_time'], total_case=total_case['testsRun'],
                                         error_case=total_case['errors'], failed_case=total_case['failures'],
                                         success_case=total_case['success'], skipped_case=total_case['skipped'],
-                                        execute_time=total_case['total_time'], execute_method='单线程',
+                                        execute_time=total_case['total_time'], execute_method=execute_method,
                                         efficiency=total_case['efficiency'], version=total_case['version'],
                                         tool=total_case['tool'], science=total_case['science'],
                                         project=total_case['project'], sort_time=total_case['short_time'],

@@ -181,7 +181,7 @@ class WorkbenchElement(OperationElement):
 
     def mark_star_mail(self):
         """标记为星标邮件"""
-        if self.is_attribute_class(self.mark_star, 'icon-ic_star_border_black'):
+        if self.get_attributed(self.mark_star, 'icon-ic_star_border_black'):
             time.sleep(1)
             self.is_click(self.mark_star)
         else:

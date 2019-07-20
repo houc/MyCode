@@ -2,6 +2,7 @@ import functools
 import time
 import queue
 import sys
+import warnings
 
 from model.Yaml import MyConfig
 from model.MyDB import MyDB
@@ -9,6 +10,7 @@ from unittest.suite import _isnotsuite
 from unittest.suite import TestSuite
 from unittest.runner import _WritelnDecorator
 from unittest.result import TestResult
+from unittest.signals import registerResult
 
 __Skip_Status = True
 __Refresh_Url = MyConfig('url').base_url
@@ -33,7 +35,7 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
                     return execute
                 except (SyntaxError, MemoryError, KeyError, WindowsError, IndexError):
                     raise
-                except Exception:
+                except:
                     driver = set_up(*args, **kwargs)
                     if (count + 1) == retry_count:
                         raise
@@ -48,8 +50,8 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
 
 class _Result(TestResult):
 
-    separator1 = '=' * 160
-    separator2 = '-' * 160
+    separator1 = '=' * 180
+    separator2 = '-' * 180
 
     def __init__(self, verbosity=True, stream=None):
         super(_Result, self).__init__(self)
@@ -121,6 +123,22 @@ class _Result(TestResult):
             self.stream.writeln(self.separator2)
             self.stream.writeln("%s" % err)
 
+    def addExpectedFailure(self, test, err):
+        TestResult.addExpectedFailure(self, test, err)
+        if not self.verbosity:
+            self.stream.writeln("expected failure")
+        else:
+            self.stream.write("x")
+            self.stream.flush()
+
+    def addUnexpectedSuccess(self, test):
+        super(_Result, self).addUnexpectedSuccess(test)
+        if not self.verbosity:
+            self.stream.writeln("unexpected success")
+        else:
+            self.stream.write("u")
+            self.stream.flush()
+
 
 class TestRunning(TestSuite):
 
@@ -150,23 +168,64 @@ class TestRunning(TestSuite):
             self._tearDownPreviousClass(None, result)
             self._handleModuleTearDown(result)
 
-    def run(self, suite, debug=False):
+    def run(self, test, debug=False):
         result = self._result()
-        start_time = time.time()
-        if self.sequential_execution:
-            self._thead_execute(suite, result)
-        else:
-            self._execute_case(suite, result)
-        ends_time = time.time()
-        s = '{:.3f}s '.format(ends_time - start_time)
+        registerResult(result)
+        with warnings.catch_warnings():
+            startTime = time.time()
+            startTestRun = getattr(result, 'startTestRun', None)
+            if startTestRun is not None:
+                startTestRun()
+            try:
+                if self.sequential_execution:
+                    self._thead_execute(test, result)
+                else:
+                    self._execute_case(test, result)
+            finally:
+                stopTestRun = getattr(result, 'stopTestRun', None)
+                if stopTestRun is not None:
+                    stopTestRun()
+            stopTime = time.time()
+        timeTaken = stopTime - startTime
         result.printErrors()
+        if hasattr(result, 'separator2'):
+            result.stream.writeln(result.separator2)
+        run = result.testsRun
+        result.stream.writeln("Ran %d test%s in %.3fs" %
+                            (run, run != 1 and "s" or "", timeTaken))
         result.stream.writeln()
-        result.stream.write(f'run {result.testsRun} is {s}'
-                            f'(errors: {result.error_count}; '
-                            f'failed: {result.fail_count}; '
-                            f'skipped: {result.skip_count};)')
-        result.stream.writeln()
-        result.stream.flush()
+
+        expectedFails = unexpectedSuccesses = skipped = 0
+        try:
+            results = map(len, (result.expectedFailures,
+                                result.unexpectedSuccesses,
+                                result.skipped))
+        except AttributeError:
+            pass
+        else:
+            expectedFails, unexpectedSuccesses, skipped = results
+
+        infos = []
+        if not result.wasSuccessful():
+            result.stream.write("FAILED")
+            failed, errored = len(result.failures), len(result.errors)
+            if failed:
+                infos.append("failures=%d" % failed)
+            if errored:
+                infos.append("errors=%d" % errored)
+        else:
+            result.stream.write("OK")
+        if skipped:
+            infos.append("skipped=%d" % skipped)
+        if expectedFails:
+            infos.append("expected failures=%d" % expectedFails)
+        if unexpectedSuccesses:
+            infos.append("unexpected successes=%d" % unexpectedSuccesses)
+        if infos:
+            result.stream.writeln(" (%s)" % (", ".join(infos),))
+        else:
+            result.stream.write("\n")
+        return result
 
     def _thead_execute(self, suite, result):
         test_case_queue = queue.LifoQueue()

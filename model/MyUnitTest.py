@@ -2,7 +2,7 @@ import unittest
 import time
 import os
 
-from model.Logs import Logger
+from model.Logs import logger
 from model.Yaml import MyConfig
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
@@ -20,7 +20,6 @@ class UnitTests(unittest.TestCase):
     def setUpClass(cls):
         """判断类下面是否需要重新请求账号登录"""
         try:
-            cls.log = Logger()
             driver_headless = MyConfig('browser').config
             if cls.BROWSER:
                 cls.driver = browser(switch=driver_headless)
@@ -79,4 +78,4 @@ class UnitTests(unittest.TestCase):
         error_path = '{}/{}'.format(self.catalog, self.case_name)
         MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_remark,
                   self.status, self.error, self.url, total_time, self.driver, self.assembly,
-                  self.screenshots, self.author, self, error_path, self.log).asserts()
+                  self.screenshots, self.author, self, error_path, logger).asserts()

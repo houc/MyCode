@@ -6,14 +6,13 @@ import shutil
 from model.Yaml import MyConfig, MyProject
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
 from model.TimeConversion import standard_time
-from model.Logs import Logger
+from model.Logs import logger
 from config_path.path_file import read_file, module_file, PATH
 
 
 class CreateModule(object):
     def __init__(self):
         """初始化"""
-        self.log = Logger()
         self.time = standard_time()
         self.path = os.path.realpath(__file__)
         self.file_path = MyConfig('project_name').excel_parameter

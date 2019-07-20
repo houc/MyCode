@@ -172,7 +172,7 @@ from .MyException import (ExceptionPackage, ReadCommonError, SceneError,
 from .MyDB import MyDB
 from .MyConfig import ConfigParameter
 from .MyAssert import MyAsserts
-from .Logs import Logger
+from .Logs import logger
 from .ImportTemplate import (GetTemplateHTML, PROJECT_COMMON,
                              CURRENCY_YA, CASE_NAME, CASE_CONTENT,
                              CURRENCY_PY)

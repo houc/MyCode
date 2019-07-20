@@ -61,5 +61,5 @@ class MyAsserts():
 
     def _log(self, reason):
         """记录日志"""
-        self.log.logging_debug(f'执行时间:{standard_time()},错误路径:{self.error_path},错误原因:{reason}')
+        self.log.info(f'错误路径:{self.error_path},错误原因:{reason}')
 

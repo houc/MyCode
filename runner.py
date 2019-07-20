@@ -1,6 +1,5 @@
 import unittest
 import os
-import sys
 
 from model.Yaml import MyConfig
 from model.MyDB import MyDB
@@ -33,11 +32,11 @@ class RunAll(object):
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
         if self.thread:
-            excute(discover).case_package()
+            excute(discover, start_time=self.start_time).case_package()
         else:
             runner = TestRunning()
             runner.run(discover)
-            excute().get_case_detailed()
+            excute(start_time=self.start_time).get_case_detailed()
 
     def runner(self):
         """运行全部的测试用例数"""
