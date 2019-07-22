@@ -18,6 +18,7 @@ class RunAll(object):
         self.mail = Email()
         self.start_time = standard_time()
         self.thread = MyConfig('thread').config
+        self.re_run_count = MyConfig('re_run_count').config
         self._clear_sql()
 
     def _clear_sql(self):
@@ -41,7 +42,9 @@ class RunAll(object):
     def runner(self):
         """运行全部的测试用例数"""
         if self.save < 7:
-            raise ValueError('报告存放日期需大于7天以上！')
+            raise ValueError('报告存放日期需大于7！')
+        if self.thread and self.re_run_count > 1:
+            raise ValueError('当线程启用时，重跑次数需大于1！')
         self._get_case_status()
 
 

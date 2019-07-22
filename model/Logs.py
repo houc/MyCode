@@ -18,7 +18,7 @@ def _logger():
 
     log_path = read_file('log', f'{time.strftime("%Y-%m-%d")}.log')
     logging.basicConfig(format="%(asctime)s %(filename)s: [%(levelname)s]: %(message)s",
-                        level=logging.INFO,
+                        level=logging.DEBUG,
                         datefmt='%Y-%m-%d %H:%M:%S -> %A || -> ',
                         filename=log_path,
                         filemode='a+')

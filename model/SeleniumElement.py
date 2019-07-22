@@ -110,10 +110,10 @@ class OperationElement(object):
 
     def is_click(self, element):
         # 执行点击操作
-        is_click = self.support.until(EC.element_to_be_clickable(element),
-                                      message=f'element: {element}  timeout...')
-        if is_click:
-            is_click.click()
+        clicked = self.support.until(EC.element_to_be_clickable(element),
+                                     message=f'element: {element}  timeout...')
+        if clicked:
+            clicked.click()
         else:
             raise EC.NoSuchElementException(f'element: {element}  Not visible or enabled...')
 

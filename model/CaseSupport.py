@@ -50,8 +50,8 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
 
 class _Result(TestResult):
 
-    separator1 = '=' * 180
-    separator2 = '-' * 180
+    separator1 = '=' * 170
+    separator2 = '-' * 170
 
     def __init__(self, verbosity=True, stream=None):
         super(_Result, self).__init__(self)
@@ -62,6 +62,7 @@ class _Result(TestResult):
         self.skip_count = 0
         self.error_count = 0
         self.fail_count = 0
+        self.success_count = 0
 
     def addSkip(self, test, reason):
         TestResult.addSkip(self, test, reason)
@@ -139,6 +140,14 @@ class _Result(TestResult):
             self.stream.write("u")
             self.stream.flush()
 
+    def addSuccess(self, test):
+        super(_Result, self).addSuccess(test)
+        if not self.verbosity:
+            self.stream.writeln("ok")
+        else:
+            self.stream.write('.')
+            self.stream.flush()
+        self.success_count += 1
 
 class TestRunning(TestSuite):
 
@@ -146,7 +155,7 @@ class TestRunning(TestSuite):
 
     def __init__(self, sequential_execution=False, verbosity=True,
                  stream=None):
-        super(TestRunning, self).__init__(self)
+        TestSuite.__init__(self)
         self.sequential_execution = sequential_execution
         self.verbosity = verbosity
         self.stream = stream
@@ -155,47 +164,51 @@ class TestRunning(TestSuite):
         return self.__class_result(verbosity=self.verbosity, stream=self.stream)
 
     def _execute_case(self, tmp_list, result):
-        for test_case in tmp_list:
-            if _isnotsuite(test_case):
-                self._tearDownPreviousClass(test_case, result)
-                self._handleModuleFixture(test_case, result)
-                self._handleClassSetUp(test_case, result)
-                result._previousTestClass = test_case.__class__
-                if (getattr(test_case.__class__, '_classSetupFailed', False) or
+        top_level = False
+        if not getattr(result, '_testRunEntered', False):
+            result._testRunEntered = top_level = True
+        for test in tmp_list:
+            if _isnotsuite(test):
+                self._tearDownPreviousClass(test, result)
+                self._handleModuleFixture(test, result)
+                self._handleClassSetUp(test, result)
+                result._previousTestClass = test.__class__
+                if (getattr(test.__class__, '_classSetupFailed', False) or
                         getattr(result, '_moduleSetUpFailed', False)):
                     continue
-            test_case(result)
+            test(result)
+        if top_level:
             self._tearDownPreviousClass(None, result)
             self._handleModuleTearDown(result)
+            result._testRunEntered = False
 
     def run(self, test, debug=False):
         result = self._result()
         registerResult(result)
         with warnings.catch_warnings():
-            startTime = time.time()
-            startTestRun = getattr(result, 'startTestRun', None)
-            if startTestRun is not None:
-                startTestRun()
+            start_time = time.time()
+            start_test_run = getattr(result, 'startTestRun', None)
+            if start_test_run is not None:
+                start_test_run()
             try:
                 if self.sequential_execution:
                     self._thead_execute(test, result)
                 else:
                     self._execute_case(test, result)
             finally:
-                stopTestRun = getattr(result, 'stopTestRun', None)
-                if stopTestRun is not None:
-                    stopTestRun()
-            stopTime = time.time()
-        timeTaken = stopTime - startTime
+                stop_test_run = getattr(result, 'stopTestRun', None)
+                if stop_test_run is not None:
+                    stop_test_run()
+            stop_time = time.time()
+        time_taken = stop_time - start_time
         result.printErrors()
         if hasattr(result, 'separator2'):
             result.stream.writeln(result.separator2)
         run = result.testsRun
         result.stream.writeln("Ran %d test%s in %.3fs" %
-                            (run, run != 1 and "s" or "", timeTaken))
+                            (run, run != 1 and "s" or "", time_taken))
         result.stream.writeln()
-
-        expectedFails = unexpectedSuccesses = skipped = 0
+        expected_fails = unexpected_successes = skipped = 0
         try:
             results = map(len, (result.expectedFailures,
                                 result.unexpectedSuccesses,
@@ -203,8 +216,7 @@ class TestRunning(TestSuite):
         except AttributeError:
             pass
         else:
-            expectedFails, unexpectedSuccesses, skipped = results
-
+            expected_fails, unexpected_successes, skipped = results
         infos = []
         if not result.wasSuccessful():
             result.stream.write("FAILED")
@@ -215,12 +227,13 @@ class TestRunning(TestSuite):
                 infos.append("errors=%d" % errored)
         else:
             result.stream.write("OK")
+            infos.append('successes=%d' % result.success_count)
         if skipped:
             infos.append("skipped=%d" % skipped)
-        if expectedFails:
-            infos.append("expected failures=%d" % expectedFails)
-        if unexpectedSuccesses:
-            infos.append("unexpected successes=%d" % unexpectedSuccesses)
+        if expected_fails:
+            infos.append("expected failures=%d" % expected_fails)
+        if unexpected_successes:
+            infos.append("unexpected successes=%d" % unexpected_successes)
         if infos:
             result.stream.writeln(" (%s)" % (", ".join(infos),))
         else:
@@ -247,8 +260,7 @@ class TestRunning(TestSuite):
             tmp_list = test_case_queue.get()
             self._thread_execute_call(tmp_list, result)
 
-    @staticmethod
-    def _thread_execute_call(suite, result):
+    def _thread_execute_call(self, suite, result):
         raise SyntaxError('多线程暂不完善，请使用单线程运行该用例集....')
 
 

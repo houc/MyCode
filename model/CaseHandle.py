@@ -185,7 +185,7 @@ class ConversionDiscover(object):
         with open(write_path, 'at', encoding=self.encoding) as f:
             f.writelines(class_name)
 
-    def case_package(self):
+    def case_package(self, queue=True):
         """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
         self._execute_discover()
         suite = unittest.TestSuite()
@@ -193,11 +193,11 @@ class ConversionDiscover(object):
         for case in __all__:
             get_suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
             suite.addTest(get_suite)
-        self._threading(suite)
+        self._threading(suite, queue=queue)
         self.get_case_detailed(execute_method='多线程')
 
-    def _threading(self, suite):
-        runner = TestRunning(sequential_execution=True)
+    def _threading(self, suite, queue):
+        runner = TestRunning(sequential_execution=queue)
         runner.run(suite)
 
     def get_case_detailed(self, execute_method='单线程'):
