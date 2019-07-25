@@ -49,7 +49,38 @@ class VerificationCode(object):
         return pytesseract.image_to_string(image, lang='eng')
 
 
+class ImageSetHandle(object):
+    """该类主要用于PIL各种图像处理方法"""
+    def __init__(self, image_path):
+        self.path = image_path
+
+    def img_rotate(self, rotate_degrees, image_mode=''):
+        # 图像旋转
+        # rotate_degrees：旋转度数;
+        # image_mode: 为空，立即展示效果，为路径即为保存处理后路径
+        image = Image.open(self.path)
+        mode = image.rotate(rotate_degrees)
+        if not image_mode:
+            mode.show()
+        else:
+            mode.save(image_mode)
+
+    def img_thumbnail(self, thumbnail_size, save_path):
+        # 图像变更为缩略图
+        # thumbnail_size: 缩小范围为元组类型, 如（300, 300）&& [300, 300]
+        # save_path: 保存路径
+        image = Image.open(self.path)
+        image.thumbnail(thumbnail_size)
+        image.save(save_path)
+
+    def img_size(self):
+        # 获取图片尺寸（左、上、右、下）
+        image = Image.open(self.path)
+        print(image.getim())
+        return image.getbbox()
+
 if __name__ == '__main__':
-    a = 'data:image/JPEG;base64,R0lGODlhVQAkAPAAAAGUjv///ywAAAAAVQAkAEAIswADCBxIsKDBgwgTKlzIsKHDhxAjSpxIEACAgRYzVrQYgKNAjx0vfrwIkqJJjCJPqlzJsqXLlzBjypxJ02DJjSNR5twZsqbPn0CDCh1KtKhRhSkLgvS4NOnRgzd1jtQ49WbUoyUzOtWa0ipJp0/Dih1LtqzZs2jTql3Ltq3bmE25oqQaUuvbjgib8rw69mpWuj0DTyXLl6lIqoZxEu4qVXBiqXyLRr67EDDly5gza97MuWVAADs='
-    test = VerificationCode(a)
-    print(test.distinguish_code())
+    change = r'D:\work_file\auto_script\UI\img\tes2.jpg'
+
+    i = ImageSetHandle(r'D:\work_file\auto_script\UI\img\test.jpg')
+    i.img_size()

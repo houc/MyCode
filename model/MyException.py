@@ -1,8 +1,6 @@
 import inspect
 import traceback
-
-from model.PrintColor import RED_BIG
-
+import dataclasses
 
 def _get_function_name(path):
     """获取方法名称"""
@@ -133,17 +131,14 @@ class SceneError(Exception):
 class ExceptionPackage(object):
     """异常类的封装"""
     def __init__(self, module, driver, text=None):
-        from model.Logs import Logger
+        from model.Logs import logger
         error = traceback.format_exc()
-        self.log = Logger()
         if text is None:
-            self.log.logging_debug(error)
+            logger.logging_debug(error)
             driver.quit()
-            print(RED_BIG, LoginError(module, error))
         else:
-            self.log.logging_debug(text)
+            logger.logging_debug(text)
             driver.quit()
-            print(RED_BIG, LoginSelectError(module))
 
 
 class ReadCommonError():
@@ -155,3 +150,29 @@ class ReadCommonError():
     def __str__(self):
         return "{}.{}.{}，场景中scene存在空数据，此项不能存在为空的数据，需修正...".\
                 format(self.module, self.class_name, self.case_name, )
+
+
+@dataclasses.dataclass
+class UntilNoElementOrTimeoutError(Exception):
+    timeout: float
+    element: str
+
+    def __str__(self):
+        return f'元素: {self.element} 在DOM超时: {self.timeout}s 都未出现...'
+
+
+@dataclasses.dataclass
+class UntilNotNotElementOrTimeoutError(Exception):
+    timeout: float
+    element: str
+
+    def __str__(self):
+        return f'元素: {self.element} 在DOM超时: {self.timeout}s 都未消失...'
+
+
+@dataclasses.dataclass
+class NoUrlTimeoutError(Exception):
+    timeout: float
+
+    def __str__(self):
+        return f'获取当前窗口url在 {self.timeout}s 都未能出现获取...'
