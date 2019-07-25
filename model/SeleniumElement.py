@@ -76,15 +76,15 @@ class _MouseToOperations(_VariousElementTypesDisplayWaiting):
         super(_MouseToOperations, self).__post_init__()
         self.mouse_support = Opera(self.driver)
 
-    def drag_and_drop(self, source_element, target_elemet):
+    def drag_and_drop(self, source, target):
         """
         将单个元素进行拖拽到另一个元素中
         :param source: 执行拖拽的元素
         :param target: 到另一个元素位置
         """
-        source = self.opera_element(source_element)
-        target = self.opera_element(target_elemet)
-        self.mouse_support.drag_and_drop(source=source, target=target).perform()
+        source_element = self.opera_element(source)
+        target_element = self.opera_element(target)
+        self.mouse_support.drag_and_drop(source=source_element, target=target_element).perform()
 
     def drag_and_drop_by_offset(self, element, x_offset: int, y_offset: int):
         """
@@ -106,7 +106,7 @@ class _MouseToOperations(_VariousElementTypesDisplayWaiting):
 
     def double_click(self, element):
         """
-        双击元素
+        鼠标左键双击元素
         :param element: (By.XPATH, "//div[text()='百度一下']")
         """
         is_element = self.opera_element(element)
@@ -114,7 +114,7 @@ class _MouseToOperations(_VariousElementTypesDisplayWaiting):
 
     def right_click(self, element):
         """
-        右键元素
+        鼠标右键元素
         :param element: (By.XPATH, "//div[text()='百度一下']")
         """
         is_element = self.opera_element(element)
@@ -155,20 +155,25 @@ class OperationElement(_MouseToOperations, OtherOperationClass):
         else:
             raise EC.NoSuchElementException(f'element: {element}  Not visible or enabled...')
 
-    def is_send(self, element, value: str):
+    def send_keys(self, element, value: str):
         # 元素是否可输入对应内容
         is_element = self.opera_element(element)
         is_element.send_keys(value)
 
-    def is_submit(self, element):
+    def submit(self, element):
         # 元素是否可提交
         is_element = self.opera_element(element)
         is_element.submit()
 
-    def is_text(self, element):
+    def get_text(self, element):
         # 获取元素中文本值
         is_element = self.opera_element(element)
         return is_element.text
+
+    def get_tag(self, element):
+        # 获取元素中tag名称
+        is_element = self.opera_element(element)
+        return is_element.tag_name
 
     def is_element(self, element):
         # 判断元素是否存在
@@ -178,21 +183,21 @@ class OperationElement(_MouseToOperations, OtherOperationClass):
         except TimeoutError:
             return False
 
-    def is_clear(self, element):
+    def clear(self, element):
         # 清除元素文本内容
         is_element = self.opera_element(element)
         is_element.clear()
 
-    def is_in_text(self, element, content: str):
+    def text_in_element(self, element, content: str):
         # 判断元素是否包含content
         return self.ec_wait.until(EC.text_to_be_present_in_element(element, content),
                                   message=f'element: {element}  timeout...')
 
-    def is_url_equal(self, url: str):
+    def url_equal(self, url: str):
         # 判断浏览器当前中的url是否与url相等
         return self.ec_wait.until(EC.url_to_be(url), message=f'url: {url} timeout...')
 
-    def is_url_contain(self, url: str):
+    def url_contain(self, url: str):
         # 判断url在当前浏览器的url是否呈包含关系
         return self.ec_wait.until(EC.url_contains(url), message=f'url: {url} timeout...')
 
@@ -216,12 +221,7 @@ class OperationElement(_MouseToOperations, OtherOperationClass):
         attribute_element = self.opera_element(element)
         return attribute_element.get_attribute(attribute_name)
 
-    def is_attributed(self, element, text: str, attribute_name: str):
-        # 判断属性中是否包含text内容
-        attribute_element = self.opera_element(element)
-        return text in attribute_element.get_attribute(attribute_name)
-
-    def is_attribute_value(self, element, text: str):
+    def attribute_value_in_text(self, element, text: str):
         # 判断元素中为“value”属性的值，是否包含text
         return self.ec_wait.until(EC.text_to_be_present_in_element_value(element, text),
                                   message=f'element: {element}  timeout...')

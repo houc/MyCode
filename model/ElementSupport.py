@@ -88,7 +88,7 @@ class OtherOperationClass(object):
         self.driver.close()
 
     def method_driver(self, method):
-        # 定义一个driver继承
+        # 定义driver继承
         return method(self.driver)
 
     def get_current_url(self):

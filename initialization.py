@@ -6,7 +6,6 @@ import shutil
 from model.Yaml import MyConfig, MyProject
 from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
 from model.TimeConversion import standard_time
-from model.Logs import logger
 from config_path.path_file import read_file, module_file, PATH
 
 
@@ -220,7 +219,7 @@ class CreateModule(object):
         if class_name:
             repeat_class = [val for val in list(set(class_name)) if class_name.count(val) >= 2]
             if repeat_class:
-                raise TypeError('注意-->有重复的用例类名，, 请变更重复方法：' + ', 请变更重复方法：'.join(repeat_class))
+                raise TypeError('注意-->有重复的用例类名，, 请变更重复类名：' + ', 请变更重复类名：'.join(repeat_class))
         if case_name:
             for case in case_name:
                 if 'test_' not in case:
