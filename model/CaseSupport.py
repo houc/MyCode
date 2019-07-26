@@ -35,7 +35,7 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
                     return execute
                 except (SyntaxError, MemoryError, KeyError, WindowsError, IndexError):
                     raise
-                except:
+                except Exception:
                     driver = set_up(*args, **kwargs)
                     if (count + 1) == retry_count:
                         raise
@@ -114,10 +114,10 @@ class _Result(TestResult):
 
     def printErrors(self):
         self.stream.writeln()
-        self._printErrorList('ERROR', self.errors)
-        self._printErrorList('FAIL', self.failures)
+        self._print_error_list('ERROR', self.errors)
+        self._print_error_list('FAIL', self.failures)
 
-    def _printErrorList(self, flavour, errors):
+    def _print_error_list(self, flavour, errors):
         for test, err in errors:
             self.stream.writeln(self.separator1)
             self.stream.writeln("%s: %s" % (flavour, str(test)))
@@ -148,6 +148,7 @@ class _Result(TestResult):
             self.stream.write('.')
             self.stream.flush()
         self.success_count += 1
+
 
 class TestRunning(TestSuite):
 

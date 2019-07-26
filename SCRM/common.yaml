@@ -5,894 +5,894 @@ SCRM:
       assembly: 登录
       className: TestLogin
       funName:
-      - test_repeat_login_1: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-      }
-        test_test_repeat_login_2: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True2,
-        }
-        test_test_repeat_login_3: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_4: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_5: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_6: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_7: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_8: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_9: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_10: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_11: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_12: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_13: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_14: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_15: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_16: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_17: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_18: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_19: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_20: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_21: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_22: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_23: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_24: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_25: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_26: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_27: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_28: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_29: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_30: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_31: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_32: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_33: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_34: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_35: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_36: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_37: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_38: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_39: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_40: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_41: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_42: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_43: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_44: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_45: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_46: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_47: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_48: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_49: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_50: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_51: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_52: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_53: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_54: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_55: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_56: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_57: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_58: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_59: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_60: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_61: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_62: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_63: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_64: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_65: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_66: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_67: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_68: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_69: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_70: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_71: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_72: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_73: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_74: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_75: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_76: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_77: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_78: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_79: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_80: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
-        test_test_repeat_login_81: {
-        url: ,
-        assembly:,
-        author: 后超,
-        level: 中,
-        scene: "测试循环登录，用例时长\n
-                1、输入账号{15882223197}，输入密码{Po123456};\n
-                2、点击登录;\n
-                3、验证是否加载出邮件元素",
-        asserts: True,
-        }
+        - test_repeat_login_1: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+        }
+          test_test_repeat_login_2: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True2,
+          }
+          test_test_repeat_login_3: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_4: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_5: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_6: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_7: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_8: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_9: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_10: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_11: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_12: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_13: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_14: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_15: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_16: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_17: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_18: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_19: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_20: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_21: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_22: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_23: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_24: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_25: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_26: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_27: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_28: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_29: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_30: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_31: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_32: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_33: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_34: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_35: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_36: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_37: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_38: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_39: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_40: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_41: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_42: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_43: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_44: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_45: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_46: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_47: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_48: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_49: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_50: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_51: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_52: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_53: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_54: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_55: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_56: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_57: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_58: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_59: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_60: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_61: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_62: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_63: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_64: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_65: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_66: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_67: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_68: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_69: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_70: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_71: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_72: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_73: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_74: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_75: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_76: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_77: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_78: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_79: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_80: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }
+          test_test_repeat_login_81: {
+          url: ,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "测试循环登录，用例时长\n
+                  1、输入账号{15882223197}，输入密码{Po123456};\n
+                  2、点击登录;\n
+                  3、验证是否加载出邮件元素",
+          asserts: True,
+          }

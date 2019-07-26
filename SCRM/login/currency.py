@@ -52,4 +52,4 @@ class LoginElement(OperationElement):
         :param location: 1
         :return: bool
         """
-        return self.is_element(self.str_conversion(self.mail, location))
+        return self.is_element(self.parametrization(self.mail, location))
