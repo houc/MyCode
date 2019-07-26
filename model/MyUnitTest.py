@@ -23,6 +23,7 @@ class UnitTests(unittest.TestCase):
             driver_headless = MyConfig('browser').config
             if cls.BROWSER:
                 cls.driver = browser(switch=driver_headless)
+                cls.driver.implicitly_wait(10)
                 if cls.RE_LOGIN:
                     account = cls.LOGIN_INFO['account']
                     password = cls.LOGIN_INFO['password']

@@ -885,14 +885,319 @@ SCRM:
                   3、验证是否加载出邮件元素",
           asserts: True,
           }
-          test_test_repeat_login_81: {
+  workbench:
+    - quick_function:
+      url: /#/home
+      assembly: 工作台•快捷功能
+      className: TestQuick
+      funName:
+        - test_email_is_exist: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新建邮件}是否存在",
+            asserts: 新建邮件1,
+        }
+          test_task_is_exist: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新建任务}是否存在",
+            asserts: 新增任务,
+          }
+          test_task_is_contact: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新建联系人}是否存在",
+            asserts: 新增联系人,
+          }
+          test_task_is_customer: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新建客户}是否存在",
+            asserts: 新增客户,
+          }
+          test_task_is_mark_mail: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新建营销邮件}是否存在",
+            asserts: 新建营销邮件,
+          }
+          test_task_is_mark_mail_process: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新建营销邮件流程}是否存在",
+            asserts: 新建营销邮件流程,
+          }
+    - work_result:
+      url: /#/home
+      assembly: 工作台•工作效率
+      className: TestWorkResults
+      funName:
+        - test_send_ordinary_mail_exist: {
           url: ,
           assembly:,
           author: 后超,
           level: 中,
-          scene: "测试循环登录，用例时长\n
-                  1、输入账号{15882223197}，输入密码{Po123456};\n
-                  2、点击登录;\n
-                  3、验证是否加载出邮件元素",
-          asserts: True,
+          scene: "登录首页验证{发送普通邮件}是否存在",
+          asserts: 发送普通邮件,
+        }
+          test_send_mark_mail_exist: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{发送营销邮件}是否存在",
+            asserts: 发送营销邮件,
+          }
+          test_received_mail_exist: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{收到邮件}是否存在",
+            asserts: 收到邮件,
+          }
+          test_add_contact_exist: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新增联系人}是否存在",
+            asserts: 新增联系人,
+          }
+          test_add_customer_exist: {
+            url: ,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "登录首页验证{新增客户}是否存在",
+            asserts: 新增客户,
+          }
+  sales_synergy:
+    - my_task:
+      url: /#/mission/myMission
+      assembly: 销售协同•任务•我的任务
+      className: TestTask
+      funName:
+        - test_hand_in_is_exist: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "验证我的任务“进行中”状态是否存在",
+            asserts: 进行中,
+        }
+          test_finish_is_exist: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "验证我的任务“已完成”状态是否存在",
+            asserts: 已完成,
+          }
+          test_wait_accept_is_exist: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "验证我的任务“待我接受”状态是否存在",
+            asserts: 待我接受,
+          }
+    - my_assign:
+      url: /#/mission/myAssignment
+      assembly: 销售协同•任务•我指派的
+      className: TestAssign
+      funName:
+        - test_hand_in_is_exist_1: {
+          url:,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "验证我指派“进行中”状态是否存在",
+          asserts: 进行中,
+        }
+          test_finish_is_exist_1: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "验证我指派“已完成”状态是否存在",
+            asserts: 已完成,
+          }
+          test_wait_accept_is_exist_1: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "验证我指派“待我接受”状态是否存在",
+            asserts: 待接受,
+          }
+  data_report_from:
+    - contact_report:
+      url: /#/dataReport
+      assembly: 数据报表•联系人报表
+      className: TestContactReport
+      funName:
+        - test_30_day: {
+          url:,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "统计时间“近30天”是否存在",
+          asserts: 近30天,
+        }
+          test_3_moth: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近3个月”是否存在",
+            asserts: 近3个月,
+          }
+          test_half_year: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近半年”是否存在",
+            asserts: 近半年,
+          }
+          test_1_year: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近一年”是否存在",
+            asserts: 近一年,
+          }
+    - customer_report:
+      url: /#/dataReport?state=custom_dataReport
+      assembly: 数据报表•客户报表
+      className: TestCustomerReport
+      funName:
+        - test_30_day1: {
+          url:,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "统计时间“近30天”是否存在",
+          asserts: 近30天,
+        }
+          test_3_moth1: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近3个月”是否存在",
+            asserts: 近3个月,
+          }
+          test_half_year1: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近半年”是否存在",
+            asserts: 近半年,
+          }
+          test_1_year1: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近一年”是否存在",
+            asserts: 近一年,
+          }
+    - mark_report:
+      url: /#/dataReport?state=market_dataReport
+      assembly: 数据报表•客户报表
+      className: TestMarketingReport
+      funName:
+        - test_30_day101: {
+          url:,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "统计时间“近30天”是否存在",
+          asserts: 近30天,
+        }
+          test_3_moth101: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近3个月”是否存在",
+            asserts: 近3个月,
+          }
+          test_half_year101: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近半年”是否存在",
+            asserts: 近半年,
+          }
+          test_1_year101: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "统计时间“近一年”是否存在",
+            asserts: 近一年,
+          }
+  test_thread:
+    - errors:
+      url:
+      assembly: 测试报告•测试错误集合
+      className: TestErrors
+      funName:
+        - test_error_2a: {
+          url:,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "",
+          asserts: ,
+        }
+          test_error_a2: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "",
+            asserts: ,
+          }
+          test_error_a2b: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "",
+            asserts: ,
+          }
+          test_error_a21e: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "",
+            asserts: ,
+          }
+          test_error_c2a: {
+            url:,
+            assembly:,
+            author: 后超,
+            level: 中,
+            scene: "",
+            asserts: ,
           }

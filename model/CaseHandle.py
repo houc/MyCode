@@ -3,9 +3,13 @@ import sys
 import warnings
 import unittest
 import platform
+import threading
+import dataclasses
+import selenium
 
 from model.Yaml import MyConfig
 from model.SendEmail import Email
+from datetime import datetime
 from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
 from config_path.path_file import read_file
@@ -93,55 +97,28 @@ class DataHandleConversion(object):
             case_messages['science'] = self.science
             case_messages['fraction'] = '{:.2f}'.format(float((case_messages["errors"] + case_messages["failures"])
                                                / case_messages["testsRun"] * 100))
+            if case_messages['fraction'] == '0.00':
+                case_messages['fraction'] = '100.00'
             case_messages['project'] = self.project_name
             if case_messages:
                 return case_messages
         else:
             raise SQLDataError(FUN_NAME(self.current_path))
 
-    def case_data_handle(self, in_case_data):
-        """用例数据处理"""
-        global module, is_case, da, path
-        skipped = [] # 跳过用例封装的数据
-        if in_case_data is not None:
-            for skipp in in_case_data.skipped:
-                for skip in skipp:
-                    if "test_" in str(skip):
-                        module = str(skip).split(' ')[-1].split('.')[-1].split(')')[0]
-                        is_case = str(skip).split(' ')[0]
-                        path = str(skip).split(' ')[-1].split('(')[-1].split(')')[0]
-                    else:
-                        if not skip:
-                            skip = "None"
-                        skipped.append({"module": module, "name": is_case,
-                                        "reason": "跳过原因: {}".format(skip),
-                                        "insert_time": standard_time(),
-                                        'status': '跳过', 'id': path})
-            self._insert_case_data(data=skipped)
-        else:
-            warnings.warn('self.case_data is None')
 
-    @staticmethod
-    def _insert_case_data(data):
-        """用例数据插入skip_cast.txt"""
-        if data:
-            for read in data:
-                MyDB().insert_data(ids=read['id'], level=None,
-                                   module=read["module"], name=read["name"],
-                                   remark=None, wait_time=None, status="跳过", url=None,
-                                   insert_time=read["insert_time"], img=None, error_reason=read["reason"],
-                                   author=None, results_value=None)
-
-
+@dataclasses.dataclass
 class ConversionDiscover(object):
-    def __init__(self, discover=None, encoding='utf8', *, start_time):
-        self.discover = discover
-        self.encoding = encoding
+    discover: selenium
+    start_time: datetime
+    encoding: str='utf8'
+    thread_count: int=8
+
+    def __post_init__(self):
+        self.mail = Email()
         self.project = MyConfig('project_name').excel_parameter
         self.module = MyConfig('module_run').config
-        self.mail = Email()
-        self.start_time = start_time
         self.case_handle = DataHandleConversion()
+        self.lock = threading.Semaphore(value=self.thread_count)
 
     def _execute_discover(self):
         """处理discover"""
@@ -185,20 +162,32 @@ class ConversionDiscover(object):
         with open(write_path, 'at', encoding=self.encoding) as f:
             f.writelines(class_name)
 
-    def case_package(self, queue=True):
-        """获取全部要运行的测试类，并且以多进程的方式进行运行！"""
+    def case_package(self, queue):
+        """获取全部要运行的测试类，并且以多线程的方式进行运行！"""
+
+        thead = []
+
         self._execute_discover()
         suite = unittest.TestSuite()
         from SCRM.case_set import __all__
+
         for case in __all__:
             get_suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
             suite.addTest(get_suite)
-        self._threading(suite, queue=queue)
+        for test in suite:
+            pol = threading.Thread(target=self._threading, args=(test, queue))
+            thead.append(pol)
+            pol.start()
+        for ends in thead:
+            ends.join()
+
         self.get_case_detailed(execute_method='多线程')
 
     def _threading(self, suite, queue):
+        self.lock.acquire()
         runner = TestRunning(sequential_execution=queue)
         runner.run(suite)
+        self.lock.release()
 
     def get_case_detailed(self, execute_method='单线程'):
         """获取需要执行的用例并运行对应的用例"""

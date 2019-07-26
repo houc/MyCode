@@ -33,11 +33,13 @@ class RunAll(object):
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
         if self.thread:
-            excute(discover, start_time=self.start_time).case_package()
+            th = excute(discover=discover, start_time=self.start_time, thread_count=4)
+            th.case_package(queue=True)
         else:
             runner = TestRunning()
             runner.run(discover)
-            excute(start_time=self.start_time).get_case_detailed()
+            finish = excute(start_time=self.start_time, discover=None)
+            finish.get_case_detailed()
 
     def runner(self):
         """运行全部的测试用例数"""

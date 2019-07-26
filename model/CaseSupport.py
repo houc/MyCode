@@ -259,9 +259,4 @@ class TestRunning(TestSuite):
             test_case_queue.put(L.copy())
         while not test_case_queue.empty():
             tmp_list = test_case_queue.get()
-            self._thread_execute_call(tmp_list, result)
-
-    def _thread_execute_call(self, suite, result):
-        raise SyntaxError('多线程暂不完善，请使用单线程运行该用例集....')
-
-
+            self._execute_case(tmp_list, result)

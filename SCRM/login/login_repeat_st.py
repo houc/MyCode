@@ -1549,23 +1549,3 @@ class TestLogin(UnitTests):
         except Exception:
             self.error = str(traceback.format_exc())
             raise
-
-    @test_re_runner(set_up)
-    def test_test_repeat_login_81(self):
-        """
-        测试循环登录，用例时长
-        1、输入账号{15882223197}，输入密码{Po123456};
-        2、点击登录;
-        3、验证是否加载出邮件元素
-        """
-        try:
-            driver = LoginElement(self.driver)
-            driver.get(self.url)
-            LoginPublic(self.driver, self.data[0], self.data[1], module=self.toke_module).login(False)
-            self.first = driver.assert_mail()
-            self.screenshots = driver.screen_base64_shot()
-            self.assertEqual(self.first, self.second)
-        except Exception:
-            self.error = str(traceback.format_exc())
-            raise
-

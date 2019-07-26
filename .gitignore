@@ -1,5 +1,6 @@
 *.log
 *.png
+*.jpg
 config.ini
 *.xlsx
 *.html
