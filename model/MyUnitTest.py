@@ -23,7 +23,7 @@ class UnitTests(unittest.TestCase):
             driver_headless = MyConfig('browser').config
             if cls.BROWSER:
                 cls.driver = browser(switch=driver_headless)
-                cls.driver.implicitly_wait(10)
+                cls.driver.implicitly_wait(20)
                 if cls.RE_LOGIN:
                     account = cls.LOGIN_INFO['account']
                     password = cls.LOGIN_INFO['password']
@@ -77,6 +77,10 @@ class UnitTests(unittest.TestCase):
         end_time = time.time()
         total_time = end_time - self.start_time
         error_path = '{}/{}'.format(self.catalog, self.case_name)
+        log_br = self.driver.get_log('browser')
+        log_dr = self.driver.get_log('driver')
+        logger.debug(log_br)
+        logger.debug(log_dr)
         MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_remark,
                   self.status, self.error, self.url, total_time, self.driver, self.assembly,
                   self.screenshots, self.author, self, error_path, logger).asserts()

@@ -77,7 +77,7 @@
             <tr>
                 <td class="border_style">跳过数:</td>
                 <td class="border_style font_width">{{skipped_case}}条</td>
-                <td class="border_style" title="计算规则:（失败数+错误数）/ 总用例数">本次测试打分:</td>
+                <td class="border_style" title="计算规则: 成功数 / 总用例数">本次测试打分:</td>
                 <td class="border_style">{{fraction}}%</td>
             </tr>
         </table>

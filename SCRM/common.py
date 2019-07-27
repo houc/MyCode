@@ -37,8 +37,10 @@ class LoginPublic(BrowserToken):
     def login(self, switch_toke=True):
         """登录：登录成功后是否需要获取token"""
         self.get(self.url)
-        self.send_keys(self.parametrization(self.account_and_password, 1), self.account)
-        self.send_keys(self.parametrization(self.account_and_password, 2), self.password)
+        transfer1 = self.parametrization(self.account_and_password, 1)
+        transfer2 = self.parametrization(self.account_and_password, 2)
+        self.send_keys(transfer1, self.account)
+        self.send_keys(transfer2, self.password)
         self.is_click(self.login_button)
         assert self.is_element(self.my_self), '登录失败！'
         if switch_toke:

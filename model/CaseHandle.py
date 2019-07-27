@@ -93,12 +93,17 @@ class DataHandleConversion(object):
             case_messages['tool'] = 'Python' + platform.python_version()
             case_messages['version'] = self.version
             total = case_messages["errors"] + case_messages["failures"] + case_messages["success"]
-            case_messages['efficiency'] = '{:.2f}'.format(float((total) / case_messages["testsRun"] * 100))
+            try:
+                efficiency = (total / case_messages['testsRun']) * 100
+            except ZeroDivisionError:
+                efficiency = 0
+            case_messages['efficiency'] = '{:.2f}'.format(efficiency)
             case_messages['science'] = self.science
-            case_messages['fraction'] = '{:.2f}'.format(float((case_messages["errors"] + case_messages["failures"])
-                                               / case_messages["testsRun"] * 100))
-            if case_messages['fraction'] == '0.00':
-                case_messages['fraction'] = '100.00'
+            try:
+                fraction = (len(success) / case_messages['testsRun']) * 100
+            except ZeroDivisionError:
+                fraction = 0
+            case_messages['fraction'] = '{:.2f}'.format(fraction)
             case_messages['project'] = self.project_name
             if case_messages:
                 return case_messages
@@ -111,7 +116,7 @@ class ConversionDiscover(object):
     discover: selenium
     start_time: datetime
     encoding: str='utf8'
-    thread_count: int=8
+    thread_count: int=4
 
     def __post_init__(self):
         self.mail = Email()
@@ -162,7 +167,7 @@ class ConversionDiscover(object):
         with open(write_path, 'at', encoding=self.encoding) as f:
             f.writelines(class_name)
 
-    def case_package(self, queue):
+    def case_package(self, queue: bool, verbosity: bool = True, stream=None):
         """获取全部要运行的测试类，并且以多线程的方式进行运行！"""
 
         thead = []
@@ -175,7 +180,7 @@ class ConversionDiscover(object):
             get_suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
             suite.addTest(get_suite)
         for test in suite:
-            pol = threading.Thread(target=self._threading, args=(test, queue))
+            pol = threading.Thread(target=self._threading, args=(test, queue, verbosity, stream))
             thead.append(pol)
             pol.start()
         for ends in thead:
@@ -183,9 +188,9 @@ class ConversionDiscover(object):
 
         self.get_case_detailed(execute_method='多线程')
 
-    def _threading(self, suite, queue):
+    def _threading(self, suite, queue, verbosity, stream):
         self.lock.acquire()
-        runner = TestRunning(sequential_execution=queue)
+        runner = TestRunning(sequential_execution=queue, verbosity=verbosity, stream=stream)
         runner.run(suite)
         self.lock.release()
 

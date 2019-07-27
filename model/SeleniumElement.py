@@ -132,7 +132,7 @@ class _MouseToOperations(_VariousElementTypesDisplayWaiting):
 class OperationElement(_MouseToOperations, OtherOperationClass):
     # 浏览器所需元素操作方法封装类
 
-    def __init__(self, driver, timeout=5, detection=0.5, exception=EC.NoSuchElementException):
+    def __init__(self, driver, timeout=5, detection=0.2, exception=EC.NoSuchElementException):
         super(_MouseToOperations, self).__init__(driver=driver, timeout=timeout,
                                                  detection=detection, exception=exception)
         OtherOperationClass.__init__(self, driver=driver, timeout=timeout,

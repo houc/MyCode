@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait as Wait
 from model.MyException import NoUrlTimeoutError
 
 
-class GetCurrentUrl(object):
+class _GetCurrentUrl(object):
     def __call__(self, driver):
         return driver.current_url
 
@@ -54,13 +54,17 @@ class OtherOperationClass(object):
         # 请求需访问的地址
         self.driver.get(url)
 
-    def driver_quit(self):
+    def quit(self):
         # 浏览器退出
         self.driver.quit()
 
     def screen_base64_shot(self):
         # 截屏浏览器操作屏幕（base64）
         return self.driver.get_screenshot_as_base64()
+
+    def screen_shot(self, path):
+        # 截屏当前浏览器（jpg、png、jpeg）
+        self.driver.save_screenshot(path)
 
     def execute_js(self, js: str, *args):
         # 使用js操作浏览器
@@ -73,6 +77,10 @@ class OtherOperationClass(object):
     def more_window(self):
         # 获取浏览器全部操作窗口句柄
         return self.driver.window_handles
+
+    def page_source(self):
+        # 获取源码
+        return self.driver.page_source
 
     def switch_window(self, indexes: int):
         # 切换浏览器窗口句柄
@@ -87,11 +95,24 @@ class OtherOperationClass(object):
         # 关闭当前浏览器窗口
         self.driver.close()
 
+    def forward(self):
+        # 前进
+        self.driver.forward()
+
+    def back(self):
+        # 后退
+        self.driver.back()
+
+    def get_log(self, log_type):
+        # 获取日志信息
+        return self.driver.get_log(log_type)
+
     def method_driver(self, method):
         # 定义driver继承
         return method(self.driver)
 
     def get_current_url(self):
         # 获取当前url
-        url = GetCurrentUrl()
+        url = _GetCurrentUrl()
         return self.ec_wait.until(url, message=NoUrlTimeoutError(self.timeout))
+

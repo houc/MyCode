@@ -44,12 +44,11 @@ class LoginElement(OperationElement):
 
     
     # ================================================元素==========================================
-    mail = (By.XPATH, "(//tr[@class='ivu-table-row'])[$]")
+    my_self = (By.XPATH, "//li[@class='user-profile']")
 
-    def assert_mail(self, location=1):
+    def assert_mail(self):
         """
         获取邮件是否获取成功
-        :param location: 1
         :return: bool
         """
-        return self.is_element(self.parametrization(self.mail, location))
+        return self.is_element(self.my_self)
