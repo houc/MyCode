@@ -23,6 +23,7 @@ class TestErrors(UnitTests):
     :param: BROWSER: True执行浏览器，默认为开启
     """
     RE_LOGIN = False
+    BROWSER = False
     LOGIN_INFO = {"account": None, "password": None, "company": None}
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\')[-1].split('.')[0]
@@ -30,78 +31,76 @@ class TestErrors(UnitTests):
     set_up = UnitTests.setUp
 
     @test_re_runner(set_up)
-    def test_error_2a(self):
+    def test_error(self):
         """
         
         """
         try:
-            time.sleep(3)
-            driver = TestThreadElement(self.driver)
-            driver.get(self.url)
-            self.first = self.__hash__()
-            self.screenshots = driver.screen_base64_shot()
+            # driver = TestThreadElement(self.driver)
+            # driver.get(self.url)
+            self.first = self.__new__()
+            # self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
             raise
 
     @test_re_runner(set_up)
-    def test_error_a2(self):
+    def test_fail(self):
         """
         
         """
         try:
-            time.sleep(3)
-            driver = TestThreadElement(self.driver)
-            driver.get(self.url)
-            self.first = self.first = self.__hash__()
-            self.screenshots = driver.screen_base64_shot()
-            self.assertEqual(self.first, self.second)
-        except Exception:
-            self.error = str(traceback.format_exc())
-            raise
-
-    @test_re_runner(set_up, refresh=True, wait_time=5, retry_count=5)
-    def test_error_a2b(self):
-        """
-        
-        """
-        try:
-            driver = TestThreadElement(self.driver)
-            driver.get(self.url)
-            self.first = self.__hash__()
-            self.screenshots = driver.screen_base64_shot()
+            # driver = TestThreadElement(self.driver)
+            # driver.get(self.url)
+            self.first = True
+            # self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
             raise
 
     @test_re_runner(set_up)
-    def test_error_a21e(self):
+    def test_success(self):
         """
         
         """
         try:
-            time.sleep(3)
-            driver = TestThreadElement(self.driver)
-            driver.get(self.url)
-            self.first = self.first = self.__hash__()
-            self.screenshots = driver.screen_base64_shot()
+            # driver = TestThreadElement(self.driver)
+            # driver.get(self.url)
+            self.first = True
+            # self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())
             raise
 
-    @test_re_runner(set_up, refresh=True, wait_time=5, retry_count=5)
+    @test_re_runner(set_up)
+    @unittest.skip('5555')
+    def test_skip(self):
+        """
+        
+        """
+        try:
+            # driver = TestThreadElement(self.driver)
+            # driver.get(self.url)
+            self.first = ''
+            # self.screenshots = driver.screen_base64_shot()
+            self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+            raise
+
+    @test_re_runner(set_up)
     def test_error_c2a(self):
         """
         
         """
         try:
-            driver = TestThreadElement(self.driver)
-            driver.get(self.url)
-            self.first = self.first = self.__hash__()
-            self.screenshots = driver.screen_base64_shot()
+            # driver = TestThreadElement(self.driver)
+            # driver.get(self.url)
+            self.first = self.__delattr__()
+            # self.screenshots = driver.screen_base64_shot()
             self.assertEqual(self.first, self.second)
         except Exception:
             self.error = str(traceback.format_exc())

@@ -1231,7 +1231,7 @@ SCRM:
       assembly: 测试报告•测试错误集合
       className: TestErrors
       funName:
-        - test_error_2a: {
+        - test_error: {
           url:,
           assembly:,
           author: 后超,
@@ -1239,7 +1239,7 @@ SCRM:
           scene: "",
           asserts: ,
         }
-          test_error_a2: {
+          test_fail: {
             url:,
             assembly:,
             author: 后超,
@@ -1247,15 +1247,15 @@ SCRM:
             scene: "",
             asserts: ,
           }
-          test_error_a2b: {
+          test_success: {
             url:,
             assembly:,
             author: 后超,
             level: 中,
             scene: "",
-            asserts: ,
+            asserts: True,
           }
-          test_error_a21e: {
+          test_skip: {
             url:,
             assembly:,
             author: 后超,

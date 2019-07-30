@@ -38,7 +38,7 @@ class UnitTests(unittest.TestCase):
         except Exception:
             try:
                 cls.login.remove_key()
-            except BaseException:
+            except KeyError:
                 pass
             if cls.BROWSER:
                 cls.driver.quit()
@@ -76,11 +76,12 @@ class UnitTests(unittest.TestCase):
         """用例结束"""
         end_time = time.time()
         total_time = end_time - self.start_time
-        error_path = '{}/{}'.format(self.catalog, self.case_name)
-        log_br = self.driver.get_log('browser')
-        log_dr = self.driver.get_log('driver')
-        logger.debug(log_br)
-        logger.debug(log_dr)
+        error_path = f'{self.catalog}/{self.case_name}'
+        if self.BROWSER:
+            log_br = self.driver.get_log('browser')
+            log_dr = self.driver.get_log('driver')
+            logger.debug(log_br)
+            logger.debug(log_dr)
         MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_remark,
                   self.status, self.error, self.url, total_time, self.driver, self.assembly,
                   self.screenshots, self.author, self, error_path, logger).asserts()

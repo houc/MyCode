@@ -3,6 +3,7 @@ import time
 import queue
 import sys
 import warnings
+import faker
 
 from model.Yaml import MyConfig
 from model.MyDB import MyDB
@@ -221,24 +222,26 @@ class TestRunning(TestSuite):
         infos = []
         if not result.wasSuccessful():
             result.stream.write("FAILED")
-            failed, errored = len(result.failures), len(result.errors)
+            failed, errored = result.fail_count, result.error_count
             if failed:
                 infos.append("failures=%d" % failed)
             if errored:
                 infos.append("errors=%d" % errored)
         else:
             result.stream.write("OK")
-            infos.append('successes=%d' % result.success_count)
         if skipped:
             infos.append("skipped=%d" % skipped)
         if expected_fails:
             infos.append("expected failures=%d" % expected_fails)
         if unexpected_successes:
             infos.append("unexpected successes=%d" % unexpected_successes)
+        if result.success_count:
+            infos.append('successes=%d' % result.success_count)
         if infos:
-            result.stream.writeln(" (%s)" % (", ".join(infos),))
+            result.stream.writeln(" (%s)" % (", ".join(infos)))
+            result.stream.writeln('\n')
         else:
-            result.stream.write("\n")
+            result.stream.writeln()
         return result
 
     def _thead_execute(self, suite, result):
@@ -260,3 +263,37 @@ class TestRunning(TestSuite):
         while not test_case_queue.empty():
             tmp_list = test_case_queue.get()
             self._execute_case(tmp_list, result)
+
+
+class TestRandomData(object):
+    Faker = faker.Factory().create('zh_CN')
+
+    def random_name(self):
+       return self.Faker.name()
+
+    def random_phone(self):
+        return self.Faker.phone_number()
+
+    def random_id(self):
+        return self.Faker.ssn()
+
+    def random_address(self):
+        return self.Faker.address().split(' ')[0]
+
+    def random_password(self, length=6, special_chars=False,
+                        digits=True, upper_case=True, lower_case=True):
+        return self.Faker.password(length, special_chars, digits, upper_case, lower_case)
+
+    def random_email(self, domain=None):
+        return self.Faker.email(domain)
+
+    def random_url(self):
+        return self.Faker.uri()
+
+    def random_ipv4(self, network=False, address_class=None, private=None):
+        return self.Faker.ipv4(network, address_class, private)
+
+    def random_ipv6(self, network=True):
+        print(self.Faker.ipv6(network))
+
+
