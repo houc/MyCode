@@ -50,10 +50,10 @@ class MyDB(object):
         self.sql.commit()
 
     def insert_data(self, ids, level, module, name, remark, wait_time, status, url, insert_time, img=None,
-                    error_reason=None, author=None, *, results_value):
+                    error_reason=None, author=None, *, results_value, case_remark):
         """插入数据"""
         data = self.dbInsert % (ids, level, module, name, url, remark, status, results_value, error_reason, wait_time,
-                                img, author, insert_time)
+                                img, author, case_remark, insert_time)
         DB = self.sql.cursor()
         self.queue.put(data)
         while not self.queue.empty():

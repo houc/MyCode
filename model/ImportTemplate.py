@@ -152,7 +152,7 @@ class LoginPublic(BrowserToken):
 
 class GetTemplateHTML(object):
     def __init__(self, catalog, modules, level, method, address, scene, expect, actual, status, finish_time,
-                 use_time, remark, id, members):
+                 use_time, remark, id, members, case_remark):
         self.catalog = catalog
         self.modules = modules
         self.level = level
@@ -164,6 +164,7 @@ class GetTemplateHTML(object):
         self.status = status
         self.use_time = use_time
         self.finish_time = finish_time
+        self.case_remark = case_remark
         if 'None' == remark:
             self.remark = ''
         else:
@@ -173,66 +174,70 @@ class GetTemplateHTML(object):
 
     def case_info(self):
         """用例详情"""
-        return '''
-    <div class="modal fade" id="{}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        return f'''
+    <div class="modal fade" id="{self.method}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog popUp">
             <div class="modal-content">
-                <div class="modal-header"><h4 class="modal-title" id="myModalLabel">{}详情</h4></div>
+                <div class="modal-header"><h4 class="modal-title" id="myModalLabel">{self.method}详情</h4></div>
                 <div class="modal-body">
                     <table class="popUp_table">
                         <tr>
                             <th class="th">目录:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.catalog}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">模块:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.modules}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">用例级别:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.level}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">方法:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.method}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">地址:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.address}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">场景:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.scene}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">预期结果:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.expect}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">实际结果（异常原因）:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.actual}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">状态:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.status}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">完成时间:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.finish_time}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">用时:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.use_time}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">负责人:</th>
-                            <td class="td"><pre class="is_p">{}</pre></td>
+                            <td class="td"><pre class="is_p">{self.members}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">附件:</th>
                             <td class='td'>
-                                <img onclick="look_img_windows(this.src)" class="min" style="cursor: pointer" src='{}'>
+                                <img onclick="look_img_windows(this.src)" class="min" style="cursor: pointer" src='{self.remark}'>
                             </td>
+                        </tr>
+                        <tr>
+                            <th class="th">备注:</th>
+                            <td class="td"><pre class="is_p">{self.case_remark}</pre></td>
                         </tr>
                     </table>
                 </div>
@@ -242,26 +247,21 @@ class GetTemplateHTML(object):
             </div>
 	    </div>
     </div>
-        '''.format(self.method, self.method, self.catalog, self.modules,
-                   self.level, self.method, self.address, self.scene,
-                   self.expect, self.actual, self.status, self.finish_time, self.use_time,
-                   self.members, self.remark)
+        '''
 
     def case_list(self):
         """用例列表"""
-        return '''
+        return f'''
                         <tr>
-                            <td class="list_td">{}</td>
-                            <td class="list_td">{}</td>
-                            <td class="list_td">{}</td>
-                            <td class="list_td">{}</td>
-                            <td class="list_td">{}</td>
-                            <td class="list_td">{}</td>
-                            <td class="list_td">{}</td>
-                            <td class="list_td hand"><a data-toggle="modal" data-target="#{}">详细</a></td>
-                        </tr>'''.format(self.catalog, self.modules, self.method, self.address,
-                                        self.status, self.use_time, self.members, self.method)
-
+                            <td class="list_td">{self.catalog}</td>
+                            <td class="list_td">{self.modules}</td>
+                            <td class="list_td">{self.method}</td>
+                            <td class="list_td">{self.address}</td>
+                            <td class="list_td">{self.status}</td>
+                            <td class="list_td">{self.use_time}</td>
+                            <td class="list_td">{self.members}</td>
+                            <td class="list_td hand"><a data-toggle="modal" data-target="#{self.method}">详细</a></td>
+                        </tr>'''
     @property
     def _enlarge_img(self):
         return """<script>

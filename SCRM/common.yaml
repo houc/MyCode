@@ -14,6 +14,7 @@ SCRM:
                   1、输入账号{15882223197}，输入密码{Po123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
         }
           test_test_repeat_login_2: {
@@ -25,6 +26,7 @@ SCRM:
                   1、输入账号{15882223197}，输入密码{Po123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_3: {
@@ -36,6 +38,7 @@ SCRM:
                   1、输入账号{15882223197}，输入密码{Po123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_4: {
@@ -47,6 +50,7 @@ SCRM:
                   1、输入账号{15882223197}，输入密码{Po123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_5: {
@@ -58,6 +62,7 @@ SCRM:
                   1、输入账号{15882223197}，输入密码{Po123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_6: {
@@ -69,6 +74,7 @@ SCRM:
                   1、输入账号{15882223197}，输入密码{Po123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_1:
@@ -85,6 +91,7 @@ SCRM:
                   1、输入账号{13300000004}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_8: {
@@ -96,6 +103,7 @@ SCRM:
                   1、输入账号{13300000004}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_9: {
@@ -107,6 +115,7 @@ SCRM:
                   1、输入账号{13300000004}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_10: {
@@ -118,6 +127,7 @@ SCRM:
                   1、输入账号{13300000004}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_11: {
@@ -129,6 +139,7 @@ SCRM:
                   1、输入账号{13300000004}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_2:
@@ -145,6 +156,7 @@ SCRM:
                   1、输入账号{13300000007}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_13: {
@@ -156,6 +168,7 @@ SCRM:
                   1、输入账号{13300000007}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_14: {
@@ -167,6 +180,7 @@ SCRM:
                   1、输入账号{13300000007}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_3:
@@ -183,6 +197,7 @@ SCRM:
                   1、输入账号{13300000008}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_16: {
@@ -194,6 +209,7 @@ SCRM:
                   1、输入账号{13300000008}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_17: {
@@ -205,6 +221,7 @@ SCRM:
                   1、输入账号{13300000008}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_18: {
@@ -216,6 +233,7 @@ SCRM:
                   1、输入账号{13300000008}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_19: {
@@ -227,6 +245,7 @@ SCRM:
                   1、输入账号{13300000008}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_4:
@@ -243,6 +262,7 @@ SCRM:
                   1、输入账号{13300000009}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_21: {
@@ -254,6 +274,7 @@ SCRM:
                   1、输入账号{13300000009}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_22: {
@@ -265,6 +286,7 @@ SCRM:
                   1、输入账号{13300000009}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_23: {
@@ -276,6 +298,7 @@ SCRM:
                   1、输入账号{13300000009}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_5:
@@ -292,6 +315,7 @@ SCRM:
                   1、输入账号{13300000011}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_25: {
@@ -303,6 +327,7 @@ SCRM:
                   1、输入账号{13300000011}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_26: {
@@ -314,6 +339,7 @@ SCRM:
                   1、输入账号{13300000011}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_27: {
@@ -325,6 +351,7 @@ SCRM:
                   1、输入账号{13300000011}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_28: {
@@ -336,6 +363,7 @@ SCRM:
                   1、输入账号{13300000011}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_6:
@@ -352,6 +380,7 @@ SCRM:
                   1、输入账号{13300000012}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_30: {
@@ -363,6 +392,7 @@ SCRM:
                   1、输入账号{13300000012}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_31: {
@@ -374,6 +404,7 @@ SCRM:
                   1、输入账号{13300000012}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_32: {
@@ -385,6 +416,7 @@ SCRM:
                   1、输入账号{13300000012}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_33: {
@@ -396,6 +428,7 @@ SCRM:
                   1、输入账号{13300000012}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_34: {
@@ -407,6 +440,7 @@ SCRM:
                   1、输入账号{13300000012}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_35: {
@@ -418,6 +452,7 @@ SCRM:
                   1、输入账号{13300000012}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_7:
@@ -434,6 +469,7 @@ SCRM:
                   1、输入账号{13300000014}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_37: {
@@ -445,6 +481,7 @@ SCRM:
                   1、输入账号{13300000014}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_38: {
@@ -456,6 +493,7 @@ SCRM:
                   1、输入账号{13300000014}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_39: {
@@ -467,6 +505,7 @@ SCRM:
                   1、输入账号{13300000014}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_40: {
@@ -478,6 +517,7 @@ SCRM:
                   1、输入账号{13300000014}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_41: {
@@ -489,6 +529,7 @@ SCRM:
                   1、输入账号{13300000014}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_42: {
@@ -500,6 +541,7 @@ SCRM:
                   1、输入账号{13300000014}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_8:
@@ -516,6 +558,7 @@ SCRM:
                   1、输入账号{13300000015}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_44: {
@@ -527,6 +570,7 @@ SCRM:
                   1、输入账号{13300000015}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_45: {
@@ -538,6 +582,7 @@ SCRM:
                   1、输入账号{13300000015}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_46: {
@@ -549,6 +594,7 @@ SCRM:
                   1、输入账号{13300000015}，输入密码{Li123456}};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_47: {
@@ -560,6 +606,7 @@ SCRM:
                   1、输入账号{13300000015}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_48: {
@@ -571,6 +618,7 @@ SCRM:
                   1、输入账号{13300000015}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_49: {
@@ -582,6 +630,7 @@ SCRM:
                   1、输入账号{13300000015}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_9:
@@ -598,6 +647,7 @@ SCRM:
                   1、输入账号{13300000016}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_51: {
@@ -609,6 +659,7 @@ SCRM:
                   1、输入账号{13300000016}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_52: {
@@ -620,6 +671,7 @@ SCRM:
                   1、输入账号{13300000016}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_53: {
@@ -631,6 +683,7 @@ SCRM:
                   1、输入账号{13300000016}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_54: {
@@ -642,6 +695,7 @@ SCRM:
                   1、输入账号{13300000016}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_55: {
@@ -653,6 +707,7 @@ SCRM:
                   1、输入账号{13300000016}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_56: {
@@ -664,6 +719,7 @@ SCRM:
                   1、输入账号{13300000016}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_10:
@@ -680,6 +736,7 @@ SCRM:
                   1、输入账号{13300000018}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_58: {
@@ -691,6 +748,7 @@ SCRM:
                   1、输入账号{13300000018}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_59: {
@@ -702,6 +760,7 @@ SCRM:
                   1、输入账号{13300000018}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_60: {
@@ -713,6 +772,7 @@ SCRM:
                   1、输入账号{13300000018}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_61: {
@@ -724,6 +784,7 @@ SCRM:
                   1、输入账号{13300000018}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_62: {
@@ -735,6 +796,7 @@ SCRM:
                   1、输入账号{13300000018}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_11:
@@ -751,6 +813,7 @@ SCRM:
                   1、输入账号{13300000002}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_64: {
@@ -762,6 +825,7 @@ SCRM:
                   1、输入账号{13300000002}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_65: {
@@ -773,6 +837,7 @@ SCRM:
                   1、输入账号{13300000002}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_66: {
@@ -784,6 +849,7 @@ SCRM:
                   1、输入账号{13300000002}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_67: {
@@ -795,6 +861,7 @@ SCRM:
                   1、输入账号{13300000002}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_68: {
@@ -806,6 +873,7 @@ SCRM:
                   1、输入账号{13300000002}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
     - login_repeat_12:
@@ -822,6 +890,7 @@ SCRM:
                   1、输入账号{13300000003}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_70: {
@@ -833,6 +902,7 @@ SCRM:
                   1、输入账号{13300000003}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark:,
           asserts: True,
           }
           test_test_repeat_login_71: {
@@ -844,6 +914,7 @@ SCRM:
                   1、输入账号{13300000003}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
           test_test_repeat_login_72: {
@@ -855,6 +926,7 @@ SCRM:
                   1、输入账号{13300000003}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
           test_test_repeat_login_73: {
@@ -866,6 +938,7 @@ SCRM:
                   1、输入账号{13300000003}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
     - login_repeat_13:
@@ -882,6 +955,7 @@ SCRM:
                   1、输入账号{13300000013}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
           test_test_repeat_login_75: {
@@ -893,6 +967,7 @@ SCRM:
                   1、输入账号{13300000013}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
           test_test_repeat_login_76: {
@@ -904,6 +979,7 @@ SCRM:
                   1、输入账号{13300000013}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
     - login_repeat_14:
@@ -920,6 +996,7 @@ SCRM:
                   1、输入账号{13300000020}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
           test_test_repeat_login_78: {
@@ -931,6 +1008,7 @@ SCRM:
                   1、输入账号{13300000020}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
           test_test_repeat_login_79: {
@@ -942,6 +1020,7 @@ SCRM:
                   1、输入账号{13300000020}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: 66,
           asserts: True,
           }
           test_test_repeat_login_80: {
@@ -953,6 +1032,7 @@ SCRM:
                   1、输入账号{13300000020}，输入密码{Li123456};\n
                   2、点击登录;\n
                   3、验证是否加载出邮件元素",
+          case_remark: '你好吗？',
           asserts: True,
           }
   workbench:
@@ -968,6 +1048,7 @@ SCRM:
             level: 中,
             scene: "登录首页验证{新建邮件}是否存在",
             asserts: 新建邮件,
+            case_remark: '你好吗？',
         }
           test_task_is_exist: {
             url: ,
@@ -976,6 +1057,7 @@ SCRM:
             level: 中,
             scene: "登录首页验证{新建任务}是否存在",
             asserts: 新增任务,
+            case_remark: '你好吗？',
           }
           test_task_is_contact: {
             url: ,
@@ -984,6 +1066,7 @@ SCRM:
             level: 中,
             scene: "登录首页验证{新建联系人}是否存在",
             asserts: 新增联系人,
+            case_remark: '你好吗？',
           }
           test_task_is_customer: {
             url: ,
@@ -991,6 +1074,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "登录首页验证{新建客户}是否存在",
+            case_remark: '你好吗？',
             asserts: 新增客户,
           }
           test_task_is_mark_mail: {
@@ -999,6 +1083,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "登录首页验证{新建营销邮件}是否存在",
+            case_remark: '你好吗？',
             asserts: 新建营销邮件,
           }
           test_task_is_mark_mail_process: {
@@ -1007,6 +1092,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "登录首页验证{新建营销邮件流程}是否存在",
+            case_remark: '你好吗？',
             asserts: 新建营销邮件流程,
           }
     - work_result:
@@ -1020,6 +1106,7 @@ SCRM:
           author: 后超,
           level: 中,
           scene: "登录首页验证{发送普通邮件}是否存在",
+          case_remark: '你好吗？',
           asserts: 发送普通邮件,
         }
           test_send_mark_mail_exist: {
@@ -1028,6 +1115,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "登录首页验证{发送营销邮件}是否存在",
+            case_remark: '你好吗？',
             asserts: 发送营销邮件,
           }
           test_received_mail_exist: {
@@ -1036,6 +1124,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "登录首页验证{收到邮件}是否存在",
+            case_remark: '你好吗？',
             asserts: 收到邮件,
           }
           test_add_contact_exist: {
@@ -1044,6 +1133,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "登录首页验证{新增联系人}是否存在",
+            case_remark: '你好吗？',
             asserts: 新增联系人,
           }
           test_add_customer_exist: {
@@ -1052,6 +1142,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "登录首页验证{新增客户}是否存在",
+            case_remark: '你好吗？',
             asserts: 新增客户,
           }
   sales_synergy:
@@ -1066,6 +1157,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "验证我的任务“进行中”状态是否存在",
+            case_remark: '你好吗？',
             asserts: 进行中,
         }
           test_finish_is_exist: {
@@ -1074,6 +1166,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "验证我的任务“已完成”状态是否存在",
+            case_remark: '你好吗？',
             asserts: 已完成,
           }
           test_wait_accept_is_exist: {
@@ -1082,6 +1175,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "验证我的任务“待我接受”状态是否存在",
+            case_remark: '你好吗？',
             asserts: 待我接受,
           }
     - my_assign:
@@ -1095,6 +1189,7 @@ SCRM:
           author: 后超,
           level: 中,
           scene: "验证我指派“进行中”状态是否存在",
+          case_remark: '你好吗？',
           asserts: 进行中,
         }
           test_finish_is_exist_1: {
@@ -1103,6 +1198,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "验证我指派“已完成”状态是否存在",
+            case_remark: '你好吗？',
             asserts: 已完成,
           }
           test_wait_accept_is_exist_1: {
@@ -1111,6 +1207,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "验证我指派“待我接受”状态是否存在",
+            case_remark: '你好吗？',
             asserts: 待接受,
           }
   data_report_from:
@@ -1125,6 +1222,7 @@ SCRM:
           author: 后超,
           level: 中,
           scene: "统计时间“近30天”是否存在",
+          case_remark: '你好吗？',
           asserts: 近30天,
         }
           test_3_moth: {
@@ -1133,6 +1231,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近3个月”是否存在",
+            case_remark: '你好吗？',
             asserts: 近3个月,
           }
           test_half_year: {
@@ -1141,6 +1240,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近半年”是否存在",
+            case_remark: '你好吗？',
             asserts: 近半年,
           }
           test_1_year: {
@@ -1149,6 +1249,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近一年”是否存在",
+            case_remark: '你好吗？',
             asserts: 近一年,
           }
     - customer_report:
@@ -1162,6 +1263,7 @@ SCRM:
           author: 后超,
           level: 中,
           scene: "统计时间“近30天”是否存在",
+          case_remark: '你好吗？',
           asserts: 近30天,
         }
           test_3_moth1: {
@@ -1170,6 +1272,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近3个月”是否存在",
+            case_remark: '你好吗？',
             asserts: 近3个月,
           }
           test_half_year1: {
@@ -1178,6 +1281,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近半年”是否存在",
+            case_remark: '你好吗？',
             asserts: 近半年,
           }
           test_1_year1: {
@@ -1186,6 +1290,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近一年”是否存在",
+            case_remark: '你好吗？',
             asserts: 近一年,
           }
     - mark_report:
@@ -1199,6 +1304,7 @@ SCRM:
           author: 后超,
           level: 中,
           scene: "统计时间“近30天”是否存在",
+          case_remark: '你好吗？',
           asserts: 近30天,
         }
           test_3_moth101: {
@@ -1207,6 +1313,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近3个月”是否存在",
+            case_remark: '你好吗？',
             asserts: 近3个月,
           }
           test_half_year101: {
@@ -1215,6 +1322,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近半年”是否存在",
+            case_remark: '你好吗？',
             asserts: 近半年,
           }
           test_1_year101: {
@@ -1223,6 +1331,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "统计时间“近一年”是否存在",
+            case_remark: '你好吗？',
             asserts: 近一年,
           }
   test_thread:
@@ -1237,6 +1346,7 @@ SCRM:
           author: 后超,
           level: 中,
           scene: "",
+          case_remark: '你好吗？',
           asserts: ,
         }
           test_fail: {
@@ -1245,6 +1355,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "",
+            case_remark: '你好吗？',
             asserts: ,
           }
           test_success: {
@@ -1253,6 +1364,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "",
+            case_remark: '你好吗？',
             asserts: True,
           }
           test_skip: {
@@ -1261,6 +1373,7 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "",
+            case_remark: '你好吗？',
             asserts: ,
           }
           test_error_c2a: {
@@ -1269,5 +1382,6 @@ SCRM:
             author: 后超,
             level: 中,
             scene: "",
+            case_remark: '你好吗？',
             asserts: ,
           }

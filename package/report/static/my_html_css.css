@@ -171,6 +171,8 @@ p{
     font-size: 16px;
     font-family: 微软雅黑 serif;
     margin: 5px 0;  /*字体偏移[上下，左右]*/
+    white-space: pre-wrap; /*自动换行——为pre标签*/
+    word-wrap: break-word; /*自动换行*/
 }
 
 /*列表样式*/

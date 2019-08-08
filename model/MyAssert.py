@@ -6,16 +6,16 @@ from model.TimeConversion import standard_time
 
 
 class MyAsserts():
-    def __init__(self, first, second, id, level, name, remark, status, reason, url, time,
+    def __init__(self, first, second, id, level, name, case_scene, status, reason, url, time,
                  driver, module, screenshots_path, author, myself, error_path, log=None,
-                 encoding='utf8'):
+                 encoding='utf8', *, case_remark):
         """初始化"""
         self.first = first
         self.second = second
         self.id = id
         self.level = level
         self.name = name
-        self.remark = remark
+        self.case_scene = case_scene
         self.status = status
         self.reason = reason
         self.url = url
@@ -28,6 +28,7 @@ class MyAsserts():
         self.error_path = error_path
         self.module = module
         self.encoding = encoding
+        self.case_remark = case_remark
         self.img_path = None
         self.thread = MyConfig('thread').config
         self.project = MyConfig('project_name').excel_parameter
@@ -50,9 +51,10 @@ class MyAsserts():
     def _insert_sql(self, status, img_path, reason):
         """将用例插入数据库,判断采用的数据库类型"""
         insert_time = standard_time()
-        MyDB().insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.remark),
-                             '{:.2f}秒'.format(self.time), status, self.url, insert_time,
-                             img_path, reason, self.author, results_value=self.second)
+        MyDB().insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.case_scene),
+                           '{:.2f}秒'.format(self.time), status, self.url, insert_time,
+                           img_path, reason, self.author, results_value=self.second,
+                           case_remark=self.case_remark)
 
     @staticmethod
     def _strConversion(values: str):

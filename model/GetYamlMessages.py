@@ -43,6 +43,7 @@ class GetConfigMessage(object):
                     data_messages["level"] = value["level"]
                     data_messages["asserts"] = value["asserts"]
                     data_messages["scene"] = value["scene"]
+                    data_messages['case_remark'] = value['case_remark']
         self.data_messages = data_messages
 
     def re(self):

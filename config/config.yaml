@@ -42,28 +42,32 @@ sql:
                      case_module longtext,
                      case_name  longtext,
                      case_url longtext,
-                     case_remark  longtext,
+                     case_scene  longtext,
                      case_status longtext,
                      results_value longtext,
                      case_error_reason longtext,
                      case_wait_time longtext,
                      case_img longtext,
                      case_author longtext,
-                     insert_time timestamp)              # 插入表头
+                     case_remark longtext,
+                     insert_time timestamp
+                     )              # 插入表头
   sql_query: SELECT * FROM result                           # 查询result里面的所有数据
   sql_insert: INSERT INTO result(case_id,
                                  case_level,
                                  case_module,
                                  case_name,
                                  case_url,
-                                 case_remark,
+                                 case_scene,
                                  case_status,
                                  results_value,
                                  case_error_reason,
                                  case_wait_time,
                                  case_img,
                                  case_author,
-                                 insert_time) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
+                                 case_remark,
+                                 insert_time
+                                 ) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
   sql_delete: DELETE FROM result WHERE 1=1                 # 数据库全部清除数据
   sql_update: UPDATE result SET %s WHERE %s                # 更新数据
   sql_create_list: create database %s character set utf8  # 创建数据库

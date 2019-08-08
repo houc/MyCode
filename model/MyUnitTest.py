@@ -66,8 +66,9 @@ class UnitTests(unittest.TestCase):
         self.url = _return_data['url']
         self.assembly = _return_data['assembly']
         self.second = _return_data['asserts']
-        self.case_remark = _return_data['scene']
-        self.data = _data_initialization.param_extract(self.case_remark)
+        self.case_scene = _return_data['scene']
+        self.case_remark = _return_data['case_remark']
+        self.data = _data_initialization.param_extract(self.case_scene)
         self.current_time = standard_time()
         self.start_time = time.time()
         return self.driver
@@ -82,6 +83,7 @@ class UnitTests(unittest.TestCase):
             log_dr = self.driver.get_log('driver')
             logger.debug(log_br)
             logger.debug(log_dr)
-        MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_remark,
+        MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_scene,
                   self.status, self.error, self.url, total_time, self.driver, self.assembly,
-                  self.screenshots, self.author, self, error_path, logger).asserts()
+                  self.screenshots, self.author, self, error_path, logger,
+                  case_remark=self.case_remark).asserts()

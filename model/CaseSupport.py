@@ -83,7 +83,7 @@ class _Result(TestResult):
                            module=None, name=name, remark=None,
                            wait_time=None, status='跳过', url=None,
                            insert_time=None, img=None, error_reason=f'跳过原因: {reason}',
-                           author=None, results_value=None)
+                           author=None, results_value=None, case_remark=None)
 
     def startTest(self, test):
         TestResult.startTest(self, test)
@@ -269,6 +269,7 @@ class TestRandomData(object):
     Faker = faker.Factory().create('zh_CN')
 
     def random_name(self):
+
        return self.Faker.name()
 
     def random_phone(self):
