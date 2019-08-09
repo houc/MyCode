@@ -191,6 +191,8 @@ p{
     font-family: 微软雅黑 serif;
     font-size: 16px;
     height: 35px;
+    word-break: break-all; /*自动换行*/
+    word-wrap: break-word;
 }
 
 /*表格里面的模块间距*/
