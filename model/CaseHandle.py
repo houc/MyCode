@@ -57,7 +57,7 @@ class DataHandleConversion(object):
                             skip.append(_data[second_data])
                     if second_data == 9:
                         if _data[second_data] != 'None':
-                            sql_data.append(float(_data[second_data][:-2]))
+                            sql_data.append(float(_data[second_data][:-1]))
                     if second_data == 11:
                         member.append(_data[second_data])
                     if first_data == len(sql_data) - 1:
