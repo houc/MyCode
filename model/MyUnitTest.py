@@ -7,7 +7,6 @@ from model.Yaml import MyConfig
 from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
 from model.GetYamlMessages import GetConfigMessage as Get
-from model.TimeConversion import standard_time
 from model.MyException import LoginSelectError
 from SCRM.common import LoginPublic
 
@@ -69,7 +68,6 @@ class UnitTests(unittest.TestCase):
         self.case_scene = _return_data['scene']
         self.case_remark = _return_data['case_remark']
         self.data = _data_initialization.param_extract(self.case_scene)
-        self.current_time = standard_time()
         self.start_time = time.time()
         return self.driver
 

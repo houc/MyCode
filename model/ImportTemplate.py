@@ -166,14 +166,18 @@ class GetTemplateHTML(object):
         self.finish_time = finish_time
         self.case_remark = case_remark
         if 'None' == remark:
-            self.remark = ''
+            self.url = ''
         else:
-            self.remark = 'data:image/JPEG;base64,' + remark
+            self.url = 'data:image/JPEG;base64,' + remark
         self.id = id
         self.members = members
 
     def case_info(self):
         """用例详情"""
+        if self.url:
+            img_url = f'''<img onclick="look_img_windows(this.src)" class="min" style="cursor: pointer" src='{self.url}'>'''
+        else:
+            img_url = ''
         return f'''
     <div class="modal fade" id="{self.method}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog popUp">
@@ -232,7 +236,7 @@ class GetTemplateHTML(object):
                         <tr>
                             <th class="th">附件:</th>
                             <td class='td'>
-                                <img onclick="look_img_windows(this.src)" class="min" style="cursor: pointer" src='{self.remark}'>
+                                {img_url}
                             </td>
                         </tr>
                         <tr>

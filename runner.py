@@ -33,10 +33,10 @@ class RunAll(object):
             self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
         if self.thread:
-            th = excute(discover=discover, start_time=self.start_time, thread_count=8)
-            th.case_package(queue=True, verbosity=False)
+            thread = excute(discover=discover, start_time=self.start_time, thread_count=8)
+            thread.case_package()
         else:
-            runner = TestRunning(verbosity=False)
+            runner = TestRunning()
             runner.run(discover)
             finish = excute(start_time=self.start_time, discover=None)
             finish.get_case_detailed()

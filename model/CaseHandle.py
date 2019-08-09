@@ -1,7 +1,5 @@
 import os
 import sys
-import warnings
-import unittest
 import platform
 import threading
 import dataclasses
@@ -12,7 +10,6 @@ from model.SendEmail import Email
 from datetime import datetime
 from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
-from config_path.path_file import read_file
 from model.MyDB import MyDB
 from model.HtmlDataHandle import MyReport
 from model.ExcelReport import ExcelTitle
@@ -115,8 +112,8 @@ class DataHandleConversion(object):
 class ConversionDiscover(object):
     discover: selenium
     start_time: datetime
-    encoding: str='utf8'
-    thread_count: int=4
+    encoding: str = 'utf8'
+    thread_count: int = 4
 
     def __post_init__(self):
         self.mail = Email()
@@ -125,70 +122,30 @@ class ConversionDiscover(object):
         self.case_handle = DataHandleConversion()
         self.lock = threading.Semaphore(value=self.thread_count)
 
-    def _execute_discover(self):
-        """处理discover"""
-        class_name = []
-        module_import = []
-        discover = str(self.discover).split(',')
-        for search in discover:
-            get_tests = search.split('tests=')[-1].split(' testMethod')[0].split('<')[-1]
-            if '[]>' in get_tests:
-                pass
-            else:
-                if self.module is not None:
-                    if '_FailedTest' not in get_tests.split('.'):
-                        import_module = 'from {}.'.format(self.project) + '{}.'.format(self.module) + \
-                                        '.'.join(get_tests.split('.')[:-1]) + \
-                                        ' import ' + get_tests.split('.')[-1] + '\n'
-                        module_import.append(import_module)
-                        class_name.append(get_tests.split('.')[-1])
-                    else:
-                        warnings.warn('用例中可能存在书写错误，程序已忽略该类....')
-                else:
-                    if '_FailedTest' in get_tests.split('.'):
-                        warnings.warn('用例中可能存在书写错误，程序已忽略该类....')
-                    else:
-                        import_module = 'from ' + '.'.join(get_tests.split('.')[:-1]) + \
-                                        ' import ' + get_tests.split('.')[-1] + '\n'
-                        module_import.append(import_module)
-                        class_name.append(get_tests.split('.')[-1])
-        if module_import and class_name:
-            content = {'\n\n__all__ = {%s}' % str(set(class_name)).replace('{', '').replace('}', '').
-                replace("'", "").replace(',', ',')}
-            return self._write_execute_module(set(module_import), content)
-        else:
-            raise ValueError('The test suite is empty')
-
-    def _write_execute_module(self, module, class_name):
-        """写入需要执行的模块"""
-        write_path = read_file(self.project, 'case_set.py')
-        with open(write_path, 'wt', encoding=self.encoding) as f:
-            f.writelines(module)
-        with open(write_path, 'at', encoding=self.encoding) as f:
-            f.writelines(class_name)
-
-    def case_package(self, queue: bool, verbosity: bool = True, stream=None):
-        """获取全部要运行的测试类，并且以多线程的方式进行运行！"""
-
+    def case_package(self, queue: bool = False, verbosity: bool = True, stream=None):
+        """
+        获取全部要运行的测试类，并且以多线程的方式进行运行！
+        :param queue: 队列方式
+        :param verbosity: 是否展示详情测试过程到控制台
+        :param stream: python的标准输出库
+        """
         thead = []
-
-        self._execute_discover()
-        suite = unittest.TestSuite()
-        from SCRM.case_set import __all__
-
-        for case in __all__:
-            get_suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
-            suite.addTest(get_suite)
-        for test in suite:
-            pol = threading.Thread(target=self._threading, args=(test, queue, verbosity, stream))
-            thead.append(pol)
-            pol.start()
+        for case_module in self.discover:
+            thead_pool = threading.Thread(target=self._threading, args=(case_module, queue, verbosity, stream))
+            thead.append(thead_pool)
+            thead_pool.start()
         for ends in thead:
             ends.join()
-
         self.get_case_detailed(execute_method='多线程')
 
     def _threading(self, suite, queue, verbosity, stream):
+        """
+        执行多线程运行整个项目下的测试用例集，为合理利用计算机CPU资源，采用加锁与释放锁方式实现
+        :param suite: 用例集
+        :param queue: 是否采用队列方式运行用例
+        :param verbosity: 是否展示详情测试过程到控制台
+        :param stream: python的标准输出库
+        """
         self.lock.acquire()
         runner = TestRunning(sequential_execution=queue, verbosity=verbosity, stream=stream)
         runner.run(suite)

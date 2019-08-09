@@ -1028,10 +1028,13 @@ SCRM:
           assembly:,
           author: 后超,
           level: 中,
-          scene: "测试循环登录，用例时长\n
-                  1、输入账号{13300000020}，输入密码{Li123456};\n
-                  2、点击登录;\n
-                  3、验证是否加载出邮件元素",
+          scene: "测试循环登录，用例时长
+                  1、输入账号{13300000020}，输入密码{Li123456};
+                  2、点击登录;
+                  3、验证是否加载出邮件元素
+                  4.A
+                  5.hello word  is number longtext short yre happy new year  , members it hand it longtext ye yes no po kl
+                  6.根据根据根据IG发狘好i几个号橘粉色看肯定会据发计划IE无换行GVv",
           case_remark: '你好吗？',
           asserts: True,
           }
@@ -1385,3 +1388,17 @@ SCRM:
             case_remark: '你好吗？',
             asserts: ,
           }
+    - errors_syn:
+      url:
+      assembly: 测试错误的导包
+      className: TestErrorsPack
+      funName:
+        - test_error_pk: {
+          url:,
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "",
+          case_remark: '你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？你好吗？vv',
+          asserts: ,
+        }

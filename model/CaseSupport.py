@@ -34,7 +34,8 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
                 try:
                     execute = method(*args, **kwargs)
                     return execute
-                except (SyntaxError, MemoryError, KeyError, WindowsError, IndexError):
+                except (SyntaxError, MemoryError, KeyError,
+                        WindowsError, IndexError, ModuleNotFoundError, ImportError):
                     raise
                 except Exception:
                     driver = set_up(*args, **kwargs)
