@@ -109,12 +109,20 @@ class MyReport(object):
         if not os.path.exists(path):
             os.mkdir(path)
         path = path + '/{}.html'.format(compact_time())
-        with open(path, 'wt', encoding=self.encoding) as f:
-            f.write(html)
-        if os.path.exists(path):
-            return self._path_handle(path)
+        if html:
+            with open(path, 'wt', encoding=self.encoding) as w:
+                w.write(html)
         else:
-            raise OSError('测试报告未能生成！')
+            raise IOError('report in html is empty data!')
+        if os.path.exists(path):
+            with open(path, 'rt', encoding=self.encoding) as r:
+                readline = r.readlines()
+                if readline:
+                    return self._path_handle(path)
+                else:
+                    raise IOError('无法访问网页形式测试报告，因为测试报告中数据为空！')
+        else:
+            raise IOError('测试报告未能生成！')
 
     def _path_handle(self, path):
         return '{}/report{}'.format(self.server, path.split('report')[-1])

@@ -235,9 +235,7 @@ class GetTemplateHTML(object):
                         </tr>
                         <tr>
                             <th class="th">附件:</th>
-                            <td class='td'>
-                                {img_url}
-                            </td>
+                            <td class='td'>{img_url}</td>
                         </tr>
                         <tr>
                             <th class="th">备注:</th>

@@ -1,7 +1,6 @@
 
 //全局变量
 var errorsPage = 1;
-var errorPageSize = 10;
 var errorsPageId = '';
 
 //总行数
@@ -16,10 +15,18 @@ function errorsMethod(page_id) {
     const table = document.getElementById(errorsPageId); //获取的状态id
     const number = errorsTotalRows();
     for (var i = 1; i < number; i ++ ){
-        var s = parseInt(i + errorPageSize);
+        var s = parseInt(i + pageSize);
         if (number > s){
             table.rows[s].style.display = 'none';
         }
+    }
+    if (number == 1){
+        tbody = document.getElementById('hide-errors-page');
+        tr1 = document.createElement('br');
+        tr = document.createElement('tr');
+        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">~~暂无数据~~</td>';
+        tbody.appendChild(tr1);
+        tbody.appendChild(tr);
     }
     errorsPre();
     errorsNext_pager();
@@ -29,7 +36,7 @@ function errorsMethod(page_id) {
 //上一页方法
 function errorsPre() {
     const class_page = document.getElementById('errors_pre');//获取按钮div的id
-    var currentRow = errorPageSize * errorsPage; //获取当前行数  6 / 12 / 18
+    var currentRow = pageSize * errorsPage; //获取当前行数  6 / 12 / 18
     if (currentRow == pageSize){
         class_page.innerHTML = "<li class='previous disabled'><a>上一页</a></li>"
     }
@@ -41,10 +48,10 @@ function errorsPre() {
 //下一页方法
 function errorsNext_pager() {
     const class_page = document.getElementById('errors_next');//获取按钮div的id
-    var total = errorsTotalRows(); //table总的总行数 21
-    var currentRow = errorPageSize * errorsPage; //获取当前行数 10
-    var nextRow = currentRow + errorPageSize; //下一页截止行数 20
-    if (nextRow == total || total <= errorPageSize) { // 下一页截止行数等于行数，禁用下一页点击
+    total = errorsTotalRows(); //table总的总行数 3
+    currentRow = pageSize * errorsPage; //获取当前行数 2
+    nextRow = currentRow + pageSize; //下一页截止行数 4
+    if (currentRow >= (total - 1) || pageSize == (total - 1)) { // 下一页截止行数等于行数，禁用下一页点击
         class_page.innerHTML = "<li class='next disabled' id='deposit'><a>下一页</a></li>"
     }
     else {
@@ -55,8 +62,8 @@ function errorsNext_pager() {
 //上一页方法
 function errorsPreMethod() {
     const table = document.getElementById(errorsPageId); //获取的状态id
-    var maxRow = errorPageSize * errorsPage - errorPageSize;
-    var startRow = maxRow - errorPageSize;
+    var maxRow = pageSize * errorsPage - pageSize;
+    var startRow = maxRow - pageSize;
     if (startRow == 0){
         startRow = 1;
     }
@@ -74,9 +81,9 @@ function errorsPreMethod() {
 
 //上一页关闭方法
 function errors_close(page_id) {
-    var startRow = page_id + errorPageSize;
-    const number = errorsTotalRows(); //table总的总行数
-    const table = document.getElementById(errorsPageId); //获取的状态id
+    startRow = page_id + pageSize;
+    number = errorsTotalRows(); //table总的总行数
+    table = document.getElementById(errorsPageId); //获取的状态id
     for (var i = startRow; i < number; i ++){
         table.rows[i].style.display = 'none';
     }
@@ -84,11 +91,11 @@ function errors_close(page_id) {
 
 //下一页方法
 function errorsNextMethod() {
-    var table = document.getElementById(errorsPageId); //获取的状态id
-    var className = document.getElementById('errors_next'); //获取按钮div的id
-    var number = errorsTotalRows(); //table总的总行数
-    var currentRow = errorPageSize * errorsPage; //获取当前行数
-    var nextRow = currentRow + (errorPageSize + 1); //下一页截止行数
+    table = document.getElementById(errorsPageId); //获取的状态id
+    className = document.getElementById('errors_next'); //获取按钮div的id
+    number = errorsTotalRows(); //table总的总行数
+    currentRow = pageSize * errorsPage; //获取当前行数
+    nextRow = currentRow + (pageSize + 1); //下一页截止行数
     if (nextRow > number){ // 当下一页截止行数大于总行数，则下一页截止行数取总行数
         nextRow = number
     }

@@ -61,3 +61,4 @@ function look_img_windows(content) {
         new_win.document.write("<img src=" + content + " />")
     }
 }
+

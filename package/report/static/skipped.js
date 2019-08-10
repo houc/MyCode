@@ -1,25 +1,34 @@
 
 //全局变量
-var pageSize = 10; //默认展示几行
+var pageSize = 15; //默认展示几行
 var page = 1;
 var skippedPageId = '';
 
 //总行数
 function skippedTotalRows() {
-    const table = document.getElementById(skippedPageId); //获取的状态id
+    table = document.getElementById(skippedPageId); //获取的状态id
     return parseInt(table.rows.length)
 }
 
 // 默认调用方法
 function skippedMethod(page_id) {
     skippedPageId = page_id;
-    const table = document.getElementById(skippedPageId); //获取的状态id
-    const number = skippedTotalRows();
+    table = document.getElementById(skippedPageId); //获取的状态id
+    number = skippedTotalRows();
     for (var i = 1; i < number; i ++ ){
         var s = parseInt(i + pageSize);
         if (number > s){
             table.rows[s].style.display = 'none';
         }
+    }
+
+    if (number == 1){
+        tbody_fail = document.getElementById('hide-skipped-page');
+        tr1 = document.createElement('br');
+        tr = document.createElement('tr');
+        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">~~暂无数据~~</td>';
+        tbody_fail.appendChild(tr1);
+        tbody_fail.appendChild(tr);
     }
     skippedPre();
     skippedNext_pager();
@@ -29,7 +38,7 @@ function skippedMethod(page_id) {
 //上一页方法
 function skippedPre() {
     const class_page = document.getElementById('skip_pre');//获取按钮div的id
-    var currentRow = pageSize * page; //获取当前行数  6 / 12 / 18
+    currentRow = pageSize * page; //获取当前行数  6 / 12 / 18
     if (currentRow == pageSize){
         class_page.innerHTML = "<li class='previous disabled'><a>上一页</a></li>"
     }
@@ -41,10 +50,10 @@ function skippedPre() {
 //下一页方法
 function skippedNext_pager() {
     const class_page = document.getElementById('skip_next');//获取按钮div的id
-    var number = skippedTotalRows(); //table总的总行数
-    var currentRow = pageSize * page; //获取当前行数
-    var nextRow = currentRow + pageSize; //下一页截止行数
-    if (nextRow == number || number <= pageSize) { // 下一页截止行数等于行数，禁用下一页点击
+    totalPage = skippedTotalRows(); //table总的总行数 17
+    currentRow = pageSize * page; //获取当前行数 16
+    nextRow = currentRow + pageSize; //下一页截止行数 32
+    if (currentRow >= (totalPage - 1) || pageSize == (totalPage - 1)) { // 下一页截止行数等于行数，禁用下一页点击
         class_page.innerHTML = "<li class='next disabled' id='deposit'><a>下一页</a></li>"
     }
     else {
@@ -55,8 +64,8 @@ function skippedNext_pager() {
 //上一页方法
 function skippedPreMethod() {
     const table = document.getElementById(skippedPageId); //获取的状态id
-    var maxRow = pageSize * page - pageSize;
-    var startRow = maxRow - pageSize;
+    maxRow = pageSize * page - pageSize;
+    startRow = maxRow - pageSize;
     if (startRow == 0){
         startRow = 1;
     }
@@ -74,7 +83,7 @@ function skippedPreMethod() {
 
 //上一页关闭方法
 function skipped_close(page_id) {
-    var startRow = page_id + pageSize;
+    startRow = page_id + pageSize;
     const number = skippedTotalRows(); //table总的总行数
     const table = document.getElementById(skippedPageId); //获取的状态id
     for (var i = startRow; i < number; i ++){
@@ -84,11 +93,11 @@ function skipped_close(page_id) {
 
 //下一页方法
 function skippedNextMethod() {
-    var table = document.getElementById(skippedPageId); //获取的状态id
-    var className = document.getElementById('skip_next'); //获取按钮div的id
-    var number = skippedTotalRows(); //table总的总行数
-    var currentRow = pageSize * page; //获取当前行数
-    var nextRow = currentRow + (pageSize + 1); //下一页截止行数
+    table = document.getElementById(skippedPageId); //获取的状态id
+    className = document.getElementById('skip_next'); //获取按钮div的id
+    number = skippedTotalRows(); //table总的总行数
+    currentRow = pageSize * page; //获取当前行数
+    nextRow = currentRow + (pageSize + 1); //下一页截止行数
     if (nextRow > number){ // 当下一页截止行数大于总行数，则下一页截止行数取总行数
         nextRow = number
     }

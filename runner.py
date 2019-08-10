@@ -30,7 +30,7 @@ class RunAll(object):
         module_run = MyConfig('module_run').config
         project_name = MyConfig('project_name').excel_parameter
         if module_run is not None:
-            self.current_path = self.current_path + '/{}/{}'.format(project_name, module_run)
+            self.current_path = self.current_path + f'/{project_name}/{module_run}'
         discover = unittest.defaultTestLoader.discover(self.current_path, self.re)
         if self.thread:
             thread = excute(discover=discover, start_time=self.start_time, thread_count=8)
