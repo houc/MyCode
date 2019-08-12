@@ -33,12 +33,12 @@ class Email:
         self.contents['from'] = Header(self.sender)
         self.contents['to'] = Header(', '.join(self.receiver))
         self.contents['cc'] = Header(', '.join(self.cc))
-        self.contents['subject'] = Header('{}自动化测试报告'.format(self.title_name + self.title))
+        self.contents['subject'] = Header(f'{self.title_name + self.title}自动化测试报告')
         return self.contents
 
     def _send_content(self, url):
         """发送具体内容"""
-        link_url = """<a href="{}" target="_blank">点击此处在线查看测试报告</a><img alt="" src="cid:image1"/>""".format(url)
+        link_url = f"""<a href="{url}" target="_blank">点击此处在线查看测试报告</a><img alt="" src="cid:image1"/>"""
         self.contents.attach(MIMEText(link_url, 'html', 'utf8'))
 
     def _send_enclosure(self, case_name):
@@ -66,11 +66,14 @@ class Email:
             self.Mail.sendmail(self.sender, self.receiver + self.cc, content.as_string())
             self.Mail.quit()
             if self.cc:
-                sys.stderr.write('抄送{}; 发送{}成功\n'.format('、 '.join(self.cc), '、 '.join(self.receiver)))
+                sys.stderr.write(f'抄送{"、".join(self.cc)}成功; 发送{"、 ".join(self.receiver)}成功\n')
             else:
-                sys.stderr.write('给{}邮件发送成功\n'.format('、 '.join(self.receiver)))
+                sys.stderr.write(f'给{"、 ".join(self.receiver)}邮件发送成功\n')
         except smtplib.SMTPException:
-            sys.stderr.write('给{}邮件发送失败\n'.format('、 '.join(self.receiver)))
+            if self.cc:
+                sys.stderr.write(f'抄送{"、".join(self.cc)}失败; 发送{"、 ".join(self.receiver)}失败！\n')
+            else:
+                sys.stderr.write(f'给{"、 ".join(self.receiver)}邮件发送失败\n')
         sys.stderr.flush()
 
 

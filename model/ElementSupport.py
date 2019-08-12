@@ -62,7 +62,7 @@ class OtherOperationClass(object):
         # 截屏浏览器操作屏幕（base64）
         return self.driver.get_screenshot_as_base64()
 
-    def screen_shot(self, path):
+    def screen_shot(self, path: str):
         # 截屏当前浏览器（jpg、png、jpeg）
         self.driver.save_screenshot(path)
 
