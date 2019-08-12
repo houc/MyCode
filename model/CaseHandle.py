@@ -94,13 +94,13 @@ class DataHandleConversion(object):
                 efficiency = (total / case_messages['testsRun']) * 100
             except ZeroDivisionError:
                 efficiency = 0
-            case_messages['efficiency'] = '{:.2f}'.format(efficiency)
+            case_messages['efficiency'] = f'{efficiency:.2f}'
             case_messages['science'] = self.science
             try:
                 fraction = (len(success) / case_messages['testsRun']) * 100
             except ZeroDivisionError:
                 fraction = 0
-            case_messages['fraction'] = '{:.2f}'.format(fraction)
+            case_messages['fraction'] = f'{fraction:.2f}'
             case_messages['project'] = self.project_name
             if case_messages:
                 return case_messages
@@ -131,7 +131,8 @@ class ConversionDiscover(object):
         """
         thead = []
         for case_module in self.discover:
-            thead_pool = threading.Thread(target=self._threading, args=(case_module, queue, verbosity, stream))
+            thead_pool = threading.Thread(target=self._threading, args=(case_module, queue,
+                                                                        verbosity, stream))
             thead.append(thead_pool)
             thead_pool.start()
         for ends in thead:
@@ -147,7 +148,9 @@ class ConversionDiscover(object):
         :param stream: python的标准输出库
         """
         self.lock.acquire()
-        runner = TestRunning(sequential_execution=queue, verbosity=verbosity, stream=stream)
+        runner = TestRunning(sequential_execution=queue,
+                             verbosity=verbosity,
+                             stream=stream)
         runner.run(suite)
         self.lock.release()
 

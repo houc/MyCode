@@ -11,7 +11,7 @@ from SCRM.test_thread.currency import TestThreadElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
-
+_SKIP = True
 
 @unittest.skipIf(_SKIP, _SKIP_REASON)
 class TestErrors(UnitTests):
