@@ -1,66 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="优化format函数变更为f默认方式">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a8ac84de-1fd0-44c6-9222-dade15213dff" name="Default" comment="优化配置文件写入token值方法；&#10;增加框架说明">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/door_ui/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/door_ui/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/common.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/door_ui/common.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/data_report_from/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/data_report_from/contact_report_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/data_report_from/currency.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/data_report_from/currency.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/data_report_from/customer_report_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/data_report_from/mark_report_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/currency.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/currency.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_0_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_10_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_11_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_12_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_13_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_14_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_1_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_2_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_3_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_4_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_5_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_6_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_7_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_8_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/login/login_repeat_9_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/sales_synergy/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/sales_synergy/currency.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/sales_synergy/currency.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/sales_synergy/my_assign_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/sales_synergy/my_task_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/test_thread/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/test_thread/currency.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/test_thread/currency.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/test_thread/errors_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/test_thread/errors_syn_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/token.ini" beforeDir="false" afterPath="$PROJECT_DIR$/door_ui/token.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/workbench/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/workbench/currency.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/workbench/currency.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/workbench/quick_function_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCRM/workbench/work_result_st.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/img/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CaseSupport.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/CaseSupport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ElementSupport.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/ElementSupport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/GetToken.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/GetToken.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/GetYamlMessages.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/GetYamlMessages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ImportTemplate.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/ImportTemplate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/MyConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/MyConfig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/MyUnitTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/MyUnitTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SeleniumElement.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/SeleniumElement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/TimeConversion.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/TimeConversion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/html_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/report/html_report.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -272,23 +214,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="374">
-                <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+              <first_editor relative-caret-position="176">
+                <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/initialization.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -734,14 +667,7 @@
       <workItem from="1565256761820" duration="9888000" />
       <workItem from="1565272802253" duration="60840000" />
       <workItem from="1565590486824" duration="40327000" />
-      <workItem from="1565746835348" duration="19537000" />
-    </task>
-    <task id="LOCAL-00044" summary="处理单线程不执行邮件bug">
-      <created>1557191847910</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1557191847910</updated>
+      <workItem from="1565746835348" duration="20079000" />
     </task>
     <task id="LOCAL-00045" summary="处理单线程不执行邮件bug">
       <created>1557191916229</created>
@@ -1079,7 +1005,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565575525114</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="优化配置文件写入token值方法；&#10;增加框架说明">
+      <created>1565774060629</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1565774060630</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1115,7 +1048,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="627891000" />
+    <option name="totallyTimeSpent" value="628433000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1223,7 +1156,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="优化测试框架！116" />
     <MESSAGE value="e" />
     <MESSAGE value="e1" />
     <MESSAGE value="e11" />
@@ -1248,7 +1180,8 @@
     <MESSAGE value="优化测试报告404以及500错误页面的渲染；&#10;优化多线程运行时，书写错误用例不反显错误信息的异常" />
     <MESSAGE value="优化测试报告自定义翻页时，部分逻辑判断异常，导致无数据或有数据无法执行翻页或可执行翻页操作" />
     <MESSAGE value="优化format函数变更为f默认方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化format函数变更为f默认方式" />
+    <MESSAGE value="优化配置文件写入token值方法；&#10;增加框架说明" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化配置文件写入token值方法；&#10;增加框架说明" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/UI$Unittests_for_report_check_skipped_st_TestCheckSkipped_test_skip_2.coverage" NAME="Unittests for report_check_skipped_st.TestCheckSkipped.test_skip_2 Coverage Results" MODIFIED="1562568869079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/report_test" />
@@ -1333,13 +1266,6 @@
     <SUITE FILE_PATH="coverage/UI$Unittests_for_errors_st_TestErrors_test_error_c2a.coverage" NAME="Unittests for errors_st.TestErrors.test_error_c2a Coverage Results" MODIFIED="1564130388127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/SCRM/test_thread" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/common/actions/action_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files (x86)/Python3.7/Lib/site-packages/selenium/webdriver/support/event_firing_webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -1672,20 +1598,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="374">
-            <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/initialization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/initialization.py">
+    <entry file="file://$PROJECT_DIR$/config_path/path_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="-742" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="176">
+            <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
