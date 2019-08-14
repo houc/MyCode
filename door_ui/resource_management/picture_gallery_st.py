@@ -7,15 +7,14 @@ from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
 from model.CaseSupport import test_re_runner
 from model.SkipModule import Skip, current_module
-from SCRM.test_thread.currency import TestThreadElement
-from ys import kl
+from door_ui.resource_management.currency import ResourceManagementElement
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
 
 
 @unittest.skipIf(_SKIP, _SKIP_REASON)
-class TestErrorsPack(UnitTests):
+class TestPictureGallery(UnitTests):
     """
     :param: RE_LOGIN:  需要切换账号登录，当RE_LOGIN = True时，需要将LOGIN_INFO的value值全填写完成，
                       如果请求的账号中只有一家公司,那么company中的value就可以忽略不填写，否则会报错...
@@ -24,19 +23,19 @@ class TestErrorsPack(UnitTests):
     :param: BROWSER: True执行浏览器，默认为开启
     """
     RE_LOGIN = False
-    LOGIN_INFO = {"account": None, "password": None, "company": None}
+    LOGIN_INFO = {"account": 'admin', "password": ' ', "company": None}
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\')[-1].split('.')[0]
     
     set_up = UnitTests.setUp
 
     @test_re_runner(set_up)
-    def test_error_pk(self):
+    def test_delete_picture(self):
         """
         
         """
         try:
-            driver = TestThreadElement(self.driver)
+            driver = ResourceManagementElement(self.driver)
             driver.get(self.url)
             self.first = ''
             self.screenshots = driver.screen_base64_shot()

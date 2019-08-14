@@ -7,19 +7,22 @@ from PIL import Image
 
 def get_log():
     """获取项目logo"""
-    if MyConfig('logo_url').config is not None:
-        url = MyConfig('url').base_url + MyConfig('logo_url').config
-        r = requests.get(url, stream=True)
-        if r.content:
-            log_path = read_file('img', 'logo.png')
-            with open(log_path, 'wb') as f:
-                f.write(r.content)
-            if os.path.exists(log_path):
-                img = Image.open(log_path)
-                x, y = img.size
-                p = Image.new('RGBA', img.size, (255, 255, 255))
-                p.paste(img, (0, 0, x, y))
-                p.save(log_path)
+    try:
+        if MyConfig('logo_url').config is not None:
+            url = MyConfig('new_backstage').base_url + MyConfig('logo_url').config
+            r = requests.get(url=url, stream=True)
+            if r.status_code == 200:
+                log_path = read_file('img', 'logo.png')
+                with open(log_path, 'wb') as f:
+                    f.write(r.content)
+                if os.path.exists(log_path):
+                    img = Image.open(log_path)
+                    x, y = img.size
+                    p = Image.new('RGBA', img.size, (255, 255, 255))
+                    p.paste(img, (0, 0, x, y))
+                    p.save(log_path)
+    except OSError:
+        pass
 
 def current_file_path():
     """获取当前路径下所有的文件名，并删除以test_开头的png"""

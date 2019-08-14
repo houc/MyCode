@@ -1,7 +1,8 @@
 CURRENCY_PY = '''import requests
 import time
+import json
 
-from model.Yaml import MyProject
+from model.Yaml import MyProject, MyConfig
 from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
 from model.SeleniumElement import OperationElement
@@ -13,7 +14,7 @@ def read_currency(keys: str, line: int):
     """
     读取currency.ya中的数据
     Usage: 
-        url = MyProject("SCRM").base_url + read_currency("get_customer", 0)
+        url = MyConfig("door_ui").base_url + read_currency("get_customer", 0)
         data = read_currency("get_customer", 1)
     """
     data = []
@@ -40,11 +41,13 @@ class {}(OperationElement):
         Demonstration = (By.XPATH, "(//span[text()='$'])[1]/.") 
 
         def add_member(self, value):
-            self.fin_element(self.str_conversion(self.Demonstration, value)).text
+            self.find_element(self.parametrization(self.Demonstration, value)).text
     """
     # ================================================URL==========================================\n
 
-    # ================================================元素==========================================\n'''
+    # ================================================元素==========================================\n
+    
+    # ================================================初始化参数=====================================\n'''
 
 CASE_CONTENT = '''import unittest
 import time

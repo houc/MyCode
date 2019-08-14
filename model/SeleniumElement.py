@@ -1,12 +1,17 @@
-import dataclasses
 import webbrowser
+import pykeyboard
+import time
+import dataclasses
 
+from PIL import ImageGrab
+from model.MyException import NoUrlTimeoutError
 from selenium.webdriver.common.action_chains import ActionChains as Opera
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from model.ElementSupport import OtherOperationClass
-from model.MyException import (UntilNoElementOrTimeoutError,
-                               UntilNotNotElementOrTimeoutError)
+from selenium.common.exceptions import TimeoutException
+from . ElementSupport import GetCurrentUrl
+from . MyException import (UntilNoElementOrTimeoutError,
+                           UntilNotNotElementOrTimeoutError)
 
 
 @dataclasses.dataclass
@@ -67,10 +72,6 @@ class _MouseToOperations(_VariousElementTypesDisplayWaiting):
     该类用于鼠标操作一些对应元素
     对应方法中嵌套对应显示等待时间
     """
-    driver: webbrowser
-    timeout: float
-    detection: float
-    exception: EC
 
     def __post_init__(self):
         super(_MouseToOperations, self).__post_init__()
@@ -122,34 +123,145 @@ class _MouseToOperations(_VariousElementTypesDisplayWaiting):
 
     def click(self, element):
         """
-        左键单击元素
+        左键单击元素, 元素出现并且校验是否可点击
         :param element: (By.XPATH, "//div[text()='百度一下']")
         """
         is_element = self.opera_element(element)
         self.mouse_support.click(on_element=is_element).perform()
 
+    def send_keys_to_element(self, element, *keys_to_send):
+        """
+        通过元素回传内容: 找到元素后，先执行点击操作，在执行回传
+        :param element: (By.XPATH, "//div[text()='百度一下']")
+        :param keys_to_send: value：卧槽一下！
+        """
+        is_element = self.opera_element(element)
+        self.mouse_support.send_keys_to_element(is_element, *keys_to_send).perform()
 
-class OperationElement(_MouseToOperations, OtherOperationClass):
+
+@dataclasses.dataclass
+class _OtherOperationClass(_MouseToOperations):
+
+    def __post_init__(self):
+        super(_OtherOperationClass, self).__post_init__()
+        self.keyboard = pykeyboard.PyKeyboard()
+
+    def local_upload_attachments(self, path: str):
+        # 本地上传附件
+        time.sleep(1)
+        self.keyboard.tap_key(self.keyboard.shift_key)
+        local_path = path.replace('/', '\\')
+        self.keyboard.type_string(local_path)
+        time.sleep(1)
+        self.keyboard.tap_key(self.keyboard.enter_key)
+
+    @staticmethod
+    def parametrization(element, *args):
+        # 元素参数转化
+        if "$" in element[1]:
+            now_value = element[1].replace("$", "{}")
+            new_element = (element[0], now_value.format(*args))
+            return new_element
+        else:
+            raise ValueError('No parameter is required. Please do not call this method or parameter it“$”')
+
+    @staticmethod
+    def full_window_screen(path: str, length=None, height=None):
+        # 截屏当前屏幕（未通过selenium）
+        screen = ImageGrab.grab()
+        if length is not None and height is not None:
+            screen.size = length, height
+        screen.save(path)
+
+    def f5(self):
+        # 刷新浏览器
+        self.driver.refresh()
+
+    def get(self, url: str):
+        # 请求需访问的地址
+        self.driver.get(url)
+
+    def quit(self):
+        # 浏览器退出
+        self.driver.quit()
+
+    def screen_base64_shot(self):
+        # 截屏浏览器操作屏幕（base64）
+        return self.driver.get_screenshot_as_base64()
+
+    def screen_shot(self, path: str):
+        # 截屏当前浏览器（jpg、png、jpeg）
+        self.driver.save_screenshot(path)
+
+    def execute_js(self, js: str, *args):
+        # 使用js操作浏览器
+        return self.driver.execute_script(js, *args)
+
+    def current_window(self):
+        # 获取浏览器中当前操作窗口的句柄
+        return self.driver.current_window_handle
+
+    def more_window(self):
+        # 获取浏览器全部操作窗口句柄
+        return self.driver.window_handles
+
+    def page_source(self):
+        # 获取源码
+        return self.driver.page_source
+
+    def switch_window(self, indexes: int):
+        # 切换浏览器窗口句柄
+        window = self.more_window()
+        return self.driver.switch_to.window(window[indexes])
+
+    def release_iframe(self):
+        # 回跳至默认dom上
+        return self.driver.switch_to.default_content()
+
+    def close_current_window(self):
+        # 关闭当前浏览器窗口
+        self.driver.close()
+
+    def forward(self):
+        # 前进
+        self.driver.forward()
+
+    def back(self):
+        # 后退
+        self.driver.back()
+
+    def get_log(self, log_type):
+        # 获取日志信息
+        return self.driver.get_log(log_type)
+
+    def method_driver(self, method):
+        # 定义driver继承
+        return method(self.driver)
+
+    def get_current_url(self):
+        # 获取当前url
+        url = GetCurrentUrl()
+        return self.action.until(url, message=NoUrlTimeoutError(self.timeout))
+
+
+class OperationElement(_OtherOperationClass):
     # 浏览器所需元素操作方法封装类
 
     def __init__(self, driver, timeout=5, detection=0.2, exception=EC.NoSuchElementException):
-        super(_MouseToOperations, self).__init__(driver=driver, timeout=timeout,
-                                                 detection=detection, exception=exception)
-        OtherOperationClass.__init__(self, driver=driver, timeout=timeout,
-                                     detection=detection, exception=exception)
-        self.driver = driver
+        super(_OtherOperationClass, self).__init__(driver=driver, timeout=timeout,
+                                                   detection=detection, exception=exception)
 
     def switch_iframe(self, frame_element):
         # 切换到iframe的dom上
-        iframe = self.ec_wait.until(EC.frame_to_be_available_and_switch_to_it(frame_element),
-                                    message=f'iframe_element:  {frame_element}  timeout...')
+        iframe = self.action.until(EC.frame_to_be_available_and_switch_to_it(frame_element),
+                                   message=f'iframe_element:  {frame_element}  timeout...')
         if not iframe:
             raise EC.NoSuchFrameException(f'switch {frame_element} it failed！')
 
     def is_click(self, element):
         # 执行元素可见点击操作
-        clicked = self.ec_wait.until(EC.element_to_be_clickable(element),
-                                     message=f'element: {element}  timeout...')
+        clicked = self.action.until(EC.element_to_be_clickable(element),
+                                    message=f'element: {element}  timeout...')
         if clicked:
             clicked.click()
         else:
@@ -166,7 +278,7 @@ class OperationElement(_MouseToOperations, OtherOperationClass):
         is_element.submit()
 
     def get_text(self, element):
-        # 获取元素中文本值
+        # 获取在规定的时间内元素中文本值
         is_element = self.opera_element(element)
         return is_element.text
 
@@ -176,11 +288,21 @@ class OperationElement(_MouseToOperations, OtherOperationClass):
         return is_element.tag_name
 
     def is_element(self, element):
-        # 判断元素是否存在
+        # 判断元素在规定的时间段内是否存在
         try:
             self.opera_element(element)
             return True
-        except TimeoutError:
+        except TimeoutException:
+            return False
+
+    def quick_is_element(self, element, wait=1):
+        # 快速判断元素是否存在
+        try:
+            import time
+            time.sleep(wait)
+            self.driver.find_element(*element)
+            return True
+        except EC.NoSuchElementException:
             return False
 
     def clear(self, element):
@@ -189,22 +311,22 @@ class OperationElement(_MouseToOperations, OtherOperationClass):
         is_element.clear()
 
     def text_in_element(self, element, content: str):
-        # 判断元素是否包含content
-        return self.ec_wait.until(EC.text_to_be_present_in_element(element, content),
-                                  message=f'element: {element}  timeout...')
+        # 判断在规定的时间内元素是否包含content
+        return self.action.until(EC.text_to_be_present_in_element(element, content),
+                                 message=f'element: {element}  timeout...')
 
     def url_equal(self, url: str):
         # 判断浏览器当前中的url是否与url相等
-        return self.ec_wait.until(EC.url_to_be(url), message=f'url: {url} timeout...')
+        return self.action.until(EC.url_to_be(url), message=f'url: {url} timeout...')
 
     def url_contain(self, url: str):
         # 判断url在当前浏览器的url是否呈包含关系
-        return self.ec_wait.until(EC.url_contains(url), message=f'url: {url} timeout...')
+        return self.action.until(EC.url_contains(url), message=f'url: {url} timeout...')
 
     def is_displayed(self, element):
-        # 判断元素是否显示，显示返回对应元素，不显示则返回False
-        return self.ec_wait.until(EC.visibility_of_element_located(element),
-                                  message=f'element: {element}  timeout...')
+        # 判断元素在规定的时间内是否显示，显示返回对应元素，不显示则返回False
+        return self.action.until(EC.visibility_of_element_located(element),
+                                 message=f'element: {element}  timeout...')
 
     def set_attributed(self, element, attribute_name: str, change_name: str):
         # 修改或者创建元素中属性的值
@@ -223,5 +345,5 @@ class OperationElement(_MouseToOperations, OtherOperationClass):
 
     def attribute_value_in_text(self, element, text: str):
         # 判断元素中为“value”属性的值，是否包含text
-        return self.ec_wait.until(EC.text_to_be_present_in_element_value(element, text),
-                                  message=f'element: {element}  timeout...')
+        return self.action.until(EC.text_to_be_present_in_element_value(element, text),
+                                 message=f'element: {element}  timeout...')

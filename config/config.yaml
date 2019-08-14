@@ -1,16 +1,20 @@
 base_url:
-  url: https://www.scrm365.cn  # 测试地址
+  designer: http://pre-design.yun300.cn/html/index.html  # 设计器地址
+  designer_user: admin # 设计器账户
+  new_backstage: http://1807050057.pre-pool1-site.make.yun300.cn # 新后台地址
+  backstage_user: 13120396777 # 新后台账户
+  backstage_password: test123456 # 新后台密码
 excel_parameter:
-  project_name: SCRM          # 项目名称
-  test_version: V1.7.5    # 测试时的版本号
-  science: 线上环境   # 测试环境
+  project_name: door_ui          # 项目名称
+  test_version: V0.0.0   # 测试时的版本号
+  science: 预发布环境   # 测试环境
 report:
   ip:   # 服务器ip
   port:  # 端口
   save: 7 # 报告存放时间（天）
 config:
   thread: True # True，开启多线程（注意开启此项会大量占用CPU资源）；False，不采用多线程执行
-  token_keys: Authorization   # token表示key名
+  token_keys: TOKEN   # token表示key名
   level: 10                   # 日志等级
   logs_save: 5          # 日志最长保存天数
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
@@ -19,7 +23,7 @@ config:
   logo_url: ./static/lib/image/logo.png?v=3 # 项目logo连接
   re_run_count: 1         # 失败重跑次数 1 表示1次，从1开始，并非从0开始
   re_sleep: 1        # 失败重跑等待时间，单位为 秒  建议不超过300秒
-  module_run:  test_thread   # 指定需要运行的模块，示例：login
+  module_run:    # 指定需要运行的模块，示例：login
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
   skip_module: {}   # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
 send_email:

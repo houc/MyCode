@@ -8,7 +8,7 @@ from model.DriverParameter import browser
 from model.MyAssert import MyAsserts
 from model.GetYamlMessages import GetConfigMessage as Get
 from model.MyException import LoginSelectError
-from SCRM.common import LoginPublic
+from door_ui.common import LoginPublic
 
 
 class UnitTests(unittest.TestCase):
@@ -18,6 +18,7 @@ class UnitTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """判断类下面是否需要重新请求账号登录"""
+        global module
         try:
             driver_headless = MyConfig('browser').config
             if cls.BROWSER:
@@ -26,28 +27,24 @@ class UnitTests(unittest.TestCase):
                 if cls.RE_LOGIN:
                     account = cls.LOGIN_INFO['account']
                     password = cls.LOGIN_INFO['password']
-                    company = cls.LOGIN_INFO['company']
+                    module = cls.MODULE.split('\\')[-1].split('.')[0]
                     if account and password:
                         cls.login = LoginPublic(driver=cls.driver, account=account,
-                                    password=password, company=company,
-                                    module=cls.MODULE.split('\\')[-1].split('.')[0])
+                                    password=password,
+                                    module=module)
                         cls.login.login()
                     else:
                         raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
         except Exception:
-            try:
-                cls.login.remove_key()
-            except KeyError:
-                pass
             if cls.BROWSER:
                 cls.driver.quit()
+            if cls.RE_LOGIN:
+                cls.login.remove_token(keys=module)
             raise
 
     @classmethod
     def tearDownClass(cls):
         """清除配置文件中的token"""
-        if cls.login is not None:
-            cls.login.remove_key()
         if cls.BROWSER:
             cls.driver.quit()
 

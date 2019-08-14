@@ -1,0 +1,16 @@
+door_ui:
+  resource_management:
+    - picture_gallery:
+      url:
+      assembly: 资源管理-图片库
+      className: TestPictureGallery
+      funName:
+        - test_delete_picture: {
+          url: "/managePanel/imgLibrary/list?appId=7",
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "",
+          case_remark:,
+          asserts: True,
+        }

@@ -16,7 +16,7 @@ class GetConfigMessage(object):
         self.module = module
         self.class_name = class_name
         self.case_name = case_name
-        self.url = MyConfig('url').base_url
+        self.url = MyConfig('new_backstage').base_url
         self.all_parm = MyProject('').parameter_ui
         data_messages = {}
         for a in self.all_parm[module]:

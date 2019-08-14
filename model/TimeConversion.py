@@ -67,7 +67,7 @@ def beijing_time_conversion_unix(beijing_time):
 
 def time_conversion(time):
     """根据秒数时间，推送具体的时间单位"""
-    if not isinstance(time, int) and not isinstance(time, float):
+    if not isinstance(time, (int, float)):
         raise TypeError(f'参数 "time {time!r}" , 只能为int类型或者float类型')
     if 60 <= time <= 3600:
         return f'{(time / 60):.2f}分钟'  # 计算的是分钟数，保留小数后2位数
@@ -80,4 +80,4 @@ def time_conversion(time):
 
 
 if __name__ == '__main__':
-    print(time_conversion(45.25))
+    print(time_conversion(''))

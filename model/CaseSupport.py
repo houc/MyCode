@@ -13,7 +13,7 @@ from unittest.result import TestResult
 from unittest.signals import registerResult
 
 __Skip_Status = True
-__Refresh_Url = MyConfig('url').base_url
+__Refresh_Url = MyConfig('new_backstage').base_url
 __Re_Runner_Test_Count = MyConfig('re_run_count').config
 __Wait_Timer = MyConfig('re_sleep').config
 

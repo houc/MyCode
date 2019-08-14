@@ -1,3 +1,0 @@
-#add_customer:
-#  - url: /add/customerParam
-#    bar: {name: 新增客户, address: 四川省成都市}
