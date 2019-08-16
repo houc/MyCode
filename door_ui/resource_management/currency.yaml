@@ -3,5 +3,13 @@
 #    bar: {name: 新增客户, address: 四川省成都市}
 
 search_gallery_is_exits: # 图片库搜索列表是否存在测试图片名称
-  - url: /manager/gwforward/dssresources/imageRepository/findByPagination?TOKEN=%s
-    bar: {pageSize: 40, currentPage: 1, name: ''}
+  - url: /manager/gwforward/dssresources/imageRepository/findByPagination?pageSize=40&currentPage=1&tenantId=%s&name=test&TOKEN=%s
+    bar: {}
+
+delete_gallery: # 搜索出来的删除图片
+  - url: /manager/gwforward/dssresources/imageRepository/imageDelete?ids=%s&tenantId=%s&TOKEN=%s
+    bar: {}
+
+upload_msg: # 上传附件在图片库
+  - url: /manager/gwforward/dssresources/imageRepository/imageFileUpload?viewType=1&tenantId=%s&TOKEN=%s
+    bar: {file: (binary), appId: }

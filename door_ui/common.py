@@ -71,6 +71,7 @@ class LoginPublic(BrowserToken):
 
     def _get_token(self):
         # 获取新后台token
+        time.sleep(5)
         js_token = "return window.sessionStorage.getItem('token')"
         js_tenantId = "return window.sessionStorage.getItem('tenantId')"
         token = self.execute_js(js_token)

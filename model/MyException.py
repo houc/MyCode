@@ -1,6 +1,7 @@
 import inspect
 import traceback
 import dataclasses
+import json
 
 def _get_function_name(path):
     """获取方法名称"""
@@ -176,3 +177,33 @@ class NoUrlTimeoutError(Exception):
 
     def __str__(self):
         return f'获取当前窗口url在 {self.timeout}s 都未能出现获取...'
+
+
+@dataclasses.dataclass
+class InterfaceEqErrors(Exception):
+    module_name: str
+    type: str
+    url: str
+    used_time: float
+    status: int
+    insert_data: str=None
+    back_data: str=None
+    remark: str=None
+
+    def __str__(self):
+        new_data_dict = {'except_msg': {
+            'insert_data': {
+                'module_name': self.module_name,
+                'get_url': self.url,
+                'pram': self.insert_data,
+                'get_type': str(self.type).split(' ')[-1].split('>')[0]
+            },
+            'results': {
+                'status_code': self.status,
+                'used_time': self.used_time,
+                'back_data': self.back_data
+            },
+            'remark': self.remark
+        }}
+        return json.dumps(obj=new_data_dict, indent=8, ensure_ascii=False)
+

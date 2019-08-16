@@ -1,11 +1,12 @@
 CURRENCY_PY = '''import requests
 import time
 import json
+import os
 
 from model.Yaml import MyProject, MyConfig
-from config_path.path_file import UP_FILE_NAME
 from model.MyConfig import ConfigParameter
 from model.SeleniumElement import OperationElement
+from model.MyException import InterfaceEqErrors
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
@@ -18,20 +19,63 @@ def read_currency(keys: str, line: int):
         data = read_currency("get_customer", 1)
     """
     data = []
-    read = MyProject(UP_FILE_NAME, keys).module_data
+    module = os.path.abspath(os.path.dirname(__file__)).split('\\\\')[-1]
+    read = MyProject(module, keys).module_data
     for i in read:
         data.append(i['url'])
         data.append(i['bar'])
     return data[line]
 
 
-def token(module):
+def get_my_conf(section, option):
     """
-    获取token值,module:获取的值
+    读取my_conf信息,section:获取的键，option获取的值键
     Usage:
-        r = requests.post(url, headers=token(module), data=data, stream=True)
+        get_token = get_my_conf('user_msg', 'token')
+        r = requests.post(url, headers={{'token': get_token}}, data=data, stream=True)
     """
-    return ConfigParameter().read_ini(node=module)
+    get_conf = ConfigParameter().read_ini(section, option)
+    return get_conf
+    
+    
+class {}InterfaceAuxiliary(object):
+    """
+    用于接口辅助测试---->>>>所用到的对应功能接口方法集成类
+    usage:
+    def __init__(self):
+        self.token = get_my_conf('Authentication', 'Authorization')
+        .......................................................................
+    
+    def get_user_msg(self):
+        data = read_currency('user_msg', 1)
+        url = read_currency('user_msg', 0)
+        .......................................................................
+        
+    """
+    
+    def request_except(self, r, module_name=None,  remark=None, 
+                       back_data=None, except_status='-1'):
+        """
+        请求结果返回后异常处理封装，类似是否成功请求并成功返回对应状态码
+        :param r: requests请求参数
+        :param remark: 异常后备注
+        :param module_name: 当前执行请求的模块名称
+        :param back_data: 异常后返回的数据，如是html建议使用话术描述，不用完全返回，不然测试报告中存在太多，可能会引发异常！
+        :param except_status: 异常后自定义一个状态码，请勿与判断状态码一致，否则执行下属代码会引发异常！
+        :return: 元组返回，1为状态，2位异常值，用法：assert int(exception[0]) == 200, exception[1]
+        """
+        try:
+            new_json = r.json()
+            status = new_json.get('status')
+            back_data = new_json
+        except TypeError:
+            status = except_status
+            back_data = back_data
+        exc = InterfaceEqErrors(
+            module_name=module_name, status=r.status_code, url=r.url, type=r.request,
+            used_time=r.elapsed.total_seconds(), back_data=back_data, remark=remark
+        )
+        return status, exc    
 
 
 class {}(OperationElement):
@@ -43,11 +87,16 @@ class {}(OperationElement):
         def add_member(self, value):
             self.find_element(self.parametrization(self.Demonstration, value)).text
     """
-    # ================================================URL==========================================\n
+    # ================================================URL==========================================
 
-    # ================================================元素==========================================\n
+    # ================================================元素==========================================
     
-    # ================================================初始化参数=====================================\n'''
+    # ================================================初始化参数=====================================
+    
+    def __init__(self, driver):
+        super(ResourceManagementElement, self).__init__(driver)
+        self.interface = {}InterfaceAuxiliary() # 继承接口类\n\n'''
+
 
 CASE_CONTENT = '''import unittest
 import time
@@ -82,6 +131,7 @@ class {}(UnitTests):
 
 '''
 
+
 CASE_NAME = '''    @test_re_runner(set_up)
     def {}(self):
         """
@@ -98,9 +148,12 @@ CASE_NAME = '''    @test_re_runner(set_up)
             raise\n
 '''
 
+
 CURRENCY_YA = '''#add_customer:
 #  - url: /add/customerParam
 #    bar: {name: 新增客户, address: 四川省成都市}'''
+
+
 
 PROJECT_COMMON = '''import warnings
 import json

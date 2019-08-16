@@ -3,7 +3,7 @@ import os
 
 def _up_file_name():
     """获取当前文件上级文件名称"""
-    return os.path.realpath('.').split('\\')[-1]
+    return os.path.realpath('.').split('\\')[-2]
 
 
 def _ups_file_name():
@@ -43,6 +43,7 @@ def one_level_catalog(catalog):
 def module_low(directory_name):
     """UI下的目录名称"""
     return os.path.realpath('.' + '/' + directory_name)
+
 
 
 if __name__ == '__main__':

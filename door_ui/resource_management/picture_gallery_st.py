@@ -30,12 +30,16 @@ class TestPictureGallery(UnitTests):
     set_up = UnitTests.setUp
 
     @test_re_runner(set_up)
-    def test_delete_picture(self):
+    def test_gallery_is_function_exist(self):
         """
-        
+        验证图片库上传一张新的图片对应模块是否存在
+        1、产品管理{{/managePanel/product/list?appId=2}};
+        2、企业图册{{/managePanel/atlas/list?appId=4}};
+        3、图片库列表
         """
         try:
             driver = ResourceManagementElement(self.driver)
+
             driver.get(self.url)
             self.first = ''
             self.screenshots = driver.screen_base64_shot()

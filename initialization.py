@@ -40,6 +40,7 @@ class CreateModule(object):
             currency_py_path = module_file(self.file_path, module, self.currency_py)
             currency_ya_path = module_file(self.file_path, module, self.currency_ya)
             path_list = [init_path, currency_py_path, currency_ya_path]
+            inter_parm = "".join(str(module).title().split("_"))
             content = "".join(str(module).title().split("_")) + "Element"
             for path in path_list:
                 if not os.path.exists(path):
@@ -47,7 +48,8 @@ class CreateModule(object):
                         pass
                     if self.currency_py in path:
                         with open(path, 'wt', encoding=self.encoding) as f:
-                            f.write(CURRENCY_PY.format(content) % (content))
+                            values = CURRENCY_PY.format(inter_parm, content, inter_parm) % content
+                            f.write(values)
                     if self.currency_ya in path:
                         with open(path, 'wt', encoding=self.encoding) as f:
                             f.write(CURRENCY_YA)

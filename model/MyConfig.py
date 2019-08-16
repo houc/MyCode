@@ -5,7 +5,7 @@ from config_path.path_file import read_file
 
 
 class ConfigParameter(object):
-    def __init__(self, dirName='token.ini', encoding='utf-8'):
+    def __init__(self, dirName='my_conf.ini', encoding='utf-8'):
         """初始化"""
         self.project = MyConfig('project_name').excel_parameter
         self.path = read_file(self.project, dirName)

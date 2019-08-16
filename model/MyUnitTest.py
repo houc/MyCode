@@ -32,7 +32,7 @@ class UnitTests(unittest.TestCase):
                         cls.login = LoginPublic(driver=cls.driver, account=account,
                                     password=password,
                                     module=module)
-                        cls.login.login()
+                        cls.login.login_design()
                     else:
                         raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
         except Exception:

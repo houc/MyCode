@@ -5,12 +5,17 @@ door_ui:
       assembly: 资源管理-图片库
       className: TestPictureGallery
       funName:
-        - test_delete_picture: {
+        - test_gallery_is_function_exist: {
           url: "/managePanel/imgLibrary/list?appId=7",
           assembly:,
           author: 后超,
           level: 中,
-          scene: "",
-          case_remark:,
+          scene: "验证图片库上传一张新的图片对应模块是否存在\n
+                  1、产品管理{{/managePanel/product/list?appId=2}};\n
+                  2、企业图册{{/managePanel/atlas/list?appId=4}};\n
+                  3、图片库列表",
+          case_remark: "使用图片接口查找是否存在;\n
+                        1、存在: 在使用接口判断是否存在，并再次通过UI判断界面上是否存在;\n
+                        2、不存在: 使用接口上传图片，上传成功后再返回操作步骤第1步执行",
           asserts: True,
         }
