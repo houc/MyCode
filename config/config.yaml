@@ -6,8 +6,8 @@ base_url:
   backstage_password:  # 新后台密码
 excel_parameter:
   project_name: door_ui          # 项目名称
-  test_version: V0.0.0   # 测试时的版本号
-  science: 预发布环境   # 测试环境
+  test_version:    # 测试时的版本号
+  science:    # 测试环境
 report:
   ip:   # 服务器ip，为空传本地IP地址，本地IP地址输入后，端口也需要传入，否则广域网无法正常预览测试报告
   port:  # 端口，
@@ -20,7 +20,7 @@ config:
   re: '*_st.py'         # 正则匹配执行的py,如果想只执行一个py的数据，那么改一下此处的后缀名即可！
   task_time: 1         # 定时任务等待执行时间(分钟计算)
   browser: False         # 浏览器隐藏执行开关,隐藏: True，不隐藏: False；无头浏览超慢，建议使用有头
-  logo_url: ./static/lib/image/logo.png?v=3 # 项目logo连接
+  logo_url:  # 项目logo连接
   re_run_count: 1         # 失败重跑次数 1 表示1次，从1开始，并非从0开始
   re_sleep: 1        # 失败重跑等待时间，单位为 秒  建议不超过300秒
   module_run: interface  # 指定需要运行的模块，示例：login
@@ -31,8 +31,8 @@ send_email:
   port:                                   # 发送邮件端口
   send_account:  #       # 发送账号
   send_password:  #                # 发送密码
-  receiver: [houchao@gouuse.cn, ]
-  CC: [784348736@qq.com, 1063116271@qq.com]
+  receiver: []
+  CC: []
 sql:
   name_db: 'case_db'                    # 数据库
   address: localhost                    # 数据库地址，此处为本地数据库地址
