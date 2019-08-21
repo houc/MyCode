@@ -1,7 +1,4 @@
-import json
-
 from model.MyConfig import ConfigParameter
-from model.PrintColor import RED_BIG
 from model.SeleniumElement import OperationElement
 
 
@@ -12,17 +9,6 @@ class BrowserToken(OperationElement):
     def __init__(self, driver):
         OperationElement.__init__(self, driver)
         self.config = ConfigParameter()
-
-    def get_token(self):
-        """
-        通过driver获取到driver中的token
-        """
-        js = "return window.localStorage.getItem('token')"
-        token = self.driver.execute_script(js)
-        self._write_token(token)
-
-    def _write_token(self, token: str):
-        """处理token样式后并将token写入到config.ini中"""
 
 
 

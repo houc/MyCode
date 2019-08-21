@@ -94,7 +94,7 @@ class {}(OperationElement):
     # ================================================初始化参数=====================================
     
     def __init__(self, driver):
-        super(ResourceManagementElement, self).__init__(driver)
+        super({}, self).__init__(driver)
         self.interface = {}InterfaceAuxiliary() # 继承接口类\n\n'''
 
 

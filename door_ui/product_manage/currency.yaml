@@ -1,0 +1,19 @@
+#add_customer:
+#  - url: /add/customerParam
+#    bar: {name: 新增客户, address: 四川省成都市}
+
+search_product_is_exits: # 产品管理搜索列表是否存在测试产品
+  - url: /manager/gwforward/manager-webapi/product/productInformation/list?tenantId=%s&TOKEN=%s
+    bar: {appId: 2, keyword: UI测试产品, attributeId: 0, cateId: 0, pageNumber: 1, pageSize: 40}
+
+get_class: # 获取分类管理中的分类
+  - url: /manager/gwforward/manager-webapi/product/appCategory/list?pid=0&appId=2&tenantId=%s&TOKEN=%s
+    bar: {}
+
+get_attribute: # 获取属性
+  - url: /manager/gwforward/manager-webapi/product/productAttribute/list?appId=2&ec_p=1&ec_crd=15&startDate=&endDate=&sortField=&sortType=&tenantId=%s&TOKEN=%s
+    bar: {}
+
+delete_product: # 删除产品
+  - url: /manager/gwforward/manager-webapi/product/productInformation/delete?appId=2&ids=%s&tenantId=%s&TOKEN=%s
+    bar: {}

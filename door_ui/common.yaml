@@ -1,21 +1,88 @@
 door_ui:
-  resource_management:
+  resource_manage:
     - picture_gallery:
       url:
       assembly: 资源管理-图片库
       className: TestPictureGallery
       funName:
-        - test_gallery_is_function_exist: {
+        - test_create_gallery_is_function_exist: {
           url: "/managePanel/imgLibrary/list?appId=7",
           assembly:,
           author: 后超,
           level: 中,
           scene: "验证图片库上传一张新的图片对应模块是否存在\n
-                  1、产品管理{{/managePanel/product/list?appId=2}};\n
-                  2、企业图册{{/managePanel/atlas/list?appId=4}};\n
-                  3、图片库列表",
+                  1、产品管理{/managePanel/product/list/addOrEdit?appId=2&operType=add};\n
+                  2、企业图册{/managePanel/atlas/list/add?categoryId=&appId=4};\n
+                  3、图片库列表;\n
+                  4、内容介绍{/managePanel/introduce/list/addOrEdit}",
           case_remark: "使用图片接口查找是否存在;\n
-                        1、存在: 在使用接口判断是否存在，并再次通过UI判断界面上是否存在;\n
+                        1、存在: 并再次通过UI判断界面上是否存在;\n
                         2、不存在: 使用接口上传图片，上传成功后再返回操作步骤第1步执行",
           asserts: True,
         }
+          test_delete_gallery_is_function_exist: {
+          url: "/managePanel/imgLibrary/list?appId=7",
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "验证图片库上传一张新的图片后又删除该图片对应模块是否存在\n
+                  1、产品管理{/managePanel/product/list/addOrEdit?appId=2&operType=add};\n
+                  2、企业图册{/managePanel/atlas/list/add?categoryId=&appId=4};\n
+                  3、图片库列表;\n
+                  4、内容介绍{/managePanel/introduce/list/addOrEdit}",
+          case_remark: "使用图片接口查找是否存在;\n
+                        1、存在: 使用接口删除;\n
+                        2、不存在: 使用接口上传图片，上传成功后再返回操作步骤第1步执行",
+          asserts: False,
+          }
+  product_manage:
+    - product:
+      url:
+      assembly: 产品管理-产品
+      className: TestProduct
+      funName:
+        - test_product_is_exist: {
+          url: "/managePanel/product/list?appId=2",
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "验证后台增加产品前台是否存在，并且同时验证产品中的图片是否前台展示\n
+                  1、接口中如没有分类就新增分类{/managePanel/category/list/addOrEdite?appId=2};\n
+                  2、接口中如没有属性就新增属性{/managePanel/template/list/addOrEdit?id=&key=add&appId=2};\n
+                  3、接口中如没有产品就新增产品{/managePanel/product/list/addOrEdit?appId=2&operType=add}",
+          case_remark: "场景中执行完成后，回到前台校验是否正确",
+          asserts: True,
+          }
+  interface:
+    - set_inter:
+      url:
+      assembly:
+      className: InterfaceSet
+      funName:
+        - test_visit_statistics: {
+          url: "/openapi/analyse/getvisitor.do?tenantId=%s",
+          assembly: openAPI访问统计,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi访问统计",
+          case_remark: "请求接口类型为[get]",
+          asserts: success
+        }
+          test_WeChat: {
+          url: "/openapi/wechat/getMQrcode.do?tenantId=%s",
+          assembly: openAPI微信,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi微信",
+          case_remark: "请求接口类型为[get]",
+          asserts: success
+          }
+          test_Redis: {
+          url: "/openapi/clearCache/page.do?tenantId=%s",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: '200'
+          }

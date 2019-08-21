@@ -234,6 +234,10 @@ class _OtherOperationClass(_MouseToOperations):
         # 获取日志信息
         return self.driver.get_log(log_type)
 
+    def get_cookie(self, name):
+        # 获取浏览器cookie
+        return self.driver.get_cookie(name)
+
     def method_driver(self, method):
         # 定义driver继承
         return method(self.driver)
@@ -267,10 +271,10 @@ class OperationElement(_OtherOperationClass):
         else:
             raise EC.NoSuchElementException(f'element: {element}  Not visible or enabled...')
 
-    def send_keys(self, element, value: str):
+    def send_keys(self, element, *value: str):
         # 元素是否可输入对应内容
         is_element = self.opera_element(element)
-        is_element.send_keys(value)
+        is_element.send_keys(*value)
 
     def submit(self, element):
         # 元素是否可提交
@@ -290,18 +294,34 @@ class OperationElement(_OtherOperationClass):
     def is_element(self, element):
         # 判断元素在规定的时间段内是否存在
         try:
-            self.opera_element(element)
-            return True
+            is_element = self.opera_element(element)
+            return is_element
         except TimeoutException:
+            return False
+
+    def is_elements(self, element):
+        # 判断多个元素在规定的时间段内是否存在
+        try:
+            is_element = self.opera_elements(element)
+            return is_element
+        except TimeoutException:
+            return False
+
+    def quick_is_elements(self, element, wait):
+        # 快速判断多个元素是否存在
+        try:
+           time.sleep(wait)
+           is_element = self.driver.find_elements(*element)
+           return is_element
+        except EC.NoSuchElementException:
             return False
 
     def quick_is_element(self, element, wait=1):
         # 快速判断元素是否存在
         try:
-            import time
             time.sleep(wait)
-            self.driver.find_element(*element)
-            return True
+            is_element =self.driver.find_element(*element)
+            return is_element
         except EC.NoSuchElementException:
             return False
 

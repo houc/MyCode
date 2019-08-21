@@ -46,8 +46,11 @@ class GalleryInterfaceAuxiliary(object):
     gallery_ids = list()  # 图片库列表搜索出来的图片对应信息
 
     def __post_init__(self):
-        self.token = token('new_token', 'token') # 获取token
-        self.tenantId = token('new_token', 'tenantId') # 获取租户Id
+        self.token = token('backstage_token', 'token') # 获取token
+        self.tenantId = token('backstage_token', 'tenantId') # 获取租户Id
+        self.design_cookie = token('design_cookies', 'JSESSIONID') # 设计器的session
+        self.base_url = MyConfig('new_backstage').base_url # 后台url
+        self.design_url = MyConfig('designer').base_url # 设计器url
 
     def request_except(self, r, module_name='图片库列表搜索',  remark=None,
                        back_data='接口错误或token失效，无法访问！', except_status='-1'):
@@ -78,8 +81,7 @@ class GalleryInterfaceAuxiliary(object):
         # 传入的数据处理
 
         # 访问的url处理
-        url = (MyConfig('new_backstage').base_url +
-               read_currency('search_gallery_is_exits', 0)) % (self.tenantId, self.token)
+        url = (self.base_url + read_currency('search_gallery_is_exits', 0)) % (self.tenantId, self.token)
 
         # 开始请求并处理请求后的结果
         r = requests.get(url=url, stream=True, timeout=10)
@@ -92,11 +94,13 @@ class GalleryInterfaceAuxiliary(object):
                 class_name = gallery_id.get('appName')
                 name = gallery_id.get('name')
                 used = gallery_id.get('used')
+                img_href = gallery_id.get('imgUrl')
                 self.gallery_ids.append({
                     'gallery_id': id,
                     'class_name': class_name,
                     'gallery_name': name,
-                    'used': used
+                    'used': used,
+                    'img_href': img_href
                 })
         else: # 如不存在则返回一个bool为False
             return False
@@ -113,8 +117,7 @@ class GalleryInterfaceAuxiliary(object):
                 id = ids.get('gallery_id')
                 used = ids.get('used')
                 if used != 1: # 判断图片是否被使用，1已使用；0未使用
-                    url = (MyConfig('new_backstage').base_url +
-                           read_currency('delete_gallery', 0)) % (id, self.tenantId, self.token)
+                    url = (self.base_url + read_currency('delete_gallery', 0)) % (id, self.tenantId, self.token)
                     r = requests.get(url=url, stream=True, timeout=10)
                     exception = self.request_except(r)
                     assert int(exception[0]) == 200, exception[1] # 断言执行请求状态是否为200
@@ -125,13 +128,12 @@ class GalleryInterfaceAuxiliary(object):
     def upload_attr(self):
         # 上传附件为图片，上传成功后返回当前成功的图片名和图片id
         # 上传附件url
-        url = (MyConfig('new_backstage').base_url +
-               read_currency('upload_msg', 0)) % (self.tenantId, self.token)
+        url = (self.base_url + read_currency('upload_msg', 0)) % (self.tenantId, self.token)
 
         # 处理data
         data = read_currency('upload_msg', 1)
 
-        file_path = f'{os.path.dirname(os.path.dirname(os.path.dirname(__file__)))}/img/test.jpeg'
+        file_path = f'{os.path.dirname(os.path.dirname(os.path.dirname(__file__)))}/img/UiAutoTests.jpeg'
         file = {'file': open(file_path, 'rb')}
         r = requests.post(url=url, files=file, data=data, timeout=10, stream=True)
         exception = self.request_except(r)
@@ -153,15 +155,105 @@ class ResourceManagementElement(OperationElement):
     # ================================================URL==========================================
 
     # ================================================元素==========================================
+
+    views_switch = (By.XPATH, "//div[@role='radiogroup']/label[$]") # 视图切换 1为列表视图；2为缩略视图
+    search = (By.XPATH, "//input[@placeholder='输入后直接回车确认']") # 搜索框搜索
+    list_data = (By.XPATH, "//tr[starts-with(@class, 'el-table__row')]") # 列表数据
+    get_list_name = (By.XPATH, "(//tr[starts-with(@class, 'el-table__row')])[$]/td[$]")  # 列表视图对应名称 参数1函数，参数2列数
+    add_attr = (By.XPATH, "(//div[@class='addImgItem'])[$]") # 点击产品界面中的上传图片按钮
+    select_classification = (By.XPATH, "(//div[@class='el-select type el-select--small'])/div") # 选择图片中的分类栏
+    select_value = (By.XPATH, "(//div[@class='el-scrollbar'])[$]/div[1]/ul/li[$]") # 分类选项中的值
+    attr_search = (By.XPATH, "//div[@class='listCon']/div/div[$]/div[2]") # 获取添加附件弹窗中的附件名
+    attr_is_exist = (By.CLASS_NAME, "noFileList") # 获取添加附件弹窗中的附件是否为空
+    attr_lists = (By.XPATH, "//div[@class='listCon']/div/div") # 获取添加附件弹窗中的附件总数
+
     def __init__(self, driver):
         super(ResourceManagementElement, self).__init__(driver)
         self.interface = GalleryInterfaceAuxiliary() # 集成接口类
 
+    def gallery_exist(self):
+        # 检查图片图片是否存在
+        is_exist = self.interface.search_gallery() # 使用接口去搜索test图片是否存在
+        if not is_exist: # 如果不存在则返回bool为False
+            return False
+        else: # 如果存在则返回bool为True
+            return True
 
+    def search_box(self, search_text='UiAutoTests'):
+        # 列表搜索框搜索对应内容
+        # search_text: 搜索的内容
+        self.send_keys(self.search, search_text)  # 列表中输入搜索内容
+        self.opera_element(self.search).send_keys(Keys.ENTER)  # 执行点击搜索按钮
+
+    def search_list_name_is_true(self, true_name='UiAutoTests'):
+        # 通过搜索出来的内容进行遍历查出对应附件名是否存在
+        # true_name: 图片库图片名称
+        elements = self.is_elements(self.list_data)
+        if not elements:
+            return False
+
+        for element in range(len(elements)):
+            transfer = self.parametrization(self.get_list_name, (element + 1), 3)
+            text = self.get_text(transfer)
+            if true_name == text:
+                return True
+        else:
+            return False
+
+    def gallery_opera(self):
+        # 图片库列表操作图片是否存在
+        transfer = self.parametrization(self.views_switch, 1)
+        time.sleep(5) # 等待图片库列表渲染时间
+        self.is_click(transfer)
+        time.sleep(1)
+        self.search_box()
+        time.sleep(1)
+        return self.search_list_name_is_true()
+
+    def product_opera(self):
+        # 产品管理添加图片是否存在
+        return self.__upload_attr()
+
+    def atlas_opera(self):
+        # 企业图册添加图片是否存在
+        return self.__upload_attr(attr=1, select_vale=3)
+
+    def content_opera(self):
+        # 介绍内容添加图片是否存在
+        return self.__upload_attr(attr=1, select_vale=4)
+
+    def __upload_attr(self, attr=2, select_vale=6):
+        # 上传附件操作
+        time.sleep(5) # 进入点击/编辑界面等待渲染时间
+        transfer1 = self.parametrization(self.add_attr, attr)
+        self.is_click(transfer1)
+        time.sleep(1)
+        self.is_click(self.select_classification)
+        time.sleep(0.5)
+        transfer = self.parametrization(self.select_value, select_vale, 1)
+        self.is_click(transfer)
+        time.sleep(1)
+        self.search_box()
+        time.sleep(1)
+        return self.__attr_data_search()
+
+    def __attr_data_search(self, true_name='UiAutoTests'):
+        # 附件列表搜索出来后查找附件是否存在
+        elements = self.is_elements(self.attr_lists)
+        if not elements:
+            return False
+
+        for element in range(len(elements)):
+            transfer = self.parametrization(self.attr_search, (element + 1))
+            text = self.get_text(transfer)
+            if true_name == text:
+                return True
+        else:
+            return False
 
 
 
 if __name__ == '__main__':
-    con = InterfaceAuxiliary()
-    k = con.upload_attr()
+    con = GalleryInterfaceAuxiliary()
+    k = con.get_attribute()
     print(k)

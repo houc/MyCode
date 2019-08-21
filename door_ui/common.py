@@ -54,6 +54,7 @@ class LoginPublic(BrowserToken):
         self.send_keys(self.domain_element, self.backstage)
         self.submit(self.submit_element)
         assert self.is_element(self.my_self), '设计器登录失败！'
+        self._get_design()
         self.get_token()
 
     def get_token(self):
@@ -67,17 +68,25 @@ class LoginPublic(BrowserToken):
         if self.quick_is_element(self.login_quit):
             self.login_backstage()
         else:
-            self._get_token()
+            self._get_backstage_token()
 
-    def _get_token(self):
+    def _get_design(self):
+        # 后去设计器cookie，并写入配置文件中
+        cookie = self.driver.get_cookie('JSESSIONID').get('value')
+        self.config.remove_section(section='design_cookies')
+        self.config.add_section(section='design_cookies')
+        self.config.set(section='design_cookies', option='JSESSIONID', value=cookie)
+        self.config.write_ini()
+
+    def _get_backstage_token(self):
         # 获取新后台token
-        time.sleep(5)
+        time.sleep(2)
         js_token = "return window.sessionStorage.getItem('token')"
         js_tenantId = "return window.sessionStorage.getItem('tenantId')"
         token = self.execute_js(js_token)
         tenantId = self.execute_js(js_tenantId)
         if token is not None and tenantId is not None:
-            self.config.clear()
+            self.config.remove_section(section=self.module)
             self.config.add_section(section=self.module)
             self.config.set(section=self.module, option='token', value=token)
             self.config.set(section=self.module, option='tenantId', value=tenantId)
@@ -91,7 +100,7 @@ class LoginPublic(BrowserToken):
         self.send_keys(self.password_ele, password)
         self.submit(self.immediately)
         assert self.quick_is_element(self.is_login_success), '新后台登录失败！'
-        self._get_token()
+        self._get_backstage_token()
 
     def remove_token(self, keys):
         # 移除token
@@ -102,7 +111,7 @@ if __name__ == '__main__':
     from model.DriverParameter import browser
     driver = browser()
     try:
-        login = LoginPublic(driver=driver, account='admin', password=None, module='new_token')
+        login = LoginPublic(driver=driver, account='admin', password=None, module='backstage_token')
         login.login_design()
     except: raise
     finally: driver.quit()

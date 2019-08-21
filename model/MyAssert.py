@@ -5,11 +5,10 @@ from model.Yaml import MyConfig
 from model.TimeConversion import standard_time
 
 
-class MyAsserts():
+class MyAsserts:
     def __init__(self, first, second, id, level, name, case_scene, status, reason, url, time,
                  driver, module, screenshots_path, author, myself, error_path, log=None,
                  encoding='utf8', *, case_remark):
-        """初始化"""
         self.first = first
         self.second = second
         self.id = id
@@ -40,26 +39,28 @@ class MyAsserts():
                 self.status = '失败'
             else:
                 self.status = '错误'
-            self.reason = self._strConversion(str(self.reason))
+            self.reason = self._strConversion(self.reason)
             self.img_path = self.screenshots_path
             self._log(self.reason)
         else:
             self.status = '成功'
-            self.reason = self._strConversion(str(self.first))
+            self.reason = self._strConversion(self.first)
         self._insert_sql(self.status, self.img_path, self.reason)
 
     def _insert_sql(self, status, img_path, reason):
         """将用例插入数据库,判断采用的数据库类型"""
         insert_time = standard_time()
-        MyDB().insert_data(self.id, self.level, self.module, self.name, self._strConversion(self.case_scene),
-                           '{:.2f}秒'.format(self.time), status, self.url, insert_time,
-                           img_path, reason, self.author, results_value=self.second,
-                           case_remark=self.case_remark)
+        MyDB().insert_data(self.id, self.level, self.module, self.name,
+                           self._strConversion(self.case_scene),
+                           f'{self.time:.2f}秒', status, self.url, insert_time,
+                           img_path, reason, self._strConversion(self.author),
+                           results_value=self._strConversion(self.second),
+                           case_remark=self._strConversion(self.case_remark))
 
     @staticmethod
     def _strConversion(values: str):
         """字符串中包含单引号转义成``"""
-        return re.sub("'", "`", values).replace('\\', '/').replace('"', "`")
+        return re.sub("'", "`", str(values)).replace('\\', '/').replace('"', "`")
 
     def _log(self, reason):
         """记录日志"""

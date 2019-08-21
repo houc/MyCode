@@ -12,7 +12,7 @@ from door_ui.common import LoginPublic
 
 
 class UnitTests(unittest.TestCase):
-    first = second = author = urls = login = driver = status = error = screenshots= None
+    first = second = author = login = driver = status = error = screenshots= None
     RE_LOGIN, LOGIN_INFO, MODULE, BROWSER = False, None, None, True
 
     @classmethod

@@ -48,7 +48,7 @@ class CreateModule(object):
                         pass
                     if self.currency_py in path:
                         with open(path, 'wt', encoding=self.encoding) as f:
-                            values = CURRENCY_PY.format(inter_parm, content, inter_parm) % content
+                            values = CURRENCY_PY.format(inter_parm, content, content, inter_parm) % content
                             f.write(values)
                     if self.currency_ya in path:
                         with open(path, 'wt', encoding=self.encoding) as f:
@@ -225,7 +225,7 @@ class CreateModule(object):
         if case_name:
             for case in case_name:
                 if 'test_' not in case:
-                    raise NameError('注意-->用例名需包含“test_”开头：' + ', 请变更错误用例：'.join(case_name))
+                    raise NameError(f'注意-->用例名需包含“test_”开头，请将错误用例{case!r}开头增加“test_”')
             repeat = [val for val in list(set(case_name)) if case_name.count(val) >= 2]
             if repeat:
                 raise TypeError('注意-->有重复的用例名称，, 请变更重复方法：' + ', 请变更重复方法：'.join(repeat))

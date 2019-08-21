@@ -154,5 +154,4 @@ def output_python_version():
 
 
 if __name__ == '__main__':
-    # print(merge_config_info())
-    print(merge_config_msg())
+    print(get_network()['ip地址'])

@@ -4,17 +4,23 @@ from model.Yaml import MyConfig
 from config_path.path_file import read_file
 
 
+class _MyConfigParse(configparser.ConfigParser):
+
+    def optionxform(self, option_str):
+        return option_str
+
+
 class ConfigParameter(object):
     def __init__(self, dirName='my_conf.ini', encoding='utf-8'):
         """初始化"""
         self.project = MyConfig('project_name').excel_parameter
         self.path = read_file(self.project, dirName)
         self.encoding = encoding
-        self.config = configparser.ConfigParser()
+        self.config = _MyConfigParse()
 
     def write_ini(self):
         """将信息写入配置文件"""
-        with open(self.path, 'at', encoding=self.encoding) as f:
+        with open(self.path, 'wt', encoding=self.encoding) as f:
             self.config.write(f)
 
     def set(self, section, option, value=None):

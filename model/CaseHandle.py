@@ -12,6 +12,7 @@ from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
 from model.MyDB import MyDB
 from model.HtmlDataHandle import MyReport
+from . HtmlReport import IP, PORT
 from model.ExcelReport import ExcelTitle
 from model.CaseSupport import TestRunning
 

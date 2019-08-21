@@ -186,9 +186,11 @@ class screenshot(object):
     def __init__(self, url):
         self.path = read_file('img', 'html.png')
         driver = browser(switch=True)
-        driver.get(url)
-        driver.implicitly_wait(10)
-        time.sleep(2)
-        driver.set_window_size(1900, 500)
-        driver.save_screenshot(self.path)
-        driver.quit()
+        try:
+            driver.get(url)
+            driver.implicitly_wait(10)
+            time.sleep(2)
+            driver.set_window_size(1900, 500)
+            driver.save_screenshot(self.path)
+        finally:
+            driver.quit()
