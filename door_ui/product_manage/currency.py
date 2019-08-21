@@ -315,7 +315,7 @@ class ProductManageElement(ResourceManagementElement):
                     for url in urls:
                         new = url.get_attribute('imghref')
                         img_urls.append(new)
-                    return img_urls
+                    return img_urls.sort()
             else: return False # 如果没有该产品就返回false
         else: return False # 如果没有该产品就返回false
 

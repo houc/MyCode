@@ -23,3 +23,18 @@
 * 发送邮件处理包：smtplib；
 * 定时任务处理包：schedule；
 * 断言判断包：operator
+
+## HTML测试报告效果图：
+![image-text](https://github.com/houc/UI/blob/dev/img/TestReportHtml.jpeg)
+
+## EXCEL测试报告效果图：
+![image-text](https://github.com/houc/UI/blob/dev/img/ExcelTestRport.jpeg)
+
+## 发送邮件效果图：
+![image-text](https://github.com/houc/UI/blob/dev/img/Email.jpeg)
+
+## 如有疑问可咨询：
+![image-text](https://github.com/houc/UI/blob/dev/img/Welcome.jpeg)
+
+## 开源不易感谢支持：
+![image-text](https://github.com/houc/UI/blob/dev/img/Cash.jpeg)
