@@ -1,9 +1,9 @@
 base_url:
-  designer: http://pre-design.yun300.cn/html/index.html  # 设计器地址
-  designer_user: admin # 设计器账户
-  new_backstage: http://1807050057.pre-pool1-site.make.yun300.cn # 新后台地址
-  backstage_user: 13120396777 # 新后台账户
-  backstage_password: test123456 # 新后台密码
+  designer:   # 设计器地址
+  designer_user:  # 设计器账户
+  new_backstage:  # 新后台地址
+  backstage_user:  # 新后台账户
+  backstage_password:  # 新后台密码
 excel_parameter:
   project_name: door_ui          # 项目名称
   test_version: V0.0.0   # 测试时的版本号
