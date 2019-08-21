@@ -62,7 +62,7 @@ class TestProduct(UnitTests):
                     driver.switch_window(2) # 切换到设计器预览窗口
                     time.sleep(2)
                     self.first = driver.views_opera()
-                    self.second = list(is_product_exist[0].values())[0].sort()
+                    self.second = list(is_product_exist[0].values())[0]
                     self.screenshots = driver.screen_base64_shot()
                     self.assertListEqual(self.first, self.second, msg='web端使用的图片在前台组件使用的图片不相等')
 

@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from config_path.path_file import read_file, module_file
 from collections import defaultdict
 from model.Yaml import MyConfig
-from model.HtmlReport import PORT, IP
+from model.HtmlReport import (IP, __local_ip__, __local_port__, PORT)
 from model.TimeConversion import standard_time, compact_time
 from model.ImportTemplate import GetTemplateHTML
 from model.DriverParameter import browser
@@ -75,7 +75,8 @@ class MyReport(object):
         self.error = ''
         self.failed = ''
         self.case_info = ''
-        self.server = 'http://{}:{}'.format(IP, PORT)
+        self.local_server = f'http://{__local_ip__}:{__local_port__}'
+        self.wide_server = f'http://{IP}:{PORT}'
 
     def execute(self, *args, **kwargs):
         conversion_list = self._conversion_list(args)
@@ -125,7 +126,7 @@ class MyReport(object):
             raise IOError('测试报告未能生成！')
 
     def _path_handle(self, path):
-        return '{}/report{}'.format(self.server, path.split('report')[-1])
+        return '{}/report{}'.format(self.local_server, path.split('report')[-1])
 
     def _del_dir(self):
         for time in range(self.save):
@@ -175,7 +176,7 @@ class MyReport(object):
                         sort_time=self.finish_dict['sort_time'], total_case=self.finish_dict['total_case'],
                         failed_case=self.finish_dict['failed_case'], error_case=self.finish_dict['error_case'],
                         success_case=self.finish_dict['success_case'], skipped_case=self.finish_dict['skipped_case'],
-                        fraction=self.finish_dict['fraction'], url=self.server,
+                        fraction=self.finish_dict['fraction'], url=self.local_server, local_url=self.wide_server,
                         execute_method=self.finish_dict['execute_method'],
                         execute_time=self.finish_dict['execute_time'],
                         project=self.finish_dict['project'])

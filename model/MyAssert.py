@@ -60,7 +60,7 @@ class MyAsserts:
     @staticmethod
     def _strConversion(values: str):
         """字符串中包含单引号转义成``"""
-        return re.sub("'", "`", str(values)).replace('\\', '/').replace('"', "`")
+        return re.sub("'", "`", str(values)).replace('\\', '/').replace('"', "`").replace('%', '//')
 
     def _log(self, reason):
         """记录日志"""

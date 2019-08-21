@@ -3,8 +3,13 @@ from config_path.path_file import module_file, read_file
 from model.PCParameter import get_network
 from model.Yaml import MyConfig
 
-IP = MyConfig('ip').report if MyConfig('ip').report else get_network()['ip地址']
-PORT = MyConfig('port').report if MyConfig('port').report else 20019
+__ip__ = MyConfig('ip').report
+__port__ = MyConfig('port').report
+__local_ip__ = get_network()['ip地址']
+__local_port__ = 20019
+
+IP = __ip__ if __ip__ else __local_ip__
+PORT = __port__ if __port__ else __local_port__
 
 
 @route('/report/<dir_name>/<html_name>')
@@ -21,15 +26,17 @@ def my_static_file(filename):
 @error(500)
 def error_500(error):
     path = module_file('package/report', 'tpl', 'is_500_tpl.html')
-    return template(path, url=IP, port=PORT)
+    return template(path, url=IP, port=PORT,
+                    local_url=__local_ip__, local_port=__local_port__)
 
 
 @error(404)
 def error_404(error):
     path = module_file('package/report', 'tpl', 'is_404_tpl.html')
-    return template(path, url=IP, port=PORT)
+    return template(path, url=IP, port=PORT,
+                    local_url=__local_ip__, local_port=__local_port__)
 
 
 if __name__ == '__main__':
-    run(host=IP, port=PORT, reloader=True, interval=0.1)
+    run(host=__local_ip__, port=__local_port__, interval=0.1, reloader=True)
 

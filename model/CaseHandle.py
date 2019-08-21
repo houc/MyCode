@@ -12,7 +12,7 @@ from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
 from model.MyDB import MyDB
 from model.HtmlDataHandle import MyReport
-from . HtmlReport import IP, PORT
+from . HtmlReport import (IP, __local_ip__, PORT, __local_port__, __ip__, __port__)
 from model.ExcelReport import ExcelTitle
 from model.CaseSupport import TestRunning
 
@@ -173,6 +173,11 @@ class ConversionDiscover(object):
                                         tool=total_case['tool'], science=total_case['science'],
                                         project=total_case['project'], sort_time=total_case['short_time'],
                                         fraction=total_case['fraction'])
-            sys.stderr.write(f'HTML测试报告已生成，可访问url在线预览报告啦: {report}\n')
+            if __ip__ and __port__:
+                url = report.replace(str(__local_ip__), str(__ip__)).replace(str(__local_port__), str(__port__))
+                sys.stderr.write(f'HTML测试报告已生成，可在广域网在线预览报告啦: {url}\n')
+                urls = url
+            else: urls = report
+            sys.stderr.write(f'HTML测试报告已生成，可在局域网在线预览报告啦: {report}\n')
             sys.stderr.flush()
-            self.mail.sender_email(url=report, case_name=total_case)
+            self.mail.sender_email(url=urls, case_name=total_case)
