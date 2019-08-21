@@ -1,7 +1,7 @@
 base_url:
-  designer: http://pre-design.yun300.cn/html/index.html.cn  # 设计器地址
+  designer: http://pre-design.yun300.cn/html/index.html  # 设计器地址
   designer_user: admin # 设计器账户
-  new_backstage: http://1807050057.pre-pool1-site.make.yun300.com.cn # 新后台地址
+  new_backstage: http://1807050057.pre-pool1-site.make.yun300.cn # 新后台地址
   backstage_user: 13120396777 # 新后台账户
   backstage_password: test123456 # 新后台密码
 excel_parameter:
@@ -29,14 +29,11 @@ config:
 send_email:
   server: smtp.gouuse.cn                # 邮件发送的服务器
   port:                                   # 发送邮件端口
-  send_account: houchao@gouuse.cn #wanghaibin@300.cn       # 发送账号
-  send_password: Aa123456 #Ccwoaini521$                 # 发送密码
+  send_account:  #       # 发送账号
+  send_password:  #                # 发送密码
   receiver: [houchao@gouuse.cn, ]
   CC: [784348736@qq.com, 1063116271@qq.com]
 sql:
-  account: 'root'                       # 数据库账号
-  password: '123456'                    # 数据库密码
-  port: 3307                            # 数据库端口
   name_db: 'case_db'                    # 数据库
   address: localhost                    # 数据库地址，此处为本地数据库地址
   sql_table: DROP TABLE IF EXISTS result                    # 表是否存在
