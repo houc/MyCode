@@ -18,6 +18,7 @@ class Email:
         self.sender = MyConfig('send_account').send_email
         self.sender_password = MyConfig('send_password').send_email
         self.server = MyConfig('server').send_email
+        self.port = MyConfig('port').send_email
         self.receiver = MyConfig('receiver').send_email
         self.cc = MyConfig('CC').send_email
         self.title_name = MyConfig('project_name').excel_parameter
@@ -61,7 +62,7 @@ class Email:
         """发送邮件"""
         try:
             content = self._send_title_msg(url, case_name)
-            self.Mail.connect(self.server)
+            self.Mail.connect(host=self.server, port=self.port)
             self.Mail.login(self.sender, self.sender_password)
             self.Mail.sendmail(self.sender, self.receiver + self.cc, content.as_string())
             self.Mail.quit()

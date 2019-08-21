@@ -6,8 +6,8 @@ base_url:
   backstage_password:  # 新后台密码
 excel_parameter:
   project_name: door_ui          # 项目名称
-  test_version:    # 测试时的版本号
-  science:    # 测试环境
+  test_version: V0.0.0   # 测试时的版本号
+  science: 预发布   # 测试环境
 report:
   ip:   # 服务器ip，为空传本地IP地址，本地IP地址输入后，端口也需要传入，否则广域网无法正常预览测试报告
   port:  # 端口，
@@ -27,9 +27,9 @@ config:
   token_invalid: 6      # 接口token登录几个小时后失效，并重新登录获取新的token
   skip_module: {}   # 跳过模块>示例:{ValidateLogin_st: 这是原因, customer_st: 这是原因}
 send_email:
-  server: smtp.gouuse.cn                # 邮件发送的服务器
-  port:                                   # 发送邮件端口
-  send_account:  #       # 发送账号
+  server:                 # 邮件发送的服务器
+  port:                                  # 发送邮件端口
+  send_account:   #       # 发送账号
   send_password:  #                # 发送密码
   receiver: []
   CC: []
