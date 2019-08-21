@@ -1,7 +1,7 @@
 base_url:
-  designer: http://pre-design.yun300.cn/html/index.html  # 设计器地址
+  designer: http://pre-design.yun300.cn/html/index.html.cn  # 设计器地址
   designer_user: admin # 设计器账户
-  new_backstage: http://1807050057.pre-pool1-site.make.yun300.cn # 新后台地址
+  new_backstage: http://1807050057.pre-pool1-site.make.yun300.com.cn # 新后台地址
   backstage_user: 13120396777 # 新后台账户
   backstage_password: test123456 # 新后台密码
 excel_parameter:
