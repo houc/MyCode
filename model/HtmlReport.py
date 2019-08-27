@@ -38,5 +38,5 @@ def error_404(error):
 
 
 if __name__ == '__main__':
-    run(host=__local_ip__, port=__local_port__, interval=0.1, reloader=True)
+    run(host=__local_ip__, port=__local_port__)
 

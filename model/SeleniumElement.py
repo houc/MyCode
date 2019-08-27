@@ -9,7 +9,7 @@ from selenium.webdriver.common.action_chains import ActionChains as Opera
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from . ElementSupport import GetCurrentUrl
+from . ElementSupport import (GetCurrentUrl, PureClick)
 from . MyException import (UntilNoElementOrTimeoutError,
                            UntilNotNotElementOrTimeoutError)
 
@@ -246,6 +246,11 @@ class _OtherOperationClass(_MouseToOperations):
         # 获取当前url
         url = GetCurrentUrl()
         return self.action.until(url, message=NoUrlTimeoutError(self.timeout))
+
+    def pure_click(self, element):
+        # 点击元素，存在直接操作点击
+        by = PureClick(element)
+        self.action.until(by, message=f'操作点击元素 {element} 超时或不存在...')
 
 
 class OperationElement(_OtherOperationClass):

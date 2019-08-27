@@ -44,11 +44,12 @@ class GalleryInterfaceAuxiliary(object):
     用于接口辅助测试---->>>>所用到的对应功能接口方法集成类
     """
     gallery_ids = list()  # 图片库列表搜索出来的图片对应信息
+    module: str
 
     def __post_init__(self):
         self.token = token('backstage_token', 'token') # 获取token
-        self.tenantId = token('backstage_token', 'tenantId') # 获取租户Id
-        self.design_cookie = token('design_cookies', 'JSESSIONID') # 设计器的session
+        self.tenantId = token(self.module, 'tenantId') # 获取租户Id
+        self.design_cookie = token(self.module, 'JSESSIONID') # 设计器的session
         self.base_url = MyConfig('new_backstage').base_url # 后台url
         self.design_url = MyConfig('designer').base_url # 设计器url
 
@@ -167,9 +168,9 @@ class ResourceManagementElement(OperationElement):
     attr_is_exist = (By.CLASS_NAME, "noFileList") # 获取添加附件弹窗中的附件是否为空
     attr_lists = (By.XPATH, "//div[@class='listCon']/div/div") # 获取添加附件弹窗中的附件总数
 
-    def __init__(self, driver):
+    def __init__(self, driver, module):
         super(ResourceManagementElement, self).__init__(driver)
-        self.interface = GalleryInterfaceAuxiliary() # 集成接口类
+        self.interface = GalleryInterfaceAuxiliary(module) # 集成接口类
 
     def gallery_exist(self):
         # 检查图片图片是否存在

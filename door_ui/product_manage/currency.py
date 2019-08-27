@@ -54,9 +54,11 @@ class ProductManageInterfaceAuxiliary(object):
         .......................................................................
         
     """
+    module: str
+
     def __post_init__(self):
-        self.token = get_my_conf('backstage_token', 'token')  # 获取token
-        self.tenantId = get_my_conf('backstage_token', 'tenantId')  # 获取租户Id
+        self.token = get_my_conf(self.module, 'token')  # 获取token
+        self.tenantId = get_my_conf(self.module, 'tenantId')  # 获取租户Id
         self.design_cookie = get_my_conf('design_cookies', 'JSESSIONID')  # 设计器的session
         self.base_url = MyConfig('new_backstage').base_url  # 后台url
         self.design_url = MyConfig('designer').base_url  # 设计器url
@@ -220,7 +222,7 @@ class ProductManageElement(ResourceManagementElement):
     attribute_type = (By.XPATH, "(//ul[@class='el-scrollbar__view el-select-dropdown__list'])[$]/li[$]") # 属性类型
     upload_attr = (By.XPATH, "(//div[@class='addImgItem'])[$]") # 上传附件
     select_attr = (By.XPATH, "(//div[@class='listCon'])/div/div") # 选择附件
-    ok = (By.XPATH, "(//div[@class='dialog-footer'])[9]/button[2]") # 附件确定
+    ok = (By.XPATH, "(//span[text()='确 定'])[7]/parent::button") # 附件确定
     button = (By.XPATH, "//span[text()='保存']/parent::button") # 保存按钮
     tips_box = (By.XPATH, "//div[@role='alert']/p") # 弹窗消息
 
@@ -228,9 +230,9 @@ class ProductManageElement(ResourceManagementElement):
 
     # ================================================初始化参数=====================================
     
-    def __init__(self, driver):
-        super(ProductManageElement, self).__init__(driver)
-        self.interface = ProductManageInterfaceAuxiliary() # 继承接口类
+    def __init__(self, driver, module):
+        super(ProductManageElement, self).__init__(driver, module)
+        self.interface = ProductManageInterfaceAuxiliary(module) # 继承接口类
 
     def design_create_template(self):
         # 设计器创建模板
@@ -252,11 +254,11 @@ class ProductManageElement(ResourceManagementElement):
         # 设计器拖拽
         time.sleep(2)
         self.is_click(self.function_unit)
-        time.sleep(1)
+        time.sleep(2)
         self.is_click(self.list_search)
-        time.sleep(1)
+        time.sleep(2)
         self.send_keys(self.send, unit_name)
-        time.sleep(0.5)
+        time.sleep(1)
         self.is_click(self.page_search)
         time.sleep(1)
         is_elements = self.is_elements(self.units)
@@ -368,5 +370,5 @@ class ProductManageElement(ResourceManagementElement):
 
 
 if __name__ == '__main__':
-    k = ProductManageInterfaceAuxiliary().delete_product()
-    print()
+    k = ProductManageInterfaceAuxiliary().get_class()
+    print(k)

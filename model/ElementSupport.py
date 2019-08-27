@@ -1,10 +1,23 @@
-# 该模块主要用于ActionChains的封装继承类
-# 可自定义元素在规定时间内运行并检查它们是否存在
+# @Time             : 2019/8/23 16:44
+# @Author           : hc
+# @FileName         : ElementSupport.py
+# @Tool             : PyCharm
+# @Target           : UI
 
 __author__ = 'hc'
+
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class GetCurrentUrl(object):
     def __call__(self, driver):
         return driver.current_url
 
+
+class PureClick(object):
+    def __init__(self, element):
+        self.by = element
+
+    def __call__(self, driver):
+        element = EC._find_element(driver, self.by)
+        element.click()

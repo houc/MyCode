@@ -39,7 +39,7 @@ class TestPictureGallery(UnitTests):
         4、内容介绍{/managePanel/introduce/list/addOrEdit}
         """
         try:
-            driver = ResourceManagementElement(self.driver)
+            driver = ResourceManagementElement(self.driver, self.toke_module)
             driver.get(self.url)
             is_exist = driver.gallery_exist()
             if is_exist:
@@ -92,7 +92,7 @@ class TestPictureGallery(UnitTests):
         4、内容介绍{/managePanel/introduce/list/addOrEdit}
         """
         try:
-            driver = ResourceManagementElement(self.driver)
+            driver = ResourceManagementElement(self.driver, self.toke_module)
             driver.get(self.url)
             is_exist = driver.gallery_exist()
             if not is_exist:

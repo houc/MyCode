@@ -26,7 +26,7 @@ class TestProduct(UnitTests):
     LOGIN_INFO = {"account": 'admin', "password": ' ', "company": None}
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\')[-1].split('.')[0]
-    
+
     set_up = UnitTests.setUp
 
     @test_re_runner(set_up)
@@ -39,7 +39,7 @@ class TestProduct(UnitTests):
         """
         # 请手动将产品属性管理的默认属性必填项隐藏掉，除开产品名称
         try:
-            driver = ProductManageElement(self.driver)
+            driver = ProductManageElement(self.driver, self.toke_module)
             is_product_exist = driver.interface.search_product()
             is_class_exist = driver.interface.get_class()
             if is_class_exist:
