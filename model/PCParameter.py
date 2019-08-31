@@ -2,18 +2,19 @@ import wmi
 import psutil
 import platform
 
+HARDWARE = wmi.connect()
+
 
 def bytes_conversion(value):
     """字节换算,默认转化成MB"""
-    conversion = value / (1024 * 1024)
+    conversion = int(value) / (1024 * 1024)
     return str(conversion)
 
 
 def get_cpu_msg():
     """获取当前电脑CPU信息"""
     cpu_msg = {}
-    y = wmi.WMI()
-    cpu = y.Win32_Processor()
+    cpu = HARDWARE.Win32_Processor()
     for i in cpu:
         cpu_msg["名称"] = i.Name
         cpu_msg["核心数"] = i.NumberOfCores
@@ -30,20 +31,18 @@ def get_cpu_msg():
 def get_disk_msg():
     """获取当前电脑disk信息"""
     disk_msg = {}
-    y = wmi.WMI()
-    disk = y.Win32_DiskDrive()
+    disk = HARDWARE.Win32_DiskDrive()
     for i in disk:
-        disk_msg['品牌'] = i.Caption.rstrip()
-        disk_msg['型号'] = y.Win32_PhysicalMedia()[0].SerialNumber.lstrip().rstrip()
-        disk_msg['容量'] = bytes_conversion(int(i.Size) / 1024 / 1024)[:-14] + 'TB'
+        total_size = float(bytes_conversion(value=i.Size)) / 1024 / 1024
+        disk_msg['磁盘产品'] = i.Model + i.Manufacturer
+        disk_msg['磁盘总容量'] = '{:.3f}T'.format(total_size)
     return disk_msg
 
 
 def get_network():
     """获取当前电脑网卡信息"""
     network_msg = {}
-    y = wmi.WMI()
-    network = y.Win32_NetworkAdapterConfiguration(IPEnabled=1)
+    network = HARDWARE.Win32_NetworkAdapterConfiguration(IPFilterSecurityEnabled=False)
     for i in network:
         network_msg['ip地址'] = i.IPAddress[0]
         network_msg['子网掩码'] = i.IPSubnet[0]
@@ -57,8 +56,7 @@ def get_network():
 def get_memory():
     """获取当前电脑内存信息"""
     memory_msg = {}
-    y = wmi.WMI()
-    memory = y.Win32_PhysicalMemory()
+    memory = HARDWARE.Win32_PhysicalMemory()
     for i in memory:
         memory_msg['条数'] = i.BankLabel.split(' ')[1]
         memory_msg['容量'] = bytes_conversion(int(i.Capacity) / 1024) + 'GB'
@@ -72,25 +70,27 @@ def get_memory():
 def real_get_cpu_msg():
     """实时获取当前电脑cpu使用情况"""
     cpu_msg = {}
-    y = str(psutil.cpu_percent(interval=1,percpu=True)).split(',')[2]
-    k = str(psutil.cpu_freq(percpu=True)).split('(')[1].split(')')[0].split('=')[1].split(',')[0]
-    p = str(psutil.cpu_times_percent(interval=1,percpu=True))[1:-1].split('(')[1].split(')')[0]
-    cpu_msg['使用率'] = y + '%'
-    cpu_msg['当前频率'] = k + 'Hz'
-    cpu_msg['用户占用率'] = p.split('=')[1].split(',')[0] + '%'
-    cpu_msg['系统占用率'] = p.split('=')[2].split(',')[0] + '%'
-    cpu_msg['空闲值'] = p.split('=')[3].split(',')[0] + '%'
+    cpu_percent = psutil.cpu_percent(interval=1)
+    cpu_freq = psutil.cpu_freq()
+    current_Hz = f'{cpu_freq.current / 1000 :.2f}GHz'
+    max_Hz = f'{cpu_freq.max / 1000 :.2f}GHz'
+    min_Hz = f'{cpu_freq.min / 1000 :.2f}GHz'
+    percent = f'{cpu_percent}%'
+    cpu_msg['使用率'] = percent
+    cpu_msg['当前频率'] = current_Hz
+    cpu_msg['最大频率'] = max_Hz
+    cpu_msg['最小频率'] = min_Hz
     return cpu_msg
 
 
 def real_get_memory():
     """实时读取当前电脑内存消耗情况"""
     memory_msg = {}
-    y = str(psutil.virtual_memory()).split('(')[1].split(')')[0].split('=')
-    memory_msg['容量'] = bytes_conversion(int(y[1].split((','))[0]) / 1024)[:-13] + 'GB'
-    memory_msg['空闲'] = bytes_conversion(int(y[2].split(',')[0]) / 1024)[:-13] + 'GB'
-    memory_msg['使用率'] = y[3].split(',')[0] + '%'
-    memory_msg['占用'] = bytes_conversion(int(y[4].split(',')[0]) / 1024)[:-13] + 'GB'
+    real_memory_msg = psutil.virtual_memory()
+    memory_msg['容量'] = '{:.3f}GB'.format(float(bytes_conversion(real_memory_msg.total)) / 1024)
+    memory_msg['空闲'] = '{:.3f}GB'.format(float(bytes_conversion(real_memory_msg.free)) / 1024)
+    memory_msg['使用率'] = '{}%'.format(real_memory_msg.percent)
+    memory_msg['占用'] = '{:.3f}GB'.format(float(bytes_conversion(real_memory_msg.used)) / 1024)
     return memory_msg
 
 
@@ -98,11 +98,17 @@ def real_get_disk(path='./'):
     # 默认当前路径的磁盘大小
     """实时获取当前电脑磁盘使用情况"""
     disk_msg = {}
-    y = str(psutil.disk_usage(path)).split('(')[1].split(')')[0].split('=')
-    disk_msg['容量'] = bytes_conversion(int(y[1].split(',')[0]) / 1024 )[:-13] + 'GB'
-    disk_msg['已使用量'] = bytes_conversion(int(y[2].split(',')[0]) / 1024)[:-13] + 'GB'
-    disk_msg['剩余量'] = bytes_conversion(int(y[3].split(',')[0]) / 1024)[:-11] + 'GB'
-    disk_msg['使用率'] = y[4] + '%'
+    disk_partition = psutil.disk_partitions(all=True)
+    for partition in disk_partition:
+        disk_msg[partition.device.replace('\\', '')] = partition.fstype
+
+    for k, v in disk_msg.items():
+        real_disk_msg = psutil.disk_usage(k)
+        total_size = '{:.3f}GB'.format(float(bytes_conversion(real_disk_msg.total)) / 1024)
+        used = '{:.3f}GB'.format(float(bytes_conversion(real_disk_msg.used)) / 1024)
+        free = '{:.3f}GB'.format(float(bytes_conversion(real_disk_msg.free)) / 1024)
+        percent = real_disk_msg.percent
+        disk_msg[k] = '总容量:{}, 已使用:{}, 未使用:{}, 使用率:{}%'.format(total_size, used, free, percent)
     return disk_msg
 
 
@@ -154,4 +160,4 @@ def output_python_version():
 
 
 if __name__ == '__main__':
-    print(get_network()['ip地址'])
+    print(real_get_disk())
