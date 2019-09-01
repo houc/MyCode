@@ -65,7 +65,7 @@ class AmilSupport(object):
 
 class MyReport(object):
     def __init__(self):
-        self.path = module_file('package/report', 'tpl', 'my_html.html')
+        self.path = module_file('package/report', 'tpl', 'my_html.tpl')
         self.new_dict = defaultdict(dict)
         self.finish_dict = defaultdict(dict)
         self.save = MyConfig('save').report

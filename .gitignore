@@ -2,6 +2,7 @@
 *.png
 *.jpg
 config.ini
+config.yaml
 *.xlsx
 *.html
 __pycache__

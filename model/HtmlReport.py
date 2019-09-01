@@ -25,14 +25,14 @@ def my_static_file(filename):
 
 @error(500)
 def error_500(error):
-    path = module_file('package/report', 'tpl', 'is_500_tpl.html')
+    path = module_file('package/report', 'tpl', 'is_500_tpl.tpl')
     return template(path, url=IP, port=PORT,
                     local_url=__local_ip__, local_port=__local_port__)
 
 
 @error(404)
 def error_404(error):
-    path = module_file('package/report', 'tpl', 'is_404_tpl.html')
+    path = module_file('package/report', 'tpl', 'is_404_tpl.tpl')
     return template(path, url=IP, port=PORT,
                     local_url=__local_ip__, local_port=__local_port__)
 
