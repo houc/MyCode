@@ -14,3 +14,9 @@ XPath轴(XPath Axes)可定义某个相对于当前节点的节点集：
 12、attribute 选取当前节点的所有属性
 13、namespace 选取当前节点的所有命名空间节点
 如：要定位当前td同级后的一个td
+
+
+.gitignore修改或增加忽略文件不生效，处理方法：
+1、>git rm -r --cached .
+2、>git add .
+3、>git commit -m 'update .gitignore'
