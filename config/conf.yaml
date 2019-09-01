@@ -1,5 +1,5 @@
 base_url:
-  designer: http://pre-design.yun300.cn/html/index.html  # 设计器地址
+  designer: http://pre-design.yun300.cn/html/index.html   # 设计器地址
   designer_user: admin # 设计器账户
   new_backstage: http://1904155033.pre-pool1-site.make.yun300.cn # 新后台地址
   backstage_user: 13120396777 # 新后台账户

@@ -12,7 +12,7 @@ class MyConfig(object):
     @property
     def _read_config_data(self):
         """读取config.yaml中的全部数据"""
-        path = read_file('config', 'config.yaml')
+        path = read_file('config', 'conf.yaml')
         with open(path, 'rt', encoding=self.encoding) as f:
             return yaml.safe_load(f)
 

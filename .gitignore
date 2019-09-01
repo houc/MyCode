@@ -1,12 +1,12 @@
 *.log
 *.png
 *.jpg
-my_conf.ini
-config.yaml
 *.xlsx
 *.html
 __pycache__
 *.xml
+*db
 case.txt
 case_set.py
-*db
+my_conf.ini
+conf.yaml
