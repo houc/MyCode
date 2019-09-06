@@ -4,7 +4,6 @@ from model.Logs import logger
 
 
 def browser(switch=False):
-    """打开浏览器"""
     driver_path = read_file('package', 'ChromeDriver.exe')
     options = webdriver.ChromeOptions()
     options.headless = switch

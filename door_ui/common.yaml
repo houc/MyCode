@@ -11,10 +11,10 @@ door_ui:
           author: 后超,
           level: 中,
           scene: "验证图片库上传一张新的图片对应模块是否存在\n
-                  1、产品管理{/managePanel/product/list/addOrEdit?appId=2&operType=add};\n
-                  2、企业图册{/managePanel/atlas/list/add?categoryId=&appId=4};\n
+                  1、产品管理“/managePanel/product/list/addOrEdit?appId=2&operType=add”;\n
+                  2、企业图册“/managePanel/atlas/list/add?categoryId=&appId=4”;\n
                   3、图片库列表;\n
-                  4、内容介绍{/managePanel/introduce/list/addOrEdit}",
+                  4、内容介绍“/managePanel/introduce/list/addOrEdit”",
           case_remark: "使用图片接口查找是否存在;\n
                         1、存在: 并再次通过UI判断界面上是否存在;\n
                         2、不存在: 使用接口上传图片，上传成功后再返回操作步骤第1步执行",
@@ -26,17 +26,17 @@ door_ui:
           author: 后超,
           level: 中,
           scene: "验证图片库上传一张新的图片后又删除该图片对应模块是否存在\n
-                  1、产品管理{/managePanel/product/list/addOrEdit?appId=2&operType=add};\n
-                  2、企业图册{/managePanel/atlas/list/add?categoryId=&appId=4};\n
+                  1、产品管理“/managePanel/product/list/addOrEdit?appId=2&operType=add”;\n
+                  2、企业图册“/managePanel/atlas/list/add?categoryId=&appId=4;\n
                   3、图片库列表;\n
-                  4、内容介绍{/managePanel/introduce/list/addOrEdit}",
+                  4、内容介绍“/managePanel/introduce/list/addOrEdit”",
           case_remark: "使用图片接口查找是否存在;\n
                         1、存在: 使用接口删除;\n
                         2、不存在: 使用接口上传图片，上传成功后再返回操作步骤第1步执行",
           asserts: False,
           }
   product_manage:
-    - product:
+    - product_exist:
       url:
       assembly: 产品管理-产品
       className: TestProduct
@@ -47,12 +47,28 @@ door_ui:
           author: 后超,
           level: 中,
           scene: "验证后台增加产品前台是否存在，并且同时验证产品中的图片是否前台展示\n
-                  1、接口中如没有分类就新增分类{/managePanel/category/list/addOrEdite?appId=2};\n
-                  2、接口中如没有属性就新增属性{/managePanel/template/list/addOrEdit?id=&key=add&appId=2};\n
-                  3、接口中如没有产品就新增产品{/managePanel/product/list/addOrEdit?appId=2&operType=add}",
+                  1、接口中如没有分类就新增分类“/managePanel/category/list/addOrEdite?appId=2”;\n
+                  2、接口中如没有属性就新增属性“/managePanel/template/list/addOrEdit?id=&key=add&appId=2”;\n
+                  3、接口中如没有产品就新增产品“/managePanel/product/list/addOrEdit?appId=2&operType=add”",
           case_remark: "场景中执行完成后，回到前台校验是否正确",
           asserts: True,
           }
+    - product_import:
+      url:
+      assembly: 产品管理-产品
+      className: TestProductImport
+      funName:
+        - test_product_import: {
+          url: "/managePanel/product/list?appId=2",
+          assembly:,
+          author: 后超,
+          level: 中,
+          scene: "导入产品，是否成功\n
+                  1、接口查找导入产品是否存在“/manager/gwforward/manager-webapi/product/productInformation/list”",
+          case_remark: "",
+          asserts: True,
+          }
+
   interface:
     - set_inter:
       url:
@@ -85,4 +101,15 @@ door_ui:
           scene: "使用接口验证openapi+redis->>清理Redis缓存",
           case_remark: "请求接口类型为[get]",
           asserts: '200'
+          }
+          test_prod_export: {
+          url: "/manager/gwdownload/manager-webapi/product/productStream/exportExcel?appId=2&categoryId=0&startDate=%s&endDate=%s&leaf=false&tenantId=%s&TOKEN=%s",
+          assembly: 产品导出,
+          author: 后超,
+          level: 中,
+          scene: "导出产品，是否成功\n
+                  1、使用导出产品接口，是否成功，默认为当前时间前一月\n
+                  2、传入参数“{'appId': 2, 'categoryId': 0, 'leaf': 'false'}”",
+          case_remark: "请求接口类型为[get]",
+          asserts: products.xlsx,
           }

@@ -145,11 +145,13 @@ class MyReport(object):
         self.finish_dict['fail_list'] = self.failed
 
     def _new_dict(self, value):
-        # 报告明细对应字段，value索引值参照excel测试报告详情而来
-        return self._html(catalog=value[0], modules=value[2], level=value[1], method=value[3], address=value[4],
-                          scene=value[5], expect=value[7], actual=value[8], finish_time=value[13],
-                          status=value[6], use_time=value[9], members=value[11], remark=value[10],
-                          id=value[3], case_remark=value[12])
+        return self._html(case_catalog=value[0], case_module=value[2],
+                          case_level=value[1], case_name=value[3],
+                          case_url=value[4], case_scene=value[5],
+                          case_results=value[7], case_error_reason=value[8],
+                          case_insert_parameter=value[9], status=value[6],
+                          insert_time=value[14], case_wait_time=value[10],
+                          case_author=value[12], case_img=value[11], case_remark=value[13])
 
     def _conversion_list(self, args):
         new_list = []
@@ -160,10 +162,18 @@ class MyReport(object):
                 new_list.append(dict(self.new_dict))
         return new_list
 
-    def _html(self, catalog, modules, level, method, address, scene, expect, actual, status, finish_time,
-                 use_time, remark, id, members, case_remark):
-        html = GetTemplateHTML(catalog, modules, level, method, address, scene, expect, actual, status, finish_time,
-                 use_time, remark, id, members, case_remark)
+    def _html(self, case_catalog, case_module, case_level, case_name,
+              case_url, case_scene, case_results, case_error_reason,
+              case_insert_parameter, status, insert_time, case_wait_time,
+              case_author, case_img, case_remark):
+
+        html = GetTemplateHTML(case_catalog=case_catalog, case_module=case_module,
+                               case_level=case_level, case_name=case_name,
+                               case_url=case_url, case_scene=case_scene,
+                               case_results=case_results, case_error_reason=case_error_reason,
+                               case_insert_parameter=case_insert_parameter, status=status,
+                               insert_time=insert_time, case_wait_time=case_wait_time,
+                               case_author=case_author, case_img=case_img, case_remark=case_remark)
         return html.case_info(), html.case_list()
 
     def _template_conversion_html(self):

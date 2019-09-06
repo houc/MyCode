@@ -27,7 +27,6 @@ class Email:
         self.excel_path = read_file('report', 'case_info.xlsx')
 
     def _send_title_msg(self, url, case_name):
-        """发送表头信息"""
         self._send_content(url)
         self._send_enclosure(case_name)
         self._send_file()
@@ -38,12 +37,10 @@ class Email:
         return self.contents
 
     def _send_content(self, url):
-        """发送具体内容"""
         link_url = f"""<a href="{url}" target="_blank">点击此处在线查看测试报告</a><img alt="" src="cid:image1"/>"""
         self.contents.attach(MIMEText(link_url, 'html', 'utf8'))
 
     def _send_enclosure(self, case_name):
-        """发送附件统计图"""
         AmilSupport(case_name)
         sys.stderr.write('邮件中的截图统计已完成，正在发送邮件...\n')
         if os.path.exists(self.img_path):
@@ -52,14 +49,12 @@ class Email:
             self.contents.attach(img)
 
     def _send_file(self):
-        """发送带附件的内容"""
         att = MIMEText(open(self.excel_path, 'rb').read(), 'base64', 'utf-8')
         att["Content-Type"] = 'application/octet-stream'
         att["Content-Disposition"] = 'attachment; filename="info.xlsx"'
         self.contents.attach(att)
 
     def sender_email(self, url, case_name):
-        """发送邮件"""
         try:
             content = self._send_title_msg(url, case_name)
             self.Mail.connect(host=self.server, port=self.port)

@@ -56,6 +56,6 @@ class GetConfigMessage(object):
         :param value: 场景的所有数据
         :return: 返回{}里面的数据
         """
-        return re.findall("{(.*?)}", value)
+        return re.findall("“(.*?)”", value)
 
 

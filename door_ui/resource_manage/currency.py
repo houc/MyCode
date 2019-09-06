@@ -68,7 +68,7 @@ class GalleryInterfaceAuxiliary(object):
             new_json = r.json()
             status = new_json.get('status')
             back_data = new_json
-        except TypeError:
+        except (json.JSONDecodeError, TypeError):
             status = except_status
             back_data = back_data
         exc = InterfaceEqErrors(
@@ -86,7 +86,7 @@ class GalleryInterfaceAuxiliary(object):
 
         # 开始请求并处理请求后的结果
         r = requests.get(url=url, stream=True, timeout=10)
-        exception = self.request_except(r)
+        exception = self.request_except(r, module_name='图片库搜索图片')
         assert int(exception[0]) == 200, exception[1] # 断言执行请求状态是否为200
         gallery_ids = json.loads(r.json().get('data')).get('data').get('list')
         if gallery_ids: # 判断图片是否存在
@@ -120,7 +120,7 @@ class GalleryInterfaceAuxiliary(object):
                 if used != 1: # 判断图片是否被使用，1已使用；0未使用
                     url = (self.base_url + read_currency('delete_gallery', 0)) % (id, self.tenantId, self.token)
                     r = requests.get(url=url, stream=True, timeout=10)
-                    exception = self.request_except(r)
+                    exception = self.request_except(r, module_name='图片库删除图片')
                     assert int(exception[0]) == 200, exception[1] # 断言执行请求状态是否为200
                 else:
                     register_used.append(ids)
@@ -137,7 +137,7 @@ class GalleryInterfaceAuxiliary(object):
         file_path = f'{os.path.dirname(os.path.dirname(os.path.dirname(__file__)))}/img/UiAutoTests.jpeg'
         file = {'file': open(file_path, 'rb')}
         r = requests.post(url=url, files=file, data=data, timeout=10, stream=True)
-        exception = self.request_except(r)
+        exception = self.request_except(r, module_name='图片库上传图片')
         assert int(exception[0]) == 200, exception[1]  # 断言执行请求状态是否为200
         data = json.loads(r.json().get('data')).get('data')
         return {'gallery_id': data.get('id'),
@@ -184,11 +184,14 @@ class ResourceManagementElement(OperationElement):
         # 列表搜索框搜索对应内容
         # search_text: 搜索的内容
         self.send_keys(self.search, search_text)  # 列表中输入搜索内容
+        time.sleep(1)
         self.opera_element(self.search).send_keys(Keys.ENTER)  # 执行点击搜索按钮
 
-    def search_list_name_is_true(self, true_name='UiAutoTests'):
+    def search_list_name_is_true(self, true_name='UiAutoTests', asserts='eq'):
         # 通过搜索出来的内容进行遍历查出对应附件名是否存在
         # true_name: 图片库图片名称
+
+        production = []
         elements = self.is_elements(self.list_data)
         if not elements:
             return False
@@ -196,10 +199,15 @@ class ResourceManagementElement(OperationElement):
         for element in range(len(elements)):
             transfer = self.parametrization(self.get_list_name, (element + 1), 3)
             text = self.get_text(transfer)
-            if true_name == text:
-                return True
+            if asserts == 'eq':
+                if true_name == text:
+                    return True
+            if asserts == 'in_eq':
+                if true_name in text:
+                    production.append(text)
+
         else:
-            return False
+            return production
 
     def gallery_opera(self):
         # 图片库列表操作图片是否存在
@@ -253,8 +261,5 @@ class ResourceManagementElement(OperationElement):
             return False
 
 
-
 if __name__ == '__main__':
-    con = GalleryInterfaceAuxiliary()
-    k = con.get_attribute()
-    print(k)
+    GalleryInterfaceAuxiliary('picture_gallery_st').search_gallery()

@@ -1,5 +1,7 @@
 import unittest
 import requests
+import json
+import zipfile
 import time
 import os
 import traceback
@@ -7,8 +9,9 @@ import traceback
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
 from model.CaseSupport import test_re_runner
+from model.TimeConversion import standard_time, custom_sub_time
 from model.SkipModule import Skip, current_module
-from door_ui.interface.currency import get_my_conf
+from door_ui.interface.currency import InterfaceInterfaceAuxiliary
 
 _SKIP = Skip(current_module(PATH(__file__))).is_skip
 _SKIP_REASON = Skip(current_module(PATH(__file__))).is_reason
@@ -37,7 +40,8 @@ class InterfaceSet(UnitTests):
         验证openapi访问统计是否正常
         """
         try:
-            self.url = self.url % (get_my_conf('backstage_token', 'tenantId'))
+            interface = InterfaceInterfaceAuxiliary('backstage_token')
+            self.url = self.url % interface.tenantId
             r = requests.get(url=self.url, stream=True, timeout=10)
             self.first = r.json().get('msg')
             self.assertEqual(self.first, self.second, msg=r.content.decode())
@@ -51,7 +55,8 @@ class InterfaceSet(UnitTests):
         使用接口验证openapi微信
         """
         try:
-            self.url = self.url % (get_my_conf('backstage_token', 'tenantId'))
+            interface = InterfaceInterfaceAuxiliary('backstage_token')
+            self.url = self.url % interface.tenantId
             r = requests.get(url=self.url, stream=True, timeout=10)
             self.first = r.json().get('msg')
             self.assertEqual(self.first, self.second)
@@ -65,10 +70,47 @@ class InterfaceSet(UnitTests):
         使用接口验证openapi+redis->>清理Redis缓存
         """
         try:
-            self.url = self.url % (get_my_conf('backstage_token', 'tenantId'))
+            interface = InterfaceInterfaceAuxiliary('backstage_token')
+            self.url = self.url % interface.tenantId
             r = requests.get(url=self.url, stream=True, timeout=10)
             self.first = r.json().get('code')
             self.assertEqual(self.first, self.second)
+        except Exception:
+            self.error = str(traceback.format_exc())
+            raise
+
+    @test_re_runner(set_up)
+    def test_prod_export(self):
+        """
+        导出产品，是否成功
+        1、使用导出产品接口，是否成功，默认为当前时间前一月
+        """
+        try:
+            interface = InterfaceInterfaceAuxiliary('backstage_token')
+            tenant_id = interface.tenantId
+            token = interface.token
+            start_time = custom_sub_time(30).replace(' ', '+')[:-3]
+            end_time = standard_time().replace(' ', '+')[:-3]
+
+            self.url = self.url % (start_time, end_time, tenant_id, token)
+            init_data = self.data[0].replace("'", '"')
+            data = json.loads(init_data)
+            data['startDate'] = start_time
+            data['endDate'] = end_time
+            self.data = data
+
+            response = requests.get(url=self.url, stream=True, timeout=10, data=self.data)
+            response.raise_for_status()
+            download_file = f'{os.path.dirname(os.path.dirname(os.path.dirname(__file__)))}/img/product_data.zip'
+            with open(download_file, 'wb') as file:
+                for chunk in response.iter_content(chunk_size=10000):  # 边下边存
+                    file.write(chunk)
+
+            with zipfile.ZipFile(download_file) as files:
+                for file in files.namelist():
+                    self.first = file
+                    self.assertEqual(self.first, self.second, msg='导出产品失败，zip的products.xlsx不存在')
+
         except Exception:
             self.error = str(traceback.format_exc())
             raise

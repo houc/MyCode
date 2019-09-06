@@ -12,7 +12,7 @@ from model.MyException import SQLDataError, FUN_NAME
 from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
 from model.MyDB import MyDB
 from model.HtmlDataHandle import MyReport
-from . HtmlReport import (IP, __local_ip__, PORT, __local_port__, __ip__, __port__)
+from . HtmlReport import (__local_ip__, __local_port__, __ip__, __port__)
 from model.ExcelReport import ExcelTitle
 from model.CaseSupport import TestRunning
 
@@ -44,9 +44,13 @@ class DataHandleConversion(object):
             for first_data in range(len(in_sql_data)):
                 _data = in_sql_data[first_data]
                 for second_data in range(len(_data)):
+
+                    # ---------------总用例开始时间--------------
                     if first_data == 0:
                         if second_data == 12:
                             case_messages['start_time'] = start_time
+
+                    # ---------------这里判断case状态-----------------
                     if second_data == 6:
                         if _data[second_data] == "错误":
                             error.append(_data[second_data])
@@ -56,14 +60,23 @@ class DataHandleConversion(object):
                             fail.append(_data[second_data])
                         elif _data[second_data] == "跳过":
                             skip.append(_data[second_data])
-                    if second_data == 9:
+
+                    # ------------用例用时-----------------
+                    if second_data == 10:
                         if _data[second_data] != 'None':
-                            sql_data.append(float(_data[second_data][:-1]))
-                    if second_data == 11:
+                            sql_data.append(float(_data[second_data]))
+
+                    # ------------用例编写人员---------------
+                    if second_data == 12:
                         member.append(_data[second_data])
+
+                    # -----------总用例完成时间--------------
                     if first_data == len(sql_data) - 1:
                         if second_data == 12:
                             case_messages['end_time'] = end_time
+
+            # -------------用例最短时间与最长时间判断-------------
+            # -------------用例编写人员去重-------------
             if sql_data and member:
                 case_messages["short_time"] = time_conversion(min(sql_data))
                 case_messages["long_time"] = time_conversion(max(sql_data))
@@ -76,11 +89,15 @@ class DataHandleConversion(object):
                 set_member = list(set(member))
                 set_member.remove('None') if 'None' in set_member else ''
                 case_messages["member"] = set_member
+
+            # ------------处理不同用例状态总个数
             case_messages["testsRun"] = len(error) + len(fail) + len(success) + len(skip)
             case_messages["errors"] = len(error)
             case_messages["failures"] = len(fail)
             case_messages["success"] = len(success)
             case_messages['skipped'] = len(skip)
+
+            # -----------判断总开始时间与总结束时间是否为空----------------
             if case_messages.get('end_time') is None:
                 case_messages['end_time'] = end_time
             if case_messages.get('start_time') is None:
@@ -91,6 +108,8 @@ class DataHandleConversion(object):
             case_messages['tool'] = 'Python' + platform.python_version()
             case_messages['version'] = self.version
             total = case_messages["errors"] + case_messages["failures"] + case_messages["success"]
+
+            # --------------用例效率-------------------
             try:
                 efficiency = (total / case_messages['testsRun']) * 100
             except ZeroDivisionError:
@@ -156,7 +175,6 @@ class ConversionDiscover(object):
         self.lock.release()
 
     def get_case_detailed(self, execute_method='单线程'):
-        """获取需要执行的用例并运行对应的用例"""
         case_data = MyDB().query_data()
         total_case = self.case_handle.sql_data_handle(in_sql_data=case_data,
                                                       start_time=self.start_time,

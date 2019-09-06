@@ -130,7 +130,6 @@ class SceneError(Exception):
 
 
 class ExceptionPackage(object):
-    """异常类的封装"""
     def __init__(self, module, driver, text=None):
         from model.Logs import logger
         error = traceback.format_exc()

@@ -80,4 +80,4 @@ def time_conversion(time):
 
 
 if __name__ == '__main__':
-    print(time_conversion(''))
+    print(custom_sub_time(7))

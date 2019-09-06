@@ -79,11 +79,15 @@ class _Result(TestResult):
     def _skip_data_handle(test, reason):
         catalog = test.__module__ + '.' + test.__class__.__name__
         name = str(test).split(' (')[0]
-        MyDB().insert_data(ids=catalog, level=None,
-                           module=None, name=name, remark=None,
-                           wait_time=None, status='跳过', url=None,
-                           insert_time=None, img=None, error_reason=f'跳过原因: {reason}',
-                           author=None, results_value=None, case_remark=None)
+        MyDB().insert_data(case_catalog=catalog, case_level=None,
+                           case_module=None, case_name=name,
+                           case_url=None, case_scene=None,
+                           case_status='跳过', case_results=None,
+                           case_error_reason=f'跳过原因: {reason}',
+                           case_insert_parameter=None,
+                           case_wait_time=None, case_img=None,
+                           case_author=None, case_remark=None,
+                           insert_time=None)
 
     def startTest(self, test):
         TestResult.startTest(self, test)

@@ -78,7 +78,13 @@ class UnitTests(unittest.TestCase):
             log_dr = self.driver.get_log('driver')
             logger.debug(log_br)
             logger.debug(log_dr)
-        MyAsserts(self.first, self.second, self.catalog, self.level, self.case_name, self.case_scene,
-                  self.status, self.error, self.url, total_time, self.driver, self.assembly,
-                  self.screenshots, self.author, self, error_path, logger,
-                  case_remark=self.case_remark).asserts()
+
+        asserts = MyAsserts(case_catalog=self.catalog, case_level=self.level,
+                            case_module=self.assembly, case_name=self.case_name,
+                            case_url=self.url, case_scene=self.case_scene,
+                            case_results=self.second, case_error_reason=self.error,
+                            case_insert_parameter=self.data, case_wait_time=total_time,
+                            case_img=self.screenshots, case_author=self.author,
+                            case_remark=self.case_remark, log=logger,
+                            assert_first=self.first, error_path=error_path)
+        asserts.asserts_eq()

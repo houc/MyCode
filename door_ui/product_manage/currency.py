@@ -63,8 +63,8 @@ class ProductManageInterfaceAuxiliary(object):
         self.base_url = MyConfig('new_backstage').base_url  # 后台url
         self.design_url = MyConfig('designer').base_url  # 设计器url
 
-    def request_except(self, r, module_name=None,  remark=None, 
-                       back_data=None, except_status='-1'):
+    def request_except(self, r, module_name=None, remark=None,
+                       back_data=None, except_status='-1', insert_data=None):
         """
         请求结果返回后异常处理封装，类似是否成功请求并成功返回对应状态码
         :param r: requests请求参数
@@ -72,28 +72,31 @@ class ProductManageInterfaceAuxiliary(object):
         :param module_name: 当前执行请求的模块名称
         :param back_data: 异常后返回的数据，如是html建议使用话术描述，不用完全返回，不然测试报告中存在太多，可能会引发异常！
         :param except_status: 异常后自定义一个状态码，请勿与判断状态码一致，否则执行下属代码会引发异常！
+        :param insert_data: 传入数据
         :return: 元组返回，1为状态，2位异常值，用法：assert int(exception[0]) == 200, exception[1]
         """
         try:
             new_json = r.json()
             status = new_json.get('status')
             back_data = new_json
-        except TypeError:
+        except (json.JSONDecodeError, TypeError):
             status = except_status
             back_data = back_data
         exc = InterfaceEqErrors(
             module_name=module_name, status=r.status_code, url=r.url, type=r.request,
-            used_time=r.elapsed.total_seconds(), back_data=back_data, remark=remark
+            used_time=r.elapsed.total_seconds(), back_data=back_data, remark=remark,
+            insert_data=insert_data
         )
         return status, exc
 
-    def search_product(self):
+    def search_product(self, product_name='UI测试产品', asserts='eq'):
         # 产品列表搜索产品
         url = (self.base_url + read_currency('search_product_is_exits', 0)) % (self.tenantId, self.token)
         production = [] # 通过接口获取产品的对应信息
         data = read_currency('search_product_is_exits', 1)
-        r = requests.post(url=url, json=data, stream=True, timeout=10)
-        exception = self.request_except(r)
+        data['keyword'] = product_name
+        r = requests.post(url=url, json=data, timeout=10, stream=True)
+        exception = self.request_except(r, module_name='产品列表搜索产品', insert_data=data)
         assert int(exception[0]) == 200, exception[1]  # 断言执行请求状态是否为200
         data = json.loads(r.json().get('data')).get('data').get('list')
         if not data: # 接口中如不存在产品，返回一个bool为False
@@ -101,38 +104,63 @@ class ProductManageInterfaceAuxiliary(object):
         else:
             img_urls = []
             for product in data:
-                if product.get('productName') == 'UI测试产品':
+
+                def search():  # 查找产品方法
                     product_id = product.get('id')
                     product_img_urls = product.get('productImages')
-                    for product_img_url in product_img_urls:
-                        img_url = product_img_url.get('thumbUrl')
-                        img_urls.append(img_url)
-                    production.append({
-                        product_id: img_urls
-                    })
-                    break
-            else: return False
-        return production
+                    if product_img_urls is not None:    # 判断产品中是否有图片
+                        for product_img_url in product_img_urls:
+                            img_url = product_img_url.get('thumbUrl')
+                            img_urls.append(img_url)
+                    if img_urls:   # 如果产品中有产品附件，那么与产品对应id和附件信息一并添加到产品列表中
+                        production.append({
+                            product_id: img_urls
+                        })
+                        return production
+                    else: # 如果没有产品附件，返回产品id到产品列表
+                        production.append(product_id)
 
-    def delete_product(self):
+                if asserts == 'eq':
+                    if product.get('productName') == product_name:
+                        return search()
+                if asserts == 'in_eq':
+                    if product_name in product.get('productName'):
+                        search()
+            else:
+                if not production: return False
+
+        return list(map(int, production))
+
+
+    def delete_product(self, product_name='UI测试产品', asserts='eq'):
         # 删除产品
-        del_id = self.search_product()
-        if del_id:
-            id = list(del_id[0].keys())[0]
-            url = (self.base_url + read_currency('delete_product', 0)) % (id, self.tenantId, self.token)
+        del_id = self.search_product(product_name=product_name, asserts=asserts)
+
+        def del_product(prod_id):
+            url = (self.base_url + read_currency('delete_product', 0)) % (prod_id, self.tenantId, self.token)
             r = requests.get(url=url, stream=True, timeout=10)
-            exception = self.request_except(r)
+            exception = self.request_except(r, module_name='删除产品')
             assert int(exception[0]) == 200, exception[1]  # 断言执行请求状态是否为200
             data = json.loads(r.json().get('data')).get('data').get('success') # 返回产品状态bool值，这个是在接口中获取的！
             return data
+
+        for __del in del_id:
+            if isinstance(__del, dict):
+                ids = list(__del.keys())[0]
+                return del_product(ids) # 返回删除状态
+
+            elif isinstance(__del, int):
+                del_status = del_product(__del)
+                if not del_status: return False
+
         else: return None # 没有需要删除的产品
 
-    def get_class(self):
+    def get_class(self, class_type='这是一个顶级分类测试'):
         # 获取分类
         url = (self.base_url + read_currency('get_class', 0)) % (self.tenantId, self.token)
         r = requests.get(url=url, stream=True, timeout=10)
         class_manage = [] #  分类管理数据
-        exception = self.request_except(r)
+        exception = self.request_except(r, module_name='获取产品分类')
         assert int(exception[0]) == 200, exception[1]  # 断言执行请求状态是否为200
         data = json.loads(r.json().get('data')).get('data')
         if not data: return False # 接口中如不存在分类，返回一个bool为False
@@ -140,7 +168,7 @@ class ProductManageInterfaceAuxiliary(object):
             for __class in data:
                 id = __class.get('id')
                 name = __class.get('categoryName')
-                if name == '这是一个顶级分类测试':
+                if name == class_type:
                     class_manage.append({
                         'id': id,
                         'name': name
@@ -149,12 +177,12 @@ class ProductManageInterfaceAuxiliary(object):
             else: return False
         return class_manage
 
-    def get_attribute(self):
+    def get_attribute(self, attribute='测试规格属性值'):
         # 获取属性管理
         url = (self.base_url + read_currency('get_attribute', 0)) % (self.tenantId, self.token)
         r = requests.get(url=url, stream=True, timeout=10)
         attribute_manage = []  # 属性管理数据
-        exception = self.request_except(r)
+        exception = self.request_except(r, module_name='获取产品属性管理')
         assert int(exception[0]) == 200, exception[1]  # 断言执行请求状态是否为200
         data = json.loads(r.json().get('data')).get('data').get('list')
         if not data:
@@ -163,7 +191,7 @@ class ProductManageInterfaceAuxiliary(object):
             for __attribute in data:
                 id = __attribute.get('id')
                 name = __attribute.get('templateName')
-                if name == '测试规格属性值':
+                if name == attribute:
                     attribute_manage.append({
                         'id': id,
                         'name': name
@@ -172,6 +200,18 @@ class ProductManageInterfaceAuxiliary(object):
             else:
                 return False
         return attribute_manage
+
+    def interface_import_product(self):
+        # 接口导入产品
+        url = (self.base_url + read_currency('import_product', 0)) % (self.tenantId, self.token)
+        data = read_currency('import_product', 1)
+        product_file = f'{os.path.dirname(os.path.dirname(os.path.dirname(__file__)))}/img/ProductData.zip'
+        file = {'file': open(product_file, 'rb')}
+        r = requests.post(url=url, files=file, timeout=10, data=data, stream=True)
+        exception = self.request_except(r, module_name='导入产品', insert_data=data)
+        assert int(exception[0]) == 200, exception[1]  # 断言执行请求状态是否为200
+        result = r.json().get('message')
+        return result  # 获取导入返回的信息
 
 
 class ProductManageElement(ResourceManagementElement):
@@ -225,6 +265,9 @@ class ProductManageElement(ResourceManagementElement):
     ok = (By.XPATH, "(//span[text()='确 定'])[7]/parent::button") # 附件确定
     button = (By.XPATH, "//span[text()='保存']/parent::button") # 保存按钮
     tips_box = (By.XPATH, "//div[@role='alert']/p") # 弹窗消息
+
+    # ------设计器预览界面获取产品id--------
+    views_product_id = (By.CLASS_NAME, "e_box.p_Product")  # 获取多个产品class名
 
     # -------添加分类----------
 
@@ -302,7 +345,7 @@ class ProductManageElement(ResourceManagementElement):
                             transfer1 = self.parametrization(self.delete_button, none)  # 弹窗中的删除
                             self.is_click(transfer1)
 
-    def views_opera(self):
+    def views_opera(self, product_name='UI测试产品'):
         # 预览操作，需要先切换到预览界面
         self.is_click(self.views_time)
         time.sleep(3)
@@ -311,7 +354,7 @@ class ProductManageElement(ResourceManagementElement):
         if elements:
             for count, element in enumerate(elements, start=1):
                 name = element.get_attribute('title')
-                if name == 'UI测试产品':
+                if name == product_name:
                     transfer = self.parametrization(self.get_img_url, count)
                     urls = self.is_elements(transfer)
                     for url in urls:
@@ -320,6 +363,21 @@ class ProductManageElement(ResourceManagementElement):
                     return img_urls
             else: return False # 如果没有该产品就返回false
         else: return False # 如果没有该产品就返回false
+
+    def views_get_product_id(self):
+        # 在设计器预览界面，获取产品
+        product_id = []
+        self.is_click(self.views_time)
+        time.sleep(3)
+        elements = self.is_elements(self.views_product_id)
+        if not elements:
+            return False
+        else:
+            for element in elements:
+                time.sleep(0.5)
+                data_id = element.get_attribute('dataid')
+                product_id.append(data_id)  # 返回设计器预览界面中的从id 在源码中的e_box p_Product->dataid获取
+            return list(map(int, product_id))
 
     def add_product(self):
         # 添加产品
@@ -368,7 +426,14 @@ class ProductManageElement(ResourceManagementElement):
         time.sleep(1)
         return self.get_text(self.tips_box)
 
+    def search_box(self, search_text='UI测试产品导入'):
+        super(ProductManageElement, self).search_box(search_text=search_text)
+
+    def search_list_name_is_true(self, true_name='UI测试产品导入', asserts='in_eq'):
+        # 产品列表中搜索产品
+        return super(ProductManageElement, self).search_list_name_is_true(true_name=true_name,
+                                                                          asserts=asserts)
 
 if __name__ == '__main__':
-    k = ProductManageInterfaceAuxiliary().get_class()
+    k = ProductManageInterfaceAuxiliary('backstage_token').search_product('UI测试产品导入', 'in_eq')
     print(k)

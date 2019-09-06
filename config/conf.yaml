@@ -1,9 +1,9 @@
 base_url:
   designer:    # 设计器地址，被测试网站
-  designer_user: admin # 设计器账户
+  designer_user:  # 设计器账户
   new_backstage:  # 新后台地址
-  backstage_user: 13120396777 # 新后台账户
-  backstage_password: test123456 # 新后台密码
+  backstage_user:  # 新后台账户
+  backstage_password:  # 新后台密码
 excel_parameter:
   project_name: door_ui          # 项目名称
   test_version: V0.0.0   # 测试时的版本号
@@ -38,15 +38,16 @@ sql:
   address: localhost                    # 数据库地址，此处为本地数据库地址
   sql_table: DROP TABLE IF EXISTS result                    # 表是否存在
   sql_create_title:  CREATE TABLE result (
-                     case_id longtext,
+                     case_catalog longtext,
                      case_level longtext,
                      case_module longtext,
                      case_name  longtext,
                      case_url longtext,
                      case_scene  longtext,
                      case_status longtext,
-                     results_value longtext,
+                     case_results longtext,
                      case_error_reason longtext,
+                     case_insert_parameter longtext,
                      case_wait_time longtext,
                      case_img longtext,
                      case_author longtext,
@@ -54,21 +55,22 @@ sql:
                      insert_time timestamp
                      )              # 插入表头
   sql_query: SELECT * FROM result                           # 查询result里面的所有数据
-  sql_insert: INSERT INTO result(case_id,
+  sql_insert: INSERT INTO result(case_catalog,
                                  case_level,
                                  case_module,
                                  case_name,
                                  case_url,
                                  case_scene,
                                  case_status,
-                                 results_value,
+                                 case_results,
                                  case_error_reason,
+                                 case_insert_parameter,
                                  case_wait_time,
                                  case_img,
                                  case_author,
                                  case_remark,
                                  insert_time
-                                 ) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
+                                 ) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s') # 插入数据
   sql_delete: DELETE FROM result WHERE 1=1                 # 数据库全部清除数据
   sql_update: UPDATE result SET %s WHERE %s                # 更新数据
   sql_create_list: create database %s character set utf8  # 创建数据库

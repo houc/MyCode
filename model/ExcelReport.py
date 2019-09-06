@@ -64,11 +64,12 @@ class WriteExcel:
         self.sheet_test.set_column(6, 6, 8)
         self.sheet_test.set_column(7, 7, 30)
         self.sheet_test.set_column(8, 8, 40)
-        self.sheet_test.set_column(9, 9, 18)
-        self.sheet_test.set_column(10, 10, 34)
-        self.sheet_test.set_column(11, 11, 10)
-        self.sheet_test.set_column(12, 12, 30)
-        self.sheet_test.set_column(13, 13, 20)
+        self.sheet_test.set_column(9, 9, 35)
+        self.sheet_test.set_column(10, 10, 18)
+        self.sheet_test.set_column(11, 11, 34)
+        self.sheet_test.set_column(12, 12, 10)
+        self.sheet_test.set_column(13, 13, 30)
+        self.sheet_test.set_column(14, 14, 20)
         return self.style_title
 
     def _red_style(self, color='red'):
@@ -134,24 +135,24 @@ class WriteExcel:
                         self.sheet_test.write(a, c, d, self.yellow)
                         path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
                         if not 'None' == path and path is not None:
-                            self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
+                            self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '成功' == d:
-                        self.sheet_test.write(a, c, d, self.blue)
+                        self.sheet_test.write_string(a, c, d, self.blue)
                     elif '错误' == d:
-                        self.sheet_test.write(a, c, d, self.red)
+                        self.sheet_test.write_string(a, c, d, self.red)
                         path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
                         if not 'None' == path and path is not None:
-                            self.sheet_test.insert_image(a, c + 4, path, {'x_scale': 0.127, 'y_scale': 0.169})
+                            self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
                     elif '跳过' == d:
-                        self.sheet_test.write(a, c, d, self.skip)
+                        self.sheet_test.write_string(a, c, d, self.skip)
                     elif 'None' == d:
-                        self.sheet_test.write(a, c, '.........', self.test_content_style)
+                        self.sheet_test.write_string(a, c, '.' * 12, self.test_content_style)
                     else:
                         self.sheet_test.set_row(a, 120)
-                        if len(str(d)) >= 5000:
-                            pass
+                        if c == 11:
+                            self.sheet_test.write_string(a, c, '', self.test_content_style)
                         else:
-                            self.sheet_test.write(a, c, str(d), self.test_content_style)
+                            self.sheet_test.write_string(a, c, str(d), self.test_content_style)
         self.sheet_test.freeze_panes(1, 4)
 
     def _pc_title_style(self):
@@ -340,7 +341,7 @@ class ExcelTitle(WriteExcel):
         kwargs：PC配置中的表头/title_开头是报告里面的数据
         """
         args = '目录', '用例级别', '模块', '用例名称', '测试地址', '场景', '状态', '预期结果', \
-               '异常原因（实际结果）', '用例执行时间', '截图', '负责人', '备注', '用例完成时间'
+               '异常原因（实际结果）', '传入参数', '用例执行时间', '截图', '负责人', '备注', '用例完成时间'
         kwargs = {'title': '测试机配置明细单', 'memory': '内存', 'disk': '磁盘', 'network': '网卡',
                   'system': '操作系统', 'consume': '硬件消耗情况', 'config': '硬件配置情况', 'CPU': 'CPU',
                   'title_title': '{}{}UI自动化测试报告', 'title_start_time': '开始时间', 'title_stop_time': '结束时间',

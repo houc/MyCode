@@ -46,6 +46,7 @@ class TestPictureGallery(UnitTests):
                 # 接口如果存在，那么再去web端验证是否也存在
 
                 # ---------------这里是验证图片库列表是否存在UiAutoTests图片---------------
+                driver.switch_window(1)  # 切换到Vue后台
                 self.first = driver.gallery_opera()
                 self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(self.first, self.second,
@@ -99,6 +100,7 @@ class TestPictureGallery(UnitTests):
                 # 接口如果存在，那么再去web端验证是否也存在
 
                 # ---------------这里是验证图片库列表是否存在UiAutoTests图片---------------
+                driver.switch_window(1)  #  切换到Vue后台
                 self.first = driver.gallery_opera()
                 self.screenshots = driver.screen_base64_shot()
                 self.assertEqual(self.first, self.second,

@@ -1,3 +1,9 @@
+import dataclasses
+import time
+import typing
+
+__author__ = 'hc'
+
 CURRENCY_PY = '''import requests
 import time
 import json
@@ -53,8 +59,8 @@ class {}InterfaceAuxiliary(object):
         
     """
     
-    def request_except(self, r, module_name=None,  remark=None, 
-                       back_data=None, except_status='-1'):
+        def request_except(self, r, module_name=None, remark=None,
+                       back_data=None, except_status='-1', insert_data=None):
         """
         请求结果返回后异常处理封装，类似是否成功请求并成功返回对应状态码
         :param r: requests请求参数
@@ -62,18 +68,20 @@ class {}InterfaceAuxiliary(object):
         :param module_name: 当前执行请求的模块名称
         :param back_data: 异常后返回的数据，如是html建议使用话术描述，不用完全返回，不然测试报告中存在太多，可能会引发异常！
         :param except_status: 异常后自定义一个状态码，请勿与判断状态码一致，否则执行下属代码会引发异常！
+        :param insert_data: 传入数据
         :return: 元组返回，1为状态，2位异常值，用法：assert int(exception[0]) == 200, exception[1]
         """
         try:
             new_json = r.json()
             status = new_json.get('status')
             back_data = new_json
-        except TypeError:
+        except (json.JSONDecodeError, TypeError):
             status = except_status
             back_data = back_data
         exc = InterfaceEqErrors(
             module_name=module_name, status=r.status_code, url=r.url, type=r.request,
-            used_time=r.elapsed.total_seconds(), back_data=back_data, remark=remark
+            used_time=r.elapsed.total_seconds(), back_data=back_data, remark=remark,
+            insert_data=insert_data
         )
         return status, exc    
 
@@ -206,27 +214,30 @@ class LoginPublic(BrowserToken):
 '''
 
 
+@dataclasses.dataclass
 class GetTemplateHTML(object):
-    def __init__(self, catalog, modules, level, method, address, scene, expect, actual, status, finish_time,
-                 use_time, remark, id, members, case_remark):
-        self.catalog = catalog
-        self.modules = modules
-        self.level = level
-        self.method = method
-        self.address = address
-        self.scene = scene
-        self.expect = expect
-        self.actual = actual
-        self.status = status
-        self.use_time = use_time
-        self.finish_time = finish_time
-        self.case_remark = case_remark
-        if 'None' == remark:
+
+    case_catalog: str
+    case_module: str
+    case_level: str
+    case_name: str
+    case_url: str
+    case_scene: str
+    case_results: str
+    case_error_reason: str
+    case_insert_parameter: str
+    status: str
+    insert_time: time
+    case_wait_time: time
+    case_author: str
+    case_img: str
+    case_remark: str
+
+    def __post_init__(self):
+        if 'None' == self.case_img:
             self.url = ''
         else:
-            self.url = 'data:image/JPEG;base64,' + remark
-        self.id = id
-        self.members = members
+            self.url = 'data:image/JPEG;base64,' + self.case_img
 
     def case_info(self):
         """用例详情"""
@@ -235,43 +246,47 @@ class GetTemplateHTML(object):
         else:
             img_url = ''
         return f'''
-    <div class="modal fade" id="{self.method}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="{self.case_name}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog popUp">
             <div class="modal-content">
-                <div class="modal-header"><h4 class="modal-title" id="myModalLabel">{self.method}详情</h4></div>
+                <div class="modal-header"><h4 class="modal-title" id="myModalLabel">{self.case_name}详情</h4></div>
                 <div class="modal-body">
                     <table class="popUp_table">
                         <tr>
                             <th class="th">目录:</th>
-                            <td class="td"><pre class="is_p">{self.catalog}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_catalog}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">模块:</th>
-                            <td class="td"><pre class="is_p">{self.modules}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_module}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">用例级别:</th>
-                            <td class="td"><pre class="is_p">{self.level}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_level}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">方法:</th>
-                            <td class="td"><pre class="is_p">{self.method}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_name}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">地址:</th>
-                            <td class="td"><pre class="is_p">{self.address}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_url}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">场景:</th>
-                            <td class="td"><pre class="is_p">{self.scene}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_scene}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">预期结果:</th>
-                            <td class="td"><pre class="is_p">{self.expect}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_results}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">实际结果（异常原因）:</th>
-                            <td class="td"><pre class="is_p">{self.actual}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_error_reason}</pre></td>
+                        </tr>
+                        <tr>
+                            <th class="th">传入参数:</th>
+                            <td class="td"><pre class="is_p">{self.case_insert_parameter}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">状态:</th>
@@ -279,15 +294,15 @@ class GetTemplateHTML(object):
                         </tr>
                         <tr>
                             <th class="th">完成时间:</th>
-                            <td class="td"><pre class="is_p">{self.finish_time}</pre></td>
+                            <td class="td"><pre class="is_p">{self.insert_time}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">用时:</th>
-                            <td class="td"><pre class="is_p">{self.use_time}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_wait_time}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">负责人:</th>
-                            <td class="td"><pre class="is_p">{self.members}</pre></td>
+                            <td class="td"><pre class="is_p">{self.case_author}</pre></td>
                         </tr>
                         <tr>
                             <th class="th">附件:</th>
@@ -311,14 +326,14 @@ class GetTemplateHTML(object):
         """用例列表"""
         return f'''
                         <tr>
-                            <td class="list_td">{self.catalog}</td>
-                            <td class="list_td">{self.modules}</td>
-                            <td class="list_td">{self.method}</td>
-                            <td class="list_td">{self.address}</td>
+                            <td class="list_td">{self.case_catalog}</td>
+                            <td class="list_td">{self.case_module}</td>
+                            <td class="list_td">{self.case_name}</td>
+                            <td class="list_td">{self.case_url}</td>
                             <td class="list_td">{self.status}</td>
-                            <td class="list_td">{self.use_time}</td>
-                            <td class="list_td">{self.members}</td>
-                            <td class="list_td hand"><a data-toggle="modal" data-target="#{self.method}">详细</a></td>
+                            <td class="list_td">{self.case_wait_time}</td>
+                            <td class="list_td">{self.case_author}</td>
+                            <td class="list_td hand"><a data-toggle="modal" data-target="#{self.case_name}">详细</a></td>
                         </tr>'''
     @property
     def _enlarge_img(self):

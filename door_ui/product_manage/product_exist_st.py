@@ -48,15 +48,16 @@ class TestProduct(UnitTests):
                     # 如果产品存在，则前端校验产品是否存在，以及产品下对应附件是否存在
 
                     # ---------------------接口存在该产品，在使用UI去判断是否存在---------------
+                    driver.switch_window(1)  # 切换到Vue后台
                     driver.get(self.url)
                     driver.search_box(search_text='UI测试产品')
-                    time.sleep(2)
                     self.first = driver.search_list_name_is_true(true_name='UI测试产品')
                     self.screenshots = driver.screen_base64_shot()
                     self.assertTrue(self.first, msg='接口存在“UI测试产品”，但web产品管理中没有存在')
 
                     # ------------进入前台验证-------------
                     driver.switch_window(0) # 切换到设计器tab
+                    time.sleep(2)
                     driver.design_create_template()
                     driver.design_drag()
                     driver.switch_window(2) # 切换到设计器预览窗口
@@ -65,9 +66,11 @@ class TestProduct(UnitTests):
                     self.second = list(is_product_exist[0].values())[0]
                     self.screenshots = driver.screen_base64_shot()
                     self.assertListEqual(self.first, self.second, msg='web端使用的图片在前台组件使用的图片不相等')
+                    driver.close_current_window()
 
                     # ---------删除模板和产品-------------
                     driver.switch_window(0) # 切换到设计器tab
+                    time.sleep(2)
                     driver.designer_delete_page()
                     status = driver.interface.delete_product()
                     if status is not None:
@@ -94,4 +97,3 @@ class TestProduct(UnitTests):
         except Exception:
             self.error = str(traceback.format_exc())
             raise
-

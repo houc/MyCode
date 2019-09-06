@@ -80,11 +80,11 @@ class LoginPublic(BrowserToken):
 
     def _get_backstage_token(self):
         # 获取新后台token
-        time.sleep(2)
         js_token = "return window.sessionStorage.getItem('token')"
         js_tenantId = "return window.sessionStorage.getItem('tenantId')"
         token = self.execute_js(js_token)
         tenantId = self.execute_js(js_tenantId)
+        print(token, tenantId)
         if token is not None and tenantId is not None:
             self.config.remove_section(section=self.module)
             self.config.add_section(section=self.module)
