@@ -26,7 +26,7 @@ class MyAsserts:
     case_remark: str
 
     log: typing.Any
-    assert_first: str
+    # assert_first: str
     error_path: str
     encoding: str = 'utf-8'
 
