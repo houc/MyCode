@@ -66,9 +66,6 @@ class _Result(TestResult):
         self.fail_count = 0
         self.success_count = 0
 
-    def _get_name(self, test):
-        return str(test).split(' (')[0]
-
     def _data_update_in_to_my_db(self, excepts=None, *, case_name, status):
         update = "case_error_reason='%s', case_status='%s'" % (excepts, status)
         base_value = "case_name='%s'" % case_name
@@ -78,9 +75,8 @@ class _Result(TestResult):
 
     def _get_exception(self, errors, status):
         for test, error in errors:
-            name = self._get_name(test)
             self._data_update_in_to_my_db(excepts=self.str_conversion(error),
-                                          case_name=name,
+                                          case_name=test._testMethodName,
                                           status=status)
 
     @staticmethod
@@ -99,10 +95,9 @@ class _Result(TestResult):
 
     def _skip_data_handle(self, test, reason):
         catalog = test.__module__ + '.' + test.__class__.__name__
-        name = self._get_name(test)
         MyDB().insert_data(case_catalog=catalog, case_status='跳过',
                            case_error_reason=f'跳过原因: {reason}',
-                           case_name=name)
+                           case_name=test._testMethodName)
 
     def startTest(self, test):
         TestResult.startTest(self, test)
@@ -153,8 +148,8 @@ class _Result(TestResult):
         else:
             self.stream.write("x")
             self.stream.flush()
-        name = self._get_name(test)
-        self._data_update_in_to_my_db(case_name=name, status='期望失败')
+        self._data_update_in_to_my_db(case_name=test._testMethodName,
+                                      status='期望失败')
 
     def addUnexpectedSuccess(self, test):
         super(_Result, self).addUnexpectedSuccess(test)
@@ -163,8 +158,8 @@ class _Result(TestResult):
         else:
             self.stream.write("u")
             self.stream.flush()
-        name = self._get_name(test)
-        self._data_update_in_to_my_db(case_name=name, status='意外成功')
+        self._data_update_in_to_my_db(case_name=test._testMethodName,
+                                      status='意外成功')
 
     def addSuccess(self, test):
         super(_Result, self).addSuccess(test)
@@ -173,14 +168,12 @@ class _Result(TestResult):
         else:
             self.stream.write('.')
             self.stream.flush()
-        name = self._get_name(test)
-        self._data_update_in_to_my_db(case_name=name, status='成功')
+        self._data_update_in_to_my_db(case_name=test._testMethodName,
+                                      status='成功')
         self.success_count += 1
 
 
 class TestRunning(TestSuite):
-
-    __class_result = _Result
 
     def __init__(self, sequential_execution=False, verbosity=True,
                  stream=None):
@@ -190,7 +183,7 @@ class TestRunning(TestSuite):
         self.stream = stream
 
     def _result(self):
-        return self.__class_result(verbosity=self.verbosity, stream=self.stream)
+        return _Result(verbosity=self.verbosity, stream=self.stream)
 
     def _execute_case(self, tmp_list, result):
         top_level = False
@@ -237,15 +230,14 @@ class TestRunning(TestSuite):
         result.stream.writeln("Ran %d test%s in %.3fs" %
                             (run, run != 1 and "s" or "", time_taken))
         result.stream.writeln()
-        expected_fails = unexpected_successes = skipped = 0
+        expected_fails = unexpected_successes = 0
         try:
             results = map(len, (result.expectedFailures,
-                                result.unexpectedSuccesses,
-                                result.skipped))
+                                result.unexpectedSuccesses))
         except AttributeError:
             pass
         else:
-            expected_fails, unexpected_successes, skipped = results
+            expected_fails, unexpected_successes = results
         infos = []
         if not result.wasSuccessful():
             result.stream.write("FAILED")
@@ -256,8 +248,8 @@ class TestRunning(TestSuite):
                 infos.append("errors=%d" % errored)
         else:
             result.stream.write("OK")
-        if skipped:
-            infos.append("skipped=%d" % skipped)
+        if result.skip_count:
+            infos.append("skipped=%d" % result.skip_count)
         if expected_fails:
             infos.append("expected failures=%d" % expected_fails)
         if unexpected_successes:
