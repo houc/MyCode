@@ -18,7 +18,7 @@ class MyAsserts:
     case_scene: str
     # case_status: str  # 判断的！不作为传参处理！
     case_results: str
-    case_error_reason: str
+    # case_error_reason: str
     case_insert_parameter: str
     case_wait_time: time
     case_img: str
@@ -32,40 +32,28 @@ class MyAsserts:
 
     def __post_init__(self):
         if self.case_insert_parameter:
-            self.insert = self._strConversion(self.case_insert_parameter)
+            self.insert = self.str_conversion(self.case_insert_parameter)
         else:
             self.insert = None
         self.insert_time = standard_time()
 
     def asserts_eq(self):
-        img = None
-        if self.case_error_reason is not None:
-            if 'AssertionError' in str(self.case_error_reason):
-                status = '失败'
-            else:
-                status = '错误'
-            error_reason = self._strConversion(self.case_error_reason)
-            self._log(self.case_error_reason)
-            img = self.case_img
-        else:
-            status = '成功'
-            error_reason = self._strConversion(self.assert_first)
-        self._insert_sql(status, img, error_reason)
+        self._insert_sql(status=None, img=self.case_img, reason=self.case_results)
 
     def _insert_sql(self, status, img, reason):
         MyDB().insert_data(case_catalog=self.case_catalog, case_level=self.case_level,
-                           case_module=self.case_module, case_name=self.case_name,
-                           case_url=self.case_url, case_scene=self._strConversion(self.case_scene),
-                           case_status=status, case_results=self._strConversion(self.case_results),
-                           case_error_reason=reason,
-                           case_insert_parameter=self.insert,
-                           case_wait_time=f'{self.case_wait_time :.2f}',
-                           case_img=img, case_author=self.case_author,
-                           case_remark=self._strConversion(self.case_remark),
-                           insert_time=self.insert_time)
+                            case_module=self.case_module, case_name=self.case_name,
+                            case_url=self.case_url, case_scene=self.str_conversion(self.case_scene),
+                            case_status=status, case_results=self.str_conversion(self.case_results),
+                            case_error_reason=reason,
+                            case_insert_parameter=self.insert,
+                            case_wait_time=f'{self.case_wait_time :.2f}',
+                            case_img=img, case_author=self.case_author,
+                            case_remark=self.str_conversion(self.case_remark),
+                            insert_time=self.insert_time)
 
     @staticmethod
-    def _strConversion(values: str):
+    def str_conversion(values: str):
         return re.sub("'", "`", str(values)).replace('\\', '/').replace('"', "`").replace('%', '//')
 
     def _log(self, reason):

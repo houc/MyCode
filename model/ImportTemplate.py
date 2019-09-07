@@ -59,8 +59,8 @@ class {}InterfaceAuxiliary(object):
         
     """
     
-        def request_except(self, r, module_name=None, remark=None,
-                       back_data=None, except_status='-1', insert_data=None):
+    def request_except(self, r, module_name=None, remark=None,
+                   back_data=None, except_status='-1', insert_data=None):
         """
         请求结果返回后异常处理封装，类似是否成功请求并成功返回对应状态码
         :param r: requests请求参数
@@ -109,7 +109,6 @@ class {}(OperationElement):
 CASE_CONTENT = '''import unittest
 import time
 import os
-import traceback
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
@@ -145,15 +144,12 @@ CASE_NAME = '''    @test_re_runner(set_up)
         """
         {}
         """
-        try:
-            driver = {}(self.driver)
-            driver.get(self.url)
-            self.first = 
-            self.screenshots = driver.screen_base64_shot()
-            self.assertEqual(self.first, self.second)
-        except Exception:
-            self.error = str(traceback.format_exc())
-            raise\n
+        driver = {}(self.driver)
+        driver.get(self.url)
+        self.first = 
+        self.screenshots = driver.screen_base64_shot()
+        self.assertEqual(self.first, self.second)
+        
 '''
 
 

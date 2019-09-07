@@ -54,7 +54,7 @@ class DataHandleConversion(object):
                     if second_data == 6:
                         if _data[second_data] == "错误":
                             error.append(_data[second_data])
-                        elif _data[second_data] == "成功":
+                        elif _data[second_data] in ("成功", '意外成功', '期望失败'):
                             success.append(_data[second_data])
                         elif _data[second_data] == "失败":
                             fail.append(_data[second_data])

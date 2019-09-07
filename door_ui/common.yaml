@@ -113,3 +113,63 @@ door_ui:
           case_remark: "请求接口类型为[get]",
           asserts: products.xlsx,
           }
+  debug_test:
+    - report_debug:
+      url:
+      assembly:
+      className: Report
+      funName:
+        - test_error: {
+          url: "/openapi/clearCache/page",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: '200'
+        }
+          test_fail: {
+          url: "/openapi/clearCache/page",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: True
+          }
+          test_success: {
+          url: "/openapi/clearCache/page",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: True
+          }
+          test_skip: {
+          url: "/openapi/clearCache/page",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: '200'
+          }
+          test_except_err: {
+          url: "/openapi/clearCache/page",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: '200'
+          }
+          test_except_success: {
+          url: "/openapi/clearCache/page",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: '200'
+          }

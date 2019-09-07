@@ -136,7 +136,7 @@ class WriteExcel:
                         path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
                         if not 'None' == path and path is not None:
                             self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
-                    elif '成功' == d:
+                    elif d in ('成功', '意外成功', '期望失败'):
                         self.sheet_test.write_string(a, c, d, self.blue)
                     elif '错误' == d:
                         self.sheet_test.write_string(a, c, d, self.red)

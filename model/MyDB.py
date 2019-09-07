@@ -14,6 +14,7 @@ class MyDB(object):
         self.dbQuery = MyConfig('sql_query').sql
         self.dbDelete = MyConfig('sql_delete').sql
         self.dbInsert = MyConfig('sql_insert').sql
+        self.update = MyConfig('sql_update').sql
         if switch:
             self._insert_title()
 
@@ -41,9 +42,11 @@ class MyDB(object):
         DB.execute(self.dbDelete)
         self.sql.commit()
 
-    def insert_data(self, case_catalog, case_level, case_module, case_name, case_url, case_scene,
-                    case_status, case_results, case_error_reason, case_insert_parameter, case_wait_time,
-                    case_img, case_author, case_remark, insert_time):
+    def insert_data(self, case_catalog=None, case_level=None, case_module=None,
+                    case_name=None, case_url=None, case_scene=None, case_status=None,
+                    case_results=None, case_error_reason=None, case_insert_parameter=None,
+                    case_wait_time=None, case_img=None, case_author=None, case_remark=None,
+                    insert_time=None):
 
         data = self.dbInsert % (case_catalog, case_level, case_module, case_name,
                                 case_url, case_scene, case_status, case_results,
@@ -60,7 +63,14 @@ class MyDB(object):
     def close_sql(self):
         return self.sql.close()
 
+    def update_db(self, row_name_value, sign_action):
+        update = self.update % (row_name_value, sign_action)
+        DB = self.sql.cursor()
+        DB.execute(update)
+        self.sql.commit()
+
 
 if __name__ == '__main__':
     query = MyDB().query_data()
     print(query)
+    # up = MyDB().update_db(row_name_value='case_catalog="你好"', sign_action='case_name="test_error"')

@@ -86,7 +86,7 @@ class MyReport(object):
                 html = self._new_dict(value)
                 self.failed += html[1]
                 case_info.append(html[0])
-            elif value[6] == '成功':
+            elif value[6] in ('成功', '意外成功', '期望失败'):
                 html = self._new_dict(value)
                 self.success += html[1]
                 case_info.append(html[0])

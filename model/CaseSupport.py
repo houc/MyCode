@@ -3,6 +3,7 @@ import time
 import queue
 import sys
 import warnings
+import re
 
 from model.Yaml import MyConfig
 from model.MyDB import MyDB
@@ -65,6 +66,27 @@ class _Result(TestResult):
         self.fail_count = 0
         self.success_count = 0
 
+    def _get_name(self, test):
+        return str(test).split(' (')[0]
+
+    def _data_update_in_to_my_db(self, excepts=None, *, case_name, status):
+        update = "case_error_reason='%s', case_status='%s'" % (excepts, status)
+        base_value = "case_name='%s'" % case_name
+        if status in ('成功', '意外成功', '期望失败'):
+            update = "case_status='%s', case_img='%s'" % (status, excepts)
+        MyDB().update_db(row_name_value=update, sign_action=base_value)
+
+    def _get_exception(self, errors, status):
+        for test, error in errors:
+            name = self._get_name(test)
+            self._data_update_in_to_my_db(excepts=self.str_conversion(error),
+                                          case_name=name,
+                                          status=status)
+
+    @staticmethod
+    def str_conversion(values: str):
+        return re.sub("'", "`", str(values)).replace('\\', '/').replace('"', "`").replace('%', '//')
+
     def addSkip(self, test, reason):
         TestResult.addSkip(self, test, reason)
         self._skip_data_handle(test, reason)
@@ -75,19 +97,12 @@ class _Result(TestResult):
             self.stream.writeln(f"skipped: {reason}")
         self.skip_count += 1
 
-    @staticmethod
-    def _skip_data_handle(test, reason):
+    def _skip_data_handle(self, test, reason):
         catalog = test.__module__ + '.' + test.__class__.__name__
-        name = str(test).split(' (')[0]
-        MyDB().insert_data(case_catalog=catalog, case_level=None,
-                           case_module=None, case_name=name,
-                           case_url=None, case_scene=None,
-                           case_status='跳过', case_results=None,
+        name = self._get_name(test)
+        MyDB().insert_data(case_catalog=catalog, case_status='跳过',
                            case_error_reason=f'跳过原因: {reason}',
-                           case_insert_parameter=None,
-                           case_wait_time=None, case_img=None,
-                           case_author=None, case_remark=None,
-                           insert_time=None)
+                           case_name=name)
 
     def startTest(self, test):
         TestResult.startTest(self, test)
@@ -103,6 +118,7 @@ class _Result(TestResult):
             self.stream.flush()
         else:
             self.stream.writeln("ERROR")
+        self._get_exception(self.errors, '错误')
         self.error_count += 1
 
     def stopTest(self, test):
@@ -115,6 +131,7 @@ class _Result(TestResult):
             self.stream.flush()
         else:
             self.stream.writeln("fail")
+        self._get_exception(self.failures, '失败')
         self.fail_count += 1
 
     def printErrors(self):
@@ -136,6 +153,8 @@ class _Result(TestResult):
         else:
             self.stream.write("x")
             self.stream.flush()
+        name = self._get_name(test)
+        self._data_update_in_to_my_db(case_name=name, status='期望失败')
 
     def addUnexpectedSuccess(self, test):
         super(_Result, self).addUnexpectedSuccess(test)
@@ -144,6 +163,8 @@ class _Result(TestResult):
         else:
             self.stream.write("u")
             self.stream.flush()
+        name = self._get_name(test)
+        self._data_update_in_to_my_db(case_name=name, status='意外成功')
 
     def addSuccess(self, test):
         super(_Result, self).addSuccess(test)
@@ -152,6 +173,8 @@ class _Result(TestResult):
         else:
             self.stream.write('.')
             self.stream.flush()
+        name = self._get_name(test)
+        self._data_update_in_to_my_db(case_name=name, status='成功')
         self.success_count += 1
 
 

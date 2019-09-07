@@ -41,7 +41,7 @@ class RunAll(object):
     def runner(self):
         if self.save < 7:
             raise ValueError('报告存放日期需大于7！')
-        if self.thread and self.re_run_count > 1:
+        if self.thread and self.re_run_count < 1:
             raise ValueError('当线程启用时，重跑次数需大于1！')
         self._get_case_status()
 
