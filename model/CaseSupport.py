@@ -72,8 +72,8 @@ class _Result(TestResult):
     def _data_update_in_to_my_db(self, excepts=None, *, case_name, status):
         update = "case_error_reason='%s', case_status='%s'" % (excepts, status)
         base_value = "case_name='%s'" % case_name
-        if status in ('成功', '意外成功', '期望失败'):
-            update = "case_status='%s', case_img='%s'" % (status, excepts)
+        if status == '成功': update = "case_status='%s', case_img='%s'" % (status, excepts)
+        elif status in ('意外成功', '期望失败'): update = "case_status='%s'" % status
         MyDB().update_db(row_name_value=update, sign_action=base_value)
 
     def _get_exception(self, errors, status):

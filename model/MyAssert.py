@@ -26,7 +26,7 @@ class MyAsserts:
     case_remark: str
 
     log: typing.Any
-    # assert_first: str
+    assert_first: str
     error_path: str
     encoding: str = 'utf-8'
 
@@ -38,19 +38,19 @@ class MyAsserts:
         self.insert_time = standard_time()
 
     def asserts_eq(self):
-        self._insert_sql(status=None, img=self.case_img, reason=self.case_results)
+        self._insert_sql(status=None, img=self.case_img, reason=self.assert_first)
 
     def _insert_sql(self, status, img, reason):
         MyDB().insert_data(case_catalog=self.case_catalog, case_level=self.case_level,
-                            case_module=self.case_module, case_name=self.case_name,
-                            case_url=self.case_url, case_scene=self.str_conversion(self.case_scene),
-                            case_status=status, case_results=self.str_conversion(self.case_results),
-                            case_error_reason=reason,
-                            case_insert_parameter=self.insert,
-                            case_wait_time=f'{self.case_wait_time :.2f}',
-                            case_img=img, case_author=self.case_author,
-                            case_remark=self.str_conversion(self.case_remark),
-                            insert_time=self.insert_time)
+                           case_module=self.case_module, case_name=self.case_name,
+                           case_url=self.case_url, case_scene=self.str_conversion(self.case_scene),
+                           case_status=status, case_results=self.str_conversion(self.case_results),
+                           case_error_reason=reason,
+                           case_insert_parameter=self.insert,
+                           case_wait_time=f'{self.case_wait_time :.2f}',
+                           case_img=img, case_author=self.case_author,
+                           case_remark=self.str_conversion(self.case_remark),
+                           insert_time=self.insert_time)
 
     @staticmethod
     def str_conversion(values: str):
