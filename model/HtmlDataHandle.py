@@ -34,8 +34,8 @@ class AmilSupport(object):
         return HTML % ('100%', '100%', '100%', self.title + '统计简报', self.science,
                        case_data.get('errors'), case_data.get('failures'),
                        case_data.get('skipped'), case_data.get('success'),
-                       '55%', '25%', '50%', '30%', '{b}: {@错误数} ({d}%)',
-                       '{b}: {@[" + dimension + "]} ({d}%)')
+                       case_data.get('exceptionFail'), case_data.get('unexpectedSuccess'),
+                       '55%', '25%', '50%', '25%', '{b}: {@错误数} ({d}%)')
 
     def _save_as_report(self, case_name):
         """
@@ -56,11 +56,13 @@ class AmilSupport(object):
         path = self._save_as_report(case_name)
         img_path = read_file('img', 'html.png')
         driver = browser(switch=self.switch_browser)
-        driver.get(path)
-        import time
-        time.sleep(2)
-        driver.save_screenshot(img_path)
-        driver.quit()
+        try:
+            driver.get(path)
+            import time
+            time.sleep(2)
+            driver.save_screenshot(img_path)
+        finally:
+            driver.quit()
 
 
 class MyReport(object):
@@ -74,6 +76,8 @@ class MyReport(object):
         self.success = ''
         self.error = ''
         self.failed = ''
+        self.failure = ''
+        self.unexpected_success = ''
         self.case_info = ''
         self.local_server = f'http://{__local_ip__}:{__local_port__}'
         self.wide_server = f'http://{IP}:{PORT}'
@@ -86,9 +90,17 @@ class MyReport(object):
                 html = self._new_dict(value)
                 self.failed += html[1]
                 case_info.append(html[0])
-            elif value[6] in ('成功', '意外成功', '期望失败'):
+            elif value[6] == '成功':
                 html = self._new_dict(value)
                 self.success += html[1]
+                case_info.append(html[0])
+            elif value[6] == '意外成功':
+                html = self._new_dict(value)
+                self.unexpected_success += html[1]
+                case_info.append(html[0])
+            elif value[6] == '预期失败':
+                html = self._new_dict(value)
+                self.failure += html[1]
                 case_info.append(html[0])
             elif value[6] == '跳过':
                 html = self._new_dict(value)
@@ -143,6 +155,8 @@ class MyReport(object):
         self.finish_dict['skip_list'] = self.skipped
         self.finish_dict['error_list'] = self.error
         self.finish_dict['fail_list'] = self.failed
+        self.finish_dict['failure_list'] = self.failure
+        self.finish_dict['unexpected_success_list'] = self.unexpected_success
 
     def _new_dict(self, value):
         return self._html(case_catalog=value[0], case_module=value[2],
@@ -189,7 +203,11 @@ class MyReport(object):
                         fraction=self.finish_dict['fraction'], url=self.local_server, local_url=self.wide_server,
                         execute_method=self.finish_dict['execute_method'],
                         execute_time=self.finish_dict['execute_time'],
-                        project=self.finish_dict['project'])
+                        project=self.finish_dict['project'],
+                        failure_list=self.finish_dict['failure_list'],
+                        unexpected_success_list=self.finish_dict['unexpected_success_list'],
+                        failure_case=self.finish_dict['failure_case'],
+                        unexpected_success_case=self.finish_dict['unexpected_case'])
         return html.replace('&lt;', '<').replace('&gt;', '>').replace('&#039;', '"').replace('&quot;', '"')
 
 

@@ -113,3 +113,63 @@ door_ui:
           case_remark: "请求接口类型为[get]",
           asserts: products.xlsx,
           }
+  test_debug:
+    - debugger:
+      url:
+      assembly:
+      className: Debug
+      funName:
+        - test_all: {
+          url: "/openapi/clearCache/page.do?tenantId=%s",
+          assembly: openAPI清理Redis缓存,
+          author: 后超,
+          level: 中,
+          scene: "使用接口验证openapi+redis->>清理Redis缓存",
+          case_remark: "请求接口类型为[get]",
+          asserts: False
+        }
+          test_all_1: {
+            url: "/openapi/clearCache/page.do?tenantId=%s",
+            assembly: openAPI清理Redis缓存,
+            author: 后超,
+            level: 中,
+            scene: "使用接口验证openapi+redis->>清理Redis缓存",
+            case_remark: "请求接口类型为[get]",
+            asserts: False
+          }
+          test_all_2: {
+            url: "/openapi/clearCache/page.do?tenantId=%s",
+            assembly: openAPI清理Redis缓存,
+            author: 后超,
+            level: 中,
+            scene: "使用接口验证openapi+redis->>清理Redis缓存",
+            case_remark: "请求接口类型为[get]",
+            asserts: False
+          }
+          test_all_3: {
+            url: "/openapi/clearCache/page.do?tenantId=%s",
+            assembly: openAPI清理Redis缓存,
+            author: 后超,
+            level: 中,
+            scene: "使用接口验证openapi+redis->>清理Redis缓存",
+            case_remark: "请求接口类型为[get]",
+            asserts: False
+          }
+          test_all_4: {
+            url: "/openapi/clearCache/page.do?tenantId=%s",
+            assembly: openAPI清理Redis缓存,
+            author: 后超,
+            level: 中,
+            scene: "使用接口验证openapi+redis->>清理Redis缓存",
+            case_remark: "请求接口类型为[get]",
+            asserts: False
+          }
+          test_all_5: {
+            url: "/openapi/clearCache/page.do?tenantId=%s",
+            assembly: openAPI清理Redis缓存,
+            author: 后超,
+            level: 中,
+            scene: "使用接口验证openapi+redis->>清理Redis缓存",
+            case_remark: "请求接口类型为[get]",
+            asserts: False
+          }

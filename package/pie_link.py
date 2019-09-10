@@ -27,26 +27,28 @@ setTimeout(function () {
         legend: {
             //orient: 'vertical',
             center: '30px',
-            bottom: 470,
+            bottom: 520,
         },
         title: {
         text: '%s',
         subtext: '%s',
-        bottom: 850,
+        bottom: 910,
         left: 'center',
     },
         tooltip: {
             trigger: 'axis',
             showContent: true,
         },
-        color : ['#EA0000', '#B87070', '#8E8E8E', '#006000'], // 饼型图背景颜色重写
+        color : ['#EA0000', '#B87070', '#8E8E8E', '#006000', '#FFA500', '#00BFFF'], // 饼型图背景颜色重写
         dataset: {
             source: [
-                ['product', '错误数', '失败数', '跳过数', '成功数'],
+                ['product', '错误数', '失败数', '跳过数', '成功数', '预期失败', '意外成功'],
                 ['错误数', '%s'],
                 ['失败数', '%s'],
                 ['跳过数', '%s'],
                 ['成功数', '%s'],
+                ['预期失败数', '%s'],
+                ['意外成功数', '%s'],
             ]
         },
         xAxis: [
@@ -63,7 +65,7 @@ setTimeout(function () {
             // {type: 'line', smooth: true, seriesLayoutBy: 'column'},
             // {type: 'line', smooth: true, seriesLayoutBy: 'column'},
             // {type: 'line', smooth: true, seriesLayoutBy: 'column'},
-            {type: 'line', smooth: true, seriesLayoutBy: 'column'},
+            {type: 'line', smooth: false, seriesLayoutBy: 'column'},
             {
                 type: 'pie',
                 id: 'pie',
@@ -80,25 +82,6 @@ setTimeout(function () {
             },
         ]
     };
-
-    myChart.on('updateAxisPointer', function (event) {
-        var xAxisInfo = event.axesInfo[0];
-        if (xAxisInfo) {
-            var dimension = xAxisInfo.value + 1;
-            myChart.setOption({
-                series: {
-                    id: 'pie',
-                    label: {
-                        formatter: '%s'
-                    },
-                    encode: {
-                        value: dimension,
-                        tooltip: dimension
-                    }
-                }
-            });
-        }
-    });
 
     myChart.setOption(option);
 

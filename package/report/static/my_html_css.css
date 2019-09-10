@@ -26,7 +26,7 @@ p{
 .base_all{
     margin: 10px 10px; /*偏移【上下】/【左右】*/
     float: left; /*整体偏移量*/
-    height: 380px; /*高度*/
+    height: 420px; /*高度*/
     width: auto; /*宽度*/
     position: relative;
     overflow: hidden
@@ -62,8 +62,8 @@ p{
     margin: 20px 10px; /*偏移【上下】/【左右】*/
     background-color: #F5F5F5; /*背景颜色*/
     float: revert; /*整体偏移*/
-    height: 380px; /*高度*/
-    width: 62.5%; /*宽度*/
+    height: 420px; /*高度*/
+    width: 62.68%; /*宽度*/
     position: relative;
     overflow: hidden
 }
@@ -217,7 +217,7 @@ p{
 
 /*表格里面的状态间距*/
 .status{
-    width: 60px
+    width: 80px
 }
 /*表格里面的类型间距*/
 .type{

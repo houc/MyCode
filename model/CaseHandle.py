@@ -40,6 +40,9 @@ class DataHandleConversion(object):
         fail = []  # 用例失败
         success = []  # 用例成功
         skip = [] # 用例跳过数
+
+        exceptionFail = [] # 期望失败
+        unexpectedSuccess = [] # 意外成功
         if in_sql_data:
             for first_data in range(len(in_sql_data)):
                 _data = in_sql_data[first_data]
@@ -54,8 +57,12 @@ class DataHandleConversion(object):
                     if second_data == 6:
                         if _data[second_data] == "错误":
                             error.append(_data[second_data])
-                        elif _data[second_data] in ("成功", '意外成功', '期望失败'):
+                        elif _data[second_data] == "成功":
                             success.append(_data[second_data])
+                        elif _data[second_data] == "意外成功":
+                            unexpectedSuccess.append(_data[second_data])
+                        elif _data[second_data] == "预期失败":
+                            exceptionFail.append(_data[second_data])
                         elif _data[second_data] == "失败":
                             fail.append(_data[second_data])
                         elif _data[second_data] == "跳过":
@@ -91,11 +98,14 @@ class DataHandleConversion(object):
                 case_messages["member"] = set_member
 
             # ------------处理不同用例状态总个数
-            case_messages["testsRun"] = len(error) + len(fail) + len(success) + len(skip)
+            total = len(error) + len(fail) + len(success) + len(skip) + len(exceptionFail) + len(unexpectedSuccess)
+            case_messages["testsRun"] = total
             case_messages["errors"] = len(error)
             case_messages["failures"] = len(fail)
             case_messages["success"] = len(success)
             case_messages['skipped'] = len(skip)
+            case_messages['exceptionFail'] = len(exceptionFail)
+            case_messages['unexpectedSuccess'] = len(unexpectedSuccess)
 
             # -----------判断总开始时间与总结束时间是否为空----------------
             if case_messages.get('end_time') is None:
@@ -104,20 +114,22 @@ class DataHandleConversion(object):
                 case_messages['start_time'] = start_time
             start_time = beijing_time_conversion_unix(case_messages['start_time'])
             ends_time = beijing_time_conversion_unix(case_messages['end_time'])
+
+            # --------------用例执行效率-------------------
             case_messages['total_time'] = time_conversion(ends_time - start_time)
             case_messages['tool'] = 'Python' + platform.python_version()
             case_messages['version'] = self.version
-            total = case_messages["errors"] + case_messages["failures"] + case_messages["success"]
-
-            # --------------用例效率-------------------
+            total_running_case = len(error) + len(fail) + len(success) + len(exceptionFail) + len(unexpectedSuccess)
             try:
-                efficiency = (total / case_messages['testsRun']) * 100
+                efficiency = (total_running_case / total) * 100
             except ZeroDivisionError:
                 efficiency = 0
             case_messages['efficiency'] = f'{efficiency:.2f}'
             case_messages['science'] = self.science
+
+            # --------用例评分------------
             try:
-                fraction = (len(success) / case_messages['testsRun']) * 100
+                fraction = ((len(success) + len(unexpectedSuccess)) / case_messages['testsRun']) * 100
             except ZeroDivisionError:
                 fraction = 0
             case_messages['fraction'] = f'{fraction:.2f}'
@@ -190,7 +202,9 @@ class ConversionDiscover(object):
                                         efficiency=total_case['efficiency'], version=total_case['version'],
                                         tool=total_case['tool'], science=total_case['science'],
                                         project=total_case['project'], sort_time=total_case['short_time'],
-                                        fraction=total_case['fraction'])
+                                        fraction=total_case['fraction'],
+                                        failure_case=total_case['exceptionFail'],
+                                        unexpected_case=total_case['unexpectedSuccess'])
             if __ip__ and __port__:
                 url = report.replace(str(__local_ip__), str(__ip__)).replace(str(__local_port__), str(__port__))
                 sys.stderr.write(f'HTML测试报告已生成，可在广域网在线预览报告啦: {url}\n')

@@ -35,6 +35,8 @@ class WriteExcel:
         self.blue = self.open_excel.add_format()
         self.skip = self.open_excel.add_format()
         self.yellow = self.open_excel.add_format()
+        self.purple = self.open_excel.add_format()
+        self.deep_sky_blue = self.open_excel.add_format()
         self.test_content_style = self.open_excel.add_format()
         self.style_pc_content = self.open_excel.add_format()
         self.style_pc_title = self.open_excel.add_format()
@@ -61,7 +63,7 @@ class WriteExcel:
         self.sheet_test.set_column(3, 3, 30)
         self.sheet_test.set_column(4, 4, 40)
         self.sheet_test.set_column(5, 5, 50)
-        self.sheet_test.set_column(6, 6, 8)
+        self.sheet_test.set_column(6, 6, 12)
         self.sheet_test.set_column(7, 7, 30)
         self.sheet_test.set_column(8, 8, 40)
         self.sheet_test.set_column(9, 9, 35)
@@ -73,7 +75,7 @@ class WriteExcel:
         return self.style_title
 
     def _red_style(self, color='red'):
-        """测试内容默认为红色样式"""
+        """错误字体颜色"""
         self.red.set_font_color(color)
         self.red.set_font_name('微软雅黑')
         self.red.set_size(11)
@@ -81,8 +83,8 @@ class WriteExcel:
         self.red.set_align('vcenter')
         return self.red
 
-    def _yellow_style(self, color='green'):
-        """测试内容默认为黄色样式"""
+    def _yellow_style(self, color='lime'):
+        """失败字体颜色"""
         self.yellow.set_font_color(color)
         self.yellow.set_font_name('微软雅黑')
         self.yellow.set_size(11)
@@ -90,8 +92,27 @@ class WriteExcel:
         self.yellow.set_align('vcenter')
         return self.yellow
 
+    def _DeepSkyBlue(self):
+        """意外成功字体颜色"""
+        self.deep_sky_blue.set_font_color('DeepSkyBlue')
+        self.deep_sky_blue.set_font_name('微软雅黑')
+        self.deep_sky_blue.set_size(11)
+        self.deep_sky_blue.set_border(7)
+        self.deep_sky_blue.set_align('vcenter')
+        return self.deep_sky_blue
+
+    def _purple(self):
+        """期望失败字颜色"""
+        self.purple.set_font_color('magenta')
+        self.purple.set_font_name('微软雅黑')
+        self.purple.set_size(11)
+        self.purple.set_border(7)
+        self.purple.set_align('vcenter')
+        return self.purple
+
+
     def _blue_style(self, color='blue'):
-        """测试内容默认为蓝色样式"""
+        """成功字体颜色"""
         self.blue.set_font_color(color)
         self.blue.set_size(11)
         self.blue.set_font_name('微软雅黑')
@@ -125,6 +146,8 @@ class WriteExcel:
         self._blue_style()
         self._skip_style()
         self._yellow_style()
+        self._DeepSkyBlue()
+        self._purple()
         self._test_content_style()
         for a, b in enumerate(args):
             self.sheet_test.write(0, a, b, self.style_title)
@@ -136,15 +159,28 @@ class WriteExcel:
                         path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
                         if not 'None' == path and path is not None:
                             self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
-                    elif d in ('成功', '意外成功', '期望失败'):
-                        self.sheet_test.write_string(a, c, d, self.blue)
+
+                    elif '预期失败' == d:
+                        self.sheet_test.write(a, c, d, self.purple)
+                        path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
+                        if not 'None' == path and path is not None:
+                            self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
+
                     elif '错误' == d:
                         self.sheet_test.write_string(a, c, d, self.red)
                         path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
                         if not 'None' == path and path is not None:
                             self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
+
+                    elif '成功' == d:
+                        self.sheet_test.write_string(a, c, d, self.blue)
+
+                    elif '意外成功' == d:
+                        self.sheet_test.write_string(a, c, d, self.deep_sky_blue)
+
                     elif '跳过' == d:
                         self.sheet_test.write_string(a, c, d, self.skip)
+
                     elif 'None' == d:
                         self.sheet_test.write_string(a, c, '.' * 12, self.test_content_style)
                     else:
@@ -242,15 +278,19 @@ class WriteExcel:
             'type':'column'
         })
         chart.add_series({
-            'categories': '=(%s!$C$5,%s!$E$5,%s!$C$6,%s!$E$6,%s!$C$7)' % (title, title, title,
-                                                                         title, title),
-            'values': '=(%s!$D$5,%s!$F$5,%s!$D$6,%s!$F$6,%s!$D$7)' % (title, title, title,
-                                                                     title, title),
-            'points': [{'fill': {'color': 'blue'}},  # 总用例数
+            'categories': '=(%s!$C$5,%s!$E$5,%s!$C$6,%s!$E$6,%s!$C$7,%s!$E$7,%s!$C$8)' % (title, title, title,
+                                                                                          title, title, title,
+                                                                                          title),
+            'values': '=(%s!$D$5,%s!$F$5,%s!$D$6,%s!$F$6,%s!$D$7,%s!$F$7,%s!$D$8)' % (title, title, title,
+                                                                                      title, title, title,
+                                                                                      title, ),
+            'points': [{'fill': {'color': '#EBD3E8'}},  # 总用例数
                       {'fill': {'color': 'green'}},  # 成功用例数
                       {'fill': {'color': 'yellow'}},  # 失败用例数
                       {'fill': {'color': 'red'}},  # 错误用例数
-                      {'fill': {'color': 'orange'}}]
+                      {'fill': {'color': '#ff7575'}}, # 预期失败
+                      {'fill': {'color': '#4DFFFF'}}, # 意外成功
+                      {'fill': {'color': '#424200'}}] # 跳过
         })    # 跳过用例数
         chart.set_title({
             'name': f'{self.report_project}简报统计图'
@@ -264,7 +304,7 @@ class WriteExcel:
         chart.set_x_axis({
             'name': '状态'
         })
-        self.sheet_title.insert_chart('A9', chart, {'x_scale': 1.93, 'y_scale': 1.60})
+        self.sheet_title.insert_chart('A10', chart, {'x_scale': 1.93, 'y_scale': 1.60})
 
     def _title_write(self, parameter, **kwargs):
         """写入测试报告表头/内容数据"""
@@ -273,7 +313,7 @@ class WriteExcel:
         self.sheet_title.merge_range(0, 0, 0, 5,
                                      str(kwargs['title_title']).format(self.report_project, self.report_type),
                                      self.title_title)
-        self.sheet_title.merge_range(1, 0, 7, 1, ' ')
+        self.sheet_title.merge_range(1, 0, 8, 1, ' ') # 总况的log合并
         if self.login_path:
             self.sheet_title.insert_image(3, 0, self.login_path, {'x_scale': 0.3, 'y_scale': 0.7})
         self.sheet_title.write(1, 2, kwargs['title_version'], self.title_title_content)
@@ -286,10 +326,12 @@ class WriteExcel:
         self.sheet_title.write(4, 4, kwargs['title_success'], self.title_title_content)
         self.sheet_title.write(5, 2, kwargs['title_fail'], self.title_title_content)
         self.sheet_title.write(5, 4, kwargs['title_error'], self.title_title_content)
-        self.sheet_title.write(6, 2, kwargs['skip'], self.title_title_content)
-        self.sheet_title.write(6, 4, kwargs['total_time'], self.title_title_content)
-        self.sheet_title.write(7, 2, kwargs['title_skip'], self.title_title_content)
-        self.sheet_title.write(7, 4, kwargs['title_total_time'], self.title_title_content)
+        self.sheet_title.write(6, 2, kwargs['title_failure'], self.title_title_content)
+        self.sheet_title.write(6, 4, kwargs['title_unexpected_success'], self.title_title_content)
+        self.sheet_title.write(7, 2, kwargs['skip'], self.title_title_content)
+        self.sheet_title.write(7, 4, kwargs['total_time'], self.title_title_content)
+        self.sheet_title.write(8, 2, kwargs['title_skip'], self.title_title_content)
+        self.sheet_title.write(8, 4, kwargs['title_total_time'], self.title_title_content)
 
         # ======================================汇总表内容========================================
 
@@ -307,10 +349,12 @@ class WriteExcel:
             self.sheet_title.write(4, 5, parameter.get("success"), self.title_title_content)
             self.sheet_title.write(5, 3, parameter.get("failures"), self.title_title_content)
             self.sheet_title.write(5, 5, parameter.get("errors"), self.title_title_content)
-            self.sheet_title.write(6, 3, parameter.get("skipped"), self.title_title_content)
-            self.sheet_title.write(6, 5, parameter.get("total_time"), self.title_title_content)
-            self.sheet_title.write(7, 3, str(parameter.get("short_time")), self.title_title_content)
-            self.sheet_title.write(7, 5, str(parameter.get("long_time")), self.title_title_content)
+            self.sheet_title.write(6, 3, parameter.get("exceptionFail"), self.title_title_content)
+            self.sheet_title.write(6, 5, parameter.get("unexpectedSuccess"), self.title_title_content)
+            self.sheet_title.write(7, 3, parameter.get("skipped"), self.title_title_content)
+            self.sheet_title.write(7, 5, parameter.get("total_time"), self.title_title_content)
+            self.sheet_title.write(8, 3, str(parameter.get("short_time")), self.title_title_content)
+            self.sheet_title.write(8, 5, str(parameter.get("long_time")), self.title_title_content)
             self._title_insert_report_img()
         else:
             raise TypeError('class_merge()函数方法应为字典')
@@ -348,7 +392,7 @@ class ExcelTitle(WriteExcel):
                   'title_total_time': '用例最长耗时', 'title_member':'编写用例人员', 'title_case': '总用例数',
                   'title_success': '成功数', 'title_fail': '失败数', 'title_error': '错误数', 'skip': '跳过数',
                   'title_skip': '用例最短耗时', 'total_time': '执行用例总耗时', 'title_action': '运行环境','title_tool': '测试工具',
-                  'title_version': '测试版本',
+                  'title_version': '测试版本', 'title_failure': '预期失败数', 'title_unexpected_success': '意外成功数'
                   }
         return self._merge_def_title_data(parameter, *args, **kwargs)
 

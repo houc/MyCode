@@ -1,6 +1,6 @@
 
 /*饼型图js*/
-function pie_img(error, success, skip, fail) {
+function pie_img(error, success, skip, fail, unexpected_success, failure) {
     const dom = document.getElementById("container");
     const myChart = echarts.init(dom);
         // var app = {};
@@ -8,7 +8,7 @@ function pie_img(error, success, skip, fail) {
         option = {
             title : {
                 text: '结果走势', // 饼型图标题
-                x: '36%',        // 居中位置偏移
+                x: '40%',        // 居中位置偏移
                 textStyle: {
                             fontSize: 20 // 标题字体样式
                     }
@@ -24,12 +24,12 @@ function pie_img(error, success, skip, fail) {
                             fontSize: 12
                     }
             },
-            color : ['#EA0000', '#8E8E8E', '#006000', '#B87070'], // 饼型图背景颜色重写
+            color : ['#EA0000', '#8E8E8E', '#006000', '#B87070', '#00BFFF', '#FFA500'], // 饼型图背景颜色重写
             series : [
                 {
                     type: 'pie',  // 图形样式
                     radius : '65%', // 图形大小
-                    center: ['41%', '55%'], // 图形位置偏移量【左-右，上-下】
+                    center: ['45%', '55%'], // 图形位置偏移量【左-右，上-下】
                     label: {
                         formatter: '{b} : {c} ({d}%)', // 计算方式
                         textStyle: {
@@ -40,7 +40,9 @@ function pie_img(error, success, skip, fail) {
                         {value: error, name: '错误数'},
                         {value: skip, name: '跳过数'},
                         {value: success, name: '成功数'},
-                        {value: fail, name: '失败数'}
+                        {value: fail, name: '失败数'},
+                        {value: unexpected_success, name: '意外成功数'},
+                        {value: failure, name: '预期失败数'}
                     ] // 数据
                 }
             ]

@@ -30,6 +30,12 @@
     <script type="text/javascript" src="{{url}}/my_static/errors.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/errors.js"></script>
 
+    <script type="text/javascript" src="{{url}}/my_static/unexpectedSuccess.js"></script>
+    <script type="text/javascript" src="{{local_url}}/my_static/unexpectedSuccess.js"></script>
+
+    <script type="text/javascript" src="{{url}}/my_static/exceptionFail.js"></script>
+    <script type="text/javascript" src="{{local_url}}/my_static/exceptionFail.js"></script>
+
     <link rel="stylesheet" href="{{url}}/my_static/my_html_css.css">
     <link rel="stylesheet" href="{{local_url}}/my_static/my_html_css.css">
 </head>
@@ -52,7 +58,7 @@
             <tr>
                 <td class="border_style">测试版本:</td>
                 <td class="border_style font_width ">{{version}}</td>
-                <td class="border_style" title="计算规则:（错误数+失败数+成功数）/ 总用例数">用例执行率:</td>
+                <td class="border_style" title="计算规则:（错误数+失败数+成功数+意外成功数+预期失败数）/ 总用例数">用例执行率:</td>
                 <td class="border_style font_width ">{{efficiency}}%</td>
             </tr>
             <tr>
@@ -84,19 +90,23 @@
                 <td class="border_style font_width">{{error_case}}条</td>
                 <td class="border_style">成功数:</td>
                 <td class="border_style font_width ">{{success_case}}条</td>
+            </tr><tr>
+                <td class="border_style">预期失败数:</td>
+                <td class="border_style font_width">{{failure_case}}条</td>
+                <td class="border_style">意外成功数:</td>
+                <td class="border_style font_width ">{{unexpected_success_case}}条</td>
             </tr>
             <tr>
                 <td class="border_style">跳过数:</td>
                 <td class="border_style font_width">{{skipped_case}}条</td>
-                <td class="border_style" title="计算规则: 成功数 / 总用例数">本次测试打分:</td>
+                <td class="border_style" title="计算规则: (成功数+意外成功数) / 总用例数">本次测试打分:</td>
                 <td class="border_style">{{fraction}}%</td>
-            </tr>
         </table>
     </div>
 
     <!--饼型图形-->
     <div class="pie_style" id="container">
-        <script>pie_img('{{error_case}}', '{{success_case}}', '{{skipped_case}}', '{{failed_case}}')</script>
+        <script>pie_img('{{error_case}}', '{{success_case}}', '{{skipped_case}}', '{{failed_case}}', '{{unexpected_success_case}}', '{{failure_case}}')</script>
     </div>
 
     <!--测试列表展示数据-->
@@ -120,6 +130,12 @@
                 <li>
                     <a data-toggle="tab" href="#success" class="button hover click"
                        style="background-color: #006000">成功数({{success_case}}条)</a>
+                </li><li>
+                    <a data-toggle="tab" href="#failure" class="button hover click"
+                       style="background-color: #FFA500">预期失败数({{failure_case}}条)</a>
+                </li><li>
+                    <a data-toggle="tab" href="#unexpected_success" class="button hover click"
+                       style="background-color: #00BFFF">意外成功数({{unexpected_success_case}}条)</a>
                 </li>
             </ul>
 
@@ -220,6 +236,56 @@
                     <ul class="pager page_style" id="success_pre">
                     </ul>
                 <script>successMethod('success_page')</script>
+                </div>
+
+                <div class="tab-pane fade in" id="failure"> <!--期望失败用例集合-->
+                    <table id="failure_page">
+                        <thead>
+                            <tr>
+                                <th class="list_th catalog">目录</th>
+                                <th class="list_th modules">模块</th>
+                                <th class="list_th case">用例方法</th>
+                                <th class="list_th address">测试地址</th>
+                                <th class="list_th status">状态</th>
+                                <th class="list_th time">用时</th>
+                                <th class="list_th member">负责人</th>
+                                <th class="list_th info">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hide-exceptionFail-page">
+                            {{failure_list}}
+                        </tbody>
+                    </table>
+                    <ul class="pager page_style" id="exceptionFail_next">
+                    </ul>
+                    <ul class="pager page_style" id="exceptionFail_pre">
+                    </ul>
+                <script>exceptionFailMethod('failure_page')</script>
+                </div>
+
+                <div class="tab-pane fade in" id="unexpected_success"> <!--意外成功用例集合-->
+                    <table id="unexpected_page">
+                        <thead>
+                            <tr>
+                                <th class="list_th catalog">目录</th>
+                                <th class="list_th modules">模块</th>
+                                <th class="list_th case">用例方法</th>
+                                <th class="list_th address">测试地址</th>
+                                <th class="list_th status">状态</th>
+                                <th class="list_th time">用时</th>
+                                <th class="list_th member">负责人</th>
+                                <th class="list_th info">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hide-unexpectedSuccess-page">
+                            {{unexpected_success_list}}
+                        </tbody>
+                    </table>
+                    <ul class="pager page_style" id="unexpectedSuccess_next">
+                    </ul>
+                    <ul class="pager page_style" id="unexpectedSuccess_pre">
+                    </ul>
+                <script>unexpectedSuccessMethod('unexpected_page')</script>
                 </div>
             </div>
         </div>

@@ -52,8 +52,8 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
 
 class _Result(TestResult):
 
-    separator1 = '=' * 170
-    separator2 = '-' * 170
+    separator1 = '=' * 175
+    separator2 = '-' * 175
 
     def __init__(self, verbosity=True, stream=None):
         super(_Result, self).__init__(self)
@@ -69,8 +69,7 @@ class _Result(TestResult):
     def _data_update_in_to_my_db(self, excepts=None, *, case_name, status):
         update = "case_error_reason='%s', case_status='%s'" % (excepts, status)
         base_value = "case_name='%s'" % case_name
-        if status == '成功': update = "case_status='%s', case_img='%s'" % (status, excepts)
-        elif status in ('意外成功', '期望失败'): update = "case_status='%s'" % status
+        if status in ('成功', '意外成功'): update = "case_status='%s', case_img='%s'" % (status, excepts)
         MyDB().update_db(row_name_value=update, sign_action=base_value)
 
     def _get_exception(self, errors, status):
@@ -126,13 +125,14 @@ class _Result(TestResult):
             self.stream.flush()
         else:
             self.stream.writeln("fail")
-        self._get_exception(self.failures, '失败')
+        self._get_exception(errors=self.failures, status='失败')
         self.fail_count += 1
 
     def printErrors(self):
         self.stream.writeln()
         self._print_error_list('ERROR', self.errors)
         self._print_error_list('FAIL', self.failures)
+        self._print_error_list('ExpectedFailures', self.expectedFailures)
 
     def _print_error_list(self, flavour, errors):
         for test, err in errors:
@@ -148,8 +148,7 @@ class _Result(TestResult):
         else:
             self.stream.write("x")
             self.stream.flush()
-        self._data_update_in_to_my_db(case_name=test._testMethodName,
-                                      status='期望失败')
+        self._get_exception(errors=self.expectedFailures, status='预期失败')
 
     def addUnexpectedSuccess(self, test):
         super(_Result, self).addUnexpectedSuccess(test)
