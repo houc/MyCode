@@ -83,7 +83,7 @@ class DataHandleConversion(object):
                             case_messages['end_time'] = end_time
 
             # -------------用例最短时间与最长时间判断-------------
-            # -------------用例编写人员去重-------------
+            # -------------用例编写人员去重----------------------
             if sql_data and member:
                 case_messages["short_time"] = time_conversion(min(sql_data))
                 case_messages["long_time"] = time_conversion(max(sql_data))
@@ -97,7 +97,7 @@ class DataHandleConversion(object):
                 set_member.remove('None') if 'None' in set_member else ''
                 case_messages["member"] = set_member
 
-            # ------------处理不同用例状态总个数
+            # ------------处理不同用例状态总个数---------------------------------
             total = len(error) + len(fail) + len(success) + len(skip) + len(exceptionFail) + len(unexpectedSuccess)
             case_messages["testsRun"] = total
             case_messages["errors"] = len(error)
@@ -115,7 +115,7 @@ class DataHandleConversion(object):
             start_time = beijing_time_conversion_unix(case_messages['start_time'])
             ends_time = beijing_time_conversion_unix(case_messages['end_time'])
 
-            # --------------用例执行效率-------------------
+            # --------------用例执行效率------------------------------------
             case_messages['total_time'] = time_conversion(ends_time - start_time)
             case_messages['tool'] = 'Python' + platform.python_version()
             case_messages['version'] = self.version
@@ -127,7 +127,7 @@ class DataHandleConversion(object):
             case_messages['efficiency'] = f'{efficiency:.2f}'
             case_messages['science'] = self.science
 
-            # --------用例评分------------
+            # --------用例评分--------------------------------------------
             try:
                 fraction = ((len(success) + len(unexpectedSuccess)) / case_messages['testsRun']) * 100
             except ZeroDivisionError:
@@ -137,7 +137,8 @@ class DataHandleConversion(object):
             if case_messages:
                 return case_messages
         else:
-            raise SQLDataError(FUN_NAME(self.current_path))
+            exception = FUN_NAME(self.current_path)
+            raise SQLDataError(exception)
 
 
 @dataclasses.dataclass
