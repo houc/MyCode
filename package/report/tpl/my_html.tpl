@@ -141,7 +141,7 @@
 
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="fail"> <!--失败用例集合-->
-                    <table id="failed_page">
+                    <table id="failed_page" class="table-hover">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -165,7 +165,7 @@
                 <script>failedMethod('failed_page')</script>
                 </div>
                 <div class="tab-pane fade in" id="error"> <!--错误用例集合-->
-                    <table id="errors_page">
+                    <table id="errors_page" class="table-hover">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -189,7 +189,7 @@
                 <script>errorsMethod('errors_page')</script>
                 </div>
                 <div class="tab-pane fade in" id="skip"> <!--跳过用例集合-->
-                    <table id="skipped_page">
+                    <table id="skipped_page" class="table-hover">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -214,7 +214,7 @@
                 </div>
 
                 <div class="tab-pane fade in" id="success"> <!--成功用例集合-->
-                    <table id="success_page">
+                    <table id="success_page" class="table-hover">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -239,7 +239,7 @@
                 </div>
 
                 <div class="tab-pane fade in" id="failure"> <!--期望失败用例集合-->
-                    <table id="failure_page">
+                    <table id="failure_page" class="table-hover">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
@@ -264,7 +264,7 @@
                 </div>
 
                 <div class="tab-pane fade in" id="unexpected_success"> <!--意外成功用例集合-->
-                    <table id="unexpected_page">
+                    <table id="unexpected_page" class="table-hover">
                         <thead>
                             <tr>
                                 <th class="list_th catalog">目录</th>
