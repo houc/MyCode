@@ -1,6 +1,6 @@
 import configparser
 
-from model.Yaml import MyConfig
+from . Yaml import MyConfig
 from config_path.path_file import read_file
 
 

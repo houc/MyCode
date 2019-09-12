@@ -1,7 +1,7 @@
 from bottle import run, route, template, static_file, error
 from config_path.path_file import module_file, read_file
-from model.PCParameter import get_network
-from model.Yaml import MyConfig
+from . PCParameter import get_network
+from . Yaml import MyConfig
 
 __ip__ = MyConfig('ip').report
 __port__ = MyConfig('port').report

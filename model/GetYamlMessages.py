@@ -1,6 +1,6 @@
 import re
 
-from model.Yaml import MyConfig, MyProject
+from . Yaml import MyConfig, MyProject
 
 
 class GetConfigMessage(object):

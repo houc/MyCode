@@ -2,7 +2,7 @@ import sqlite3
 import queue
 
 from config_path.path_file import read_file
-from model.Yaml import MyConfig
+from . Yaml import MyConfig
 
 
 class MyDB(object):

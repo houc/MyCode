@@ -3,7 +3,7 @@ import dataclasses
 import typing
 import time
 
-from model.MyDB import MyDB
+from . MyDB import MyDB
 from . TimeConversion import standard_time
 
 

@@ -4,7 +4,7 @@ import os
 
 from datetime import datetime, timedelta
 from config_path.path_file import read_file
-from model.Yaml import MyConfig
+from . Yaml import MyConfig
 
 
 def _logger():

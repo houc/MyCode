@@ -1,5 +1,5 @@
-from model.MyConfig import ConfigParameter
-from model.SeleniumElement import OperationElement
+from . MyConfig import ConfigParameter
+from . SeleniumElement import OperationElement
 
 
 class BrowserToken(OperationElement):

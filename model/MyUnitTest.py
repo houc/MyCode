@@ -2,12 +2,12 @@ import unittest
 import time
 import os
 
-from model.Logs import logger
-from model.Yaml import MyConfig
-from model.DriverParameter import browser
-from model.MyAssert import MyAsserts
-from model.GetYamlMessages import GetConfigMessage as Get
-from model.MyException import LoginSelectError
+from . Logs import logger
+from . Yaml import MyConfig
+from . DriverParameter import browser
+from . MyAssert import MyAsserts
+from . GetYamlMessages import GetConfigMessage as Get
+from . MyException import LoginSelectError
 from door_ui.common import LoginPublic
 
 

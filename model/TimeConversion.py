@@ -2,7 +2,7 @@ import time
 import os
 
 from datetime import datetime, timedelta
-from model.MyException import TypeErrors, FUN_NAME
+from . MyException import TypeErrors, FUN_NAME
 
 PATH = os.path.dirname(__file__)
 

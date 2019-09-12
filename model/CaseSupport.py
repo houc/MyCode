@@ -5,13 +5,14 @@ import sys
 import warnings
 import re
 
-from model.Yaml import MyConfig
-from model.MyDB import MyDB
+from . Yaml import MyConfig
+from . MyDB import MyDB
 from unittest.suite import _isnotsuite
 from unittest.suite import TestSuite
 from unittest.runner import _WritelnDecorator
 from unittest.result import TestResult
 from unittest.signals import registerResult
+from selenium.common import exceptions as EX
 
 __Skip_Status = True
 __Refresh_Url = MyConfig('new_backstage').base_url
@@ -34,10 +35,8 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
                 try:
                     execute = method(*args, **kwargs)
                     return execute
-                except (SyntaxError, MemoryError, KeyError,
-                        WindowsError, IndexError, ModuleNotFoundError, ImportError):
-                    raise
-                except Exception:
+                except (AssertionError, TimeoutError,
+                        EX.NoSuchElementException, EX.TimeoutException):
                     driver = set_up(*args, **kwargs)
                     if (count + 1) == retry_count:
                         raise

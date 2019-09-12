@@ -5,16 +5,16 @@ import threading
 import dataclasses
 import selenium
 
-from model.Yaml import MyConfig
-from model.SendEmail import Email
-from datetime import datetime
-from model.MyException import SQLDataError, FUN_NAME
-from model.TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
-from model.MyDB import MyDB
-from model.HtmlDataHandle import MyReport
+from . Yaml import MyConfig
+from . SendEmail import Email
+from . MyException import SQLDataError, FUN_NAME
+from . TimeConversion import beijing_time_conversion_unix, time_conversion, standard_time
+from . MyDB import MyDB
+from . HtmlDataHandle import MyReport
 from . HtmlReport import (__local_ip__, __local_port__, __ip__, __port__)
-from model.ExcelReport import ExcelTitle
-from model.CaseSupport import TestRunning
+from . ExcelReport import ExcelTitle
+from . CaseSupport import TestRunning
+from datetime import datetime
 
 
 class DataHandleConversion(object):

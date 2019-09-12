@@ -1,7 +1,7 @@
 import os
 import sys
 
-from model.Yaml import MyConfig
+from . Yaml import MyConfig
 
 
 def _current_module():

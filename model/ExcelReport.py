@@ -5,8 +5,8 @@ import sys
 import base64
 
 from config_path.path_file import read_file
-from model.PCParameter import merge_config_info, merge_config_msg, output_python_version
-from model.Yaml import MyConfig
+from . PCParameter import merge_config_info, merge_config_msg, output_python_version
+from . Yaml import MyConfig
 
 
 class WriteExcel:

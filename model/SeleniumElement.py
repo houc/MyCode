@@ -4,11 +4,11 @@ import time
 import dataclasses
 
 from PIL import ImageGrab
-from model.MyException import NoUrlTimeoutError
 from selenium.webdriver.common.action_chains import ActionChains as Opera
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from . MyException import NoUrlTimeoutError
 from . ElementSupport import (GetCurrentUrl, PureClick)
 from . MyException import (UntilNoElementOrTimeoutError,
                            UntilNotNotElementOrTimeoutError)

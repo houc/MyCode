@@ -6,13 +6,14 @@ from bottle import template
 from datetime import datetime, timedelta
 from config_path.path_file import read_file, module_file
 from collections import defaultdict
-from model.Yaml import MyConfig
-from model.HtmlReport import (IP, __local_ip__, __local_port__, PORT)
-from model.TimeConversion import standard_time, compact_time
-from model.ImportTemplate import GetTemplateHTML
-from model.DriverParameter import browser
+from . Yaml import MyConfig
+from . HtmlReport import (IP, __local_ip__, __local_port__, PORT)
+from . TimeConversion import standard_time, compact_time
+from . ImportTemplate import GetTemplateHTML
+from . DriverParameter import browser
+from . Thread import MyThread
 from package.pie_link import HTML
-from model.Thread import MyThread
+
 
 
 class AmilSupport(object):

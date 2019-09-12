@@ -205,4 +205,3 @@ class InterfaceEqErrors(Exception):
             'remark': self.remark
         }}
         return json.dumps(obj=new_data_dict, indent=8, ensure_ascii=False)
-
