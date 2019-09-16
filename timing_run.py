@@ -1,5 +1,6 @@
 import schedule
 import dataclasses
+import sys
 import os
 import re
 
@@ -20,23 +21,75 @@ class TimingRunning:
     def __time_conversion_is_list(self, parameter: list):
         for param in parameter:
             if isinstance(param, str):
-                times = int(re.split('[a-z]', param)[0])
+                times = int(re.split('[(a-z)]', param)[0])
+                scheduled = schedule.every(times)
                 units = ''.join(re.findall('[a-z]|[|]\d+:\d+', param))
-                unit = re.split('[|]', units)
-                if unit[0] == 's': schedule.every(times).seconds.do(self.__implement)
-                if unit[0] == 'min': schedule.every(times).minutes.do(self.__implement)
-                if unit[0] == 'h': schedule.every(times).hours.do(self.__implement)
-                if unit[0] == 'day': schedule.every(times).day.at(unit[1]).do(self.__implement)
-                if unit[0] == 'week': schedule.every(times).weeks.do(self.__implement)
-                if unit[0] == 'monday': schedule.every().monday.at(unit[1]).do(self.__implement)
-                if unit[0] == 'tuesday': schedule.every().tuesday.at(unit[1]).do(self.__implement)
-                if unit[0] == 'wednesday': schedule.every().wednesday.at(unit[1]).do(self.__implement)
-                if unit[0] == 'thursday': schedule.every().thursday.at(unit[1]).do(self.__implement)
-                if unit[0] == 'friday': schedule.every().friday.at(unit[1]).do(self.__implement)
-                if unit[0] == 'saturday': schedule.every().saturday.at(unit[1]).do(self.__implement)
-                if unit[0] == 'sunday': schedule.every().sunday.at(unit[1]).do(self.__implement)
-                else: schedule.every(times).minutes.do(self.__implement)
-            else: schedule.every(param).minutes.do(self.__implement)
+                if '|' in units:
+                    unit = re.split('[|]', units)
+                else:
+                    unit = units
+                if isinstance(unit, list): times, unit = unit[1], unit[0]
+                if unit == 's':
+                    scheduled.seconds.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'min':
+                    scheduled.minutes.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'h':
+                    scheduled.hours.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'day':
+                    if not isinstance(times, int):
+                        scheduled.days.at(times).do(self.__implement)
+                    else:
+                        scheduled.days.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'week':
+                    scheduled.weeks.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'monday':
+                    if not isinstance(times, int):
+                        scheduled.monday.at(times).do(self.__implement)
+                    else:
+                        scheduled.monday.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'tuesday':
+                    if not isinstance(times, int):
+                        scheduled.tuesday.at(times).do(self.__implement)
+                    else:
+                        scheduled.tuesday.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'wednesday':
+                    if not isinstance(times, int):
+                        scheduled.wednesday.at(times).do(self.__implement)
+                    else:
+                        scheduled.wednesday.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'thursday':
+                    if not isinstance(times, int):
+                        scheduled.thursday.at(times).do(self.__implement)
+                    else:
+                        scheduled.thursday.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'friday':
+                    if not isinstance(times, int):
+                        scheduled.friday.at(times).do(self.__implement)
+                    else:
+                        scheduled.friday.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'saturday':
+                    if not isinstance(times, int):
+                        scheduled.saturday.at(times).do(self.__implement)
+                    else:
+                        scheduled.saturday.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+                if unit == 'sunday':
+                    if not isinstance(times, int):
+                        scheduled.sunday.at(times).do(self.__implement)
+                    else:
+                        scheduled.sunday.do(self.__implement)
+                    sys.stderr.write(f'已启动定时{unit!r}, {times!r}滴任务...')
+        sys.stderr.flush()
 
     def job(self):
         if isinstance(TIMES, list):
