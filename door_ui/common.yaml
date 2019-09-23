@@ -165,7 +165,7 @@ door_ui:
             asserts: False
           }
           test_all_5: {
-            url: "/openapi/clearCache/page.do?tenantId=%s",
+            url: "/openapi/clearCache/page.do?tenantId/manager/gwforward/manager-webapi/product/productInformation/list/manager/gwforward/manager-webapi/product/productInformation/list/manager/gwforward/manager-webapi/product/productInformation/list",
             assembly: openAPI清理Redis缓存,
             author: 后超,
             level: 中,

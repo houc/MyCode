@@ -84,6 +84,6 @@ class Debug(UnitTests):
         使用接口验证openapi+redis->>清理Redis缓存
         """
         self.first = True
-        print(True)
+
         self.assertEqual(self.first, self.second)
         

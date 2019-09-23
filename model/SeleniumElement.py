@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains as Opera
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.keys import Keys
 from . MyException import NoUrlTimeoutError
 from . ElementSupport import (GetCurrentUrl, PureClick)
 from . MyException import (UntilNoElementOrTimeoutError,
@@ -148,11 +149,11 @@ class _OtherOperationClass(_MouseToOperations):
 
     def local_upload_attachments(self, path: str):
         # 本地上传附件
-        time.sleep(1)
+        time.sleep(2)
         self.keyboard.tap_key(self.keyboard.shift_key)
         local_path = path.replace('/', '\\')
         self.keyboard.type_string(local_path)
-        time.sleep(1)
+        time.sleep(2)
         self.keyboard.tap_key(self.keyboard.enter_key)
 
     @staticmethod
@@ -275,6 +276,11 @@ class OperationElement(_OtherOperationClass):
             clicked.click()
         else:
             raise EC.NoSuchElementException(f'element: {element}  Not visible or enabled...')
+
+    def enters(self, element):
+        # 敲击回车
+        enter = self.opera_element(element)
+        enter.send_keys(Keys.ENTER)
 
     def send_keys(self, element, *value: str):
         # 元素是否可输入对应内容

@@ -41,8 +41,8 @@ def get_my_conf(section, option):
     """
     get_conf = ConfigParameter().read_ini(section, option)
     return get_conf
-    
-    
+
+
 class {}InterfaceAuxiliary(object):
     """
     用于接口辅助测试---->>>>所用到的对应功能接口方法集成类
@@ -50,14 +50,14 @@ class {}InterfaceAuxiliary(object):
     def __init__(self):
         self.token = get_my_conf('Authentication', 'Authorization')
         .......................................................................
-    
+
     def get_user_msg(self):
         data = read_currency('user_msg', 1)
         url = read_currency('user_msg', 0)
         .......................................................................
-        
+
     """
-    
+
     def request_except(self, r, module_name=None, remark=None,
                    back_data=None, except_status='-1', insert_data=None):
         """
@@ -97,13 +97,12 @@ class {}(OperationElement):
     # ================================================URL==========================================
 
     # ================================================元素==========================================
-    
+
     # ================================================初始化参数=====================================
-    
+
     def __init__(self, driver):
         super({}, self).__init__(driver)
         self.interface = {}InterfaceAuxiliary() # 继承接口类\n\n'''
-
 
 CASE_CONTENT = '''import unittest
 import time
@@ -132,11 +131,10 @@ class {}(UnitTests):
     LOGIN_INFO = {{"account": None, "password": None, "company": None}}
     MODULE = os.path.abspath(__file__)
     toke_module = str(MODULE).split('\\\\')[-1].split('.')[0]
-    
+
     set_up = UnitTests.setUp
 
 '''
-
 
 CASE_NAME = '''    @test_re_runner(set_up)
     def {}(self):
@@ -148,15 +146,12 @@ CASE_NAME = '''    @test_re_runner(set_up)
         self.first = 
         self.screenshots = driver.screen_base64_shot()
         self.assertEqual(self.first, self.second)
-        
-'''
 
+'''
 
 CURRENCY_YA = '''#add_customer:
 #  - url: /add/customerParam
 #    bar: {name: 新增客户, address: 四川省成都市}'''
-
-
 
 PROJECT_COMMON = '''import warnings
 import json
@@ -211,7 +206,6 @@ class LoginPublic(BrowserToken):
 
 @dataclasses.dataclass
 class GetTemplateHTML(object):
-
     case_catalog: str
     case_module: str
     case_level: str
@@ -229,17 +223,15 @@ class GetTemplateHTML(object):
     case_remark: str
 
     def __post_init__(self):
-        if 'None' == self.case_img:
-            self.url = ''
-        else:
-            self.url = 'data:image/JPEG;base64,' + self.case_img
+        if 'None' == self.case_img: self.url = ''
+        else: self.url = 'data:image/JPEG;base64,' + self.case_img
+        if 'None' == self.case_url: self.case_url, self.td_url = '', None
+        else: self.td_url = ''
 
     def case_info(self):
         """用例详情"""
-        if self.url:
-            img_url = f'''<img onclick="look_img_windows(this.src)" class="min" style="cursor: pointer" src='{self.url}'>'''
-        else:
-            img_url = ''
+        if self.url: img_url = f'''<img onclick="look_img_windows(this.src)" class="min" style="cursor: pointer" src='{self.url}'>'''
+        else: img_url = ''
         return f'''
     <div class="modal fade" id="{self.case_name}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog popUp">
@@ -265,7 +257,9 @@ class GetTemplateHTML(object):
                         </tr>
                         <tr>
                             <th class="th">地址:</th>
-                            <td class="td"><pre class="is_p">{self.case_url}</pre></td>
+                            <td class="td">
+                                <pre class="is_p"><a target="_blank" href="{self.case_url}">{self.case_url}</a>{None if self.td_url is None else self.td_url}</pre>
+                            </td>
                         </tr>
                         <tr>
                             <th class="th">场景:</th>
@@ -324,12 +318,13 @@ class GetTemplateHTML(object):
                             <td class="list_td">{self.case_catalog}</td>
                             <td class="list_td">{self.case_module}</td>
                             <td class="list_td">{self.case_name}</td>
-                            <td class="list_td">{self.case_url}</td>
+                            <td class="list_td"><a target="_blank" href="{self.case_url}">{self.case_url}</a>{None if self.td_url is None else self.td_url}</td>
                             <td class="list_td">{self.status}</td>
                             <td class="list_td">{self.case_wait_time}</td>
                             <td class="list_td">{self.case_author}</td>
                             <td class="list_td hand"><a data-toggle="modal" data-target="#{self.case_name}">详细</a></td>
                         </tr>'''
+
     @property
     def _enlarge_img(self):
         return """<script>
