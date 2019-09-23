@@ -155,13 +155,13 @@ class WriteExcel:
             for a, b in enumerate(e, 1):
                 for c, d in enumerate(b):
                     if '失败' == d:
-                        self.sheet_test.write(a, c, d, self.yellow)
+                        self.sheet_test.write(a, c, d, self.purple)
                         path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
                         if not 'None' == path and path is not None:
                             self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
 
                     elif '预期失败' == d:
-                        self.sheet_test.write(a, c, d, self.purple)
+                        self.sheet_test.write(a, c, d, self.yellow)
                         path = _base64_conversion_img(img_name=b[3], base64=b[-4]).as_img
                         if not 'None' == path and path is not None:
                             self.sheet_test.insert_image(a, c + 5, path, {'x_scale': 0.127, 'y_scale': 0.169})
