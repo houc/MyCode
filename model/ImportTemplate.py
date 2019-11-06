@@ -110,7 +110,7 @@ import os
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseSupport import test_re_runner
+from model.CaseSupport import test_re_runner, case_self_monitor
 from model.SkipModule import Skip, current_module
 from {} import {}
 

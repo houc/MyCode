@@ -1,4 +1,5 @@
 import functools
+import unittest
 import time
 import queue
 import sys
@@ -13,11 +14,14 @@ from unittest.runner import _WritelnDecorator
 from unittest.result import TestResult
 from unittest.signals import registerResult
 from selenium.common import exceptions as EX
+from selenium.webdriver.chrome.webdriver import WebDriver
 
 __Skip_Status = True
 __Refresh_Url = MyConfig('new_backstage').base_url
 __Re_Runner_Test_Count = MyConfig('re_run_count').config
 __Wait_Timer = MyConfig('re_sleep').config
+
+# 此模块用于执行测试用例所封装的一系列方法
 
 
 def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retry_count=None):
@@ -41,11 +45,37 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
                     if (count + 1) == retry_count:
                         raise
                     else:
-                        time.sleep(wait_time)
-                        if refresh:
+                        if isinstance(driver, WebDriver) and refresh:
+                            time.sleep(wait_time)
                             driver.get(refresh_url)
                             driver.refresh()
+
         return execute_case
+    return decorator
+
+
+def case_self_monitor(case_name=None):
+    def decorator(test_case):
+        @functools.wraps(test_case)
+        def monitors_case(self):
+            if test_case.__name__ == case_name:
+                raise NameError('用例名不可为当前用例名...')
+            failures = [fail[0]._testMethodName for fail in self._outcome.result.failures]
+            errors = [error[0]._testMethodName for error in self._outcome.result.errors]
+            expected = [expect[0]._testMethodName for expect in self._outcome.result.expectedFailures]
+            skipp = [skip[0]._testMethodName for skip in self._outcome.result.skipped]
+            if case_name in failures:
+                tests = unittest.skip(f'该用例被上一级{case_name !r}因失败而跳过!')(test_case)
+            elif case_name in errors:
+                tests = unittest.skip(f'该用例被上一级{case_name !r}因错误而跳过!')(test_case)
+            elif case_name in expected:
+                tests = unittest.skip(f'该用例被上一级{case_name !r}因预期失败而跳过!')(test_case)
+            elif case_name in skipp:
+                tests = unittest.skip(f'该用例被上一级{case_name !r}因跳过而跳过!')(test_case)
+            else:
+                tests = test_case
+            return tests(self)
+        return monitors_case
     return decorator
 
 
@@ -65,7 +95,8 @@ class _Result(TestResult):
         self.fail_count = 0
         self.success_count = 0
 
-    def _data_update_in_to_my_db(self, excepts=None, *, case_name, status):
+    @staticmethod
+    def _data_update_in_to_my_db(excepts=None, *, case_name, status):
         update = "case_error_reason='%s', case_status='%s'" % (excepts, status)
         base_value = "case_name='%s'" % case_name
         if status in ('成功', '意外成功'): update = "case_status='%s', case_img='%s'" % (status, excepts)
@@ -91,7 +122,8 @@ class _Result(TestResult):
             self.stream.writeln(f"skipped: {reason}")
         self.skip_count += 1
 
-    def _skip_data_handle(self, test, reason):
+    @staticmethod
+    def _skip_data_handle(test, reason):
         catalog = test.__module__ + '.' + test.__class__.__name__
         MyDB().insert_data(case_catalog=catalog, case_status='跳过',
                            case_error_reason=f'跳过原因: {reason}',

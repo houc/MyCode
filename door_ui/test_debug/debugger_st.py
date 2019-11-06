@@ -4,7 +4,7 @@ import os
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseSupport import test_re_runner
+from model.CaseSupport import test_re_runner, case_self_monitor
 from model.SkipModule import Skip, current_module
 from door_ui.test_debug.currency import TestDebugElement
 
@@ -35,17 +35,17 @@ class Debug(UnitTests):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
-        self.first = True
+        self.first = s
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
-    @unittest.expectedFailure
+    @unittest.skip('AAA')
     def test_all_1(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
 
-        self.first = False
+        # self.first = False
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
@@ -53,7 +53,7 @@ class Debug(UnitTests):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
-        self.first = False
+        # self.first = False
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
@@ -61,9 +61,8 @@ class Debug(UnitTests):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
-        driver = TestDebugElement(self.driver)
-        driver.get(self.url)
-        self.screenshots = driver.screen_base64_shot()
+        # driver = TestDebugElement(self.driver)
+        # self.screenshots = driver.screen_base64_shot()
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
@@ -77,13 +76,13 @@ class Debug(UnitTests):
         self.first = False
         self.screenshots = driver.screen_base64_shot()
         self.assertEqual(self.first, self.second)
-        
-    @test_re_runner(set_up)
+    #
+    @test_re_runner(set_up, retry_count=1)
+    @case_self_monitor('test_all_3')
     def test_all_5(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
-        self.first = True
 
         self.assertEqual(self.first, self.second)
         
