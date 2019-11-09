@@ -213,4 +213,4 @@ class ConversionDiscover(object):
             else: urls = report
             sys.stderr.write(f'HTML测试报告已生成，可在局域网在线预览报告啦: {report}\n')
             sys.stderr.flush()
-            self.mail.sender_email(url=urls, case_name=total_case)
+            self.mail.sender_email(url=urls, case_data=total_case)

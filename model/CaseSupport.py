@@ -45,11 +45,10 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
                     if (count + 1) == retry_count:
                         raise
                     else:
-                        if isinstance(driver, WebDriver) and refresh:
+                        if isinstance(driver, WebDriver):
                             time.sleep(wait_time)
                             driver.get(refresh_url)
-                            driver.refresh()
-
+                            if refresh: driver.refresh()
         return execute_case
     return decorator
 
@@ -64,7 +63,17 @@ def case_self_monitor(case_name=None):
             errors = [error[0]._testMethodName for error in self._outcome.result.errors]
             expected = [expect[0]._testMethodName for expect in self._outcome.result.expectedFailures]
             skipp = [skip[0]._testMethodName for skip in self._outcome.result.skipped]
-            if case_name in failures:
+            total_case = failures + errors + expected + skipp
+            if case_name not in total_case:
+                def get_method(class_name):
+                    for dirt in dir(class_name):
+                        if not dirt.startswith('test'):
+                            continue
+                        test_func = getattr(class_name, dirt)
+                        if callable(test_func) and case_name == dirt:
+                            return test_func
+                tests = get_method(self.__class__)
+            elif case_name in failures:
                 tests = unittest.skip(f'该用例被上一级{case_name !r}因失败而跳过!')(test_case)
             elif case_name in errors:
                 tests = unittest.skip(f'该用例被上一级{case_name !r}因错误而跳过!')(test_case)
@@ -74,6 +83,7 @@ def case_self_monitor(case_name=None):
                 tests = unittest.skip(f'该用例被上一级{case_name !r}因跳过而跳过!')(test_case)
             else:
                 tests = test_case
+            print(tests)
             return tests(self)
         return monitors_case
     return decorator
@@ -122,11 +132,11 @@ class _Result(TestResult):
             self.stream.writeln(f"skipped: {reason}")
         self.skip_count += 1
 
-    @staticmethod
-    def _skip_data_handle(test, reason):
+    def _skip_data_handle(self, test, reason):
         catalog = test.__module__ + '.' + test.__class__.__name__
+        reasoned = self.str_conversion(reason)
         MyDB().insert_data(case_catalog=catalog, case_status='跳过',
-                           case_error_reason=f'跳过原因: {reason}',
+                           case_error_reason=f'跳过原因: {reasoned}',
                            case_name=test._testMethodName)
 
     def startTest(self, test):

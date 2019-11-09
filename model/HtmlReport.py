@@ -18,6 +18,12 @@ def report(dir_name, html_name):
     return template(path)
 
 
+@route('/report/<html_name>')
+def report_emil(html_name):
+    path = read_file('report', html_name)
+    return template(path)
+
+
 @route('/my_static/<filename>')
 def my_static_file(filename):
     return static_file(filename, root='../package/report/static')

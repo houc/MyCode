@@ -59,20 +59,13 @@ p{
 
 /*饼型图div偏移*/
 .pie_style{
-    margin: 20px 10px; /*偏移【上下】/【左右】*/
+    margin: 20px 1px; /*偏移【上下】/【左右】*/
     background-color: #F5F5F5; /*背景颜色*/
     float: revert; /*整体偏移*/
     height: 420px; /*高度*/
-    width: 62.68%; /*宽度*/
+    width: 62.5%; /*宽度*/
     position: relative;
     overflow: hidden
-}
-
-
-/*table按钮样式展示*/
-.table_click:active {
-    /*color: black; !*点击颜色*!*/
-    transform: translateY(5px); /*点击后按钮向下偏移量*/
 }
 
 /*table样式*/
@@ -88,26 +81,40 @@ p{
     list-style: none;
     overflow: hidden;
     cursor: pointer; /*手势*/
+}
+
+/*重新定义tabs样式*/
+.nav-tabs{
+    border-bottom: none;
+}
+
+/*重新定义tabs的标签的样式*/
+.nav-tabs>li>a{
     border-radius: 15px; /*圆角*/
 }
 
-/*table鼠标悬停颜色*/
-.hover:hover {
-    color: black; /*字体颜色*/
-    /*transform: scale(1.07); !*鼠标悬停按钮位置放大*!*/
-    box-shadow: 0 5px 16px 0 rgba(0,0,0,0.24),0 1px 2px 0 rgba(0,0,0,0.19); /* 鼠标悬停背景加深*/
-}
-.click:focus{
-    color: gold; /*点击后颜色*/
-    font-weight: bold; /*字体加粗*/
-    /*transform: scale(1.08); !*鼠标悬停按钮位置放大*!*/
+/*重新定义tabs选择后样式*/
+.nav-tabs>li.active>a{
+    font-weight: bold;
+    color: white;
 }
 
-/*tab按钮样式展示*/
-.click:active {
-    color: black;
-    /*transform: translateY(5px); !*点击后按钮向下偏移量*!*/
+/*重写鼠标消失后字体颜色*/
+.nav-tabs>li.active>a:focus{
+    color: white;
 }
+
+/*重写鼠标悬停字体颜色*/
+.nav-tabs>li.active>a:hover{
+    color: white;
+
+}
+
+/*重写单独标签鼠标悬停颜色*/
+a:hover{
+    color: white;
+}
+
 /*附件图片默认缩小*/
 .min{
     width: 100px;

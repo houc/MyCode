@@ -30,7 +30,7 @@ class Debug(UnitTests):
     set_up = UnitTests.setUp
 
     @test_re_runner(set_up)
-    @unittest.expectedFailure
+    # @case_self_monitor('test_all_5')
     def test_all(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
@@ -39,7 +39,7 @@ class Debug(UnitTests):
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
-    @unittest.skip('AAA')
+    # @case_self_monitor('test_all_2')
     def test_all_1(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
@@ -49,14 +49,16 @@ class Debug(UnitTests):
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
+    # @case_self_monitor('test_all_3')
     def test_all_2(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
-        # self.first = False
+        self.first = True
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
+    @case_self_monitor('test_all_5')
     def test_all_3(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
@@ -66,7 +68,7 @@ class Debug(UnitTests):
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
-    @unittest.skip('over')
+    @case_self_monitor('test_all_3')
     def test_all_4(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
@@ -76,13 +78,11 @@ class Debug(UnitTests):
         self.first = False
         self.screenshots = driver.screen_base64_shot()
         self.assertEqual(self.first, self.second)
-    #
-    @test_re_runner(set_up, retry_count=1)
-    @case_self_monitor('test_all_3')
+
     def test_all_5(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
-
+        print(55555555555555)
         self.assertEqual(self.first, self.second)
         

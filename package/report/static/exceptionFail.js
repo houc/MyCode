@@ -23,10 +23,8 @@ function exceptionFailMethod(page_id) {
 
     if (number == 1){
         tbody_fail = document.getElementById('hide-exceptionFail-page');
-        tr1 = document.createElement('br');
         tr = document.createElement('tr');
-        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">~~暂无数据~~</td>';
-        tbody_fail.appendChild(tr1);
+        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">太意外了，没有预期失败的数据哦</td>';
         tbody_fail.appendChild(tr);
     }
     exceptionFailPre();

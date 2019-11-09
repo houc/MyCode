@@ -24,10 +24,8 @@ function skippedMethod(page_id) {
 
     if (number == 1){
         tbody_fail = document.getElementById('hide-skipped-page');
-        tr1 = document.createElement('br');
         tr = document.createElement('tr');
-        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">~~暂无数据~~</td>';
-        tbody_fail.appendChild(tr1);
+        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">恭喜你，没有跳过的用例哦</td>';
         tbody_fail.appendChild(tr);
     }
     skippedPre();

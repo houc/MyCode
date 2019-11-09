@@ -2,16 +2,15 @@ import logging
 import time
 import os
 
-from datetime import datetime, timedelta
 from config_path.path_file import read_file
 from . Yaml import MyConfig
+from . TimeConversion import return_y_d_m
 
 
 def _logger():
     logs_day = MyConfig('logs_save').config
-    for day in range(logs_day):
-        dir_log = '{}.log'.format((datetime.today() - timedelta(days=day + logs_day)).strftime('%Y-%m-%d'))
-        log_dir = read_file('log', dir_log)
+    for day in return_y_d_m(ends_day_time=logs_day):
+        log_dir = read_file('log', day + '.log')
         exists = os.path.exists(log_dir)
         if exists:
             os.remove(log_dir)

@@ -4,38 +4,30 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>自动化测试报告</title>
     <!--饼图-->
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{url}}/my_static/my_html_js.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/my_html_js.js"></script>
-
     <script type="text/javascript" src="{{url}}/my_static/success.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/success.js"></script>
-
     <script type="text/javascript" src="{{url}}/my_static/skipped.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/skipped.js"></script>
-
     <script type="text/javascript" src="{{url}}/my_static/failed.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/failed.js"></script>
-
     <script type="text/javascript" src="{{url}}/my_static/errors.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/errors.js"></script>
-
     <script type="text/javascript" src="{{url}}/my_static/unexpectedSuccess.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/unexpectedSuccess.js"></script>
-
     <script type="text/javascript" src="{{url}}/my_static/exceptionFail.js"></script>
     <script type="text/javascript" src="{{local_url}}/my_static/exceptionFail.js"></script>
-
     <link rel="stylesheet" href="{{url}}/my_static/my_html_css.css">
     <link rel="stylesheet" href="{{local_url}}/my_static/my_html_css.css">
 </head>
@@ -114,7 +106,7 @@
         <div class="tab_title">
 
             <!--table-->
-            <ul id="myTab" class="nav">
+            <ul id="myTab" class="nav nav-tabs">
                 <li class="active">
                     <a data-toggle="tab" href="#fail" class="button hover click"
                        style="background-color: #B87070">失败数({{failed_case}}条)</a>

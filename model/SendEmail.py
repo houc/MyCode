@@ -26,9 +26,9 @@ class Email:
         self.img_path = read_file('img', 'html.png')
         self.excel_path = read_file('report', 'case_info.xlsx')
 
-    def _send_title_msg(self, url, case_name):
+    def _send_title_msg(self, url, case_data):
         self._send_content(url)
-        self._send_enclosure(case_name)
+        self._send_enclosure(case_data)
         self._send_file()
         self.contents['from'] = Header(self.sender)
         self.contents['to'] = Header(', '.join(self.receiver))
@@ -40,9 +40,9 @@ class Email:
         link_url = f"""<a href="{url}" target="_blank">点击此处在线查看测试报告</a><img alt="" src="cid:image1"/>"""
         self.contents.attach(MIMEText(link_url, 'html', 'utf8'))
 
-    def _send_enclosure(self, case_name):
-        AmilSupport(case_name)
-        sys.stderr.write('邮件中的截图统计已完成，正在发送邮件...\n')
+    def _send_enclosure(self, case_data):
+        AmilSupport(case_data)
+        sys.stderr.write('发送邮件携带的截图已完成，正在发送邮件...\n')
         if os.path.exists(self.img_path):
             img = MIMEImage(open(self.img_path, 'rb').read())
             img.add_header('Content-ID', '<image1>')
@@ -54,22 +54,22 @@ class Email:
         att["Content-Disposition"] = 'attachment; filename="info.xlsx"'
         self.contents.attach(att)
 
-    def sender_email(self, url, case_name):
+    def sender_email(self, url, case_data):
         try:
-            content = self._send_title_msg(url, case_name)
+            content = self._send_title_msg(url, case_data)
             self.Mail.connect(host=self.server, port=self.port)
             self.Mail.login(self.sender, self.sender_password)
             self.Mail.sendmail(self.sender, self.receiver + self.cc, content.as_string())
             self.Mail.quit()
             if self.cc:
-                sys.stderr.write(f'抄送{"、".join(self.cc)}成功; 发送{"、 ".join(self.receiver)}成功\n')
+                sys.stderr.write(f'抄送{"、".join(self.cc)}成功; 发送{"、 ".join(self.receiver)}成功...\n')
             else:
-                sys.stderr.write(f'给{"、 ".join(self.receiver)}邮件发送成功\n')
-        except smtplib.SMTPException:
+                sys.stderr.write(f'给{"、 ".join(self.receiver)}邮件发送成功...\n')
+        except smtplib.SMTPException as exc:
             if self.cc:
-                sys.stderr.write(f'抄送{"、".join(self.cc)}失败; 发送{"、 ".join(self.receiver)}失败！\n')
+                sys.stderr.write(f'抄送{"、".join(self.cc)}失败; 发送{"、 ".join(self.receiver)}失败！大致原因：{exc}...\n')
             else:
-                sys.stderr.write(f'给{"、 ".join(self.receiver)}邮件发送失败\n')
+                sys.stderr.write(f'给{"、 ".join(self.receiver)}邮件发送失败，大致原因：{exc}...\n')
         sys.stderr.flush()
 
 

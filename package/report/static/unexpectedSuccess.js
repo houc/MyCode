@@ -23,10 +23,8 @@ function unexpectedSuccessMethod(page_id) {
 
     if (number == 1){
         tbody_fail = document.getElementById('hide-unexpectedSuccess-page');
-        tr1 = document.createElement('br');
         tr = document.createElement('tr');
-        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">~~暂无数据~~</td>';
-        tbody_fail.appendChild(tr1);
+        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">很遗憾，没有意外成功的数据哦</td>';
         tbody_fail.appendChild(tr);
     }
     unexpectedSuccessPre();

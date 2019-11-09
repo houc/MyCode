@@ -3,67 +3,14 @@ import shutil
 import time
 
 from bottle import template
-from datetime import datetime, timedelta
 from config_path.path_file import read_file, module_file
 from collections import defaultdict
 from . Yaml import MyConfig
 from . HtmlReport import (IP, __local_ip__, __local_port__, PORT)
-from . TimeConversion import standard_time, compact_time
+from . TimeConversion import standard_time, compact_time, return_y_d_m
 from . ImportTemplate import GetTemplateHTML
 from . DriverParameter import browser
-from . Thread import MyThread
-from package.pie_link import HTML
-
-
-
-class AmilSupport(object):
-    def __init__(self, case_data, browser_switch=True, html_name='html_report', encoding='utf-8'):
-        """该方法主要用于，邮件发送的一些支持类方法"""
-        self.html_name = html_name
-        self.encoding = encoding
-        self.switch_browser = browser_switch
-        self.title = MyConfig('project_name').excel_parameter
-        self.science = MyConfig('science').excel_parameter
-        MyThread({self._browser_get_html: (case_data, )}).run()
-
-    def _html_handle(self, case_data):
-        """
-        处理html中的数据
-        :param case_data: 传过来的统计数据
-        :return: 返回处理后的数据类型
-        """
-        return HTML % ('100%', '100%', '100%', self.title + '统计简报', self.science,
-                       case_data.get('errors'), case_data.get('failures'),
-                       case_data.get('skipped'), case_data.get('success'),
-                       case_data.get('exceptionFail'), case_data.get('unexpectedSuccess'),
-                       '55%', '25%', '50%', '25%', '{b}: {@错误数} ({d}%)')
-
-    def _save_as_report(self, case_name):
-        """
-        此方法主要用于，html存储
-        :return: 返回对应的路径
-        """
-        path = read_file('report', '{}.html'.format(self.html_name))
-        html = self._html_handle(case_name)
-        with open(path, 'wt', encoding=self.encoding) as f:
-            f.writelines(html)
-        return path
-
-    def _browser_get_html(self, case_name):
-        """
-        将请求的html用浏览器请求
-        :return: ...
-        """
-        path = self._save_as_report(case_name)
-        img_path = read_file('img', 'html.png')
-        driver = browser(switch=self.switch_browser)
-        try:
-            driver.get(path)
-            import time
-            time.sleep(2)
-            driver.save_screenshot(img_path)
-        finally:
-            driver.quit()
+from . CaseSupport import _Result
 
 
 class MyReport(object):
@@ -142,9 +89,8 @@ class MyReport(object):
         return '{}/report{}'.format(self.local_server, path.split('report')[-1])
 
     def _del_dir(self):
-        for time in range(self.save):
-            date = (datetime.today() - timedelta(days=time + self.save)).strftime('%Y-%m-%d')
-            path = read_file('report', date)
+        for time in return_y_d_m(ends_day_time=self.save):
+            path = read_file('report', time)
             if os.path.exists(path):
                 shutil.rmtree(path)
 
@@ -212,15 +158,55 @@ class MyReport(object):
         return html.replace('&lt;', '<').replace('&gt;', '>').replace('&#039;', '"').replace('&quot;', '"')
 
 
-class screenshot(object):
-    def __init__(self, url):
-        self.path = read_file('img', 'html.png')
-        driver = browser(switch=True)
+class ScreenShot(_Result):
+    def __init__(self, url, img_path=None, switch=True):
+        _Result.__init__(self)
+        if img_path is None:
+            self.path = read_file('img', 'html.png')
+        else:
+            self.path = img_path
+        self.stream.writeln('HTML测试报告已完成，正在准备发送邮件中携带的附件...')
+        driver = browser(switch)
         try:
             driver.get(url)
             driver.implicitly_wait(10)
             time.sleep(2)
-            driver.set_window_size(1900, 500)
+            driver.set_window_size(1900, 980)
             driver.save_screenshot(self.path)
+        except Exception as exc:
+            self.stream.writeln('截图测试报告出错，出错原因: {}'.format(exc))
         finally:
             driver.quit()
+
+
+class AmilSupport(MyReport):
+    def __init__(self, case_data, switch=True, encoding='utf8', report_html_name='html_report'):
+        MyReport.__init__(self)
+        self.switch_browser = switch
+        self.encoding = encoding
+        self.report_html_name = report_html_name
+        html_tpl_path = read_file('package/report/tpl', 'pie_link.tpl')
+        title = MyConfig('project_name').excel_parameter
+        scene = MyConfig('science').excel_parameter
+        new_html = template(html_tpl_path, project_name=title,
+                            scene=scene, error_count=case_data.get('errors'),
+                            fail_count=case_data.get('failures'),
+                            skip_count=case_data.get('skipped'),
+                            success_count=case_data.get('success'),
+                            guess_count=case_data.get('exceptionFail'),
+                            accident_count=case_data.get('unexpectedSuccess'))
+        self._save_as_report(new_html)
+
+    def _save_as_report(self, case_name):
+        """
+        此方法主要用于，html存储
+        :return: 返回对应的路径
+        """
+        path = read_file('report', '{}.html'.format(self.report_html_name))
+        img_path = read_file('img', 'html.png')
+        html = case_name.replace('&lt;', '<').replace('&gt;', '>').replace('&#039;', '"').replace('&quot;', '"')
+        with open(path, 'wt', encoding=self.encoding) as f:
+            f.writelines(html)
+        url = self.local_server + '/report/{}.html'.format(self.report_html_name)
+        ScreenShot(url, img_path, self.switch_browser)
+

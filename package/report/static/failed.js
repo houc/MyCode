@@ -23,10 +23,8 @@ function failedMethod(page_id) {
     if (number == 1){
 
         tbody_fail = document.getElementById('hide-failed-page');
-        tr1 = document.createElement('br');
         tr = document.createElement('tr');
-        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">~~暂无数据~~</td>';
-        tbody_fail.appendChild(tr1);
+        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">执行太棒了，没有失败的数据哦</td>';
         tbody_fail.appendChild(tr);
     }
     failedPre();

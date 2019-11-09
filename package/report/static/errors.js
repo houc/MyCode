@@ -22,10 +22,8 @@ function errorsMethod(page_id) {
     }
     if (number == 1){
         tbody = document.getElementById('hide-errors-page');
-        tr1 = document.createElement('br');
         tr = document.createElement('tr');
-        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey">~~暂无数据~~</td>';
-        tbody.appendChild(tr1);
+        tr.innerHTML = '<td colspan="8" style="text-align: center; color: grey;">执行太棒了，没有错误的数据哦</td>';
         tbody.appendChild(tr);
     }
     errorsPre();
