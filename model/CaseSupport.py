@@ -13,6 +13,7 @@ from unittest.suite import TestSuite
 from unittest.runner import _WritelnDecorator
 from unittest.result import TestResult
 from unittest.signals import registerResult
+from operator import contains
 from selenium.common import exceptions as EX
 from selenium.webdriver.chrome.webdriver import WebDriver
 
@@ -53,7 +54,12 @@ def test_re_runner(set_up, refresh=False, refresh_url=None, wait_time=None, retr
     return decorator
 
 
-def case_self_monitor(case_name=None):
+def check_upper_is_ok(case_name=None):
+    """
+    检查上一级用例是否通过，如果上一级未通过或者错误执行当前用例则跳过
+    此装饰器需要保证用例会按照顺序执行才可
+    :param case_name: 传入上一级用例名名称
+    """
     def decorator(test_case):
         @functools.wraps(test_case)
         def monitors_case(self):
@@ -63,27 +69,16 @@ def case_self_monitor(case_name=None):
             errors = [error[0]._testMethodName for error in self._outcome.result.errors]
             expected = [expect[0]._testMethodName for expect in self._outcome.result.expectedFailures]
             skipp = [skip[0]._testMethodName for skip in self._outcome.result.skipped]
-            total_case = failures + errors + expected + skipp
-            if case_name not in total_case:
-                def get_method(class_name):
-                    for dirt in dir(class_name):
-                        if not dirt.startswith('test'):
-                            continue
-                        test_func = getattr(class_name, dirt)
-                        if callable(test_func) and case_name == dirt:
-                            return test_func
-                tests = get_method(self.__class__)
-            elif case_name in failures:
+            if contains(failures, case_name):
                 tests = unittest.skip(f'该用例被上一级{case_name !r}因失败而跳过!')(test_case)
-            elif case_name in errors:
+            elif contains(errors, case_name):
                 tests = unittest.skip(f'该用例被上一级{case_name !r}因错误而跳过!')(test_case)
-            elif case_name in expected:
+            elif contains(expected, case_name):
                 tests = unittest.skip(f'该用例被上一级{case_name !r}因预期失败而跳过!')(test_case)
-            elif case_name in skipp:
+            elif contains(skipp, case_name):
                 tests = unittest.skip(f'该用例被上一级{case_name !r}因跳过而跳过!')(test_case)
             else:
                 tests = test_case
-            print(tests)
             return tests(self)
         return monitors_case
     return decorator

@@ -11,6 +11,8 @@ from . TimeConversion import standard_time, compact_time, return_y_d_m
 from . ImportTemplate import GetTemplateHTML
 from . DriverParameter import browser
 from . CaseSupport import _Result
+from . SeleniumElement import OperationElement
+from selenium.common.exceptions import TimeoutException
 
 
 class MyReport(object):
@@ -158,21 +160,24 @@ class MyReport(object):
         return html.replace('&lt;', '<').replace('&gt;', '>').replace('&#039;', '"').replace('&quot;', '"')
 
 
-class ScreenShot(_Result):
+class ScreenShot(_Result, OperationElement):
     def __init__(self, url, img_path=None, switch=True):
         _Result.__init__(self)
+        self.stream.writeln('HTML测试报告已完成，正在准备发送邮件中携带的附件...')
+        driver = browser(switch)
+        OperationElement.__init__(self, driver=driver)
         if img_path is None:
             self.path = read_file('img', 'html.png')
         else:
             self.path = img_path
-        self.stream.writeln('HTML测试报告已完成，正在准备发送邮件中携带的附件...')
-        driver = browser(switch)
         try:
-            driver.get(url)
-            driver.implicitly_wait(10)
-            time.sleep(2)
-            driver.set_window_size(1900, 980)
-            driver.save_screenshot(self.path)
+            self.get(url)
+            self.set_window_size(1800, 980)
+            time.sleep(1)
+            self.web_is_open(driver.title)
+            self.screen_shot(self.path)
+        except TimeoutException:
+            self.stream.writeln('访问当前网站出错，请检查是否启动bottle服务...')
         except Exception as exc:
             self.stream.writeln('截图测试报告出错，出错原因: {}'.format(exc))
         finally:

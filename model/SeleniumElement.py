@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from . MyException import NoUrlTimeoutError
-from . ElementSupport import (GetCurrentUrl, PureClick)
+from . ElementSupport import (GetCurrentUrl, PureClick, WebIsOpen)
 from . MyException import (UntilNoElementOrTimeoutError,
                            UntilNotNotElementOrTimeoutError)
 
@@ -202,6 +202,10 @@ class _OtherOperationClass(_MouseToOperations):
         # 获取浏览器中当前操作窗口的句柄
         return self.driver.current_window_handle
 
+    def set_window_size(self, width, height, window_handle='current'):
+        # 设置窗口尺寸
+        return self.driver.set_window_size(width, height, windowHandle=window_handle)
+
     def more_window(self):
         # 获取浏览器全部操作窗口句柄
         return self.driver.window_handles
@@ -242,6 +246,11 @@ class _OtherOperationClass(_MouseToOperations):
     def method_driver(self, method):
         # 定义driver继承
         return method(self.driver)
+
+    def web_is_open(self, title):
+        # 判断web网址是否打开以title为基础
+        titles = WebIsOpen(title)
+        return self.action.until(titles)
 
     def get_current_url(self):
         # 获取当前url

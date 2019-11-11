@@ -4,7 +4,7 @@ import os
 
 from config_path.path_file import PATH
 from model.MyUnitTest import UnitTests
-from model.CaseSupport import test_re_runner, case_self_monitor
+from model.CaseSupport import test_re_runner, check_upper_is_ok
 from model.SkipModule import Skip, current_module
 from door_ui.test_debug.currency import TestDebugElement
 
@@ -29,8 +29,8 @@ class Debug(UnitTests):
     
     set_up = UnitTests.setUp
 
-    @test_re_runner(set_up)
-    # @case_self_monitor('test_all_5')
+    @test_re_runner(set_up, retry_count=1)
+    @check_upper_is_ok('test_all_5')
     def test_all(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
@@ -39,8 +39,8 @@ class Debug(UnitTests):
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
-    # @case_self_monitor('test_all_2')
-    def test_all_1(self):
+    @check_upper_is_ok('test_all_1')
+    def test_all_2(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
@@ -50,7 +50,7 @@ class Debug(UnitTests):
         
     @test_re_runner(set_up)
     # @case_self_monitor('test_all_3')
-    def test_all_2(self):
+    def test_all_3(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
@@ -58,8 +58,7 @@ class Debug(UnitTests):
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
-    @case_self_monitor('test_all_5')
-    def test_all_3(self):
+    def test_all_1(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
@@ -68,8 +67,8 @@ class Debug(UnitTests):
         self.assertEqual(self.first, self.second)
         
     @test_re_runner(set_up)
-    @case_self_monitor('test_all_3')
-    def test_all_4(self):
+    @unittest.skip('暂跳')
+    def test_all_5(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
@@ -79,10 +78,10 @@ class Debug(UnitTests):
         self.screenshots = driver.screen_base64_shot()
         self.assertEqual(self.first, self.second)
 
-    def test_all_5(self):
+    def test_all_4(self):
         """
         使用接口验证openapi+redis->>清理Redis缓存
         """
-        print(55555555555555)
+        print('!')
         self.assertEqual(self.first, self.second)
         

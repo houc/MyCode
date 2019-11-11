@@ -21,3 +21,11 @@ class PureClick(object):
     def __call__(self, driver):
         element = EC._find_element(driver, self.by)
         element.click()
+
+
+class WebIsOpen(object):
+    def __init__(self, title):
+        self.title = title
+
+    def __call__(self, driver):
+        return driver.title
