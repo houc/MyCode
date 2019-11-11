@@ -159,5 +159,4 @@ def output_python_version():
     return version
 
 
-if __name__ == '__main__':
-    print(real_get_disk())
+

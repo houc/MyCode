@@ -217,7 +217,7 @@ class WriteExcel:
         self._pc_title_style()
         self._pc_content_style()
         for i in range(20):
-            self.sheet_pc.set_row(i + 1,20)
+            self.sheet_pc.set_row(i + 1, 20)
         self.sheet_pc.merge_range(0, 0, 0, 4, kwargs['title'], self.pc_style_title)
         self.sheet_pc.merge_range(1, 0, 4, 0, kwargs['CPU'], self.style_pc_content)
         self.sheet_pc.merge_range(5, 0, 8, 0, kwargs['memory'], self.style_pc_content)

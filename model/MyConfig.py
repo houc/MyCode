@@ -74,6 +74,3 @@ class ConfigParameter(object):
             self.config.write(f)
 
 
-if __name__ == '__main__':
-    conf = ConfigParameter()
-    conf.remove_option('user_messages', 'age')

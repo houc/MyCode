@@ -4,7 +4,8 @@ import operator
 import shutil
 
 from model.Yaml import MyConfig, MyProject
-from model.ImportTemplate import CURRENCY_PY, CASE_CONTENT, CASE_NAME, CURRENCY_YA, PROJECT_COMMON
+from model.ImportTemplate import (CURRENCY_PY, CASE_CONTENT, CASE_NAME,
+                                  CURRENCY_YA, PROJECT_COMMON)
 from model.TimeConversion import standard_time
 from config_path.path_file import read_file, module_file, PATH
 

@@ -16,9 +16,7 @@ class MyAsserts:
     case_name: str
     case_url: str
     case_scene: str
-    # case_status: str  # 判断的！不作为传参处理！
     case_results: str
-    # case_error_reason: str
     case_insert_parameter: str
     case_wait_time: time
     case_img: str

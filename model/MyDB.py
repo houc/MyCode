@@ -73,4 +73,3 @@ class MyDB(object):
 if __name__ == '__main__':
     query = MyDB().query_data()
     print(query)
-    # up = MyDB().update_db(row_name_value='case_catalog="你好"', sign_action='case_name="test_error"')

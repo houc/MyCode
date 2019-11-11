@@ -88,6 +88,3 @@ def return_y_d_m(starts_year_time=10, ends_day_time=10):
         yield format_start_year.strftime(YEAR_FORMAT)
 
 
-if __name__ == '__main__':
-    for a in return_y_d_m(1, 10):
-        print(a)
