@@ -35,8 +35,8 @@
 ## 发送邮件效果图：
 ![image-text](https://github.com/houc/UI/blob/dev/img/Email.jpeg)
 
-## 如有疑问可咨询：
+## 如有疑问可咨询(也可技术分享)：
 ![image-text](https://github.com/houc/UI/blob/dev/img/Welcome.jpeg)
 
-## 开源不易感谢支持：
+## 开源不易感谢支持,不定期更新与优化：
 ![image-text](https://github.com/houc/UI/blob/dev/img/Cash.jpeg)
