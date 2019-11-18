@@ -17,3 +17,14 @@ def browser(switch=False):
     return drivers
 
 
+if __name__ == '__main__':
+    import time
+    driver = browser()
+    try:
+        driver.get('https://weibo.com')
+        driver.implicitly_wait(10)
+        time.sleep(10)
+    except Exception as exc:
+        print(exc)
+    finally:
+        driver.quit()

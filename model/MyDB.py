@@ -2,7 +2,7 @@ import sqlite3
 import queue
 
 from config_path.path_file import read_file
-from . Yaml import MyConfig
+from model.Yaml import MyConfig
 
 
 class MyDB(object):
@@ -71,5 +71,5 @@ class MyDB(object):
 
 
 if __name__ == '__main__':
-    query = MyDB().query_data()
+    query = MyDB(True)
     print(query)

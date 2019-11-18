@@ -387,3 +387,8 @@ class OperationElement(_OtherOperationClass):
         # 判断元素中为“value”属性的值，是否包含text
         return self.action.until(EC.text_to_be_present_in_element_value(element, text),
                                  message=f'element: {element}  timeout...')
+
+    def downing_rolling(self, roll_range: int):
+        # 控制浏览器的纵向滚动
+        js = '$("html, body").scrollTop(%d)' % roll_range
+        return self.execute_js(js)
