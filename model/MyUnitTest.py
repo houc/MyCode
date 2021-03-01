@@ -30,8 +30,7 @@ class UnitTests(unittest.TestCase):
                     module = cls.MODULE.split('\\')[-1].split('.')[0]
                     if account and password:
                         cls.login = LoginPublic(driver=cls.driver, account=account,
-                                    password=password,
-                                    module=module)
+                                                password=password, module=module)
                         cls.login.login_design()
                     else:
                         raise LoginSelectError(cls.MODULE.split('\\')[-1].split('.')[0])
